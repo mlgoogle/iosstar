@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6C914579279831D674DBBB68 /* Pods_iOSStar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */; };
+		6EC330211EA84C9E005C8DF9 /* DealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC330201EA84C9E005C8DF9 /* DealViewController.swift */; };
+		6EC330231EA84CAD005C8DF9 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC330221EA84CAD005C8DF9 /* ExchangeViewController.swift */; };
+		6EC330251EA84CBB005C8DF9 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC330241EA84CBB005C8DF9 /* MarketViewController.swift */; };
+		6EC330271EA84D25005C8DF9 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC330261EA84D25005C8DF9 /* NewsViewController.swift */; };
+		6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */; };
+		6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302C1EA84D98005C8DF9 /* Market.storyboard */; };
 		A03D314E1EA8465000F85308 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D314D1EA8465000F85308 /* MobileCoreServices.framework */; };
 		A03D31501EA8466500F85308 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D314F1EA8466500F85308 /* AVFoundation.framework */; };
 		A03D31521EA8469900F85308 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31511EA8469900F85308 /* CoreMedia.framework */; };
@@ -48,6 +54,13 @@
 
 /* Begin PBXFileReference section */
 		658ED50682E9CA02E39549B8 /* Pods-iOSStar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.release.xcconfig"; sourceTree = "<group>"; };
+		6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOSStar-Bridging-Header.h"; sourceTree = "<group>"; };
+		6EC330201EA84C9E005C8DF9 /* DealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealViewController.swift; sourceTree = "<group>"; };
+		6EC330221EA84CAD005C8DF9 /* ExchangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
+		6EC330241EA84CBB005C8DF9 /* MarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
+		6EC330261EA84D25005C8DF9 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
+		6EC3302C1EA84D98005C8DF9 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
 		8408122B704986AA5A9C486E /* Pods-iOSStar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.debug.xcconfig"; sourceTree = "<group>"; };
 		8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03D314D1EA8465000F85308 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -86,7 +99,6 @@
 		A07238A71EA76B6D00E755DB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		A07238A91EA76B7600E755DB /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		A07238AB1EA76B9A00E755DB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		A07238AD1EA76CE200E755DB /* iOSStar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "iOSStar-Bridging-Header.h"; path = "../Scenes/iOSStar-Bridging-Header.h"; sourceTree = "<group>"; };
 		A07238B11EA76D9100E755DB /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		A07238B41EA76F4100E755DB /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		A07238B61EA76F4D00E755DB /* Deal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Deal.storyboard; sourceTree = "<group>"; };
@@ -145,6 +157,38 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6EC3301C1EA84C86005C8DF9 /* Deal */ = {
+			isa = PBXGroup;
+			children = (
+				6EC330201EA84C9E005C8DF9 /* DealViewController.swift */,
+			);
+			path = Deal;
+			sourceTree = "<group>";
+		};
+		6EC3301D1EA84C86005C8DF9 /* Exchange */ = {
+			isa = PBXGroup;
+			children = (
+				6EC330221EA84CAD005C8DF9 /* ExchangeViewController.swift */,
+			);
+			path = Exchange;
+			sourceTree = "<group>";
+		};
+		6EC3301E1EA84C86005C8DF9 /* Market */ = {
+			isa = PBXGroup;
+			children = (
+				6EC330241EA84CBB005C8DF9 /* MarketViewController.swift */,
+			);
+			path = Market;
+			sourceTree = "<group>";
+		};
+		6EC3301F1EA84C86005C8DF9 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				6EC330261EA84D25005C8DF9 /* NewsViewController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		A07238411EA768AC00E755DB = {
 			isa = PBXGroup;
 			children = (
@@ -180,49 +224,13 @@
 		A072385F1EA76AA300E755DB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				A07238601EA76AA300E755DB /* BlackCard */,
-				A07238611EA76AA300E755DB /* Club */,
-				A07238621EA76AA300E755DB /* PrivateAdvisoryBoard */,
-				A07238631EA76AA300E755DB /* Steward */,
-				A07238641EA76AA300E755DB /* Tribe */,
+				6EC3301C1EA84C86005C8DF9 /* Deal */,
+				6EC3301D1EA84C86005C8DF9 /* Exchange */,
+				6EC3301E1EA84C86005C8DF9 /* Market */,
+				6EC3301F1EA84C86005C8DF9 /* News */,
 				A07238651EA76AA300E755DB /* User */,
 			);
 			path = Scenes;
-			sourceTree = "<group>";
-		};
-		A07238601EA76AA300E755DB /* BlackCard */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = BlackCard;
-			sourceTree = "<group>";
-		};
-		A07238611EA76AA300E755DB /* Club */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Club;
-			sourceTree = "<group>";
-		};
-		A07238621EA76AA300E755DB /* PrivateAdvisoryBoard */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PrivateAdvisoryBoard;
-			sourceTree = "<group>";
-		};
-		A07238631EA76AA300E755DB /* Steward */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Steward;
-			sourceTree = "<group>";
-		};
-		A07238641EA76AA300E755DB /* Tribe */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tribe;
 			sourceTree = "<group>";
 		};
 		A07238651EA76AA300E755DB /* User */ = {
@@ -277,10 +285,10 @@
 		A07238761EA76AA300E755DB /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				A07238AD1EA76CE200E755DB /* iOSStar-Bridging-Header.h */,
 				A07238771EA76AA300E755DB /* AppDelegate.swift */,
 				A072387A1EA76AA300E755DB /* ViewController.swift */,
 				A07238781EA76AA300E755DB /* BaseTabBarController.swift */,
+				6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -363,6 +371,8 @@
 				A07238B41EA76F4100E755DB /* Home.storyboard */,
 				A07238B61EA76F4D00E755DB /* Deal.storyboard */,
 				A07238B81EA76F5600E755DB /* User.storyboard */,
+				6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */,
+				6EC3302C1EA84D98005C8DF9 /* Market.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -401,7 +411,7 @@
 				);
 				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = sum;
+				ORGANIZATIONNAME = YunDian;
 				TargetAttributes = {
 					A07238491EA768AC00E755DB = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -440,6 +450,8 @@
 				A07238B71EA76F4D00E755DB /* Deal.storyboard in Resources */,
 				A07238941EA76AA300E755DB /* nav_clear.png in Resources */,
 				A072389E1EA76AA300E755DB /* README.txt in Resources */,
+				6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */,
+				6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */,
 				A07238901EA76AA300E755DB /* Contents.json in Resources */,
 				A07238971EA76AA300E755DB /* rechargebanner.png in Resources */,
 				A07238951EA76AA300E755DB /* nav_clear@2x.png in Resources */,
@@ -504,12 +516,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EC330211EA84C9E005C8DF9 /* DealViewController.swift in Sources */,
 				A07238991EA76AA300E755DB /* AppDelegate.swift in Sources */,
 				A07238A11EA76AA300E755DB /* SVProgressHUDExt.swift in Sources */,
+				6EC330271EA84D25005C8DF9 /* NewsViewController.swift in Sources */,
 				A07238A01EA76AA300E755DB /* String+Extension.swift in Sources */,
 				A07238A31EA76AA300E755DB /* HttpModelHelper.swift in Sources */,
 				A072388F1EA76AA300E755DB /* UserViewController.swift in Sources */,
+				6EC330251EA84CBB005C8DF9 /* MarketViewController.swift in Sources */,
 				A072389F1EA76AA300E755DB /* BaseNavigationController.swift in Sources */,
+				6EC330231EA84CAD005C8DF9 /* ExchangeViewController.swift in Sources */,
 				A07238A41EA76AA300E755DB /* HttpRequestManage.swift in Sources */,
 				A07238A21EA76AA300E755DB /* AppAPIHelper.swift in Sources */,
 				A072389B1EA76AA300E755DB /* ViewController.swift in Sources */,
@@ -645,9 +661,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/iOSStar/Library/WeChatSDK1.7.4",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = haibo.iOSStar;
+				PRODUCT_BUNDLE_IDENTIFIER = yundian.iOSStar.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Scenes/iOSStar-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -665,9 +681,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/iOSStar/Library/WeChatSDK1.7.4",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = haibo.iOSStar;
+				PRODUCT_BUNDLE_IDENTIFIER = yundian.iOSStar.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Scenes/iOSStar-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
