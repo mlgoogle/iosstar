@@ -13,7 +13,7 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setViewControllers()
+        initcustomer()
         
     }
 
@@ -28,7 +28,7 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate{
             controller?.tabBarItem.image = UIImage.init(named: "\(storyboardNames[index])UnSelect")?.withRenderingMode(.alwaysOriginal)
             controller?.tabBarItem.selectedImage = UIImage.init(named: "\(storyboardNames[index])Select")?.withRenderingMode(.alwaysOriginal)
 //            controller?.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.init(rgbHex: 0x666666)], for: .normal)
-//            controller?.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: AppConst.Color.CMain], for: .selected)
+            controller?.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.red], for: .selected)
             addChildViewController(controller!)
             
             delegate = self

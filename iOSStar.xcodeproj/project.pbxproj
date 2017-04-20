@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6C914579279831D674DBBB68 /* Pods_iOSStar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */; };
+		A03D314E1EA8465000F85308 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D314D1EA8465000F85308 /* MobileCoreServices.framework */; };
+		A03D31501EA8466500F85308 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D314F1EA8466500F85308 /* AVFoundation.framework */; };
+		A03D31521EA8469900F85308 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31511EA8469900F85308 /* CoreMedia.framework */; };
+		A03D31541EA846A100F85308 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31531EA846A100F85308 /* AudioToolbox.framework */; };
+		A03D31561EA846AC00F85308 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31551EA846AC00F85308 /* VideoToolbox.framework */; };
+		A03D31581EA846B900F85308 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31571EA846B900F85308 /* libc++.tbd */; };
 		A072388F1EA76AA300E755DB /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07238661EA76AA300E755DB /* UserViewController.swift */; };
 		A07238901EA76AA300E755DB /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = A07238691EA76AA300E755DB /* Contents.json */; };
 		A07238911EA76AA300E755DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A072386A1EA76AA300E755DB /* LaunchScreen.storyboard */; };
@@ -44,6 +50,12 @@
 		658ED50682E9CA02E39549B8 /* Pods-iOSStar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.release.xcconfig"; sourceTree = "<group>"; };
 		8408122B704986AA5A9C486E /* Pods-iOSStar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.debug.xcconfig"; sourceTree = "<group>"; };
 		8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A03D314D1EA8465000F85308 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A03D314F1EA8466500F85308 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A03D31511EA8469900F85308 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		A03D31531EA846A100F85308 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A03D31551EA846AC00F85308 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		A03D31571EA846B900F85308 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		A072384A1EA768AD00E755DB /* iOSStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07238661EA76AA300E755DB /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		A07238691EA76AA300E755DB /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
@@ -86,10 +98,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A07238B21EA76D9100E755DB /* libsqlite3.tbd in Frameworks */,
-				A07238AC1EA76B9A00E755DB /* SystemConfiguration.framework in Frameworks */,
-				A07238AA1EA76B7600E755DB /* libz.tbd in Frameworks */,
+				A03D31581EA846B900F85308 /* libc++.tbd in Frameworks */,
+				A03D31561EA846AC00F85308 /* VideoToolbox.framework in Frameworks */,
+				A03D31541EA846A100F85308 /* AudioToolbox.framework in Frameworks */,
+				A03D31521EA8469900F85308 /* CoreMedia.framework in Frameworks */,
 				A07238A81EA76B6D00E755DB /* CoreTelephony.framework in Frameworks */,
+				A03D31501EA8466500F85308 /* AVFoundation.framework in Frameworks */,
+				A07238AC1EA76B9A00E755DB /* SystemConfiguration.framework in Frameworks */,
+				A03D314E1EA8465000F85308 /* MobileCoreServices.framework in Frameworks */,
+				A07238B21EA76D9100E755DB /* libsqlite3.tbd in Frameworks */,
+				A07238AA1EA76B7600E755DB /* libz.tbd in Frameworks */,
 				A07238A61EA76B5E00E755DB /* Security.framework in Frameworks */,
 				A072389D1EA76AA300E755DB /* libWeChatSDK.a in Frameworks */,
 				6C914579279831D674DBBB68 /* Pods_iOSStar.framework in Frameworks */,
@@ -102,6 +120,12 @@
 		514D3E8AF1A3675B9BA8BCD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A03D31571EA846B900F85308 /* libc++.tbd */,
+				A03D31551EA846AC00F85308 /* VideoToolbox.framework */,
+				A03D31531EA846A100F85308 /* AudioToolbox.framework */,
+				A03D31511EA8469900F85308 /* CoreMedia.framework */,
+				A03D314F1EA8466500F85308 /* AVFoundation.framework */,
+				A03D314D1EA8465000F85308 /* MobileCoreServices.framework */,
 				A07238B11EA76D9100E755DB /* libsqlite3.tbd */,
 				A07238AB1EA76B9A00E755DB /* SystemConfiguration.framework */,
 				A07238A91EA76B7600E755DB /* libz.tbd */,
