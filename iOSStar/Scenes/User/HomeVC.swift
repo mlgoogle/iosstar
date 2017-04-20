@@ -26,11 +26,6 @@ class HomeVC: UIViewController {
         NIMSDK.shared().loginManager.login("15306559323", token: pass as String) { (error) in
             if error == nil{
                 
-              
-               
-               // self.present(vc!, animated: true, completion: {
-                    
-               // })
             }
             
         }
