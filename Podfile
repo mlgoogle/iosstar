@@ -15,5 +15,13 @@ target 'iOSStar' do
     pod 'SnapKit'
     pod 'RealmSwift'
     pod 'NIMSDK'
+    pod 'CocoaLumberjack', '~> 2.0.0-rc2'
+    pod 'SDWebImage', '3.8.2'
+    pod 'M80AttributedLabel', '~> 1.5.0'
+    pod 'TZImagePickerController', '~> 1.7.7'
+    pod 'FMDB', '~> 2.5'
+    pod 'SSZipArchive', '~> 1.2'
+    pod 'Reachability', '~> 3.1.1'
+    pod 'Toast', '~> 3.0'
 end
 

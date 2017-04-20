@@ -9,7 +9,6 @@
 import UIKit
 import Fabric
 import Crashlytics
-import NIMAVChat
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -18,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        //   NSString *appKey = [[NTESDemoConfig sharedConfig] appKey];
+//        NSString *cerName= [[NTESDemoConfig sharedConfig] cerName];
+    
          NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
 //        [[NIMSDK sharedSDK] registerWithAppID:您的APPKEY
 //            cerName:您的推送证书名];
