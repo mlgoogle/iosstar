@@ -12,6 +12,10 @@
 		6E0922A71EA88DFE002725A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922A41EA88DFE002725A0 /* Main.storyboard */; };
 		6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */; };
 		6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302C1EA84D98005C8DF9 /* Market.storyboard */; };
+		A0155E071EA8ABF20047B95B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0155E061EA8ABF20047B95B /* Images.xcassets */; };
+		A0155E0B1EA8C8850047B95B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0155E0A1EA8C8850047B95B /* Login.storyboard */; };
+		A0155E0E1EA8C93E0047B95B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0155E0D1EA8C93E0047B95B /* LoginVC.swift */; };
+		A0155E101EA8C9760047B95B /* RegistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0155E0F1EA8C9760047B95B /* RegistVC.swift */; };
 		A03D314E1EA8465000F85308 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D314D1EA8465000F85308 /* MobileCoreServices.framework */; };
 		A03D31501EA8466500F85308 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D314F1EA8466500F85308 /* AVFoundation.framework */; };
 		A03D31521EA8469900F85308 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31511EA8469900F85308 /* CoreMedia.framework */; };
@@ -302,6 +306,20 @@
 		A03D3FF71EA86A6600F85308 /* NTESUserUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ED71EA86A6400F85308 /* NTESUserUtil.m */; };
 		A03D3FF81EA86A6600F85308 /* NTESPinyinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDA1EA86A6400F85308 /* NTESPinyinConverter.m */; };
 		A03D3FF91EA86A6600F85308 /* NTESSpellingCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */; };
+		A03D3FFB1EA8992E00F85308 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3FFA1EA8992E00F85308 /* HomeVC.swift */; };
+		A03D400E1EA8A64D00F85308 /* BlizzardReg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A03D3FFE1EA8A64D00F85308 /* BlizzardReg.ttf */; };
+		A03D400F1EA8A64D00F85308 /* d3.icns in Resources */ = {isa = PBXBuildFile; fileRef = A03D3FFF1EA8A64D00F85308 /* d3.icns */; };
+		A03D40101EA8A64D00F85308 /* SetupOSX.mpq in Resources */ = {isa = PBXBuildFile; fileRef = A03D40001EA8A64D00F85308 /* SetupOSX.mpq */; };
+		A03D40111EA8A64D00F85308 /* NIMKitEmoticon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A03D40021EA8A64D00F85308 /* NIMKitEmoticon.bundle */; };
+		A03D40121EA8A64D00F85308 /* NIMKitResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A03D40031EA8A64D00F85308 /* NIMKitResource.bundle */; };
+		A03D40131EA8A64D00F85308 /* NIMKitSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A03D40041EA8A64D00F85308 /* NIMKitSettings.bundle */; };
+		A03D40141EA8A64D00F85308 /* message.wav in Resources */ = {isa = PBXBuildFile; fileRef = A03D40071EA8A64D00F85308 /* message.wav */; };
+		A03D40151EA8A64D00F85308 /* video_chat_tip_HangUp.aac in Resources */ = {isa = PBXBuildFile; fileRef = A03D40081EA8A64D00F85308 /* video_chat_tip_HangUp.aac */; };
+		A03D40161EA8A64D00F85308 /* video_chat_tip_OnCall.aac in Resources */ = {isa = PBXBuildFile; fileRef = A03D40091EA8A64D00F85308 /* video_chat_tip_OnCall.aac */; };
+		A03D40171EA8A64D00F85308 /* video_chat_tip_onTimer.aac in Resources */ = {isa = PBXBuildFile; fileRef = A03D400A1EA8A64D00F85308 /* video_chat_tip_onTimer.aac */; };
+		A03D40181EA8A64D00F85308 /* video_chat_tip_receiver.aac in Resources */ = {isa = PBXBuildFile; fileRef = A03D400B1EA8A64D00F85308 /* video_chat_tip_receiver.aac */; };
+		A03D40191EA8A64D00F85308 /* video_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = A03D400C1EA8A64D00F85308 /* video_chat_tip_sender.aac */; };
+		A03D401A1EA8A64D00F85308 /* video_connect_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = A03D400D1EA8A64D00F85308 /* video_connect_chat_tip_sender.aac */; };
 		A07238901EA76AA300E755DB /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = A07238691EA76AA300E755DB /* Contents.json */; };
 		A07238931EA76AA300E755DB /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = A072386F1EA76AA300E755DB /* back.png */; };
 		A07238941EA76AA300E755DB /* nav_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = A07238701EA76AA300E755DB /* nav_clear.png */; };
@@ -339,6 +357,10 @@
 		6EC3302C1EA84D98005C8DF9 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
 		8408122B704986AA5A9C486E /* Pods-iOSStar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.debug.xcconfig"; sourceTree = "<group>"; };
 		8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0155E061EA8ABF20047B95B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A0155E0A1EA8C8850047B95B /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		A0155E0D1EA8C93E0047B95B /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		A0155E0F1EA8C9760047B95B /* RegistVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistVC.swift; sourceTree = "<group>"; };
 		A03D314D1EA8465000F85308 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A03D314F1EA8466500F85308 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A03D31511EA8469900F85308 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -906,6 +928,22 @@
 		A03D3EDA1EA86A6400F85308 /* NTESPinyinConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESPinyinConverter.m; sourceTree = "<group>"; };
 		A03D3EDB1EA86A6400F85308 /* NTESSpellingCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESSpellingCenter.h; sourceTree = "<group>"; };
 		A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESSpellingCenter.m; sourceTree = "<group>"; };
+		A03D3FFA1EA8992E00F85308 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		A03D3FFE1EA8A64D00F85308 /* BlizzardReg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BlizzardReg.ttf; sourceTree = "<group>"; };
+		A03D3FFF1EA8A64D00F85308 /* d3.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = d3.icns; sourceTree = "<group>"; };
+		A03D40001EA8A64D00F85308 /* SetupOSX.mpq */ = {isa = PBXFileReference; lastKnownFileType = file; path = SetupOSX.mpq; sourceTree = "<group>"; };
+		A03D40011EA8A64D00F85308 /* NIMDev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NIMDev.entitlements; sourceTree = "<group>"; };
+		A03D40021EA8A64D00F85308 /* NIMKitEmoticon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NIMKitEmoticon.bundle; sourceTree = "<group>"; };
+		A03D40031EA8A64D00F85308 /* NIMKitResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NIMKitResource.bundle; sourceTree = "<group>"; };
+		A03D40041EA8A64D00F85308 /* NIMKitSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NIMKitSettings.bundle; sourceTree = "<group>"; };
+		A03D40051EA8A64D00F85308 /* NIMPro.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NIMPro.entitlements; sourceTree = "<group>"; };
+		A03D40071EA8A64D00F85308 /* message.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = message.wav; sourceTree = "<group>"; };
+		A03D40081EA8A64D00F85308 /* video_chat_tip_HangUp.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_HangUp.aac; sourceTree = "<group>"; };
+		A03D40091EA8A64D00F85308 /* video_chat_tip_OnCall.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_OnCall.aac; sourceTree = "<group>"; };
+		A03D400A1EA8A64D00F85308 /* video_chat_tip_onTimer.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_onTimer.aac; sourceTree = "<group>"; };
+		A03D400B1EA8A64D00F85308 /* video_chat_tip_receiver.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_receiver.aac; sourceTree = "<group>"; };
+		A03D400C1EA8A64D00F85308 /* video_chat_tip_sender.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_sender.aac; sourceTree = "<group>"; };
+		A03D400D1EA8A64D00F85308 /* video_connect_chat_tip_sender.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_connect_chat_tip_sender.aac; sourceTree = "<group>"; };
 		A072384A1EA768AD00E755DB /* iOSStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07238691EA76AA300E755DB /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		A072386F1EA76AA300E755DB /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
@@ -1000,10 +1038,21 @@
 			path = Base.lproj;
 			sourceTree = "<group>";
 		};
+		A0155E0C1EA8C9220047B95B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A0155E0D1EA8C93E0047B95B /* LoginVC.swift */,
+				A0155E0F1EA8C9760047B95B /* RegistVC.swift */,
+			);
+			name = Login;
+			path = iOSSTar/Scenes/Login;
+			sourceTree = SOURCE_ROOT;
+		};
 		A03D3C4B1EA86A6300F85308 /* User */ = {
 			isa = PBXGroup;
 			children = (
 				A03D3C4C1EA86A6300F85308 /* UserViewController.swift */,
+				A03D3FFA1EA8992E00F85308 /* HomeVC.swift */,
 			);
 			name = User;
 			path = iOSSTar/Scenes/User;
@@ -2329,9 +2378,48 @@
 			path = Spelling;
 			sourceTree = "<group>";
 		};
+		A03D3FFC1EA8A64D00F85308 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A03D3FFD1EA8A64D00F85308 /* Files */,
+				A03D40011EA8A64D00F85308 /* NIMDev.entitlements */,
+				A03D40021EA8A64D00F85308 /* NIMKitEmoticon.bundle */,
+				A03D40031EA8A64D00F85308 /* NIMKitResource.bundle */,
+				A03D40041EA8A64D00F85308 /* NIMKitSettings.bundle */,
+				A03D40051EA8A64D00F85308 /* NIMPro.entitlements */,
+				A03D40061EA8A64D00F85308 /* Sounds */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A03D3FFD1EA8A64D00F85308 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				A03D3FFE1EA8A64D00F85308 /* BlizzardReg.ttf */,
+				A03D3FFF1EA8A64D00F85308 /* d3.icns */,
+				A03D40001EA8A64D00F85308 /* SetupOSX.mpq */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		A03D40061EA8A64D00F85308 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				A03D40071EA8A64D00F85308 /* message.wav */,
+				A03D40081EA8A64D00F85308 /* video_chat_tip_HangUp.aac */,
+				A03D40091EA8A64D00F85308 /* video_chat_tip_OnCall.aac */,
+				A03D400A1EA8A64D00F85308 /* video_chat_tip_onTimer.aac */,
+				A03D400B1EA8A64D00F85308 /* video_chat_tip_receiver.aac */,
+				A03D400C1EA8A64D00F85308 /* video_chat_tip_sender.aac */,
+				A03D400D1EA8A64D00F85308 /* video_connect_chat_tip_sender.aac */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		A07238411EA768AC00E755DB = {
 			isa = PBXGroup;
 			children = (
+				A03D3FFC1EA8A64D00F85308 /* Supporting Files */,
 				A072384C1EA768AD00E755DB /* iOSStar */,
 				A072384B1EA768AD00E755DB /* Products */,
 				56F7911E6B6B9C2FD9F7E114 /* Pods */,
@@ -2364,6 +2452,7 @@
 		A072385F1EA76AA300E755DB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A0155E0C1EA8C9220047B95B /* Login */,
 				A03D3C4B1EA86A6300F85308 /* User */,
 				A03D3C4D1EA86A6300F85308 /* News */,
 				A03D3C4F1EA86A6300F85308 /* Market */,
@@ -2397,6 +2486,7 @@
 		A072386E1EA76AA300E755DB /* image */ = {
 			isa = PBXGroup;
 			children = (
+				A0155E061EA8ABF20047B95B /* Images.xcassets */,
 				A072386F1EA76AA300E755DB /* back.png */,
 				A07238701EA76AA300E755DB /* nav_clear.png */,
 				A07238711EA76AA300E755DB /* nav_clear@2x.png */,
@@ -2505,6 +2595,7 @@
 				A07238B81EA76F5600E755DB /* User.storyboard */,
 				6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */,
 				6EC3302C1EA84D98005C8DF9 /* Market.storyboard */,
+				A0155E0A1EA8C8850047B95B /* Login.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -2582,37 +2673,52 @@
 				A07238B51EA76F4100E755DB /* Home.storyboard in Resources */,
 				A03D3F981EA86A6500F85308 /* NTESSystemNotificationViewController.xib in Resources */,
 				A03D3F941EA86A6500F85308 /* NTESCustomSysNotificationViewController.xib in Resources */,
+				A03D40131EA8A64D00F85308 /* NIMKitSettings.bundle in Resources */,
 				A03D3FD91EA86A6500F85308 /* NTESAboutViewController.xib in Resources */,
 				A03D3FE41EA86A6500F85308 /* NTESUserInfoSettingViewController.xib in Resources */,
 				A03D3F9D1EA86A6500F85308 /* NTESRegisterViewController.xib in Resources */,
 				A03D3F901EA86A6500F85308 /* NTESContactViewController.xib in Resources */,
+				A03D40111EA8A64D00F85308 /* NIMKitEmoticon.bundle in Resources */,
 				A03D3FB21EA86A6500F85308 /* NTESFileTransSelectViewController.xib in Resources */,
 				A07238981EA76AA300E755DB /* Info.plist in Resources */,
 				A07238B71EA76F4D00E755DB /* Deal.storyboard in Resources */,
 				A03D3FBD1EA86A6500F85308 /* NTESVideoViewController.xib in Resources */,
+				A03D40191EA8A64D00F85308 /* video_chat_tip_sender.aac in Resources */,
 				A03D3F711EA86A6500F85308 /* NTESSearchTeamViewController.xib in Resources */,
+				A03D40151EA8A64D00F85308 /* video_chat_tip_HangUp.aac in Resources */,
 				A03D3FD11EA86A6500F85308 /* NTESLogViewController.xib in Resources */,
 				A03D3FB41EA86A6500F85308 /* NTESGalleryViewController.xib in Resources */,
 				A03D3FD51EA86A6500F85308 /* NTESNoDisturbSettingViewController.xib in Resources */,
+				A03D40171EA8A64D00F85308 /* video_chat_tip_onTimer.aac in Resources */,
 				A07238941EA76AA300E755DB /* nav_clear.png in Resources */,
 				A072389E1EA76AA300E755DB /* README.txt in Resources */,
 				6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */,
+				A03D40101EA8A64D00F85308 /* SetupOSX.mpq in Resources */,
+				A0155E071EA8ABF20047B95B /* Images.xcassets in Resources */,
 				6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */,
 				A03D3F9B1EA86A6500F85308 /* NTESLoginViewController.xib in Resources */,
 				A07238901EA76AA300E755DB /* Contents.json in Resources */,
 				A03D3FC81EA86A6500F85308 /* NTESMutiClientsCell.xib in Resources */,
+				A03D40141EA8A64D00F85308 /* message.wav in Resources */,
 				6E0922A61EA88DFE002725A0 /* LaunchScreen.storyboard in Resources */,
 				A03D3F961EA86A6500F85308 /* NTESSystemNotificationCell.xib in Resources */,
+				A03D400E1EA8A64D00F85308 /* BlizzardReg.ttf in Resources */,
 				A03D3F741EA86A6500F85308 /* NTESTeamListViewController.xib in Resources */,
 				A03D3FBA1EA86A6500F85308 /* NTESWhiteboardViewController.xib in Resources */,
 				A03D3FC01EA86A6500F85308 /* NTESAudioChatViewController.xib in Resources */,
 				A03D3FDB1EA86A6500F85308 /* NTESSettingViewController.xib in Resources */,
 				A03D3FB01EA86A6500F85308 /* NTESFilePreViewController.xib in Resources */,
+				A03D40161EA8A64D00F85308 /* video_chat_tip_OnCall.aac in Resources */,
 				A07238971EA76AA300E755DB /* rechargebanner.png in Resources */,
+				A03D400F1EA8A64D00F85308 /* d3.icns in Resources */,
+				A03D40121EA8A64D00F85308 /* NIMKitResource.bundle in Resources */,
 				6E0922A71EA88DFE002725A0 /* Main.storyboard in Resources */,
+				A03D40181EA8A64D00F85308 /* video_chat_tip_receiver.aac in Resources */,
 				A07238951EA76AA300E755DB /* nav_clear@2x.png in Resources */,
 				A07238961EA76AA300E755DB /* nav_main@2x.png in Resources */,
 				A07238B91EA76F5600E755DB /* User.storyboard in Resources */,
+				A03D401A1EA8A64D00F85308 /* video_connect_chat_tip_sender.aac in Resources */,
+				A0155E0B1EA8C8850047B95B /* Login.storyboard in Resources */,
 				A03D3F6E1EA86A6500F85308 /* NTESJionTeamViewController.xib in Resources */,
 				A03D3FAE1EA86A6500F85308 /* NTESAudio2TextViewController.xib in Resources */,
 			);
@@ -2730,6 +2836,7 @@
 				A03D3F9E1EA86A6500F85308 /* NTESSessionConfig.m in Sources */,
 				A03D3F831EA86A6500F85308 /* NTESLiveMasterInfoView.m in Sources */,
 				A03D3FF81EA86A6600F85308 /* NTESPinyinConverter.m in Sources */,
+				A0155E0E1EA8C93E0047B95B /* LoginVC.swift in Sources */,
 				A03D3F221EA86A6400F85308 /* NIMNotificationContentConfig.m in Sources */,
 				A03D3F841EA86A6500F85308 /* NTESChatroomTextContentView.m in Sources */,
 				A03D3F3C1EA86A6400F85308 /* NIMSessionTextContentView.m in Sources */,
@@ -2797,6 +2904,7 @@
 				A03D3F1E1EA86A6400F85308 /* NIMBaseSessionContentConfig.m in Sources */,
 				A03D3FEA1EA86A6500F85308 /* NTESDemoRegisterTask.m in Sources */,
 				A03D3F2D1EA86A6400F85308 /* NIMSessionConfigurator.m in Sources */,
+				A03D3FFB1EA8992E00F85308 /* HomeVC.swift in Sources */,
 				A03D3FF01EA86A6500F85308 /* NTESDevice.m in Sources */,
 				A03D3F311EA86A6400F85308 /* NIMSessionMsgDatasource.m in Sources */,
 				A03D3F391EA86A6400F85308 /* NIMSessionMessageContentView.m in Sources */,
@@ -2876,6 +2984,7 @@
 				A03D3EE81EA86A6400F85308 /* UIImage+NTESColor.m in Sources */,
 				A03D3F9A1EA86A6500F85308 /* NTESLoginViewController.m in Sources */,
 				A03D3FBE1EA86A6500F85308 /* NetCallChatInfo.m in Sources */,
+				A0155E101EA8C9760047B95B /* RegistVC.swift in Sources */,
 				A03D3F2B1EA86A6400F85308 /* NIMMessageMaker.m in Sources */,
 				A03D3FA11EA86A6500F85308 /* NTESJanKenPonAttachment.m in Sources */,
 				A03D3FB11EA86A6500F85308 /* NTESFileTransSelectViewController.m in Sources */,
