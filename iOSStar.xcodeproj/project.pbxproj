@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6C914579279831D674DBBB68 /* Pods_iOSStar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */; };
+		6E0922A61EA88DFE002725A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922A21EA88DFE002725A0 /* LaunchScreen.storyboard */; };
+		6E0922A71EA88DFE002725A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922A41EA88DFE002725A0 /* Main.storyboard */; };
 		6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */; };
 		6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302C1EA84D98005C8DF9 /* Market.storyboard */; };
 		A03D314E1EA8465000F85308 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D314D1EA8465000F85308 /* MobileCoreServices.framework */; };
@@ -301,8 +303,6 @@
 		A03D3FF81EA86A6600F85308 /* NTESPinyinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDA1EA86A6400F85308 /* NTESPinyinConverter.m */; };
 		A03D3FF91EA86A6600F85308 /* NTESSpellingCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */; };
 		A07238901EA76AA300E755DB /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = A07238691EA76AA300E755DB /* Contents.json */; };
-		A07238911EA76AA300E755DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A072386A1EA76AA300E755DB /* LaunchScreen.storyboard */; };
-		A07238921EA76AA300E755DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A072386C1EA76AA300E755DB /* Main.storyboard */; };
 		A07238931EA76AA300E755DB /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = A072386F1EA76AA300E755DB /* back.png */; };
 		A07238941EA76AA300E755DB /* nav_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = A07238701EA76AA300E755DB /* nav_clear.png */; };
 		A07238951EA76AA300E755DB /* nav_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07238711EA76AA300E755DB /* nav_clear@2x.png */; };
@@ -332,6 +332,8 @@
 
 /* Begin PBXFileReference section */
 		658ED50682E9CA02E39549B8 /* Pods-iOSStar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.release.xcconfig"; sourceTree = "<group>"; };
+		6E0922A31EA88DFE002725A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6E0922A51EA88DFE002725A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOSStar-Bridging-Header.h"; sourceTree = "<group>"; };
 		6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
 		6EC3302C1EA84D98005C8DF9 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
@@ -906,8 +908,6 @@
 		A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESSpellingCenter.m; sourceTree = "<group>"; };
 		A072384A1EA768AD00E755DB /* iOSStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07238691EA76AA300E755DB /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
-		A072386B1EA76AA300E755DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A072386D1EA76AA300E755DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A072386F1EA76AA300E755DB /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		A07238701EA76AA300E755DB /* nav_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_clear.png; sourceTree = "<group>"; };
 		A07238711EA76AA300E755DB /* nav_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_clear@2x.png"; sourceTree = "<group>"; };
@@ -989,6 +989,15 @@
 				658ED50682E9CA02E39549B8 /* Pods-iOSStar.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		6E0922A11EA88DFE002725A0 /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				6E0922A21EA88DFE002725A0 /* LaunchScreen.storyboard */,
+				6E0922A41EA88DFE002725A0 /* Main.storyboard */,
+			);
+			path = Base.lproj;
 			sourceTree = "<group>";
 		};
 		A03D3C4B1EA86A6300F85308 /* User */ = {
@@ -2368,10 +2377,9 @@
 		A07238671EA76AA300E755DB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				6E0922A11EA88DFE002725A0 /* Base.lproj */,
 				A07238B31EA76F3500E755DB /* Storyboard */,
 				A07238681EA76AA300E755DB /* AppIcon.appiconset */,
-				A072386A1EA76AA300E755DB /* LaunchScreen.storyboard */,
-				A072386C1EA76AA300E755DB /* Main.storyboard */,
 				A072386E1EA76AA300E755DB /* image */,
 				A07238741EA76AA300E755DB /* plist */,
 			);
@@ -2514,6 +2522,7 @@
 				A07238481EA768AC00E755DB /* Resources */,
 				5E27EACE16652A4A5C1BD116 /* [CP] Embed Pods Frameworks */,
 				60CF853C736B74BD6DC4267B /* [CP] Copy Pods Resources */,
+				6E7573EE1EA8560600DA0A3F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2573,7 +2582,6 @@
 				A07238B51EA76F4100E755DB /* Home.storyboard in Resources */,
 				A03D3F981EA86A6500F85308 /* NTESSystemNotificationViewController.xib in Resources */,
 				A03D3F941EA86A6500F85308 /* NTESCustomSysNotificationViewController.xib in Resources */,
-				A07238921EA76AA300E755DB /* Main.storyboard in Resources */,
 				A03D3FD91EA86A6500F85308 /* NTESAboutViewController.xib in Resources */,
 				A03D3FE41EA86A6500F85308 /* NTESUserInfoSettingViewController.xib in Resources */,
 				A03D3F9D1EA86A6500F85308 /* NTESRegisterViewController.xib in Resources */,
@@ -2593,6 +2601,7 @@
 				A03D3F9B1EA86A6500F85308 /* NTESLoginViewController.xib in Resources */,
 				A07238901EA76AA300E755DB /* Contents.json in Resources */,
 				A03D3FC81EA86A6500F85308 /* NTESMutiClientsCell.xib in Resources */,
+				6E0922A61EA88DFE002725A0 /* LaunchScreen.storyboard in Resources */,
 				A03D3F961EA86A6500F85308 /* NTESSystemNotificationCell.xib in Resources */,
 				A03D3F741EA86A6500F85308 /* NTESTeamListViewController.xib in Resources */,
 				A03D3FBA1EA86A6500F85308 /* NTESWhiteboardViewController.xib in Resources */,
@@ -2600,10 +2609,10 @@
 				A03D3FDB1EA86A6500F85308 /* NTESSettingViewController.xib in Resources */,
 				A03D3FB01EA86A6500F85308 /* NTESFilePreViewController.xib in Resources */,
 				A07238971EA76AA300E755DB /* rechargebanner.png in Resources */,
+				6E0922A71EA88DFE002725A0 /* Main.storyboard in Resources */,
 				A07238951EA76AA300E755DB /* nav_clear@2x.png in Resources */,
 				A07238961EA76AA300E755DB /* nav_main@2x.png in Resources */,
 				A07238B91EA76F5600E755DB /* User.storyboard in Resources */,
-				A07238911EA76AA300E755DB /* LaunchScreen.storyboard in Resources */,
 				A03D3F6E1EA86A6500F85308 /* NTESJionTeamViewController.xib in Resources */,
 				A03D3FAE1EA86A6500F85308 /* NTESAudio2TextViewController.xib in Resources */,
 			);
@@ -2641,6 +2650,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		6E7573EE1EA8560600DA0A3F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 13b0dd85b007ad78249b02fc26fa3972dff8da79 09fbffcee88c3bfa1086819566cdaf4b4c0f451fe57b9699cd9525804778308d";
 		};
 		D1F838C853D5136DD7D27F3A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2939,18 +2961,18 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A072386A1EA76AA300E755DB /* LaunchScreen.storyboard */ = {
+		6E0922A21EA88DFE002725A0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A072386B1EA76AA300E755DB /* Base */,
+				6E0922A31EA88DFE002725A0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		A072386C1EA76AA300E755DB /* Main.storyboard */ = {
+		6E0922A41EA88DFE002725A0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A072386D1EA76AA300E755DB /* Base */,
+				6E0922A51EA88DFE002725A0 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -3062,6 +3084,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iOSStar/Library/WeChatSDK1.7.4",
+					"$(PROJECT_DIR)/Pods/NIMSDK/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yundian.iOSStar.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3082,6 +3105,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iOSStar/Library/WeChatSDK1.7.4",
+					"$(PROJECT_DIR)/Pods/NIMSDK/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yundian.iOSStar.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";

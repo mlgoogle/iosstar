@@ -14,7 +14,8 @@ target 'iOSStar' do
     pod 'Crashlytics'
     pod 'SnapKit'
     pod 'RealmSwift'
-    pod 'NIMSDK'
+    pod 'NIMSDK', '~> 3.5.5'
+    pod 'MJRefresh'
     pod 'CocoaLumberjack', '~> 2.0.0-rc2'
     pod 'SDWebImage', '3.8.2'
     pod 'M80AttributedLabel', '~> 1.5.0'
@@ -24,4 +25,5 @@ target 'iOSStar' do
     pod 'Reachability', '~> 3.1.1'
     pod 'Toast', '~> 3.0'
 end
+
 

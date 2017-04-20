@@ -145,30 +145,7 @@ class AppConst {
     
     class NotifyDefine {
         
-        static let jumpToMyMessage = "jumpToMyMessage"
-        static let jumpToMyAttention = "jumpToMyAttention"
-        static let jumpToMyPush = "jumpToMyPush"
-        static let jumpToMyBask = "jumpToMyBask"
-        static let jumpToDeal = "jumpToDeal"
-        static let jumpToFeedback = "jumpToFeedback"
-        static let jumpToProductGrade = "jumpToProductGrade"
-        static let jumpToAttentionUs = "jumpToAttentionUs"
-        static let jumpToMyWealtVC = "jumpToMyWealtVC"
-        static let jumpToWithdraw = "jumoToWithdraw"
-        static let jumpToRecharge = "jumpToRecharge"
-        static let UpdateUserInfo = "UpdateUserInfo"
-        static let BingPhoneVCToPwdVC = "BingPhoneVCToPwdVC"
-        static let LoginToBingPhoneVC = "LoginToBingPhoneVC"
-        static let RegisterToBingPhoneVC = "RegisterToBingPhoneVC"
-        static let HistoryDealDetailVC = "HistoryDealDetailVC"
-        static let QuitEnterClick = "QuitEnterClick"
-        static let ChangeUserinfo = "ChangeUserinfo"
-        static let BuyToMyWealtVC = "BuyToMyWealtVC"
-        static let DealToMyWealtVC = "DealToMyWealtVC"
-        static let SelectKind = "SelectKind"
-        static let EnterBackground = "EnterBackground"
-        static let RequestPrice = "RequestPrice"
-        static let jumpToUserInfo = "jumpToUserInfo"
+
     }
     
     
