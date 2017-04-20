@@ -9,16 +9,18 @@
 import UIKit
 import Fabric
 import Crashlytics
-
+import NIMAVChat
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+ 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-
+         NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
+//        [[NIMSDK sharedSDK] registerWithAppID:您的APPKEY
+//            cerName:您的推送证书名];
 
      window?.rootViewController = BaseTabBarController()
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent;

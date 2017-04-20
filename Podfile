@@ -14,5 +14,6 @@ target 'iOSStar' do
     pod 'Crashlytics'
     pod 'SnapKit'
     pod 'RealmSwift'
+    pod 'NIMSDK'
 end
 
