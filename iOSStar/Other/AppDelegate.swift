@@ -9,6 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -23,10 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        NSString *cerName= [[NTESDemoConfig sharedConfig] cerName];
     
          NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
+       NIMKit.shared().registerLayoutConfig(NTESCellLayoutConfig.self)
         NIMSDK.shared().loginManager.login("15306559323", token: "asdf1234") { (error) in
             if error == nil{
                 
             }
+            
         }
 //        [[NIMSDK sharedSDK] registerWithAppID:您的APPKEY
 //            cerName:您的推送证书名];
