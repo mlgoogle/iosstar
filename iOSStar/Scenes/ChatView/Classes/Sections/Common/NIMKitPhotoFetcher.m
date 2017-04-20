@@ -6,7 +6,7 @@
 //  Copyright © 2016年 NetEase. All rights reserved.
 //
 #import "Global.h"
-#import "NIMKitPhotoFetcher.h"
+//#import "NIMKitPhotoFetcher.h"
 #import "CTAssetsPickerController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "NIMKitFileLocationHelper.h"
