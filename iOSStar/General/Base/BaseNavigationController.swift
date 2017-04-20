@@ -12,12 +12,12 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white];
-       self.navigationBar.isTranslucent = false;
-       self.navigationBar.tintColor = UIColor.white;
-    
-      interactivePopGestureRecognizer?.isEnabled = true
-      self.interactivePopGestureRecognizer?.delegate = self
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white];
+        navigationBar.isTranslucent = false;
+        navigationBar.tintColor = UIColor.white;
+        
+        interactivePopGestureRecognizer?.isEnabled = true
+        interactivePopGestureRecognizer?.delegate = self
     }
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
@@ -47,7 +47,7 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
     }
     func popself(){
         if viewControllers.count > 1 {
-            self.popViewController(animated: true)
+            popViewController(animated: true)
         }else{
 //            dismissController()
         }
