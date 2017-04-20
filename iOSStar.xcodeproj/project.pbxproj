@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6C914579279831D674DBBB68 /* Pods_iOSStar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */; };
+		6E7573EC1EA8532E00DA0A3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E7573E81EA8532E00DA0A3F /* LaunchScreen.storyboard */; };
+		6E7573ED1EA8532E00DA0A3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E7573EA1EA8532E00DA0A3F /* Main.storyboard */; };
 		6EC330211EA84C9E005C8DF9 /* DealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC330201EA84C9E005C8DF9 /* DealViewController.swift */; };
 		6EC330231EA84CAD005C8DF9 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC330221EA84CAD005C8DF9 /* ExchangeViewController.swift */; };
 		6EC330251EA84CBB005C8DF9 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC330241EA84CBB005C8DF9 /* MarketViewController.swift */; };
@@ -22,8 +24,6 @@
 		A03D31581EA846B900F85308 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31571EA846B900F85308 /* libc++.tbd */; };
 		A072388F1EA76AA300E755DB /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07238661EA76AA300E755DB /* UserViewController.swift */; };
 		A07238901EA76AA300E755DB /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = A07238691EA76AA300E755DB /* Contents.json */; };
-		A07238911EA76AA300E755DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A072386A1EA76AA300E755DB /* LaunchScreen.storyboard */; };
-		A07238921EA76AA300E755DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A072386C1EA76AA300E755DB /* Main.storyboard */; };
 		A07238931EA76AA300E755DB /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = A072386F1EA76AA300E755DB /* back.png */; };
 		A07238941EA76AA300E755DB /* nav_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = A07238701EA76AA300E755DB /* nav_clear.png */; };
 		A07238951EA76AA300E755DB /* nav_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07238711EA76AA300E755DB /* nav_clear@2x.png */; };
@@ -54,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		658ED50682E9CA02E39549B8 /* Pods-iOSStar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.release.xcconfig"; sourceTree = "<group>"; };
+		6E7573E91EA8532E00DA0A3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6E7573EB1EA8532E00DA0A3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOSStar-Bridging-Header.h"; sourceTree = "<group>"; };
 		6EC330201EA84C9E005C8DF9 /* DealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealViewController.swift; sourceTree = "<group>"; };
 		6EC330221EA84CAD005C8DF9 /* ExchangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
@@ -72,8 +74,6 @@
 		A072384A1EA768AD00E755DB /* iOSStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07238661EA76AA300E755DB /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		A07238691EA76AA300E755DB /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
-		A072386B1EA76AA300E755DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A072386D1EA76AA300E755DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A072386F1EA76AA300E755DB /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		A07238701EA76AA300E755DB /* nav_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_clear.png; sourceTree = "<group>"; };
 		A07238711EA76AA300E755DB /* nav_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_clear@2x.png"; sourceTree = "<group>"; };
@@ -155,6 +155,15 @@
 				658ED50682E9CA02E39549B8 /* Pods-iOSStar.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		6E7573E71EA8532E00DA0A3F /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				6E7573E81EA8532E00DA0A3F /* LaunchScreen.storyboard */,
+				6E7573EA1EA8532E00DA0A3F /* Main.storyboard */,
+			);
+			path = Base.lproj;
 			sourceTree = "<group>";
 		};
 		6EC3301C1EA84C86005C8DF9 /* Deal */ = {
@@ -244,10 +253,9 @@
 		A07238671EA76AA300E755DB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				6E7573E71EA8532E00DA0A3F /* Base.lproj */,
 				A07238B31EA76F3500E755DB /* Storyboard */,
 				A07238681EA76AA300E755DB /* AppIcon.appiconset */,
-				A072386A1EA76AA300E755DB /* LaunchScreen.storyboard */,
-				A072386C1EA76AA300E755DB /* Main.storyboard */,
 				A072386E1EA76AA300E755DB /* image */,
 				A07238741EA76AA300E755DB /* plist */,
 			);
@@ -390,6 +398,7 @@
 				A07238481EA768AC00E755DB /* Resources */,
 				5E27EACE16652A4A5C1BD116 /* [CP] Embed Pods Frameworks */,
 				60CF853C736B74BD6DC4267B /* [CP] Copy Pods Resources */,
+				6E7573EE1EA8560600DA0A3F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -445,19 +454,19 @@
 			files = (
 				A07238931EA76AA300E755DB /* back.png in Resources */,
 				A07238B51EA76F4100E755DB /* Home.storyboard in Resources */,
-				A07238921EA76AA300E755DB /* Main.storyboard in Resources */,
 				A07238981EA76AA300E755DB /* Info.plist in Resources */,
 				A07238B71EA76F4D00E755DB /* Deal.storyboard in Resources */,
 				A07238941EA76AA300E755DB /* nav_clear.png in Resources */,
+				6E7573ED1EA8532E00DA0A3F /* Main.storyboard in Resources */,
 				A072389E1EA76AA300E755DB /* README.txt in Resources */,
 				6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */,
 				6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */,
+				6E7573EC1EA8532E00DA0A3F /* LaunchScreen.storyboard in Resources */,
 				A07238901EA76AA300E755DB /* Contents.json in Resources */,
 				A07238971EA76AA300E755DB /* rechargebanner.png in Resources */,
 				A07238951EA76AA300E755DB /* nav_clear@2x.png in Resources */,
 				A07238961EA76AA300E755DB /* nav_main@2x.png in Resources */,
 				A07238B91EA76F5600E755DB /* User.storyboard in Resources */,
-				A07238911EA76AA300E755DB /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +502,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		6E7573EE1EA8560600DA0A3F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 13b0dd85b007ad78249b02fc26fa3972dff8da79 09fbffcee88c3bfa1086819566cdaf4b4c0f451fe57b9699cd9525804778308d";
 		};
 		D1F838C853D5136DD7D27F3A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -537,18 +559,18 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A072386A1EA76AA300E755DB /* LaunchScreen.storyboard */ = {
+		6E7573E81EA8532E00DA0A3F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A072386B1EA76AA300E755DB /* Base */,
+				6E7573E91EA8532E00DA0A3F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		A072386C1EA76AA300E755DB /* Main.storyboard */ = {
+		6E7573EA1EA8532E00DA0A3F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A072386D1EA76AA300E755DB /* Base */,
+				6E7573EB1EA8532E00DA0A3F /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

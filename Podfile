@@ -15,5 +15,7 @@ target 'iOSStar' do
     pod 'SnapKit'
     pod 'RealmSwift'
     pod 'NIMSDK'
+    pod 'MJRefresh'
 end
+
 
