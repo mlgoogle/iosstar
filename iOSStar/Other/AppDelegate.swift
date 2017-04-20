@@ -15,22 +15,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
  
-
+    var sdkConfigDelegate: NTESSDKConfigDelegate?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-      
+        
+        // //在注册 NIMSDK appKey 之前先进行配置信息的注册，如是否使用新路径,是否要忽略某些通知，是否需要多端同步未读数
+        
+        self.sdkConfigDelegate = NTESSDKConfigDelegate.init()
+        
+    NIMSDKConfig.shared().delegate = self.sdkConfigDelegate
+    NIMSDKConfig.shared().shouldSyncUnreadCount = true
+
+        NIMSDK.shared().register(withAppID: "45c6af3c98409b18a84451215d0bdd6e", cerName: "")
+        NIMKit.shared().registerLayoutConfig(NTESCellLayoutConfig.self)
+
+        NIMCustomObject.registerCustomDecoder(NTESCustomAttachmentDecoder.init())
         //   NSString *appKey = [[NTESDemoConfig sharedConfig] appKey];
 //        NSString *cerName= [[NTESDemoConfig sharedConfig] cerName];
     
-         NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
-       NIMKit.shared().registerLayoutConfig(NTESCellLayoutConfig.self)
-        NIMSDK.shared().loginManager.login("15306559323", token: "asdf1234") { (error) in
-            if error == nil{
-                
-            }
-            
-        }
+        
 //        [[NIMSDK sharedSDK] registerWithAppID:您的APPKEY
 //            cerName:您的推送证书名];
 

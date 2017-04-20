@@ -193,6 +193,7 @@ NIMContactSelectDelegate>
         transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
         transition.type = kCATransitionPush;
         transition.subtype = kCATransitionFromTop;
+       
         [self.navigationController.view.layer addAnimation:transition forKey:nil];
         self.navigationController.navigationBarHidden = YES;
         [self.navigationController pushViewController:vc animated:NO];
@@ -408,6 +409,7 @@ NIMContactSelectDelegate>
     return handled;
 }
 
+#pragma mark - 进入个人信息界面
 - (BOOL)onTapAvatar:(NSString *)userId{
     UIViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:userId];
     [self.navigationController pushViewController:vc animated:YES];
@@ -703,36 +705,36 @@ NIMContactSelectDelegate>
 }
 
 - (void)setUpNav{
-    UIButton *enterTeamCard = [UIButton buttonWithType:UIButtonTypeCustom];
-    [enterTeamCard addTarget:self action:@selector(enterTeamCard:) forControlEvents:UIControlEventTouchUpInside];
-    [enterTeamCard setImage:[UIImage imageNamed:@"icon_session_info_normal"] forState:UIControlStateNormal];
-    [enterTeamCard setImage:[UIImage imageNamed:@"icon_session_info_pressed"] forState:UIControlStateHighlighted];
-    [enterTeamCard sizeToFit];
-    UIBarButtonItem *enterTeamCardItem = [[UIBarButtonItem alloc] initWithCustomView:enterTeamCard];
+//    UIButton *enterTeamCard = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [enterTeamCard addTarget:self action:@selector(enterTeamCard:) forControlEvents:UIControlEventTouchUpInside];
+//    [enterTeamCard setImage:[UIImage imageNamed:@"icon_session_info_normal"] forState:UIControlStateNormal];
+//    [enterTeamCard setImage:[UIImage imageNamed:@"icon_session_info_pressed"] forState:UIControlStateHighlighted];
+//    [enterTeamCard sizeToFit];
+//    UIBarButtonItem *enterTeamCardItem = [[UIBarButtonItem alloc] initWithCustomView:enterTeamCard];
+//    
+//    UIButton *infoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [infoBtn addTarget:self action:@selector(onTouchUpInfoBtn:) forControlEvents:UIControlEventTouchUpInside];
+//    [infoBtn setImage:[UIImage imageNamed:@"icon_session_info_normal"] forState:UIControlStateNormal];
+//    [infoBtn setImage:[UIImage imageNamed:@"icon_session_info_pressed"] forState:UIControlStateHighlighted];
+//    [infoBtn sizeToFit];
+//    UIBarButtonItem *enterUInfoItem = [[UIBarButtonItem alloc] initWithCustomView:infoBtn];
     
-    UIButton *infoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [infoBtn addTarget:self action:@selector(onTouchUpInfoBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [infoBtn setImage:[UIImage imageNamed:@"icon_session_info_normal"] forState:UIControlStateNormal];
-    [infoBtn setImage:[UIImage imageNamed:@"icon_session_info_pressed"] forState:UIControlStateHighlighted];
-    [infoBtn sizeToFit];
-    UIBarButtonItem *enterUInfoItem = [[UIBarButtonItem alloc] initWithCustomView:infoBtn];
-    
-    UIButton *historyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [historyBtn addTarget:self action:@selector(enterHistory:) forControlEvents:UIControlEventTouchUpInside];
-    [historyBtn setImage:[UIImage imageNamed:@"icon_history_normal"] forState:UIControlStateNormal];
-    [historyBtn setImage:[UIImage imageNamed:@"icon_history_pressed"] forState:UIControlStateHighlighted];
-    [historyBtn sizeToFit];
-    UIBarButtonItem *historyButtonItem = [[UIBarButtonItem alloc] initWithCustomView:historyBtn];
+//    UIButton *historyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [historyBtn addTarget:self action:@selector(enterHistory:) forControlEvents:UIControlEventTouchUpInside];
+//    [historyBtn setImage:[UIImage imageNamed:@"icon_history_normal"] forState:UIControlStateNormal];
+//    [historyBtn setImage:[UIImage imageNamed:@"icon_history_pressed"] forState:UIControlStateHighlighted];
+//    [historyBtn sizeToFit];
+//    UIBarButtonItem *historyButtonItem = [[UIBarButtonItem alloc] initWithCustomView:historyBtn];
     
     
     
     if (self.session.sessionType == NIMSessionTypeTeam) {
-        self.navigationItem.rightBarButtonItems  = @[enterTeamCardItem,historyButtonItem];
+//        self.navigationItem.rightBarButtonItems  = @[enterTeamCardItem,historyButtonItem];
     }else if(self.session.sessionType == NIMSessionTypeP2P){
         if ([self.session.sessionId isEqualToString:[[NIMSDK sharedSDK].loginManager currentAccount]]) {
-            self.navigationItem.rightBarButtonItems = @[historyButtonItem];
+//            self.navigationItem.rightBarButtonItems = @[historyButtonItem];
         }else{
-            self.navigationItem.rightBarButtonItems = @[enterUInfoItem,historyButtonItem];
+//            self.navigationItem.rightBarButtonItems = @[enterUInfoItem,historyButtonItem];
         }
     }
 }

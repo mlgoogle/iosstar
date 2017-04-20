@@ -72,11 +72,11 @@
 
 - (void)setupNav
 {
-    self.navigationItem.title = [self sessionTitle];
-    NIMCustomLeftBarView *leftBarView = [[NIMCustomLeftBarView alloc] init];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBarView];
-    self.navigationItem.leftBarButtonItem = leftItem;
-    self.navigationItem.leftItemsSupplementBackButton = YES;
+//    self.navigationItem.title = [self sessionTitle];
+//    NIMCustomLeftBarView *leftBarView = [[NIMCustomLeftBarView alloc] init];
+//    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBarView];
+//    self.navigationItem.leftBarButtonItem = leftItem;
+//    self.navigationItem.leftItemsSupplementBackButton = YES;
 }
 
 - (void)setupTableView
@@ -195,12 +195,12 @@
     NIMSessionType type = self.session.sessionType;
     switch (type) {
         case NIMSessionTypeTeam:{
-            NIMTeam *team = [[[NIMSDK sharedSDK] teamManager] teamById:self.session.sessionId];
-            title = [NSString stringWithFormat:@"%@(%zd)",[team teamName],[team memberNumber]];
+//            NIMTeam *team = [[[NIMSDK sharedSDK] teamManager] teamById:self.session.sessionId];
+//            title = [NSString stringWithFormat:@"%@(%zd)",[team teamName],[team memberNumber]];
         }
             break;
         case NIMSessionTypeP2P:{
-            title = [NIMKitUtil showNick:self.session.sessionId inSession:self.session];
+//            title = [NIMKitUtil showNick:self.session.sessionId inSession:self.session];
         }
             break;
         default:
@@ -641,9 +641,9 @@
 
 - (void)changeLeftBarBadge:(NSInteger)unreadCount
 {
-    NIMCustomLeftBarView *leftBarView = (NIMCustomLeftBarView *)self.navigationItem.leftBarButtonItem.customView;
-    leftBarView.badgeView.badgeValue = @(unreadCount).stringValue;
-    leftBarView.badgeView.hidden = !unreadCount;
+//    NIMCustomLeftBarView *leftBarView = (NIMCustomLeftBarView *)self.navigationItem.leftBarButtonItem.customView;
+//    leftBarView.badgeView.badgeValue = @(unreadCount).stringValue;
+//    leftBarView.badgeView.hidden = !unreadCount;
 }
 
 
