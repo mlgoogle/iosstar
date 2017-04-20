@@ -95,12 +95,10 @@ private static var instance = HttpRequestManage()
     
      func postRequestJson(_ path:String, parameters:Dictionary<String, Any>,reseponse:@escaping reseponseBlock, failure:@escaping errorBlock){
         let urlPath = urlString + path
-        debugPrint("startPostRequest:path\(path)")
-//    Alamofire.upload(<#T##fileURL: URL##URL#>, to: <#T##URLConvertible#>, method: <#T##HTTPMethod#>, headers: <#T##HTTPHeaders?#>)
-
+        debugPrint("--------------------------startPostRequest:path\(path)")
 
         Alamofire.request(urlPath, method: .post, parameters: parameters).responseJSON { (responseData) in
-            debugPrint("receivedPostRequest:path\(path)")
+            debugPrint("--------------------------receivedPostRequest:path\(path)")
             if responseData.result.error == nil {
                 let jsonDict = responseData.result.value as? Dictionary<String,AnyObject>
                 if let status = jsonDict?["status"] as? Int {
@@ -124,7 +122,6 @@ private static var instance = HttpRequestManage()
                 }
             } else {
                 failure(responseData.result.error as AnyObject)
-//                SVProgressHUD.showErrorMessage(ErrorMessage: "errorCode：\(responseData.result.error!._code)", ForDuration: 1.5, completion: nil)
             }
         }
         
@@ -134,9 +131,9 @@ private static var instance = HttpRequestManage()
     func getRequestJson(_ path:String, reseponse:@escaping reseponseBlock, failure:@escaping errorBlock){
         var urlPath = urlString + path
         urlPath = urlPath + "?sign=\(urlPath.getSignString())"
-        debugPrint("startGetRequest:path\(path)")
+        debugPrint("--------------------------startGetRequest:path\(path)")
         Alamofire.request(urlPath).responseJSON { (responseData) in
-            debugPrint("receivedGetResponse:path\(path)")
+            debugPrint("--------------------------receivedGetResponse:path\(path)")
             if responseData.result.error == nil {
                 let jsonDict = responseData.result.value as? Dictionary<String,AnyObject>
                 if let resData = jsonDict?["data"]  {
