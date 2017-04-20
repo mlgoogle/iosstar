@@ -4,3 +4,4 @@
 
 #import <CommonCrypto/CommonDigest.h>
 #import <NIMSDK/NIMSDK.h>
+#import "NTESSessionViewController.h"
