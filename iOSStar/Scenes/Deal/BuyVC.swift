@@ -1,27 +1,42 @@
 //
-//  UserViewController.swift
-//  iosblackcard
+//  BuyVC.swift
+//  iOSStar
 //
-//  Created by J-bb on 17/4/14.
+//  Created by sum on 2017/4/21.
 //  Copyright © 2017年 YunDian. All rights reserved.
 //
 
 import UIKit
 
-class UserViewController: UIViewController {
+class BuyVC: UIViewController ,UITableViewDelegate ,UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+    
+        return 1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+     {
+    
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SellOutCell")
+        return cell!
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat{
+      return 220
+    }
     
 
+    
     /*
     // MARK: - Navigation
 

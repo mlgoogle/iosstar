@@ -1,18 +1,17 @@
 //
-//  LoginVC.swift
+//  FindPwdVC.swift
 //  iOSStar
 //
-//  Created by sum on 2017/4/20.
+//  Created by sum on 2017/4/21.
 //  Copyright © 2017年 YunDian. All rights reserved.
 //
 
 import UIKit
 
-class LoginVC: UIViewController {
+class FotgotPwdVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         // Do any additional setup after loading the view.
     }

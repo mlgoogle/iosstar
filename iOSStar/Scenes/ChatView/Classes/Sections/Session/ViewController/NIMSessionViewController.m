@@ -248,8 +248,7 @@
     if (![session isEqual:self.session] || !messages.count){
         return;
     }
-    
-    [self uiAddMessages:messages];
+     [self  uiAddMessages:messages];
     [self sendMessageReceipt:messages];
     
     [self.conversationManager markAllMessagesReadInSession:self.session];

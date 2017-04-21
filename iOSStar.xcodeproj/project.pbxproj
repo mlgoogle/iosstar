@@ -22,7 +22,6 @@
 		A03D31541EA846A100F85308 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31531EA846A100F85308 /* AudioToolbox.framework */; };
 		A03D31561EA846AC00F85308 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31551EA846AC00F85308 /* VideoToolbox.framework */; };
 		A03D31581EA846B900F85308 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31571EA846B900F85308 /* libc++.tbd */; };
-		A03D3EDD1EA86A6400F85308 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C4C1EA86A6300F85308 /* UserViewController.swift */; };
 		A03D3EDE1EA86A6400F85308 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C4E1EA86A6300F85308 /* NewsViewController.swift */; };
 		A03D3EDF1EA86A6400F85308 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C501EA86A6300F85308 /* MarketViewController.swift */; };
 		A03D3EE01EA86A6400F85308 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C521EA86A6300F85308 /* ExchangeViewController.swift */; };
@@ -346,6 +345,13 @@
 		A07238B51EA76F4100E755DB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B41EA76F4100E755DB /* Home.storyboard */; };
 		A07238B71EA76F4D00E755DB /* Deal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B61EA76F4D00E755DB /* Deal.storyboard */; };
 		A07238B91EA76F5600E755DB /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B81EA76F5600E755DB /* User.storyboard */; };
+		A08A9BB11EA991D5009E6B2B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */; };
+		A08A9BB31EA994C2009E6B2B /* FotgotPwd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB21EA994C2009E6B2B /* FotgotPwd.swift */; };
+		A08A9BB51EA99547009E6B2B /* FotgotPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB41EA99547009E6B2B /* FotgotPwdVC.swift */; };
+		A08A9BB71EA9F22F009E6B2B /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB61EA9F22F009E6B2B /* UserVC.swift */; };
+		A08A9BB91EA9FAA0009E6B2B /* DetailTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB81EA9FAA0009E6B2B /* DetailTableViewVC.swift */; };
+		A08A9BBD1EAA0D3B009E6B2B /* SellOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BBC1EAA0D3B009E6B2B /* SellOutCell.swift */; };
+		A08A9BBF1EAA0E1F009E6B2B /* BuyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BBE1EAA0E1F009E6B2B /* BuyVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -367,7 +373,6 @@
 		A03D31531EA846A100F85308 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A03D31551EA846AC00F85308 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		A03D31571EA846B900F85308 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		A03D3C4C1EA86A6300F85308 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		A03D3C4E1EA86A6300F85308 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		A03D3C501EA86A6300F85308 /* MarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		A03D3C521EA86A6300F85308 /* ExchangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
@@ -975,6 +980,13 @@
 		A07238B41EA76F4100E755DB /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		A07238B61EA76F4D00E755DB /* Deal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Deal.storyboard; sourceTree = "<group>"; };
 		A07238B81EA76F5600E755DB /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		A08A9BB21EA994C2009E6B2B /* FotgotPwd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FotgotPwd.swift; sourceTree = "<group>"; };
+		A08A9BB41EA99547009E6B2B /* FotgotPwdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FotgotPwdVC.swift; sourceTree = "<group>"; };
+		A08A9BB61EA9F22F009E6B2B /* UserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
+		A08A9BB81EA9FAA0009E6B2B /* DetailTableViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewVC.swift; sourceTree = "<group>"; };
+		A08A9BBC1EAA0D3B009E6B2B /* SellOutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellOutCell.swift; sourceTree = "<group>"; };
+		A08A9BBE1EAA0E1F009E6B2B /* BuyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1043,6 +1055,8 @@
 			children = (
 				A0155E0D1EA8C93E0047B95B /* LoginVC.swift */,
 				A0155E0F1EA8C9760047B95B /* RegistVC.swift */,
+				A08A9BB21EA994C2009E6B2B /* FotgotPwd.swift */,
+				A08A9BB41EA99547009E6B2B /* FotgotPwdVC.swift */,
 			);
 			name = Login;
 			path = iOSSTar/Scenes/Login;
@@ -1051,8 +1065,8 @@
 		A03D3C4B1EA86A6300F85308 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				A03D3C4C1EA86A6300F85308 /* UserViewController.swift */,
 				A03D3FFA1EA8992E00F85308 /* HomeVC.swift */,
+				A08A9BB61EA9F22F009E6B2B /* UserVC.swift */,
 			);
 			name = User;
 			path = iOSSTar/Scenes/User;
@@ -1089,6 +1103,9 @@
 			isa = PBXGroup;
 			children = (
 				A03D3C541EA86A6300F85308 /* DealViewController.swift */,
+				A08A9BB81EA9FAA0009E6B2B /* DetailTableViewVC.swift */,
+				A08A9BBC1EAA0D3B009E6B2B /* SellOutCell.swift */,
+				A08A9BBE1EAA0E1F009E6B2B /* BuyVC.swift */,
 			);
 			name = Deal;
 			path = iOSSTar/Scenes/Deal;
@@ -2518,6 +2535,7 @@
 		A072387B1EA76AA300E755DB /* Marco */ = {
 			isa = PBXGroup;
 			children = (
+				A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */,
 				A072387C1EA76AA300E755DB /* AppConst.swift */,
 				A072387D1EA76AA300E755DB /* CustomerView */,
 			);
@@ -2829,6 +2847,7 @@
 				A03D3F7C1EA86A6500F85308 /* NTESLiveInfoViewController.m in Sources */,
 				A03D3FA71EA86A6500F85308 /* NTESSearchMessageEntraceCell.m in Sources */,
 				A03D3F431EA86A6400F85308 /* NIMSessionListCell.m in Sources */,
+				A08A9BBF1EAA0E1F009E6B2B /* BuyVC.swift in Sources */,
 				A03D3F931EA86A6500F85308 /* NTESCustomSysNotificationViewController.m in Sources */,
 				A03D3F991EA86A6500F85308 /* NTESLoginManager.m in Sources */,
 				A03D3F0C1EA86A6400F85308 /* NIMGrowingTextView.m in Sources */,
@@ -2888,10 +2907,10 @@
 				A03D3EFC1EA86A6400F85308 /* NIMCustomLeftBarView.m in Sources */,
 				A03D3F641EA86A6500F85308 /* NTESBadgeView.m in Sources */,
 				A03D3FF71EA86A6600F85308 /* NTESUserUtil.m in Sources */,
-				A03D3EDD1EA86A6400F85308 /* UserViewController.swift in Sources */,
 				A03D3F0A1EA86A6400F85308 /* NIMContactSelectViewController.m in Sources */,
 				A03D3F7B1EA86A6500F85308 /* NTESChatroomViewController.m in Sources */,
 				A03D3F5E1EA86A6500F85308 /* UIView+Swizzling.m in Sources */,
+				A08A9BB31EA994C2009E6B2B /* FotgotPwd.swift in Sources */,
 				A03D3FBB1EA86A6500F85308 /* NTESWhiteboardDrawView.m in Sources */,
 				A03D3F111EA86A6400F85308 /* NIMInputEmoticonManager.m in Sources */,
 				A03D3F281EA86A6400F85308 /* NIMKitLocationPoint.m in Sources */,
@@ -2936,6 +2955,7 @@
 				A03D3FF21EA86A6500F85308 /* NTESNotificationCenter.m in Sources */,
 				A03D3F421EA86A6400F85308 /* NIMSessionListViewController.m in Sources */,
 				A03D3F401EA86A6400F85308 /* NIMSessionViewController.m in Sources */,
+				A08A9BB11EA991D5009E6B2B /* UIViewController+Extension.swift in Sources */,
 				A03D3F0F1EA86A6400F85308 /* NIMInputEmoticonButton.m in Sources */,
 				A03D3F011EA86A6400F85308 /* NIMMemberGroupView.m in Sources */,
 				A03D3F381EA86A6400F85308 /* NIMSessionLocationContentView.m in Sources */,
@@ -2956,6 +2976,7 @@
 				A03D3F751EA86A6500F85308 /* NTESChatroomConfig.m in Sources */,
 				A03D3EE61EA86A6400F85308 /* UIAlertView+NTESBlock.m in Sources */,
 				A03D3FF61EA86A6600F85308 /* NTESTimerHolder.m in Sources */,
+				A08A9BB91EA9FAA0009E6B2B /* DetailTableViewVC.swift in Sources */,
 				A03D3F3F1EA86A6400F85308 /* NIMLocationViewController.m in Sources */,
 				A03D3EFD1EA86A6400F85308 /* NIMKitMediaFetcher.m in Sources */,
 				A03D3F9C1EA86A6500F85308 /* NTESRegisterViewController.m in Sources */,
@@ -2965,6 +2986,7 @@
 				A03D3FE11EA86A6500F85308 /* NTESNickNameSettingViewController.m in Sources */,
 				A03D3F651EA86A6500F85308 /* NTESFPSLabel.m in Sources */,
 				A03D3FD01EA86A6500F85308 /* NTESLogViewController.m in Sources */,
+				A08A9BB51EA99547009E6B2B /* FotgotPwdVC.swift in Sources */,
 				A03D3F631EA86A6500F85308 /* NTESAvatarImageView.m in Sources */,
 				A03D3FE71EA86A6500F85308 /* NTESSettingPortraitCell.m in Sources */,
 				A03D3EE41EA86A6400F85308 /* NSString+NTES.m in Sources */,
@@ -3053,9 +3075,11 @@
 				A03D3F5C1EA86A6500F85308 /* UINavigationController+Swizzling.m in Sources */,
 				A072389A1EA76AA300E755DB /* BaseTabBarController.swift in Sources */,
 				A03D3FC21EA86A6500F85308 /* NTESVideoChatViewController.m in Sources */,
+				A08A9BBD1EAA0D3B009E6B2B /* SellOutCell.swift in Sources */,
 				A03D3F6D1EA86A6500F85308 /* NTESJionTeamViewController.m in Sources */,
 				A03D3F321EA86A6400F85308 /* NIMSessionTableAdapter.m in Sources */,
 				A072389C1EA76AA300E755DB /* AppConst.swift in Sources */,
+				A08A9BB71EA9F22F009E6B2B /* UserVC.swift in Sources */,
 				A03D3EE01EA86A6400F85308 /* ExchangeViewController.swift in Sources */,
 				A03D3F451EA86A6500F85308 /* NIMTeamCardOperationItem.m in Sources */,
 				A03D3EFE1EA86A6400F85308 /* NIMKitNotificationFirer.m in Sources */,
