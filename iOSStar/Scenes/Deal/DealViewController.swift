@@ -25,7 +25,7 @@ class DealViewController: UIViewController ,UIScrollViewDelegate{
     //MARK: -- 设置scrollView
     func initscrollView(){
         self.automaticallyAdjustsScrollViewInsets = false;
-        scrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: 64 + 30, width: self.view.frame.size.width, height: self.view.frame.size.height - 64-44-32))
+        scrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: 64 + 31, width: self.view.frame.size.width, height: self.view.frame.size.height - 64-44-32))
         scrollView?.contentSize = CGSize.init(width: self.view.frame.size.width * 5, height: 0)
         scrollView?.isPagingEnabled = true
         scrollView?.delegate = self
@@ -44,7 +44,15 @@ class DealViewController: UIViewController ,UIScrollViewDelegate{
                 vc.view.frame =  CGRect.init(x: (CGFloat.init(i)) * (self.view.frame.size.width), y: 0, width: self.view.frame.size.width, height: ((CGFloat.init((scrollView?.frame.size.height)!))))
               self.addChildViewController(vc)
             }
-         else   if i == 0{
+         else   if i == 1{
+                
+                let story = UIStoryboard.init(name: "Deal", bundle: nil)
+                let vc = story.instantiateViewController(withIdentifier: "SellOutVC")
+                scrollView?.addSubview(vc.view)
+                vc.view.frame =  CGRect.init(x: (CGFloat.init(i)) * (self.view.frame.size.width), y: 0, width: self.view.frame.size.width, height: ((CGFloat.init((scrollView?.frame.size.height)!))))
+                self.addChildViewController(vc)
+            }
+            else   if i == 0{
                 
                 let story = UIStoryboard.init(name: "Deal", bundle: nil)
                 let vc = story.instantiateViewController(withIdentifier: "BuyVC")
@@ -52,10 +60,18 @@ class DealViewController: UIViewController ,UIScrollViewDelegate{
                 vc.view.frame =  CGRect.init(x: (CGFloat.init(i)) * (self.view.frame.size.width), y: 0, width: self.view.frame.size.width, height: ((CGFloat.init((scrollView?.frame.size.height)!))))
                 self.addChildViewController(vc)
             }
-            else   if i == 1{
+            else   if i == 2{
                 
                 let story = UIStoryboard.init(name: "Deal", bundle: nil)
-                let vc = story.instantiateViewController(withIdentifier: "BuyVC")
+                let vc = story.instantiateViewController(withIdentifier: "OrderListVC")
+                scrollView?.addSubview(vc.view)
+                vc.view.frame =  CGRect.init(x: (CGFloat.init(i)) * (self.view.frame.size.width), y: 0, width: self.view.frame.size.width, height: ((CGFloat.init((scrollView?.frame.size.height)!))))
+                self.addChildViewController(vc)
+            }
+            else   if i == 3{
+                
+                let story = UIStoryboard.init(name: "Deal", bundle: nil)
+                let vc = story.instantiateViewController(withIdentifier: "HaveBuyVC")
                 scrollView?.addSubview(vc.view)
                 vc.view.frame =  CGRect.init(x: (CGFloat.init(i)) * (self.view.frame.size.width), y: 0, width: self.view.frame.size.width, height: ((CGFloat.init((scrollView?.frame.size.height)!))))
                 self.addChildViewController(vc)
@@ -74,6 +90,7 @@ class DealViewController: UIViewController ,UIScrollViewDelegate{
             btn.frame = CGRect.init(x: (CGFloat.init(i))*(self.view.frame.size.width)/5.0, y: 64, width: (self.view.frame.size.width)/5.0, height: 28)
             btn.setTitle(arr[i], for: .normal)
             self.view.addSubview(btn)
+            btn.backgroundColor = UIColor.white
             btn.setTitleColor(UIColor.gray, for: .normal)
             btn.setTitleColor(UIColor.blue, for: .selected)
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)

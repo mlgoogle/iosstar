@@ -7,10 +7,13 @@
 //
 
 import UIKit
-
-class SellOutCell: UITableViewCell ,UITableViewDataSource,UITableViewDelegate{
+class StatusCell: UITableViewCell {
     
-    //var 判断
+    
+}
+class BuyVCCell: UITableViewCell ,UITableViewDataSource,UITableViewDelegate{
+    
+    //var 判断是买入还是卖出
     //UITableView 的宽度
     @IBOutlet weak var tableView_Width: NSLayoutConstraint!
     //价格
@@ -49,9 +52,7 @@ class SellOutCell: UITableViewCell ,UITableViewDataSource,UITableViewDelegate{
     }
     //MARK: btn的点击方法
     @IBAction func countUp(_ sender: Any) {
-        
     }
-    
     @IBAction func countDown(_ sender: Any) {
     }
     @IBAction func priceDown(_ sender: Any) {
@@ -60,13 +61,13 @@ class SellOutCell: UITableViewCell ,UITableViewDataSource,UITableViewDelegate{
     }
     
     //MARK: tableview代理
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StatusCell")
+     let cell = tableView.dequeueReusableCell(withIdentifier: "StatusCell")
         
         if indexPath.row == 5 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LineCell")
-            return cell!
+             let cell = tableView.dequeueReusableCell(withIdentifier: "LineCell")
+              return cell!
         }
         return cell!
     }
@@ -75,14 +76,14 @@ class SellOutCell: UITableViewCell ,UITableViewDataSource,UITableViewDelegate{
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
         // Configure the view for the selected state
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 5{
-            return 10
+         return 10
         }
         return 17
     }
-    
+
 }
