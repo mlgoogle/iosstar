@@ -10,6 +10,19 @@
 		6C914579279831D674DBBB68 /* Pods_iOSStar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */; };
 		6E0922A61EA88DFE002725A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922A21EA88DFE002725A0 /* LaunchScreen.storyboard */; };
 		6E0922A71EA88DFE002725A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922A41EA88DFE002725A0 /* Main.storyboard */; };
+		6E0922BA1EA8E014002725A0 /* BlizzardReg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922AA1EA8E013002725A0 /* BlizzardReg.ttf */; };
+		6E0922BB1EA8E014002725A0 /* d3.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922AB1EA8E013002725A0 /* d3.icns */; };
+		6E0922BC1EA8E014002725A0 /* SetupOSX.mpq in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922AC1EA8E013002725A0 /* SetupOSX.mpq */; };
+		6E0922BD1EA8E014002725A0 /* NIMKitEmoticon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922AE1EA8E013002725A0 /* NIMKitEmoticon.bundle */; };
+		6E0922BE1EA8E014002725A0 /* NIMKitResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922AF1EA8E013002725A0 /* NIMKitResource.bundle */; };
+		6E0922BF1EA8E014002725A0 /* NIMKitSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922B01EA8E013002725A0 /* NIMKitSettings.bundle */; };
+		6E0922C01EA8E014002725A0 /* message.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922B31EA8E013002725A0 /* message.wav */; };
+		6E0922C11EA8E014002725A0 /* video_chat_tip_HangUp.aac in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922B41EA8E014002725A0 /* video_chat_tip_HangUp.aac */; };
+		6E0922C21EA8E014002725A0 /* video_chat_tip_OnCall.aac in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922B51EA8E014002725A0 /* video_chat_tip_OnCall.aac */; };
+		6E0922C31EA8E014002725A0 /* video_chat_tip_onTimer.aac in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922B61EA8E014002725A0 /* video_chat_tip_onTimer.aac */; };
+		6E0922C41EA8E014002725A0 /* video_chat_tip_receiver.aac in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922B71EA8E014002725A0 /* video_chat_tip_receiver.aac */; };
+		6E0922C51EA8E014002725A0 /* video_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922B81EA8E014002725A0 /* video_chat_tip_sender.aac */; };
+		6E0922C61EA8E014002725A0 /* video_connect_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922B91EA8E014002725A0 /* video_connect_chat_tip_sender.aac */; };
 		6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */; };
 		6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302C1EA84D98005C8DF9 /* Market.storyboard */; };
 		A0155E071EA8ABF20047B95B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0155E061EA8ABF20047B95B /* Images.xcassets */; };
@@ -307,19 +320,6 @@
 		A03D3FF81EA86A6600F85308 /* NTESPinyinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDA1EA86A6400F85308 /* NTESPinyinConverter.m */; };
 		A03D3FF91EA86A6600F85308 /* NTESSpellingCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */; };
 		A03D3FFB1EA8992E00F85308 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3FFA1EA8992E00F85308 /* HomeVC.swift */; };
-		A03D400E1EA8A64D00F85308 /* BlizzardReg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A03D3FFE1EA8A64D00F85308 /* BlizzardReg.ttf */; };
-		A03D400F1EA8A64D00F85308 /* d3.icns in Resources */ = {isa = PBXBuildFile; fileRef = A03D3FFF1EA8A64D00F85308 /* d3.icns */; };
-		A03D40101EA8A64D00F85308 /* SetupOSX.mpq in Resources */ = {isa = PBXBuildFile; fileRef = A03D40001EA8A64D00F85308 /* SetupOSX.mpq */; };
-		A03D40111EA8A64D00F85308 /* NIMKitEmoticon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A03D40021EA8A64D00F85308 /* NIMKitEmoticon.bundle */; };
-		A03D40121EA8A64D00F85308 /* NIMKitResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A03D40031EA8A64D00F85308 /* NIMKitResource.bundle */; };
-		A03D40131EA8A64D00F85308 /* NIMKitSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A03D40041EA8A64D00F85308 /* NIMKitSettings.bundle */; };
-		A03D40141EA8A64D00F85308 /* message.wav in Resources */ = {isa = PBXBuildFile; fileRef = A03D40071EA8A64D00F85308 /* message.wav */; };
-		A03D40151EA8A64D00F85308 /* video_chat_tip_HangUp.aac in Resources */ = {isa = PBXBuildFile; fileRef = A03D40081EA8A64D00F85308 /* video_chat_tip_HangUp.aac */; };
-		A03D40161EA8A64D00F85308 /* video_chat_tip_OnCall.aac in Resources */ = {isa = PBXBuildFile; fileRef = A03D40091EA8A64D00F85308 /* video_chat_tip_OnCall.aac */; };
-		A03D40171EA8A64D00F85308 /* video_chat_tip_onTimer.aac in Resources */ = {isa = PBXBuildFile; fileRef = A03D400A1EA8A64D00F85308 /* video_chat_tip_onTimer.aac */; };
-		A03D40181EA8A64D00F85308 /* video_chat_tip_receiver.aac in Resources */ = {isa = PBXBuildFile; fileRef = A03D400B1EA8A64D00F85308 /* video_chat_tip_receiver.aac */; };
-		A03D40191EA8A64D00F85308 /* video_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = A03D400C1EA8A64D00F85308 /* video_chat_tip_sender.aac */; };
-		A03D401A1EA8A64D00F85308 /* video_connect_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = A03D400D1EA8A64D00F85308 /* video_connect_chat_tip_sender.aac */; };
 		A07238901EA76AA300E755DB /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = A07238691EA76AA300E755DB /* Contents.json */; };
 		A07238931EA76AA300E755DB /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = A072386F1EA76AA300E755DB /* back.png */; };
 		A07238941EA76AA300E755DB /* nav_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = A07238701EA76AA300E755DB /* nav_clear.png */; };
@@ -352,6 +352,21 @@
 		658ED50682E9CA02E39549B8 /* Pods-iOSStar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.release.xcconfig"; sourceTree = "<group>"; };
 		6E0922A31EA88DFE002725A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E0922A51EA88DFE002725A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		6E0922AA1EA8E013002725A0 /* BlizzardReg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BlizzardReg.ttf; sourceTree = "<group>"; };
+		6E0922AB1EA8E013002725A0 /* d3.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = d3.icns; sourceTree = "<group>"; };
+		6E0922AC1EA8E013002725A0 /* SetupOSX.mpq */ = {isa = PBXFileReference; lastKnownFileType = file; path = SetupOSX.mpq; sourceTree = "<group>"; };
+		6E0922AD1EA8E013002725A0 /* NIMDev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NIMDev.entitlements; sourceTree = "<group>"; };
+		6E0922AE1EA8E013002725A0 /* NIMKitEmoticon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NIMKitEmoticon.bundle; sourceTree = "<group>"; };
+		6E0922AF1EA8E013002725A0 /* NIMKitResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NIMKitResource.bundle; sourceTree = "<group>"; };
+		6E0922B01EA8E013002725A0 /* NIMKitSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NIMKitSettings.bundle; sourceTree = "<group>"; };
+		6E0922B11EA8E013002725A0 /* NIMPro.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NIMPro.entitlements; sourceTree = "<group>"; };
+		6E0922B31EA8E013002725A0 /* message.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = message.wav; sourceTree = "<group>"; };
+		6E0922B41EA8E014002725A0 /* video_chat_tip_HangUp.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_HangUp.aac; sourceTree = "<group>"; };
+		6E0922B51EA8E014002725A0 /* video_chat_tip_OnCall.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_OnCall.aac; sourceTree = "<group>"; };
+		6E0922B61EA8E014002725A0 /* video_chat_tip_onTimer.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_onTimer.aac; sourceTree = "<group>"; };
+		6E0922B71EA8E014002725A0 /* video_chat_tip_receiver.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_receiver.aac; sourceTree = "<group>"; };
+		6E0922B81EA8E014002725A0 /* video_chat_tip_sender.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_sender.aac; sourceTree = "<group>"; };
+		6E0922B91EA8E014002725A0 /* video_connect_chat_tip_sender.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_connect_chat_tip_sender.aac; sourceTree = "<group>"; };
 		6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOSStar-Bridging-Header.h"; sourceTree = "<group>"; };
 		6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
 		6EC3302C1EA84D98005C8DF9 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
@@ -929,21 +944,6 @@
 		A03D3EDB1EA86A6400F85308 /* NTESSpellingCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESSpellingCenter.h; sourceTree = "<group>"; };
 		A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESSpellingCenter.m; sourceTree = "<group>"; };
 		A03D3FFA1EA8992E00F85308 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		A03D3FFE1EA8A64D00F85308 /* BlizzardReg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BlizzardReg.ttf; sourceTree = "<group>"; };
-		A03D3FFF1EA8A64D00F85308 /* d3.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = d3.icns; sourceTree = "<group>"; };
-		A03D40001EA8A64D00F85308 /* SetupOSX.mpq */ = {isa = PBXFileReference; lastKnownFileType = file; path = SetupOSX.mpq; sourceTree = "<group>"; };
-		A03D40011EA8A64D00F85308 /* NIMDev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NIMDev.entitlements; sourceTree = "<group>"; };
-		A03D40021EA8A64D00F85308 /* NIMKitEmoticon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NIMKitEmoticon.bundle; sourceTree = "<group>"; };
-		A03D40031EA8A64D00F85308 /* NIMKitResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NIMKitResource.bundle; sourceTree = "<group>"; };
-		A03D40041EA8A64D00F85308 /* NIMKitSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NIMKitSettings.bundle; sourceTree = "<group>"; };
-		A03D40051EA8A64D00F85308 /* NIMPro.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NIMPro.entitlements; sourceTree = "<group>"; };
-		A03D40071EA8A64D00F85308 /* message.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = message.wav; sourceTree = "<group>"; };
-		A03D40081EA8A64D00F85308 /* video_chat_tip_HangUp.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_HangUp.aac; sourceTree = "<group>"; };
-		A03D40091EA8A64D00F85308 /* video_chat_tip_OnCall.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_OnCall.aac; sourceTree = "<group>"; };
-		A03D400A1EA8A64D00F85308 /* video_chat_tip_onTimer.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_onTimer.aac; sourceTree = "<group>"; };
-		A03D400B1EA8A64D00F85308 /* video_chat_tip_receiver.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_receiver.aac; sourceTree = "<group>"; };
-		A03D400C1EA8A64D00F85308 /* video_chat_tip_sender.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_sender.aac; sourceTree = "<group>"; };
-		A03D400D1EA8A64D00F85308 /* video_connect_chat_tip_sender.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_connect_chat_tip_sender.aac; sourceTree = "<group>"; };
 		A072384A1EA768AD00E755DB /* iOSStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07238691EA76AA300E755DB /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		A072386F1EA76AA300E755DB /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
@@ -1036,6 +1036,44 @@
 				6E0922A41EA88DFE002725A0 /* Main.storyboard */,
 			);
 			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		6E0922A81EA8E013002725A0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6E0922A91EA8E013002725A0 /* Files */,
+				6E0922AD1EA8E013002725A0 /* NIMDev.entitlements */,
+				6E0922AE1EA8E013002725A0 /* NIMKitEmoticon.bundle */,
+				6E0922AF1EA8E013002725A0 /* NIMKitResource.bundle */,
+				6E0922B01EA8E013002725A0 /* NIMKitSettings.bundle */,
+				6E0922B11EA8E013002725A0 /* NIMPro.entitlements */,
+				6E0922B21EA8E013002725A0 /* Sounds */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6E0922A91EA8E013002725A0 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				6E0922AA1EA8E013002725A0 /* BlizzardReg.ttf */,
+				6E0922AB1EA8E013002725A0 /* d3.icns */,
+				6E0922AC1EA8E013002725A0 /* SetupOSX.mpq */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		6E0922B21EA8E013002725A0 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				6E0922B31EA8E013002725A0 /* message.wav */,
+				6E0922B41EA8E014002725A0 /* video_chat_tip_HangUp.aac */,
+				6E0922B51EA8E014002725A0 /* video_chat_tip_OnCall.aac */,
+				6E0922B61EA8E014002725A0 /* video_chat_tip_onTimer.aac */,
+				6E0922B71EA8E014002725A0 /* video_chat_tip_receiver.aac */,
+				6E0922B81EA8E014002725A0 /* video_chat_tip_sender.aac */,
+				6E0922B91EA8E014002725A0 /* video_connect_chat_tip_sender.aac */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		A0155E0C1EA8C9220047B95B /* Login */ = {
@@ -2378,48 +2416,9 @@
 			path = Spelling;
 			sourceTree = "<group>";
 		};
-		A03D3FFC1EA8A64D00F85308 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A03D3FFD1EA8A64D00F85308 /* Files */,
-				A03D40011EA8A64D00F85308 /* NIMDev.entitlements */,
-				A03D40021EA8A64D00F85308 /* NIMKitEmoticon.bundle */,
-				A03D40031EA8A64D00F85308 /* NIMKitResource.bundle */,
-				A03D40041EA8A64D00F85308 /* NIMKitSettings.bundle */,
-				A03D40051EA8A64D00F85308 /* NIMPro.entitlements */,
-				A03D40061EA8A64D00F85308 /* Sounds */,
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		A03D3FFD1EA8A64D00F85308 /* Files */ = {
-			isa = PBXGroup;
-			children = (
-				A03D3FFE1EA8A64D00F85308 /* BlizzardReg.ttf */,
-				A03D3FFF1EA8A64D00F85308 /* d3.icns */,
-				A03D40001EA8A64D00F85308 /* SetupOSX.mpq */,
-			);
-			path = Files;
-			sourceTree = "<group>";
-		};
-		A03D40061EA8A64D00F85308 /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-				A03D40071EA8A64D00F85308 /* message.wav */,
-				A03D40081EA8A64D00F85308 /* video_chat_tip_HangUp.aac */,
-				A03D40091EA8A64D00F85308 /* video_chat_tip_OnCall.aac */,
-				A03D400A1EA8A64D00F85308 /* video_chat_tip_onTimer.aac */,
-				A03D400B1EA8A64D00F85308 /* video_chat_tip_receiver.aac */,
-				A03D400C1EA8A64D00F85308 /* video_chat_tip_sender.aac */,
-				A03D400D1EA8A64D00F85308 /* video_connect_chat_tip_sender.aac */,
-			);
-			path = Sounds;
-			sourceTree = "<group>";
-		};
 		A07238411EA768AC00E755DB = {
 			isa = PBXGroup;
 			children = (
-				A03D3FFC1EA8A64D00F85308 /* Supporting Files */,
 				A072384C1EA768AD00E755DB /* iOSStar */,
 				A072384B1EA768AD00E755DB /* Products */,
 				56F7911E6B6B9C2FD9F7E114 /* Pods */,
@@ -2534,6 +2533,7 @@
 		A072387E1EA76AA300E755DB /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				6E0922A81EA8E013002725A0 /* Supporting Files */,
 				A072387F1EA76AA300E755DB /* WeChatSDK1.7.4 */,
 			);
 			path = Library;
@@ -2667,57 +2667,57 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E0922BB1EA8E014002725A0 /* d3.icns in Resources */,
 				A03D3FC31EA86A6500F85308 /* NTESVideoChatViewController.xib in Resources */,
 				A03D3FD31EA86A6500F85308 /* NTESNetDetectViewController.xib in Resources */,
+				6E0922BC1EA8E014002725A0 /* SetupOSX.mpq in Resources */,
+				6E0922C21EA8E014002725A0 /* video_chat_tip_OnCall.aac in Resources */,
 				A07238931EA76AA300E755DB /* back.png in Resources */,
 				A07238B51EA76F4100E755DB /* Home.storyboard in Resources */,
 				A03D3F981EA86A6500F85308 /* NTESSystemNotificationViewController.xib in Resources */,
+				6E0922C41EA8E014002725A0 /* video_chat_tip_receiver.aac in Resources */,
+				6E0922BA1EA8E014002725A0 /* BlizzardReg.ttf in Resources */,
 				A03D3F941EA86A6500F85308 /* NTESCustomSysNotificationViewController.xib in Resources */,
-				A03D40131EA8A64D00F85308 /* NIMKitSettings.bundle in Resources */,
 				A03D3FD91EA86A6500F85308 /* NTESAboutViewController.xib in Resources */,
 				A03D3FE41EA86A6500F85308 /* NTESUserInfoSettingViewController.xib in Resources */,
 				A03D3F9D1EA86A6500F85308 /* NTESRegisterViewController.xib in Resources */,
 				A03D3F901EA86A6500F85308 /* NTESContactViewController.xib in Resources */,
-				A03D40111EA8A64D00F85308 /* NIMKitEmoticon.bundle in Resources */,
+				6E0922BD1EA8E014002725A0 /* NIMKitEmoticon.bundle in Resources */,
 				A03D3FB21EA86A6500F85308 /* NTESFileTransSelectViewController.xib in Resources */,
 				A07238981EA76AA300E755DB /* Info.plist in Resources */,
 				A07238B71EA76F4D00E755DB /* Deal.storyboard in Resources */,
 				A03D3FBD1EA86A6500F85308 /* NTESVideoViewController.xib in Resources */,
-				A03D40191EA8A64D00F85308 /* video_chat_tip_sender.aac in Resources */,
 				A03D3F711EA86A6500F85308 /* NTESSearchTeamViewController.xib in Resources */,
-				A03D40151EA8A64D00F85308 /* video_chat_tip_HangUp.aac in Resources */,
 				A03D3FD11EA86A6500F85308 /* NTESLogViewController.xib in Resources */,
 				A03D3FB41EA86A6500F85308 /* NTESGalleryViewController.xib in Resources */,
+				6E0922BE1EA8E014002725A0 /* NIMKitResource.bundle in Resources */,
+				6E0922C51EA8E014002725A0 /* video_chat_tip_sender.aac in Resources */,
+				6E0922C11EA8E014002725A0 /* video_chat_tip_HangUp.aac in Resources */,
+				6E0922C31EA8E014002725A0 /* video_chat_tip_onTimer.aac in Resources */,
 				A03D3FD51EA86A6500F85308 /* NTESNoDisturbSettingViewController.xib in Resources */,
-				A03D40171EA8A64D00F85308 /* video_chat_tip_onTimer.aac in Resources */,
 				A07238941EA76AA300E755DB /* nav_clear.png in Resources */,
 				A072389E1EA76AA300E755DB /* README.txt in Resources */,
 				6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */,
-				A03D40101EA8A64D00F85308 /* SetupOSX.mpq in Resources */,
 				A0155E071EA8ABF20047B95B /* Images.xcassets in Resources */,
+				6E0922BF1EA8E014002725A0 /* NIMKitSettings.bundle in Resources */,
 				6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */,
 				A03D3F9B1EA86A6500F85308 /* NTESLoginViewController.xib in Resources */,
 				A07238901EA76AA300E755DB /* Contents.json in Resources */,
 				A03D3FC81EA86A6500F85308 /* NTESMutiClientsCell.xib in Resources */,
-				A03D40141EA8A64D00F85308 /* message.wav in Resources */,
+				6E0922C61EA8E014002725A0 /* video_connect_chat_tip_sender.aac in Resources */,
 				6E0922A61EA88DFE002725A0 /* LaunchScreen.storyboard in Resources */,
 				A03D3F961EA86A6500F85308 /* NTESSystemNotificationCell.xib in Resources */,
-				A03D400E1EA8A64D00F85308 /* BlizzardReg.ttf in Resources */,
 				A03D3F741EA86A6500F85308 /* NTESTeamListViewController.xib in Resources */,
 				A03D3FBA1EA86A6500F85308 /* NTESWhiteboardViewController.xib in Resources */,
 				A03D3FC01EA86A6500F85308 /* NTESAudioChatViewController.xib in Resources */,
 				A03D3FDB1EA86A6500F85308 /* NTESSettingViewController.xib in Resources */,
 				A03D3FB01EA86A6500F85308 /* NTESFilePreViewController.xib in Resources */,
-				A03D40161EA8A64D00F85308 /* video_chat_tip_OnCall.aac in Resources */,
 				A07238971EA76AA300E755DB /* rechargebanner.png in Resources */,
-				A03D400F1EA8A64D00F85308 /* d3.icns in Resources */,
-				A03D40121EA8A64D00F85308 /* NIMKitResource.bundle in Resources */,
 				6E0922A71EA88DFE002725A0 /* Main.storyboard in Resources */,
-				A03D40181EA8A64D00F85308 /* video_chat_tip_receiver.aac in Resources */,
 				A07238951EA76AA300E755DB /* nav_clear@2x.png in Resources */,
 				A07238961EA76AA300E755DB /* nav_main@2x.png in Resources */,
 				A07238B91EA76F5600E755DB /* User.storyboard in Resources */,
-				A03D401A1EA8A64D00F85308 /* video_connect_chat_tip_sender.aac in Resources */,
+				6E0922C01EA8E014002725A0 /* message.wav in Resources */,
 				A0155E0B1EA8C8850047B95B /* Login.storyboard in Resources */,
 				A03D3F6E1EA86A6500F85308 /* NTESJionTeamViewController.xib in Resources */,
 				A03D3FAE1EA86A6500F85308 /* NTESAudio2TextViewController.xib in Resources */,
