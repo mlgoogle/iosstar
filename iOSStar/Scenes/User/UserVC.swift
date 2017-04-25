@@ -12,11 +12,9 @@ class UserVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         let view = UIView.init()
         view.backgroundColor = UIColor.clear
         self.tableView.tableFooterView = view
-
     }
 
     override func didReceiveMemoryWarning() {
