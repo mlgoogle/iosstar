@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6C914579279831D674DBBB68 /* Pods_iOSStar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */; };
+		6E1616551EAEF0CF00D95CB6 /* SDCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E1616541EAEF0CF00D95CB6 /* SDCycleScrollView.framework */; };
+		6E1616591EAF1F4C00D95CB6 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616581EAF1F4C00D95CB6 /* NewsViewController.swift */; };
+		6E16165C1EAF2EF100D95CB6 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16165B1EAF2EF100D95CB6 /* NewsDetailViewController.swift */; };
+		6E16165E1EAF322F00D95CB6 /* NewsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16165D1EAF322F00D95CB6 /* NewsNavigationView.swift */; };
 		6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */; };
 		6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302C1EA84D98005C8DF9 /* Market.storyboard */; };
 		A001A96C1EAD884D00752F1A /* HaveBuyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A96B1EAD884D00752F1A /* HaveBuyVC.swift */; };
@@ -25,7 +29,6 @@
 		A03D31541EA846A100F85308 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31531EA846A100F85308 /* AudioToolbox.framework */; };
 		A03D31561EA846AC00F85308 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31551EA846AC00F85308 /* VideoToolbox.framework */; };
 		A03D31581EA846B900F85308 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31571EA846B900F85308 /* libc++.tbd */; };
-		A03D3EDE1EA86A6400F85308 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C4E1EA86A6300F85308 /* NewsViewController.swift */; };
 		A03D3EDF1EA86A6400F85308 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C501EA86A6300F85308 /* MarketViewController.swift */; };
 		A03D3EE01EA86A6400F85308 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C521EA86A6300F85308 /* ExchangeViewController.swift */; };
 		A03D3EE11EA86A6400F85308 /* DealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C541EA86A6300F85308 /* DealViewController.swift */; };
@@ -363,6 +366,10 @@
 		658ED50682E9CA02E39549B8 /* Pods-iOSStar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.release.xcconfig"; sourceTree = "<group>"; };
 		6E0922A31EA88DFE002725A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E0922A51EA88DFE002725A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		6E1616541EAEF0CF00D95CB6 /* SDCycleScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDCycleScrollView.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-bmxtycnpdoqrbibukoqgcsvtsgdm/Build/Products/Debug-iphonesimulator/SDCycleScrollView/SDCycleScrollView.framework"; sourceTree = "<group>"; };
+		6E1616581EAF1F4C00D95CB6 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		6E16165B1EAF2EF100D95CB6 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		6E16165D1EAF322F00D95CB6 /* NewsNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsNavigationView.swift; sourceTree = "<group>"; };
 		6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOSStar-Bridging-Header.h"; sourceTree = "<group>"; };
 		6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
 		6EC3302C1EA84D98005C8DF9 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
@@ -383,7 +390,6 @@
 		A03D31531EA846A100F85308 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A03D31551EA846AC00F85308 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		A03D31571EA846B900F85308 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		A03D3C4E1EA86A6300F85308 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		A03D3C501EA86A6300F85308 /* MarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		A03D3C521EA86A6300F85308 /* ExchangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
 		A03D3C541EA86A6300F85308 /* DealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealViewController.swift; sourceTree = "<group>"; };
@@ -1005,6 +1011,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E1616551EAEF0CF00D95CB6 /* SDCycleScrollView.framework in Frameworks */,
 				A03D31581EA846B900F85308 /* libc++.tbd in Frameworks */,
 				A03D31561EA846AC00F85308 /* VideoToolbox.framework in Frameworks */,
 				A03D31541EA846A100F85308 /* AudioToolbox.framework in Frameworks */,
@@ -1027,6 +1034,7 @@
 		514D3E8AF1A3675B9BA8BCD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E1616541EAEF0CF00D95CB6 /* SDCycleScrollView.framework */,
 				A03D31571EA846B900F85308 /* libc++.tbd */,
 				A03D31551EA846AC00F85308 /* VideoToolbox.framework */,
 				A03D31531EA846A100F85308 /* AudioToolbox.framework */,
@@ -1060,6 +1068,25 @@
 			);
 			path = Base.lproj;
 			sourceTree = "<group>";
+		};
+		6E1616561EAF1F1B00D95CB6 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				6E16165D1EAF322F00D95CB6 /* NewsNavigationView.swift */,
+			);
+			name = CustomView;
+			path = iOSStar/Scenes/News/CustomView;
+			sourceTree = SOURCE_ROOT;
+		};
+		6E1616571EAF1F3100D95CB6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6E1616581EAF1F4C00D95CB6 /* NewsViewController.swift */,
+				6E16165B1EAF2EF100D95CB6 /* NewsDetailViewController.swift */,
+			);
+			name = Controller;
+			path = iOSStar/Scenes/News/Controller;
+			sourceTree = SOURCE_ROOT;
 		};
 		A001A96F1EAD9F5A00752F1A /* Model */ = {
 			isa = PBXGroup;
@@ -1104,7 +1131,8 @@
 		A03D3C4D1EA86A6300F85308 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				A03D3C4E1EA86A6300F85308 /* NewsViewController.swift */,
+				6E1616571EAF1F3100D95CB6 /* Controller */,
+				6E1616561EAF1F1B00D95CB6 /* CustomView */,
 			);
 			name = News;
 			path = iOSSTar/Scenes/News;
@@ -2869,7 +2897,6 @@
 				A03D3F051EA86A6400F85308 /* NIMGroupedUsrInfo.m in Sources */,
 				A03D3F6A1EA86A6500F85308 /* NTESSessionCustomContentConfig.m in Sources */,
 				A03D3F131EA86A6400F85308 /* NIMInputEmoticonTabView.m in Sources */,
-				A03D3EDE1EA86A6400F85308 /* NewsViewController.swift in Sources */,
 				A03D3EF51EA86A6400F85308 /* NIMKitColorButtonCell.m in Sources */,
 				A03D3F4F1EA86A6500F85308 /* NIMAdvancedTeamMemberCell.m in Sources */,
 				A03D3FAC1EA86A6500F85308 /* NTESSessionWhiteBoardContentView.m in Sources */,
@@ -2936,6 +2963,7 @@
 				A03D3FAF1EA86A6500F85308 /* NTESFilePreViewController.m in Sources */,
 				A03D3FE81EA86A6500F85308 /* NTESSettingSwitcherCell.m in Sources */,
 				A03D3FEB1EA86A6500F85308 /* NTESDemoService.m in Sources */,
+				6E16165E1EAF322F00D95CB6 /* NewsNavigationView.swift in Sources */,
 				A03D3F301EA86A6400F85308 /* NIMSessionLayoutImpl.m in Sources */,
 				A03D3FC51EA86A6500F85308 /* NTESRecordSelectView.m in Sources */,
 				A03D3F8D1EA86A6500F85308 /* NTESBlackListViewController.m in Sources */,
@@ -2944,6 +2972,7 @@
 				A03D3FF71EA86A6600F85308 /* NTESUserUtil.m in Sources */,
 				A03D3F0A1EA86A6400F85308 /* NIMContactSelectViewController.m in Sources */,
 				A03D3F7B1EA86A6500F85308 /* NTESChatroomViewController.m in Sources */,
+				6E1616591EAF1F4C00D95CB6 /* NewsViewController.swift in Sources */,
 				A03D3F5E1EA86A6500F85308 /* UIView+Swizzling.m in Sources */,
 				A08A9BB31EA994C2009E6B2B /* FotgotPwd.swift in Sources */,
 				A03D3FBB1EA86A6500F85308 /* NTESWhiteboardDrawView.m in Sources */,
@@ -3033,6 +3062,7 @@
 				A03D3FC11EA86A6500F85308 /* NTESNetChatViewController.m in Sources */,
 				A03D3F101EA86A6400F85308 /* NIMInputEmoticonContainerView.m in Sources */,
 				A03D3F851EA86A6500F85308 /* NTESCustomSysNotificationSender.m in Sources */,
+				6E16165C1EAF2EF100D95CB6 /* NewsDetailViewController.swift in Sources */,
 				A03D3F481EA86A6500F85308 /* NIMUsrInfoData.m in Sources */,
 				A03D3F791EA86A6500F85308 /* NTESChatroomMemberListViewController.m in Sources */,
 				A03D3F191EA86A6400F85308 /* NIMKitInfoFetchOption.m in Sources */,
