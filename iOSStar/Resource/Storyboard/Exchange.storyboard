@@ -20,6 +20,16 @@
                     <view key="view" contentMode="scaleToFill" id="8v1-wf-DlU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6O-hW-8uw">
+                                <rect key="frame" x="99" y="156" width="108" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="查看名人通讯录"/>
+                                <connections>
+                                    <segue destination="cqX-5Q-VB5" kind="show" id="8d1-p6-Sqv"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="iPl-4e-do9"/>
@@ -28,12 +38,125 @@
             </objects>
             <point key="canvasLocation" x="948" y="163.26836581709148"/>
         </scene>
+        <!--Contact List View Controller-->
+        <scene sceneID="zea-0u-BwC">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="cqX-5Q-VB5" customClass="ContactListViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KQy-9p-Tf2"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Fy-ni-oqr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="43v-WO-rMq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DVL-Vw-lNd">
+                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContactListCell" rowHeight="60" id="muT-dB-dre" customClass="ContactListCell" customModule="iOSStar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="muT-dB-dre" id="bXu-Yy-0hS">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8" translatesAutoresizingMaskIntoConstraints="NO" id="Cmg-oy-Igi">
+                                                    <rect key="frame" x="12" y="10" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="vsJ-Mb-1g7"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="陈冠希" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRP-iy-GJ4">
+                                                    <rect key="frame" x="65" y="10" width="43" height="14"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="14" id="ZHC-NS-rBq"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="演员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgW-iC-CBe">
+                                                    <rect key="frame" x="65" y="38" width="25" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="12" id="bPw-Nl-dX0"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUl-jo-YLS">
+                                                    <rect key="frame" x="293" y="17" width="70" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="26" id="3nA-MS-Qlf"/>
+                                                        <constraint firstAttribute="width" constant="70" id="LKe-fT-Wtz"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="聊一聊">
+                                                        <color key="titleColor" red="0.094117647058823528" green="0.36078431372549019" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                            <color key="value" red="0.094117647058823528" green="0.36078431372549019" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="qUl-jo-YLS" firstAttribute="centerY" secondItem="Cmg-oy-Igi" secondAttribute="centerY" id="5GB-kk-JBL"/>
+                                                <constraint firstItem="FgW-iC-CBe" firstAttribute="bottom" secondItem="Cmg-oy-Igi" secondAttribute="bottom" id="EfN-1s-obh"/>
+                                                <constraint firstItem="Cmg-oy-Igi" firstAttribute="top" secondItem="bXu-Yy-0hS" secondAttribute="top" constant="10" id="QbD-HQ-IB2"/>
+                                                <constraint firstItem="tRP-iy-GJ4" firstAttribute="leading" secondItem="Cmg-oy-Igi" secondAttribute="trailing" constant="13" id="RAz-GY-2lH"/>
+                                                <constraint firstItem="Cmg-oy-Igi" firstAttribute="leading" secondItem="bXu-Yy-0hS" secondAttribute="leading" constant="12" id="hWy-5O-dsF"/>
+                                                <constraint firstItem="tRP-iy-GJ4" firstAttribute="top" secondItem="Cmg-oy-Igi" secondAttribute="top" id="hk4-km-e6i"/>
+                                                <constraint firstAttribute="trailing" secondItem="qUl-jo-YLS" secondAttribute="trailing" constant="12" id="oZJ-20-has"/>
+                                                <constraint firstAttribute="bottom" secondItem="Cmg-oy-Igi" secondAttribute="bottom" constant="10" id="y6S-Fa-ogM"/>
+                                                <constraint firstItem="FgW-iC-CBe" firstAttribute="leading" secondItem="Cmg-oy-Igi" secondAttribute="trailing" constant="13" id="zoB-gf-XHQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="chatButton" destination="qUl-jo-YLS" id="YlA-Xq-MoO"/>
+                                            <outlet property="iconImageView" destination="Cmg-oy-Igi" id="MsJ-Kg-4MI"/>
+                                            <outlet property="jobLabel" destination="FgW-iC-CBe" id="C8q-IC-ggD"/>
+                                            <outlet property="nameLabel" destination="tRP-iy-GJ4" id="Cs8-UP-sOh"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="cqX-5Q-VB5" id="0uI-VF-wkI"/>
+                                    <outlet property="delegate" destination="cqX-5Q-VB5" id="iYd-DM-cW7"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="DVL-Vw-lNd" firstAttribute="top" secondItem="KQy-9p-Tf2" secondAttribute="bottom" constant="4" id="2nP-0N-Mhq"/>
+                            <constraint firstItem="9Fy-ni-oqr" firstAttribute="top" secondItem="DVL-Vw-lNd" secondAttribute="bottom" id="5iR-dC-7hL"/>
+                            <constraint firstAttribute="trailing" secondItem="DVL-Vw-lNd" secondAttribute="trailing" id="XwX-j4-9XL"/>
+                            <constraint firstItem="DVL-Vw-lNd" firstAttribute="leading" secondItem="43v-WO-rMq" secondAttribute="leading" id="wzr-1W-XAG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="DVL-Vw-lNd" id="73Q-Uv-vAQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VLm-rZ-0Wq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1644" y="163"/>
+        </scene>
         <!--Base Navigation Controller-->
         <scene sceneID="erg-Nj-ICR">
             <objects>
                 <navigationController storyboardIdentifier="Exchange" automaticallyAdjustsScrollViewInsets="NO" id="IUx-14-n82" customClass="BaseNavigationController" customModule="iOSStar" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rqe-GR-WuM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Rqe-GR-WuM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -47,4 +170,7 @@
             <point key="canvasLocation" x="8.8000000000000007" y="163.26836581709148"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="8" width="55" height="55"/>
+    </resources>
 </document>

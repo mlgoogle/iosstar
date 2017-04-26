@@ -13,6 +13,9 @@
 		6E16165C1EAF2EF100D95CB6 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16165B1EAF2EF100D95CB6 /* NewsDetailViewController.swift */; };
 		6E16165E1EAF322F00D95CB6 /* NewsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16165D1EAF322F00D95CB6 /* NewsNavigationView.swift */; };
 		6E1616601EB0343600D95CB6 /* NewsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16165F1EB0343600D95CB6 /* NewsListCell.swift */; };
+		6E1616641EB04D0700D95CB6 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616621EB04D0700D95CB6 /* ExchangeViewController.swift */; };
+		6E1616661EB04D4E00D95CB6 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616651EB04D4E00D95CB6 /* ContactListViewController.swift */; };
+		6E1616681EB04DCE00D95CB6 /* ContactListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616671EB04DCE00D95CB6 /* ContactListCell.swift */; };
 		6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */; };
 		6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302C1EA84D98005C8DF9 /* Market.storyboard */; };
 		A001A96C1EAD884D00752F1A /* HaveBuyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A96B1EAD884D00752F1A /* HaveBuyVC.swift */; };
@@ -36,7 +39,6 @@
 		A03D31561EA846AC00F85308 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31551EA846AC00F85308 /* VideoToolbox.framework */; };
 		A03D31581EA846B900F85308 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31571EA846B900F85308 /* libc++.tbd */; };
 		A03D3EDF1EA86A6400F85308 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C501EA86A6300F85308 /* MarketViewController.swift */; };
-		A03D3EE01EA86A6400F85308 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C521EA86A6300F85308 /* ExchangeViewController.swift */; };
 		A03D3EE11EA86A6400F85308 /* DealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C541EA86A6300F85308 /* DealViewController.swift */; };
 		A03D3EE21EA86A6400F85308 /* NSData+NTES.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C581EA86A6300F85308 /* NSData+NTES.m */; };
 		A03D3EE31EA86A6400F85308 /* NSDictionary+NTESJson.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C5A1EA86A6300F85308 /* NSDictionary+NTESJson.m */; };
@@ -380,6 +382,9 @@
 		6E16165B1EAF2EF100D95CB6 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		6E16165D1EAF322F00D95CB6 /* NewsNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsNavigationView.swift; sourceTree = "<group>"; };
 		6E16165F1EB0343600D95CB6 /* NewsListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListCell.swift; sourceTree = "<group>"; };
+		6E1616621EB04D0700D95CB6 /* ExchangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
+		6E1616651EB04D4E00D95CB6 /* ContactListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
+		6E1616671EB04DCE00D95CB6 /* ContactListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListCell.swift; sourceTree = "<group>"; };
 		6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOSStar-Bridging-Header.h"; sourceTree = "<group>"; };
 		6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
 		6EC3302C1EA84D98005C8DF9 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
@@ -406,7 +411,6 @@
 		A03D31551EA846AC00F85308 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		A03D31571EA846B900F85308 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		A03D3C501EA86A6300F85308 /* MarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
-		A03D3C521EA86A6300F85308 /* ExchangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
 		A03D3C541EA86A6300F85308 /* DealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealViewController.swift; sourceTree = "<group>"; };
 		A03D3C571EA86A6300F85308 /* NSData+NTES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+NTES.h"; sourceTree = "<group>"; };
 		A03D3C581EA86A6300F85308 /* NSData+NTES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+NTES.m"; sourceTree = "<group>"; };
@@ -1106,6 +1110,25 @@
 			path = iOSStar/Scenes/News/Controller;
 			sourceTree = SOURCE_ROOT;
 		};
+		6E1616611EB04D0700D95CB6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6E1616621EB04D0700D95CB6 /* ExchangeViewController.swift */,
+				6E1616651EB04D4E00D95CB6 /* ContactListViewController.swift */,
+			);
+			name = Controller;
+			path = iOSStar/Scenes/Exchange/Controller;
+			sourceTree = SOURCE_ROOT;
+		};
+		6E1616631EB04D0700D95CB6 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				6E1616671EB04DCE00D95CB6 /* ContactListCell.swift */,
+			);
+			name = CustomView;
+			path = iOSStar/Scenes/Exchange/CustomView;
+			sourceTree = SOURCE_ROOT;
+		};
 		A001A96F1EAD9F5A00752F1A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1175,7 +1198,8 @@
 		A03D3C511EA86A6300F85308 /* Exchange */ = {
 			isa = PBXGroup;
 			children = (
-				A03D3C521EA86A6300F85308 /* ExchangeViewController.swift */,
+				6E1616611EB04D0700D95CB6 /* Controller */,
+				6E1616631EB04D0700D95CB6 /* CustomView */,
 			);
 			name = Exchange;
 			path = iOSSTar/Scenes/Exchange;
@@ -2965,6 +2989,7 @@
 				A03D3EE71EA86A6400F85308 /* UIImage+NTES.m in Sources */,
 				A03D3F501EA86A6500F85308 /* NIMTeamAnnouncementListCell.m in Sources */,
 				A03D3FDE1EA86A6500F85308 /* NTESEmailSettingViewController.m in Sources */,
+				6E1616661EB04D4E00D95CB6 /* ContactListViewController.swift in Sources */,
 				A03D3F621EA86A6500F85308 /* NTESNavigationHandler.m in Sources */,
 				A03D3EF01EA86A6400F85308 /* UIImage+NIM.m in Sources */,
 				A03D3F061EA86A6400F85308 /* NIMContactDataItem.m in Sources */,
@@ -3009,6 +3034,7 @@
 				A03D3F111EA86A6400F85308 /* NIMInputEmoticonManager.m in Sources */,
 				A001A9761EADCABE00752F1A /* SellOutCell.swift in Sources */,
 				A03D3F281EA86A6400F85308 /* NIMKitLocationPoint.m in Sources */,
+				6E1616641EB04D0700D95CB6 /* ExchangeViewController.swift in Sources */,
 				A03D3FB81EA86A6500F85308 /* NTESSessionViewController.m in Sources */,
 				A03D3F161EA86A6400F85308 /* NIMInputView.m in Sources */,
 				A03D3F151EA86A6400F85308 /* NIMInputToolBar.m in Sources */,
@@ -3153,7 +3179,11 @@
 				A03D3F8F1EA86A6500F85308 /* NTESContactViewController.m in Sources */,
 				A03D3F141EA86A6400F85308 /* NIMInputMoreContainerView.m in Sources */,
 				A03D3EF11EA86A6400F85308 /* UITableView+NIMScrollToBottom.m in Sources */,
+
 				A025E4B91EB04253002E1AA4 /* DealListVC.swift in Sources */,
+
+				6E1616681EB04DCE00D95CB6 /* ContactListCell.swift in Sources */,
+
 				A072389B1EA76AA300E755DB /* ViewController.swift in Sources */,
 				A03D3EEF1EA86A6400F85308 /* NSString+NIMKit.m in Sources */,
 				A03D3FB71EA86A6500F85308 /* NTESSessionRemoteHistoryViewController.m in Sources */,
@@ -3184,7 +3214,6 @@
 				A03D3F321EA86A6400F85308 /* NIMSessionTableAdapter.m in Sources */,
 				A072389C1EA76AA300E755DB /* AppConst.swift in Sources */,
 				A08A9BB71EA9F22F009E6B2B /* UserVC.swift in Sources */,
-				A03D3EE01EA86A6400F85308 /* ExchangeViewController.swift in Sources */,
 				A03D3F451EA86A6500F85308 /* NIMTeamCardOperationItem.m in Sources */,
 				A03D3EFE1EA86A6400F85308 /* NIMKitNotificationFirer.m in Sources */,
 				A03D3FCD1EA86A6500F85308 /* NTESSessionListViewController.m in Sources */,
