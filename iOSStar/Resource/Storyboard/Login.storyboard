@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j9j-xh-Qc8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j9j-xh-Qc8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -210,7 +210,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6Y-0I-Eba">
                                                     <rect key="frame" x="13" y="36" width="349" height="44"/>
-                                                    <color key="backgroundColor" red="0.91372549020000005" green="0.3411764706" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.094117647060000004" green="0.36078431370000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="sI3-au-7fJ"/>
                                                     </constraints>
@@ -430,16 +430,16 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CzJ-qC-pm7">
                                                     <rect key="frame" x="13" y="0.0" width="349" height="40"/>
                                                     <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R0Y-1I-QRL">
-                                                            <rect key="frame" x="-2" y="-5" width="193" height="45"/>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R0Y-1I-QRL">
+                                                            <rect key="frame" x="0.0" y="0.0" width="191" height="40"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
-                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eg6-8b-egW">
-                                                            <rect key="frame" x="201" y="-5" width="140" height="45"/>
-                                                            <color key="backgroundColor" red="0.91372549020000005" green="0.3411764706" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eg6-8b-egW">
+                                                            <rect key="frame" x="201" y="0.0" width="140" height="40"/>
+                                                            <color key="backgroundColor" red="0.094117647058823528" green="0.36078431372549019" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="140" id="CLi-K3-xto"/>
                                                             </constraints>
@@ -454,7 +454,14 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="Eg6-8b-egW" secondAttribute="bottom" id="0ZN-nZ-KSE"/>
+                                                        <constraint firstItem="Eg6-8b-egW" firstAttribute="leading" secondItem="R0Y-1I-QRL" secondAttribute="trailing" constant="10" id="58C-Nc-HVe"/>
                                                         <constraint firstItem="Eg6-8b-egW" firstAttribute="leading" secondItem="R0Y-1I-QRL" secondAttribute="trailing" constant="10" id="EbA-IH-yi7"/>
+                                                        <constraint firstItem="R0Y-1I-QRL" firstAttribute="top" secondItem="CzJ-qC-pm7" secondAttribute="top" id="aSf-eF-zgN"/>
+                                                        <constraint firstItem="R0Y-1I-QRL" firstAttribute="leading" secondItem="CzJ-qC-pm7" secondAttribute="leading" id="avk-6s-y1s"/>
+                                                        <constraint firstItem="Eg6-8b-egW" firstAttribute="top" secondItem="CzJ-qC-pm7" secondAttribute="top" id="nm0-QN-VXI"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Eg6-8b-egW" secondAttribute="trailing" constant="8" id="o6G-Q7-IPI"/>
+                                                        <constraint firstAttribute="bottom" secondItem="R0Y-1I-QRL" secondAttribute="bottom" id="rHx-pa-Lwf"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -487,7 +494,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0el-0J-Upt">
                                                     <rect key="frame" x="13" y="36" width="349" height="44"/>
-                                                    <color key="backgroundColor" red="0.91372549020000005" green="0.3411764706" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.094117647058823528" green="0.36078431372549019" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="iQL-dh-0Cr"/>
                                                     </constraints>
@@ -530,12 +537,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vY-rf-DqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="601" y="-209"/>
+            <point key="canvasLocation" x="600.79999999999995" y="-209.14542728635683"/>
         </scene>
-        <!--注册-->
+        <!--输入密码-->
         <scene sceneID="ZGG-A3-zTo">
             <objects>
-                <tableViewController storyboardIdentifier="SetPwdVC" title="注册" id="ndY-4b-9SP" customClass="RegistVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SetPwdVC" title="输入密码" id="ndY-4b-9SP" customClass="RegistVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="CX4-ms-h0s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -662,7 +669,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCu-5o-F6B">
                                                     <rect key="frame" x="13" y="36" width="349" height="44"/>
-                                                    <color key="backgroundColor" red="0.91372549020000005" green="0.3411764706" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.094117647060000004" green="0.36078431370000003" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="dbz-i7-GzC"/>
                                                     </constraints>

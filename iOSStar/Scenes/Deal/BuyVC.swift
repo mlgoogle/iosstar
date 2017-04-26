@@ -10,16 +10,20 @@ import UIKit
 
 class BuyVC: UIViewController ,UITableViewDelegate ,UITableViewDataSource {
 
+    var isSellout : Bool = false
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tableView.reloadData()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
     
-        if section == 0{
+        if section == 1{
             return 1
+        }
+        if section == 2{
+            return 380
         }
         return 0
     }
@@ -27,28 +31,30 @@ class BuyVC: UIViewController ,UITableViewDelegate ,UITableViewDataSource {
      {
     
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BuyVCCell")
-        return cell!
+        let cell : BuyVCCell = tableView.dequeueReusableCell(withIdentifier: "BuyVCCell") as! BuyVCCell
+        cell.isSellout = isSellout
+        return cell
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 220
+        return 360
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 1 || section == 0{
+        if  section == 0 || section == 2{
          return 40
         }
-        return 0.001
+        return 10
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 2{
-            return  10
+        if section == 0{
+            return  0.001
+
         }
         return 10
     }
@@ -86,7 +92,7 @@ class BuyVC: UIViewController ,UITableViewDelegate ,UITableViewDataSource {
             
             return view
         }
-        if section == 1{
+        if section == 2{
         
             view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: 40))
             view?.backgroundColor = UIColor.white
