@@ -16,6 +16,8 @@
 		6E1616641EB04D0700D95CB6 /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616621EB04D0700D95CB6 /* ExchangeViewController.swift */; };
 		6E1616661EB04D4E00D95CB6 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616651EB04D4E00D95CB6 /* ContactListViewController.swift */; };
 		6E1616681EB04DCE00D95CB6 /* ContactListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616671EB04DCE00D95CB6 /* ContactListCell.swift */; };
+		6E16166C1EB0960E00D95CB6 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16166A1EB0960E00D95CB6 /* MarketViewController.swift */; };
+		6E16166E1EB0973700D95CB6 /* MarketMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16166D1EB0973700D95CB6 /* MarketMenuView.swift */; };
 		6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */; };
 		6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302C1EA84D98005C8DF9 /* Market.storyboard */; };
 		A001A96C1EAD884D00752F1A /* HaveBuyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A96B1EAD884D00752F1A /* HaveBuyVC.swift */; };
@@ -33,7 +35,6 @@
 		A03D31541EA846A100F85308 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31531EA846A100F85308 /* AudioToolbox.framework */; };
 		A03D31561EA846AC00F85308 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31551EA846AC00F85308 /* VideoToolbox.framework */; };
 		A03D31581EA846B900F85308 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31571EA846B900F85308 /* libc++.tbd */; };
-		A03D3EDF1EA86A6400F85308 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C501EA86A6300F85308 /* MarketViewController.swift */; };
 		A03D3EE11EA86A6400F85308 /* DealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C541EA86A6300F85308 /* DealViewController.swift */; };
 		A03D3EE21EA86A6400F85308 /* NSData+NTES.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C581EA86A6300F85308 /* NSData+NTES.m */; };
 		A03D3EE31EA86A6400F85308 /* NSDictionary+NTESJson.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C5A1EA86A6300F85308 /* NSDictionary+NTESJson.m */; };
@@ -377,6 +378,8 @@
 		6E1616621EB04D0700D95CB6 /* ExchangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
 		6E1616651EB04D4E00D95CB6 /* ContactListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		6E1616671EB04DCE00D95CB6 /* ContactListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListCell.swift; sourceTree = "<group>"; };
+		6E16166A1EB0960E00D95CB6 /* MarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
+		6E16166D1EB0973700D95CB6 /* MarketMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketMenuView.swift; sourceTree = "<group>"; };
 		6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOSStar-Bridging-Header.h"; sourceTree = "<group>"; };
 		6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
 		6EC3302C1EA84D98005C8DF9 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
@@ -397,7 +400,6 @@
 		A03D31531EA846A100F85308 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A03D31551EA846AC00F85308 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		A03D31571EA846B900F85308 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		A03D3C501EA86A6300F85308 /* MarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		A03D3C541EA86A6300F85308 /* DealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealViewController.swift; sourceTree = "<group>"; };
 		A03D3C571EA86A6300F85308 /* NSData+NTES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+NTES.h"; sourceTree = "<group>"; };
 		A03D3C581EA86A6300F85308 /* NSData+NTES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+NTES.m"; sourceTree = "<group>"; };
@@ -1114,6 +1116,24 @@
 			path = iOSStar/Scenes/Exchange/CustomView;
 			sourceTree = SOURCE_ROOT;
 		};
+		6E1616691EB0960E00D95CB6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6E16166A1EB0960E00D95CB6 /* MarketViewController.swift */,
+			);
+			name = Controller;
+			path = iOSStar/Scenes/Market/Controller;
+			sourceTree = SOURCE_ROOT;
+		};
+		6E16166B1EB0960E00D95CB6 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				6E16166D1EB0973700D95CB6 /* MarketMenuView.swift */,
+			);
+			name = CustomView;
+			path = iOSStar/Scenes/Market/CustomView;
+			sourceTree = SOURCE_ROOT;
+		};
 		A001A96F1EAD9F5A00752F1A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1167,7 +1187,8 @@
 		A03D3C4F1EA86A6300F85308 /* Market */ = {
 			isa = PBXGroup;
 			children = (
-				A03D3C501EA86A6300F85308 /* MarketViewController.swift */,
+				6E1616691EB0960E00D95CB6 /* Controller */,
+				6E16166B1EB0960E00D95CB6 /* CustomView */,
 			);
 			name = Market;
 			path = iOSSTar/Scenes/Market;
@@ -2977,9 +2998,9 @@
 				A03D3FEC1EA86A6500F85308 /* NTESBundleSetting.m in Sources */,
 				A03D3F661EA86A6500F85308 /* NTESMarginButton.m in Sources */,
 				A03D3F271EA86A6400F85308 /* NIMCellLayoutConfig.m in Sources */,
+				6E16166E1EB0973700D95CB6 /* MarketMenuView.swift in Sources */,
 				A03D3F0D1EA86A6400F85308 /* NIMInputAtCache.m in Sources */,
 				A03D3EED1EA86A6400F85308 /* M80AttributedLabel+NIMKit.m in Sources */,
-				A03D3EDF1EA86A6400F85308 /* MarketViewController.swift in Sources */,
 				A03D3FEF1EA86A6500F85308 /* NTESDemoConfig.m in Sources */,
 				A03D3F3B1EA86A6400F85308 /* NIMSessionNotificationContentView.m in Sources */,
 				A03D3F6C1EA86A6500F85308 /* NTESColorButtonCell.m in Sources */,
@@ -3176,6 +3197,7 @@
 				A072389A1EA76AA300E755DB /* BaseTabBarController.swift in Sources */,
 				A03D3FC21EA86A6500F85308 /* NTESVideoChatViewController.m in Sources */,
 				A08A9BBD1EAA0D3B009E6B2B /* BuyVCCell.swift in Sources */,
+				6E16166C1EB0960E00D95CB6 /* MarketViewController.swift in Sources */,
 				A03D3F6D1EA86A6500F85308 /* NTESJionTeamViewController.m in Sources */,
 				A03D3F321EA86A6400F85308 /* NIMSessionTableAdapter.m in Sources */,
 				A072389C1EA76AA300E755DB /* AppConst.swift in Sources */,
