@@ -12,6 +12,7 @@
 		6E1616591EAF1F4C00D95CB6 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616581EAF1F4C00D95CB6 /* NewsViewController.swift */; };
 		6E16165C1EAF2EF100D95CB6 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16165B1EAF2EF100D95CB6 /* NewsDetailViewController.swift */; };
 		6E16165E1EAF322F00D95CB6 /* NewsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16165D1EAF322F00D95CB6 /* NewsNavigationView.swift */; };
+		6E1616601EB0343600D95CB6 /* NewsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16165F1EB0343600D95CB6 /* NewsListCell.swift */; };
 		6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */; };
 		6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302C1EA84D98005C8DF9 /* Market.storyboard */; };
 		A001A96C1EAD884D00752F1A /* HaveBuyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A96B1EAD884D00752F1A /* HaveBuyVC.swift */; };
@@ -377,6 +378,7 @@
 		6E1616581EAF1F4C00D95CB6 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		6E16165B1EAF2EF100D95CB6 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		6E16165D1EAF322F00D95CB6 /* NewsNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsNavigationView.swift; sourceTree = "<group>"; };
+		6E16165F1EB0343600D95CB6 /* NewsListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListCell.swift; sourceTree = "<group>"; };
 		6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOSStar-Bridging-Header.h"; sourceTree = "<group>"; };
 		6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
 		6EC3302C1EA84D98005C8DF9 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
@@ -1087,6 +1089,7 @@
 			isa = PBXGroup;
 			children = (
 				6E16165D1EAF322F00D95CB6 /* NewsNavigationView.swift */,
+				6E16165F1EB0343600D95CB6 /* NewsListCell.swift */,
 			);
 			name = CustomView;
 			path = iOSStar/Scenes/News/CustomView;
@@ -2741,8 +2744,9 @@
 				TargetAttributes = {
 					A07238491EA768AC00E755DB = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 96YGS7NXK5;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -3183,6 +3187,7 @@
 				A03D3EFE1EA86A6400F85308 /* NIMKitNotificationFirer.m in Sources */,
 				A03D3FCD1EA86A6500F85308 /* NTESSessionListViewController.m in Sources */,
 				A03D3F681EA86A6500F85308 /* NTESCellLayoutConfig.m in Sources */,
+				6E1616601EB0343600D95CB6 /* NewsListCell.swift in Sources */,
 				A03D3F971EA86A6500F85308 /* NTESSystemNotificationViewController.m in Sources */,
 				A03D3F781EA86A6500F85308 /* NTESChatroomMaker.m in Sources */,
 				A03D3FB31EA86A6500F85308 /* NTESGalleryViewController.m in Sources */,
@@ -3310,6 +3315,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 96YGS7NXK5;
 				INFOPLIST_FILE = "$(SRCROOT)/iOSStar/Resource/plist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -3317,8 +3323,10 @@
 					"$(PROJECT_DIR)/iOSStar/Library/WeChatSDK1.7.4",
 					"$(PROJECT_DIR)/Pods/NIMSDK/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = yundian.iOSStar.com;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yundian.trip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "eb667b43-e180-40c3-8f90-af8afec6849a";
+				PROVISIONING_PROFILE_SPECIFIER = "dev-16-09-22";
 				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -3331,6 +3339,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 96YGS7NXK5;
 				INFOPLIST_FILE = "$(SRCROOT)/iOSStar/Resource/plist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -3338,8 +3347,10 @@
 					"$(PROJECT_DIR)/iOSStar/Library/WeChatSDK1.7.4",
 					"$(PROJECT_DIR)/Pods/NIMSDK/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = yundian.iOSStar.com;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yundian.trip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "eb667b43-e180-40c3-8f90-af8afec6849a";
+				PROVISIONING_PROFILE_SPECIFIER = "dev-16-09-22";
 				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
