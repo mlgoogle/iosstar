@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Xiv-eQ-9Z9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2vG-Fh-E77">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,29 +10,27 @@
     </dependencies>
     <scenes>
         <!--Base Navigation Controller-->
-        <scene sceneID="FpB-a2-57i">
+        <scene sceneID="KOM-4W-A5x">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xiv-eQ-9Z9" customClass="BaseNavigationController" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yeR-nS-uuj">
+                <navigationController storyboardIdentifier="User" useStoryboardIdentifierAsRestorationIdentifier="YES" hidesBarsWhenKeyboardAppears="YES" id="2vG-Fh-E77" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="j70-IU-m3w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="E38-p2-rxH" kind="relationship" relationship="rootViewController" id="Xgt-kM-Mxv"/>
+                        <segue destination="E38-p2-rxH" kind="relationship" relationship="rootViewController" id="iA9-uq-d3v"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uVu-nV-9xs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FoW-2Y-djm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="453.60000000000002" y="-73.313343328335833"/>
+            <point key="canvasLocation" x="250" y="-73"/>
         </scene>
         <!--个人中心-->
         <scene sceneID="zOu-EK-E9Q">
             <objects>
                 <tableViewController title="个人中心" id="E38-p2-rxH" customClass="UserVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="I3h-J9-1T3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -177,7 +175,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="pfL-cj-uD4" kind="push" id="8Jn-SH-YMp"/>
+                                            <segue destination="pfL-cj-uD4" kind="show" id="8Jn-SH-YMp"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -316,7 +314,7 @@
             <objects>
                 <tableViewController title="资产管理" hidesBottomBarWhenPushed="YES" id="pfL-cj-uD4" customClass="WealthVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="F3r-Gq-9MM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -833,7 +831,7 @@
             <objects>
                 <tableViewController title="设置" hidesBottomBarWhenPushed="YES" id="yJY-97-dbt" customClass="SettingVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WkX-Zw-aG4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -1026,7 +1024,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="BankCardVC" title="银行卡" hidesBottomBarWhenPushed="YES" id="E2d-pF-k4Z" customClass="BankCardVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="dyY-ck-58a">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>

@@ -8,20 +8,21 @@
 
 import UIKit
 
-class UserVC: UITableViewController {
+class UserVC: UITableViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let view = UIView.init()
         view.backgroundColor = UIColor.clear
         self.tableView.tableFooterView = view
-    }
-
+    }  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
