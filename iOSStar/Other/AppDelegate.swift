@@ -24,21 +24,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.sdkConfigDelegate = NTESSDKConfigDelegate.init()
         
-    NIMSDKConfig.shared().delegate = self.sdkConfigDelegate
-    NIMSDKConfig.shared().shouldSyncUnreadCount = true
+        NIMSDKConfig.shared().delegate = self.sdkConfigDelegate
+        NIMSDKConfig.shared().shouldSyncUnreadCount = true
 
         NIMSDK.shared().register(withAppID: "45c6af3c98409b18a84451215d0bdd6e", cerName: "")
         NIMKit.shared().registerLayoutConfig(NTESCellLayoutConfig.self)
 
         NIMCustomObject.registerCustomDecoder(NTESCustomAttachmentDecoder.init())
+        
+       
         //   NSString *appKey = [[NTESDemoConfig sharedConfig] appKey];
 //        NSString *cerName= [[NTESDemoConfig sharedConfig] cerName];
     
         
 //        [[NIMSDK sharedSDK] registerWithAppID:您的APPKEY
-//            cerName:您的推送证书名];
-
-     window?.rootViewController = BaseTabBarController()
+//            cerName:您的推送证书名]
+ 
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent;
 
         return true

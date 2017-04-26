@@ -14,5 +14,6 @@ class ShareDataModel: NSObject {
     class func share() -> ShareDataModel{
         return model
     }
-    var setChooseLogin : Bool = false
+
+    var isdoregist : Bool = false
 }

@@ -47,7 +47,8 @@ class DealViewController: UIViewController ,UIScrollViewDelegate{
          else   if i == 1{
                 
                 let story = UIStoryboard.init(name: "Deal", bundle: nil)
-                let vc = story.instantiateViewController(withIdentifier: "SellOutVC")
+                let vc : BuyVC = story.instantiateViewController(withIdentifier: "BuyVC") as! BuyVC
+                vc.isSellout = true
                 scrollView?.addSubview(vc.view)
                 vc.view.frame =  CGRect.init(x: (CGFloat.init(i)) * (self.view.frame.size.width), y: 0, width: self.view.frame.size.width, height: ((CGFloat.init((scrollView?.frame.size.height)!))))
                 self.addChildViewController(vc)
@@ -55,7 +56,8 @@ class DealViewController: UIViewController ,UIScrollViewDelegate{
             else   if i == 0{
                 
                 let story = UIStoryboard.init(name: "Deal", bundle: nil)
-                let vc = story.instantiateViewController(withIdentifier: "BuyVC")
+                let vc : BuyVC = story.instantiateViewController(withIdentifier: "BuyVC") as! BuyVC
+                vc.isSellout = false
                 scrollView?.addSubview(vc.view)
                 vc.view.frame =  CGRect.init(x: (CGFloat.init(i)) * (self.view.frame.size.width), y: 0, width: self.view.frame.size.width, height: ((CGFloat.init((scrollView?.frame.size.height)!))))
                 self.addChildViewController(vc)

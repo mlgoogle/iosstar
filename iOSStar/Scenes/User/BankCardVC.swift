@@ -1,53 +1,53 @@
 //
-//  UserVC.swift
+//  BankCardVC.swift
 //  iOSStar
 //
-//  Created by sum on 2017/4/21.
+//  Created by sum on 2017/4/26.
 //  Copyright © 2017年 YunDian. All rights reserved.
 //
 
 import UIKit
-
-class UserVC: UITableViewController  {
+class BankCardCell: UITableViewCell {
+    
+}
+class BankCardVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let view = UIView.init()
-        view.backgroundColor = UIColor.clear
-        self.tableView.tableFooterView = view
-    }  
+
+     
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 4
+        return 5
     }
 
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 5 : 20
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return section == 0 ? 1 : (section == 1 ? 1 : (section == 2 ? 2 :3))
+        return 1
     }
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 0.001 : 20
-      
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 120
     }
-   
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BankCardCell", for: indexPath)
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.
