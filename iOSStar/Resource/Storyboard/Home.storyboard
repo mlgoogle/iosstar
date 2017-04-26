@@ -21,41 +21,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9XI-We-GY2">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9XI-We-GY2">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celle" rowHeight="88" id="4pi-zy-aLv">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="88"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NewsListCell" rowHeight="100" id="4pi-zy-aLv" customClass="NewsListCell" customModule="iOSStar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4pi-zy-aLv" id="abC-Cq-ggh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8" translatesAutoresizingMaskIntoConstraints="NO" id="HSp-Zg-yZ3">
-                                                    <rect key="frame" x="275" y="0.0" width="100" height="87"/>
+                                                    <rect key="frame" x="243" y="10" width="120" height="79.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="nxv-vi-Cbj"/>
+                                                        <constraint firstAttribute="width" constant="120" id="nxv-vi-Cbj"/>
                                                     </constraints>
                                                 </imageView>
+                                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5PQ-Mw-q3j">
+                                                    <rect key="frame" x="12" y="98.5" width="351" height="1"/>
+                                                    <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="dBk-4u-io9"/>
+                                                    </constraints>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是一个label是一个label是一个label是一个label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ze-n6-zAD">
-                                                    <rect key="frame" x="30" y="10" width="215" height="67.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="12" y="33" width="211" height="33.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="HSp-Zg-yZ3" secondAttribute="trailing" id="4a7-Tq-DCz"/>
-                                                <constraint firstItem="7ze-n6-zAD" firstAttribute="leading" secondItem="abC-Cq-ggh" secondAttribute="leading" constant="30" id="FfM-p0-UUc"/>
-                                                <constraint firstItem="HSp-Zg-yZ3" firstAttribute="leading" secondItem="7ze-n6-zAD" secondAttribute="trailing" constant="30" id="IZD-XG-cRp"/>
-                                                <constraint firstAttribute="bottom" secondItem="7ze-n6-zAD" secondAttribute="bottom" constant="10" id="OfY-ol-B2w"/>
-                                                <constraint firstAttribute="bottom" secondItem="HSp-Zg-yZ3" secondAttribute="bottom" id="VaS-hN-UZp"/>
-                                                <constraint firstItem="7ze-n6-zAD" firstAttribute="top" secondItem="abC-Cq-ggh" secondAttribute="top" constant="10" id="a2U-co-SFw"/>
-                                                <constraint firstItem="HSp-Zg-yZ3" firstAttribute="top" secondItem="abC-Cq-ggh" secondAttribute="top" id="hdI-DA-N9z"/>
+                                                <constraint firstItem="HSp-Zg-yZ3" firstAttribute="centerY" secondItem="7ze-n6-zAD" secondAttribute="centerY" id="2VM-m6-YI1"/>
+                                                <constraint firstAttribute="trailing" secondItem="HSp-Zg-yZ3" secondAttribute="trailing" constant="12" id="4a7-Tq-DCz"/>
+                                                <constraint firstItem="HSp-Zg-yZ3" firstAttribute="leading" secondItem="7ze-n6-zAD" secondAttribute="trailing" constant="20" id="Aae-0S-jvt"/>
+                                                <constraint firstAttribute="bottom" secondItem="5PQ-Mw-q3j" secondAttribute="bottom" id="Jmy-eo-qpb"/>
+                                                <constraint firstItem="5PQ-Mw-q3j" firstAttribute="leading" secondItem="abC-Cq-ggh" secondAttribute="leading" constant="12" id="SfP-p0-YOD"/>
+                                                <constraint firstAttribute="bottom" secondItem="HSp-Zg-yZ3" secondAttribute="bottom" constant="10" id="VaS-hN-UZp"/>
+                                                <constraint firstItem="HSp-Zg-yZ3" firstAttribute="top" secondItem="abC-Cq-ggh" secondAttribute="top" constant="10" id="hdI-DA-N9z"/>
+                                                <constraint firstItem="7ze-n6-zAD" firstAttribute="leading" secondItem="abC-Cq-ggh" secondAttribute="leading" constant="12" id="iNZ-1S-hcK"/>
+                                                <constraint firstAttribute="trailing" secondItem="5PQ-Mw-q3j" secondAttribute="trailing" constant="12" id="y81-z3-7yO"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="newsImageView" destination="HSp-Zg-yZ3" id="L4o-DV-MBh"/>
+                                            <outlet property="titleLabel" destination="7ze-n6-zAD" id="ScP-7B-752"/>
                                             <segue destination="MmR-VE-X0R" kind="show" id="aLN-sI-C8w"/>
                                         </connections>
                                     </tableViewCell>
@@ -86,7 +97,7 @@
         <!--News Detail View Controller-->
         <scene sceneID="Ul9-Ht-Gje">
             <objects>
-                <viewController id="MmR-VE-X0R" customClass="NewsDetailViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="MmR-VE-X0R" customClass="NewsDetailViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ozU-1X-WfV"/>
                         <viewControllerLayoutGuide type="bottom" id="Dbb-QZ-NuD"/>
@@ -101,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="1770" y="149"/>
         </scene>
-        <!--Base Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="3wn-9d-b9s">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zti-WN-NNc" customClass="BaseNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zti-WN-NNc" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8PJ-E2-YVN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
