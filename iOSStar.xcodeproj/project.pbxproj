@@ -21,14 +21,19 @@
 		6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */; };
 		6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302C1EA84D98005C8DF9 /* Market.storyboard */; };
 		A001A96C1EAD884D00752F1A /* HaveBuyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A96B1EAD884D00752F1A /* HaveBuyVC.swift */; };
-		A001A96E1EAD9E6A00752F1A /* SetPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A96D1EAD9E6A00752F1A /* SetPwdVC.swift */; };
 		A001A9721EAD9F8D00752F1A /* ShareDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */; };
 		A001A9741EADC91C00752F1A /* SellOutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9731EADC91C00752F1A /* SellOutVC.swift */; };
 		A001A9761EADCABE00752F1A /* SellOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9751EADCABE00752F1A /* SellOutCell.swift */; };
 		A0155E071EA8ABF20047B95B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0155E061EA8ABF20047B95B /* Images.xcassets */; };
 		A0155E0B1EA8C8850047B95B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0155E0A1EA8C8850047B95B /* Login.storyboard */; };
-		A0155E0E1EA8C93E0047B95B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0155E0D1EA8C93E0047B95B /* LoginVC.swift */; };
 		A0155E101EA8C9760047B95B /* RegistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0155E0F1EA8C9760047B95B /* RegistVC.swift */; };
+		A025E4B31EB03B36002E1AA4 /* WealthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A025E4B21EB03B36002E1AA4 /* WealthVC.swift */; };
+		A025E4B51EB03D65002E1AA4 /* RechargeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A025E4B41EB03D65002E1AA4 /* RechargeVC.swift */; };
+		A025E4B71EB03DA1002E1AA4 /* WithdrawalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A025E4B61EB03DA1002E1AA4 /* WithdrawalVC.swift */; };
+		A025E4B91EB04253002E1AA4 /* DealListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A025E4B81EB04253002E1AA4 /* DealListVC.swift */; };
+		A025E4BB1EB0457A002E1AA4 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A025E4BA1EB0457A002E1AA4 /* SettingVC.swift */; };
+		A025E4BD1EB04895002E1AA4 /* AccountInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A025E4BC1EB04895002E1AA4 /* AccountInfoVC.swift */; };
+		A025E4BF1EB04A96002E1AA4 /* BankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A025E4BE1EB04A96002E1AA4 /* BankCardVC.swift */; };
 		A03D314E1EA8465000F85308 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D314D1EA8465000F85308 /* MobileCoreServices.framework */; };
 		A03D31501EA8466500F85308 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D314F1EA8466500F85308 /* AVFoundation.framework */; };
 		A03D31521EA8469900F85308 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31511EA8469900F85308 /* CoreMedia.framework */; };
@@ -343,6 +348,10 @@
 		A07238B51EA76F4100E755DB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B41EA76F4100E755DB /* Home.storyboard */; };
 		A07238B71EA76F4D00E755DB /* Deal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B61EA76F4D00E755DB /* Deal.storyboard */; };
 		A07238B91EA76F5600E755DB /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B81EA76F5600E755DB /* User.storyboard */; };
+		A08569FA1EB08FCA004F349B /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08569F91EB08FCA004F349B /* BaseNavigationController.swift */; };
+		A085A51B1EB0771C00149F14 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085A51A1EB0771C00149F14 /* LoginVC.swift */; };
+		A085A51D1EB079F200149F14 /* InputPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085A51C1EB079F200149F14 /* InputPwdVC.swift */; };
+		A085A51F1EB0801300149F14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922A41EA88DFE002725A0 /* Main.storyboard */; };
 		A08A9BB11EA991D5009E6B2B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */; };
 		A08A9BB31EA994C2009E6B2B /* FotgotPwd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB21EA994C2009E6B2B /* FotgotPwd.swift */; };
 		A08A9BB51EA99547009E6B2B /* FotgotPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB41EA99547009E6B2B /* FotgotPwdVC.swift */; };
@@ -363,7 +372,6 @@
 		A0C9D6751EAE102300FC438D /* video_chat_tip_receiver.aac in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D6681EAE102300FC438D /* video_chat_tip_receiver.aac */; };
 		A0C9D6761EAE102300FC438D /* video_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D6691EAE102300FC438D /* video_chat_tip_sender.aac */; };
 		A0C9D6771EAE102300FC438D /* video_connect_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D66A1EAE102300FC438D /* video_connect_chat_tip_sender.aac */; };
-		A0C9D6781EAE10EB00FC438D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922A41EA88DFE002725A0 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -386,14 +394,19 @@
 		8408122B704986AA5A9C486E /* Pods-iOSStar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.debug.xcconfig"; sourceTree = "<group>"; };
 		8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A001A96B1EAD884D00752F1A /* HaveBuyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HaveBuyVC.swift; sourceTree = "<group>"; };
-		A001A96D1EAD9E6A00752F1A /* SetPwdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetPwdVC.swift; sourceTree = "<group>"; };
 		A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareDataModel.swift; sourceTree = "<group>"; };
 		A001A9731EADC91C00752F1A /* SellOutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellOutVC.swift; sourceTree = "<group>"; };
 		A001A9751EADCABE00752F1A /* SellOutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellOutCell.swift; sourceTree = "<group>"; };
 		A0155E061EA8ABF20047B95B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A0155E0A1EA8C8850047B95B /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		A0155E0D1EA8C93E0047B95B /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		A0155E0F1EA8C9760047B95B /* RegistVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistVC.swift; sourceTree = "<group>"; };
+		A025E4B21EB03B36002E1AA4 /* WealthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WealthVC.swift; sourceTree = "<group>"; };
+		A025E4B41EB03D65002E1AA4 /* RechargeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeVC.swift; sourceTree = "<group>"; };
+		A025E4B61EB03DA1002E1AA4 /* WithdrawalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithdrawalVC.swift; sourceTree = "<group>"; };
+		A025E4B81EB04253002E1AA4 /* DealListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealListVC.swift; sourceTree = "<group>"; };
+		A025E4BA1EB0457A002E1AA4 /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		A025E4BC1EB04895002E1AA4 /* AccountInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountInfoVC.swift; sourceTree = "<group>"; };
+		A025E4BE1EB04A96002E1AA4 /* BankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardVC.swift; sourceTree = "<group>"; };
 		A03D314D1EA8465000F85308 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A03D314F1EA8466500F85308 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A03D31511EA8469900F85308 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -976,7 +989,6 @@
 		A07238821EA76AA300E755DB /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		A07238831EA76AA300E755DB /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		A07238841EA76AA300E755DB /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
-		A07238871EA76AA300E755DB /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		A07238891EA76AA300E755DB /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		A072388A1EA76AA300E755DB /* SVProgressHUDExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVProgressHUDExt.swift; sourceTree = "<group>"; };
 		A072388C1EA76AA300E755DB /* AppAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAPIHelper.swift; sourceTree = "<group>"; };
@@ -990,6 +1002,9 @@
 		A07238B41EA76F4100E755DB /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		A07238B61EA76F4D00E755DB /* Deal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Deal.storyboard; sourceTree = "<group>"; };
 		A07238B81EA76F5600E755DB /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		A08569F91EB08FCA004F349B /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseNavigationController.swift; path = iOSSTar/Other/BaseNavigationController.swift; sourceTree = SOURCE_ROOT; };
+		A085A51A1EB0771C00149F14 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		A085A51C1EB079F200149F14 /* InputPwdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPwdVC.swift; sourceTree = "<group>"; };
 		A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		A08A9BB21EA994C2009E6B2B /* FotgotPwd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FotgotPwd.swift; sourceTree = "<group>"; };
 		A08A9BB41EA99547009E6B2B /* FotgotPwdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FotgotPwdVC.swift; sourceTree = "<group>"; };
@@ -1154,11 +1169,11 @@
 		A0155E0C1EA8C9220047B95B /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				A0155E0D1EA8C93E0047B95B /* LoginVC.swift */,
 				A0155E0F1EA8C9760047B95B /* RegistVC.swift */,
 				A08A9BB21EA994C2009E6B2B /* FotgotPwd.swift */,
 				A08A9BB41EA99547009E6B2B /* FotgotPwdVC.swift */,
-				A001A96D1EAD9E6A00752F1A /* SetPwdVC.swift */,
+				A085A51A1EB0771C00149F14 /* LoginVC.swift */,
+				A085A51C1EB079F200149F14 /* InputPwdVC.swift */,
 			);
 			name = Login;
 			path = iOSSTar/Scenes/Login;
@@ -1168,7 +1183,14 @@
 			isa = PBXGroup;
 			children = (
 				A03D3FFA1EA8992E00F85308 /* HomeVC.swift */,
+				A025E4BC1EB04895002E1AA4 /* AccountInfoVC.swift */,
 				A08A9BB61EA9F22F009E6B2B /* UserVC.swift */,
+				A025E4B21EB03B36002E1AA4 /* WealthVC.swift */,
+				A025E4B41EB03D65002E1AA4 /* RechargeVC.swift */,
+				A025E4B61EB03DA1002E1AA4 /* WithdrawalVC.swift */,
+				A025E4B81EB04253002E1AA4 /* DealListVC.swift */,
+				A025E4BA1EB0457A002E1AA4 /* SettingVC.swift */,
+				A025E4BE1EB04A96002E1AA4 /* BankCardVC.swift */,
 			);
 			name = User;
 			path = iOSSTar/Scenes/User;
@@ -2595,6 +2617,7 @@
 		A07238761EA76AA300E755DB /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				A08569F91EB08FCA004F349B /* BaseNavigationController.swift */,
 				A07238771EA76AA300E755DB /* AppDelegate.swift */,
 				A072387A1EA76AA300E755DB /* ViewController.swift */,
 				A07238781EA76AA300E755DB /* BaseTabBarController.swift */,
@@ -2653,7 +2676,6 @@
 		A07238861EA76AA300E755DB /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				A07238871EA76AA300E755DB /* BaseNavigationController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -2797,7 +2819,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0C9D6781EAE10EB00FC438D /* Main.storyboard in Resources */,
+				A085A51F1EB0801300149F14 /* Main.storyboard in Resources */,
 				A03D3FC31EA86A6500F85308 /* NTESVideoChatViewController.xib in Resources */,
 				A03D3FD31EA86A6500F85308 /* NTESNetDetectViewController.xib in Resources */,
 				A07238931EA76AA300E755DB /* back.png in Resources */,
@@ -2930,9 +2952,11 @@
 				A03D3EE21EA86A6400F85308 /* NSData+NTES.m in Sources */,
 				A03D3F591EA86A6500F85308 /* NIMPinyinConverter.m in Sources */,
 				A03D3FDA1EA86A6500F85308 /* NTESSettingViewController.m in Sources */,
+				A025E4B71EB03DA1002E1AA4 /* WithdrawalVC.swift in Sources */,
 				A03D3EF21EA86A6400F85308 /* UIView+NIM.m in Sources */,
 				A03D3F4D1EA86A6500F85308 /* NIMTeamMemberCardViewController.m in Sources */,
 				A07238991EA76AA300E755DB /* AppDelegate.swift in Sources */,
+				A08569FA1EB08FCA004F349B /* BaseNavigationController.swift in Sources */,
 				A03D3F671EA86A6500F85308 /* NTESPageView.m in Sources */,
 				A03D3F091EA86A6400F85308 /* NIMContactSelectTabView.m in Sources */,
 				A07238A11EA76AA300E755DB /* SVProgressHUDExt.swift in Sources */,
@@ -2965,11 +2989,11 @@
 				A03D3F9E1EA86A6500F85308 /* NTESSessionConfig.m in Sources */,
 				A03D3F831EA86A6500F85308 /* NTESLiveMasterInfoView.m in Sources */,
 				A03D3FF81EA86A6600F85308 /* NTESPinyinConverter.m in Sources */,
-				A0155E0E1EA8C93E0047B95B /* LoginVC.swift in Sources */,
 				A03D3F221EA86A6400F85308 /* NIMNotificationContentConfig.m in Sources */,
 				A03D3F841EA86A6500F85308 /* NTESChatroomTextContentView.m in Sources */,
 				A03D3F3C1EA86A6400F85308 /* NIMSessionTextContentView.m in Sources */,
 				A03D3F331EA86A6400F85308 /* NIMMessageCell.m in Sources */,
+				A085A51D1EB079F200149F14 /* InputPwdVC.swift in Sources */,
 				A03D3F561EA86A6500F85308 /* NIMKitFileLocationHelper.m in Sources */,
 				A03D3FD81EA86A6500F85308 /* NTESAboutViewController.m in Sources */,
 				A03D3F801EA86A6500F85308 /* NTESChatroomSegmentedControl.m in Sources */,
@@ -3013,6 +3037,8 @@
 				A03D3FAF1EA86A6500F85308 /* NTESFilePreViewController.m in Sources */,
 				A03D3FE81EA86A6500F85308 /* NTESSettingSwitcherCell.m in Sources */,
 				A03D3FEB1EA86A6500F85308 /* NTESDemoService.m in Sources */,
+				A025E4BF1EB04A96002E1AA4 /* BankCardVC.swift in Sources */,
+				A025E4BD1EB04895002E1AA4 /* AccountInfoVC.swift in Sources */,
 				6E16165E1EAF322F00D95CB6 /* NewsNavigationView.swift in Sources */,
 				A03D3F301EA86A6400F85308 /* NIMSessionLayoutImpl.m in Sources */,
 				A03D3FC51EA86A6500F85308 /* NTESRecordSelectView.m in Sources */,
@@ -3046,6 +3072,7 @@
 				A03D3F541EA86A6500F85308 /* NIMTimePickerView.m in Sources */,
 				A03D3F491EA86A6500F85308 /* NIMAdvancedTeamCardViewController.m in Sources */,
 				A03D3F031EA86A6400F85308 /* NIMContactDataCell.m in Sources */,
+				A025E4BB1EB0457A002E1AA4 /* SettingVC.swift in Sources */,
 				A03D3F551EA86A6500F85308 /* NIMKitDevice.m in Sources */,
 				A03D3F861EA86A6500F85308 /* NTESContactDataMember.m in Sources */,
 				A03D3FA01EA86A6500F85308 /* NTESCustomAttachmentDecoder.m in Sources */,
@@ -3090,6 +3117,7 @@
 				A03D3F251EA86A6400F85308 /* NIMUnsupportContentConfig.m in Sources */,
 				A03D3FCE1EA86A6500F85308 /* NTESLogManager.m in Sources */,
 				A03D3FDC1EA86A6500F85308 /* NTESAliasSettingViewController.m in Sources */,
+				A085A51B1EB0771C00149F14 /* LoginVC.swift in Sources */,
 				A03D3F751EA86A6500F85308 /* NTESChatroomConfig.m in Sources */,
 				A03D3EE61EA86A6400F85308 /* UIAlertView+NTESBlock.m in Sources */,
 				A03D3FF61EA86A6600F85308 /* NTESTimerHolder.m in Sources */,
@@ -3120,6 +3148,7 @@
 				A001A9721EAD9F8D00752F1A /* ShareDataModel.swift in Sources */,
 				A03D3F2E1EA86A6400F85308 /* NIMSessionDataSourceImpl.m in Sources */,
 				A03D3F1B1EA86A6400F85308 /* NIMMessageModel.m in Sources */,
+				A025E4B51EB03D65002E1AA4 /* RechargeVC.swift in Sources */,
 				A03D3F1A1EA86A6400F85308 /* NIMMediaItem.m in Sources */,
 				A03D3F821EA86A6500F85308 /* NTESLiveBroadcastView.m in Sources */,
 				A03D3EE81EA86A6400F85308 /* UIImage+NTESColor.m in Sources */,
@@ -3142,6 +3171,7 @@
 				A03D3EF71EA86A6400F85308 /* NIMKitSwitcherCell.m in Sources */,
 				A03D3FD41EA86A6500F85308 /* NTESNoDisturbSettingViewController.m in Sources */,
 				A03D3F2C1EA86A6400F85308 /* NIMKitAudioCenter.m in Sources */,
+				A025E4B31EB03B36002E1AA4 /* WealthVC.swift in Sources */,
 				A03D3FBF1EA86A6500F85308 /* NTESAudioChatViewController.m in Sources */,
 				A03D3F1C1EA86A6400F85308 /* NIMTimestampModel.m in Sources */,
 				A03D3EE11EA86A6400F85308 /* DealViewController.swift in Sources */,
@@ -3170,7 +3200,11 @@
 				A03D3F8F1EA86A6500F85308 /* NTESContactViewController.m in Sources */,
 				A03D3F141EA86A6400F85308 /* NIMInputMoreContainerView.m in Sources */,
 				A03D3EF11EA86A6400F85308 /* UITableView+NIMScrollToBottom.m in Sources */,
+
+				A025E4B91EB04253002E1AA4 /* DealListVC.swift in Sources */,
+
 				6E1616681EB04DCE00D95CB6 /* ContactListCell.swift in Sources */,
+
 				A072389B1EA76AA300E755DB /* ViewController.swift in Sources */,
 				A03D3EEF1EA86A6400F85308 /* NSString+NIMKit.m in Sources */,
 				A03D3FB71EA86A6500F85308 /* NTESSessionRemoteHistoryViewController.m in Sources */,
@@ -3203,7 +3237,6 @@
 				A072389C1EA76AA300E755DB /* AppConst.swift in Sources */,
 				A08A9BB71EA9F22F009E6B2B /* UserVC.swift in Sources */,
 				A03D3F451EA86A6500F85308 /* NIMTeamCardOperationItem.m in Sources */,
-				A001A96E1EAD9E6A00752F1A /* SetPwdVC.swift in Sources */,
 				A03D3EFE1EA86A6400F85308 /* NIMKitNotificationFirer.m in Sources */,
 				A03D3FCD1EA86A6500F85308 /* NTESSessionListViewController.m in Sources */,
 				A03D3F681EA86A6500F85308 /* NTESCellLayoutConfig.m in Sources */,
