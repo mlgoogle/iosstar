@@ -12,18 +12,19 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      interactivePopGestureRecognizer?.isEnabled = true
-      self.interactivePopGestureRecognizer?.delegate = self
-        self.navigationBar.shadowImage = UIImage.init(named: "nav_clear")
-        self.navigationBar.setBackgroundImage(UIImage.init(named: "nav_main"), for: .any, barMetrics: .default)
+        navigationBar.hideBottomHairline()
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.red];
+        interactivePopGestureRecognizer?.isEnabled = true
+        interactivePopGestureRecognizer?.delegate = self
+        navigationBar.barTintColor = transferStringToColor("185ca5")
+        navigationBar.isTranslucent = true
     }
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationBar.shadowImage = UIImage.init(named: "nav_clear")
-        self.navigationBar.setBackgroundImage(UIImage.init(named: "nav_main"), for: .any, barMetrics: .default)
+
     }
     //MARK: 重新写左面的导航
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
@@ -46,7 +47,7 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
     }
     func popself(){
         if viewControllers.count > 1 {
-            self.popViewController(animated: true)
+             popViewController(animated: true)
         }else{
             dismissController()
         }

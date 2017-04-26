@@ -32,9 +32,10 @@
         <!--Base Navigation Controller-->
         <scene sceneID="78V-2j-pra">
             <objects>
-                <navigationController storyboardIdentifier="Deal" automaticallyAdjustsScrollViewInsets="NO" id="9JW-8w-PE0" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iJD-Dr-qHQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="Deal" id="9JW-8w-PE0" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vcP-QL-2OX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="vcP-QL-2OX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -43,7 +44,6 @@
                         <segue destination="4n9-p9-V8L" kind="relationship" relationship="rootViewController" id="okN-U3-PAi"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iJD-Dr-qHQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="237.59999999999999" y="206.44677661169416"/>
         </scene>

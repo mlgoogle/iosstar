@@ -10,17 +10,14 @@ import UIKit
 
 class WealthVC: UITableViewController {
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let view = UIView.init()
         view.backgroundColor = UIColor.clear
         title = "我的资产"
         self.tableView.tableFooterView = view
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+       
     }
 
     override func didReceiveMemoryWarning() {
