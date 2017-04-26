@@ -43,6 +43,9 @@ func transferStringToColor(_ colorStr:String) -> UIColor {
 typealias CompleteBlock = (AnyObject?) ->()?
 typealias ErrorBlock = (NSError) ->()?
 typealias paramBlock = (AnyObject?) ->()?
+
+let kScreenWidth = UIScreen.main.bounds.size.width
+let kScreenHeight = UIScreen.main.bounds.size.height
 //MARK: --正则表达
 func isTelNumber(num: String)->Bool
 {

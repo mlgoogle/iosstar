@@ -1,20 +1,21 @@
 //
-//  NewsViewController.swift
+//  NewsDetailViewController.swift
 //  iOSStar
 //
-//  Created by J-bb on 17/4/20.
-//  Copyright © 2017年 sum. All rights reserved.
+//  Created by J-bb on 17/4/25.
+//  Copyright © 2017年 YunDian. All rights reserved.
 //
 
 import UIKit
 
-class NewsViewController: UIViewController {
+class NewsDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationController?.navigationBar.isHidden = false
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -24,8 +25,7 @@ class NewsViewController: UIViewController {
 
     /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+        // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
