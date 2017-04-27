@@ -13,7 +13,7 @@ class RegistVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = ShareDataModel.share().isdoregist == false ? "注册" : "忘记密码"
+        self.title = ShareDataModel.share().isdoregist == true ? "注册" : "忘记密码"
         // Do any additional setup after loading the view.
     }
 

@@ -16,7 +16,20 @@ class LoginVC: UITableViewController {
     @IBOutlet weak var phone: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        initNav()
 
+    }
+    func initNav(){
+    
+        let btn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 20, height: 20))
+        btn.setBackgroundImage(UIImage.init(named: "close"), for: .normal)
+        let navaitem = UIBarButtonItem.init(customView: btn)
+        self.navigationItem.leftBarButtonItem = navaitem
+        btn.addTarget(self, action: #selector(didClose), for: .touchUpInside)
+    }
+    func didClose(){
+        
+        self.dismissController()
     }
       //登录
     @IBAction func doLogin(_ sender: Any) {
