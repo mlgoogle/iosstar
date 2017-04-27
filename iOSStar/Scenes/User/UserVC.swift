@@ -22,6 +22,7 @@ class UserVC: UITableViewController  {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
     }
     // MARK: - Table view data source
 
@@ -38,7 +39,6 @@ class UserVC: UITableViewController  {
         return section == 0 ? 0.001 : 20
       
     }
-   
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

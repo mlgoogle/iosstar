@@ -350,6 +350,7 @@
 		A07238B71EA76F4D00E755DB /* Deal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B61EA76F4D00E755DB /* Deal.storyboard */; };
 		A07238B91EA76F5600E755DB /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B81EA76F5600E755DB /* User.storyboard */; };
 		A08569FA1EB08FCA004F349B /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08569F91EB08FCA004F349B /* BaseNavigationController.swift */; };
+		A0856A111EB0B5C3004F349B /* UIBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0856A101EB0B5C3004F349B /* UIBarExtension.swift */; };
 		A085A51B1EB0771C00149F14 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085A51A1EB0771C00149F14 /* LoginVC.swift */; };
 		A085A51D1EB079F200149F14 /* InputPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085A51C1EB079F200149F14 /* InputPwdVC.swift */; };
 		A085A51F1EB0801300149F14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922A41EA88DFE002725A0 /* Main.storyboard */; };
@@ -1005,6 +1006,7 @@
 		A07238B61EA76F4D00E755DB /* Deal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Deal.storyboard; sourceTree = "<group>"; };
 		A07238B81EA76F5600E755DB /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		A08569F91EB08FCA004F349B /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseNavigationController.swift; path = iOSSTar/Other/BaseNavigationController.swift; sourceTree = SOURCE_ROOT; };
+		A0856A101EB0B5C3004F349B /* UIBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarExtension.swift; sourceTree = "<group>"; };
 		A085A51A1EB0771C00149F14 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		A085A51C1EB079F200149F14 /* InputPwdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPwdVC.swift; sourceTree = "<group>"; };
 		A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -2625,6 +2627,7 @@
 				A072387A1EA76AA300E755DB /* ViewController.swift */,
 				A07238781EA76AA300E755DB /* BaseTabBarController.swift */,
 				6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */,
+				A0856A101EB0B5C3004F349B /* UIBarExtension.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -3008,6 +3011,7 @@
 				A03D3FE91EA86A6500F85308 /* NTESDemoFetchChatroomTask.m in Sources */,
 				A03D3F4E1EA86A6500F85308 /* NIMTeamMemberListViewController.m in Sources */,
 				A03D3FA61EA86A6500F85308 /* NTESSearchMessageContentCell.m in Sources */,
+				A0856A111EB0B5C3004F349B /* UIBarExtension.swift in Sources */,
 				A07238A01EA76AA300E755DB /* String+Extension.swift in Sources */,
 				A03D3FE51EA86A6500F85308 /* NTESBirthPickerView.m in Sources */,
 				A03D3EE71EA86A6400F85308 /* UIImage+NTES.m in Sources */,

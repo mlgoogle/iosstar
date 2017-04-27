@@ -154,9 +154,10 @@
         <!--Base Navigation Controller-->
         <scene sceneID="erg-Nj-ICR">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DkZ-Jo-Czt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="Exchange" automaticallyAdjustsScrollViewInsets="NO" id="IUx-14-n82" customClass="BaseNavigationController" customModule="iOSStar" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Rqe-GR-WuM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rqe-GR-WuM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -168,7 +169,6 @@
                         <segue destination="VjQ-gV-Ro6" kind="relationship" relationship="rootViewController" id="7B1-d0-xtw"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DkZ-Jo-Czt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8.8000000000000007" y="163.26836581709148"/>
         </scene>
