@@ -9,7 +9,9 @@
 import UIKit
 class StatusCell: UITableViewCell {
     
-    
+    override func awakeFromNib() {
+        
+    }
 }
 class BuyVCCell: UITableViewCell ,UITableViewDataSource,UITableViewDelegate{
     

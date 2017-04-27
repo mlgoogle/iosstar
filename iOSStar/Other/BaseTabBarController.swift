@@ -37,6 +37,17 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate{
         
 
     }
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
+        
+        if tabBarController.selectedIndex == 1{
+        
+            let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
+            let controller = storyboard.instantiateInitialViewController()
+//            let nav = BaseNavigationController.init(rootViewController: controller)
+            present(controller!, animated: true, completion: nil)
+        }
+        }
+
     
 
 }

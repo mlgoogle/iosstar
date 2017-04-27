@@ -8,8 +8,9 @@
 
 import UIKit
 
-class HaveBuyVC: UIViewController {
+class HaveBuyVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
 
+    @IBOutlet weak var tabelView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +22,16 @@ class HaveBuyVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderListCell")
+        return cell!
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return   100
+    }
 
     /*
     // MARK: - Navigation

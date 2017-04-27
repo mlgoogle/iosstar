@@ -30,17 +30,24 @@ class BuyVC: UIViewController ,UITableViewDelegate ,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
      {
     
-        
         let cell : BuyVCCell = tableView.dequeueReusableCell(withIdentifier: "BuyVCCell") as! BuyVCCell
-        cell.isSellout = isSellout
-        return cell
+        if indexPath.section == 1 {
+            
+            cell.isSellout = isSellout
+            return cell
+            //OrderListCell
+        }else{
+             let cell : OrderListCell = tableView.dequeueReusableCell(withIdentifier: "OrderListCell") as! OrderListCell
+            return cell
+        }
+       
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 360
+        return  indexPath.section == 1 ? 360 : 100
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
