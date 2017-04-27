@@ -8,22 +8,40 @@
 
 import UIKit
 
-class MarketMenuView: UICollectionView {
+class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSource{
 
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: layout)
-    }
+    
+    var items:[String]?
+    var collectionView:UICollectionView?
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        let layout = UICollectionViewFlowLayout()
+        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        addSubview(collectionView!)
+     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        let layout = UICollectionViewFlowLayout()
+        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        addSubview(collectionView!)
     }
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        
+        return items == nil ? 0 : items!.count
     }
-    */
-
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "", for: indexPath)
+        
+        
+        return cell
+    }
 }
