@@ -22,6 +22,9 @@ class DealViewController: UIViewController ,UIScrollViewDelegate{
         title = "买卖"
         initscrollView()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
     //MARK: -- 设置scrollView
     func initscrollView(){
         self.automaticallyAdjustsScrollViewInsets = false;

@@ -39,8 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        [[NIMSDK sharedSDK] registerWithAppID:您的APPKEY
 //            cerName:您的推送证书名]
- 
-        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent;
+        
 
         return true
     }
