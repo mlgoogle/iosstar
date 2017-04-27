@@ -28,7 +28,7 @@ class DealViewController: UIViewController ,UIScrollViewDelegate{
     //MARK: -- 设置scrollView
     func initscrollView(){
         self.automaticallyAdjustsScrollViewInsets = false;
-        scrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: 64 + 31, width: self.view.frame.size.width, height: self.view.frame.size.height - 64-44-32))
+        scrollView = UIScrollView.init(frame: CGRect.init(x: 0, y:  31, width: self.view.frame.size.width, height: self.view.frame.size.height - 64-44-32))
         scrollView?.contentSize = CGSize.init(width: self.view.frame.size.width * 5, height: 0)
         scrollView?.isPagingEnabled = true
         scrollView?.delegate = self
@@ -92,7 +92,7 @@ class DealViewController: UIViewController ,UIScrollViewDelegate{
         
         for i in 0...4 {
             let btn = UIButton.init()
-            btn.frame = CGRect.init(x: (CGFloat.init(i))*(self.view.frame.size.width)/5.0, y: 64, width: (self.view.frame.size.width)/5.0, height: 28)
+            btn.frame = CGRect.init(x: (CGFloat.init(i))*(self.view.frame.size.width)/5.0, y: 0, width: (self.view.frame.size.width)/5.0, height: 28)
             btn.setTitle(arr[i], for: .normal)
             self.view.addSubview(btn)
             btn.backgroundColor = UIColor.white

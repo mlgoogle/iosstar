@@ -9,14 +9,44 @@
 import UIKit
 
 class RegistVC: UITableViewController {
+    @IBOutlet weak var codeTf: UITextField!
 
+    @IBOutlet var phoneTf: UITextField!
+    //定时器
+    private var timer: Timer?
+    //验证码
+    @IBOutlet weak var vaildCodeBtn: UIButton!
+     //验证码
+    private var codeTime = 60
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = ShareDataModel.share().isdoregist == true ? "注册" : "忘记密码"
         // Do any additional setup after loading the view.
     }
-
+    @IBAction func sendVaildCode(_ sender: Any) {
+        
+        if checkTextFieldEmpty([phoneTf]) {
+             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updatecodeBtnTitle), userInfo: nil, repeats: true)
+        }
+       
+   
+    }
+    func updatecodeBtnTitle() {
+        if codeTime == 0 {
+            vaildCodeBtn.isEnabled = true
+            vaildCodeBtn.setTitle("重新发送", for: .normal)
+            codeTime = 60
+            timer?.invalidate()
+        vaildCodeBtn.backgroundColor = transferStringToColor("185CA5")
+            return
+        }
+        vaildCodeBtn.isEnabled = false
+        codeTime = codeTime - 1
+        let title: String = "\(codeTime)秒后重新发送"
+        vaildCodeBtn.setTitle(title, for: .normal)
+        vaildCodeBtn.backgroundColor = transferStringToColor("0xCCCCCC")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -13,11 +13,11 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.hideBottomHairline()
-        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.red];
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white];
         interactivePopGestureRecognizer?.isEnabled = true
         interactivePopGestureRecognizer?.delegate = self
         navigationBar.barTintColor = transferStringToColor("185ca5")
-        navigationBar.isTranslucent = true
+        navigationBar.isTranslucent = false
     }
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
