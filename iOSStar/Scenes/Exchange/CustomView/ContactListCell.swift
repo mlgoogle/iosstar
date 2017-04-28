@@ -16,7 +16,6 @@ class ContactListCell: UITableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-
         chatButton.layer.borderWidth = 1
         chatButton.layer.borderColor = transferStringToColor("185CA5").cgColor
         chatButton.layer.cornerRadius = 2
