@@ -20,6 +20,9 @@
 
 @property (nonatomic,copy)  NSDictionary *dict;
 
+
+@property (nonatomic,strong)UIButton *pitcture;
+
 @property (nonatomic,strong) NIMGrowingTextView *inputTextView;
 
 @property (nonatomic,assign) NIMInputType inputType;
@@ -40,6 +43,7 @@
         
         
         _emoticonBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        _emoticonBtn.frame = cgre
         [_emoticonBtn setImage:[UIImage nim_imageInKit:@"icon_toolview_emotion_normal"] forState:UIControlStateNormal];
         [_emoticonBtn setImage:[UIImage nim_imageInKit:@"icon_toolview_emotion_pressed"] forState:UIControlStateHighlighted];
         [_emoticonBtn sizeToFit];
@@ -52,11 +56,11 @@
         _recordButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_recordButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_recordButton.titleLabel setFont:[UIFont systemFontOfSize:14.f]];
-        [_recordButton setBackgroundImage:[[UIImage nim_imageInKit:@"icon_input_text_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(15,80,15,80) resizingMode:UIImageResizingModeStretch] forState:UIControlStateNormal];
+        [_recordButton setBackgroundImage:[[UIImage nim_imageInKit:@""] resizableImageWithCapInsets:UIEdgeInsetsMake(15,80,15,80) resizingMode:UIImageResizingModeStretch] forState:UIControlStateNormal];
         [_recordButton sizeToFit];
         
         _inputTextBkgImage = [[UIImageView alloc] initWithFrame:CGRectZero];
-        [_inputTextBkgImage setImage:[[UIImage nim_imageInKit:@"icon_input_text_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(15,80,15,80) resizingMode:UIImageResizingModeStretch]];
+        [_inputTextBkgImage setImage:[[UIImage nim_imageInKit:@""] resizableImageWithCapInsets:UIEdgeInsetsMake(0,80,0,80) resizingMode:UIImageResizingModeStretch]];
         
         _inputTextView = [[NIMGrowingTextView alloc] initWithFrame:CGRectZero];
         _inputTextView.font = [UIFont systemFontOfSize:14.0f];
@@ -109,7 +113,7 @@
 {
     CGFloat viewHeight = 0.0f;
     if (self.inputType == InputTypeAudio) {
-        viewHeight = 54.5;
+        viewHeight = 54.5 + 10;
     }else{
         //算出 TextView 的宽度
         [self adjustTextViewWidth:size.width];
@@ -117,7 +121,7 @@
         [self.inputTextView layoutIfNeeded];
         viewHeight = self.inputTextView.frame.size.height;
         //得到 ToolBar 自身高度
-        viewHeight = viewHeight + 2 * self.spacing + 2 * self.textViewPadding;
+        viewHeight = viewHeight + 2 * self.spacing + 2 * self.textViewPadding + 10;
     }
     
     return CGSizeMake(size.width,viewHeight);
@@ -133,8 +137,10 @@
         UIView *view = [self subViewForType:type.integerValue];
         textViewWidth += view.nim_width;
     }
-    textViewWidth += (self.spacing * (self.types.count + 1));
+       textViewWidth = self.spacing * 2;
+//    (self.spacing * (self.types.count + 1));
     self.inputTextView.nim_width  = width  - textViewWidth - 2 * self.textViewPadding;
+    [self layoutSubviews];
 }
 
 
@@ -143,15 +149,56 @@
     
     if ([self.types containsObject:@(NIMInputBarItemTypeTextAndRecord)]) {
         self.inputTextBkgImage.nim_width  = self.inputTextView.nim_width  + 2 * self.textViewPadding;
-        self.inputTextBkgImage.nim_height = self.inputTextView.nim_height + 2 * self.textViewPadding;
+        self.inputTextBkgImage.nim_height = self.inputTextView.nim_height + 2 * self.textViewPadding - 15;
     }
+    //NIMInputBarItemTypeVoice
+//    NIMInputBarItemTypeTextAndRecord
+//    NIMInputBarItemTypeEmoticon)
+//    NIMInputBarItemTypeMore
     CGFloat left = 0;
+    CGFloat right = 0;
     for (NSNumber *type in self.types) {
         UIView *view  = [self subViewForType:type.integerValue];
         [self addSubview:view];
-        view.nim_left = left + self.spacing;
-        view.nim_centerY = self.nim_height * .5f;
-        left = view.nim_right;
+        if (type.integerValue == NIMInputBarItemTypeMore) {
+//            view.nim_right = right + self.spacing + 30;
+//            self.nim_right - (right + self.spacing + 30 )
+            view.nim_top =  self.inputTextView.nim_bottom;
+            right = 0;
+            view.nim_width = 20;
+            view.nim_height = 20;
+             view.nim_right = self.nim_right - (right + self.spacing  + 10);
+//            view.nim_centerY = self.nim_height * .5f -15;
+//            left = view.nim_right;
+        }
+         else   if (type.integerValue == NIMInputBarItemTypeEmoticon) {
+//             view.nim_right = right + self.spacing + 30;
+             right = 15;
+             view.nim_right =  self.nim_right - (right + self.spacing + 30 );
+              view.nim_top =  self.inputTextView.nim_bottom;
+             view.nim_width = 20;
+             view.nim_height = 20;
+            //            view.nim_centerY = self.nim_height * .5f -15;
+//            left = view.nim_right;
+        }
+        else   if (type.integerValue == NIMInputBarItemTypeVoice) {
+//            view.nim_left = left + self.spacing;
+             right = 30;
+            
+            view.nim_right = self.nim_right - (right + self.spacing + 50 );
+           
+            view.nim_top =  self.inputTextView.nim_bottom;
+            view.nim_width = 20;
+            view.nim_height = 20;
+            //            view.nim_centerY = self.nim_height * .5f -15;
+//            left = view.nim_right;
+        }
+        else{
+        
+            view.nim_left = 0;
+            view.nim_centerY = self.nim_height * .5f -15;
+            left = view.nim_right;
+        }
     }
     
     [self adjustTextAndRecordView];
@@ -166,9 +213,9 @@
 - (void)adjustTextAndRecordView{
     if ([self.types containsObject:@(NIMInputBarItemTypeTextAndRecord)]) {
         //输入框
-        self.inputTextView.center  = self.inputTextBkgImage.center;
+        self.inputTextView.center  = CGPointMake(self.inputTextBkgImage.center.x, self.inputTextBkgImage.center.y );
         //中间点击录音按钮
-        self.recordButton.frame    = self.inputTextBkgImage.frame;
+        self.recordButton.frame    = CGRectMake(self.inputTextBkgImage.frame.origin.x, self.inputTextBkgImage.frame.origin.y, self.inputTextBkgImage.frame.size.width, self.inputTextBkgImage.frame.size.height);
         
         [self addSubview:self.inputTextView];
         [self addSubview:self.recordButton];

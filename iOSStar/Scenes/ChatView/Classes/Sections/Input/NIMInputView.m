@@ -106,7 +106,7 @@
         case NIMInputStatusText:
         case NIMInputStatusAudio:{
             if (self.toolBar.showsKeyboard) {
-                self.nim_top = self.keyBoardFrameTop - self.toolBar.nim_height;
+                self.nim_top = self.keyBoardFrameTop - self.toolBar.nim_height - 64;
             }else{
                 self.nim_top = self.superview.nim_height - self.toolBar.nim_height;
             }
@@ -408,30 +408,34 @@
         self.toolBar.showsKeyboard = YES;
     }
 }
-
+#pragma mark -more
 - (void)onTouchMoreBtn:(id)sender {
-    if (_inputType != InputTypeMedia)
-    {
-        _inputType = InputTypeMedia;
-        [self bringSubviewToFront:self.moreContainer];
-        [self.moreContainer setHidden:NO];
-        [self.emoticonContainer setHidden:YES];
-        if (self.toolBar.showsKeyboard) {
-            self.status = NIMInputStatusMore;
-            self.toolBar.showsKeyboard = NO;
-        }
-        else
-        {
-            [self refreshStatus:NIMInputStatusMore];
-            [self callDidChangeHeight];
-        }
-    }
-    else
-    {
-        _inputType = InputTypeText;
-        self.status = NIMInputStatusText;
-        self.toolBar.showsKeyboard = YES;
-    }
+    NSArray *items;
+    items = [NIMKitUIConfig sharedConfig].defaultMediaItems;
+    [_inputDelegate onTapMediaItemPicture:items[0]];
+    
+//    if (_inputType != InputTypeMedia)
+//    {
+//        _inputType = InputTypeMedia;
+//        [self bringSubviewToFront:self.moreContainer];
+//        [self.moreContainer setHidden:NO];
+//        [self.emoticonContainer setHidden:YES];
+//        if (self.toolBar.showsKeyboard) {
+//            self.status = NIMInputStatusMore;
+//            self.toolBar.showsKeyboard = NO;
+//        }
+//        else
+//        {
+//            [self refreshStatus:NIMInputStatusMore];
+//            [self callDidChangeHeight];
+//        }
+//    }
+//    else
+//    {
+//        _inputType = InputTypeText;
+//        self.status = NIMInputStatusText;
+//        self.toolBar.showsKeyboard = YES;
+//    }
 }
 
 - (BOOL)endEditing:(BOOL)force

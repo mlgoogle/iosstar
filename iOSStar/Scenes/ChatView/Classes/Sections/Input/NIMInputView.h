@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger,NIMInputStatus)
 @protocol NIMInputDelegate <NSObject>
 
 @optional
-
+- (void)onTapMediaItemPicture:(NIMMediaItem *)item;
 - (void)showInputView;
 - (void)hideInputView;
 
