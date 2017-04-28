@@ -15,15 +15,14 @@ class HomeVC: UIViewController {
 
         
       
-        let str : NSString = "asdf1234"
+//        let str : NSString = "asdf1234"
         
-        let pass : String = str.tokenByPassword()
-        let btn = UIButton.init(type: .custom)
-        btn.addTarget(self , action: #selector(popself), for: .touchUpInside)
-        btn.frame = CGRect.init(x: 0, y: 0, width: 100, height: 200)
-        self.view.addSubview(btn)
+//        let pass : String = str.tokenByPassword()
+//        let btn = UIButton.init(type: .custom)
+//        btn.addTarget(self , action: #selector(popself), for: .touchUpInside)
        
-        NIMSDK.shared().loginManager.login("15306559323", token: pass as String) { (error) in
+       
+        NIMSDK.shared().loginManager.login("15306559323", token: "b0f316127b240d836bb4bd01276367b9" ) { (error) in
             if error == nil{
                 
             }

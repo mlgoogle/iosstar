@@ -67,7 +67,9 @@
     //进入会话时，标记所有消息已读，并发送已读回执
     [self markRead];
     //更新已读位置
-    [self uiCheckReceipt];    
+    [self uiCheckReceipt];
+    
+    self.view.backgroundColor = [UIColor grayColor];
 }
 
 - (void)setupNav
@@ -81,7 +83,7 @@
 
 - (void)setupTableView
 {
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor grayColor];
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.backgroundColor = NIMKit_UIColorFromRGB(0xe4e7ec);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

@@ -14,6 +14,7 @@ class BankCardVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "我的银行卡"
 
      
     }
@@ -31,7 +32,7 @@ class BankCardVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 5 : 20
+        return section == 0 ? 0.001 : 10
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -45,6 +46,7 @@ class BankCardVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BankCardCell", for: indexPath)
 
+        
         return cell
     }
 
