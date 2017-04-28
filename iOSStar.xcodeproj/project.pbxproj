@@ -19,6 +19,7 @@
 		6E16166C1EB0960E00D95CB6 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16166A1EB0960E00D95CB6 /* MarketViewController.swift */; };
 		6E16166E1EB0973700D95CB6 /* MarketMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16166D1EB0973700D95CB6 /* MarketMenuView.swift */; };
 		6E1616701EB0A7AA00D95CB6 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16166F1EB0A7AA00D95CB6 /* MenuItemCell.swift */; };
+		6E1616721EB1EF2300D95CB6 /* MenuSubViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616711EB1EF2300D95CB6 /* MenuSubViewCell.swift */; };
 		6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */; };
 		6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302C1EA84D98005C8DF9 /* Market.storyboard */; };
 		A001A96C1EAD884D00752F1A /* HaveBuyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A96B1EAD884D00752F1A /* HaveBuyVC.swift */; };
@@ -391,6 +392,7 @@
 		6E16166A1EB0960E00D95CB6 /* MarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		6E16166D1EB0973700D95CB6 /* MarketMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketMenuView.swift; sourceTree = "<group>"; };
 		6E16166F1EB0A7AA00D95CB6 /* MenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
+		6E1616711EB1EF2300D95CB6 /* MenuSubViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSubViewCell.swift; sourceTree = "<group>"; };
 		6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOSStar-Bridging-Header.h"; sourceTree = "<group>"; };
 		6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
 		6EC3302C1EA84D98005C8DF9 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
@@ -1149,6 +1151,7 @@
 			children = (
 				6E16166D1EB0973700D95CB6 /* MarketMenuView.swift */,
 				6E16166F1EB0A7AA00D95CB6 /* MenuItemCell.swift */,
+				6E1616711EB1EF2300D95CB6 /* MenuSubViewCell.swift */,
 			);
 			name = CustomView;
 			path = iOSStar/Scenes/Market/CustomView;
@@ -3158,6 +3161,7 @@
 				A025E4B51EB03D65002E1AA4 /* RechargeVC.swift in Sources */,
 				A03D3F1A1EA86A6400F85308 /* NIMMediaItem.m in Sources */,
 				A03D3F821EA86A6500F85308 /* NTESLiveBroadcastView.m in Sources */,
+				6E1616721EB1EF2300D95CB6 /* MenuSubViewCell.swift in Sources */,
 				A03D3EE81EA86A6400F85308 /* UIImage+NTESColor.m in Sources */,
 				A03D3F9A1EA86A6500F85308 /* NTESLoginViewController.m in Sources */,
 				A03D3FBE1EA86A6500F85308 /* NetCallChatInfo.m in Sources */,

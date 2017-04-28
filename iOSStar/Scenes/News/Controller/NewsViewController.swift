@@ -34,8 +34,18 @@ class NewsViewController: UIViewController {
         view?.isHidden = true
         navigationController?.navigationBar.addSubview(titleView)
         titleView.isHidden = true
+        setNIMSDKLogin()
     }
 
+    func setNIMSDKLogin() {
+        NIMSDK.shared().loginManager.login("13569365932", token: "7d5d9d249d18b92b72c1133c61dd9a9c") { (error) in
+            
+            if error == nil  {
+                
+            }
+            
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         scrollViewDidScroll(tableView)
