@@ -22,12 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // //在注册 NIMSDK appKey 之前先进行配置信息的注册，如是否使用新路径,是否要忽略某些通知，是否需要多端同步未读数
         
-        self.sdkConfigDelegate = NTESSDKConfigDelegate.init()
+        sdkConfigDelegate = NTESSDKConfigDelegate.init()
         
-        NIMSDKConfig.shared().delegate = self.sdkConfigDelegate
+        NIMSDKConfig.shared().delegate = sdkConfigDelegate
         NIMSDKConfig.shared().shouldSyncUnreadCount = true
 
-        NIMSDK.shared().register(withAppID: "45c6af3c98409b18a84451215d0bdd6e", cerName: "")
+        NIMSDK.shared().register(withAppID: "709f85147892793d23a2ed6bfe3de1b3", cerName: "")
         NIMKit.shared().registerLayoutConfig(NTESCellLayoutConfig.self)
 
         NIMCustomObject.registerCustomDecoder(NTESCustomAttachmentDecoder.init())
@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        [[NIMSDK sharedSDK] registerWithAppID:您的APPKEY
 //            cerName:您的推送证书名]
-        
+        UIApplication.shared.statusBarStyle = .lightContent;
 
         return true
     }
