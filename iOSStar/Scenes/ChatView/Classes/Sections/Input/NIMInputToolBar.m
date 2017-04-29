@@ -117,7 +117,7 @@
 {
     CGFloat viewHeight = 0.0f;
     if (self.inputType == InputTypeAudio) {
-        viewHeight = 54.5 + 15;
+        viewHeight = 54.5 + 30;
     }else{
         //算出 TextView 的宽度
         [self adjustTextViewWidth:size.width];
@@ -207,9 +207,9 @@
 - (void)adjustTextAndRecordView{
     if ([self.types containsObject:@(NIMInputBarItemTypeTextAndRecord)]) {
         //输入框
-        self.inputTextView.center  = CGPointMake(self.inputTextBkgImage.center.x, self.inputTextBkgImage.center.y - 5 );
+        self.inputTextView.center  = CGPointMake(self.inputTextBkgImage.center.x - 5, self.inputTextBkgImage.center.y - 5 );
         //中间点击录音按钮
-        self.recordButton.frame    = CGRectMake( self.inputTextBkgImage.frame.origin.x +25, self.inputTextBkgImage.frame.origin.y + 1, self.inputTextBkgImage.frame.size.width-50, self.inputTextBkgImage.frame.size.height + 10);
+        self.recordButton.frame    = self.inputTextView.frame;
         
         [self addSubview:self.inputTextView];
         [self addSubview:self.recordButton];
@@ -324,7 +324,7 @@
 
 - (void)didChangeHeight:(CGFloat)height
 {
-    self.nim_height = height + 2 * self.spacing + 2 * self.textViewPadding + 20;
+    self.nim_height = height + 2 * self.spacing + 2 * self.textViewPadding - 20;
     if ([self.delegate respondsToSelector:@selector(toolBarDidChangeHeight:)]) {
         [self.delegate toolBarDidChangeHeight:self.nim_height];
     }

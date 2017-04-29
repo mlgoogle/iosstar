@@ -332,6 +332,7 @@
                         _inputType = InputTypeAudio;
                         if (weakSelf.toolBar.showsKeyboard) {
                             weakSelf.status = NIMInputStatusAudio;
+                            
                             weakSelf.toolBar.showsKeyboard = NO;
                         }else{
                             [weakSelf refreshStatus:NIMInputStatusAudio];
