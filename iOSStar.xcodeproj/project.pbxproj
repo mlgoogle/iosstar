@@ -378,6 +378,15 @@
 		A0C9D6751EAE102300FC438D /* video_chat_tip_receiver.aac in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D6681EAE102300FC438D /* video_chat_tip_receiver.aac */; };
 		A0C9D6761EAE102300FC438D /* video_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D6691EAE102300FC438D /* video_chat_tip_sender.aac */; };
 		A0C9D6771EAE102300FC438D /* video_connect_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D66A1EAE102300FC438D /* video_connect_chat_tip_sender.aac */; };
+		A0EF3B0D1EB973F10023093A /* APISocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AF81EB973F10023093A /* APISocketHelper.swift */; };
+		A0EF3B0E1EB973F10023093A /* LocalSocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AF91EB973F10023093A /* LocalSocketHelper.swift */; };
+		A0EF3B0F1EB973F10023093A /* SocketDataPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFA1EB973F10023093A /* SocketDataPacket.swift */; };
+		A0EF3B101EB973F10023093A /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFB1EB973F10023093A /* SocketHelper.swift */; };
+		A0EF3B111EB973F10023093A /* SocketRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFC1EB973F10023093A /* SocketRequest.swift */; };
+		A0EF3B121EB973F10023093A /* SocketRequestManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFD1EB973F10023093A /* SocketRequestManage.swift */; };
+		A0EF3B131EB973F10023093A /* SocketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFE1EB973F10023093A /* SocketResponse.swift */; };
+		A0EF3B171EB974D80023093A /* OEZCommSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EF3B161EB974D80023093A /* OEZCommSDK.framework */; };
+		A0EF3B191EB975B10023093A /* SocketConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3B181EB975B10023093A /* SocketConst.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1039,6 +1048,15 @@
 		A0C9D6681EAE102300FC438D /* video_chat_tip_receiver.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_receiver.aac; sourceTree = "<group>"; };
 		A0C9D6691EAE102300FC438D /* video_chat_tip_sender.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_sender.aac; sourceTree = "<group>"; };
 		A0C9D66A1EAE102300FC438D /* video_connect_chat_tip_sender.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_connect_chat_tip_sender.aac; sourceTree = "<group>"; };
+		A0EF3AF81EB973F10023093A /* APISocketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISocketHelper.swift; sourceTree = "<group>"; };
+		A0EF3AF91EB973F10023093A /* LocalSocketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSocketHelper.swift; sourceTree = "<group>"; };
+		A0EF3AFA1EB973F10023093A /* SocketDataPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketDataPacket.swift; sourceTree = "<group>"; };
+		A0EF3AFB1EB973F10023093A /* SocketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
+		A0EF3AFC1EB973F10023093A /* SocketRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketRequest.swift; sourceTree = "<group>"; };
+		A0EF3AFD1EB973F10023093A /* SocketRequestManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketRequestManage.swift; sourceTree = "<group>"; };
+		A0EF3AFE1EB973F10023093A /* SocketResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketResponse.swift; sourceTree = "<group>"; };
+		A0EF3B161EB974D80023093A /* OEZCommSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OEZCommSDK.framework; sourceTree = "<group>"; };
+		A0EF3B181EB975B10023093A /* SocketConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketConst.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1049,6 +1067,7 @@
 				6E1616551EAEF0CF00D95CB6 /* SDCycleScrollView.framework in Frameworks */,
 				A03D31581EA846B900F85308 /* libc++.tbd in Frameworks */,
 				A03D31561EA846AC00F85308 /* VideoToolbox.framework in Frameworks */,
+				A0EF3B171EB974D80023093A /* OEZCommSDK.framework in Frameworks */,
 				A03D31541EA846A100F85308 /* AudioToolbox.framework in Frameworks */,
 				A03D31521EA8469900F85308 /* CoreMedia.framework in Frameworks */,
 				A07238A81EA76B6D00E755DB /* CoreTelephony.framework in Frameworks */,
@@ -2657,6 +2676,7 @@
 		A072387B1EA76AA300E755DB /* Marco */ = {
 			isa = PBXGroup;
 			children = (
+				A0EF3B161EB974D80023093A /* OEZCommSDK.framework */,
 				A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */,
 				A072387C1EA76AA300E755DB /* AppConst.swift */,
 				A072387D1EA76AA300E755DB /* CustomerView */,
@@ -2720,6 +2740,7 @@
 		A072388B1EA76AA300E755DB /* AppAPI */ = {
 			isa = PBXGroup;
 			children = (
+				A0EF3AEA1EB973F10023093A /* SocketAPI */,
 				6E120F8A1EB966F4004E1E33 /* HttpRequest */,
 			);
 			path = AppAPI;
@@ -2775,6 +2796,30 @@
 				A0C9D66A1EAE102300FC438D /* video_connect_chat_tip_sender.aac */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		A0EF3AEA1EB973F10023093A /* SocketAPI */ = {
+			isa = PBXGroup;
+			children = (
+				A0EF3AF71EB973F10023093A /* SocketReqeust */,
+			);
+			name = SocketAPI;
+			path = iOSSTar/AppAPI/SocketAPI;
+			sourceTree = SOURCE_ROOT;
+		};
+		A0EF3AF71EB973F10023093A /* SocketReqeust */ = {
+			isa = PBXGroup;
+			children = (
+				A0EF3B181EB975B10023093A /* SocketConst.swift */,
+				A0EF3AF81EB973F10023093A /* APISocketHelper.swift */,
+				A0EF3AF91EB973F10023093A /* LocalSocketHelper.swift */,
+				A0EF3AFA1EB973F10023093A /* SocketDataPacket.swift */,
+				A0EF3AFB1EB973F10023093A /* SocketHelper.swift */,
+				A0EF3AFC1EB973F10023093A /* SocketRequest.swift */,
+				A0EF3AFD1EB973F10023093A /* SocketRequestManage.swift */,
+				A0EF3AFE1EB973F10023093A /* SocketResponse.swift */,
+			);
+			path = SocketReqeust;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2973,6 +3018,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A03D3F351EA86A6400F85308 /* NIMSessionAudioContentView.m in Sources */,
+				A0EF3B0E1EB973F10023093A /* LocalSocketHelper.swift in Sources */,
 				A03D3F441EA86A6400F85308 /* NIMCardMemberItem.m in Sources */,
 				A03D3FC41EA86A6500F85308 /* NTESGLView.m in Sources */,
 				A03D3F581EA86A6500F85308 /* NIMKitUtil.m in Sources */,
@@ -3007,6 +3053,7 @@
 				A03D3FCC1EA86A6500F85308 /* NTESClientsTableViewController.m in Sources */,
 				A03D3FE21EA86A6500F85308 /* NTESSignSettingViewController.m in Sources */,
 				A03D3FA81EA86A6500F85308 /* NTESSessionChartletContentView.m in Sources */,
+				A0EF3B101EB973F10023093A /* SocketHelper.swift in Sources */,
 				A03D3F7C1EA86A6500F85308 /* NTESLiveInfoViewController.m in Sources */,
 				A03D3FA71EA86A6500F85308 /* NTESSearchMessageEntraceCell.m in Sources */,
 				A03D3F431EA86A6400F85308 /* NIMSessionListCell.m in Sources */,
@@ -3044,6 +3091,7 @@
 				6E1616661EB04D4E00D95CB6 /* ContactListViewController.swift in Sources */,
 				A03D3F621EA86A6500F85308 /* NTESNavigationHandler.m in Sources */,
 				A03D3EF01EA86A6400F85308 /* UIImage+NIM.m in Sources */,
+				A0EF3B121EB973F10023093A /* SocketRequestManage.swift in Sources */,
 				A03D3F061EA86A6400F85308 /* NIMContactDataItem.m in Sources */,
 				A03D3EF61EA86A6400F85308 /* NIMKitDataProviderImpl.m in Sources */,
 				A03D3F231EA86A6400F85308 /* NIMTextContentConfig.m in Sources */,
@@ -3057,6 +3105,7 @@
 				A03D3EED1EA86A6400F85308 /* M80AttributedLabel+NIMKit.m in Sources */,
 				A03D3FEF1EA86A6500F85308 /* NTESDemoConfig.m in Sources */,
 				A03D3F3B1EA86A6400F85308 /* NIMSessionNotificationContentView.m in Sources */,
+				A0EF3B0F1EB973F10023093A /* SocketDataPacket.swift in Sources */,
 				A03D3F6C1EA86A6500F85308 /* NTESColorButtonCell.m in Sources */,
 				A03D3F7F1EA86A6500F85308 /* NTESChatroomMemberCell.m in Sources */,
 				A03D3F461EA86A6500F85308 /* NIMTeamCardRowItem.m in Sources */,
@@ -3125,6 +3174,7 @@
 				A03D3FAD1EA86A6500F85308 /* NTESAudio2TextViewController.m in Sources */,
 				A03D3EF81EA86A6400F85308 /* NIMKitUIConfig.m in Sources */,
 				A03D3FF21EA86A6500F85308 /* NTESNotificationCenter.m in Sources */,
+				A0EF3B131EB973F10023093A /* SocketResponse.swift in Sources */,
 				A03D3F421EA86A6400F85308 /* NIMSessionListViewController.m in Sources */,
 				A03D3F401EA86A6400F85308 /* NIMSessionViewController.m in Sources */,
 				A001A96C1EAD884D00752F1A /* HaveBuyVC.swift in Sources */,
@@ -3133,6 +3183,7 @@
 				A03D3F011EA86A6400F85308 /* NIMMemberGroupView.m in Sources */,
 				A03D3F381EA86A6400F85308 /* NIMSessionLocationContentView.m in Sources */,
 				A03D3F7E1EA86A6500F85308 /* NTESChatroomListCell.m in Sources */,
+				A0EF3B111EB973F10023093A /* SocketRequest.swift in Sources */,
 				A03D3F7D1EA86A6500F85308 /* NTESLiveViewController.m in Sources */,
 				A03D3F021EA86A6400F85308 /* NIMPageView.m in Sources */,
 				A03D3F871EA86A6500F85308 /* NTESGroupedContacts.m in Sources */,
@@ -3193,6 +3244,7 @@
 				A03D3FCF1EA86A6500F85308 /* NTESLogUploader.m in Sources */,
 				A03D3F1F1EA86A6400F85308 /* NIMFileContentConfig.m in Sources */,
 				A03D3FA41EA86A6500F85308 /* NTESSnapchatAttachment.m in Sources */,
+				A0EF3B191EB975B10023093A /* SocketConst.swift in Sources */,
 				A03D3F1D1EA86A6400F85308 /* NIMAudioContentConfig.m in Sources */,
 				A03D3EE91EA86A6400F85308 /* UIResponder+NTESFirstResponder.m in Sources */,
 				A001A9741EADC91C00752F1A /* SellOutVC.swift in Sources */,
@@ -3234,6 +3286,7 @@
 				6E1616681EB04DCE00D95CB6 /* ContactListCell.swift in Sources */,
 				A072389B1EA76AA300E755DB /* ViewController.swift in Sources */,
 				A03D3EEF1EA86A6400F85308 /* NSString+NIMKit.m in Sources */,
+				A0EF3B0D1EB973F10023093A /* APISocketHelper.swift in Sources */,
 				A03D3FB71EA86A6500F85308 /* NTESSessionRemoteHistoryViewController.m in Sources */,
 				A03D3FC91EA86A6500F85308 /* NTESListHeader.m in Sources */,
 				A03D3F601EA86A6500F85308 /* NTESMainTabController.m in Sources */,
@@ -3398,6 +3451,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 96YGS7NXK5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iOSStar/Marco",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/iOSStar/Resource/plist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -3422,6 +3479,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 96YGS7NXK5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iOSStar/Marco",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/iOSStar/Resource/plist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

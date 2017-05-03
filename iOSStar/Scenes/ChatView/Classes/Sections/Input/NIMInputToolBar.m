@@ -86,6 +86,11 @@
                          @(NIMInputBarItemTypeEmoticon),
                          @(NIMInputBarItemTypeMore),
                        ];
+
+        [self addSubview:self.emoticonBtn];
+        [self addSubview:self.inputTextBkgImage];
+     [self addSubview:self.moreMediaBtn];
+       [self addSubview:self.voiceBtn];
     }
     return self;
 }
@@ -126,6 +131,7 @@
         viewHeight = self.inputTextView.frame.size.height;
         //得到 ToolBar 自身高度
         viewHeight = viewHeight + 2 * self.spacing + 2 * self.textViewPadding + 30;
+           [self layoutSubviews];
     }
     
     return CGSizeMake(size.width,viewHeight);
@@ -143,7 +149,7 @@
     }
        textViewWidth = self.spacing * 2;
     self.inputTextView.nim_width  = width  - textViewWidth - 2 * self.textViewPadding - 15;
-    [self layoutSubviews];
+ 
 }
 
 
@@ -157,21 +163,21 @@
     CGFloat right = 0;
     for (NSNumber *type in self.types) {
         UIView *view  = [self subViewForType:type.integerValue];
-        [self addSubview:view];
+//        [self addSubview:view];
         if (type.integerValue == NIMInputBarItemTypeMore) {
 
-            view.nim_top =  self.inputTextView.nim_bottom+ 10;
+           view.nim_bottom =  self.nim_bottom  - 10;
             right = 0;
             view.nim_width = 20;
             view.nim_height = 20;
-             view.nim_right = self.nim_right - (right + self.spacing  + 10);
+            view.nim_right = self.nim_right - (right + self.spacing  + 10);
 
         }
          else   if (type.integerValue == NIMInputBarItemTypeEmoticon) {
 
              right = 15;
              view.nim_right =  self.nim_right - (right + self.spacing + 30 );
-              view.nim_top =  self.inputTextView.nim_bottom + 10;
+               view.nim_bottom =  self.nim_bottom  - 10;
              view.nim_width = 20;
              view.nim_height = 20;
 
@@ -182,7 +188,7 @@
             
             view.nim_right = self.nim_right - (right + self.spacing + 50 );
            
-            view.nim_top =  self.inputTextView.nim_bottom + 10;
+            view.nim_bottom =  self.nim_bottom  - 10;
             view.nim_width = 20;
             view.nim_height = 20;
 
@@ -202,14 +208,12 @@
     _sep.nim_size     = CGSizeMake(self.nim_width, sepHeight);
     _sep.nim_bottom   = self.nim_height - sepHeight;
 }
-
-
 - (void)adjustTextAndRecordView{
     if ([self.types containsObject:@(NIMInputBarItemTypeTextAndRecord)]) {
         //输入框
-        self.inputTextView.center  = CGPointMake(self.inputTextBkgImage.center.x - 5, self.inputTextBkgImage.center.y - 5 );
+        self.inputTextView.center  = CGPointMake(self.inputTextBkgImage.center.x, self.inputTextBkgImage.center.y - 10 );
         //中间点击录音按钮
-        self.recordButton.frame    = self.inputTextView.frame;
+        self.recordButton.frame    =  CGRectMake(self.inputTextView.frame.origin.x -4, 10, self.inputTextView.frame.size.width, 35);
         
         [self addSubview:self.inputTextView];
         [self addSubview:self.recordButton];
@@ -316,7 +320,7 @@
 
 - (void)willChangeHeight:(CGFloat)height
 {
-    CGFloat toolBarHeight = height + 2 * self.spacing - 20;
+    CGFloat toolBarHeight = height + 2 * self.spacing - 10;
     if ([self.delegate respondsToSelector:@selector(toolBarWillChangeHeight:)]) {
         [self.delegate toolBarWillChangeHeight:toolBarHeight];
     }
@@ -324,7 +328,7 @@
 
 - (void)didChangeHeight:(CGFloat)height
 {
-    self.nim_height = height + 2 * self.spacing + 2 * self.textViewPadding - 20;
+    self.nim_height = height + 2 * self.spacing + 2 * self.textViewPadding + 23;
     if ([self.delegate respondsToSelector:@selector(toolBarDidChangeHeight:)]) {
         [self.delegate toolBarDidChangeHeight:self.nim_height];
     }
