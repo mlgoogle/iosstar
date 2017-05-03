@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6C914579279831D674DBBB68 /* Pods_iOSStar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */; };
+		6E120F961EB966F4004E1E33 /* AppAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E120F8B1EB966F4004E1E33 /* AppAPIHelper.swift */; };
+		6E120F971EB966F4004E1E33 /* HttpModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E120F8C1EB966F4004E1E33 /* HttpModelHelper.swift */; };
+		6E120F981EB966F4004E1E33 /* HttpRequestManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E120F8D1EB966F4004E1E33 /* HttpRequestManage.swift */; };
 		6E1616551EAEF0CF00D95CB6 /* SDCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E1616541EAEF0CF00D95CB6 /* SDCycleScrollView.framework */; };
 		6E1616591EAF1F4C00D95CB6 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616581EAF1F4C00D95CB6 /* NewsViewController.swift */; };
 		6E16165C1EAF2EF100D95CB6 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16165B1EAF2EF100D95CB6 /* NewsDetailViewController.swift */; };
@@ -342,9 +345,6 @@
 		A072389E1EA76AA300E755DB /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = A07238811EA76AA300E755DB /* README.txt */; };
 		A07238A01EA76AA300E755DB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07238891EA76AA300E755DB /* String+Extension.swift */; };
 		A07238A11EA76AA300E755DB /* SVProgressHUDExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072388A1EA76AA300E755DB /* SVProgressHUDExt.swift */; };
-		A07238A21EA76AA300E755DB /* AppAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072388C1EA76AA300E755DB /* AppAPIHelper.swift */; };
-		A07238A31EA76AA300E755DB /* HttpModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072388D1EA76AA300E755DB /* HttpModelHelper.swift */; };
-		A07238A41EA76AA300E755DB /* HttpRequestManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072388E1EA76AA300E755DB /* HttpRequestManage.swift */; };
 		A07238A61EA76B5E00E755DB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07238A51EA76B5E00E755DB /* Security.framework */; };
 		A07238A81EA76B6D00E755DB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07238A71EA76B6D00E755DB /* CoreTelephony.framework */; };
 		A07238AA1EA76B7600E755DB /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A07238A91EA76B7600E755DB /* libz.tbd */; };
@@ -393,6 +393,9 @@
 		658ED50682E9CA02E39549B8 /* Pods-iOSStar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.release.xcconfig"; sourceTree = "<group>"; };
 		6E0922A31EA88DFE002725A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E0922A51EA88DFE002725A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		6E120F8B1EB966F4004E1E33 /* AppAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAPIHelper.swift; sourceTree = "<group>"; };
+		6E120F8C1EB966F4004E1E33 /* HttpModelHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpModelHelper.swift; sourceTree = "<group>"; };
+		6E120F8D1EB966F4004E1E33 /* HttpRequestManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequestManage.swift; sourceTree = "<group>"; };
 		6E1616541EAEF0CF00D95CB6 /* SDCycleScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDCycleScrollView.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-bmxtycnpdoqrbibukoqgcsvtsgdm/Build/Products/Debug-iphonesimulator/SDCycleScrollView/SDCycleScrollView.framework"; sourceTree = "<group>"; };
 		6E1616581EAF1F4C00D95CB6 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		6E16165B1EAF2EF100D95CB6 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
@@ -1011,9 +1014,6 @@
 		A07238841EA76AA300E755DB /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		A07238891EA76AA300E755DB /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		A072388A1EA76AA300E755DB /* SVProgressHUDExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVProgressHUDExt.swift; sourceTree = "<group>"; };
-		A072388C1EA76AA300E755DB /* AppAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAPIHelper.swift; sourceTree = "<group>"; };
-		A072388D1EA76AA300E755DB /* HttpModelHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpModelHelper.swift; sourceTree = "<group>"; };
-		A072388E1EA76AA300E755DB /* HttpRequestManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequestManage.swift; sourceTree = "<group>"; };
 		A07238A51EA76B5E00E755DB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A07238A71EA76B6D00E755DB /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		A07238A91EA76B7600E755DB /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -1121,6 +1121,16 @@
 				6E0922A41EA88DFE002725A0 /* Main.storyboard */,
 			);
 			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		6E120F8A1EB966F4004E1E33 /* HttpRequest */ = {
+			isa = PBXGroup;
+			children = (
+				6E120F8B1EB966F4004E1E33 /* AppAPIHelper.swift */,
+				6E120F8C1EB966F4004E1E33 /* HttpModelHelper.swift */,
+				6E120F8D1EB966F4004E1E33 /* HttpRequestManage.swift */,
+			);
+			path = HttpRequest;
 			sourceTree = "<group>";
 		};
 		6E1616561EAF1F1B00D95CB6 /* CustomView */ = {
@@ -2731,9 +2741,7 @@
 			isa = PBXGroup;
 			children = (
 				A0EF3AEA1EB973F10023093A /* SocketAPI */,
-				A072388C1EA76AA300E755DB /* AppAPIHelper.swift */,
-				A072388D1EA76AA300E755DB /* HttpModelHelper.swift */,
-				A072388E1EA76AA300E755DB /* HttpRequestManage.swift */,
+				6E120F8A1EB966F4004E1E33 /* HttpRequest */,
 			);
 			path = AppAPI;
 			sourceTree = "<group>";
@@ -3062,6 +3070,7 @@
 				A03D3F3C1EA86A6400F85308 /* NIMSessionTextContentView.m in Sources */,
 				A03D3F331EA86A6400F85308 /* NIMMessageCell.m in Sources */,
 				A085A51D1EB079F200149F14 /* InputPwdVC.swift in Sources */,
+				6E120F961EB966F4004E1E33 /* AppAPIHelper.swift in Sources */,
 				A03D3F561EA86A6500F85308 /* NIMKitFileLocationHelper.m in Sources */,
 				A03D3FD81EA86A6500F85308 /* NTESAboutViewController.m in Sources */,
 				A03D3F801EA86A6500F85308 /* NTESChatroomSegmentedControl.m in Sources */,
@@ -3085,7 +3094,6 @@
 				A0EF3B121EB973F10023093A /* SocketRequestManage.swift in Sources */,
 				A03D3F061EA86A6400F85308 /* NIMContactDataItem.m in Sources */,
 				A03D3EF61EA86A6400F85308 /* NIMKitDataProviderImpl.m in Sources */,
-				A07238A31EA76AA300E755DB /* HttpModelHelper.swift in Sources */,
 				A03D3F231EA86A6400F85308 /* NIMTextContentConfig.m in Sources */,
 				A03D3F951EA86A6500F85308 /* NTESSystemNotificationCell.m in Sources */,
 				A03D3F9F1EA86A6500F85308 /* NTESChartletAttachment.m in Sources */,
@@ -3157,7 +3165,6 @@
 				A03D3F3D1EA86A6400F85308 /* NIMSessionUnknowContentView.m in Sources */,
 				A03D3FB61EA86A6500F85308 /* NTESSessionPeekViewController.m in Sources */,
 				A03D3FA51EA86A6500F85308 /* NTESWhiteboardAttachment.m in Sources */,
-				A07238A41EA76AA300E755DB /* HttpRequestManage.swift in Sources */,
 				A03D3F731EA86A6500F85308 /* NTESTeamListViewController.m in Sources */,
 				A03D3F291EA86A6400F85308 /* NIMKitMessageAtModel.m in Sources */,
 				A03D3F121EA86A6400F85308 /* NIMInputEmoticonParser.m in Sources */,
@@ -3250,7 +3257,6 @@
 				A03D3FBF1EA86A6500F85308 /* NTESAudioChatViewController.m in Sources */,
 				A03D3F1C1EA86A6400F85308 /* NIMTimestampModel.m in Sources */,
 				A03D3EE11EA86A6400F85308 /* DealViewController.swift in Sources */,
-				A07238A21EA76AA300E755DB /* AppAPIHelper.swift in Sources */,
 				A03D3F7A1EA86A6500F85308 /* NTESChatroomMessageDataProvider.m in Sources */,
 				A03D3FAB1EA86A6500F85308 /* NTESSessionTipContentView.m in Sources */,
 				A03D3EEB1EA86A6400F85308 /* UIScrollView+NTESPullToRefresh.m in Sources */,
@@ -3271,6 +3277,7 @@
 				A03D3F081EA86A6400F85308 /* NIMContactSelectConfig.m in Sources */,
 				A03D3F511EA86A6500F85308 /* NIMTeamCardHeaderCell.m in Sources */,
 				A03D3F531EA86A6500F85308 /* NIMTeamSwitchTableViewCell.m in Sources */,
+				6E120F971EB966F4004E1E33 /* HttpModelHelper.swift in Sources */,
 				A03D3F2A1EA86A6400F85308 /* NIMMessageCellFactory.m in Sources */,
 				A03D3F8F1EA86A6500F85308 /* NTESContactViewController.m in Sources */,
 				A03D3F141EA86A6400F85308 /* NIMInputMoreContainerView.m in Sources */,
@@ -3318,6 +3325,7 @@
 				A03D3F971EA86A6500F85308 /* NTESSystemNotificationViewController.m in Sources */,
 				A03D3F781EA86A6500F85308 /* NTESChatroomMaker.m in Sources */,
 				A03D3FB31EA86A6500F85308 /* NTESGalleryViewController.m in Sources */,
+				6E120F981EB966F4004E1E33 /* HttpRequestManage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

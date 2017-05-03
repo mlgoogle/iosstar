@@ -9,6 +9,7 @@ target 'iOSStar' do
     pod 'Alamofire', '~> 4.2.0'
     pod 'SVProgressHUD', '~> 2.0.3'
     pod 'Kingfisher', '~> 3.2.2'
+    pod 'CocoaAsyncSocket', '~> 7.5.0'
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'SnapKit'
