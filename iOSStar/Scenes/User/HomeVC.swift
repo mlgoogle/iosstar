@@ -22,12 +22,17 @@ class HomeVC: UIViewController {
 //        btn.addTarget(self , action: #selector(popself), for: .touchUpInside)
        
        
-        NIMSDK.shared().loginManager.login("15306559323", token: "b0f316127b240d836bb4bd01276367b9" ) { (error) in
-            if error == nil{
+        HttpRequestManage.shared().postRequestJson("", parameters: ["":""], reseponse: { (result) in
+            NIMSDK.shared().loginManager.login("15306559323", token: "b0f316127b240d836bb4bd01276367b9" ) { (error) in
+                if error == nil{
+                    
+                }
                 
             }
+        }) { (error) in
             
         }
+       
         // Do any additional setup after loading the view.
     }
     func popself(){
