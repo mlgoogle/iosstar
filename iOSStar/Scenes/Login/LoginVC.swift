@@ -29,11 +29,26 @@ class LoginVC: UITableViewController {
     }
     func didClose(){
         
+        let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
+        
+        let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
+        tabar.selectedIndex = 0
         self.dismissController()
     }
       //登录
     @IBAction func doLogin(_ sender: Any) {
-        ShareDataModel.share().isdoregist = false
+//        ShareDataModel.share().isdoregist = false
+        
+        if checkTextFieldEmpty([phone,passPwd]) && isTelNumber(num: phone.text!) {
+            NIMSDK.shared().loginManager.login(UserDefaults.standard.object(forKey: "phone") as! String, token: UserDefaults.standard.object(forKey: "tokenvalue") as! String) { (error) in
+                
+                if error == nil  {
+                    
+                }
+                
+            }
+        }
+       
     }
 
     //忘记密码
