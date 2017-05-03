@@ -12,7 +12,6 @@
         <!--Base Navigation Controller-->
         <scene sceneID="QhI-n9-uHV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VBu-OM-Njc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j9j-xh-Qc8" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="g4W-tj-EWB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -22,6 +21,7 @@
                         <segue destination="fEI-q0-257" kind="relationship" relationship="rootViewController" id="Moq-xL-Cdt"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VBu-OM-Njc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1724" y="178"/>
         </scene>
@@ -570,7 +570,6 @@
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="sureClick:" destination="YIj-ox-Gb7" eventType="touchUpInside" id="M9i-iV-KAm"/>
-                                                        <segue destination="ndY-4b-9SP" kind="push" identifier="pushInputPwd" id="Bd6-Qm-tkv"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -602,6 +601,7 @@
                         <outlet property="codeTf" destination="R0Y-1I-QRL" id="sOb-dv-udR"/>
                         <outlet property="phoneTf" destination="8Dc-4x-gqs" id="eF1-FA-fvV"/>
                         <outlet property="vaildCodeBtn" destination="Eg6-8b-egW" id="V0q-Ic-m4y"/>
+                        <segue destination="ndY-4b-9SP" kind="push" identifier="pushInputPwd" id="8Ar-Jn-s0K"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vY-rf-DqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -642,7 +642,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="349" height="40"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                         </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -697,7 +697,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="349" height="40"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                         </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -769,7 +769,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>

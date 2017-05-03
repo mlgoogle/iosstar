@@ -26,7 +26,7 @@ class RegistVC: UITableViewController {
     }
     @IBAction func sendVaildCode(_ sender: Any) {
         
-        if checkTextFieldEmpty([phoneTf]) {
+        if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
              timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updatecodeBtnTitle), userInfo: nil, repeats: true)
         }
        
@@ -45,7 +45,7 @@ class RegistVC: UITableViewController {
         codeTime = codeTime - 1
         let title: String = "\(codeTime)秒后重新发送"
         vaildCodeBtn.setTitle(title, for: .normal)
-        vaildCodeBtn.backgroundColor = transferStringToColor("0xCCCCCC")
+        vaildCodeBtn.backgroundColor = transferStringToColor("ECECEC")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,8 +53,12 @@ class RegistVC: UITableViewController {
     }
     
     @IBAction func sureClick(_ sender: Any) {
+        
+        if checkTextFieldEmpty([codeTf]){
+        
+              ShareDataModel.share().phone = phoneTf.text!
+            self.performSegue(withIdentifier: "pushInputPwd", sender: nil)
+        }
     }
-
-  
 
 }

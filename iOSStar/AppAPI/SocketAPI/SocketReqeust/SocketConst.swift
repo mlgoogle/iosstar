@@ -95,7 +95,7 @@ class SocketConst: NSObject {
         //交易总概况
         case totalHistroy = 6010
         
-
+        case registWY = 9005
         //航运舱位
         case position = 5007
         //收益选择
@@ -194,5 +194,7 @@ class SocketConst: NSObject {
         static let timestamp = "timestamp"
         static let aType = "aType"
         static let startTime = "startTime"
+        static let name_value = "name_value"
+        static let accid_value = "accid_value"
     }
 }
