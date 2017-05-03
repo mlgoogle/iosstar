@@ -9,7 +9,10 @@
 import UIKit
 
 class BaseSocketAPI: NSObject {
-    
+    private static var instance = BaseSocketAPI()
+    static func shared()-> BaseSocketAPI {
+        return instance
+    }
     /**
      请求接口 数据解析成字典
      

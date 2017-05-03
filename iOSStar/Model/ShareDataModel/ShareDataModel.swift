@@ -16,4 +16,5 @@ class ShareDataModel: NSObject {
     }
 
     var isdoregist : Bool = false
+    var phone : String =   ""
 }

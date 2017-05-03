@@ -10,6 +10,7 @@ import UIKit
 import Fabric
 import Crashlytics
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         
+   
         // //在注册 NIMSDK appKey 之前先进行配置信息的注册，如是否使用新路径,是否要忽略某些通知，是否需要多端同步未读数
         
         sdkConfigDelegate = NTESSDKConfigDelegate.init()
@@ -27,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NIMSDKConfig.shared().delegate = sdkConfigDelegate
         NIMSDKConfig.shared().shouldSyncUnreadCount = true
 
-        NIMSDK.shared().register(withAppID: "709f85147892793d23a2ed6bfe3de1b3", cerName: "")
+        NIMSDK.shared().register(withAppID: "0d0f4b452de9695f91b0e4dc949d54cc", cerName: "")
         NIMKit.shared().registerLayoutConfig(NTESCellLayoutConfig.self)
 
         NIMCustomObject.registerCustomDecoder(NTESCustomAttachmentDecoder.init())
