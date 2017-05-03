@@ -387,6 +387,7 @@
 		A0EF3B131EB973F10023093A /* SocketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFE1EB973F10023093A /* SocketResponse.swift */; };
 		A0EF3B171EB974D80023093A /* OEZCommSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EF3B161EB974D80023093A /* OEZCommSDK.framework */; };
 		A0EF3B191EB975B10023093A /* SocketConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3B181EB975B10023093A /* SocketConst.swift */; };
+		A0EF3B1B1EB9778F0023093A /* BaseSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3B1A1EB9778F0023093A /* BaseSocketAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1057,6 +1058,7 @@
 		A0EF3AFE1EB973F10023093A /* SocketResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketResponse.swift; sourceTree = "<group>"; };
 		A0EF3B161EB974D80023093A /* OEZCommSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OEZCommSDK.framework; sourceTree = "<group>"; };
 		A0EF3B181EB975B10023093A /* SocketConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketConst.swift; sourceTree = "<group>"; };
+		A0EF3B1A1EB9778F0023093A /* BaseSocketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSocketAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2810,6 +2812,7 @@
 		A0EF3AF71EB973F10023093A /* SocketReqeust */ = {
 			isa = PBXGroup;
 			children = (
+				A0EF3B1A1EB9778F0023093A /* BaseSocketAPI.swift */,
 				A0EF3B181EB975B10023093A /* SocketConst.swift */,
 				A0EF3AF81EB973F10023093A /* APISocketHelper.swift */,
 				A0EF3AF91EB973F10023093A /* LocalSocketHelper.swift */,
@@ -3253,6 +3256,7 @@
 				A03D3EF71EA86A6400F85308 /* NIMKitSwitcherCell.m in Sources */,
 				A03D3FD41EA86A6500F85308 /* NTESNoDisturbSettingViewController.m in Sources */,
 				A03D3F2C1EA86A6400F85308 /* NIMKitAudioCenter.m in Sources */,
+				A0EF3B1B1EB9778F0023093A /* BaseSocketAPI.swift in Sources */,
 				A025E4B31EB03B36002E1AA4 /* WealthVC.swift in Sources */,
 				A03D3FBF1EA86A6500F85308 /* NTESAudioChatViewController.m in Sources */,
 				A03D3F1C1EA86A6400F85308 /* NIMTimestampModel.m in Sources */,
