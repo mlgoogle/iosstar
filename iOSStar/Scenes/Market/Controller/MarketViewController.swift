@@ -24,7 +24,7 @@ class MarketViewController: UIViewController {
         let lineView = navigationController?.navigationBar.subviews.first?.subviews.first
         lineView?.isHidden = true
         let color = UIColor.white
-        navigationController?.navigationBar.setBackgroundImage(imageWithColor(color: color), for: .default)
+        navigationController?.navigationBar.setBackgroundImage(color.imageWithColor(), for: .default)
 
     }
 
