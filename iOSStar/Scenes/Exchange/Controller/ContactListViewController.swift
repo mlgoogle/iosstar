@@ -22,12 +22,10 @@ class ContactListViewController: UIViewController {
     func onlogin(){
         
         if  UserDefaults.standard.object(forKey: "tokenvalue") == nil{
-            self.navigationController?.popToRootViewController(animated: true)
+             _ = navigationController?.popToRootViewController(animated: true)
             let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
             let controller = storyboard.instantiateInitialViewController()
             present(controller!, animated: true, completion: nil)
-            
-            //            self.navigationController?.popViewController(animated: true)
             
         }else{
             
