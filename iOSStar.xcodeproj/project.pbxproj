@@ -388,6 +388,7 @@
 		A0EF3B171EB974D80023093A /* OEZCommSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EF3B161EB974D80023093A /* OEZCommSDK.framework */; };
 		A0EF3B191EB975B10023093A /* SocketConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3B181EB975B10023093A /* SocketConst.swift */; };
 		A0EF3B1B1EB9778F0023093A /* BaseSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3B1A1EB9778F0023093A /* BaseSocketAPI.swift */; };
+		A0EF3B1D1EB9C5860023093A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3B1C1EB9C5860023093A /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1059,6 +1060,7 @@
 		A0EF3B161EB974D80023093A /* OEZCommSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OEZCommSDK.framework; sourceTree = "<group>"; };
 		A0EF3B181EB975B10023093A /* SocketConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketConst.swift; sourceTree = "<group>"; };
 		A0EF3B1A1EB9778F0023093A /* BaseSocketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSocketAPI.swift; sourceTree = "<group>"; };
+		A0EF3B1C1EB9C5860023093A /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1207,6 +1209,7 @@
 			isa = PBXGroup;
 			children = (
 				A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */,
+				A0EF3B1C1EB9C5860023093A /* UserModel.swift */,
 			);
 			path = ShareDataModel;
 			sourceTree = "<group>";
@@ -3288,6 +3291,7 @@
 				A03D3EF11EA86A6400F85308 /* UITableView+NIMScrollToBottom.m in Sources */,
 				A025E4B91EB04253002E1AA4 /* DealListVC.swift in Sources */,
 				6E1616681EB04DCE00D95CB6 /* ContactListCell.swift in Sources */,
+				A0EF3B1D1EB9C5860023093A /* UserModel.swift in Sources */,
 				A072389B1EA76AA300E755DB /* ViewController.swift in Sources */,
 				A03D3EEF1EA86A6400F85308 /* NSString+NIMKit.m in Sources */,
 				A0EF3B0D1EB973F10023093A /* APISocketHelper.swift in Sources */,
@@ -3468,8 +3472,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yundian.trip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eb667b43-e180-40c3-8f90-af8afec6849a";
-				PROVISIONING_PROFILE_SPECIFIER = "dev-16-09-22";
+				PROVISIONING_PROFILE = "dea02a05-af48-4c57-be5b-15121f3f7182";
+				PROVISIONING_PROFILE_SPECIFIER = "trip-dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -3496,8 +3500,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yundian.trip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eb667b43-e180-40c3-8f90-af8afec6849a";
-				PROVISIONING_PROFILE_SPECIFIER = "dev-16-09-22";
+				PROVISIONING_PROFILE = "dea02a05-af48-4c57-be5b-15121f3f7182";
+				PROVISIONING_PROFILE_SPECIFIER = "trip-dev";
 				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

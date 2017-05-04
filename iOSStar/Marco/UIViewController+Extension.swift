@@ -50,7 +50,9 @@ extension UIViewController {
     func checkTextFieldEmpty(_ array:[UITextField]) -> Bool {
         for  textField in array {
             if  textField.text == ""  {
-                showErrorWithStatus(textField.placeholder);
+                SVProgressHUD.showErrorMessage(ErrorMessage: textField.placeholder!, ForDuration: 0.5, completion: { 
+                    
+                });
                 return false
             }
         }

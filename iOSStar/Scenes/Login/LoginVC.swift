@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class LoginVC: UITableViewController {
 
     //手机号
@@ -17,6 +17,7 @@ class LoginVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initNav()
+       
 
     }
     func initNav(){
@@ -39,16 +40,36 @@ class LoginVC: UITableViewController {
     @IBAction func doLogin(_ sender: Any) {
 //        ShareDataModel.share().isdoregist = false
         
-        if checkTextFieldEmpty([phone,passPwd]) && isTelNumber(num: phone.text!) {
-            NIMSDK.shared().loginManager.login(UserDefaults.standard.object(forKey: "phone") as! String, token: UserDefaults.standard.object(forKey: "tokenvalue") as! String) { (error) in
+        
+        SVProgressHUD.show(withStatus: "登录中")
+        if checkTextFieldEmpty([phone]) {
+            
+            if isTelNumber(num: phone.text!){
+            let param: [String: Any] = [SocketConst.Key.name_value:  phone.text!,
+                                        SocketConst.Key.accid_value:  phone.text!,]
+            let packet: SocketDataPacket = SocketDataPacket.init(opcode: .registWY, dict: param as [String : AnyObject])
+            
+            BaseSocketAPI.shared().startRequest(packet, complete: { (result) -> ()? in
                 
-                if error == nil  {
+                SVProgressHUD.showErrorMessage(ErrorMessage: "登录成功", ForDuration: 0.5, completion: {
+                    
+                })
+                let datadic = result as? Dictionary<String,String>
+                if let _ = datadic {
+                    
+                    UserDefaults.standard.set(ShareDataModel.share().phone, forKey: "phone")
+                    UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
+                    UserDefaults.standard.synchronize()
+                    self.dismissController()
                     
                 }
+                return ()
+            }) { (error) -> ()? in
                 
+                return
+            }
             }
         }
-       
     }
 
     //忘记密码

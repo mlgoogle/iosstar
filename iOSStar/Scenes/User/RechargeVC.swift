@@ -12,7 +12,10 @@ class RechargeVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let view = UIView.init()
+        view.backgroundColor = UIColor.clear
+        self.tableView.tableFooterView = view
+        title = "充值"
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

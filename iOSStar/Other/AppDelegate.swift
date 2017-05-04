@@ -27,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         sdkConfigDelegate = NTESSDKConfigDelegate.init()
         
         NIMSDKConfig.shared().delegate = sdkConfigDelegate
-        NIMSDKConfig.shared().shouldSyncUnreadCount = true
-
+        NIMSDKConfig.shared().shouldSyncUnreadCount = true//0d0f4b452de9695f91b0e4dc949d54cc
+                                             //9c3a406f233dea0d355c6458fb0171b8
         NIMSDK.shared().register(withAppID: "0d0f4b452de9695f91b0e4dc949d54cc", cerName: "")
         NIMKit.shared().registerLayoutConfig(NTESCellLayoutConfig.self)
 

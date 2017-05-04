@@ -726,7 +726,7 @@ NIMContactSelectDelegate>
 //    [historyBtn sizeToFit];
 //    UIBarButtonItem *historyButtonItem = [[UIBarButtonItem alloc] initWithCustomView:historyBtn];
     
-    
+    self.title = self.session.sessionId;
     
     if (self.session.sessionType == NIMSessionTypeTeam) {
 //        self.navigationItem.rightBarButtonItems  = @[enterTeamCardItem,historyButtonItem];
