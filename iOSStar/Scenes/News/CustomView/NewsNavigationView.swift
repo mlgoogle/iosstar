@@ -19,7 +19,7 @@ class NewsNavigationView: UIView {
     var PMLabel:UILabel = {
         let label = UILabel()
         label.text = "P M"
-        label.textColor = transferStringToColor("e1eeff")
+        label.textColor = UIColor(hexString: "e1eeff")
         label.font = UIFont.systemFont(ofSize: 14.0)
         return label
     }()
@@ -28,7 +28,7 @@ class NewsNavigationView: UIView {
        
         let label = UILabel()
         label.text = "16:20"
-        label.textColor = transferStringToColor("e1eeff")
+        label.textColor = UIColor(hexString: "e1eeff")
 
         label.font = UIFont.systemFont(ofSize: 10.0)
         return label
@@ -37,7 +37,7 @@ class NewsNavigationView: UIView {
     var dateLabel:UILabel = {
        let label = UILabel()
         label.text = "2017/04/25"
-        label.textColor = transferStringToColor("fafafa")
+        label.textColor = UIColor(hexString: "fafafa")
 
         label.font = UIFont.systemFont(ofSize: 16.0)
         return label

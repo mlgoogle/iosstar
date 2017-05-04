@@ -11,12 +11,12 @@ import SnapKit
 
 class MenuItemCell: UICollectionViewCell {
     
-    var titleLabel:UILabel = {
+    lazy var titleLabel:UILabel = {
        
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.text = "明星"
-        label.textColor = transferStringToColor("C2CFD8")
+        label.textColor =  UIColor(hexString: "C2CFD8")
         return label
     }()
     
