@@ -38,14 +38,14 @@ class RegistVC: UITableViewController {
             vaildCodeBtn.setTitle("重新发送", for: .normal)
             codeTime = 60
             timer?.invalidate()
-        vaildCodeBtn.backgroundColor = transferStringToColor("185CA5")
+        vaildCodeBtn.backgroundColor = UIColor(hexString: "185CA5")
             return
         }
         vaildCodeBtn.isEnabled = false
         codeTime = codeTime - 1
         let title: String = "\(codeTime)秒后重新发送"
         vaildCodeBtn.setTitle(title, for: .normal)
-        vaildCodeBtn.backgroundColor = transferStringToColor("ECECEC")
+        vaildCodeBtn.backgroundColor = UIColor(hexString: "ECECEC")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

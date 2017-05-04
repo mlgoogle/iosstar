@@ -12,23 +12,28 @@ class MarketViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
+        label.text = "行情"
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.textColor = UIColor(hexString: "185CA5")
+        navigationItem.titleView = label
+        automaticallyAdjustsScrollViewInsets = false
+        let menuView = MarketMenuView(frame: CGRect(x: 0, y: 64, width: kScreenWidth, height: kScreenHeight))
+        menuView.items = ["自选","艺人","体育明星","网红","海外知名人士"]
+        view.addSubview(menuView)
+        let lineView = navigationController?.navigationBar.subviews.first?.subviews.first
+        lineView?.isHidden = true
+        let color = UIColor.white
+        navigationController?.navigationBar.setBackgroundImage(imageWithColor(color: color), for: .default)
 
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func searchAction() {
+        
     }
-    */
 
 }

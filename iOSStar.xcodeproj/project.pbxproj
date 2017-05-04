@@ -24,6 +24,8 @@
 		6E1616701EB0A7AA00D95CB6 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16166F1EB0A7AA00D95CB6 /* MenuItemCell.swift */; };
 		6E1616721EB1EF2300D95CB6 /* MenuSubViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616711EB1EF2300D95CB6 /* MenuSubViewCell.swift */; };
 		6E193C4A1EB98BC80049AEDE /* W020170503310673715599.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E193C491EB98BC80049AEDE /* W020170503310673715599.jpg */; };
+		6E193C4C1EB9C87B0049AEDE /* SubViewItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E193C4B1EB9C87B0049AEDE /* SubViewItemCell.swift */; };
+		6E193C4E1EBAD3240049AEDE /* MenuWidthLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E193C4D1EBAD3240049AEDE /* MenuWidthLayout.swift */; };
 		6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */; };
 		6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302C1EA84D98005C8DF9 /* Market.storyboard */; };
 		A001A96C1EAD884D00752F1A /* HaveBuyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A96B1EAD884D00752F1A /* HaveBuyVC.swift */; };
@@ -410,6 +412,8 @@
 		6E16166F1EB0A7AA00D95CB6 /* MenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 		6E1616711EB1EF2300D95CB6 /* MenuSubViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSubViewCell.swift; sourceTree = "<group>"; };
 		6E193C491EB98BC80049AEDE /* W020170503310673715599.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = W020170503310673715599.jpg; sourceTree = "<group>"; };
+		6E193C4B1EB9C87B0049AEDE /* SubViewItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubViewItemCell.swift; sourceTree = "<group>"; };
+		6E193C4D1EBAD3240049AEDE /* MenuWidthLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuWidthLayout.swift; sourceTree = "<group>"; };
 		6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOSStar-Bridging-Header.h"; sourceTree = "<group>"; };
 		6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
 		6EC3302C1EA84D98005C8DF9 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
@@ -1190,6 +1194,8 @@
 				6E16166D1EB0973700D95CB6 /* MarketMenuView.swift */,
 				6E16166F1EB0A7AA00D95CB6 /* MenuItemCell.swift */,
 				6E1616711EB1EF2300D95CB6 /* MenuSubViewCell.swift */,
+				6E193C4B1EB9C87B0049AEDE /* SubViewItemCell.swift */,
+				6E193C4D1EBAD3240049AEDE /* MenuWidthLayout.swift */,
 			);
 			name = CustomView;
 			path = iOSStar/Scenes/Market/CustomView;
@@ -2683,16 +2689,8 @@
 				A0EF3B161EB974D80023093A /* OEZCommSDK.framework */,
 				A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */,
 				A072387C1EA76AA300E755DB /* AppConst.swift */,
-				A072387D1EA76AA300E755DB /* CustomerView */,
 			);
 			path = Marco;
-			sourceTree = "<group>";
-		};
-		A072387D1EA76AA300E755DB /* CustomerView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomerView;
 			sourceTree = "<group>";
 		};
 		A072387E1EA76AA300E755DB /* Library */ = {
@@ -3092,6 +3090,7 @@
 				A03D3FE51EA86A6500F85308 /* NTESBirthPickerView.m in Sources */,
 				A03D3EE71EA86A6400F85308 /* UIImage+NTES.m in Sources */,
 				A03D3F501EA86A6500F85308 /* NIMTeamAnnouncementListCell.m in Sources */,
+				6E193C4E1EBAD3240049AEDE /* MenuWidthLayout.swift in Sources */,
 				A03D3FDE1EA86A6500F85308 /* NTESEmailSettingViewController.m in Sources */,
 				6E1616661EB04D4E00D95CB6 /* ContactListViewController.swift in Sources */,
 				A03D3F621EA86A6500F85308 /* NTESNavigationHandler.m in Sources */,
@@ -3225,6 +3224,7 @@
 				A03D3FE31EA86A6500F85308 /* NTESUserInfoSettingViewController.m in Sources */,
 				A03D3FC11EA86A6500F85308 /* NTESNetChatViewController.m in Sources */,
 				A03D3F101EA86A6400F85308 /* NIMInputEmoticonContainerView.m in Sources */,
+				6E193C4C1EB9C87B0049AEDE /* SubViewItemCell.swift in Sources */,
 				A03D3F851EA86A6500F85308 /* NTESCustomSysNotificationSender.m in Sources */,
 				6E16165C1EAF2EF100D95CB6 /* NewsDetailViewController.swift in Sources */,
 				A03D3F481EA86A6500F85308 /* NIMUsrInfoData.m in Sources */,
