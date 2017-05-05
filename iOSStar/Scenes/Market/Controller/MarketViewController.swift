@@ -15,7 +15,7 @@ class MarketViewController: UIViewController {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
         label.text = "行情"
         label.font = UIFont.systemFont(ofSize: 18)
-        label.textColor = UIColor(hexString: "185CA5")
+        label.textColor = UIColor(hexString: AppConst.Color.main)
         navigationItem.titleView = label
         automaticallyAdjustsScrollViewInsets = false
         let menuView = MarketMenuView(frame: CGRect(x: 0, y: 64, width: kScreenWidth, height: kScreenHeight))

@@ -12,7 +12,7 @@ class MenuSubViewCell: UICollectionViewCell {
   
     lazy var tableView:UITableView = {
 
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - 100), style: .plain)
+        let tableView = UITableView(frame: CGRect(x: 0, y: 24, width: kScreenWidth, height: kScreenHeight - 100), style: .plain)
 
         return tableView
     }()
@@ -34,7 +34,6 @@ class MenuSubViewCell: UICollectionViewCell {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SubViewItemCell.self, forCellReuseIdentifier: "SubViewItemCell")
-
         contentView.addSubview(tableView)
     }
     

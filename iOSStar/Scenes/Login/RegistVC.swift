@@ -38,7 +38,7 @@ class RegistVC: UIViewController {
             vaildCodeBtn.setTitle("重新发送", for: .normal)
             codeTime = 60
             timer?.invalidate()
-        vaildCodeBtn.backgroundColor = UIColor(hexString: "185CA5")
+        vaildCodeBtn.backgroundColor = UIColor(hexString: AppConst.Color.main)
             return
         }
         vaildCodeBtn.isEnabled = false

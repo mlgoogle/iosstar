@@ -93,23 +93,10 @@ class MenuWidthLayout: UICollectionViewFlowLayout {
         }
     }
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-//        let maxWidth = collectionView?.frame.size.width
-        
-        
         let itemW = delegate!.autoLayout(layout: self, atIndexPath:indexPath)
-        
         let atr = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        
         atr.frame = CGRect(x: CGFloat(currentX), y:  CGFloat(menuSectionInset.top), width: CGFloat(itemW), height: itemHeight)
-//        currentMaxX = currentX + itemW + Float(menuSectionInset.right)
-//        if currentMaxX - Float(maxWidth!) > 0 {
-//            currentX = Float(menuSectionInset.left)
-//            currentY = currentY + Float(itemHeight) + Float(rowMargin)
-//            atr.frame = CGRect(x: CGFloat(currentX), y:  CGFloat(currentX), width: CGFloat(itemW), height: itemHeight)
-//            currentX = currentX + itemW + Float(columnMargin)
-//        } else {
             currentX = currentX + itemW + Float(columnMargin)
-//        }
         return atr
     }
 

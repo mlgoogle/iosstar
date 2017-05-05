@@ -17,7 +17,7 @@ class ContactListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         chatButton.layer.borderWidth = 1
-        chatButton.layer.borderColor = UIColor(hexString: "185ca5").cgColor
+        chatButton.layer.borderColor = UIColor(hexString: AppConst.Color.main).cgColor
         chatButton.layer.cornerRadius = 2
         chatButton.layer.masksToBounds = true
     }
