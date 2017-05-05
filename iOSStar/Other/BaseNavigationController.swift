@@ -16,7 +16,7 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
         navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white];
         interactivePopGestureRecognizer?.isEnabled = true
         interactivePopGestureRecognizer?.delegate = self
-        navigationBar.barTintColor = UIColor(hexString: "185ca5")
+        navigationBar.barTintColor = UIColor(hexString: AppConst.Color.main)
         navigationBar.isTranslucent = false
     }
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {

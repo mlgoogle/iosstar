@@ -52,9 +52,9 @@ class BuyVCCell: UITableViewCell ,UITableViewDataSource,UITableViewDelegate{
         buytableView.dataSource = self
 
        
-        nameTF.layer.borderColor = UIColor(hexString: "185ca5").cgColor
-        bordor.layer.borderColor = UIColor(hexString: "185ca5").cgColor
-        line.layer.borderColor = UIColor(hexString: "185ca5").cgColor
+        nameTF.layer.borderColor = UIColor(hexString: AppConst.Color.main).cgColor
+        bordor.layer.borderColor = UIColor(hexString: AppConst.Color.main).cgColor
+        line.layer.borderColor = UIColor(hexString: AppConst.Color.main).cgColor
        
         // Initialization code
     }
