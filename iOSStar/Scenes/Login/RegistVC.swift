@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegistVC: UITableViewController {
+class RegistVC: UIViewController {
     @IBOutlet weak var codeTf: UITextField!
 
     @IBOutlet var phoneTf: UITextField!
@@ -54,9 +54,10 @@ class RegistVC: UITableViewController {
     
     @IBAction func sureClick(_ sender: Any) {
         
-        if checkTextFieldEmpty([codeTf]){
+        if checkTextFieldEmpty([codeTf,phoneTf]){
         
-              ShareDataModel.share().phone = phoneTf.text!
+              ShareDataModel.share().phone = codeTf.text!
+            ShareDataModel.share().codeToeken = phoneTf.text!
             self.performSegue(withIdentifier: "pushInputPwd", sender: nil)
         }
     }

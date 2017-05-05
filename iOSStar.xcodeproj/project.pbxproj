@@ -368,6 +368,9 @@
 		A08A9BB91EA9FAA0009E6B2B /* DetailTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB81EA9FAA0009E6B2B /* DetailTableViewVC.swift */; };
 		A08A9BBD1EAA0D3B009E6B2B /* BuyVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BBC1EAA0D3B009E6B2B /* BuyVCCell.swift */; };
 		A08A9BBF1EAA0E1F009E6B2B /* BuyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BBE1EAA0E1F009E6B2B /* BuyVC.swift */; };
+		A09667661EBB1378009C6A71 /* TipBindCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09667651EBB1378009C6A71 /* TipBindCardVC.swift */; };
+		A0A996C81EBC4D67000048DC /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A996C61EBC4D67000048DC /* LoginApi.swift */; };
+		A0A996C91EBC4D67000048DC /* LoginSocketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A996C71EBC4D67000048DC /* LoginSocketApi.swift */; };
 		A0C9D66B1EAE102300FC438D /* BlizzardReg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D65B1EAE102300FC438D /* BlizzardReg.ttf */; };
 		A0C9D66C1EAE102300FC438D /* d3.icns in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D65C1EAE102300FC438D /* d3.icns */; };
 		A0C9D66D1EAE102300FC438D /* SetupOSX.mpq in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D65D1EAE102300FC438D /* SetupOSX.mpq */; };
@@ -1042,6 +1045,9 @@
 		A08A9BB81EA9FAA0009E6B2B /* DetailTableViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewVC.swift; sourceTree = "<group>"; };
 		A08A9BBC1EAA0D3B009E6B2B /* BuyVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyVCCell.swift; sourceTree = "<group>"; };
 		A08A9BBE1EAA0E1F009E6B2B /* BuyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyVC.swift; sourceTree = "<group>"; };
+		A09667651EBB1378009C6A71 /* TipBindCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipBindCardVC.swift; sourceTree = "<group>"; };
+		A0A996C61EBC4D67000048DC /* LoginApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
+		A0A996C71EBC4D67000048DC /* LoginSocketApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSocketApi.swift; sourceTree = "<group>"; };
 		A0C9D65B1EAE102300FC438D /* BlizzardReg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BlizzardReg.ttf; sourceTree = "<group>"; };
 		A0C9D65C1EAE102300FC438D /* d3.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = d3.icns; sourceTree = "<group>"; };
 		A0C9D65D1EAE102300FC438D /* SetupOSX.mpq */ = {isa = PBXFileReference; lastKnownFileType = file; path = SetupOSX.mpq; sourceTree = "<group>"; };
@@ -1239,6 +1245,7 @@
 		A03D3C4B1EA86A6300F85308 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				A09667641EBB134F009C6A71 /* bankCard */,
 				A03D3FFA1EA8992E00F85308 /* HomeVC.swift */,
 				A025E4BC1EB04895002E1AA4 /* AccountInfoVC.swift */,
 				A08A9BB61EA9F22F009E6B2B /* UserVC.swift */,
@@ -2748,6 +2755,7 @@
 		A072388B1EA76AA300E755DB /* AppAPI */ = {
 			isa = PBXGroup;
 			children = (
+				A0A996C51EBC4D67000048DC /* LoginAPI */,
 				A0EF3AEA1EB973F10023093A /* SocketAPI */,
 				6E120F8A1EB966F4004E1E33 /* HttpRequest */,
 			);
@@ -2766,6 +2774,24 @@
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
+		};
+		A09667641EBB134F009C6A71 /* bankCard */ = {
+			isa = PBXGroup;
+			children = (
+				A09667651EBB1378009C6A71 /* TipBindCardVC.swift */,
+			);
+			path = bankCard;
+			sourceTree = "<group>";
+		};
+		A0A996C51EBC4D67000048DC /* LoginAPI */ = {
+			isa = PBXGroup;
+			children = (
+				A0A996C61EBC4D67000048DC /* LoginApi.swift */,
+				A0A996C71EBC4D67000048DC /* LoginSocketApi.swift */,
+			);
+			name = LoginAPI;
+			path = iOSSTar/AppAPI/LoginAPI;
+			sourceTree = SOURCE_ROOT;
 		};
 		A0C9D6591EAE102300FC438D /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -3042,6 +3068,7 @@
 				A07238991EA76AA300E755DB /* AppDelegate.swift in Sources */,
 				A08569FA1EB08FCA004F349B /* BaseNavigationController.swift in Sources */,
 				A03D3F671EA86A6500F85308 /* NTESPageView.m in Sources */,
+				A09667661EBB1378009C6A71 /* TipBindCardVC.swift in Sources */,
 				A03D3F091EA86A6400F85308 /* NIMContactSelectTabView.m in Sources */,
 				A07238A11EA76AA300E755DB /* SVProgressHUDExt.swift in Sources */,
 				A03D3EEA1EA86A6400F85308 /* UIScrollView+NTESDirection.m in Sources */,
@@ -3121,6 +3148,7 @@
 				A03D3F461EA86A6500F85308 /* NIMTeamCardRowItem.m in Sources */,
 				A03D3F6F1EA86A6500F85308 /* NTESPersonalCardViewController.m in Sources */,
 				A053C25B1EAD85EF007F86BC /* OrderListVC.swift in Sources */,
+				A0A996C91EBC4D67000048DC /* LoginSocketApi.swift in Sources */,
 				A03D3FDF1EA86A6500F85308 /* NTESGenderSettingViewController.m in Sources */,
 				A03D3F0E1EA86A6400F85308 /* NIMInputAudioRecordIndicatorView.m in Sources */,
 				A03D3FAF1EA86A6500F85308 /* NTESFilePreViewController.m in Sources */,
@@ -3157,6 +3185,7 @@
 				A03D3FFB1EA8992E00F85308 /* HomeVC.swift in Sources */,
 				A03D3FF01EA86A6500F85308 /* NTESDevice.m in Sources */,
 				A03D3F311EA86A6400F85308 /* NIMSessionMsgDatasource.m in Sources */,
+				A0A996C81EBC4D67000048DC /* LoginApi.swift in Sources */,
 				A03D3F391EA86A6400F85308 /* NIMSessionMessageContentView.m in Sources */,
 				A03D3F541EA86A6500F85308 /* NIMTimePickerView.m in Sources */,
 				A03D3F491EA86A6500F85308 /* NIMAdvancedTeamCardViewController.m in Sources */,
