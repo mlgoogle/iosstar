@@ -14,7 +14,9 @@ class ShareDataModel: NSObject {
     class func share() -> ShareDataModel{
         return model
     }
-
+    var wechatUserInfo = [String:String]()
     var isdoregist : Bool = false
     var phone : String =   ""
+    var codeToeken : String =   ""
+  
 }

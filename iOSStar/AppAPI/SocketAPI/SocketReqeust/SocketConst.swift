@@ -26,10 +26,11 @@ class SocketConst: NSObject {
         case voiceCode = 1006
         // 设置用户信息
         case userInfo = 10010
+        case bindWchat = 3015
         //设置账号信息
-        case accountNews = 1007
+        case WchatLogin = 3013
         //获取个人信息
-        case getUserinfo = 1001
+        case getUserinfo = 10000
         //修改个人信息
         case changeUserInfo = 1031
         //每天的数据
@@ -191,10 +192,19 @@ class SocketConst: NSObject {
         static let screenName = "screenName"
         static let avatarLarge = "avatarLarge"
         static let uidStr = "uidStr"
-        static let timestamp = "timestamp"
+        static let timestamp = "timeStamp"
         static let aType = "aType"
         static let startTime = "startTime"
         static let name_value = "name_value"
         static let accid_value = "accid_value"
+        static let deviceId = "deviceId"
+        static let vCode = "vCode"
+        static let openid = "openid"
+        static let nickname = "nickname"
+        static let headerUrl = "headerUrl"
+        static let headimgurl = "headimgurl"
+        static let accessToken = "access_token"
+   
+        
     }
 }

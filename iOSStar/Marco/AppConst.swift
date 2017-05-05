@@ -101,10 +101,11 @@ class AppConst {
     class WechatKey {
         static let Scope = "snsapi_userinfo"
         static let State = "wpstate"
-        static let AccessTokenUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code"
+        static let AccessTokenUrl = "https://api.weixin.qq.com/sns/oauth2/access_token"
         static let Appid = "wx9dc39aec13ee3158"
-        static let Secret = "Secret"
-        static let ErrorCode = "ErrorCode" 
+        static let Secret = "f3f983753c28f85ce2d23bcd1b479115"
+        static let ErrorCode = "ErrorCode"
+        static let wechetUserInfo = "https://api.weixin.qq.com/sns/userinfo"
     }
     
     class WechatPay {
