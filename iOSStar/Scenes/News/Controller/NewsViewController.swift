@@ -22,11 +22,6 @@ class NewsViewController: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-       
-        
         let imageUrl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1493098902992&di=74b063fe6c4fe1b887fe976d4c219bd3&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F61%2F00%2F61a58PICtPr_1024.jpg"
         bannerScrollView = SDCycleScrollView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 200), imageNamesGroup: [imageUrl, imageUrl, imageUrl, imageUrl])
         automaticallyAdjustsScrollViewInsets = false
