@@ -8,10 +8,14 @@
 
 import UIKit
 
-class FotgotPwdVC: UIViewController {
-
+class FotgotPwdVC: UITableViewController {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "重置密码"
 
         // Do any additional setup after loading the view.
     }

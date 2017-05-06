@@ -362,7 +362,6 @@
 		A085A51D1EB079F200149F14 /* InputPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085A51C1EB079F200149F14 /* InputPwdVC.swift */; };
 		A085A51F1EB0801300149F14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922A41EA88DFE002725A0 /* Main.storyboard */; };
 		A08A9BB11EA991D5009E6B2B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */; };
-		A08A9BB31EA994C2009E6B2B /* FotgotPwd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB21EA994C2009E6B2B /* FotgotPwd.swift */; };
 		A08A9BB51EA99547009E6B2B /* FotgotPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB41EA99547009E6B2B /* FotgotPwdVC.swift */; };
 		A08A9BB71EA9F22F009E6B2B /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB61EA9F22F009E6B2B /* UserVC.swift */; };
 		A08A9BB91EA9FAA0009E6B2B /* DetailTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB81EA9FAA0009E6B2B /* DetailTableViewVC.swift */; };
@@ -395,6 +394,7 @@
 		A0EF3B191EB975B10023093A /* SocketConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3B181EB975B10023093A /* SocketConst.swift */; };
 		A0EF3B1B1EB9778F0023093A /* BaseSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3B1A1EB9778F0023093A /* BaseSocketAPI.swift */; };
 		A0EF3B1D1EB9C5860023093A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3B1C1EB9C5860023093A /* UserModel.swift */; };
+		A0EF98771EBCC498009B1D8A /* ContainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF98761EBCC498009B1D8A /* ContainVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1039,7 +1039,6 @@
 		A085A51A1EB0771C00149F14 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		A085A51C1EB079F200149F14 /* InputPwdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPwdVC.swift; sourceTree = "<group>"; };
 		A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		A08A9BB21EA994C2009E6B2B /* FotgotPwd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FotgotPwd.swift; sourceTree = "<group>"; };
 		A08A9BB41EA99547009E6B2B /* FotgotPwdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FotgotPwdVC.swift; sourceTree = "<group>"; };
 		A08A9BB61EA9F22F009E6B2B /* UserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
 		A08A9BB81EA9FAA0009E6B2B /* DetailTableViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewVC.swift; sourceTree = "<group>"; };
@@ -1074,6 +1073,7 @@
 		A0EF3B181EB975B10023093A /* SocketConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketConst.swift; sourceTree = "<group>"; };
 		A0EF3B1A1EB9778F0023093A /* BaseSocketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSocketAPI.swift; sourceTree = "<group>"; };
 		A0EF3B1C1EB9C5860023093A /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		A0EF98761EBCC498009B1D8A /* ContainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1233,10 +1233,10 @@
 			isa = PBXGroup;
 			children = (
 				A0155E0F1EA8C9760047B95B /* RegistVC.swift */,
-				A08A9BB21EA994C2009E6B2B /* FotgotPwd.swift */,
 				A08A9BB41EA99547009E6B2B /* FotgotPwdVC.swift */,
 				A085A51A1EB0771C00149F14 /* LoginVC.swift */,
 				A085A51C1EB079F200149F14 /* InputPwdVC.swift */,
+				A0EF98761EBCC498009B1D8A /* ContainVC.swift */,
 			);
 			name = Login;
 			path = iOSSTar/Scenes/Login;
@@ -3167,7 +3167,6 @@
 				A03D3F7B1EA86A6500F85308 /* NTESChatroomViewController.m in Sources */,
 				6E1616591EAF1F4C00D95CB6 /* NewsViewController.swift in Sources */,
 				A03D3F5E1EA86A6500F85308 /* UIView+Swizzling.m in Sources */,
-				A08A9BB31EA994C2009E6B2B /* FotgotPwd.swift in Sources */,
 				A03D3FBB1EA86A6500F85308 /* NTESWhiteboardDrawView.m in Sources */,
 				A03D3F111EA86A6400F85308 /* NIMInputEmoticonManager.m in Sources */,
 				A001A9761EADCABE00752F1A /* SellOutCell.swift in Sources */,
@@ -3183,6 +3182,7 @@
 				A03D3FEA1EA86A6500F85308 /* NTESDemoRegisterTask.m in Sources */,
 				A03D3F2D1EA86A6400F85308 /* NIMSessionConfigurator.m in Sources */,
 				A03D3FFB1EA8992E00F85308 /* HomeVC.swift in Sources */,
+				A0EF98771EBCC498009B1D8A /* ContainVC.swift in Sources */,
 				A03D3FF01EA86A6500F85308 /* NTESDevice.m in Sources */,
 				A03D3F311EA86A6400F85308 /* NIMSessionMsgDatasource.m in Sources */,
 				A0A996C81EBC4D67000048DC /* LoginApi.swift in Sources */,

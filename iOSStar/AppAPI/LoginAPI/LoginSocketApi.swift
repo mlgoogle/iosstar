@@ -13,7 +13,7 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
     //注册
     func regist(phone: String, password: String, complete: CompleteBlock?, error: ErrorBlock?){
         
-        let param: [String: Any] = [SocketConst.Key.phone: "18643803462",
+        let param: [String: Any] = [SocketConst.Key.phone: phone,
                                     SocketConst.Key.pwd:  password,
                                     SocketConst.Key.memberId: 1001,
                                     SocketConst.Key.agentId:  "186681261",
