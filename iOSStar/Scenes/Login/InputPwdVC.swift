@@ -30,6 +30,8 @@ class InputPwdVC: UITableViewController {
                                         SocketConst.Key.recommend: "3tewe",
                                         SocketConst.Key.code: ShareDataModel.share().codeToeken,]
 
+            
+            
             let packet :SocketDataPacket = SocketDataPacket.init(opcode: .register, dict:  param as [String : AnyObject])
             BaseSocketAPI.shared().startRequest(packet, complete: { (resule) -> ()? in
                 

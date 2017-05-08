@@ -8,10 +8,21 @@
 
 import UIKit
 import SVProgressHUD
+
 class LoginVC: UIViewController {
 
+    //定义block来判断选择哪个试图
+     var resultBlock: CompleteBlock?
+    //左边距
+    @IBOutlet var left: NSLayoutConstraint!
+   
+    //右边距
+    @IBOutlet var right: NSLayoutConstraint!
+     //上边距
+    @IBOutlet var top: NSLayoutConstraint!
     var tranform : Bool = true
     @IBOutlet weak var loginView: UIView!
+    
     //手机号
     @IBOutlet weak var passPwd: UITextField!
     // 登录密码
@@ -19,18 +30,24 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initNav()
-        
+        initUI()
       
           NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess(_:)), name: Notification.Name(rawValue:AppConst.WechatKey.ErrorCode), object: nil)
 
         
+    }
+    func initUI(){
+    
+//        self.top.constant = UIScreen.main.bounds.size.height/568.0 * 100
+        self.left.constant = UIScreen.main.bounds.size.width/320.0 * 30
+        self.right.constant = UIScreen.main.bounds.size.width/320.0 * 30
     }
     func loginSuccess(_ notice: NSNotification){
     
         
         AppAPIHelper.user().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { (result) -> ()? in
             
-             print(result)
+//             print(result)
             return()
         }) { (error) -> ()? in
              print(error)
@@ -48,7 +65,7 @@ class LoginVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     func initNav(){
@@ -75,51 +92,54 @@ class LoginVC: UIViewController {
         req.scope = AppConst.WechatKey.Scope
         req.state = AppConst.WechatKey.State
         WXApi.send(req)
-//        if !tranform {
-//            self.regisView.isHidden = true
-//             self.loginView.isHidden = false
-//            UIView.animate(withDuration: 0.23) {
-//                self.loginView.layer.transform.m34 = 0.0005
-//                self.regisView.layer.transform = CATransform3DMakeRotation(CGFloat(Double.pi/2), 0, 1, 0)
-//                self.loginView.layer.transform = CATransform3DMakeRotation(0, 0, 1, 0)
-//                self.loginView.transform = self.loginView.transform.scaledBy(x: 0.5, y: 0.5);
-//
-//
-//                
-//            }
-//        }else{
-//            self.regisView.isHidden = false
-//              self.loginView.isHidden = true
-//              UIView.animate(withDuration: 0.23) {
-//                  self.regisView.layer.transform.m34 = 0.0005
-//                 self.regisView.layer.transform = CATransform3DMakeRotation(0, 0, 1, 0)
-//                  self.loginView.layer.transform = CATransform3DMakeRotation(-(CGFloat)(Double.pi/2), 0, 1, 0)
-//                self.regisView.transform = self.loginView.transform.scaledBy(x: 1, y: 0.9);
-//            }
-//       }
+
+    }
+    @IBAction func doRegist(_ sender: Any) {
+        
+        self.resultBlock!(doStateClick.doRegist as AnyObject?)
+
+        
     }
       //登录
     @IBAction func doLogin(_ sender: Any) {
         
         
-        
-        AppAPIHelper.user().login(phone: "18643803462", password: "123", complete: { (result) -> ()? in
+        if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]){
             
-            
-            print(result)
-            return()
-        }) { (error) -> ()? in
-            print(error)
-            return()
+            AppAPIHelper.user().login(phone: phone.text!, password: passPwd.text!, complete: { [weak self](result) -> ()? in
+                
+                
+                let param: [String: Any] = [SocketConst.Key.name_value:  self!.phone.text!,
+                                            SocketConst.Key.accid_value:  self!.phone.text!,]
+                let packet: SocketDataPacket = SocketDataPacket.init(opcode: .registWY, dict: param as [String : AnyObject])
+                
+                BaseSocketAPI.shared().startRequest(packet, complete: { (result) -> ()? in
+                    
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "登录成功", ForDuration: 0.5, completion: {
+                        let datadic = result as? Dictionary<String,String>
+                        
+                        if let _ = datadic {
+                            
+                            UserDefaults.standard.set(self?.phone.text, forKey: "phone")
+                            UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
+                            UserDefaults.standard.synchronize()
+                            self?.dismissController()
+                            
+                        }
+                    })
+                    
+                    return ()
+                }) { (error) -> ()? in
+                    
+                    return
+                }
+              
+                return()
+            }) { (error) -> ()? in
+                print(error)
+                return()
+            }
         }
-//         AppAPIHelper.user().regist(phone: "18643803462", password: "123", complete: { (resule) -> ()? in
-//            
-//            return()
-//         }) { (error) -> ()? in
-//            
-//            return()
-//        }
-
        
 
     }
@@ -133,15 +153,24 @@ class LoginVC: UIViewController {
     }
     //微信登录
     @IBAction func wechatLogin(_ sender: Any) {
+        
+        let req = SendAuthReq.init()
+        req.scope = AppConst.WechatKey.Scope
+        req.state = AppConst.WechatKey.State
+        WXApi.send(req)
     }
     
-     //注册
-    @IBAction func doRegist(_ sender: Any) {
+    @IBAction func doResetPass(_ sender: Any) {
         
-        ShareDataModel.share().isdoregist = true
-        
-        self.performSegue(withIdentifier: "pushToLogin", sender: nil)
+        self.resultBlock!(doStateClick.doResetPwd as AnyObject)
     }
+//     //注册
+//    @IBAction func doRegist(_ sender: Any) {
+//        
+//        ShareDataModel.share().isdoregist = true
+//        
+//        self.performSegue(withIdentifier: "pushToLogin", sender: nil)
+//    }
     func loginwangyi(){
     
         SVProgressHUD.show(withStatus: "登录中")
@@ -149,30 +178,7 @@ class LoginVC: UIViewController {
             
             if isTelNumber(num: phone.text!)
             {
-                let param: [String: Any] = [SocketConst.Key.name_value:  phone.text!,
-                                            SocketConst.Key.accid_value:  phone.text!,]
-                let packet: SocketDataPacket = SocketDataPacket.init(opcode: .registWY, dict: param as [String : AnyObject])
                 
-                BaseSocketAPI.shared().startRequest(packet, complete: { (result) -> ()? in
-                    
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "登录成功", ForDuration: 0.5, completion: {
-                        let datadic = result as? Dictionary<String,String>
-                        print(datadic)
-                        if let _ = datadic {
-                            
-                            UserDefaults.standard.set(self.phone.text, forKey: "phone")
-                            UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
-                            UserDefaults.standard.synchronize()
-                            self.dismissController()
-                            
-                        }
-                    })
-                    
-                    return ()
-                }) { (error) -> ()? in
-                    
-                    return
-                }
                 
             }else{
                 SVProgressHUD.showErrorMessage(ErrorMessage: "请输入正确的手机号", ForDuration: 0.5, completion: {
@@ -181,5 +187,9 @@ class LoginVC: UIViewController {
             }
         }
     }
-
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        phone.resignFirstResponder
+           view.endEditing(true)
+        passPwd.resignFirstResponder
+    }
 }

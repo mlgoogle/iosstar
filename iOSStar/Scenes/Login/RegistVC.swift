@@ -9,6 +9,9 @@
 import UIKit
 
 class RegistVC: UIViewController {
+    
+    //定义block来判断选择哪个试图
+    var resultBlock: CompleteBlock?
     @IBOutlet weak var codeTf: UITextField!
 
     @IBOutlet var phoneTf: UITextField!
@@ -16,12 +19,18 @@ class RegistVC: UIViewController {
     private var timer: Timer?
     //验证码
     @IBOutlet weak var vaildCodeBtn: UIButton!
+    
+    @IBOutlet var passTf: UITextField!
      //验证码
     private var codeTime = 60
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = ShareDataModel.share().isdoregist == true ? "注册" : "忘记密码"
+        self.title =  "注册"
         // Do any additional setup after loading the view.
     }
     @IBAction func sendVaildCode(_ sender: Any) {
@@ -52,14 +61,47 @@ class RegistVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func doregist(_ sender: Any) {
+        
+    
+        AppAPIHelper.user().regist(phone: phoneTf.text!, password: passTf.text!, complete: { (result) -> ()? in
+            
+            return()
+        }) { (error) -> ()? in
+             return()
+        }
+        
+        
+    }
+    @IBAction func doLogin(_ sender: Any) {
+            self.resultBlock!(doStateClick.doLogin as AnyObject?)
+    }
+    
+    
+   
+    @IBAction func weichatLogin(_ sender: Any) {
+        let req = SendAuthReq.init()
+        req.scope = AppConst.WechatKey.Scope
+        req.state = AppConst.WechatKey.State
+        WXApi.send(req)
+    }
+    @IBAction func doResetPass(_ sender: Any) {
+        
+           self.resultBlock!(doStateClick.doResetPwd as AnyObject)
+    }
+
     @IBAction func sureClick(_ sender: Any) {
         
-        if checkTextFieldEmpty([codeTf,phoneTf]){
         
-              ShareDataModel.share().phone = codeTf.text!
-            ShareDataModel.share().codeToeken = phoneTf.text!
-            self.performSegue(withIdentifier: "pushInputPwd", sender: nil)
-        }
+        self.dismissController()
+        
+//        if checkTextFieldEmpty([codeTf,phoneTf]){
+//        
+//              ShareDataModel.share().phone = codeTf.text!
+//            ShareDataModel.share().codeToeken = phoneTf.text!
+//            self.performSegue(withIdentifier: "pushInputPwd", sender: nil)
+//        }
     }
 
 }
