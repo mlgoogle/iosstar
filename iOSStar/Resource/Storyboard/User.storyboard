@@ -16,7 +16,7 @@
                 <navigationController useStoryboardIdentifierAsRestorationIdentifier="YES" hidesBarsWhenKeyboardAppears="YES" id="2vG-Fh-E77" customClass="BaseNavigationController" customModule="iOSStar" sceneMemberID="viewController">
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="j70-IU-m3w">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="j70-IU-m3w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1287,10 +1287,10 @@
             </objects>
             <point key="canvasLocation" x="223.19999999999999" y="682.3088455772114"/>
         </scene>
-        <!--Trade PdVC-->
+        <!--设置交易密码-->
         <scene sceneID="e2v-KQ-eN9">
             <objects>
-                <viewController id="aBB-3D-vzh" customClass="TradePdVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="设置交易密码" id="aBB-3D-vzh" customClass="TradePdVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CJ1-Rb-76I"/>
                         <viewControllerLayoutGuide type="bottom" id="YyD-t7-mp5"/>
@@ -1306,10 +1306,10 @@
             </objects>
             <point key="canvasLocation" x="199" y="1349"/>
         </scene>
-        <!--设置-->
+        <!--客服中心-->
         <scene sceneID="KJa-0c-mkX">
             <objects>
-                <tableViewController storyboardIdentifier="CustomerServiceVC" title="设置" hidesBottomBarWhenPushed="YES" id="VhQ-KU-jbA" customClass="CustomerServiceVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CustomerServiceVC" title="客服中心" hidesBottomBarWhenPushed="YES" id="VhQ-KU-jbA" customClass="CustomerServiceVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wpj-26-Xpr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1432,8 +1432,60 @@
             </objects>
             <point key="canvasLocation" x="1189.5999999999999" y="682.3088455772114"/>
         </scene>
+        <!--我预约的明星-->
+        <scene sceneID="dJB-M0-o6k">
+            <objects>
+                <tableViewController storyboardIdentifier="MakeAppointmentStarVC" title="我预约的明星" hidesBottomBarWhenPushed="YES" id="ppS-xF-Ceo" customClass="MakeAppointmentStarVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" sectionHeaderHeight="28" sectionFooterHeight="28" id="6Yd-qh-rfQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MakeAppointmentStarVCCell" rowHeight="98" id="Yjy-D4-Xdh">
+                                <rect key="frame" x="0.0" y="28" width="375" height="98"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yjy-D4-Xdh" id="GF3-yU-Cd9">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="97.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ajmd001.png" translatesAutoresizingMaskIntoConstraints="NO" id="ugK-Ps-LRd">
+                                            <rect key="frame" x="51" y="15" width="60" height="56"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="范冰冰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fd6-Ba-CzH">
+                                            <rect key="frame" x="137" y="15" width="131" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="18888" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Opc-zO-F37">
+                                            <rect key="frame" x="137" y="50" width="131" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="ppS-xF-Ceo" id="n1A-nu-Hmp"/>
+                            <outlet property="delegate" destination="ppS-xF-Ceo" id="4ti-gh-UO4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="45A-be-0mv"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0VP-ZE-aYx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4468" y="684"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="ajmd001.png" width="115" height="115"/>
         <image name="avatar_user" width="108" height="108"/>
     </resources>
 </document>
