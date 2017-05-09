@@ -157,8 +157,8 @@ class LoginVC: UIViewController {
 //    }
    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        phone.resignFirstResponder
+       
            view.endEditing(true)
-        passPwd.resignFirstResponder
+        
     }
 }
