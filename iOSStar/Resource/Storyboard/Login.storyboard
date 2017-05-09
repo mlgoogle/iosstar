@@ -257,6 +257,11 @@
                                     <constraint firstItem="B8f-Yc-8Ym" firstAttribute="top" secondItem="xog-Kj-4eh" secondAttribute="bottom" id="vk6-tl-9D7"/>
                                     <constraint firstItem="YnU-cu-rFy" firstAttribute="leading" secondItem="RQA-Sd-lDc" secondAttribute="leading" id="yeE-oa-f3s"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZLp-Rl-YZk">
                                 <rect key="frame" x="77" y="520" width="168" height="30"/>
@@ -1095,6 +1100,11 @@
                                     <constraint firstAttribute="trailing" secondItem="5gr-Gs-oH4" secondAttribute="trailing" constant="14" id="yHU-mw-z4E"/>
                                     <constraint firstItem="EUm-Cc-8uC" firstAttribute="top" secondItem="TiW-Vu-FOR" secondAttribute="bottom" constant="35" id="zVX-ew-FHx"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dsv-6S-ThD">
                                 <rect key="frame" x="77" y="500" width="168" height="30"/>
