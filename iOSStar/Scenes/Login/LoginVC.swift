@@ -15,7 +15,6 @@ class LoginVC: UIViewController {
      var resultBlock: CompleteBlock?
     //左边距
     @IBOutlet var left: NSLayoutConstraint!
-   
     //右边距
     @IBOutlet var right: NSLayoutConstraint!
      //上边距
@@ -32,37 +31,19 @@ class LoginVC: UIViewController {
         initNav()
         initUI()
       
-          NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess(_:)), name: Notification.Name(rawValue:AppConst.WechatKey.ErrorCode), object: nil)
+        
 
         
     }
     func initUI(){
     
-//        self.top.constant = UIScreen.main.bounds.size.height/568.0 * 100
+        let h  = UIScreen.main.bounds.size.height <= 568 ? 60.0 : 110
+        self.top.constant = UIScreen.main.bounds.size.height/568.0 * CGFloat.init(h)
+        print(self.top.constant)
         self.left.constant = UIScreen.main.bounds.size.width/320.0 * 30
         self.right.constant = UIScreen.main.bounds.size.width/320.0 * 30
     }
-    func loginSuccess(_ notice: NSNotification){
-    
-        
-        AppAPIHelper.user().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { (result) -> ()? in
-            
-//             print(result)
-            return()
-        }) { (error) -> ()? in
-             print(error)
-            return()
-            
-        }
-//        AppAPIHelper.user().BindWeichat(phone: "18643804362", timeStamp: 123, vToken: "1233", pwd: "124", openid:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, nickname:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.nickname]!, headerUrl:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.headimgurl]!, memberId: 123, agentId: "123", recommend: "123", deviceId: "1123", vCode: "123", complete: { (result) -> ()? in
-//            
-//            return()
-//        }) { (error ) -> ()? in
-//             print(error)
-//           return()
-//        }
-    
-    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -77,25 +58,18 @@ class LoginVC: UIViewController {
         self.navigationItem.leftBarButtonItem = navaitem
         btn.addTarget(self, action: #selector(didClose), for: .touchUpInside)
     }
+     //MARK:   界面消失
     func didClose(){
         
         let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
-        
         let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
         tabar.selectedIndex = 0
         self.dismissController()
     }
-    @IBAction func doclick(_ sender: Any) {
-        tranform = !tranform
 
-        let req = SendAuthReq.init()
-        req.scope = AppConst.WechatKey.Scope
-        req.state = AppConst.WechatKey.State
-        WXApi.send(req)
-
-    }
+    //MARK:   注册
     @IBAction func doRegist(_ sender: Any) {
-        
+           view.endEditing(true)
         self.resultBlock!(doStateClick.doRegist as AnyObject?)
 
         
@@ -106,7 +80,7 @@ class LoginVC: UIViewController {
         
         if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]){
             
-            AppAPIHelper.user().login(phone: phone.text!, password: passPwd.text!, complete: { [weak self](result) -> ()? in
+            AppAPIHelper.login().login(phone: phone.text!, password: passPwd.text!, complete: { [weak self](result) -> ()? in
                 
                 
                 let param: [String: Any] = [SocketConst.Key.name_value:  self!.phone.text!,
@@ -119,11 +93,18 @@ class LoginVC: UIViewController {
                         let datadic = result as? Dictionary<String,String>
                         
                         if let _ = datadic {
+                            let token = UserDefaults.standard.object(forKey: "tokenvalue") as! String
+                            let phone = UserDefaults.standard.object(forKey: "phone") as! String
                             
+                            NIMSDK.shared().loginManager.login(phone, token: token, completion: { (error) in
+                                if (error != nil){
+                                    self?.dismissController()
+                                }
+                            })
                             UserDefaults.standard.set(self?.phone.text, forKey: "phone")
                             UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
                             UserDefaults.standard.synchronize()
-                            self?.dismissController()
+                            
                             
                         }
                     })
@@ -144,14 +125,14 @@ class LoginVC: UIViewController {
 
     }
 
-    //忘记密码
+    // //MARK:   忘记密码
     @IBAction func forGotPass(_ sender: Any) {
         
-          ShareDataModel.share().isdoregist = false
+          ShareDataModel.share().isweichaLogin = false
         
         self.performSegue(withIdentifier: "pushToLogin", sender: nil)
     }
-    //微信登录
+    // //MARK:   微信登录
     @IBAction func wechatLogin(_ sender: Any) {
         
         let req = SendAuthReq.init()
@@ -159,7 +140,10 @@ class LoginVC: UIViewController {
         req.state = AppConst.WechatKey.State
         WXApi.send(req)
     }
-    
+    @IBAction func didMiss(_ sender: Any) {
+        self.dismissController()
+    }
+     //MARK:  重置密码
     @IBAction func doResetPass(_ sender: Any) {
         
         self.resultBlock!(doStateClick.doResetPwd as AnyObject)
@@ -171,22 +155,7 @@ class LoginVC: UIViewController {
 //        
 //        self.performSegue(withIdentifier: "pushToLogin", sender: nil)
 //    }
-    func loginwangyi(){
-    
-        SVProgressHUD.show(withStatus: "登录中")
-        if checkTextFieldEmpty([phone]) {
-            
-            if isTelNumber(num: phone.text!)
-            {
-                
-                
-            }else{
-                SVProgressHUD.showErrorMessage(ErrorMessage: "请输入正确的手机号", ForDuration: 0.5, completion: {
-                    
-                })
-            }
-        }
-    }
+   
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         phone.resignFirstResponder
            view.endEditing(true)

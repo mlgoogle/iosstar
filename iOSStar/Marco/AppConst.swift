@@ -45,7 +45,7 @@ class AppConst {
     
     class Color {
 
-        static let main = "185CA5"
+        static let main = "8C0808"
         static let background = "background"
         static let buyUp = "buyUp"
         static let buyDown = "buyDown"

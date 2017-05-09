@@ -330,6 +330,7 @@
 		A03D3FF81EA86A6600F85308 /* NTESPinyinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDA1EA86A6400F85308 /* NTESPinyinConverter.m */; };
 		A03D3FF91EA86A6600F85308 /* NTESSpellingCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */; };
 		A03D3FFB1EA8992E00F85308 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3FFA1EA8992E00F85308 /* HomeVC.swift */; };
+		A04C62861EC150AD000BFC29 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C62851EC150AD000BFC29 /* UserInfoVC.swift */; };
 		A053C25B1EAD85EF007F86BC /* OrderListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A053C25A1EAD85EF007F86BC /* OrderListVC.swift */; };
 		A05E5F3A1EB1949F0008888A /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F391EB1949F0008888A /* close.png */; };
 		A05E5F3D1EB19D100008888A /* wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F3B1EB19D100008888A /* wechat@2x.png */; };
@@ -356,6 +357,12 @@
 		A07238B51EA76F4100E755DB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B41EA76F4100E755DB /* Home.storyboard */; };
 		A07238B71EA76F4D00E755DB /* Deal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B61EA76F4D00E755DB /* Deal.storyboard */; };
 		A07238B91EA76F5600E755DB /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B81EA76F5600E755DB /* User.storyboard */; };
+		A07DF7C61EC0132F00C2254E /* Novisible@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07DF7C21EC0132E00C2254E /* Novisible@2x.png */; };
+		A07DF7C71EC0132F00C2254E /* Novisible@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07DF7C31EC0132E00C2254E /* Novisible@3x.png */; };
+		A07DF7C81EC0132F00C2254E /* visible@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07DF7C41EC0132E00C2254E /* visible@2x.png */; };
+		A07DF7C91EC0132F00C2254E /* visible@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07DF7C51EC0132E00C2254E /* visible@3x.png */; };
+		A07DF7CC1EC072B700C2254E /* FriendApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07DF7CB1EC072B700C2254E /* FriendApi.swift */; };
+		A07DF7CE1EC072D200C2254E /* FriendSocketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07DF7CD1EC072D200C2254E /* FriendSocketApi.swift */; };
 		A08569FA1EB08FCA004F349B /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08569F91EB08FCA004F349B /* BaseNavigationController.swift */; };
 		A0856A111EB0B5C3004F349B /* UIBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0856A101EB0B5C3004F349B /* UIBarExtension.swift */; };
 		A085A51B1EB0771C00149F14 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085A51A1EB0771C00149F14 /* LoginVC.swift */; };
@@ -1003,6 +1010,7 @@
 		A03D3EDB1EA86A6400F85308 /* NTESSpellingCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESSpellingCenter.h; sourceTree = "<group>"; };
 		A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESSpellingCenter.m; sourceTree = "<group>"; };
 		A03D3FFA1EA8992E00F85308 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		A04C62851EC150AD000BFC29 /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		A053C25A1EAD85EF007F86BC /* OrderListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListVC.swift; sourceTree = "<group>"; };
 		A05E5F391EB1949F0008888A /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		A05E5F3B1EB19D100008888A /* wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@2x.png"; sourceTree = "<group>"; };
@@ -1034,6 +1042,12 @@
 		A07238B41EA76F4100E755DB /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		A07238B61EA76F4D00E755DB /* Deal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Deal.storyboard; sourceTree = "<group>"; };
 		A07238B81EA76F5600E755DB /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		A07DF7C21EC0132E00C2254E /* Novisible@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Novisible@2x.png"; sourceTree = "<group>"; };
+		A07DF7C31EC0132E00C2254E /* Novisible@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Novisible@3x.png"; sourceTree = "<group>"; };
+		A07DF7C41EC0132E00C2254E /* visible@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visible@2x.png"; sourceTree = "<group>"; };
+		A07DF7C51EC0132E00C2254E /* visible@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visible@3x.png"; sourceTree = "<group>"; };
+		A07DF7CB1EC072B700C2254E /* FriendApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendApi.swift; sourceTree = "<group>"; };
+		A07DF7CD1EC072D200C2254E /* FriendSocketApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSocketApi.swift; sourceTree = "<group>"; };
 		A08569F91EB08FCA004F349B /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseNavigationController.swift; path = iOSSTar/Other/BaseNavigationController.swift; sourceTree = SOURCE_ROOT; };
 		A0856A101EB0B5C3004F349B /* UIBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarExtension.swift; sourceTree = "<group>"; };
 		A085A51A1EB0771C00149F14 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -1255,6 +1269,7 @@
 				A025E4B81EB04253002E1AA4 /* DealListVC.swift */,
 				A025E4BA1EB0457A002E1AA4 /* SettingVC.swift */,
 				A025E4BE1EB04A96002E1AA4 /* BankCardVC.swift */,
+				A04C62851EC150AD000BFC29 /* UserInfoVC.swift */,
 			);
 			name = User;
 			path = iOSSTar/Scenes/User;
@@ -2664,6 +2679,10 @@
 				A05E5F3B1EB19D100008888A /* wechat@2x.png */,
 				A05E5F3C1EB19D100008888A /* wechat@3x.png */,
 				A072386F1EA76AA300E755DB /* back.png */,
+				A07DF7C21EC0132E00C2254E /* Novisible@2x.png */,
+				A07DF7C31EC0132E00C2254E /* Novisible@3x.png */,
+				A07DF7C41EC0132E00C2254E /* visible@2x.png */,
+				A07DF7C51EC0132E00C2254E /* visible@3x.png */,
 				A07238701EA76AA300E755DB /* nav_clear.png */,
 				6E193C491EB98BC80049AEDE /* W020170503310673715599.jpg */,
 				A07238711EA76AA300E755DB /* nav_clear@2x.png */,
@@ -2755,6 +2774,7 @@
 		A072388B1EA76AA300E755DB /* AppAPI */ = {
 			isa = PBXGroup;
 			children = (
+				A07DF7CA1EC0728B00C2254E /* FriendAPI */,
 				A0A996C51EBC4D67000048DC /* LoginAPI */,
 				A0EF3AEA1EB973F10023093A /* SocketAPI */,
 				6E120F8A1EB966F4004E1E33 /* HttpRequest */,
@@ -2774,6 +2794,16 @@
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
+		};
+		A07DF7CA1EC0728B00C2254E /* FriendAPI */ = {
+			isa = PBXGroup;
+			children = (
+				A07DF7CB1EC072B700C2254E /* FriendApi.swift */,
+				A07DF7CD1EC072D200C2254E /* FriendSocketApi.swift */,
+			);
+			name = FriendAPI;
+			path = iOSSTar/AppAPI/FriendAPI;
+			sourceTree = SOURCE_ROOT;
 		};
 		A09667641EBB134F009C6A71 /* bankCard */ = {
 			isa = PBXGroup;
@@ -2941,7 +2971,9 @@
 				A03D3F9D1EA86A6500F85308 /* NTESRegisterViewController.xib in Resources */,
 				A0C9D6741EAE102300FC438D /* video_chat_tip_onTimer.aac in Resources */,
 				A0C9D6721EAE102300FC438D /* video_chat_tip_HangUp.aac in Resources */,
+				A07DF7C61EC0132F00C2254E /* Novisible@2x.png in Resources */,
 				A03D3F901EA86A6500F85308 /* NTESContactViewController.xib in Resources */,
+				A07DF7C91EC0132F00C2254E /* visible@3x.png in Resources */,
 				A0C9D66B1EAE102300FC438D /* BlizzardReg.ttf in Resources */,
 				A0C9D6761EAE102300FC438D /* video_chat_tip_sender.aac in Resources */,
 				A03D3FB21EA86A6500F85308 /* NTESFileTransSelectViewController.xib in Resources */,
@@ -2952,6 +2984,7 @@
 				A03D3FD11EA86A6500F85308 /* NTESLogViewController.xib in Resources */,
 				A03D3FB41EA86A6500F85308 /* NTESGalleryViewController.xib in Resources */,
 				6E193C4A1EB98BC80049AEDE /* W020170503310673715599.jpg in Resources */,
+				A07DF7C81EC0132F00C2254E /* visible@2x.png in Resources */,
 				A0C9D66E1EAE102300FC438D /* NIMKitEmoticon.bundle in Resources */,
 				A0C9D6751EAE102300FC438D /* video_chat_tip_receiver.aac in Resources */,
 				A03D3FD51EA86A6500F85308 /* NTESNoDisturbSettingViewController.xib in Resources */,
@@ -2965,6 +2998,7 @@
 				6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */,
 				A03D3F9B1EA86A6500F85308 /* NTESLoginViewController.xib in Resources */,
 				A07238901EA76AA300E755DB /* Contents.json in Resources */,
+				A07DF7C71EC0132F00C2254E /* Novisible@3x.png in Resources */,
 				A03D3FC81EA86A6500F85308 /* NTESMutiClientsCell.xib in Resources */,
 				A03D3F961EA86A6500F85308 /* NTESSystemNotificationCell.xib in Resources */,
 				A03D3F741EA86A6500F85308 /* NTESTeamListViewController.xib in Resources */,
@@ -3080,6 +3114,7 @@
 				A03D3F811EA86A6500F85308 /* NTESLiveActionView.m in Sources */,
 				A03D3F051EA86A6400F85308 /* NIMGroupedUsrInfo.m in Sources */,
 				A03D3F6A1EA86A6500F85308 /* NTESSessionCustomContentConfig.m in Sources */,
+				A07DF7CE1EC072D200C2254E /* FriendSocketApi.swift in Sources */,
 				A03D3F131EA86A6400F85308 /* NIMInputEmoticonTabView.m in Sources */,
 				A03D3EF51EA86A6400F85308 /* NIMKitColorButtonCell.m in Sources */,
 				A03D3F4F1EA86A6500F85308 /* NIMAdvancedTeamMemberCell.m in Sources */,
@@ -3290,6 +3325,7 @@
 				A001A9741EADC91C00752F1A /* SellOutVC.swift in Sources */,
 				A03D3EEC1EA86A6400F85308 /* UIView+NTES.m in Sources */,
 				A03D3FF11EA86A6500F85308 /* NTESFileLocationHelper.m in Sources */,
+				A04C62861EC150AD000BFC29 /* UserInfoVC.swift in Sources */,
 				A03D3EF71EA86A6400F85308 /* NIMKitSwitcherCell.m in Sources */,
 				A03D3FD41EA86A6500F85308 /* NTESNoDisturbSettingViewController.m in Sources */,
 				A03D3F2C1EA86A6400F85308 /* NIMKitAudioCenter.m in Sources */,
@@ -3350,6 +3386,7 @@
 				A03D3F201EA86A6400F85308 /* NIMImageContentConfig.m in Sources */,
 				A03D3F571EA86A6500F85308 /* NIMKitTimerHolder.m in Sources */,
 				A03D3FAA1EA86A6500F85308 /* NTESSessionSnapchatContentView.m in Sources */,
+				A07DF7CC1EC072B700C2254E /* FriendApi.swift in Sources */,
 				A03D3FCA1EA86A6500F85308 /* NTESMutiClientsHeaderView.m in Sources */,
 				A03D3F5C1EA86A6500F85308 /* UINavigationController+Swizzling.m in Sources */,
 				A072389A1EA76AA300E755DB /* BaseTabBarController.swift in Sources */,

@@ -24,19 +24,46 @@ class ContainVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess(_:)), name: Notification.Name(rawValue:AppConst.WechatKey.ErrorCode), object: nil)
        initUI()
         
         // Do any additional setup after loading the view.
     }
+    func loginSuccess(_ notice: NSNotification){
+        
+        
+        AppAPIHelper.login().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { [weak self](result) -> ()? in
+            
+            if let response = result  {
+            
+                if response["errorCode"] as! Int == -302{
+                
+                       ShareDataModel.share().isweichaLogin = true
+                       self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.frame.size.width)!, y: 0), animated: true)
+                }else{
+                self?.dismissController()
+                }
+            
+            }
+                    
+            return()
+        }) { (error) -> ()? in
+            print(error)
+            return()
+            
+        }
+       return()
+        //        }
+        
+    }
     func initUI(){
     
         self.automaticallyAdjustsScrollViewInsets = false;
-        scrollView = UIScrollView.init(frame: CGRect.init(x: 0, y:  0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        scrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
         self.scrollView?.isScrollEnabled = false
         scrollView?.isPagingEnabled = true
         self.automaticallyAdjustsScrollViewInsets = false
-        scrollView?.contentSize = CGSize.init(width: self.view.frame.size.width*3, height: 0)
+        scrollView?.contentSize = CGSize.init(width: self.view.frame.size.width*2, height: 0)
         view.addSubview(scrollView!)
         scrollView?.isPagingEnabled = true
         let vc = UIStoryboard.init(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
@@ -57,13 +84,13 @@ class ContainVC: UIViewController {
         }
         scrollView?.backgroundColor = UIColor.clear
         scrollView?.addSubview(vc.view)
-        vc.view.frame = CGRect.init(x: 0, y: 0, width: view.frame.size.width, height: (self.scrollView?.frame.size.height)!)
+        vc.view.frame = CGRect.init(x: 0, y: 0, width: view.frame.size.width, height: ((self.scrollView?.frame.size.height)!+10))
         
         self.addChildViewController(vc)
         //
         let rvc = UIStoryboard.init(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "RegistVC") as! RegistVC
         self.scrollView?.addSubview(rvc.view)
-        rvc.view.frame = CGRect.init(x:  vc.view.frame.size.width, y: 0, width: vc.view.frame.size.width, height: (self.scrollView?.frame.size.height)!)
+        rvc.view.frame = CGRect.init(x:  vc.view.frame.size.width, y: -10, width: vc.view.frame.size.width, height: ((self.scrollView?.frame.size.height)!+10))
         rvc.resultBlock = { [weak self](result) in
             switch result as! doStateClick {
             case .doResetPwd:
@@ -83,11 +110,6 @@ class ContainVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
       
-    }
-    
-
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-       
     }
     /*
     // MARK: - Navigation

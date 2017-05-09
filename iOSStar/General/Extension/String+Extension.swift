@@ -107,7 +107,7 @@ extension String {
         }
         result.deinitialize()
         
-        return hash.uppercased
+        return hash.lowercased
         
     }
     

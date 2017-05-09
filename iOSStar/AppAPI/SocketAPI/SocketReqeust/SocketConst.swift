@@ -20,8 +20,11 @@ class SocketConst: NSObject {
         case login = 3003
         // 注册
         case register = 3001
+        // 注册
+        case getlist = 9013
+
         // 重设密码
-        case repwd = 3005
+        case repwd = 3019
         // 声音验证码
         case voiceCode = 1006
         // 设置用户信息
@@ -50,7 +53,7 @@ class SocketConst: NSObject {
         //获取银行卡名称
         case getbankname = 1017
         //获取验证码
-        case verifycode = 1011
+        case verifycode = 3011
         //提现详情
         case withdrawDetail = 101
         // 我的晒单
@@ -113,6 +116,7 @@ class SocketConst: NSObject {
         case time   = 4
         case deal   = 5
         case operate = 6
+        case getlist = 9
     }
     
     enum aType:UInt8 {
@@ -204,6 +208,8 @@ class SocketConst: NSObject {
         static let headerUrl = "headerUrl"
         static let headimgurl = "headimgurl"
         static let accessToken = "access_token"
+        static let accid = "accid"
+        static let createtime = "createtime"
    
         
     }

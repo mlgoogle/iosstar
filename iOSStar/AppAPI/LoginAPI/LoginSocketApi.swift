@@ -9,6 +9,15 @@
 import UIKit
 
 class LoginSocketApi: BaseSocketAPI, LoginApi {
+   func ResetPassWd(phone: String,pwd: String, complete: CompleteBlock?, error: ErrorBlock?) {
+        let param: [String: Any] = [SocketConst.Key.phone: phone,
+                                    SocketConst.Key.pwd:  pwd,]
+        print(param)
+        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .repwd, dict: param as [String : AnyObject])
+        
+        startRequest(packet, complete: complete, error: error)
+    }
+
  
     //注册
     func regist(phone: String, password: String, complete: CompleteBlock?, error: ErrorBlock?){
@@ -26,7 +35,7 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
     }
     
     func registWYIM(phone: String, token: String, complete: CompleteBlock?, error: ErrorBlock?){
-        let param: [String: Any] = [SocketConst.Key.phone: "18643803462",
+        let param: [String: Any] = [SocketConst.Key.phone: phone,
                                     SocketConst.Key.pwd:  token,
                                     SocketConst.Key.memberId: 1001,
                                     SocketConst.Key.agentId:  "186681261",
@@ -74,6 +83,16 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
                                     ]
        
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .WchatLogin, dict: param as [String : AnyObject])
+        
+       
+        startRequest(packet, complete: complete, error: error)
+    
+    }
+    func SendCode(phone: String, complete: CompleteBlock?, error: ErrorBlock?){
+        
+        let param: [String: Any] = [SocketConst.Key.phone: phone,
+                                   ]
+        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .verifycode, dict: param as [String : AnyObject])
         
         startRequest(packet, complete: complete, error: error)
     
