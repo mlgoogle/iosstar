@@ -34,6 +34,7 @@ class SubViewItemCell: UITableViewCell {
         label.backgroundColor = UIColor(hexString: "CB4232")
         label.text = "0.22%"
         label.textColor = UIColor.white
+        label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16)
         return label
     }()

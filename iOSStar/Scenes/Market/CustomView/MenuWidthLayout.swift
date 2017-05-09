@@ -21,7 +21,7 @@ class MenuWidthLayout: UICollectionViewFlowLayout {
 
     var columnMargin:CGFloat = 0.0
     var rowMargin:CGFloat = 6.0
-    var menuSectionInset = UIEdgeInsetsMake(16.0, 20.0, 16.0, 20.0)
+    var menuSectionInset = UIEdgeInsetsMake(10.0, 20.0, 16.0, 20.0)
     var itemHeight:CGFloat = 24.0
     /*
      需实现代理方法获取width 
@@ -41,7 +41,7 @@ class MenuWidthLayout: UICollectionViewFlowLayout {
         
          columnMargin = 20.0
          rowMargin = 10.0
-         menuSectionInset = UIEdgeInsetsMake(16.0, 23.0, 16.0, 20.0)
+         menuSectionInset = UIEdgeInsetsMake(10.0, 20.0, 16.0, 20.0)
          itemHeight = 24.0
          attributedAry =  Array()
         

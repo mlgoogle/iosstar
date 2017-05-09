@@ -331,6 +331,8 @@
 		A03D3FF91EA86A6600F85308 /* NTESSpellingCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */; };
 		A03D3FFB1EA8992E00F85308 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03D3FFA1EA8992E00F85308 /* HomeVC.swift */; };
 		A04C62861EC150AD000BFC29 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C62851EC150AD000BFC29 /* UserInfoVC.swift */; };
+		A04C62881EC1580D000BFC29 /* CustomerServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C62871EC1580D000BFC29 /* CustomerServiceVC.swift */; };
+		A04C628A1EC15D98000BFC29 /* TradePdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C62891EC15D98000BFC29 /* TradePdVC.swift */; };
 		A053C25B1EAD85EF007F86BC /* OrderListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A053C25A1EAD85EF007F86BC /* OrderListVC.swift */; };
 		A05E5F3A1EB1949F0008888A /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F391EB1949F0008888A /* close.png */; };
 		A05E5F3D1EB19D100008888A /* wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F3B1EB19D100008888A /* wechat@2x.png */; };
@@ -1011,6 +1013,8 @@
 		A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESSpellingCenter.m; sourceTree = "<group>"; };
 		A03D3FFA1EA8992E00F85308 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		A04C62851EC150AD000BFC29 /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
+		A04C62871EC1580D000BFC29 /* CustomerServiceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerServiceVC.swift; sourceTree = "<group>"; };
+		A04C62891EC15D98000BFC29 /* TradePdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradePdVC.swift; sourceTree = "<group>"; };
 		A053C25A1EAD85EF007F86BC /* OrderListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListVC.swift; sourceTree = "<group>"; };
 		A05E5F391EB1949F0008888A /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		A05E5F3B1EB19D100008888A /* wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@2x.png"; sourceTree = "<group>"; };
@@ -1270,6 +1274,8 @@
 				A025E4BA1EB0457A002E1AA4 /* SettingVC.swift */,
 				A025E4BE1EB04A96002E1AA4 /* BankCardVC.swift */,
 				A04C62851EC150AD000BFC29 /* UserInfoVC.swift */,
+				A04C62871EC1580D000BFC29 /* CustomerServiceVC.swift */,
+				A04C62891EC15D98000BFC29 /* TradePdVC.swift */,
 			);
 			name = User;
 			path = iOSSTar/Scenes/User;
@@ -3091,9 +3097,11 @@
 				A03D3F441EA86A6400F85308 /* NIMCardMemberItem.m in Sources */,
 				A03D3FC41EA86A6500F85308 /* NTESGLView.m in Sources */,
 				A03D3F581EA86A6500F85308 /* NIMKitUtil.m in Sources */,
+				A04C628A1EC15D98000BFC29 /* TradePdVC.swift in Sources */,
 				A03D3F211EA86A6400F85308 /* NIMLocationContentConfig.m in Sources */,
 				A03D3F5B1EA86A6500F85308 /* UINavigationBar+Swizzling.m in Sources */,
 				A03D3EE21EA86A6400F85308 /* NSData+NTES.m in Sources */,
+				A04C62881EC1580D000BFC29 /* CustomerServiceVC.swift in Sources */,
 				A03D3F591EA86A6500F85308 /* NIMPinyinConverter.m in Sources */,
 				A03D3FDA1EA86A6500F85308 /* NTESSettingViewController.m in Sources */,
 				A025E4B71EB03DA1002E1AA4 /* WithdrawalVC.swift in Sources */,
