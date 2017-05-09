@@ -33,6 +33,8 @@ class MenuSubViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = false
         tableView.register(SubViewItemCell.self, forCellReuseIdentifier: "SubViewItemCell")
         contentView.addSubview(tableView)
     }

@@ -44,8 +44,9 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate{
             let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
             let controller = storyboard.instantiateInitialViewController()
             controller?.modalPresentationStyle = .custom
-            controller?.modalTransitionStyle = .coverVertical
+//            controller?.modalTransitionStyle = .coverVertical
             //            let nav = BaseNavigationController.init(rootViewController: controller)
+            controller?.modalTransitionStyle = .crossDissolve
             present(controller!, animated: true, completion: nil)
         }
     }
