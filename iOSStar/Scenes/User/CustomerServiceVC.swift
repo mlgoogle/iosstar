@@ -1,44 +1,37 @@
 //
-//  UserVC.swift
+//  CustomerServiceVC.swift
 //  iOSStar
 //
-//  Created by sum on 2017/4/21.
+//  Created by sum on 2017/5/9.
 //  Copyright © 2017年 YunDian. All rights reserved.
 //
 
 import UIKit
 
-class UserVC: UITableViewController  {
+class CustomerServiceVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let view = UIView.init()
-        view.backgroundColor = UIColor.clear
-        self.tableView.tableFooterView = view
-    }  
+
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
 
-    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return section == 0 ? 1 : (section == 1 ? 1 : (section == 2 ? 4 :3))
+        return 0
     }
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 0.001 : 20
-      
-    }
+
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
