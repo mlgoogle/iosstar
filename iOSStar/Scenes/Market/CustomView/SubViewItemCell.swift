@@ -34,6 +34,7 @@ class SubViewItemCell: UITableViewCell {
         label.backgroundColor = UIColor(hexString: "CB4232")
         label.text = "0.22%"
         label.textColor = UIColor.white
+        label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16)
         return label
     }()
@@ -66,7 +67,7 @@ class SubViewItemCell: UITableViewCell {
         iconImageView.snp.makeConstraints { (make) in
             make.left.equalTo(12)
             make.top.equalTo(10)
-            make.bottom.equalTo(10)
+            make.bottom.equalTo(-10)
             make.width.equalTo(40)
         }
         nameLabel.snp.makeConstraints { (make) in
@@ -86,7 +87,7 @@ class SubViewItemCell: UITableViewCell {
             make.centerY.equalTo(iconImageView.snp.centerY)
         }
         priceLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(changeLabel.snp.left).inset(34)
+            make.centerX.equalTo(self)
             make.width.equalTo(43)
             make.height.equalTo(12)
             make.centerY.equalTo(changeLabel.snp.centerY)

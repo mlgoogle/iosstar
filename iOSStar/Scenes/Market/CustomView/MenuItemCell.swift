@@ -38,8 +38,9 @@ class MenuItemCell: UICollectionViewCell {
     }
     
     
-    func setTitle(title:String) {
+    func setTitle(title:String?, colorString:String?) {
         
         titleLabel.text = title
+        titleLabel.textColor = UIColor(hexString: colorString)
     }
 }

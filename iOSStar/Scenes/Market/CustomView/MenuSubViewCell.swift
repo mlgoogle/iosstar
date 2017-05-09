@@ -12,7 +12,7 @@ class MenuSubViewCell: UICollectionViewCell {
   
     lazy var tableView:UITableView = {
 
-        let tableView = UITableView(frame: CGRect(x: 0, y: 24, width: kScreenWidth, height: kScreenHeight - 100), style: .plain)
+        let tableView = UITableView(frame: CGRect(x: 0, y: 24, width: kScreenWidth, height: kScreenHeight - 90 - 44), style: .plain)
 
         return tableView
     }()
@@ -21,6 +21,7 @@ class MenuSubViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsHorizontalScrollIndicator = false
@@ -33,6 +34,8 @@ class MenuSubViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = false
         tableView.register(SubViewItemCell.self, forCellReuseIdentifier: "SubViewItemCell")
         contentView.addSubview(tableView)
     }
@@ -48,7 +51,7 @@ extension MenuSubViewCell:UITableViewDataSource, UITableViewDelegate {
         return 60
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 20
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SubViewItemCell", for: indexPath)
