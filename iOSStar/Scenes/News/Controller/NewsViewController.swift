@@ -64,7 +64,7 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
     
     func setImageWithAlpha(alpha:CGFloat) {
 
-        let color = UIColor(red: 24.0 / 255.0, green: 92.0 / 255.0, blue: 165.0/255.0, alpha: alpha)
+        let color = UIColor(red: 146.0 / 255.0, green: 18.0 / 255.0, blue: 36.0/255.0, alpha: alpha)
         if alpha > 1 {
             navigationController?.navigationBar.isTranslucent = false
             titleView.isHidden = false
@@ -72,7 +72,7 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
             titleView.isHidden = true
             navigationController?.navigationBar.isTranslucent = true
         }
-        navigationController?.navigationBar.setBackgroundImage(imageWithColor(color: color), for: .default)
+        navigationController?.navigationBar.setBackgroundImage(color.imageWithColor(), for: .default)
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let alpha = 1 - ((200 - scrollView.contentOffset.y) / 200)
@@ -87,18 +87,5 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
         return cell
     }
     
-    func imageWithColor(color:UIColor) -> UIImage? {
-        
-        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
-        UIGraphicsBeginImageContext(rect.size);
-        let context = UIGraphicsGetCurrentContext();
-        guard context != nil else {
-            return nil
-        }
-        context!.setFillColor(color.cgColor);
-        context!.fill(rect);
-        let image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        return image;
-    }
+
 }
