@@ -21,7 +21,10 @@ protocol LoginApi {
     //微信绑定
     func BindWeichat(phone: String, timeStamp: Int,vToken: String,pwd: String,openid: String,nickname: String,headerUrl: String,memberId: Int,agentId: String,recommend: String,deviceId: String,vCode: String, complete: CompleteBlock?, error: ErrorBlock?)
     
-    
     //微信登录
     func WeichatLogin(openid: String, deviceId: String, complete: CompleteBlock?, error: ErrorBlock?)
+    //发送验证码
+    func SendCode(phone: String, complete: CompleteBlock?, error: ErrorBlock?)
+    //重置密码
+    func ResetPassWd(phone: String,pwd: String, complete: CompleteBlock?, error: ErrorBlock?)
 }

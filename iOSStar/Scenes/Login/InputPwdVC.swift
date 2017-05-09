@@ -21,7 +21,7 @@ class InputPwdVC: UITableViewController {
     @IBAction func doRegist(_ sender: Any) {
         
         //注册
-        if  ShareDataModel.share().isdoregist == true{
+        if  ShareDataModel.share().isweichaLogin == true{
             
             let param: [String: Any] = [SocketConst.Key.pwd: againPwdTF.text! ,
                                         SocketConst.Key.phone: ShareDataModel.share().phone,

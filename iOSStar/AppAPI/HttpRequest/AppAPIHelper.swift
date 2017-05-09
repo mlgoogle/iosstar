@@ -10,9 +10,13 @@ import Foundation
 
 class AppAPIHelper: NSObject {
     
-    fileprivate static var _userApi = LoginSocketApi()
-    class func user() -> LoginApi{
-        return _userApi
+    fileprivate static var _loginApi = LoginSocketApi()
+    fileprivate static var _friendApi = FriendSocketApi()
+    class func login() -> LoginApi{
+        return _loginApi
+    }
+    class func friend() -> FriendApi{
+        return _friendApi
     }
 }
 
