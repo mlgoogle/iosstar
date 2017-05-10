@@ -19,4 +19,12 @@ class FriendSocketApi: BaseSocketAPI, FriendApi  {
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .getlist, dict: param as [String : AnyObject], type: .getlist)
         startRequest(packet, complete: complete, error: error)
     }
+    func reducetime(phone: String, starcode: String, complete: CompleteBlock?, error: ErrorBlock?){
+        
+        let param: [String: Any] = [SocketConst.Key.phone: phone,
+                                    SocketConst.Key.starcode:  starcode,]
+        print(param)
+        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .reducetime, dict: param as [String : AnyObject], type: .getlist)
+        startRequest(packet, complete: complete, error: error)
+    }
 }

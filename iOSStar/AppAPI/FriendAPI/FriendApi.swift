@@ -11,4 +11,5 @@ import UIKit
 protocol FriendApi {
     
       func getfriendList(accid: String, createtime: String, complete: CompleteBlock?, error: ErrorBlock?)
+      func reducetime(phone: String, starcode: String, complete: CompleteBlock?, error: ErrorBlock?)
 }

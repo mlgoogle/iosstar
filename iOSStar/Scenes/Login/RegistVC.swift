@@ -40,7 +40,7 @@ class RegistVC: UIViewController {
     }
     func initUI(){
         
-        let h  = UIScreen.main.bounds.size.height <= 568 ? 60.0 : 115
+        let h  = UIScreen.main.bounds.size.height <= 568 ? 70.0 : 110
         self.top.constant = UIScreen.main.bounds.size.height/568.0 * CGFloat.init(h)
          print(self.top.constant)
         self.left.constant = UIScreen.main.bounds.size.width/320.0 * 30
@@ -119,7 +119,7 @@ class RegistVC: UIViewController {
             
                     AppAPIHelper.login().BindWeichat(phone: phoneTf.text!, timeStamp: 123, vToken: "1233", pwd: passTf.text!, openid:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, nickname:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.nickname]!, headerUrl:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.headimgurl]!, memberId: 123, agentId: "123", recommend: "123", deviceId: "1123", vCode: "123", complete: { [weak self](result) -> ()? in
             
-                       self?.doYunxin()
+                         self?.doYunxin()
             
                         return()
                     }) { (error ) -> ()? in
@@ -136,11 +136,11 @@ class RegistVC: UIViewController {
             }
             
             
-            AppAPIHelper.login().regist(phone: phoneTf.text!, password: passTf.text!, complete: { (result) -> ()? in
+            AppAPIHelper.login().regist(phone: phoneTf.text!, password: passTf.text!, complete: { [weak self](result) -> ()? in
                 
                 if let response = result {
                     if response["result"] as! Int == 1 {
-                        
+                        self?.doYunxin()
                         
                     }
                 }
@@ -187,10 +187,10 @@ class RegistVC: UIViewController {
             let datadic = result as? Dictionary<String,String>
             
             if let _ = datadic {
-                let token = UserDefaults.standard.object(forKey: "tokenvalue") as! String
-                let phone = UserDefaults.standard.object(forKey: "phone") as! String
+//                let token = UserDefaults.standard.object(forKey: "tokenvalue") as! String
+//                let phone = UserDefaults.standard.object(forKey: "phone") as! String
                 
-                NIMSDK.shared().loginManager.login(phone, token: token, completion: { (error) in
+                NIMSDK.shared().loginManager.login(self.phoneTf.text!, token: self.passTf.text!, completion: { (error) in
                     if (error != nil){
                         self.dismissController()
                     }

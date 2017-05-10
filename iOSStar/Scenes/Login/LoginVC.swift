@@ -82,38 +82,25 @@ class LoginVC: UIViewController {
             
             AppAPIHelper.login().login(phone: phone.text!, password: passPwd.text!, complete: { [weak self](result) -> ()? in
                 
-                
-                let param: [String: Any] = [SocketConst.Key.name_value:  self!.phone.text!,
-                                            SocketConst.Key.accid_value:  self!.phone.text!,]
-                let packet: SocketDataPacket = SocketDataPacket.init(opcode: .registWY, dict: param as [String : AnyObject])
-                
-                BaseSocketAPI.shared().startRequest(packet, complete: { (result) -> ()? in
+
+                SVProgressHUD.showErrorMessage(ErrorMessage: "登录成功", ForDuration: 0.5, completion: {
+                    let datadic = result as? Dictionary<String,String>
                     
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "登录成功", ForDuration: 0.5, completion: {
-                        let datadic = result as? Dictionary<String,String>
+                    if let _ = datadic {
+                        let token = UserDefaults.standard.object(forKey: "tokenvalue") as! String
+                        let phone = UserDefaults.standard.object(forKey: "phone") as! String
                         
-                        if let _ = datadic {
-                            let token = UserDefaults.standard.object(forKey: "tokenvalue") as! String
-                            let phone = UserDefaults.standard.object(forKey: "phone") as! String
-                            
-                            NIMSDK.shared().loginManager.login(phone, token: token, completion: { (error) in
-                                if (error != nil){
-                                    self?.dismissController()
-                                }
-                            })
-                            UserDefaults.standard.set(self?.phone.text, forKey: "phone")
-                            UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
-                            UserDefaults.standard.synchronize()
-                            
-                            
-                        }
-                    })
-                    
-                    return ()
-                }) { (error) -> ()? in
-                    
-                    return
-                }
+                        NIMSDK.shared().loginManager.login(phone, token: token, completion: { (error) in
+                            if (error != nil){
+                                self?.dismissController()
+                            }
+                        })
+                        UserDefaults.standard.set(self?.phone.text, forKey: "phone")
+                        UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
+                        UserDefaults.standard.synchronize()
+                        
+                    }
+                })
               
                 return()
             }) { (error) -> ()? in
