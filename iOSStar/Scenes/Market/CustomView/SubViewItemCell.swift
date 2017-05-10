@@ -59,6 +59,7 @@ class SubViewItemCell: UITableViewCell {
         addSubView()
     }
     func addSubView() {
+        selectionStyle = .none
         addSubview(iconImageView)
         addSubview(nameLabel)
         addSubview(priceLabel)

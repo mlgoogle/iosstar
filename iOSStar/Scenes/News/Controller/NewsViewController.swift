@@ -9,7 +9,7 @@
 import UIKit
 import SDCycleScrollView
 
-class NewsViewController: UIViewController {
+class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     @IBOutlet weak var tableView: UITableView!
 
     var bannerScrollView: SDCycleScrollView?
@@ -20,10 +20,15 @@ class NewsViewController: UIViewController {
         return view
         
     }()
+    func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
+        performSegue(withIdentifier: "showPubPage", sender: nil)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let imageUrl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1493098902992&di=74b063fe6c4fe1b887fe976d4c219bd3&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F61%2F00%2F61a58PICtPr_1024.jpg"
         bannerScrollView = SDCycleScrollView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 200), imageNamesGroup: [imageUrl, imageUrl, imageUrl, imageUrl])
+        bannerScrollView?.delegate = self
         automaticallyAdjustsScrollViewInsets = false
         tableView.tableHeaderView = bannerScrollView
         tableView.separatorStyle = .none
