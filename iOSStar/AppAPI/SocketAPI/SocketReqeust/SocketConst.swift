@@ -21,8 +21,9 @@ class SocketConst: NSObject {
         // 注册
         case register = 3001
         // 注册
+        case reducetime = 9017
+       //减少时间
         case getlist = 9013
-
         // 重设密码
         case repwd = 3019
         // 声音验证码
@@ -210,6 +211,7 @@ class SocketConst: NSObject {
         static let accessToken = "access_token"
         static let accid = "accid"
         static let createtime = "createtime"
+        static let starcode = "starcode"
    
         
     }

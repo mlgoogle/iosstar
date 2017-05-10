@@ -163,6 +163,8 @@
 #pragma mark - 消息收发接口
 - (void)sendMessage:(NIMMessage *)message
 {
+    
+    
     [self.interactor sendMessage:message];
 }
 

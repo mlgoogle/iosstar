@@ -11,17 +11,20 @@ import UIKit
 class ContactListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
+    var dataList = [String:AnyClass]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "名人通讯录"
+        
+//        onlogin()
         
         getData()
     }
     
     func getData(){
       
-        AppAPIHelper.friend().getfriendList(accid: "15306559323", createtime:  "0", complete: { (result) -> ()? in
+        AppAPIHelper.friend().getfriendList(accid: UserDefaults.standard.object(forKey: "phone") as! String, createtime:  "0", complete: { (result) -> ()? in
             
             return()
         }) { (error) -> ()? in
@@ -30,59 +33,59 @@ class ContactListViewController: UIViewController {
         }
     }
     
-//    func onlogin(){
-//        
-//        if  UserDefaults.standard.object(forKey: "tokenvalue") == nil{
-//             _ = navigationController?.popToRootViewController(animated: true)
-//            let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
-//            let controller = storyboard.instantiateInitialViewController()
-//            present(controller!, animated: true, completion: nil)
-//            
-//        }else{
-//            
-//            
-//            let token = UserDefaults.standard.object(forKey: "tokenvalue") as! String
-//            let phone = UserDefaults.standard.object(forKey: "phone") as! String
-//         
-//            NIMSDK.shared().loginManager.login(phone, token: token) { (error) in
-//                
-//                if error == nil  {
-//                  
-//                    let alertview : UIAlertController = UIAlertController.init(title: "请输入对方手机号", message: "对方手机号", preferredStyle: UIAlertControllerStyle.alert)
-//                    alertview.addTextField { (textField: UITextField!) in
-//                        textField.placeholder  = "请输入对方手机号"
-//                    }
-//                    let alertViewAction: UIAlertAction = UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
-//                        
-//                        let string  = alertview.textFields?[0].text
-//                        
-//                        if isTelNumber(num: string!){
-//                            
-//                            let session = NIMSession(string!, type: .P2P)
-//                            let vc = NTESSessionViewController(session: session)
-//                            
-//                            self.navigationController?.pushViewController(vc!, animated: true)
-//                        }
-//                        
-//                        
-//                        
-//                    })
-//                    let alertViewCancelAction: UIAlertAction = UIAlertAction.init(title: "取消", style: UIAlertActionStyle.cancel, handler: nil)
-//                    alertview.addAction(alertViewAction)
-//                    alertview.addAction(alertViewCancelAction)
-//                    self.present(alertview, animated:true , completion: nil)
-//                    
-//                }else{
-//                 
-//                    
-//                    
-//                }
-//                
-//            }
-//        }
-//        
-//        
-//    }
+    func onlogin(){
+        
+        if  UserDefaults.standard.object(forKey: "tokenvalue") == nil{
+             _ = navigationController?.popToRootViewController(animated: true)
+            let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
+            let controller = storyboard.instantiateInitialViewController()
+            present(controller!, animated: true, completion: nil)
+            
+        }else{
+            
+            
+            let token = UserDefaults.standard.object(forKey: "tokenvalue") as! String
+            let phone = UserDefaults.standard.object(forKey: "phone") as! String
+         
+            NIMSDK.shared().loginManager.login(phone, token: token) { (error) in
+                
+                if error == nil  {
+                  
+                    let alertview : UIAlertController = UIAlertController.init(title: "请输入对方手机号", message: "对方手机号", preferredStyle: UIAlertControllerStyle.alert)
+                    alertview.addTextField { (textField: UITextField!) in
+                        textField.placeholder  = "请输入对方手机号"
+                    }
+                    let alertViewAction: UIAlertAction = UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> Void in
+                        
+                        let string  = alertview.textFields?[0].text
+                        
+                        if isTelNumber(num: string!){
+                            
+                            let session = NIMSession(string!, type: .P2P)
+                            let vc = YDSSessionViewController(session: session)
+                            
+                            self.navigationController?.pushViewController(vc!, animated: true)
+                        }
+                        
+                        
+                        
+                    })
+                    let alertViewCancelAction: UIAlertAction = UIAlertAction.init(title: "取消", style: UIAlertActionStyle.cancel, handler: nil)
+                    alertview.addAction(alertViewAction)
+                    alertview.addAction(alertViewCancelAction)
+                    self.present(alertview, animated:true , completion: nil)
+                    
+                }else{
+                 
+                    
+                    
+                }
+                
+            }
+        }
+        
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
