@@ -72,9 +72,10 @@ class MenuWidthLayout: UICollectionViewFlowLayout {
                 
             }
         }
-
+        let attribute = attributedAry!.last!
+        collectionView?.contentSize = CGSize(width: 1000, height: menuSectionInset.top + menuSectionInset.bottom + attribute.frame.size.height)
     }
-    
+
     /**
      
      判断是否需要重新计算layout
