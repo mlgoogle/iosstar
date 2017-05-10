@@ -72,9 +72,11 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
 
     }
     func setMenuCollectionView() {
-        let layout = MenuWidthLayout()
-        layout.delegate = self
+        let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsetsMake(0, 10, 10, 10)
+        layout.minimumLineSpacing = 24
+        layout.minimumInteritemSpacing = 24
         menuCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 40), collectionViewLayout: layout)
         menuCollectionView?.showsHorizontalScrollIndicator = false
         menuCollectionView?.backgroundColor = UIColor.white
@@ -82,10 +84,9 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         menuCollectionView?.dataSource = self
         menuCollectionView?.register(MenuItemCell.self, forCellWithReuseIdentifier: "MenuItemCell")
         addSubview(menuCollectionView!)
-        lineView.frame = CGRect(x: 30, y: menuCollectionView!.sd_height - 3, width: 20, height: 3)
+        lineView.frame = CGRect(x: 25, y: menuCollectionView!.sd_height - 3, width: 20, height: 3)
         menuCollectionView?.addSubview(lineView)
         menuCollectionView?.bringSubview(toFront: lineView)
-        moveLineView(indexPath: selectIndexPath)
         addSubview(infoView)
     }
     func setSubCollectionView() {
@@ -129,21 +130,23 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == menuCollectionView {
-
             moveLineView(indexPath: indexPath)
             subViewCollectionView?.scrollToItem(at: selectIndexPath, at: .left, animated: true)
-
         }
         
     }
     
     func moveLineView(indexPath:IndexPath) {
+        menuCollectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+
         let cell = menuCollectionView?.cellForItem(at: indexPath)
         guard cell != nil else {
             return
         }
+
         menuCollectionView?.reloadData()
         selectIndexPath = indexPath
+
         UIView.animate(withDuration: 0.3) {
             self.lineView.center = CGPoint(x: (cell?.center.x)!, y: self.lineView.center.y)
         }
@@ -172,10 +175,28 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         return Float((title?.boundingRectWithSize(CGSize(width: 0, height: 20), font: UIFont.systemFont(ofSize: 16)).size.width)!)
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
         if scrollView == subViewCollectionView {
             let index = Int(scrollView.contentOffset.x / kScreenWidth)
             let indexPath = IndexPath(item: index, section: 0)
             moveLineView(indexPath:indexPath)
         }
     }
+}
+
+
+extension MarketMenuView:UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == menuCollectionView {
+            let title = items?[indexPath.row]
+            guard title != nil else {
+                return CGSize(width: 0, height: 0)
+            }
+            return CGSize(width: (title?.boundingRectWithSize(CGSize(width: 0, height: 20), font: UIFont.systemFont(ofSize: 16)).size.width)!, height: 30)
+        } else {
+            return CGSize(width: kScreenWidth, height: kScreenHeight - 90)
+        }
+    }
+    
 }
