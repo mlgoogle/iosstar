@@ -23,8 +23,8 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate{
     func initcustomer(){
         delegate = self
 
-        let storyboardNames = ["Home","Market","Deal","Exchange","User"]
-        let titles = ["首页","行情","交易","分答","个人中心"]
+        let storyboardNames = ["Home","Market","Exchange","User"]
+        let titles = ["首页","行情","分答","个人中心"]
         for (index, name) in storyboardNames.enumerated() {
             let storyboard = UIStoryboard.init(name: name, bundle: nil)
             let controller = storyboard.instantiateInitialViewController()
