@@ -12,6 +12,8 @@
 #import "WechatAuthSDK.h"
 #import "WXApi.h"
 #import "WXApiObject.h"
+
+
 //#import "NIMMessageObjectProtocol.h"
 #import <OEZCommSDK/OEZCommSDK.h>
 #pragma pack(1)

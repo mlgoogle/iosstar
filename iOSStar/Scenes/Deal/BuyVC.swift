@@ -18,30 +18,27 @@ class BuyVC: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
     
-        return 1
-        if section == 1{
-            return 1
-        }
-        if section == 2{
-            return 380
-        }
-        return 0
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-     {
-    
-        let cell : BuyVCCell = tableView.dequeueReusableCell(withIdentifier: "BuyVCCell") as! BuyVCCell
-        if indexPath.section == 1 {
-            
-            cell.isSellout = isSellout
-            return cell
-            //OrderListCell
-        }else{
-             let cell : OrderListCell = tableView.dequeueReusableCell(withIdentifier: "OrderListCell") as! OrderListCell
-            return cell
-        }
+        return 2
        
     }
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+//     {
+//    
+////        let cell = tableView.dequeueReusableCell(withIdentifier: "BuyVCCell")
+////        if indexPath.section == 1 {
+////            
+//////            cell.isSellout = isSellout
+////            return cell!
+////            //OrderListCell
+////        }
+////        return cell!
+////             return cell
+////        else{
+////             let cell : OrderListCell = tableView.dequeueReusableCell(withIdentifier: "OrderListCell") as! OrderListCell
+////            return cell
+////        }
+//       
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

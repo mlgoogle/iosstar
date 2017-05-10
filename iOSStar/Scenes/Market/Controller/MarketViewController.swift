@@ -19,7 +19,7 @@ class MarketViewController: UIViewController {
         navigationItem.titleView = label
         automaticallyAdjustsScrollViewInsets = false
         let menuView = MarketMenuView(frame: CGRect(x: 0, y: 64, width: kScreenWidth, height: kScreenHeight))
-        menuView.items = ["自选","艺人","体育明星","网红","海外知名人士","测试"]
+        menuView.items = ["自选","艺人","体育明星","网红","海外知名人士","测试","艺人","艺人","艺人","艺人"]
         view.addSubview(menuView)
         let lineView = navigationController?.navigationBar.subviews.first?.subviews.first
         lineView?.isHidden = true

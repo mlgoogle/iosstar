@@ -374,10 +374,12 @@
 		A08A9BB11EA991D5009E6B2B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */; };
 		A08A9BB51EA99547009E6B2B /* FotgotPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB41EA99547009E6B2B /* FotgotPwdVC.swift */; };
 		A08A9BB71EA9F22F009E6B2B /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB61EA9F22F009E6B2B /* UserVC.swift */; };
-		A08A9BB91EA9FAA0009E6B2B /* DetailTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB81EA9FAA0009E6B2B /* DetailTableViewVC.swift */; };
+		A08A9BB91EA9FAA0009E6B2B /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB81EA9FAA0009E6B2B /* DetailVC.swift */; };
 		A08A9BBD1EAA0D3B009E6B2B /* BuyVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BBC1EAA0D3B009E6B2B /* BuyVCCell.swift */; };
 		A08A9BBF1EAA0E1F009E6B2B /* BuyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BBE1EAA0E1F009E6B2B /* BuyVC.swift */; };
 		A09667661EBB1378009C6A71 /* TipBindCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09667651EBB1378009C6A71 /* TipBindCardVC.swift */; };
+		A0A667EB1EC2B67D00612510 /* UIViewController+ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A667EA1EC2B67D00612510 /* UIViewController+ChatView.swift */; };
+		A0A667ED1EC2B71C00612510 /* YDSSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A667EC1EC2B71C00612510 /* YDSSessionViewController.swift */; };
 		A0A996C81EBC4D67000048DC /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A996C61EBC4D67000048DC /* LoginApi.swift */; };
 		A0A996C91EBC4D67000048DC /* LoginSocketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A996C71EBC4D67000048DC /* LoginSocketApi.swift */; };
 		A0C9D66B1EAE102300FC438D /* BlizzardReg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D65B1EAE102300FC438D /* BlizzardReg.ttf */; };
@@ -1061,10 +1063,12 @@
 		A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		A08A9BB41EA99547009E6B2B /* FotgotPwdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FotgotPwdVC.swift; sourceTree = "<group>"; };
 		A08A9BB61EA9F22F009E6B2B /* UserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
-		A08A9BB81EA9FAA0009E6B2B /* DetailTableViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewVC.swift; sourceTree = "<group>"; };
+		A08A9BB81EA9FAA0009E6B2B /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		A08A9BBC1EAA0D3B009E6B2B /* BuyVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyVCCell.swift; sourceTree = "<group>"; };
 		A08A9BBE1EAA0E1F009E6B2B /* BuyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyVC.swift; sourceTree = "<group>"; };
 		A09667651EBB1378009C6A71 /* TipBindCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipBindCardVC.swift; sourceTree = "<group>"; };
+		A0A667EA1EC2B67D00612510 /* UIViewController+ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ChatView.swift"; sourceTree = "<group>"; };
+		A0A667EC1EC2B71C00612510 /* YDSSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDSSessionViewController.swift; sourceTree = "<group>"; };
 		A0A996C61EBC4D67000048DC /* LoginApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
 		A0A996C71EBC4D67000048DC /* LoginSocketApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSocketApi.swift; sourceTree = "<group>"; };
 		A0C9D65B1EAE102300FC438D /* BlizzardReg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BlizzardReg.ttf; sourceTree = "<group>"; };
@@ -1319,7 +1323,7 @@
 			children = (
 				A03D3C541EA86A6300F85308 /* DealViewController.swift */,
 				A053C25A1EAD85EF007F86BC /* OrderListVC.swift */,
-				A08A9BB81EA9FAA0009E6B2B /* DetailTableViewVC.swift */,
+				A08A9BB81EA9FAA0009E6B2B /* DetailVC.swift */,
 				A08A9BBC1EAA0D3B009E6B2B /* BuyVCCell.swift */,
 				A001A9751EADCABE00752F1A /* SellOutCell.swift */,
 				A08A9BBE1EAA0E1F009E6B2B /* BuyVC.swift */,
@@ -1342,6 +1346,7 @@
 				A03D3D9B1EA86A6400F85308 /* Sections */,
 				A03D3EB71EA86A6400F85308 /* Service */,
 				A03D3EBF1EA86A6400F85308 /* Util */,
+				A0A667EC1EC2B71C00612510 /* YDSSessionViewController.swift */,
 			);
 			name = ChatView;
 			path = iOSSTar/Scenes/ChatView;
@@ -2776,6 +2781,7 @@
 				A07238891EA76AA300E755DB /* String+Extension.swift */,
 				A072388A1EA76AA300E755DB /* SVProgressHUDExt.swift */,
 				6E193C4F1EBADFC90049AEDE /* UIColor+Extension.swift */,
+				A0A667EA1EC2B67D00612510 /* UIViewController+ChatView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -3242,6 +3248,7 @@
 				A03D3FA01EA86A6500F85308 /* NTESCustomAttachmentDecoder.m in Sources */,
 				A03D3F5A1EA86A6500F85308 /* NIMSpellingCenter.m in Sources */,
 				A03D3FF31EA86A6500F85308 /* NTESSDKConfigDelegate.m in Sources */,
+				A0A667ED1EC2B71C00612510 /* YDSSessionViewController.swift in Sources */,
 				A03D3FED1EA86A6500F85308 /* NTESCADisplayLinkHolder.m in Sources */,
 				A03D3F181EA86A6400F85308 /* NIMKitInfo.m in Sources */,
 				A03D3F4B1EA86A6500F85308 /* NIMNormalTeamCardViewController.m in Sources */,
@@ -3286,7 +3293,7 @@
 				A03D3F751EA86A6500F85308 /* NTESChatroomConfig.m in Sources */,
 				A03D3EE61EA86A6400F85308 /* UIAlertView+NTESBlock.m in Sources */,
 				A03D3FF61EA86A6600F85308 /* NTESTimerHolder.m in Sources */,
-				A08A9BB91EA9FAA0009E6B2B /* DetailTableViewVC.swift in Sources */,
+				A08A9BB91EA9FAA0009E6B2B /* DetailVC.swift in Sources */,
 				A03D3F3F1EA86A6400F85308 /* NIMLocationViewController.m in Sources */,
 				A03D3EFD1EA86A6400F85308 /* NIMKitMediaFetcher.m in Sources */,
 				A03D3F9C1EA86A6500F85308 /* NTESRegisterViewController.m in Sources */,
@@ -3408,6 +3415,7 @@
 				A03D3F6D1EA86A6500F85308 /* NTESJionTeamViewController.m in Sources */,
 				A03D3F321EA86A6400F85308 /* NIMSessionTableAdapter.m in Sources */,
 				A072389C1EA76AA300E755DB /* AppConst.swift in Sources */,
+				A0A667EB1EC2B67D00612510 /* UIViewController+ChatView.swift in Sources */,
 				A08A9BB71EA9F22F009E6B2B /* UserVC.swift in Sources */,
 				A03D3F451EA86A6500F85308 /* NIMTeamCardOperationItem.m in Sources */,
 				A03D3EFE1EA86A6400F85308 /* NIMKitNotificationFirer.m in Sources */,

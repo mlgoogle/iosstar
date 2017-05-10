@@ -18,5 +18,7 @@ class AppAPIHelper: NSObject {
     class func friend() -> FriendApi{
         return _friendApi
     }
+    
+    
 }
 
