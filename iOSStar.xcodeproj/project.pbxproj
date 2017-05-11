@@ -382,6 +382,7 @@
 		A09667661EBB1378009C6A71 /* TipBindCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09667651EBB1378009C6A71 /* TipBindCardVC.swift */; };
 		A0A667EB1EC2B67D00612510 /* UIViewController+ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A667EA1EC2B67D00612510 /* UIViewController+ChatView.swift */; };
 		A0A667ED1EC2B71C00612510 /* YDSSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A667EC1EC2B71C00612510 /* YDSSessionViewController.swift */; };
+		A0A667EF1EC31D6800612510 /* errorcode.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0A667EE1EC31D6800612510 /* errorcode.plist */; };
 		A0A996C81EBC4D67000048DC /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A996C61EBC4D67000048DC /* LoginApi.swift */; };
 		A0A996C91EBC4D67000048DC /* LoginSocketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A996C71EBC4D67000048DC /* LoginSocketApi.swift */; };
 		A0C9D66B1EAE102300FC438D /* BlizzardReg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D65B1EAE102300FC438D /* BlizzardReg.ttf */; };
@@ -1073,6 +1074,7 @@
 		A09667651EBB1378009C6A71 /* TipBindCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipBindCardVC.swift; sourceTree = "<group>"; };
 		A0A667EA1EC2B67D00612510 /* UIViewController+ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ChatView.swift"; sourceTree = "<group>"; };
 		A0A667EC1EC2B71C00612510 /* YDSSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDSSessionViewController.swift; sourceTree = "<group>"; };
+		A0A667EE1EC31D6800612510 /* errorcode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = errorcode.plist; sourceTree = "<group>"; };
 		A0A996C61EBC4D67000048DC /* LoginApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
 		A0A996C71EBC4D67000048DC /* LoginSocketApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSocketApi.swift; sourceTree = "<group>"; };
 		A0C9D65B1EAE102300FC438D /* BlizzardReg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BlizzardReg.ttf; sourceTree = "<group>"; };
@@ -2716,6 +2718,7 @@
 		A07238741EA76AA300E755DB /* plist */ = {
 			isa = PBXGroup;
 			children = (
+				A0A667EE1EC31D6800612510 /* errorcode.plist */,
 				A07238751EA76AA300E755DB /* Info.plist */,
 			);
 			path = plist;
@@ -2987,6 +2990,7 @@
 				A07238B51EA76F4100E755DB /* Home.storyboard in Resources */,
 				A03D3F981EA86A6500F85308 /* NTESSystemNotificationViewController.xib in Resources */,
 				A03D3F941EA86A6500F85308 /* NTESCustomSysNotificationViewController.xib in Resources */,
+				A0A667EF1EC31D6800612510 /* errorcode.plist in Resources */,
 				A03D3FD91EA86A6500F85308 /* NTESAboutViewController.xib in Resources */,
 				A03D3FE41EA86A6500F85308 /* NTESUserInfoSettingViewController.xib in Resources */,
 				A03D3F9D1EA86A6500F85308 /* NTESRegisterViewController.xib in Resources */,
