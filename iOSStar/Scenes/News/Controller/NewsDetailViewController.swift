@@ -10,7 +10,8 @@ import UIKit
 import WebKit
 class NewsDetailViewController: UIViewController {
 
-
+    var urlString:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,8 +21,8 @@ class NewsDetailViewController: UIViewController {
         
         UIApplication.shared.statusBarStyle = .lightContent;
 
-        let url = URL(fileURLWithPath: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1493098902992&di=74b063fe6c4fe1b887fe976d4c219bd3&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F61%2F00%2F61a58PICtPr_1024.jpg")
-        let request = URLRequest(url: url)
+        let url = URL(string: urlString!)
+        let request = URLRequest(url: url!)
         webView.load(request)
         view.addSubview(webView)
         

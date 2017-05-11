@@ -11,7 +11,7 @@ import UIKit
 class ContactListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
-    var dataList = [String:AnyClass]()
+    var dataList = [StarInfoModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +26,10 @@ class ContactListViewController: UIViewController {
       
         AppAPIHelper.friend().getfriendList(accid: UserDefaults.standard.object(forKey: "phone") as! String, createtime:  "0", complete: { (result) -> ()? in
             
+              let Model : StarListModel = result as! StarListModel
+            self.dataList = Model.list!
+            self.tableView.reloadData()
+//             print(Model.list)
             return()
         }) { (error) -> ()? in
              return()
@@ -135,7 +139,7 @@ extension ContactListViewController:UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.dataList.count
     }
     
 }

@@ -19,5 +19,11 @@ class NewsModel: Object {
     dynamic var subject_name = ""
     dynamic var times = ""
     
-    
+}
+
+class BannerModel: Object {
+    dynamic var code = ""
+    dynamic var name = ""
+    dynamic var pic_url = ""
+    dynamic var type = 0
 }

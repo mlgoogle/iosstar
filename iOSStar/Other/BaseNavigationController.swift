@@ -18,6 +18,7 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
         interactivePopGestureRecognizer?.delegate = self
         navigationBar.barTintColor = UIColor(hexString: AppConst.Color.main)
         navigationBar.isTranslucent = false
+        
     }
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return true

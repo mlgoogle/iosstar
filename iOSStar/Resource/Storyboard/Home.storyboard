@@ -32,7 +32,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8" translatesAutoresizingMaskIntoConstraints="NO" id="HZD-l6-A07">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="liuyan.png" translatesAutoresizingMaskIntoConstraints="NO" id="HZD-l6-A07">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                                 </imageView>
                                             </subviews>
@@ -210,14 +210,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="W020170503310673715599.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HSp-Zg-yZ3">
-                                                    <rect key="frame" x="243" y="10" width="120" height="80"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="W020170503310673715599.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HSp-Zg-yZ3">
+                                                    <rect key="frame" x="243" y="10" width="120" height="79"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="nxv-vi-Cbj"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5PQ-Mw-q3j">
-                                                    <rect key="frame" x="12" y="99" width="351" height="1"/>
+                                                    <rect key="frame" x="12" y="98" width="351" height="1"/>
                                                     <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="dBk-4u-io9"/>
@@ -230,6 +230,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="HSp-Zg-yZ3" firstAttribute="centerY" secondItem="7ze-n6-zAD" secondAttribute="centerY" id="2VM-m6-YI1"/>
                                                 <constraint firstAttribute="trailing" secondItem="HSp-Zg-yZ3" secondAttribute="trailing" constant="12" id="4a7-Tq-DCz"/>
@@ -245,7 +246,6 @@
                                         <connections>
                                             <outlet property="newsImageView" destination="HSp-Zg-yZ3" id="L4o-DV-MBh"/>
                                             <outlet property="titleLabel" destination="7ze-n6-zAD" id="ScP-7B-752"/>
-                                            <segue destination="MmR-VE-X0R" kind="show" id="aLN-sI-C8w"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -267,6 +267,7 @@
                     <connections>
                         <outlet property="tableView" destination="9XI-We-GY2" id="YLQ-wV-Qy8"/>
                         <segue destination="XNP-vz-4lL" kind="show" identifier="showPubPage" id="Qum-Cb-ZmF"/>
+                        <segue destination="MmR-VE-X0R" kind="show" identifier="newsToDeatail" id="o4R-QO-xAs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bGw-i6-wjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -311,7 +312,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="8" width="55" height="55"/>
         <image name="W020170503310673715599.jpg" width="950" height="601"/>
+        <image name="liuyan.png" width="640" height="474"/>
     </resources>
 </document>

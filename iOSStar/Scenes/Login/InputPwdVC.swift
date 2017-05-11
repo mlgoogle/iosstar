@@ -8,7 +8,6 @@
 
 import UIKit
 import SVProgressHUD
-
 class InputPwdVC: UITableViewController {
 
     @IBOutlet weak var againPwdTF: UITextField!
@@ -20,7 +19,7 @@ class InputPwdVC: UITableViewController {
     }
     @IBAction func doRegist(_ sender: Any) {
         
-        //注册
+        //MARK:- 去注册
         if  ShareDataModel.share().isweichaLogin == true{
             
             let param: [String: Any] = [SocketConst.Key.pwd: againPwdTF.text! ,
@@ -39,6 +38,9 @@ class InputPwdVC: UITableViewController {
                 return ()
                 
             }) { (error) -> ()? in
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
+                    
+                })
                 return ()
                 
             }

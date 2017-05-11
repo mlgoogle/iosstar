@@ -39,15 +39,12 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate{
     }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
         
-        if tabBarController.selectedIndex == 1{
-            let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
-            let controller = storyboard.instantiateInitialViewController()
-            controller?.modalPresentationStyle = .custom
-            controller?.modalTransitionStyle = .crossDissolve
-            present(controller!, animated: true, completion: nil)
-//            if  checkLogin(){
-//            
-//            }
+        if tabBarController.selectedIndex == 2  || tabBarController.selectedIndex == 3{
+            
+          
+            if  checkLogin(){
+            
+            }
            
         }
     }
