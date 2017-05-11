@@ -1,0 +1,14 @@
+//
+//  NewsApi.swift
+//  iOSStar
+//
+//  Created by J-bb on 17/5/11.
+//  Copyright © 2017年 YunDian. All rights reserved.
+//
+
+import Foundation
+
+protocol NewsApi {
+    func requestNewsList(startnum:Int, endnum:Int, complete: CompleteBlock?, error: ErrorBlock?)
+    
+}

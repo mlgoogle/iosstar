@@ -25,8 +25,9 @@ class NewsDetailViewController: UIViewController {
         webView.load(request)
         view.addSubview(webView)
         
+        
     }
-    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -13,7 +13,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     @IBOutlet weak var tableView: UITableView!
 
     var bannerScrollView: SDCycleScrollView?
-    
+    var newsData:[NewsModel]?
     lazy var titleView:NewsNavigationView = {
        
         let view = NewsNavigationView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 44))
@@ -40,8 +40,18 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         navigationController?.navigationBar.addSubview(titleView)
         titleView.isHidden = true
         setNIMSDKLogin()
+        requestNewsList()
     }
-
+    
+    func requestNewsList()  {
+        
+        AppAPIHelper.newsApi().requestNewsList(startnum: 1, endnum: 10, complete: { (response) -> ()? in
+            
+            self.newsData = response as? [NewsModel]
+            self.tableView.reloadData()
+            return nil
+        }, error: errorBlockFunc())
+    }
     func setNIMSDKLogin() {
 //        NIMSDK.shared().loginManager.login("13569365932", token: "7d5d9d249d18b92b72c1133c61dd9a9c") { (error) in
 //            
@@ -84,11 +94,14 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
         setImageWithAlpha(alpha: alpha)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return newsData == nil ? 0 : newsData!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsListCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsListCell", for: indexPath) as! NewsListCell
+        
+        cell.setData(data:newsData![indexPath.row])
+        
         return cell
     }
     
