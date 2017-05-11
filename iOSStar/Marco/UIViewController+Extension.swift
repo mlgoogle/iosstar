@@ -102,7 +102,15 @@ extension UIViewController {
         }
         
     }
-    
+    func setCustomTitle(title:String) {
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
+        label.text = title
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.textColor = UIColor(hexString: AppConst.Color.main)
+        navigationItem.titleView = label
+
+    }
     func showTabBarWithAnimationDuration() {
         let tabBar = self.tabBarController?.tabBar
         let parent = tabBar?.superview

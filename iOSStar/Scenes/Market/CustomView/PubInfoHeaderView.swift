@@ -19,6 +19,8 @@ class PubInfoHeaderView: UITableViewHeaderFooterView {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "个人简介"
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = UIColor(hexString: "333333")
         return label
     }()
     
@@ -37,7 +39,6 @@ class PubInfoHeaderView: UITableViewHeaderFooterView {
         titleLabel.snp.makeConstraints { (make) in
             make.left.equalTo(lineView.snp.right).offset(7)
             make.centerY.equalTo(lineView)
-            make.width.equalTo(64)
             make.height.equalTo(15)
         }
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6C914579279831D674DBBB68 /* Pods_iOSStar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */; };
+		6E0C6B031EC31D5C00D9C2BC /* MarketSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0C6B021EC31D5C00D9C2BC /* MarketSubViewController.swift */; };
 		6E120F961EB966F4004E1E33 /* AppAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E120F8B1EB966F4004E1E33 /* AppAPIHelper.swift */; };
 		6E120F971EB966F4004E1E33 /* HttpModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E120F8C1EB966F4004E1E33 /* HttpModelHelper.swift */; };
 		6E120F981EB966F4004E1E33 /* HttpRequestManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E120F8D1EB966F4004E1E33 /* HttpRequestManage.swift */; };
@@ -417,6 +418,7 @@
 		658ED50682E9CA02E39549B8 /* Pods-iOSStar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.release.xcconfig"; sourceTree = "<group>"; };
 		6E0922A31EA88DFE002725A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E0922A51EA88DFE002725A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		6E0C6B021EC31D5C00D9C2BC /* MarketSubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketSubViewController.swift; sourceTree = "<group>"; };
 		6E120F8B1EB966F4004E1E33 /* AppAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAPIHelper.swift; sourceTree = "<group>"; };
 		6E120F8C1EB966F4004E1E33 /* HttpModelHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpModelHelper.swift; sourceTree = "<group>"; };
 		6E120F8D1EB966F4004E1E33 /* HttpRequestManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequestManage.swift; sourceTree = "<group>"; };
@@ -1227,6 +1229,7 @@
 				6E16166A1EB0960E00D95CB6 /* MarketViewController.swift */,
 				6E192DEB1EC2B69500915D08 /* MarketSearchViewController.swift */,
 				6E192DEF1EC2E14900915D08 /* PublisherPageViewController.swift */,
+				6E0C6B021EC31D5C00D9C2BC /* MarketSubViewController.swift */,
 			);
 			name = Controller;
 			path = iOSStar/Scenes/Market/Controller;
@@ -3260,6 +3263,7 @@
 				A03D3F551EA86A6500F85308 /* NIMKitDevice.m in Sources */,
 				A03D3F861EA86A6500F85308 /* NTESContactDataMember.m in Sources */,
 				A03D3FA01EA86A6500F85308 /* NTESCustomAttachmentDecoder.m in Sources */,
+				6E0C6B031EC31D5C00D9C2BC /* MarketSubViewController.swift in Sources */,
 				A03D3F5A1EA86A6500F85308 /* NIMSpellingCenter.m in Sources */,
 				A03D3FF31EA86A6500F85308 /* NTESSDKConfigDelegate.m in Sources */,
 				A0A667ED1EC2B71C00612510 /* YDSSessionViewController.swift in Sources */,

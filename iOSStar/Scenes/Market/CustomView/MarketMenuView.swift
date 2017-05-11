@@ -17,6 +17,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
             subViewCollectionView?.reloadData()
         }
     }
+    var subViews:[UIView]?
     var selectIndexPath:IndexPath = IndexPath(item: 0, section: 0)
     lazy var infoView:UIView = {
        
