@@ -34,6 +34,8 @@ class SocketConst: NSObject {
         //设置账号信息
         case WchatLogin = 3013
         case verifycode = 3011
+        
+        //当前分时数据
         //网易云
         case registWY = 9005
         //航运舱位

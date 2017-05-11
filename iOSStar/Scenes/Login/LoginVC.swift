@@ -31,9 +31,6 @@ class LoginVC: UIViewController {
         initNav()
         initUI()
       
-        
-
-        
     }
     func initUI(){
     
@@ -47,6 +44,7 @@ class LoginVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
     }
     
     func initNav(){
