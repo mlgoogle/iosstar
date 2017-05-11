@@ -35,8 +35,8 @@ class SocketJsonResponse: SocketResponse {
             if ( dict == nil ) {
                 errorCode = -11012; //json解析失败
             }
-            else if(  dict != nil && dict?["errorCode"] != nil ) {
-                errorCode =  dict?["errorCode"] as! Int;
+            else if(  dict != nil && dict?["result"] != nil ) {
+                errorCode =  dict?["result"] as! Int;
             }
             else {
                 errorCode = 0;

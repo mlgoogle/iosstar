@@ -90,7 +90,7 @@ class SocketRequestManage: NSObject {
         let response:SocketJsonResponse = SocketJsonResponse(packet:packet)
         let statusCode:Int = response.statusCode;
         if ( statusCode < 0) {
-            socketReqeust?.onComplete(response)
+            socketReqeust?.onError(statusCode)
         } else {
             socketReqeust?.onComplete(response)
         }

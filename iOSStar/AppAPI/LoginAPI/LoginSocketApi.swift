@@ -48,7 +48,7 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
     }
     //登录
     func login(phone: String, password: String, complete: CompleteBlock?, error: ErrorBlock?){
-        let param: [String: Any] = [SocketConst.Key.phone: "18643803462",
+        let param: [String: Any] = [SocketConst.Key.phone: phone,
                                     SocketConst.Key.pwd:  password,
                                     SocketConst.Key.deviceId: "deviceId"]
         print(param)
