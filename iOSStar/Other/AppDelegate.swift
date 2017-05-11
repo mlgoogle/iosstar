@@ -118,11 +118,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
                 }
             }
     }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        window?.endEditing(true)
-        
-    }
     func wechatUserInfo(token: String, openid: String)
     {
         let param = [SocketConst.Key.accessToken : token,
