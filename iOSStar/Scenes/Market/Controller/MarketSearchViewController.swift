@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MarketSearchViewController: UIViewController {
+class MarketSearchViewController: UIViewController , UITextFieldDelegate{
     @IBOutlet weak var searchTextField: UITextField!
 
     @IBOutlet weak var tableView: UITableView!
@@ -18,11 +18,17 @@ class MarketSearchViewController: UIViewController {
         backView.layer.cornerRadius = 1
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
         label.text = "搜索"
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.systemFont(ofSize: 17)
         label.textColor = UIColor(hexString: AppConst.Color.main)
         navigationItem.titleView = label
+
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    
+        
+        return true
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -38,5 +44,15 @@ extension MarketSearchViewController:UITableViewDelegate, UITableViewDataSource 
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.001
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.001
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 }

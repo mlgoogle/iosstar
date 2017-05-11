@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 class NewsListCell: UITableViewCell {
     @IBOutlet weak var newsImageView: UIImageView!
 
@@ -17,6 +17,17 @@ class NewsListCell: UITableViewCell {
         // Initialization code
     }
 
+    
+    func setData(data:NewsModel) {
+        titleLabel.text = data.subject_name
+        guard data.showpic_url.length() > 10 else {
+            return
+        }
+        
+        newsImageView.kf.setImage(with: URL(string: data.showpic_url), placeholder: UIImage(named:"8"), options: nil, progressBlock: nil, completionHandler: nil)
+
+        
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

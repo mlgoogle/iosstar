@@ -12,19 +12,25 @@ class MarketViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
-        label.text = "行情"
-        label.font = UIFont.systemFont(ofSize: 18)
-        label.textColor = UIColor(hexString: AppConst.Color.main)
-        navigationItem.titleView = label
-        automaticallyAdjustsScrollViewInsets = false
-        let menuView = MarketMenuView(frame: CGRect(x: 0, y: 64, width: kScreenWidth, height: kScreenHeight))
-        menuView.items = ["自选","艺人","体育明星","网红","海外知名人士","测试","艺人","艺人","艺人","艺人"]
-        view.addSubview(menuView)
+        setCustomTitle(title: "明星热度")
         let lineView = navigationController?.navigationBar.subviews.first?.subviews.first
         lineView?.isHidden = true
         let color = UIColor.white
         navigationController?.navigationBar.setBackgroundImage(color.imageWithColor(), for: .default)
+        automaticallyAdjustsScrollViewInsets = false
+        
+        
+        let menuView = MarketMenuView(frame: CGRect(x: 0, y: 64, width: kScreenWidth, height: kScreenHeight))
+        menuView.items = ["自选","艺人","体育明星","网红","海外知名人士","测试","艺人","艺人","艺人","艺人"]
+        
+    
+        for _ in menuView.items! {
+            let viewController = MarketSubViewController()
+            menuView.subViews?.append(viewController.view)
+            
+        }
+        view.addSubview(menuView)
+
 
     }
 

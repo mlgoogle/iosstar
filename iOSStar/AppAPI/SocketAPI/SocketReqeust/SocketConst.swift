@@ -41,6 +41,8 @@ class SocketConst: NSObject {
         //航运舱位
      
         
+        case newsInfo = 10013
+        case banners = 10015
     }
     enum type:UInt8 {
         case error  = 0
@@ -51,6 +53,7 @@ class SocketConst: NSObject {
         case deal   = 5
         case operate = 6
         case getlist = 9
+        case news = 10
     }
     
     enum aType:UInt8 {
@@ -63,6 +66,7 @@ class SocketConst: NSObject {
     class Key {
        
     
+        static let name = "name"
         static let phone = "phone"
         static let pwd = "pwd"
         static let code = "vCode"
@@ -90,7 +94,11 @@ class SocketConst: NSObject {
         static let accid = "accid"
         static let createtime = "createtime"
         static let starcode = "starcode"
-   
+        static let startnum = "startnum"
+        static let endnum = "endnum"
+        static let all = "all"
+        static let starCode = "code"
+
         
     }
 }

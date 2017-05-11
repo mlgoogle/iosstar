@@ -22,6 +22,7 @@ target 'iOSStar' do
     pod 'FMDB', '~> 2.5'
     pod 'SSZipArchive', '~> 1.2'
     pod 'Reachability', '~> 3.1.1'
+    pod 'Charts'
     pod 'Toast', '~> 3.0'
     pod 'CocoaAsyncSocket', '~> 7.5.0'
 end

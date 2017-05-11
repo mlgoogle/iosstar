@@ -8,7 +8,6 @@
 
 import UIKit
 import SVProgressHUD
-import SVProgressHUD
 class InputPwdVC: UITableViewController {
 
     @IBOutlet weak var againPwdTF: UITextField!

@@ -10,13 +10,13 @@ import UIKit
 import SnapKit
 class NewsNavigationView: UIView {
 
-    var imageView:UIImageView = {
+    lazy var imageView:UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "8")
         return imageView
     }()
     
-    var PMLabel:UILabel = {
+    lazy var PMLabel:UILabel = {
         let label = UILabel()
         label.text = "P M"
         label.textColor = UIColor(hexString: "e1eeff")
@@ -24,7 +24,7 @@ class NewsNavigationView: UIView {
         return label
     }()
     
-    var timeLabel:UILabel = {
+    lazy var timeLabel:UILabel = {
        
         let label = UILabel()
         label.text = "16:20"
@@ -34,7 +34,7 @@ class NewsNavigationView: UIView {
         return label
     }()
     
-    var dateLabel:UILabel = {
+    lazy var dateLabel:UILabel = {
        let label = UILabel()
         label.text = "2017/04/25"
         label.textColor = UIColor(hexString: "fafafa")
@@ -42,6 +42,9 @@ class NewsNavigationView: UIView {
         label.font = UIFont.systemFont(ofSize: 16.0)
         return label
     }()
+    
+
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -72,6 +75,27 @@ class NewsNavigationView: UIView {
             make.centerX.equalTo(self)
             make.centerY.equalTo(self)
         }
+        setTime()
+    }
+    func setTitle(title:String) {
+        
+        dateLabel.text = title
+        
+    }
+    
+    func setTime() {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH"
+        let hour = formatter.string(from: date)
+        if Int(hour)! > 11 {
+            PMLabel.text = "P M"
+        } else {
+            PMLabel.text = "A M"
+        }
+        formatter.dateFormat = "HH:mm"
+        timeLabel.text = formatter.string(from: date)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
