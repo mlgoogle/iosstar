@@ -15,6 +15,8 @@ class UserVC: UITableViewController  {
         let view = UIView.init()
         view.backgroundColor = UIColor.clear
         self.tableView.tableFooterView = view
+        
+       
     }  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

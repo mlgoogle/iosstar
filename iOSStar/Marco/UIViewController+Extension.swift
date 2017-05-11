@@ -38,6 +38,7 @@ extension UIViewController {
         let controller = storyboard.instantiateInitialViewController()
         controller?.modalPresentationStyle = .custom
         controller?.modalTransitionStyle = .crossDissolve
+        
         present(controller!, animated: true, completion: nil)
            
             return false
