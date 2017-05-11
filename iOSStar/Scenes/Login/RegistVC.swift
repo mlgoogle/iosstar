@@ -210,7 +210,10 @@ class RegistVC: UIViewController {
     
     }
     @IBAction func didMiss(_ sender: Any) {
-         self.dismissController()
+        let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
+        let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
+        tabar.selectedIndex = 0
+        self.dismissController()
     }
 
  

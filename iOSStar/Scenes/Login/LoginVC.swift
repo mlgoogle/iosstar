@@ -77,26 +77,30 @@ class LoginVC: UIViewController {
       //登录
     @IBAction func doLogin(_ sender: Any) {
         
-        
+        let btn = sender as! UIButton
+        btn.isUserInteractionEnabled = false
         if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]){
             
             AppAPIHelper.login().login(phone: phone.text!, password: passPwd.text!, complete: { [weak self](result) -> ()? in
                 
+                
+                 let datadic = result as? Dictionary<String,AnyObject>
 
+//                if (datadic?["result"] as! Int) == -302{
+//                
+//                    return nil
+//                }
                 SVProgressHUD.showErrorMessage(ErrorMessage: "登录成功", ForDuration: 0.5, completion: {
-                    let datadic = result as? Dictionary<String,String>
-                    
+//                    let datadic = result as? Dictionary<String,String>
+                     btn.isUserInteractionEnabled = true
                     if let _ = datadic {
-                        let token = UserDefaults.standard.object(forKey: "tokenvalue") as! String
-                        let phone = UserDefaults.standard.object(forKey: "phone") as! String
-                        
-                        NIMSDK.shared().loginManager.login(phone, token: token, completion: { (error) in
+                        NIMSDK.shared().loginManager.login((self?.phone.text!)!, token: (self?.phone.text!)!, completion: { (error) in
                             if (error != nil){
                                 self?.dismissController()
                             }
                         })
                         UserDefaults.standard.set(self?.phone.text, forKey: "phone")
-                        UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
+                        UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
                         UserDefaults.standard.synchronize()
                         
                     }
@@ -104,7 +108,11 @@ class LoginVC: UIViewController {
               
                 return()
             }) { (error) -> ()? in
-                print(error)
+    
+                 btn.isUserInteractionEnabled = true
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: { 
+                    
+                })
                 return()
             }
         }
@@ -128,7 +136,8 @@ class LoginVC: UIViewController {
         WXApi.send(req)
     }
     @IBAction func didMiss(_ sender: Any) {
-        self.dismissController()
+//        self.dismissController()
+        didClose()
     }
      //MARK:  重置密码
     @IBAction func doResetPass(_ sender: Any) {

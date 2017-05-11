@@ -213,11 +213,11 @@
                                             <segue destination="ppS-xF-Ceo" kind="push" id="Og0-ze-5A6"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TQs-Z1-bjF">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="TQs-Z1-bjF">
                                         <rect key="frame" x="0.0" y="276" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TQs-Z1-bjF" id="9XQ-Ry-UsE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar_user" translatesAutoresizingMaskIntoConstraints="NO" id="7sB-aY-kph">
@@ -233,6 +233,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="VhQ-KU-jbA" kind="push" id="MK2-xn-wia"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fnj-Tf-Y6S">
                                         <rect key="frame" x="0.0" y="320" width="375" height="44"/>
@@ -277,7 +280,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <segue destination="aBB-3D-vzh" kind="push" id="c6q-Wj-ne4"/>
+                                            <segue destination="yJY-97-dbt" kind="push" id="mKB-9P-mOf"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -827,7 +830,7 @@
             <objects>
                 <tableViewController title="设置" hidesBottomBarWhenPushed="YES" id="yJY-97-dbt" customClass="SettingVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WkX-Zw-aG4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -915,7 +918,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySX-e6-v5z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1190" y="684"/>
+            <point key="canvasLocation" x="1190" y="755"/>
         </scene>
         <!--账户信息-->
         <scene sceneID="0MH-gd-qUg">
@@ -1013,7 +1016,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ra3-NV-7L8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2049" y="685"/>
+            <point key="canvasLocation" x="2073" y="754"/>
         </scene>
         <!--银行卡-->
         <scene sceneID="ug4-Fo-P9A">
@@ -1077,7 +1080,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wtO-YX-BMq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2897" y="685"/>
+            <point key="canvasLocation" x="2897" y="753"/>
         </scene>
         <!--Tip Bind CardVC-->
         <scene sceneID="6MO-Di-Aib">
@@ -1149,7 +1152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uj4-ff-3bP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3744.8000000000002" y="682.3088455772114"/>
+            <point key="canvasLocation" x="3729" y="752"/>
         </scene>
         <!--个人信息-->
         <scene sceneID="AF1-GG-aHf">
@@ -1299,7 +1302,7 @@
                         <viewControllerLayoutGuide type="bottom" id="YyD-t7-mp5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="u5B-MM-ogb">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1307,14 +1310,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AvM-s6-9qe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="199" y="1349"/>
+            <point key="canvasLocation" x="223" y="1469"/>
         </scene>
         <!--客服中心-->
         <scene sceneID="KJa-0c-mkX">
             <objects>
                 <tableViewController storyboardIdentifier="CustomerServiceVC" title="客服中心" hidesBottomBarWhenPushed="YES" id="VhQ-KU-jbA" customClass="CustomerServiceVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wpj-26-Xpr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -1327,7 +1330,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="222.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LWI-Rq-pUJ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ajmd001.png" translatesAutoresizingMaskIntoConstraints="NO" id="LWI-Rq-pUJ">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="223"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1341,7 +1344,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRS-0O-tWE">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ajmd001.png" translatesAutoresizingMaskIntoConstraints="NO" id="cRS-0O-tWE">
                                                     <rect key="frame" x="51" y="15" width="60" height="49"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1370,7 +1373,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mZS-sx-6Va">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ajmd001.png" translatesAutoresizingMaskIntoConstraints="NO" id="mZS-sx-6Va">
                                                     <rect key="frame" x="51" y="15" width="60" height="49"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1399,7 +1402,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QEI-LW-zZe">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ajmd001.png" translatesAutoresizingMaskIntoConstraints="NO" id="QEI-LW-zZe">
                                                     <rect key="frame" x="51" y="15" width="60" height="49"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1433,7 +1436,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ann-Ex-Gar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1189.5999999999999" y="682.3088455772114"/>
+            <point key="canvasLocation" x="1190" y="1480"/>
         </scene>
         <!--我预约的明星-->
         <scene sceneID="dJB-M0-o6k">
@@ -1484,7 +1487,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0VP-ZE-aYx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4468" y="684"/>
+            <point key="canvasLocation" x="4468" y="752"/>
         </scene>
         <!--Make Appointment StarVC-->
         <scene sceneID="4en-Mb-LFC">
@@ -1570,7 +1573,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQQ-hv-LfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5268" y="684.10794602698661"/>
+            <point key="canvasLocation" x="5311" y="754"/>
         </scene>
     </scenes>
     <resources>

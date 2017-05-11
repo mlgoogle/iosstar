@@ -33,8 +33,13 @@ extension UIViewController {
     func checkLogin() -> Bool {
         
       if UserDefaults.standard.object(forKey: "phone") as? String == nil {
-            let homeStoryboard = UIStoryboard.init(name: "Login", bundle: nil)
-            present(homeStoryboard.instantiateInitialViewController()!, animated: true, completion: nil)
+        
+        let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController()
+        controller?.modalPresentationStyle = .custom
+        controller?.modalTransitionStyle = .crossDissolve
+        present(controller!, animated: true, completion: nil)
+           
             return false
         }else{
             return true
