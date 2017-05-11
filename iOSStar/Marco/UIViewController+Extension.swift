@@ -17,7 +17,9 @@ extension UIViewController {
             self?.didRequestError(error)
         }
     }
-    
+    func LoginSuccess(){
+       
+    }
     func didRequestError(_ error:NSError) {
         self.showErrorWithStatus(error.localizedDescription)
     }
@@ -44,6 +46,38 @@ extension UIViewController {
             return false
         }else{
             return true
+        }
+    }
+    
+    func doYunxin(){
+        
+        
+        AppAPIHelper.login().registWYIM(phone: (UserDefaults.standard.object(forKey: "phone") as? String)!, token:(UserDefaults.standard.object(forKey: "phone") as? String)!, complete: { (result) -> ()? in
+            
+            let datadic = result as? Dictionary<String,String>
+            
+            if let _ = datadic {
+                //                let token = UserDefaults.standard.object(forKey: "tokenvalue") as! String
+                //                let phone = UserDefaults.standard.object(forKey: "phone") as! String
+                
+                NIMSDK.shared().loginManager.login((UserDefaults.standard.object(forKey: "phone") as? String)!, token: (datadic?["token_value"])!, completion: { (error) in
+                    if (error != nil){
+                      
+                    }
+                    self.LoginSuccess()
+               
+                })
+              
+                UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
+                UserDefaults.standard.synchronize()
+                
+                
+            }
+            
+            return ()
+        }) { (error) -> ()? in
+            
+            return ()
         }
     }
     //退出登录
@@ -122,6 +156,11 @@ extension UIViewController {
             var contentFrame = content?.frame
             contentFrame?.size.height -= (tabFrame?.size.height)!
         }
+    }
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        view.endEditing(true)
+        
     }
     
     }

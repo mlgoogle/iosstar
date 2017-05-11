@@ -135,7 +135,7 @@ class RegistVC: UIViewController {
                 
                 if let response = result {
                     if response["result"] as! Int == 1 {
-                        self?.doYunxin()
+                        self?.LoginYunxin()
                     }
                 }
                 return()
@@ -170,39 +170,48 @@ class RegistVC: UIViewController {
     }
     
     //MARK:- 网易云登录
-    func doYunxin(){
+    func LoginYunxin(){
         
-        let param: [String: Any] = [SocketConst.Key.name_value:  self.phoneTf.text!,
-                                    SocketConst.Key.accid_value:  self
-                                        .phoneTf.text!,]
-        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .registWY, dict: param as [String : AnyObject])
         
-        BaseSocketAPI.shared().startRequest(packet, complete: { (result) -> ()? in
+        AppAPIHelper.login().registWYIM(phone: self.phoneTf.text!, token: self
+            .phoneTf.text!, complete: { (result) -> ()? in
             
-            let datadic = result as? Dictionary<String,String>
-            
-            if let _ = datadic {
-                //                let token = UserDefaults.standard.object(forKey: "tokenvalue") as! String
-                //                let phone = UserDefaults.standard.object(forKey: "phone") as! String
+                let datadic = result as? Dictionary<String,String>
                 
-                NIMSDK.shared().loginManager.login(self.phoneTf.text!, token: self.passTf.text!, completion: { (error) in
-                    if (error != nil){
-                        self.dismissController()
-                    }
-                })
-                UserDefaults.standard.set(self.phoneTf.text, forKey: "phone")
-                UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
-                UserDefaults.standard.synchronize()
-                
-                
-            }
-            
-            return ()
+                if let _ = datadic {
+                    //                let token = UserDefaults.standard.object(forKey: "tokenvalue") as! String
+                    //                let phone = UserDefaults.standard.object(forKey: "phone") as! String
+                    
+                    NIMSDK.shared().loginManager.login(self.phoneTf.text!, token: self.passTf.text!, completion: { (error) in
+                        if (error != nil){
+                            self.dismissController()
+                        }
+                    })
+                    UserDefaults.standard.set(self.phoneTf.text, forKey: "phone")
+                    UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
+                    UserDefaults.standard.synchronize()
+                    
+                    
+                }
+                return()
         }) { (error) -> ()? in
-            
-            return
+               return()
         }
-        
+//        let param: [String: Any] = [SocketConst.Key.name_value:  self.phoneTf.text!,
+//                                    SocketConst.Key.accid_value:  self
+//                                        .phoneTf.text!,]
+//        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .registWY, dict: param as [String : AnyObject])
+//        
+//         BaseSocketAPI.shared().startRequest(packet, complete: { (result) -> ()? in
+//            
+//           
+//            
+//            return ()
+//        }) { (error) -> ()? in
+//            
+//            return
+//        }
+//        
     }
     @IBAction func didMiss(_ sender: Any) {
         let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!

@@ -13,10 +13,10 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.hideBottomHairline()
-        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white];
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor(hexString: AppConst.Color.main)];
         interactivePopGestureRecognizer?.isEnabled = true
         interactivePopGestureRecognizer?.delegate = self
-        navigationBar.barTintColor = UIColor(hexString: AppConst.Color.main)
+        navigationBar.barTintColor = UIColor.white
         navigationBar.isTranslucent = false
         
     }
@@ -40,7 +40,7 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
     
         btn.addTarget(self, action: #selector(popself), for: UIControlEvents.touchUpInside)
         
-        btn.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20)
+        btn.frame = CGRect.init(x: 0, y: 0, width: 9, height: 17)
         
         let barItem : UIBarButtonItem = UIBarButtonItem.init(customView: btn)
         viewController.navigationItem.leftBarButtonItem = barItem

@@ -35,8 +35,8 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
     }
     
     func registWYIM(phone: String, token: String, complete: CompleteBlock?, error: ErrorBlock?){
-        let param: [String: Any] = [SocketConst.Key.phone: phone,
-                                    SocketConst.Key.pwd:  token,
+        let param: [String: Any] = [SocketConst.Key.name_value: phone,
+                                    SocketConst.Key.accid_value:  token,
                                     SocketConst.Key.memberId: 1001,
                                     SocketConst.Key.agentId:  "186681261",
                                     SocketConst.Key.recommend: "3tewe",

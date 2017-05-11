@@ -129,19 +129,24 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCk-tJ-3Iv">
-                                        <rect key="frame" x="15" y="34" width="144" height="21"/>
+                                        <rect key="frame" x="15" y="34" width="128" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="IG9-OD-Y4Z"/>
                                         </constraints>
                                         <attributedString key="attributedText">
-                                            <fragment content="星享， ">
+                                            <fragment content="星享，">
                                                 <attributes>
-                                                    <font key="NSFont" size="18" name="PingFangSC-Regular"/>
+                                                    <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <font key="NSFont" metaFont="smallSystem"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content="你与明星零距离">
                                                 <attributes>
-                                                    <font key="NSFont" size="12" name="PingFangSC-Regular"/>
+                                                    <font key="NSFont" size="11" name=".PingFangSC-Regular"/>
                                                     <font key="NSOriginalFont" size="12" name="PingFangSC-Regular"/>
                                                 </attributes>
                                             </fragment>
@@ -204,18 +209,28 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8f-Yc-8Ym">
-                                        <rect key="frame" x="66" y="304" width="137" height="44"/>
+                                        <rect key="frame" x="60" y="304" width="143" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="G6O-EP-0KA"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <state key="normal" title="微信登录" image="wechat.png">
+                                        <state key="normal">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="wechatLogin:" destination="oJk-2R-WDq" eventType="touchUpInside" id="UjP-Oc-ZXT"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlF-N6-vaI">
+                                        <rect key="frame" x="120" y="319" width="49.5" height="14.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14.5" id="SEy-J4-M4r"/>
+                                            <constraint firstAttribute="width" constant="49.5" id="prc-gZ-EMp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s2-7s-nDn">
                                         <rect key="frame" x="239" y="15" width="15" height="15"/>
                                         <constraints>
@@ -227,19 +242,28 @@
                                             <action selector="didMiss:" destination="oJk-2R-WDq" eventType="touchUpInside" id="FK8-v3-HVT"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wechat.png" translatesAutoresizingMaskIntoConstraints="NO" id="4Er-f0-K82">
+                                        <rect key="frame" x="91" y="316" width="25" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="xub-56-C10"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Ydl-op-fnn" firstAttribute="top" secondItem="OBt-cN-vn3" secondAttribute="bottom" constant="25" id="0tj-VZ-e22"/>
                                     <constraint firstAttribute="height" constant="400" id="2Oa-nM-eK1"/>
                                     <constraint firstAttribute="trailing" secondItem="Ydl-op-fnn" secondAttribute="trailing" constant="14" id="62b-aa-flO"/>
+                                    <constraint firstItem="4Er-f0-K82" firstAttribute="bottom" secondItem="B8f-Yc-8Ym" secondAttribute="bottom" constant="-12" id="6lT-iL-vHi"/>
                                     <constraint firstItem="OBt-cN-vn3" firstAttribute="top" secondItem="RQA-Sd-lDc" secondAttribute="top" constant="80" id="AVc-8e-olP"/>
                                     <constraint firstItem="k6T-AG-J3X" firstAttribute="top" secondItem="Ydl-op-fnn" secondAttribute="bottom" constant="20" id="CnC-VB-8ni"/>
                                     <constraint firstItem="kri-4u-IvP" firstAttribute="top" secondItem="B8f-Yc-8Ym" secondAttribute="bottom" constant="8" id="HHD-4w-qrS"/>
                                     <constraint firstAttribute="trailing" secondItem="YnU-cu-rFy" secondAttribute="trailing" id="JAB-Wl-RKf"/>
                                     <constraint firstItem="YnU-cu-rFy" firstAttribute="top" secondItem="k6T-AG-J3X" secondAttribute="bottom" constant="20" id="KmD-OO-SY3"/>
+                                    <constraint firstItem="4Er-f0-K82" firstAttribute="centerX" secondItem="RQA-Sd-lDc" secondAttribute="centerX" constant="-30.5" id="M52-n9-Zd2"/>
+                                    <constraint firstItem="4Er-f0-K82" firstAttribute="top" secondItem="B8f-Yc-8Ym" secondAttribute="top" constant="12" id="SC2-vp-fMi"/>
                                     <constraint firstItem="xog-Kj-4eh" firstAttribute="top" secondItem="YnU-cu-rFy" secondAttribute="bottom" constant="19" id="Tjf-ni-xBw"/>
-                                    <constraint firstItem="B8f-Yc-8Ym" firstAttribute="leading" secondItem="RQA-Sd-lDc" secondAttribute="leading" constant="66" id="UGu-Pv-tT1"/>
+                                    <constraint firstItem="B8f-Yc-8Ym" firstAttribute="leading" secondItem="RQA-Sd-lDc" secondAttribute="leading" constant="60" id="UGu-Pv-tT1"/>
                                     <constraint firstItem="1s2-7s-nDn" firstAttribute="top" secondItem="RQA-Sd-lDc" secondAttribute="top" constant="15" id="Y2W-P8-ldq"/>
                                     <constraint firstItem="k6T-AG-J3X" firstAttribute="centerX" secondItem="RQA-Sd-lDc" secondAttribute="centerX" id="ZPB-de-C5f"/>
                                     <constraint firstItem="GCk-tJ-3Iv" firstAttribute="leading" secondItem="RQA-Sd-lDc" secondAttribute="leading" constant="15" id="acj-YA-gev"/>
@@ -254,8 +278,10 @@
                                     <constraint firstItem="Ydl-op-fnn" firstAttribute="leading" secondItem="RQA-Sd-lDc" secondAttribute="leading" constant="15" id="r9z-Dk-cJM"/>
                                     <constraint firstAttribute="trailing" secondItem="kri-4u-IvP" secondAttribute="trailing" id="sT0-a5-ttp"/>
                                     <constraint firstItem="kri-4u-IvP" firstAttribute="leading" secondItem="RQA-Sd-lDc" secondAttribute="leading" id="tFW-R3-pEV"/>
+                                    <constraint firstItem="wlF-N6-vaI" firstAttribute="leading" secondItem="4Er-f0-K82" secondAttribute="trailing" constant="4" id="u8p-Jv-OSw"/>
                                     <constraint firstItem="B8f-Yc-8Ym" firstAttribute="top" secondItem="xog-Kj-4eh" secondAttribute="bottom" id="vk6-tl-9D7"/>
                                     <constraint firstItem="YnU-cu-rFy" firstAttribute="leading" secondItem="RQA-Sd-lDc" secondAttribute="leading" id="yeE-oa-f3s"/>
+                                    <constraint firstItem="wlF-N6-vaI" firstAttribute="centerY" secondItem="4Er-f0-K82" secondAttribute="centerY" id="zzx-dw-Mw3"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -929,7 +955,12 @@
                                             <constraint firstAttribute="width" constant="175" id="xGb-l3-15c"/>
                                         </constraints>
                                         <attributedString key="attributedText">
-                                            <fragment content="星享， ">
+                                            <fragment content="星享">
+                                                <attributes>
+                                                    <font key="NSFont" size="15" name="PingFangSC-Regular"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="， ">
                                                 <attributes>
                                                     <font key="NSFont" size="18" name="PingFangSC-Regular"/>
                                                 </attributes>
@@ -1050,7 +1081,7 @@
                                             <constraint firstAttribute="height" constant="51" id="9qN-Ia-ss0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <state key="normal" title="微信登录" image="wechat.png">
+                                        <state key="normal">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -1068,19 +1099,34 @@
                                             <action selector="didMiss:" destination="xsJ-A5-1Ho" eventType="touchUpInside" id="9Ro-se-UQA"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wechat.png" translatesAutoresizingMaskIntoConstraints="NO" id="y5W-DE-y8T">
+                                        <rect key="frame" x="91" y="319" width="25" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="hI8-dy-lhC"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2f5-rn-MPh">
+                                        <rect key="frame" x="122" y="322" width="49.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="HF6-GK-lwT" secondAttribute="trailing" constant="16" id="03r-os-hW4"/>
                                     <constraint firstItem="fKH-f6-mKt" firstAttribute="top" secondItem="yy5-nj-KEx" secondAttribute="bottom" constant="10" id="2tP-Bk-JPB"/>
                                     <constraint firstItem="TiW-Vu-FOR" firstAttribute="top" secondItem="fKH-f6-mKt" secondAttribute="bottom" constant="13" id="47c-EI-5p9"/>
+                                    <constraint firstItem="kFh-sR-IwD" firstAttribute="top" secondItem="y5W-DE-y8T" secondAttribute="bottom" constant="17" id="4Nt-vT-LPT"/>
                                     <constraint firstItem="TiW-Vu-FOR" firstAttribute="leading" secondItem="1MB-WG-8qY" secondAttribute="leading" id="53k-ms-NNA"/>
                                     <constraint firstItem="yy5-nj-KEx" firstAttribute="leading" secondItem="1MB-WG-8qY" secondAttribute="leading" constant="15" id="7Sr-TV-gkT"/>
                                     <constraint firstItem="kFh-sR-IwD" firstAttribute="top" secondItem="EUm-Cc-8uC" secondAttribute="bottom" constant="2" id="H6O-2R-aPQ"/>
+                                    <constraint firstItem="y5W-DE-y8T" firstAttribute="top" secondItem="3QS-hT-3rc" secondAttribute="bottom" constant="11" id="KRH-nl-H2O"/>
                                     <constraint firstAttribute="trailing" secondItem="EUm-Cc-8uC" secondAttribute="trailing" constant="60" id="LYZ-1v-iOS"/>
                                     <constraint firstItem="stX-eC-oih" firstAttribute="leading" secondItem="1MB-WG-8qY" secondAttribute="leading" constant="15" id="MYz-He-I9F"/>
                                     <constraint firstItem="5gr-Gs-oH4" firstAttribute="leading" secondItem="1MB-WG-8qY" secondAttribute="leading" constant="15" id="Mjm-Si-eXx"/>
                                     <constraint firstAttribute="height" constant="400" id="Ofw-sv-vDl"/>
+                                    <constraint firstItem="y5W-DE-y8T" firstAttribute="centerX" secondItem="1MB-WG-8qY" secondAttribute="centerX" constant="-30.5" id="R4w-uw-dQA"/>
                                     <constraint firstItem="EUm-Cc-8uC" firstAttribute="leading" secondItem="1MB-WG-8qY" secondAttribute="leading" constant="60" id="Syy-9t-P8b"/>
                                     <constraint firstItem="5gr-Gs-oH4" firstAttribute="top" secondItem="stX-eC-oih" secondAttribute="bottom" constant="20" id="ZzT-kg-jNS"/>
                                     <constraint firstItem="fKH-f6-mKt" firstAttribute="centerX" secondItem="1MB-WG-8qY" secondAttribute="centerX" id="a8i-YL-dpb"/>
@@ -1097,10 +1143,12 @@
                                     <constraint firstItem="3QS-hT-3rc" firstAttribute="top" secondItem="TiW-Vu-FOR" secondAttribute="bottom" constant="19" id="qo1-Kl-0ni"/>
                                     <constraint firstAttribute="trailing" secondItem="yy5-nj-KEx" secondAttribute="trailing" constant="14" id="qpu-p1-9vA"/>
                                     <constraint firstItem="stX-eC-oih" firstAttribute="top" secondItem="1MB-WG-8qY" secondAttribute="top" constant="29" id="uIS-7z-Vbf"/>
+                                    <constraint firstItem="2f5-rn-MPh" firstAttribute="leading" secondItem="y5W-DE-y8T" secondAttribute="trailing" constant="6" id="ums-vq-SOs"/>
                                     <constraint firstAttribute="trailing" secondItem="tqY-q7-e2N" secondAttribute="trailing" constant="19" id="w7j-ni-Wj8"/>
                                     <constraint firstAttribute="bottom" secondItem="kFh-sR-IwD" secondAttribute="bottom" id="y2X-S0-J2O"/>
                                     <constraint firstAttribute="trailing" secondItem="5gr-Gs-oH4" secondAttribute="trailing" constant="14" id="yHU-mw-z4E"/>
                                     <constraint firstItem="EUm-Cc-8uC" firstAttribute="top" secondItem="TiW-Vu-FOR" secondAttribute="bottom" constant="35" id="zVX-ew-FHx"/>
+                                    <constraint firstItem="2f5-rn-MPh" firstAttribute="centerY" secondItem="y5W-DE-y8T" secondAttribute="centerY" id="zxu-yI-7cb"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1172,6 +1220,6 @@
         <image name="close.png" width="82" height="81"/>
         <image name="high_btn.png" width="16" height="16"/>
         <image name="visible.png" width="26" height="16"/>
-        <image name="wechat.png" width="50" height="50"/>
+        <image name="wechat.png" width="92" height="75"/>
     </resources>
 </document>
