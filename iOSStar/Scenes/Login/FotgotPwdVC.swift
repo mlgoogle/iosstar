@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class FotgotPwdVC: UITableViewController {
     
     //时间戳
@@ -98,9 +98,17 @@ class FotgotPwdVC: UITableViewController {
 
     @IBAction func doreset(_ sender: Any) {
         if first_input.text != second_input.text{
-         return}
+            
+            SVProgressHUD.showErrorMessage(ErrorMessage: "两次密码不一致", ForDuration: 0.5, completion: {
+                
+            })
+         return
+        }
         let string = "yd1742653sd" + self.timeStamp + self.codeTf.text! + self.phoneTf.text!
         if string.md5_string() != self.vToken{
+            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码不正确", ForDuration: 0.5, completion: {
+                
+            })
             return
         }
        AppAPIHelper.login().ResetPassWd(phone: self.phoneTf.text!, pwd: self.first_input.text!, complete: { (result) -> ()? in
@@ -112,6 +120,9 @@ class FotgotPwdVC: UITableViewController {
         }
         return()
        }) { (error) -> ()? in
+        SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
+            
+        })
          return()
         }
     }

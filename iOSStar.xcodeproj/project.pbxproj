@@ -336,6 +336,7 @@
 		A04C62881EC1580D000BFC29 /* CustomerServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C62871EC1580D000BFC29 /* CustomerServiceVC.swift */; };
 		A04C628A1EC15D98000BFC29 /* TradePdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C62891EC15D98000BFC29 /* TradePdVC.swift */; };
 		A04C628C1EC1CD65000BFC29 /* MakeAppointmentStarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C628B1EC1CD65000BFC29 /* MakeAppointmentStarVC.swift */; };
+		A0504F831EC4476B008F4182 /* StarListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0504F821EC4476B008F4182 /* StarListModel.swift */; };
 		A053C25B1EAD85EF007F86BC /* OrderListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A053C25A1EAD85EF007F86BC /* OrderListVC.swift */; };
 		A05E5F3A1EB1949F0008888A /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F391EB1949F0008888A /* close.png */; };
 		A05E5F3D1EB19D100008888A /* wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F3B1EB19D100008888A /* wechat@2x.png */; };
@@ -1024,6 +1025,7 @@
 		A04C62871EC1580D000BFC29 /* CustomerServiceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerServiceVC.swift; sourceTree = "<group>"; };
 		A04C62891EC15D98000BFC29 /* TradePdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradePdVC.swift; sourceTree = "<group>"; };
 		A04C628B1EC1CD65000BFC29 /* MakeAppointmentStarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeAppointmentStarVC.swift; sourceTree = "<group>"; };
+		A0504F821EC4476B008F4182 /* StarListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarListModel.swift; sourceTree = "<group>"; };
 		A053C25A1EAD85EF007F86BC /* OrderListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListVC.swift; sourceTree = "<group>"; };
 		A05E5F391EB1949F0008888A /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		A05E5F3B1EB19D100008888A /* wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@2x.png"; sourceTree = "<group>"; };
@@ -1246,6 +1248,7 @@
 		A001A96F1EAD9F5A00752F1A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A0504F811EC44733008F4182 /* StarListModel */,
 				A001A9701EAD9F7500752F1A /* ShareDataModel */,
 			);
 			name = Model;
@@ -2627,6 +2630,14 @@
 			path = Spelling;
 			sourceTree = "<group>";
 		};
+		A0504F811EC44733008F4182 /* StarListModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0504F821EC4476B008F4182 /* StarListModel.swift */,
+			);
+			path = StarListModel;
+			sourceTree = "<group>";
+		};
 		A07238411EA768AC00E755DB = {
 			isa = PBXGroup;
 			children = (
@@ -3308,6 +3319,7 @@
 				A03D3F3F1EA86A6400F85308 /* NIMLocationViewController.m in Sources */,
 				A03D3EFD1EA86A6400F85308 /* NIMKitMediaFetcher.m in Sources */,
 				A03D3F9C1EA86A6500F85308 /* NTESRegisterViewController.m in Sources */,
+				A0504F831EC4476B008F4182 /* StarListModel.swift in Sources */,
 				A03D3FB91EA86A6500F85308 /* NTESWhiteboardViewController.m in Sources */,
 				A03D3F4C1EA86A6500F85308 /* NIMTeamAnnouncementListViewController.m in Sources */,
 				A03D3F8B1EA86A6500F85308 /* NTESContactUtilItem.m in Sources */,

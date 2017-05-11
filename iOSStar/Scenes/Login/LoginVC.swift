@@ -71,8 +71,6 @@ class LoginVC: UIViewController {
     @IBAction func doRegist(_ sender: Any) {
            view.endEditing(true)
         self.resultBlock!(doStateClick.doRegist as AnyObject?)
-
-        
     }
       //登录
     @IBAction func doLogin(_ sender: Any) {
@@ -82,16 +80,8 @@ class LoginVC: UIViewController {
         if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]){
             
             AppAPIHelper.login().login(phone: phone.text!, password: passPwd.text!, complete: { [weak self](result) -> ()? in
-                
-                
                  let datadic = result as? Dictionary<String,AnyObject>
-
-//                if (datadic?["result"] as! Int) == -302{
-//                
-//                    return nil
-//                }
                 SVProgressHUD.showErrorMessage(ErrorMessage: "登录成功", ForDuration: 0.5, completion: {
-//                    let datadic = result as? Dictionary<String,String>
                      btn.isUserInteractionEnabled = true
                     if let _ = datadic {
                         NIMSDK.shared().loginManager.login((self?.phone.text!)!, token: (self?.phone.text!)!, completion: { (error) in
@@ -105,29 +95,24 @@ class LoginVC: UIViewController {
                         
                     }
                 })
-              
-                return()
+              return()
             }) { (error) -> ()? in
     
                  btn.isUserInteractionEnabled = true
-                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: { 
-                    
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
                 })
                 return()
             }
         }
-       
-
     }
-
-    // //MARK:   忘记密码
+    // //MARK:- 忘记密码
     @IBAction func forGotPass(_ sender: Any) {
         
           ShareDataModel.share().isweichaLogin = false
         
         self.performSegue(withIdentifier: "pushToLogin", sender: nil)
     }
-    // //MARK:   微信登录
+    //MARK:-   微信登录
     @IBAction func wechatLogin(_ sender: Any) {
         
         let req = SendAuthReq.init()
@@ -136,7 +121,6 @@ class LoginVC: UIViewController {
         WXApi.send(req)
     }
     @IBAction func didMiss(_ sender: Any) {
-//        self.dismissController()
         didClose()
     }
      //MARK:  重置密码
@@ -144,14 +128,6 @@ class LoginVC: UIViewController {
         
         self.resultBlock!(doStateClick.doResetPwd as AnyObject)
     }
-//     //注册
-//    @IBAction func doRegist(_ sender: Any) {
-//        
-//        ShareDataModel.share().isdoregist = true
-//        
-//        self.performSegue(withIdentifier: "pushToLogin", sender: nil)
-//    }
-   
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
        
            view.endEditing(true)

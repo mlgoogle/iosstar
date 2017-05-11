@@ -73,11 +73,13 @@ class SocketRequestManage: NSObject {
         }
         if packet.operate_code ==  SocketConst.OPCode.timeline.rawValue + 1{
             socketReqeust = timelineRequest
-        }else if packet.operate_code == SocketConst.OPCode.products.rawValue + 1{
+        }
+        else if packet.operate_code == SocketConst.OPCode.products.rawValue + 1{
             socketReqeust = productsRequest
         }else if packet.operate_code == SocketConst.OPCode.kChart.rawValue + 1{
             socketReqeust = kchartRequest
-        }else if packet.operate_code == SocketConst.OPCode.realtime.rawValue{
+        }
+        else if packet.operate_code == SocketConst.OPCode.realtime.rawValue{
             socketReqeust = priceRequest
         }else if packet.operate_code == SocketConst.OPCode.balance.rawValue{
             let response:SocketJsonResponse = SocketJsonResponse(packet:packet)

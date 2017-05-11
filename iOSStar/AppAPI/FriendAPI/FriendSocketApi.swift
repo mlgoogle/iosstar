@@ -17,7 +17,9 @@ class FriendSocketApi: BaseSocketAPI, FriendApi  {
                                     SocketConst.Key.createtime:  createtime,]
         print(param)
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .getlist, dict: param as [String : AnyObject], type: .getlist)
-        startRequest(packet, complete: complete, error: error)
+//        startRequest(packet, complete: complete, error: error)
+        
+          startModelRequest(packet, modelClass: StarListModel.self, complete: complete, error: error)
     }
     func reducetime(phone: String, starcode: String, complete: CompleteBlock?, error: ErrorBlock?){
         
