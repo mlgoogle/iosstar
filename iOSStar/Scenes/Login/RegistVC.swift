@@ -30,7 +30,8 @@ class RegistVC: UIViewController {
     private var timer: Timer?
     //验证码
     @IBOutlet weak var vaildCodeBtn: UIButton!
-    
+    @IBOutlet weak var height: NSLayoutConstraint!
+    @IBOutlet weak var width: NSLayoutConstraint!
     @IBOutlet var passTf: UITextField!
     //验证码
     private var codeTime = 60
@@ -40,11 +41,13 @@ class RegistVC: UIViewController {
     }
     func initUI(){
         
-        let h  = UIScreen.main.bounds.size.height <= 568 ? 70.0 : 110
+        let h  = UIScreen.main.bounds.size.height <= 568 ? 70.0 : 90
         self.top.constant = UIScreen.main.bounds.size.height/568.0 * CGFloat.init(h)
         print(self.top.constant)
         self.left.constant = UIScreen.main.bounds.size.width/320.0 * 30
         self.right.constant = UIScreen.main.bounds.size.width/320.0 * 30
+        height.constant = 100 + UIScreen.main.bounds.size.height
+        width.constant = UIScreen.main.bounds.size.width
     }
     override func viewDidLoad() {
         super.viewDidLoad()
