@@ -32,6 +32,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        UIApplication.shared.setStatusBarHidden(false, with: .none)
         titleView.isHidden = true
     }
 

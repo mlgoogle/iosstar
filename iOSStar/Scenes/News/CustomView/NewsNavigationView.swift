@@ -79,7 +79,9 @@ class NewsNavigationView: UIView {
     }
     func setTitle(title:String) {
         
-        dateLabel.text = title
+
+        
+        dateLabel.text = title.substring(to:title.index(title.startIndex, offsetBy: 10))
         
     }
     

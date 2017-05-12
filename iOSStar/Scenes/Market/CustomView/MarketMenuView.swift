@@ -68,8 +68,8 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }
     func setupUI() {
         setMenuCollectionView()
-        setSubCollectionView()
         setupInfoView()
+        setSubCollectionView()
 
     }
     func setMenuCollectionView() {
@@ -85,10 +85,9 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         menuCollectionView?.dataSource = self
         menuCollectionView?.register(MenuItemCell.self, forCellWithReuseIdentifier: "MenuItemCell")
         addSubview(menuCollectionView!)
-        lineView.frame = CGRect(x: 25, y: menuCollectionView!.sd_height - 3, width: 20, height: 3)
+        lineView.frame = CGRect(x: 22, y: menuCollectionView!.sd_height - 3, width: 20, height: 3)
         menuCollectionView?.addSubview(lineView)
         menuCollectionView?.bringSubview(toFront: lineView)
-        addSubview(infoView)
     }
     func setSubCollectionView() {
         let subViewLayout = UICollectionViewFlowLayout()
@@ -108,8 +107,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func setupInfoView() {
-        
-
+        addSubview(infoView)
         infoView.frame = CGRect(x: 0, y: menuCollectionView!.sd_height, width: kScreenWidth, height: 50)
         infoView.addSubview(allLabel)
         infoView.addSubview(priceTypeButton)

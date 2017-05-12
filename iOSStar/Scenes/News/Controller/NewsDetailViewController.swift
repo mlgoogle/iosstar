@@ -15,11 +15,11 @@ class NewsDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "资讯详情"
-
+        setCustomTitle(title: "资讯详情")
+        
         let webView = WKWebView(frame: view.bounds)
         
-        UIApplication.shared.statusBarStyle = .lightContent;
+        UIApplication.shared.statusBarStyle = .default;
 
         let url = URL(string: urlString!)
         let request = URLRequest(url: url!)
