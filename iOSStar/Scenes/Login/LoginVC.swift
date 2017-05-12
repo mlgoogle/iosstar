@@ -16,12 +16,12 @@ class LoginVC: UIViewController {
     //左边距
     @IBOutlet var left: NSLayoutConstraint!
     //右边距
+    @IBOutlet weak var height: NSLayoutConstraint!
     @IBOutlet var right: NSLayoutConstraint!
      //上边距
     @IBOutlet var top: NSLayoutConstraint!
-    var tranform : Bool = true
-    @IBOutlet weak var loginView: UIView!
-    
+    @IBOutlet weak var width: NSLayoutConstraint!
+   
     //手机号
     @IBOutlet weak var passPwd: UITextField!
     // 登录密码
@@ -33,8 +33,11 @@ class LoginVC: UIViewController {
       
     }
     func initUI(){
-    
-        let h  = UIScreen.main.bounds.size.height <= 568 ? 60.0 : 110
+        self.automaticallyAdjustsScrollViewInsets = false
+        height.constant = 100 + UIScreen.main.bounds.size.height
+
+         width.constant = UIScreen.main.bounds.size.width
+        let h  = UIScreen.main.bounds.size.height <= 568 ? 60.0 : 80
         self.top.constant = UIScreen.main.bounds.size.height/568.0 * CGFloat.init(h)
         print(self.top.constant)
         self.left.constant = UIScreen.main.bounds.size.width/320.0 * 30
