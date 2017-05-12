@@ -82,7 +82,7 @@ extension UIViewController {
     }
     //退出登录
     func userLogout() {
-        UserDefaults.standard.removeObject(forKey:"uid")
+        UserDefaults.standard.removeObject(forKey:"phone")
         UserDefaults.standard.removeObject(forKey: "token")
         tabBarController?.selectedIndex = 0
     }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class RegistVC: UIViewController {
     
     @IBOutlet var left: NSLayoutConstraint!
@@ -78,6 +78,8 @@ class RegistVC: UIViewController {
                 //                print(result)
                 
                 }, error: { (error) -> ()? in
+                    SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
+                    })
                     self.vaildCodeBtn.isEnabled = true
                     return()
             })
@@ -93,6 +95,7 @@ class RegistVC: UIViewController {
             vaildCodeBtn.setTitle("重新发送", for: .normal)
             codeTime = 60
             timer?.invalidate()
+            
             vaildCodeBtn.backgroundColor = UIColor(hexString: "BCE0DA")
             return
         }
@@ -100,6 +103,7 @@ class RegistVC: UIViewController {
         codeTime = codeTime - 1
         let title: String = "\(codeTime)秒重新发送"
         vaildCodeBtn.setTitle(title, for: .normal)
+        
         vaildCodeBtn.backgroundColor = UIColor(hexString: "ECECEC")
     }
     override func didReceiveMemoryWarning() {
@@ -118,12 +122,17 @@ class RegistVC: UIViewController {
         if ShareDataModel.share().isweichaLogin == true{
             
             AppAPIHelper.login().BindWeichat(phone: phoneTf.text!, timeStamp: 123, vToken: "1233", pwd: passTf.text!, openid:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, nickname:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.nickname]!, headerUrl:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.headimgurl]!, memberId: 123, agentId: "123", recommend: "123", deviceId: "1123", vCode: "123", complete: { [weak self](result) -> ()? in
-                
-                self?.doYunxin()
+                UserDefaults.standard.set(self?.phoneTf.text, forKey: "phone")
+                UserDefaults.standard.synchronize()
+            
+                self?.LoginYunxin()
                 
                 return()
             }) { (error ) -> ()? in
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
+                })
                 print(error)
+                return ()
             }
         }
         else{
@@ -138,12 +147,17 @@ class RegistVC: UIViewController {
                 
                 if let response = result {
                     if response["result"] as! Int == 1 {
+                        UserDefaults.standard.set(self?.phoneTf.text, forKey: "phone")
+                                               UserDefaults.standard.synchronize()
+
                         self?.LoginYunxin()
                     }
                 }
                 return()
                 
             }) { (error) -> ()? in
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
+                })
                 return()
             }
         }
