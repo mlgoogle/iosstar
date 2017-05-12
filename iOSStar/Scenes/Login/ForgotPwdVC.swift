@@ -8,7 +8,7 @@
 
 import UIKit
 import SVProgressHUD
-class FotgotPwdVC: UITableViewController {
+class ForgotPwdVC: UITableViewController {
     
     //时间戳
     var timeStamp =  ""
@@ -28,18 +28,38 @@ class FotgotPwdVC: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "重置密码"
-
+        initLeft()
         // Do any additional setup after loading the view.
     }
-
+      //MARK: 设置导航条
+    func initLeft(){
+        
+        let btn : UIButton = UIButton.init(type: UIButtonType.custom)
+        
+        btn.setTitle("", for: UIControlState.normal)
+        
+        btn.setBackgroundImage(UIImage.init(named: "back"), for: UIControlState.normal )
+        
+        btn.addTarget(self, action: #selector(popself), for: UIControlEvents.touchUpInside)
+        
+        btn.frame = CGRect.init(x: 0, y: 0, width: 9, height: 17)
+        
+        let barItem : UIBarButtonItem = UIBarButtonItem.init(customView: btn)
+        self.navigationItem.leftBarButtonItem = barItem
+    }
+    func popself(){
+    self.navigationController?.popViewController(animated: true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    //MARK: 显示密码
     @IBAction func doShowPass(_ sender: Any) {
         
         let btn = sender as! UIButton
@@ -51,6 +71,7 @@ class FotgotPwdVC: UITableViewController {
             second_input.isSecureTextEntry = !second_input.isSecureTextEntry
         }
     }
+    //MARK: 发送验证码
     @IBAction func sendVaildCode(_ sender: Any) {
         
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
@@ -95,7 +116,7 @@ class FotgotPwdVC: UITableViewController {
         vaildCodeBtn.setTitle(title, for: .normal)
         vaildCodeBtn.backgroundColor = UIColor(hexString: "ECECEC")
     }
-
+      //MARK: 重置密码
     @IBAction func doreset(_ sender: Any) {
         if first_input.text != second_input.text{
             

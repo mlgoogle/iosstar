@@ -8,10 +8,11 @@
 
 import UIKit
 import SVProgressHUD
+//设置枚举选择事件
 enum doStateClick{
-    case doRegist
-    case doLogin
-    case doResetPwd
+    case doRegist    //  注册
+    case doLogin     //  登录
+    case doResetPwd  //  忘记密码
  
 }
 class ContainVC: UIViewController {
@@ -23,14 +24,16 @@ class ContainVC: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
        NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess(_:)), name: Notification.Name(rawValue:AppConst.WechatKey.ErrorCode), object: nil)
        initUI()
         
         // Do any additional setup after loading the view.
     }
-    //MARK:-  登录成功
+       //MARK:-  登录成功
     func loginSuccess(_ notice: NSNotification){
         AppAPIHelper.login().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { [weak self](result) -> ()? in
             if let response = result  {
@@ -49,8 +52,10 @@ class ContainVC: UIViewController {
         }
        return()
     }
+   //MARK:- 设置UI
     func initUI(){
-    
+        self.navigationController?.navigationBar.barTintColor = UIColor.init(hexString: AppConst.Color.main)
+         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor(hexString: "ffffff")];
         self.automaticallyAdjustsScrollViewInsets = false;
         scrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
         self.scrollView?.isScrollEnabled = false
@@ -65,7 +70,7 @@ class ContainVC: UIViewController {
             switch result as! doStateClick {
             case .doResetPwd:
                 
-                let vc = UIStoryboard.init(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "FotgotPwdVC")
+                let vc = UIStoryboard.init(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "ForgotPwdVC")
                 self?.navigationController?.pushViewController(vc, animated: true)
                 break
                 //
@@ -88,7 +93,7 @@ class ContainVC: UIViewController {
             switch result as! doStateClick {
             case .doResetPwd:
                 
-                let vc = UIStoryboard.init(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "FotgotPwdVC")
+                let vc = UIStoryboard.init(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "ForgotPwdVC")
                 self?.navigationController?.pushViewController(vc, animated: true)
                 break
             //
@@ -104,14 +109,6 @@ class ContainVC: UIViewController {
         super.didReceiveMemoryWarning()
       
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
 
 }

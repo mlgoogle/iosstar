@@ -27,6 +27,9 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
         super.viewWillAppear(animated)
 
     }
+    override func awakeFromNib() {
+        
+    }
     //MARK: 重新写左面的导航
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         
