@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="-2676" y="37"/>
         </scene>
-        <!--ContainVC-->
+        <!--容器-->
         <scene sceneID="CQk-7t-oPz">
             <objects>
-                <viewController id="CeJ-si-h1e" customClass="ContainVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="容器" id="CeJ-si-h1e" customClass="ContainVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="V97-nS-n9w"/>
                         <viewControllerLayoutGuide type="bottom" id="QCA-ua-GOZ"/>
@@ -44,10 +44,10 @@
             </objects>
             <point key="canvasLocation" x="-1709.5999999999999" y="-80.50974512743629"/>
         </scene>
-        <!--LoginVC-->
+        <!--登录-->
         <scene sceneID="uSK-rG-ZiU">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" id="oJk-2R-WDq" customClass="LoginVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" title="登录" id="oJk-2R-WDq" customClass="LoginVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zLi-sr-xYA"/>
                         <viewControllerLayoutGuide type="bottom" id="Jfn-aZ-v6i"/>
@@ -68,7 +68,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ele-vB-QK5">
                                                         <rect key="frame" x="15" y="80" width="239" height="44"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的手机号" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jxw-gG-HVh">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的手机号" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jxw-gG-HVh">
                                                                 <rect key="frame" x="0.0" y="0.0" width="239" height="44"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
@@ -96,7 +96,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9VM-nH-Rga">
                                                         <rect key="frame" x="15" y="149" width="239" height="44"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的登录密码" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mhr-S4-LSi">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的登录密码" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mhr-S4-LSi">
                                                                 <rect key="frame" x="0.0" y="0.0" width="239" height="44"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
@@ -376,6 +376,8 @@
                     <connections>
                         <outlet property="height" destination="8fC-RF-m9B" id="KAk-3m-zB4"/>
                         <outlet property="left" destination="oUg-lc-zMA" id="5QE-Y7-V3t"/>
+                        <outlet property="passPwd" destination="Mhr-S4-LSi" id="WO4-a5-wzf"/>
+                        <outlet property="phone" destination="jxw-gG-HVh" id="U7Q-n0-qce"/>
                         <outlet property="right" destination="dbN-Eh-f3e" id="pCR-x5-Eo7"/>
                         <outlet property="top" destination="4h6-2H-E7H" id="dcl-98-6aY"/>
                         <outlet property="width" destination="6Ur-Ex-4D5" id="dy3-Fm-7jL"/>
@@ -385,10 +387,10 @@
             </objects>
             <point key="canvasLocation" x="-976.875" y="-210.21126760563379"/>
         </scene>
-        <!--填写手机号-->
+        <!--忘记密码-->
         <scene sceneID="cNe-Mr-w6H">
             <objects>
-                <tableViewController storyboardIdentifier="ForgotPwdVC" title="填写手机号" id="YIj-ox-Gb7" customClass="ForgotPwdVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ForgotPwdVC" title="忘记密码" id="YIj-ox-Gb7" customClass="ForgotPwdVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="g9a-Lb-xtm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -930,7 +932,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFB-vl-dkE">
                                                         <rect key="frame" x="15" y="70" width="239" height="40"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="您 的 手 机 号" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uml-Jq-dSm">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="您 的 手 机 号" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uml-Jq-dSm">
                                                                 <rect key="frame" x="0.0" y="0.0" width="239" height="40"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
@@ -958,7 +960,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O7i-0s-Xod">
                                                         <rect key="frame" x="15" y="174" width="239" height="40"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PgT-lJ-k3U">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PgT-lJ-k3U">
                                                                 <rect key="frame" x="0.0" y="0.0" width="239" height="40"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
@@ -1077,7 +1079,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYO-Aq-OHu">
                                                         <rect key="frame" x="15" y="122" width="149" height="40"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入系统验证码" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vf7-WB-c6c">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入系统验证码" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vf7-WB-c6c">
                                                                 <rect key="frame" x="0.0" y="0.0" width="149" height="40"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
@@ -1266,10 +1268,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="Lgo-gm-Xdl"/>
                     <connections>
+                        <outlet property="codeTf" destination="vf7-WB-c6c" id="oqC-j2-AcU"/>
                         <outlet property="height" destination="YVB-Oe-p5O" id="z7V-dF-R7a"/>
                         <outlet property="left" destination="Cb3-fq-0fz" id="Iw5-1S-3mf"/>
+                        <outlet property="passTf" destination="PgT-lJ-k3U" id="Iwh-XS-JD1"/>
+                        <outlet property="phoneTf" destination="Uml-Jq-dSm" id="80P-1n-9SR"/>
                         <outlet property="right" destination="HQU-al-8Sb" id="AeV-zp-NC2"/>
                         <outlet property="top" destination="Q7P-1y-qbQ" id="Gik-VR-vRI"/>
+                        <outlet property="vaildCodeBtn" destination="bnh-93-zmc" id="lJd-pA-aSN"/>
                         <outlet property="width" destination="nlr-qn-BDu" id="UAF-gG-mU4"/>
                     </connections>
                 </viewController>
