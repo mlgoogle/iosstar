@@ -38,6 +38,7 @@
 		6E193C501EBADFC90049AEDE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E193C4F1EBADFC90049AEDE /* UIColor+Extension.swift */; };
 		6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */; };
 		6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302C1EA84D98005C8DF9 /* Market.storyboard */; };
+		6EDA46951EC5AEAA0004F942 /* MarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA46941EC5AEAA0004F942 /* MarketModel.swift */; };
 		A001A96C1EAD884D00752F1A /* HaveBuyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A96B1EAD884D00752F1A /* HaveBuyVC.swift */; };
 		A001A9721EAD9F8D00752F1A /* ShareDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */; };
 		A001A9741EADC91C00752F1A /* SellOutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9731EADC91C00752F1A /* SellOutVC.swift */; };
@@ -456,6 +457,7 @@
 		6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOSStar-Bridging-Header.h"; sourceTree = "<group>"; };
 		6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
 		6EC3302C1EA84D98005C8DF9 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
+		6EDA46941EC5AEAA0004F942 /* MarketModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketModel.swift; sourceTree = "<group>"; };
 		8408122B704986AA5A9C486E /* Pods-iOSStar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.debug.xcconfig"; sourceTree = "<group>"; };
 		8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A001A96B1EAD884D00752F1A /* HaveBuyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HaveBuyVC.swift; sourceTree = "<group>"; };
@@ -1282,9 +1284,19 @@
 			path = iOSStar/Scenes/Market/CustomView;
 			sourceTree = SOURCE_ROOT;
 		};
+		6EDA46931EC5AE9E0004F942 /* MarketModel */ = {
+			isa = PBXGroup;
+			children = (
+				6EDA46941EC5AEAA0004F942 /* MarketModel.swift */,
+			);
+			name = MarketModel;
+			path = iOSStar/Model/MarketModel;
+			sourceTree = SOURCE_ROOT;
+		};
 		A001A96F1EAD9F5A00752F1A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6EDA46931EC5AE9E0004F942 /* MarketModel */,
 				6E0C6B091EC4513900D9C2BC /* NewsModel */,
 				A0504F811EC44733008F4182 /* StarListModel */,
 				A001A9701EAD9F7500752F1A /* ShareDataModel */,
@@ -3420,6 +3432,7 @@
 				A03D3EF71EA86A6400F85308 /* NIMKitSwitcherCell.m in Sources */,
 				A03D3FD41EA86A6500F85308 /* NTESNoDisturbSettingViewController.m in Sources */,
 				A03D3F2C1EA86A6400F85308 /* NIMKitAudioCenter.m in Sources */,
+				6EDA46951EC5AEAA0004F942 /* MarketModel.swift in Sources */,
 				A0EF3B1B1EB9778F0023093A /* BaseSocketAPI.swift in Sources */,
 				A025E4B31EB03B36002E1AA4 /* WealthVC.swift in Sources */,
 				A03D3FBF1EA86A6500F85308 /* NTESAudioChatViewController.m in Sources */,

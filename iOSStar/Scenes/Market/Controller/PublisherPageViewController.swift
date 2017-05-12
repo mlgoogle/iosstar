@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class PublisherPageViewController: UIViewController {
 
+    var titles = ["1","个人简介", "主要经历"]
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setCustomTitle(title:"柳岩（1233423）")
+
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: "PubInfoHeaderView")
         automaticallyAdjustsScrollViewInsets = false
     }
@@ -22,6 +25,9 @@ class PublisherPageViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    @IBAction func buyButtonAction(_ sender: Any) {
+        SVProgressHUD.showInfo(withStatus: "完善中")
+    }
     
 }
 
@@ -65,7 +71,8 @@ extension PublisherPageViewController:UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section != 0 {
             
-            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView")
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as! PubInfoHeaderView
+            header.setTitle(title:titles[section])
             return header
         } else {
             return nil

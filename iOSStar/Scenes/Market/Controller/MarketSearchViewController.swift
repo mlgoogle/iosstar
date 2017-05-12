@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class MarketSearchViewController: UIViewController , UITextFieldDelegate{
     @IBOutlet weak var searchTextField: UITextField!
 
@@ -24,9 +24,10 @@ class MarketSearchViewController: UIViewController , UITextFieldDelegate{
 
     }
 
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     
-        
+        SVProgressHUD.showInfo(withStatus: "完善中")
         return true
     }
     override func didReceiveMemoryWarning() {
@@ -43,7 +44,7 @@ extension MarketSearchViewController:UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
