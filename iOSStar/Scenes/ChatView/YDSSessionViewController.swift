@@ -25,11 +25,9 @@ class YDSSessionViewController: NTESSessionViewController {
     override func send(_ message: NIMMessage!) {
         
         
-        AppAPIHelper.friend().reducetime(phone: "", starcode: "reducetime", complete: { (result) -> ()? in
+        AppAPIHelper.friend().reducetime(phone: "", starcode: "reducetime", complete: { (result)  in
             
-             return()
-        }) { (error) -> ()? in
-            return()
+        }) { (error) in
         }
         if isbool == false{
          super.send(message)

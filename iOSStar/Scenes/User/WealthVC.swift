@@ -35,7 +35,7 @@ class WealthVC: UITableViewController {
                 vc.resultBlock = { (result) in
                      let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "BankCardVC") 
                   self.navigationController?.pushViewController(vc, animated: true )
-                    return nil
+                    
                 }
                 self.present(vc, animated: true) {
             }

@@ -82,7 +82,11 @@ class SocketDataPacket {
     }
 
   
-    
+    convenience init(opcode:SocketConst.OPCode, parameters:[String : Any]) {
+        let type = opcode.rawValue / 1000
+        self.init(opcode:opcode,dict:parameters as [String : AnyObject],type:SocketConst.type(rawValue: UInt8(type))!)
+        
+    }
     convenience init(opcode: SocketConst.OPCode, dict:[String : AnyObject],type: SocketConst.type = .user) {
         let data = try? JSONSerialization.data(withJSONObject: dict, options: JSONSerialization.WritingOptions.prettyPrinted)
         self.init( opcode: opcode, data: data,type: type)

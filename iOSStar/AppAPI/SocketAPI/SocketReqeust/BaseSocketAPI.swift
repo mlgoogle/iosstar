@@ -102,7 +102,7 @@ class BaseSocketAPI: NSObject {
                     complete?(try! OEZJsonModelAdapter.models(of: modelClass, fromJSONArray: array) as AnyObject?)
                 }
             }
-            return nil
+            
         }, error: error)
     }
 
