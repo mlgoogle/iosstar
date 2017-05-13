@@ -36,13 +36,22 @@ class ContainVC: UIViewController {
        //MARK:-  登录成功
     func loginSuccess(_ notice: NSNotification){
         AppAPIHelper.login().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { [weak self](result) -> ()? in
-            if let response = result  {
-                print(result)
+            if let response = result {
+          
                 if response["result"] as! Int == -302{
                        ShareDataModel.share().isweichaLogin = true
                        self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.frame.size.width)!, y: 0), animated: true)
                 }else{
                     
+                    let dic = response as! [String :AnyObject]
+                
+                    let phone  : String = dic["phone"] as! String
+                    
+                    UserDefaults.standard.set(phone, forKey: "phone")
+                    UserDefaults.standard.synchronize()
+                    
+                   self?.doYunxin()
+
                 self?.dismissController()
                 }
             }

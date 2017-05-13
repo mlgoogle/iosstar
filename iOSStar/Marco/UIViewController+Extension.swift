@@ -57,9 +57,7 @@ extension UIViewController {
             let datadic = result as? Dictionary<String,String>
             
             if let _ = datadic {
-                //                let token = UserDefaults.standard.object(forKey: "tokenvalue") as! String
-                //                let phone = UserDefaults.standard.object(forKey: "phone") as! String
-                
+               
                 NIMSDK.shared().loginManager.login((UserDefaults.standard.object(forKey: "phone") as? String)!, token: (datadic?["token_value"])!, completion: { (error) in
                     if (error != nil){
                       

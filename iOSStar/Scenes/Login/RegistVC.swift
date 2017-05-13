@@ -56,6 +56,7 @@ class RegistVC: UIViewController {
         initUI()
         // Do any additional setup after loading the view.
     }
+    //17682310986
     //MARK:-   发送验证码
     @IBAction func sendVaildCode(_ sender: Any) {
         
@@ -76,8 +77,9 @@ class RegistVC: UIViewController {
                 }
                 return()
                 //                print(result)
-                
+                //17682310986
                 }, error: { (error) -> ()? in
+                    print(error)
                     SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
                     })
                     self.vaildCodeBtn.isEnabled = true
