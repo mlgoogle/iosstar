@@ -50,8 +50,7 @@ extension UIViewController {
     }
     
     func doYunxin(){
-        
-        
+    
         AppAPIHelper.login().registWYIM(phone: (UserDefaults.standard.object(forKey: "phone") as? String)!, token:(UserDefaults.standard.object(forKey: "phone") as? String)!, complete: { (result) in
             
             let datadic = result as? Dictionary<String,String>

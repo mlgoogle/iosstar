@@ -147,6 +147,9 @@ class RegistVC: UIViewController {
 
         }) { (error )  in
             print(error)
+            SVProgressHUD.showErrorMessage(ErrorMessage:  error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: { 
+                
+            })
         }
     }
        //MARK:-   去登录

@@ -77,11 +77,7 @@ class LoginVC: UIViewController {
                         UserDefaults.standard.set(self?.phone.text, forKey: "phone")
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
                         UserDefaults.standard.synchronize()
-                        NIMSDK.shared().loginManager.login((self?.phone.text!)!, token: (self?.phone.text!)!, completion: { (error) in
-                            if (error != nil){
-                                self?.dismissController()
-                            }
-                        })
+                      self?.LoginYunxin()
                     }
                 })
             }) { (error) in
@@ -89,6 +85,26 @@ class LoginVC: UIViewController {
                 SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
                 })
             }
+        }
+    }
+    
+    //MARK:- 网易云登录
+    func LoginYunxin(){
+        
+        AppAPIHelper.login().registWYIM(phone: self.phone.text!, token: self
+            .phone.text!, complete: { (result) in
+                let datadic = result as? Dictionary<String,String>
+                if let _ = datadic {
+                    UserDefaults.standard.set(self.phone.text, forKey: "phone")
+                    UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
+                    UserDefaults.standard.synchronize()
+                    NIMSDK.shared().loginManager.login(self.phone.text!, token: self.phone.text!, completion: { (error) in
+                        if (error != nil){
+                            self.dismissController()
+                        }
+                    })
+                }
+        }) { (error)  in
         }
     }
     //MARK:- 忘记密码
