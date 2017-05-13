@@ -58,7 +58,7 @@ class ForgotPwdVC: UITableViewController {
         
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
             vaildCodeBtn.isEnabled = false
-            AppAPIHelper.login().SendCode(phone: phoneTf.text!, complete: { [weak self](result) -> ()? in
+            AppAPIHelper.login().SendCode(phone: phoneTf.text!, complete: { [weak self](result)  in
                 
                 if let response = result  {
                     
@@ -71,12 +71,10 @@ class ForgotPwdVC: UITableViewController {
                         
                     }
                 }
-                return()
                 //                print(result)
                 
-                }, error: { (error) -> ()? in
+                }, error: { (error)  in
                     self.vaildCodeBtn.isEnabled = true
-                    return()
             })
             
         }
@@ -114,19 +112,17 @@ class ForgotPwdVC: UITableViewController {
             })
             return
         }
-       AppAPIHelper.login().ResetPassWd(phone: self.phoneTf.text!, pwd: self.first_input.text!, complete: { (result) -> ()? in
+       AppAPIHelper.login().ResetPassWd(phone: self.phoneTf.text!, pwd: self.first_input.text!, complete: { (result)  in
         if let  response = result{
             if response["result"] as! Int == 1{
                 //重置成功
                 self.navigationController?.popViewController(animated: true)
             }
         }
-        return()
-       }) { (error) -> ()? in
+       }) { (error) in
         SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
             
         })
-         return()
         }
     }
   

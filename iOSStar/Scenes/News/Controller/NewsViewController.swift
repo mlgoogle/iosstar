@@ -65,7 +65,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     }
     
     func requestBannerList() {
-        AppAPIHelper.newsApi().requestBannerList(complete: { (response) -> ()? in
+        AppAPIHelper.newsApi().requestBannerList(complete: { (response)  in
             
             if let models = response as? [BannerModel] {
                 var bannersUrl:[String] = []
@@ -74,18 +74,17 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
                 }
             self.bannerScrollView?.imageURLStringsGroup = bannersUrl
             }
-            return nil
+            
         }, error: errorBlockFunc())
         
     }
     
     func requestNewsList()  {
         
-        AppAPIHelper.newsApi().requestNewsList(startnum: 1, endnum: 10, complete: { (response) -> ()? in
+        AppAPIHelper.newsApi().requestNewsList(startnum: 1, endnum: 10, complete: { (response)  in
             
             self.newsData = response as? [NewsModel]
             self.tableView.reloadData()
-            return nil
         }, error: errorBlockFunc())
     }
     func setNIMSDKLogin() {

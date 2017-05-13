@@ -24,15 +24,14 @@ class ContactListViewController: UIViewController {
     
     func getData(){
       
-        AppAPIHelper.friend().getfriendList(accid: UserDefaults.standard.object(forKey: "phone") as! String, createtime:  "0", complete: { (result) -> ()? in
+        AppAPIHelper.friend().getfriendList(accid: UserDefaults.standard.object(forKey: "phone") as! String, createtime:  "0", complete: { (result) in
             
               let Model : StarListModel = result as! StarListModel
             self.dataList = Model.list!
             self.tableView.reloadData()
 //             print(Model.list)
-            return()
-        }) { (error) -> ()? in
-             return()
+            
+        }) { (error)  in
             
         }
     }

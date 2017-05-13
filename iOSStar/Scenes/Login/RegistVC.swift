@@ -62,7 +62,7 @@ class RegistVC: UIViewController {
         
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
             vaildCodeBtn.isEnabled = false
-            AppAPIHelper.login().SendCode(phone: phoneTf.text!, complete: { [weak self](result) -> ()? in
+            AppAPIHelper.login().SendCode(phone: phoneTf.text!, complete: { [weak self](result)  in
                 
                 if let response = result  {
                     
@@ -75,15 +75,10 @@ class RegistVC: UIViewController {
                         
                     }
                 }
-                return()
                 //                print(result)
-                //17682310986
-                }, error: { (error) -> ()? in
-                    print(error)
-                    SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
-                    })
+     
+                }, error: { (error)  in
                     self.vaildCodeBtn.isEnabled = true
-                    return()
             })
             
         }
@@ -110,7 +105,7 @@ class RegistVC: UIViewController {
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
       //MARK:-   注册
     @IBAction func doregist(_ sender: Any) {
@@ -122,59 +117,43 @@ class RegistVC: UIViewController {
             return
         }
         if ShareDataModel.share().isweichaLogin == true{
-            
-            AppAPIHelper.login().BindWeichat(phone: phoneTf.text!, timeStamp: 123, vToken: "1233", pwd: passTf.text!, openid:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, nickname:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.nickname]!, headerUrl:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.headimgurl]!, memberId: 123, agentId: "123", recommend: "123", deviceId: "1123", vCode: "123", complete: { [weak self](result) -> ()? in
-                UserDefaults.standard.set(self?.phoneTf.text, forKey: "phone")
-                UserDefaults.standard.synchronize()
-            
-                self?.LoginYunxin()
-                
-                return()
-            }) { (error ) -> ()? in
-                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
-                })
-                print(error)
-                return ()
-            }
+            bindWeChat()
         }
-        else{
-            
-            let string = "yd1742653sd" + self.timeStamp + self.codeTf.text! + self.phoneTf.text!
-            
-            if string.md5_string() != self.vToken{
-                
-                return
-            }
-            AppAPIHelper.login().regist(phone: phoneTf.text!, password: passTf.text!, complete: { [weak self](result) -> ()? in
-                
-                if let response = result {
-                    if response["result"] as! Int == 1 {
-                        UserDefaults.standard.set(self?.phoneTf.text, forKey: "phone")
-                                               UserDefaults.standard.synchronize()
+        else {
+            login()
+        }
 
-                        self?.LoginYunxin()
-                    }
-                }
-                return()
-                
-            }) { (error) -> ()? in
-                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
-                })
-                return()
-            }
+    }
+    //MARK:-  login()
+    func login() {
+        let string = "yd1742653sd" + self.timeStamp + self.codeTf.text! + self.phoneTf.text!
+        if string.md5_string() != self.vToken{
+            return
         }
-        
-        
-        
-        
+        AppAPIHelper.login().regist(phone: phoneTf.text!, password: passTf.text!, complete: { [weak self](result)  in
+            if let response = result {
+                if response["result"] as! Int == 1 {
+                    self?.LoginYunxin()
+                }
+            }
+            
+        }) { (error) in
+        }
+    }
+    func bindWeChat() {
+        AppAPIHelper.login().BindWeichat(phone: phoneTf.text!, timeStamp: 123, vToken: "1233", pwd: passTf.text!, openid:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, nickname:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.nickname]!, headerUrl:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.headimgurl]!, memberId: 123, agentId: "123", recommend: "123", deviceId: "1123", vCode: "123", complete: { [weak self](result)  in
+            
+            self?.LoginYunxin()
+
+        }) { (error )  in
+            print(error)
+        }
     }
        //MARK:-   去登录
     @IBAction func doLogin(_ sender: Any) {
         view.endEditing(true)
         self.resultBlock!(doStateClick.doLogin as AnyObject?)
     }
-    
-    
     // MARK - 微信登录
     @IBAction func weichatLogin(_ sender: Any) {
         let req = SendAuthReq.init()
@@ -184,53 +163,27 @@ class RegistVC: UIViewController {
     }
          //MARK:-   忘记密码
     @IBAction func doResetPass(_ sender: Any) {
-        
         self.resultBlock!(doStateClick.doResetPwd as AnyObject)
     }
     
     //MARK:- 网易云登录
     func LoginYunxin(){
         
-        
         AppAPIHelper.login().registWYIM(phone: self.phoneTf.text!, token: self
-            .phoneTf.text!, complete: { (result) -> ()? in
-            
+            .phoneTf.text!, complete: { (result) in
                 let datadic = result as? Dictionary<String,String>
-                
                 if let _ = datadic {
-                    //                let token = UserDefaults.standard.object(forKey: "tokenvalue") as! String
-                    //                let phone = UserDefaults.standard.object(forKey: "phone") as! String
-                    
+                    UserDefaults.standard.set(self.phoneTf.text, forKey: "phone")
+                    UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
+                    UserDefaults.standard.synchronize()
                     NIMSDK.shared().loginManager.login(self.phoneTf.text!, token: self.passTf.text!, completion: { (error) in
                         if (error != nil){
                             self.dismissController()
                         }
                     })
-                    UserDefaults.standard.set(self.phoneTf.text, forKey: "phone")
-                    UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
-                    UserDefaults.standard.synchronize()
-                    
-                    
                 }
-                return()
-        }) { (error) -> ()? in
-               return()
+        }) { (error)  in
         }
-//        let param: [String: Any] = [SocketConst.Key.name_value:  self.phoneTf.text!,
-//                                    SocketConst.Key.accid_value:  self
-//                                        .phoneTf.text!,]
-//        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .registWY, dict: param as [String : AnyObject])
-//        
-//         BaseSocketAPI.shared().startRequest(packet, complete: { (result) -> ()? in
-//            
-//           
-//            
-//            return ()
-//        }) { (error) -> ()? in
-//            
-//            return
-//        }
-//        
     }
     @IBAction func didMiss(_ sender: Any) {
         let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!

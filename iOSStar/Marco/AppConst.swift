@@ -10,8 +10,8 @@ import UIKit
 
 
 
-typealias CompleteBlock = (AnyObject?) ->()?
-typealias ErrorBlock = (NSError) ->()?
+typealias CompleteBlock = (AnyObject?) ->()
+typealias ErrorBlock = (NSError) ->()
 typealias paramBlock = (AnyObject?) ->()?
 
 let kScreenWidth = UIScreen.main.bounds.size.width

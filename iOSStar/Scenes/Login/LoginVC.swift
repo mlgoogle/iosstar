@@ -30,83 +30,68 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         initNav()
         initUI()
-      
     }
     func initUI(){
         self.automaticallyAdjustsScrollViewInsets = false
         height.constant = 100 + UIScreen.main.bounds.size.height
-
-         width.constant = UIScreen.main.bounds.size.width
+        width.constant = UIScreen.main.bounds.size.width
         let h  = UIScreen.main.bounds.size.height <= 568 ? 60.0 : 80
         self.top.constant = UIScreen.main.bounds.size.height/568.0 * CGFloat.init(h)
         print(self.top.constant)
         self.left.constant = UIScreen.main.bounds.size.width/320.0 * 30
         self.right.constant = UIScreen.main.bounds.size.width/320.0 * 30
     }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
     }
-    
     func initNav(){
-    
-        
         let btn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 20, height: 20))
         btn.setBackgroundImage(UIImage.init(named: "close"), for: .normal)
         let navaitem = UIBarButtonItem.init(customView: btn)
         self.navigationItem.leftBarButtonItem = navaitem
         btn.addTarget(self, action: #selector(didClose), for: .touchUpInside)
     }
-     //MARK:   界面消失
+    //MARK:   界面消失
     func didClose(){
-        
         let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
         let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
         tabar.selectedIndex = 0
         self.dismissController()
     }
-
     //MARK:   注册
     @IBAction func doRegist(_ sender: Any) {
-           view.endEditing(true)
+        view.endEditing(true)
         self.resultBlock!(doStateClick.doRegist as AnyObject?)
     }
       //登录
     @IBAction func doLogin(_ sender: Any) {
-        
         let btn = sender as! UIButton
         btn.isUserInteractionEnabled = false
         if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]){
-            
-            AppAPIHelper.login().login(phone: phone.text!, password: passPwd.text!, complete: { [weak self](result) -> ()? in
+            AppAPIHelper.login().login(phone: phone.text!, password: passPwd.text!, complete: { [weak self](result)  in
                  let datadic = result as? Dictionary<String,AnyObject>
                 SVProgressHUD.showErrorMessage(ErrorMessage: "登录成功", ForDuration: 0.5, completion: {
-                     btn.isUserInteractionEnabled = true
+                    btn.isUserInteractionEnabled = true
                     if let _ = datadic {
+                        UserDefaults.standard.set(self?.phone.text, forKey: "phone")
+                        UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
+                        UserDefaults.standard.synchronize()
                         NIMSDK.shared().loginManager.login((self?.phone.text!)!, token: (self?.phone.text!)!, completion: { (error) in
                             if (error != nil){
                                 self?.dismissController()
                             }
                         })
-                        UserDefaults.standard.set(self?.phone.text, forKey: "phone")
-                        UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
-                        UserDefaults.standard.synchronize()
-                        
                     }
                 })
-              return()
-            }) { (error) -> ()? in
-    
+            }) { (error) in
                  btn.isUserInteractionEnabled = true
                 SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
                 })
-                return()
             }
         }
     }
-    // //MARK:- 忘记密码
+    //MARK:- 忘记密码
     @IBAction func forGotPass(_ sender: Any) {
         
           ShareDataModel.share().isweichaLogin = false
@@ -115,7 +100,6 @@ class LoginVC: UIViewController {
     }
     //MARK:-   微信登录
     @IBAction func wechatLogin(_ sender: Any) {
-        
         let req = SendAuthReq.init()
         req.scope = AppConst.WechatKey.Scope
         req.state = AppConst.WechatKey.State
@@ -126,7 +110,6 @@ class LoginVC: UIViewController {
     }
      //MARK:  重置密码
     @IBAction func doResetPass(_ sender: Any) {
-        
         self.resultBlock!(doStateClick.doResetPwd as AnyObject)
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -32,16 +32,16 @@ class InputPwdVC: UITableViewController {
             
             
             let packet :SocketDataPacket = SocketDataPacket.init(opcode: .register, dict:  param as [String : AnyObject])
-            BaseSocketAPI.shared().startRequest(packet, complete: { (resule) -> ()? in
+            BaseSocketAPI.shared().startRequest(packet, complete: { (resule) in
                 
                 
-                return ()
+       
                 
-            }) { (error) -> ()? in
+            }) { (error) in
                 SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
                     
                 })
-                return ()
+            
                 
             }
 

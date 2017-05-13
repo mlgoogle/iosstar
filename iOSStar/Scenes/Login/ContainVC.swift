@@ -35,7 +35,8 @@ class ContainVC: UIViewController {
     }
        //MARK:-  登录成功
     func loginSuccess(_ notice: NSNotification){
-        AppAPIHelper.login().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { [weak self](result) -> ()? in
+
+        AppAPIHelper.login().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { [weak self](result)  in
             if let response = result {
           
                 if response["result"] as! Int == -302{
@@ -55,15 +56,32 @@ class ContainVC: UIViewController {
                 self?.dismissController()
                 }
             }
-            return()
-        }) { (error) -> ()? in
+           
+        }) { (error)  in
             ShareDataModel.share().isweichaLogin = true
             self.scrollView?.setContentOffset(CGPoint.init(x: (self.scrollView?.frame.size.width)!, y: 0), animated: true)
 //            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
 //            })
-            return()
+
+        
+      
         }
-       return()
+//        AppAPIHelper.login().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { [weak self](result) -> ()? in
+//            if let response = result  {
+//                if response["errorCode"] as! Int == -302{
+//                       ShareDataModel.share().isweichaLogin = true
+//                       self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.frame.size.width)!, y: 0), animated: true)
+//                }else{
+//                self?.dismissController()
+//                }
+//            }
+//            return()
+//        }) { (error) -> ()? in
+//            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
+//            })
+//            return()
+//        }
+//       return()
     }
    //MARK:- 设置UI
     func initUI(){
@@ -89,7 +107,6 @@ class ContainVC: UIViewController {
                   self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.frame.size.width)!, y: 0), animated: true)
             }
          
-            return nil
         }
         scrollView?.backgroundColor = UIColor.clear
         scrollView?.addSubview(vc.view)
@@ -112,7 +129,6 @@ class ContainVC: UIViewController {
                 self?.scrollView?.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
             }
            
-            return nil
         }
         self.addChildViewController(rvc)
     }
