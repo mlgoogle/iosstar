@@ -61,7 +61,7 @@ class RegistVC: UIViewController {
         
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
             vaildCodeBtn.isEnabled = false
-            AppAPIHelper.login().SendCode(phone: phoneTf.text!, complete: { [weak self](result) -> ()? in
+            AppAPIHelper.login().SendCode(phone: phoneTf.text!, complete: { [weak self](result)  in
                 
                 if let response = result  {
                     
@@ -74,12 +74,10 @@ class RegistVC: UIViewController {
                         
                     }
                 }
-                return()
                 //                print(result)
                 
-                }, error: { (error) -> ()? in
+                }, error: { (error)  in
                     self.vaildCodeBtn.isEnabled = true
-                    return()
             })
             
         }
@@ -116,41 +114,37 @@ class RegistVC: UIViewController {
             return
         }
         if ShareDataModel.share().isweichaLogin == true{
-            
-            AppAPIHelper.login().BindWeichat(phone: phoneTf.text!, timeStamp: 123, vToken: "1233", pwd: passTf.text!, openid:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, nickname:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.nickname]!, headerUrl:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.headimgurl]!, memberId: 123, agentId: "123", recommend: "123", deviceId: "1123", vCode: "123", complete: { [weak self](result) -> ()? in
-                
-                self?.doYunxin()
-                
-                return()
-            }) { (error ) -> ()? in
-                print(error)
-            }
+            bindWeChat()
         }
-        else{
+        else {
+            login()
+        }
+
+    }
+    func login() {
+        let string = "yd1742653sd" + self.timeStamp + self.codeTf.text! + self.phoneTf.text!
+        if string.md5_string() != self.vToken{
+            return
+        }
+        AppAPIHelper.login().regist(phone: phoneTf.text!, password: passTf.text!, complete: { [weak self](result)  in
             
-            let string = "yd1742653sd" + self.timeStamp + self.codeTf.text! + self.phoneTf.text!
-            
-            if string.md5_string() != self.vToken{
-                
-                return
-            }
-            AppAPIHelper.login().regist(phone: phoneTf.text!, password: passTf.text!, complete: { [weak self](result) -> ()? in
-                
-                if let response = result {
-                    if response["result"] as! Int == 1 {
-                        self?.LoginYunxin()
-                    }
+            if let response = result {
+                if response["result"] as! Int == 1 {
+                    self?.LoginYunxin()
                 }
-                return()
-                
-            }) { (error) -> ()? in
-                return()
             }
+            
+        }) { (error) in
         }
-        
-        
-        
-        
+    }
+    func bindWeChat() {
+        AppAPIHelper.login().BindWeichat(phone: phoneTf.text!, timeStamp: 123, vToken: "1233", pwd: passTf.text!, openid:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, nickname:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.nickname]!, headerUrl:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.headimgurl]!, memberId: 123, agentId: "123", recommend: "123", deviceId: "1123", vCode: "123", complete: { [weak self](result)  in
+            
+            self?.doYunxin()
+            
+        }) { (error )  in
+            print(error)
+        }
     }
        //MARK:-   去登录
     @IBAction func doLogin(_ sender: Any) {
@@ -177,7 +171,7 @@ class RegistVC: UIViewController {
         
         
         AppAPIHelper.login().registWYIM(phone: self.phoneTf.text!, token: self
-            .phoneTf.text!, complete: { (result) -> ()? in
+            .phoneTf.text!, complete: { (result) in
             
                 let datadic = result as? Dictionary<String,String>
                 
@@ -196,9 +190,7 @@ class RegistVC: UIViewController {
                     
                     
                 }
-                return()
-        }) { (error) -> ()? in
-               return()
+        }) { (error)  in
         }
 //        let param: [String: Any] = [SocketConst.Key.name_value:  self.phoneTf.text!,
 //                                    SocketConst.Key.accid_value:  self

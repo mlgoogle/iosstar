@@ -80,7 +80,7 @@ class LoginVC: UIViewController {
         btn.isUserInteractionEnabled = false
         if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]){
             
-            AppAPIHelper.login().login(phone: phone.text!, password: passPwd.text!, complete: { [weak self](result) -> ()? in
+            AppAPIHelper.login().login(phone: phone.text!, password: passPwd.text!, complete: { [weak self](result)  in
                  let datadic = result as? Dictionary<String,AnyObject>
                 SVProgressHUD.showErrorMessage(ErrorMessage: "登录成功", ForDuration: 0.5, completion: {
                      btn.isUserInteractionEnabled = true
@@ -96,13 +96,11 @@ class LoginVC: UIViewController {
                         
                     }
                 })
-              return()
-            }) { (error) -> ()? in
+            }) { (error) in
     
                  btn.isUserInteractionEnabled = true
                 SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
                 })
-                return()
             }
         }
     }
