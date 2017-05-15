@@ -8,15 +8,17 @@
 
 import UIKit
 import SDCycleScrollView
+import MJRefresh
+
 private let alphaMargin:CGFloat = 136.0
 
 class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     @IBOutlet weak var tableView: UITableView!
 
+    var bannerModels:[BannerModel]?
     var bannerScrollView: SDCycleScrollView?
     var newsData:[NewsModel]?
     lazy var titleView:NewsNavigationView = {
-       
         let view = NewsNavigationView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 44))
         return view
         
@@ -34,12 +36,39 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         super.viewWillDisappear(animated)
         UIApplication.shared.setStatusBarHidden(false, with: .none)
         titleView.isHidden = true
+
+        
+        
+        /**
+         - 待修复，点击顶部滑动到最上部功能因隐藏状态栏失效
+         */
+        let tapGes = UITapGestureRecognizer(target: self, action: #selector(scrollToTop))
+        navigationController?.navigationBar.addGestureRecognizer(tapGes)
+        navigationController?.navigationBar.isUserInteractionEnabled = true
+        setUserInterraction()
+    }
+    func setUserInterraction() {
+        
+        for view in (navigationController?.navigationBar.subviews)! {
+            view.isUserInteractionEnabled = true
+        }
+    }
+    
+    func scrollToTop() {
+        
+        tableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .bottom, animated: true)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
         setupBannerView()
+        setupNavigation()
+        requestNewsList()
+        requestBannerList()
+    }
+    func setupNavigation() {
         navigationController?.delegate = self;
         navigationController?.navigationBar.isTranslucent = true
         setImageWithAlpha(alpha: 0.0)
@@ -47,9 +76,6 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         view?.isHidden = true
         navigationController?.navigationBar.addSubview(titleView)
         titleView.isHidden = true
-        setNIMSDKLogin()
-        requestNewsList()
-        requestBannerList()
     }
     func setupBannerView() {
         bannerScrollView = SDCycleScrollView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 200), imageNamesGroup: [""])
@@ -66,9 +92,10 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     
     func requestBannerList() {
         AppAPIHelper.newsApi().requestBannerList(complete: { (response)  in
-            
             if let models = response as? [BannerModel] {
+                self.bannerModels = models
                 var bannersUrl:[String] = []
+                
                 for model in models {
                     bannersUrl.append(model.pic_url)
                 }
@@ -82,23 +109,16 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     func requestNewsList()  {
         
         AppAPIHelper.newsApi().requestNewsList(startnum: 1, endnum: 10, complete: { (response)  in
-            
             self.newsData = response as? [NewsModel]
             self.tableView.reloadData()
         }, error: errorBlockFunc())
     }
-    func setNIMSDKLogin() {
-//        NIMSDK.shared().loginManager.login("13569365932", token: "7d5d9d249d18b92b72c1133c61dd9a9c") { (error) in
-//            
-//            if error == nil  {
-//                
-//            }
-//            
-//        }
-    }
+
     
     func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
-        performSegue(withIdentifier: "showPubPage", sender: nil)
+        
+        
+        performSegue(withIdentifier: "showPubPage", sender: index)
     }
 
 }
@@ -137,7 +157,6 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
                 return
             }
             titleView.setTitle(title: news!.times)
-
         }
 
     }
@@ -161,10 +180,17 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "newsToDeatail" {
+            
             let vc = segue.destination as! NewsDetailViewController
             let indexPath = sender as! IndexPath
             let model = newsData![indexPath.row]
             vc.urlString = model.link_url
+            
+        } else if segue.identifier == "showPubPage" {
+            
+            let index = sender as! Int
+            let vc = segue.destination as! PublisherPageViewController
+            vc.bannerModel = bannerModels?[index]
         }
     }
 }

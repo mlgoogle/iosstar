@@ -5,7 +5,7 @@ target 'iOSStar' do
     use_frameworks!
     
     # Pods for iosblackcwpard
-     pod 'SDCycleScrollView','~> 1.64'
+    pod 'SDCycleScrollView','~> 1.64'
     pod 'Alamofire', '~> 4.2.0'
     pod 'SVProgressHUD', '~> 2.0.3'
     pod 'Kingfisher', '~> 3.2.2'
@@ -25,6 +25,7 @@ target 'iOSStar' do
     pod 'Charts'
     pod 'Toast', '~> 3.0'
     pod 'CocoaAsyncSocket', '~> 7.5.0'
+    pod 'MJRefresh', '~> 3.1.12'
 end
 
 
