@@ -1,22 +1,18 @@
 //
-//  UserInfoVC.swift
+//  MoneyChangeVC.swift
 //  iOSStar
 //
-//  Created by sum on 2017/5/9.
+//  Created by sum on 2017/5/15.
 //  Copyright © 2017年 YunDian. All rights reserved.
 //
 
 import UIKit
 
-class UserInfoVC: UITableViewController {
+class MoneyChangeVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let view = UIView.init()
-        view.backgroundColor = UIColor.clear
-        self.tableView.tableFooterView = view
 
-        title = "个人信息"
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -31,15 +27,15 @@ class UserInfoVC: UITableViewController {
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 0
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 0
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

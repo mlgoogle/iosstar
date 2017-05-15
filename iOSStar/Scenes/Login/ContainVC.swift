@@ -60,28 +60,8 @@ class ContainVC: UIViewController {
         }) { (error)  in
             ShareDataModel.share().isweichaLogin = true
             self.scrollView?.setContentOffset(CGPoint.init(x: (self.scrollView?.frame.size.width)!, y: 0), animated: true)
-//            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
-//            })
-
-        
-      
         }
-//        AppAPIHelper.login().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { [weak self](result) -> ()? in
-//            if let response = result  {
-//                if response["errorCode"] as! Int == -302{
-//                       ShareDataModel.share().isweichaLogin = true
-//                       self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.frame.size.width)!, y: 0), animated: true)
-//                }else{
-//                self?.dismissController()
-//                }
-//            }
-//            return()
-//        }) { (error) -> ()? in
-//            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
-//            })
-//            return()
-//        }
-//       return()
+
     }
    //MARK:- 设置UI
     func initUI(){
