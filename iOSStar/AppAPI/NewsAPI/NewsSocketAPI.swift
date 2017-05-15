@@ -28,4 +28,12 @@ class NewsSocketAPI: BaseSocketAPI, NewsApi {
 
 
     }
+    func requestStarInfo(code:String,complete: CompleteBlock?, error: ErrorBlock?) {
+        let parameters:[String:Any] = [SocketConst.Key.starCode : code,
+                                       SocketConst.Key.all : 0,
+                                       SocketConst.Key.phone : UserDefaults.standard.string(forKey: SocketConst.Key.phone)! as Any]
+        let packet = SocketDataPacket(opcode: .starInfo, parameters: parameters)
+        startModelsRequest(packet, listName: "list", modelClass: BannerDetaiStarModel.self, complete: complete, error: error)
+        
+    }
 }

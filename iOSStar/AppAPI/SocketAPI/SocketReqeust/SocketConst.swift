@@ -38,9 +38,18 @@ class SocketConst: NSObject {
         //网易云
         case registWY = 9005
         //航运舱位
+
         case getorderstars = 10012
+
+        //明星个人信息
+        case starInfo = 10001
+        //资讯列表
+
         case newsInfo = 10013
+       
+        // banner
         case banners = 10015
+        case marketType = 11001
     }
     enum type:UInt8 {
         case error  = 0
@@ -52,6 +61,7 @@ class SocketConst: NSObject {
         case operate = 6
         case getlist = 9
         case news = 10
+        case market = 11
     }
     
     enum aType:UInt8 {
