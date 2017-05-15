@@ -3,7 +3,9 @@
 target 'iOSStar' do
     # Comment this line if you're not using Swift and don't want to use dynamic frameworks
     use_frameworks!
-    
+ 
+  
+ 
     # Pods for iosblackcwpard
     pod 'SDCycleScrollView','~> 1.64'
     pod 'Alamofire', '~> 4.2.0'
