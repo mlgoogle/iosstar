@@ -36,6 +36,9 @@
 		6E193C4C1EB9C87B0049AEDE /* SubViewItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E193C4B1EB9C87B0049AEDE /* SubViewItemCell.swift */; };
 		6E193C4E1EBAD3240049AEDE /* MenuWidthLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E193C4D1EBAD3240049AEDE /* MenuWidthLayout.swift */; };
 		6E193C501EBADFC90049AEDE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E193C4F1EBADFC90049AEDE /* UIColor+Extension.swift */; };
+		6EBF590A1EC6EAAF003F67B4 /* MarketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF59091EC6EAAF003F67B4 /* MarketAPI.swift */; };
+		6EBF590C1EC6EB75003F67B4 /* MarketSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF590B1EC6EB75003F67B4 /* MarketSocketAPI.swift */; };
+		6EBF590E1EC93BE9003F67B4 /* Label+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF590D1EC93BE9003F67B4 /* Label+Extension.swift */; };
 		6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */; };
 		6EC3302D1EA84D98005C8DF9 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302C1EA84D98005C8DF9 /* Market.storyboard */; };
 		6EDA46951EC5AEAA0004F942 /* MarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA46941EC5AEAA0004F942 /* MarketModel.swift */; };
@@ -448,12 +451,15 @@
 		6E1616711EB1EF2300D95CB6 /* MenuSubViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSubViewCell.swift; sourceTree = "<group>"; };
 		6E192DEB1EC2B69500915D08 /* MarketSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketSearchViewController.swift; sourceTree = "<group>"; };
 		6E192DED1EC2B9AB00915D08 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
-		6E192DEF1EC2E14900915D08 /* PublisherPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublisherPageViewController.swift; sourceTree = "<group>"; };
+		6E192DEF1EC2E14900915D08 /* PublisherPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PublisherPageViewController.swift; path = ../../Market/Controller/PublisherPageViewController.swift; sourceTree = "<group>"; };
 		6E192DF31EC2EA8200915D08 /* PubInfoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubInfoHeaderView.swift; sourceTree = "<group>"; };
 		6E193C491EB98BC80049AEDE /* W020170503310673715599.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = W020170503310673715599.jpg; sourceTree = "<group>"; };
 		6E193C4B1EB9C87B0049AEDE /* SubViewItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubViewItemCell.swift; sourceTree = "<group>"; };
 		6E193C4D1EBAD3240049AEDE /* MenuWidthLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuWidthLayout.swift; sourceTree = "<group>"; };
 		6E193C4F1EBADFC90049AEDE /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		6EBF59091EC6EAAF003F67B4 /* MarketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketAPI.swift; sourceTree = "<group>"; };
+		6EBF590B1EC6EB75003F67B4 /* MarketSocketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketSocketAPI.swift; sourceTree = "<group>"; };
+		6EBF590D1EC93BE9003F67B4 /* Label+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Label+Extension.swift"; sourceTree = "<group>"; };
 		6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOSStar-Bridging-Header.h"; sourceTree = "<group>"; };
 		6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
 		6EC3302C1EA84D98005C8DF9 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
@@ -1233,6 +1239,7 @@
 			children = (
 				6E1616581EAF1F4C00D95CB6 /* NewsViewController.swift */,
 				6E16165B1EAF2EF100D95CB6 /* NewsDetailViewController.swift */,
+				6E192DEF1EC2E14900915D08 /* PublisherPageViewController.swift */,
 			);
 			name = Controller;
 			path = iOSStar/Scenes/News/Controller;
@@ -1262,7 +1269,6 @@
 			children = (
 				6E16166A1EB0960E00D95CB6 /* MarketViewController.swift */,
 				6E192DEB1EC2B69500915D08 /* MarketSearchViewController.swift */,
-				6E192DEF1EC2E14900915D08 /* PublisherPageViewController.swift */,
 				6E0C6B021EC31D5C00D9C2BC /* MarketSubViewController.swift */,
 			);
 			name = Controller;
@@ -1283,6 +1289,15 @@
 			name = CustomView;
 			path = iOSStar/Scenes/Market/CustomView;
 			sourceTree = SOURCE_ROOT;
+		};
+		6EBF59081EC6EAA3003F67B4 /* MarketAPI */ = {
+			isa = PBXGroup;
+			children = (
+				6EBF59091EC6EAAF003F67B4 /* MarketAPI.swift */,
+				6EBF590B1EC6EB75003F67B4 /* MarketSocketAPI.swift */,
+			);
+			path = MarketAPI;
+			sourceTree = "<group>";
 		};
 		6EDA46931EC5AE9E0004F942 /* MarketModel */ = {
 			isa = PBXGroup;
@@ -2853,6 +2868,7 @@
 				A072388A1EA76AA300E755DB /* SVProgressHUDExt.swift */,
 				6E193C4F1EBADFC90049AEDE /* UIColor+Extension.swift */,
 				A0A667EA1EC2B67D00612510 /* UIViewController+ChatView.swift */,
+				6EBF590D1EC93BE9003F67B4 /* Label+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2860,6 +2876,7 @@
 		A072388B1EA76AA300E755DB /* AppAPI */ = {
 			isa = PBXGroup;
 			children = (
+				6EBF59081EC6EAA3003F67B4 /* MarketAPI */,
 				6E0C6B041EC43A4B00D9C2BC /* NewsAPI */,
 				A07DF7CA1EC0728B00C2254E /* FriendAPI */,
 				A0A996C51EBC4D67000048DC /* LoginAPI */,
@@ -3247,6 +3264,7 @@
 				A03D3FE91EA86A6500F85308 /* NTESDemoFetchChatroomTask.m in Sources */,
 				A03D3F4E1EA86A6500F85308 /* NIMTeamMemberListViewController.m in Sources */,
 				A03D3FA61EA86A6500F85308 /* NTESSearchMessageContentCell.m in Sources */,
+				6EBF590C1EC6EB75003F67B4 /* MarketSocketAPI.swift in Sources */,
 				A0856A111EB0B5C3004F349B /* UIBarExtension.swift in Sources */,
 				A07238A01EA76AA300E755DB /* String+Extension.swift in Sources */,
 				A03D3FE51EA86A6500F85308 /* NTESBirthPickerView.m in Sources */,
@@ -3280,6 +3298,7 @@
 				A053C25B1EAD85EF007F86BC /* OrderListVC.swift in Sources */,
 				A0A996C91EBC4D67000048DC /* LoginSocketApi.swift in Sources */,
 				A03D3FDF1EA86A6500F85308 /* NTESGenderSettingViewController.m in Sources */,
+				6EBF590E1EC93BE9003F67B4 /* Label+Extension.swift in Sources */,
 				A03D3F0E1EA86A6400F85308 /* NIMInputAudioRecordIndicatorView.m in Sources */,
 				A03D3FAF1EA86A6500F85308 /* NTESFilePreViewController.m in Sources */,
 				A03D3FE81EA86A6500F85308 /* NTESSettingSwitcherCell.m in Sources */,
@@ -3457,6 +3476,7 @@
 				A03D3F001EA86A6400F85308 /* NIMLoadProgressView.m in Sources */,
 				A03D3FB51EA86A6500F85308 /* NTESSessionLocalHistoryViewController.m in Sources */,
 				A03D3F081EA86A6400F85308 /* NIMContactSelectConfig.m in Sources */,
+				6EBF590A1EC6EAAF003F67B4 /* MarketAPI.swift in Sources */,
 				A03D3F511EA86A6500F85308 /* NIMTeamCardHeaderCell.m in Sources */,
 				A03D3F531EA86A6500F85308 /* NIMTeamSwitchTableViewCell.m in Sources */,
 				6E120F971EB966F4004E1E33 /* HttpModelHelper.swift in Sources */,

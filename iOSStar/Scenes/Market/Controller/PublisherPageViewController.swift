@@ -10,15 +10,18 @@ import UIKit
 import SVProgressHUD
 
 class PublisherPageViewController: UIViewController {
-
+    var code = "1001"
+    var bannerModel:BannerModel?
     var titles = ["1","个人简介", "主要经历"]
+    @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        setCustomTitle(title:"柳岩（1233423）")
-
+        setCustomTitle(title:"\(bannerModel!.name)（\(bannerModel!.code)）")
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: "PubInfoHeaderView")
         automaticallyAdjustsScrollViewInsets = false
+        requestInfos()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +31,12 @@ class PublisherPageViewController: UIViewController {
     @IBAction func buyButtonAction(_ sender: Any) {
         SVProgressHUD.showInfo(withStatus: "完善中")
     }
-    
+    func requestInfos() {
+        AppAPIHelper.newsApi().requestStarInfo(code: code, complete: { (response) in
+            
+            
+        }, error: errorBlockFunc())
+    }
 }
 
 extension PublisherPageViewController:UITableViewDelegate, UITableViewDataSource{

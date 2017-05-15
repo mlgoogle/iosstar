@@ -13,4 +13,7 @@ protocol NewsApi {
     
     
     func requestBannerList(complete: CompleteBlock?, error: ErrorBlock?)
+    func requestStarInfo(code:String,complete: CompleteBlock?, error: ErrorBlock?)
+
+    
 }

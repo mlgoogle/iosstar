@@ -27,3 +27,14 @@ class BannerModel: Object {
     dynamic var pic_url = ""
     dynamic var type = 0
 }
+
+class BannerDetaiStarModel: Object {
+    dynamic var accid = ""
+    dynamic var brief = ""
+    dynamic var code = ""
+    dynamic var gender = 1
+    dynamic var name = ""
+    dynamic var phone = ""
+    dynamic var price = 0.0
+    dynamic var pic_url = ""
+}
