@@ -17,6 +17,7 @@ class UserInfoVC: UITableViewController {
         self.tableView.tableFooterView = view
 
         title = "个人信息"
+       
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

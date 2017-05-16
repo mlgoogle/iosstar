@@ -16,18 +16,40 @@ class UserModel: Object {
         return model
     }
     dynamic  var currentUserId: Int64 = UserDefaults.standard.object(forKey: SocketConst.Key.uid) == nil ? 0 : ( UserDefaults.standard.object(forKey: SocketConst.Key.uid) as! Int64)
-    dynamic var userId : Int64 = 0
-      var wechatUserInfo = [String:String]()
-
+     dynamic var id : Int64 = 0
+     dynamic var phone : String = ""
+     dynamic var type : Int64 = 0
+     dynamic var balance : Double = 0
+     dynamic var userinfo  : UserModel?
+     dynamic var result : Int64 = 0
+    
     
     override static func primaryKey() -> String?{
-        return "userId"
+        return "id"
+    }
+    func upateUserInfo(userObject: AnyObject){
+        
+        if let model = userObject as? UserModel {
+            
+            UserModel.share().currentUserId = model.id
+            UserDefaults.standard.setValue( UserModel.share().currentUserId, forKey: SocketConst.Key.uid)
+            
+            
+            UserDefaults.standard.setValue( UserModel.share().currentUserId, forKey: SocketConst.Key.uid)
+            let realm = try! Realm()
+            try! realm.write {
+                
+                realm.add(model, update: true)
+                //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
+                
+            }
+        }
     }
     class func userInfo(userId: Int) -> UserModel? {
     
         
         let realm = try! Realm()
-        let filterStr = "userId = \(userId)"
+        let filterStr = "id = \(userId)"
         let user = realm.objects(UserModel.self).filter(filterStr).first
         if user != nil{
             return user!
@@ -43,5 +65,9 @@ class UserModel: Object {
             return nil
         }
     }
+
+}
+class UserInfoModel: Object{
+
 
 }

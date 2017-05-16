@@ -48,6 +48,15 @@ class RegistVC: UIViewController {
         self.right.constant = UIScreen.main.bounds.size.width/320.0 * 30
         height.constant = 100 + UIScreen.main.bounds.size.height
         width.constant = UIScreen.main.bounds.size.width
+        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
+        view.addGestureRecognizer(tap)
+    }
+    func tapClick(){
+        let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
+        let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
+        tabar.selectedIndex = 0
+       
+        self.dismissController()
     }
     override func viewDidLoad() {
         super.viewDidLoad()

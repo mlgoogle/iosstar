@@ -17,7 +17,7 @@ class ContactListViewController: UIViewController {
 
         title = "名人通讯录"
         
-    onlogin()
+        onlogin()
         
         getData()
     }
