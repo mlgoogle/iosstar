@@ -353,6 +353,8 @@
 		A05E5F3A1EB1949F0008888A /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F391EB1949F0008888A /* close.png */; };
 		A05E5F3D1EB19D100008888A /* wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F3B1EB19D100008888A /* wechat@2x.png */; };
 		A05E5F3E1EB19D100008888A /* wechat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F3C1EB19D100008888A /* wechat@3x.png */; };
+		A0692AF91EC9461600D4240D /* BindingBankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0692AF81EC9461600D4240D /* BindingBankCardVC.swift */; };
+		A0692AFB1EC9488C00D4240D /* MoneyChangeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0692AFA1EC9488C00D4240D /* MoneyChangeVC.swift */; };
 		A07238901EA76AA300E755DB /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = A07238691EA76AA300E755DB /* Contents.json */; };
 		A07238931EA76AA300E755DB /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = A072386F1EA76AA300E755DB /* back.png */; };
 		A07238941EA76AA300E755DB /* nav_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = A07238701EA76AA300E755DB /* nav_clear.png */; };
@@ -1055,6 +1057,8 @@
 		A05E5F391EB1949F0008888A /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		A05E5F3B1EB19D100008888A /* wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@2x.png"; sourceTree = "<group>"; };
 		A05E5F3C1EB19D100008888A /* wechat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@3x.png"; sourceTree = "<group>"; };
+		A0692AF81EC9461600D4240D /* BindingBankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingBankCardVC.swift; sourceTree = "<group>"; };
+		A0692AFA1EC9488C00D4240D /* MoneyChangeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyChangeVC.swift; sourceTree = "<group>"; };
 		A072384A1EA768AD00E755DB /* iOSStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07238691EA76AA300E755DB /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		A072386F1EA76AA300E755DB /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
@@ -1362,6 +1366,7 @@
 				A04C62871EC1580D000BFC29 /* CustomerServiceVC.swift */,
 				A04C62891EC15D98000BFC29 /* TradePdVC.swift */,
 				A04C628B1EC1CD65000BFC29 /* MakeAppointmentStarVC.swift */,
+				A0692AFA1EC9488C00D4240D /* MoneyChangeVC.swift */,
 			);
 			name = User;
 			path = iOSSTar/Scenes/User;
@@ -2916,6 +2921,7 @@
 			isa = PBXGroup;
 			children = (
 				A09667651EBB1378009C6A71 /* TipBindCardVC.swift */,
+				A0692AF81EC9461600D4240D /* BindingBankCardVC.swift */,
 			);
 			path = bankCard;
 			sourceTree = "<group>";
@@ -3330,6 +3336,7 @@
 				A03D3F161EA86A6400F85308 /* NIMInputView.m in Sources */,
 				A03D3F151EA86A6400F85308 /* NIMInputToolBar.m in Sources */,
 				A03D3F911EA86A6500F85308 /* NTESCustomNotificationDB.m in Sources */,
+				A0692AFB1EC9488C00D4240D /* MoneyChangeVC.swift in Sources */,
 				A03D3FEE1EA86A6500F85308 /* NTESClientUtil.m in Sources */,
 				A03D3F341EA86A6400F85308 /* NIMSessionTimestampCell.m in Sources */,
 				A03D3F1E1EA86A6400F85308 /* NIMBaseSessionContentConfig.m in Sources */,
@@ -3517,6 +3524,7 @@
 				A07DF7CC1EC072B700C2254E /* FriendApi.swift in Sources */,
 				A03D3FCA1EA86A6500F85308 /* NTESMutiClientsHeaderView.m in Sources */,
 				A03D3F5C1EA86A6500F85308 /* UINavigationController+Swizzling.m in Sources */,
+				A0692AF91EC9461600D4240D /* BindingBankCardVC.swift in Sources */,
 				A072389A1EA76AA300E755DB /* BaseTabBarController.swift in Sources */,
 				A03D3FC21EA86A6500F85308 /* NTESVideoChatViewController.m in Sources */,
 				A08A9BBD1EAA0D3B009E6B2B /* BuyVCCell.swift in Sources */,

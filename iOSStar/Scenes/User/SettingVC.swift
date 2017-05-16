@@ -24,6 +24,13 @@ class SettingVC: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 3 {
+            
+            userLogout()
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+    }
   
 
     /*
