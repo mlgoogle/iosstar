@@ -90,7 +90,7 @@ class SocketConst: NSObject {
         static let agentId = "agentId"
         static let recommend = "recommend"
         static let status = "status"
-        static let uid  = "uid"
+        static let uid  = "id"
         static let vToken = "vToken"
         static let avatarLarge = "avatarLarge"
         static let timestamp = "timeStamp"
