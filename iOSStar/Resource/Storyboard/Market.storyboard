@@ -152,19 +152,19 @@
                         <outlet property="backView" destination="msf-jp-AJJ" id="lkt-hg-GMn"/>
                         <outlet property="searchTextField" destination="fTy-WF-dVb" id="ci9-tt-XuI"/>
                         <outlet property="tableView" destination="ntC-Au-Dt6" id="0H1-6f-GBq"/>
-                        <segue destination="BlF-wh-i71" kind="show" id="6JX-ao-Kmm"/>
+                        <segue destination="BlF-wh-i71" kind="show" identifier="marketToDetail" id="6JX-ao-Kmm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nrx-Li-cx0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1906" y="54"/>
+            <point key="canvasLocation" x="1919" y="96"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HwB-io-C7g">
             <objects>
                 <navigationController storyboardIdentifier="Market" automaticallyAdjustsScrollViewInsets="NO" id="D4Y-gF-oKV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Jpd-CQ-nrk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jpd-CQ-nrk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
