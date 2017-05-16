@@ -34,9 +34,11 @@ class SocketConst: NSObject {
         //设置账号信息
         case WchatLogin = 3013
         case verifycode = 3011
+
         //网易云
         case registWY = 9005
-        //航运舱位
+
+
         case getorderstars = 10012
         //明星个人信息
         case starInfo = 10001
@@ -45,8 +47,14 @@ class SocketConst: NSObject {
        
         // banner
         case banners = 10015
+        //行情分类
         case marketType = 11001
+
         case searchStar = 11007
+
+        //分类明星
+        case marketStar = 11003
+
     }
     enum type:UInt8 {
         case error  = 0
@@ -103,6 +111,7 @@ class SocketConst: NSObject {
         static let endnum = "endnum"
         static let all = "all"
         static let starCode = "code"
+        static let type = "type"
 
         
     }

@@ -35,7 +35,6 @@ class MarketViewController: UIViewController {
     }
     func requestTypeList() {
         AppAPIHelper.marketAPI().requestTypeList(complete: { (response) in
-            
             if let models = response as? [MarketClassifyModel] {
                 var titles = [String]()
                 for model in models {

@@ -30,6 +30,7 @@ class MenuSubViewCell: UICollectionViewCell {
         contentView.addSubview(tableView)
     }
     
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         tableView.delegate = self
@@ -39,9 +40,16 @@ class MenuSubViewCell: UICollectionViewCell {
         tableView.register(SubViewItemCell.self, forCellReuseIdentifier: "SubViewItemCell")
         contentView.addSubview(tableView)
     }
+
     
-    
-    
+    func requestStarList(type:Int) {
+        
+        AppAPIHelper.marketAPI().requestStarList(type: type, startnum: 1, endnum: 10, complete: { (response) in
+            
+        }) { (error) in
+            
+        }
+    }
     
 }
 
@@ -54,7 +62,8 @@ extension MenuSubViewCell:UITableViewDataSource, UITableViewDelegate {
         return 20
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SubViewItemCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SubViewItemCell", for: indexPath) as! SubViewItemCell
+        
         
         return cell
     }

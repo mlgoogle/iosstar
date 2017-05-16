@@ -15,3 +15,11 @@ class MarketClassifyModel: Object {
     dynamic var code = 0
 }
 
+class MarketListStarModel: Object {
+    dynamic var accid = ""
+    dynamic var code = ""
+    dynamic var gender = 1
+    dynamic var name = ""
+    dynamic var type = 1
+    
+}

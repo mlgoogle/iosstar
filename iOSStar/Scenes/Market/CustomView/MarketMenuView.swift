@@ -164,9 +164,10 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }()
     var menuView:YD_VMenuView?
     var subViewCollectionView:UICollectionView?
+
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-
         setupUI()
         
      }
@@ -234,7 +235,8 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         return items == nil ? 0 : items!.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuSubViewCell", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuSubViewCell", for: indexPath) as! MenuSubViewCell
+        
             return cell
     }
 
