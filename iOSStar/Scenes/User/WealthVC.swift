@@ -33,7 +33,7 @@ class WealthVC: UITableViewController {
                 vc.modalTransitionStyle = .crossDissolve
                 vc.modalPresentationStyle = .custom
                 vc.resultBlock = { (result) in
-                     let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "BankCardVC") 
+                     let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "BindingBankCardVC") 
                   self.navigationController?.pushViewController(vc, animated: true )
                     
                 }

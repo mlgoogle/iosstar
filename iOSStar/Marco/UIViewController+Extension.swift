@@ -50,16 +50,13 @@ extension UIViewController {
     }
     
     func doYunxin(){
-        
-        
+    
         AppAPIHelper.login().registWYIM(phone: (UserDefaults.standard.object(forKey: "phone") as? String)!, token:(UserDefaults.standard.object(forKey: "phone") as? String)!, complete: { (result) in
             
             let datadic = result as? Dictionary<String,String>
             
             if let _ = datadic {
-                //                let token = UserDefaults.standard.object(forKey: "tokenvalue") as! String
-                //                let phone = UserDefaults.standard.object(forKey: "phone") as! String
-                
+               
                 NIMSDK.shared().loginManager.login((UserDefaults.standard.object(forKey: "phone") as? String)!, token: (datadic?["token_value"])!, completion: { (error) in
                     if (error != nil){
                       
@@ -81,7 +78,7 @@ extension UIViewController {
     }
     //退出登录
     func userLogout() {
-        UserDefaults.standard.removeObject(forKey:"uid")
+        UserDefaults.standard.removeObject(forKey:"phone")
         UserDefaults.standard.removeObject(forKey: "token")
         tabBarController?.selectedIndex = 0
     }

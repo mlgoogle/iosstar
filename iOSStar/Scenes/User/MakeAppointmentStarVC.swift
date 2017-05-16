@@ -1,5 +1,5 @@
 //
-//  MakeAppointmentStarVC.swift
+//  GetOrderStarsVC.swift
 //  iOSStar
 //
 //  Created by sum on 2017/5/9.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class MakeAppointmentStarVCCell: UITableViewCell {
+class GetOrderStarsVCCell: UITableViewCell {
     
 }
-class MakeAppointmentStarVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class GetOrderStarsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -19,9 +19,21 @@ class MakeAppointmentStarVC: UIViewController,UITableViewDelegate,UITableViewDat
         title = "我预约的明星"
         tableView.dataSource = self
         tableView.delegate = self
-        
+        initData()
+    }
+    @IBAction func fans(_ sender: Any) {
     }
 
+    @IBAction func star(_ sender: Any) {
+    }
+    func initData(){
+    
+        AppAPIHelper.friend().getorderstars(phone: "18643803462", starcode: "", complete: { (result) in
+            
+        }) { (error) in
+            
+        }
+    }
     // MARK: - Table view data source
 
      func numberOfSections(in tableView: UITableView) -> Int {
@@ -36,7 +48,7 @@ class MakeAppointmentStarVC: UIViewController,UITableViewDelegate,UITableViewDat
 
    
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MakeAppointmentStarVCCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GetOrderStarsVCCell")
 
        
 

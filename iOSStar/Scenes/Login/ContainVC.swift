@@ -35,41 +35,36 @@ class ContainVC: UIViewController {
     }
        //MARK:-  登录成功
     func loginSuccess(_ notice: NSNotification){
-        
-        AppAPIHelper.login().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { [weak self](result) in
-            if let response = result  {
-                if response["errorCode"] as! Int == -302{
-                    ShareDataModel.share().isweichaLogin = true
-                    self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.frame.size.width)!, y: 0), animated: true)
+
+        AppAPIHelper.login().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { [weak self](result)  in
+            if let response = result {
+          
+                if response["result"] as! Int == -302{
+                       ShareDataModel.share().isweichaLogin = true
+                       self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.frame.size.width)!, y: 0), animated: true)
                 }else{
-                    self?.dismissController()
+                    
+                    let dic = response as! [String :AnyObject]
+                
+                    let phone  : String = dic["phone"] as! String
+                    
+                    UserDefaults.standard.set(phone, forKey: "phone")
+                    UserDefaults.standard.synchronize()
+                    
+                   self?.doYunxin()
+
+                self?.dismissController()
                 }
             }
-        }) { (error) in
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
-            })
+           
+        }) { (error)  in
+            ShareDataModel.share().isweichaLogin = true
+            self.scrollView?.setContentOffset(CGPoint.init(x: (self.scrollView?.frame.size.width)!, y: 0), animated: true)
         }
-//        AppAPIHelper.login().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { [weak self](result) -> ()? in
-//            if let response = result  {
-//                if response["errorCode"] as! Int == -302{
-//                       ShareDataModel.share().isweichaLogin = true
-//                       self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.frame.size.width)!, y: 0), animated: true)
-//                }else{
-//                self?.dismissController()
-//                }
-//            }
-//            return()
-//        }) { (error) -> ()? in
-//            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
-//            })
-//            return()
-//        }
-//       return()
+
     }
    //MARK:- 设置UI
     func initUI(){
-        self.navigationController?.navigationBar.barTintColor = UIColor.init(hexString: AppConst.Color.main)
-         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor(hexString: "ffffff")];
         self.automaticallyAdjustsScrollViewInsets = false;
         scrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
         self.scrollView?.isScrollEnabled = false
