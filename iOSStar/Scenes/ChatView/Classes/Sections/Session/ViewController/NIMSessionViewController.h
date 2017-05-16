@@ -23,7 +23,7 @@
 
 @property (nonatomic, strong)  NIMSession *session;
 
-
+@property (nonatomic, strong)  NSString *starcode;
 
 
 /**

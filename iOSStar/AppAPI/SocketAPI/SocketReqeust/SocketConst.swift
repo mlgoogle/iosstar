@@ -46,6 +46,7 @@ class SocketConst: NSObject {
         // banner
         case banners = 10015
         case marketType = 11001
+        case searchStar = 11007
     }
     enum type:UInt8 {
         case error  = 0

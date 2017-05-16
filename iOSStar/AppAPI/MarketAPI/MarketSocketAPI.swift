@@ -16,5 +16,12 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         
         startModelsRequest(packet, listName: "list", modelClass: MarketClassifyModel.self, complete: complete, error: error)
     }
+   func searchstar(code : String,  complete: CompleteBlock?, error: ErrorBlock?){
+        
+        let paramters:[String:Any] = [SocketConst.Key.starCode : code]
+        let packet = SocketDataPacket(opcode: .searchStar, parameters: paramters)
+        
+        startModelsRequest(packet, listName: "list", modelClass: MarketClassifyModel.self, complete: complete, error: error)
+    }
     
 }

@@ -12,5 +12,6 @@ import RealmSwift
 class MarketClassifyModel: Object {
     dynamic var name = ""
     dynamic var type = 0
+    dynamic var code = 0
 }
 
