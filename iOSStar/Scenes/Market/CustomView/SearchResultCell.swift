@@ -8,14 +8,20 @@
 
 import UIKit
 
-class SearchResultCell: UITableViewCell {
+class SearchResultCell: OEZTableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    override func update(_ data: Any!) {
+      
+        let model = data as!  MarketClassifyModel
+        
+        titleLabel.text = model.name
+        
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
