@@ -88,7 +88,7 @@ class LoginVC: UIViewController {
                         UserDefaults.standard.set(self?.phone.text, forKey: "phone")
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
                         UserDefaults.standard.synchronize()
-                      self?.LoginYunxin()
+                        self?.LoginYunxin()
                     }
                 })
             }) { (error) in
