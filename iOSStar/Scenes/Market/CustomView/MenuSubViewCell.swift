@@ -8,16 +8,19 @@
 
 import UIKit
 
+protocol SubViewItemSelectDelegate {
+    func selectItem(starModel:MarketListStarModel)
+}
 class MenuSubViewCell: UICollectionViewCell {
   
     lazy var tableView:UITableView = {
 
-        let tableView = UITableView(frame: CGRect(x: 0, y: 24, width: kScreenWidth, height: kScreenHeight - 90 - 44), style: .plain)
+        let tableView = UITableView(frame: CGRect(x: 0, y: 24, width: kScreenWidth, height: kScreenHeight - 90 - 44), style: .grouped)
 
         return tableView
     }()
-    
-    
+    var dataSource:[MarketListStarModel]?
+    var delegate:SubViewItemSelectDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,11 +46,12 @@ class MenuSubViewCell: UICollectionViewCell {
 
     
     func requestStarList(type:Int) {
-        
         AppAPIHelper.marketAPI().requestStarList(type: type, startnum: 1, endnum: 10, complete: { (response) in
-            
+            if let models = response as? [MarketListStarModel] {
+                self.dataSource = models
+                self.tableView.reloadData()
+            }
         }) { (error) in
-            
         }
     }
     
@@ -55,17 +59,24 @@ class MenuSubViewCell: UICollectionViewCell {
 
 extension MenuSubViewCell:UITableViewDataSource, UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.001
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.001
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return dataSource == nil ? 0 : dataSource!.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SubViewItemCell", for: indexPath) as! SubViewItemCell
-        
-        
+        cell.setupData(model: dataSource![indexPath.row])
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.selectItem(starModel: dataSource![indexPath.row])
+    }
 }

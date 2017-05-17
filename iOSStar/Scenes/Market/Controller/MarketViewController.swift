@@ -23,7 +23,7 @@ class MarketViewController: UIViewController {
         
         menuView = MarketMenuView(frame: CGRect(x: 0, y: 64, width: kScreenWidth, height: kScreenHeight))
         menuView?.items = ["自选","艺人","体育明星","网红","海外知名人士"]
-        
+        menuView?.navigationController = navigationController
     
         for _ in (menuView?.items!)! {
             let viewController = MarketSubViewController()
@@ -41,6 +41,7 @@ class MarketViewController: UIViewController {
                     titles.append(model.name)
                 }
                 self.menuView?.items = titles
+                self.menuView?.types = models
             }
             
         }, error: errorBlockFunc())

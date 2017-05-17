@@ -116,7 +116,7 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     }
 }
 
-class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, MenuViewDelegate{
+class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, MenuViewDelegate,SubViewItemSelectDelegate{
 
     
     var items:[String]? {
@@ -124,6 +124,11 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
             menuView?.items = items
             menuView?.reloadData()
             subViewCollectionView?.reloadData()
+        }
+    }
+    var types:[MarketClassifyModel]? {
+        didSet {
+            menuViewDidSelect(indexPath: IndexPath(item: 1, section: 0))
         }
     }
     var subViews:[UIView]?
@@ -164,17 +169,14 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }()
     var menuView:YD_VMenuView?
     var subViewCollectionView:UICollectionView?
-
-    
+    var navigationController:UINavigationController?
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
-        
      }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupUI()
-        
     }
     func setupUI() {
         setMenuCollectionView()
@@ -224,20 +226,34 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
             make.centerY.equalTo(infoView)
         }
     }
-    
+    func requestDataWithIndexPath() {
+
+        let cell = subViewCollectionView?.cellForItem(at: selectIndexPath) as? MenuSubViewCell
+        let model = types![selectIndexPath.item]
+        cell?.requestStarList(type: model.type)
+    }
 
     func menuViewDidSelect(indexPath: IndexPath) {
-        print(indexPath)
         subViewCollectionView?.scrollToItem(at: indexPath, at: .left, animated: true)
+        selectIndexPath = indexPath
+        perform(#selector(requestDataWithIndexPath), with: nil, afterDelay: 0.5)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items == nil ? 0 : items!.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuSubViewCell", for: indexPath) as! MenuSubViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuSubViewCell", for: indexPath) as! MenuSubViewCell
         
-            return cell
+        cell.delegate = self
+        return cell
+    }
+    func selectItem(starModel:MarketListStarModel) {
+        
+        let storyBoard = UIStoryboard(name: "Market", bundle: nil)
+
+        let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail")
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -246,7 +262,8 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
             let index = Int(scrollView.contentOffset.x / kScreenWidth)
             let indexPath = IndexPath(item: index, section: 0)
             menuView?.selected(indexPath: indexPath)
-
+            selectIndexPath = indexPath
+            requestDataWithIndexPath()
         }
     }
 }
