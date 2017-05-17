@@ -94,6 +94,15 @@ class SubViewItemCell: UITableViewCell {
             make.centerY.equalTo(changeLabel.snp.centerY)
         }
     }
+    
+    func setupData(model:MarketListStarModel) {
+        
+        
+        iconImageView.kf.setImage(with: URL(string: model.head), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        nameLabel.text = model.name
+        codeLabel.text = model.code
+        
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

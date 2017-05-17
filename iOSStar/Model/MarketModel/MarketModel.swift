@@ -21,5 +21,6 @@ class MarketListStarModel: Object {
     dynamic var gender = 1
     dynamic var name = ""
     dynamic var type = 1
+    dynamic var head = ""
     
 }
