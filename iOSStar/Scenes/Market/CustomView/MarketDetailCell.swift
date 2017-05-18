@@ -29,7 +29,7 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
         lineView.rightAxis.gridColor = UIColor.init(rgbHex: 0xf2f2f2)
         lineView.delegate = self
         lineView.chartDescription?.text = ""
-        lineView.xAxis.axisMaximum = 45
+        lineView.xAxis.axisMaximum = 30
         lineView.animate(xAxisDuration: 1)
     }
 
@@ -59,7 +59,6 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-
                 let markerView = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 30))
                 markerView.text = "hhah"
                 let marker = MarkerImage.init()

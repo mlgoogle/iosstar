@@ -46,6 +46,14 @@
 		6EFE79891ECAEF3B0096470D /* MarketDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79881ECAEF3B0096470D /* MarketDetailCell.swift */; };
 		6EFE798C1ECB21F70096470D /* MarketDetailMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE798B1ECB21F70096470D /* MarketDetailMenuView.swift */; };
 		6EFE79C81ECBE1970096470D /* OrderStarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79C71ECBE1970096470D /* OrderStarViewController.swift */; };
+		6EFE79CA1ECBEE080096470D /* ImageMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79C91ECBEE080096470D /* ImageMenuView.swift */; };
+		6EFE79CC1ECC01B80096470D /* ImageMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79CB1ECC01B80096470D /* ImageMenuCell.swift */; };
+		6EFE79CE1ECC309F0096470D /* timg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EFE79CD1ECC309F0096470D /* timg.png */; };
+		6EFE79D61ECC3AD50096470D /* MarketDetailSubViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79D51ECC3AD50096470D /* MarketDetailSubViewCell.swift */; };
+		6EFE79E01ECC49160096470D /* MarketDetaiBaseInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79DF1ECC49160096470D /* MarketDetaiBaseInfoViewController.swift */; };
+		6EFE79E21ECC49570096470D /* MarketFansListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E11ECC49570096470D /* MarketFansListViewController.swift */; };
+		6EFE79E41ECC49710096470D /* MarketAuctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E31ECC49710096470D /* MarketAuctionViewController.swift */; };
+		6EFE79E61ECC49810096470D /* MarketCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */; };
 		A001A96C1EAD884D00752F1A /* HaveBuyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A96B1EAD884D00752F1A /* HaveBuyVC.swift */; };
 		A001A9721EAD9F8D00752F1A /* ShareDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */; };
 		A001A9741EADC91C00752F1A /* SellOutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9731EADC91C00752F1A /* SellOutVC.swift */; };
@@ -475,6 +483,14 @@
 		6EFE79881ECAEF3B0096470D /* MarketDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailCell.swift; sourceTree = "<group>"; };
 		6EFE798B1ECB21F70096470D /* MarketDetailMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailMenuView.swift; sourceTree = "<group>"; };
 		6EFE79C71ECBE1970096470D /* OrderStarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderStarViewController.swift; sourceTree = "<group>"; };
+		6EFE79C91ECBEE080096470D /* ImageMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageMenuView.swift; sourceTree = "<group>"; };
+		6EFE79CB1ECC01B80096470D /* ImageMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageMenuCell.swift; sourceTree = "<group>"; };
+		6EFE79CD1ECC309F0096470D /* timg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timg.png; sourceTree = "<group>"; };
+		6EFE79D51ECC3AD50096470D /* MarketDetailSubViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailSubViewCell.swift; sourceTree = "<group>"; };
+		6EFE79DF1ECC49160096470D /* MarketDetaiBaseInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetaiBaseInfoViewController.swift; sourceTree = "<group>"; };
+		6EFE79E11ECC49570096470D /* MarketFansListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketFansListViewController.swift; sourceTree = "<group>"; };
+		6EFE79E31ECC49710096470D /* MarketAuctionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketAuctionViewController.swift; sourceTree = "<group>"; };
+		6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketCommentViewController.swift; sourceTree = "<group>"; };
 		8408122B704986AA5A9C486E /* Pods-iOSStar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.debug.xcconfig"; sourceTree = "<group>"; };
 		8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A001A96B1EAD884D00752F1A /* HaveBuyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HaveBuyVC.swift; sourceTree = "<group>"; };
@@ -1287,6 +1303,10 @@
 				6E0C6B021EC31D5C00D9C2BC /* MarketSubViewController.swift */,
 				6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */,
 				6EFE79C71ECBE1970096470D /* OrderStarViewController.swift */,
+				6EFE79DF1ECC49160096470D /* MarketDetaiBaseInfoViewController.swift */,
+				6EFE79E11ECC49570096470D /* MarketFansListViewController.swift */,
+				6EFE79E31ECC49710096470D /* MarketAuctionViewController.swift */,
+				6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */,
 			);
 			name = Controller;
 			path = iOSStar/Scenes/Market/Controller;
@@ -1302,7 +1322,10 @@
 				6E193C4D1EBAD3240049AEDE /* MenuWidthLayout.swift */,
 				6E192DED1EC2B9AB00915D08 /* SearchResultCell.swift */,
 				6EFE79881ECAEF3B0096470D /* MarketDetailCell.swift */,
+				6EFE79D51ECC3AD50096470D /* MarketDetailSubViewCell.swift */,
 				6EFE798B1ECB21F70096470D /* MarketDetailMenuView.swift */,
+				6EFE79C91ECBEE080096470D /* ImageMenuView.swift */,
+				6EFE79CB1ECC01B80096470D /* ImageMenuCell.swift */,
 				A06404841ECBF22E00ECD269 /* OrderStarCollectView.swift */,
 			);
 			name = CustomView;
@@ -2793,6 +2816,7 @@
 		A072386E1EA76AA300E755DB /* image */ = {
 			isa = PBXGroup;
 			children = (
+				6EFE79CD1ECC309F0096470D /* timg.png */,
 				6E0C6B0C1EC46A0300D9C2BC /* liuyan.png */,
 				A0155E061EA8ABF20047B95B /* Images.xcassets */,
 				A05E5F3B1EB19D100008888A /* wechat@2x.png */,
@@ -3125,6 +3149,7 @@
 				A0155E071EA8ABF20047B95B /* Images.xcassets in Resources */,
 				6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */,
 				A03D3F9B1EA86A6500F85308 /* NTESLoginViewController.xib in Resources */,
+				6EFE79CE1ECC309F0096470D /* timg.png in Resources */,
 				A07238901EA76AA300E755DB /* Contents.json in Resources */,
 				A07DF7C71EC0132F00C2254E /* Novisible@3x.png in Resources */,
 				A03D3FC81EA86A6500F85308 /* NTESMutiClientsCell.xib in Resources */,
@@ -3219,6 +3244,7 @@
 				A0EF3B0E1EB973F10023093A /* LocalSocketHelper.swift in Sources */,
 				A03D3F441EA86A6400F85308 /* NIMCardMemberItem.m in Sources */,
 				A03D3FC41EA86A6500F85308 /* NTESGLView.m in Sources */,
+				6EFE79D61ECC3AD50096470D /* MarketDetailSubViewCell.swift in Sources */,
 				A03D3F581EA86A6500F85308 /* NIMKitUtil.m in Sources */,
 				A04C628A1EC15D98000BFC29 /* TradePdVC.swift in Sources */,
 				A03D3F211EA86A6400F85308 /* NIMLocationContentConfig.m in Sources */,
@@ -3265,6 +3291,7 @@
 				A03D3F991EA86A6500F85308 /* NTESLoginManager.m in Sources */,
 				A03D3F0C1EA86A6400F85308 /* NIMGrowingTextView.m in Sources */,
 				6E0C6B0B1EC4514400D9C2BC /* News.swift in Sources */,
+				6EFE79E01ECC49160096470D /* MarketDetaiBaseInfoViewController.swift in Sources */,
 				A03D3F891EA86A6500F85308 /* NTESGroupedUsrInfo.m in Sources */,
 				A03D3F9E1EA86A6500F85308 /* NTESSessionConfig.m in Sources */,
 				A03D3F831EA86A6500F85308 /* NTESLiveMasterInfoView.m in Sources */,
@@ -3391,6 +3418,7 @@
 				A03D3EFA1EA86A6400F85308 /* NIMAvatarImageView.m in Sources */,
 				A03D3F611EA86A6500F85308 /* NTESNavigationAnimator.m in Sources */,
 				A03D3FAD1EA86A6500F85308 /* NTESAudio2TextViewController.m in Sources */,
+				6EFE79CA1ECBEE080096470D /* ImageMenuView.swift in Sources */,
 				A03D3EF81EA86A6400F85308 /* NIMKitUIConfig.m in Sources */,
 				A03D3FF21EA86A6500F85308 /* NTESNotificationCenter.m in Sources */,
 				A0EF3B131EB973F10023093A /* SocketResponse.swift in Sources */,
@@ -3411,6 +3439,7 @@
 				A03D3F8A1EA86A6500F85308 /* NTESContactUtilCell.m in Sources */,
 				A03D3F3A1EA86A6400F85308 /* NIMSessionNetChatNotifyContentView.m in Sources */,
 				A03D3EEE1EA86A6400F85308 /* NIMExtensionHelper.m in Sources */,
+				6EFE79E41ECC49710096470D /* MarketAuctionViewController.swift in Sources */,
 				A03D3FF91EA86A6600F85308 /* NTESSpellingCenter.m in Sources */,
 				A03D3FD71EA86A6500F85308 /* NTESTextSettingCell.m in Sources */,
 				A03D3F251EA86A6400F85308 /* NIMUnsupportContentConfig.m in Sources */,
@@ -3444,9 +3473,11 @@
 				A03D3F101EA86A6400F85308 /* NIMInputEmoticonContainerView.m in Sources */,
 				A04C628C1EC1CD65000BFC29 /* MakeAppointmentStarVC.swift in Sources */,
 				6E193C4C1EB9C87B0049AEDE /* SubViewItemCell.swift in Sources */,
+				6EFE79E61ECC49810096470D /* MarketCommentViewController.swift in Sources */,
 				A03D3F851EA86A6500F85308 /* NTESCustomSysNotificationSender.m in Sources */,
 				6E16165C1EAF2EF100D95CB6 /* NewsDetailViewController.swift in Sources */,
 				A03D3F481EA86A6500F85308 /* NIMUsrInfoData.m in Sources */,
+				6EFE79CC1ECC01B80096470D /* ImageMenuCell.swift in Sources */,
 				A03D3F791EA86A6500F85308 /* NTESChatroomMemberListViewController.m in Sources */,
 				A03D3F191EA86A6400F85308 /* NIMKitInfoFetchOption.m in Sources */,
 				A001A9721EAD9F8D00752F1A /* ShareDataModel.swift in Sources */,
@@ -3480,6 +3511,7 @@
 				A03D3F2C1EA86A6400F85308 /* NIMKitAudioCenter.m in Sources */,
 				6EDA46951EC5AEAA0004F942 /* MarketModel.swift in Sources */,
 				A0EF3B1B1EB9778F0023093A /* BaseSocketAPI.swift in Sources */,
+				6EFE79E21ECC49570096470D /* MarketFansListViewController.swift in Sources */,
 				A025E4B31EB03B36002E1AA4 /* WealthVC.swift in Sources */,
 				A03D3FBF1EA86A6500F85308 /* NTESAudioChatViewController.m in Sources */,
 				A03D3F1C1EA86A6400F85308 /* NIMTimestampModel.m in Sources */,

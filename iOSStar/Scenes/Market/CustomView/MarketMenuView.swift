@@ -35,7 +35,8 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        setMenuCollectionView(layout: nil)
     }
     func setMenuCollectionView(layout:UICollectionViewFlowLayout?) {
         
@@ -102,7 +103,8 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if isScreenWidth {
-            return CGSize(width: kScreenWidth / CGFloat(items!.count), height: 30)
+            
+            return CGSize(width: (kScreenWidth - 20 - 24 * (CGFloat(items!.count) - 1) ) / CGFloat(items!.count), height: 30)
         } else {
             let title = items?[indexPath.row]
             guard title != nil else {

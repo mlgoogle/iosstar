@@ -34,8 +34,7 @@ class APISocketHelper:NSObject, GCDAsyncSocketDelegate,SocketHelper {
                 if AppConst.isMock{
                     host = AppConst.Network.TcpServerIP
                     port = AppConst.Network.TcpServerPort
-//                    host =  UserModel.share().token.length() > 0 ? "61.147.114.87" : "61.147.114.78"
-//                    port =  UserModel.share().token.length() > 0 ? 16001 : 30001
+
                 }else{
                     host = AppConst.Network.TcpServerIP
                     port = AppConst.Network.TcpServerPort
@@ -74,8 +73,6 @@ class APISocketHelper:NSObject, GCDAsyncSocketDelegate,SocketHelper {
         else {
             debugPrint("onPacketData error packet_length:\(packetHead.packet_length) packet_length:\(packetHead.data_length) data:\(data.count)");
         }
-       
-//        XCGLogger.debug("onPacketData:\(packet.packetHead.type) \(packet.packetHead.packet_length) \(packet.packetHead.operate_code)")
     }
 
     //MARK: GCDAsyncSocketDelegate
@@ -117,11 +114,7 @@ class APISocketHelper:NSObject, GCDAsyncSocketDelegate,SocketHelper {
     }
 
     @objc func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
-//        XCGLogger.error("socketDidDisconnect:\(err)")
-//        self.performSelector(#selector(APISocketHelper.connect), withObject: nil, afterDelay: 5)
-//        SVProgressHUD.showErrorMessage(ErrorMessage: "连接失败，5秒后重连", ForDuration: 5) {[weak self] in
-//            self?.connect()
-//        }
+
     }
 
     deinit {
