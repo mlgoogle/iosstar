@@ -31,6 +31,9 @@ class StarListModel: BaseModel {
 class StarInfoModel: NSObject {
     
     var faccid : String = ""
+    var head : String = ""
+    var name : String = ""
+    var type : String = ""
     
     
 }
