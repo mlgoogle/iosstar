@@ -364,6 +364,7 @@
 		A05E5F3A1EB1949F0008888A /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F391EB1949F0008888A /* close.png */; };
 		A05E5F3D1EB19D100008888A /* wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F3B1EB19D100008888A /* wechat@2x.png */; };
 		A05E5F3E1EB19D100008888A /* wechat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F3C1EB19D100008888A /* wechat@3x.png */; };
+		A06404851ECBF22E00ECD269 /* OrderStarCollectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06404841ECBF22E00ECD269 /* OrderStarCollectView.swift */; };
 		A0692AF91EC9461600D4240D /* BindingBankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0692AF81EC9461600D4240D /* BindingBankCardVC.swift */; };
 		A0692AFB1EC9488C00D4240D /* MoneyChangeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0692AFA1EC9488C00D4240D /* MoneyChangeVC.swift */; };
 		A07238901EA76AA300E755DB /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = A07238691EA76AA300E755DB /* Contents.json */; };
@@ -1079,6 +1080,7 @@
 		A05E5F391EB1949F0008888A /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		A05E5F3B1EB19D100008888A /* wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@2x.png"; sourceTree = "<group>"; };
 		A05E5F3C1EB19D100008888A /* wechat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@3x.png"; sourceTree = "<group>"; };
+		A06404841ECBF22E00ECD269 /* OrderStarCollectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderStarCollectView.swift; sourceTree = "<group>"; };
 		A0692AF81EC9461600D4240D /* BindingBankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingBankCardVC.swift; sourceTree = "<group>"; };
 		A0692AFA1EC9488C00D4240D /* MoneyChangeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyChangeVC.swift; sourceTree = "<group>"; };
 		A072384A1EA768AD00E755DB /* iOSStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1324,6 +1326,7 @@
 				6EFE798B1ECB21F70096470D /* MarketDetailMenuView.swift */,
 				6EFE79C91ECBEE080096470D /* ImageMenuView.swift */,
 				6EFE79CB1ECC01B80096470D /* ImageMenuCell.swift */,
+				A06404841ECBF22E00ECD269 /* OrderStarCollectView.swift */,
 			);
 			name = CustomView;
 			path = iOSStar/Scenes/Market/CustomView;
@@ -3301,6 +3304,7 @@
 				6E120F961EB966F4004E1E33 /* AppAPIHelper.swift in Sources */,
 				A03D3F561EA86A6500F85308 /* NIMKitFileLocationHelper.m in Sources */,
 				6E6027841EC9916C001FBAA6 /* MarketDetailViewController.swift in Sources */,
+				A06404851ECBF22E00ECD269 /* OrderStarCollectView.swift in Sources */,
 				A03D3FD81EA86A6500F85308 /* NTESAboutViewController.m in Sources */,
 				A03D3F801EA86A6500F85308 /* NTESChatroomSegmentedControl.m in Sources */,
 				A03D3FD21EA86A6500F85308 /* NTESNetDetectViewController.m in Sources */,

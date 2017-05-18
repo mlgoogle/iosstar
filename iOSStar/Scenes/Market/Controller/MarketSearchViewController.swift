@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 class MarketSearchViewController: UIViewController , UITextFieldDelegate{
     @IBOutlet weak var searchTextField: UITextField!
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backView: UIView!
     var dataArry = [MarketClassifyModel]()
@@ -28,7 +28,7 @@ class MarketSearchViewController: UIViewController , UITextFieldDelegate{
         searchTextField.delegate = self
     }
     func textfiledchange(_ textField: UITextField){
-   
+        
         if textField.text == "" {
             dataArry.removeAll()
             tableView.reloadData()
@@ -36,15 +36,15 @@ class MarketSearchViewController: UIViewController , UITextFieldDelegate{
         }
         AppAPIHelper.marketAPI().searchstar(code: textField.text!, complete: { [weak self](result) in
             if let _ = result {
-              self?.dataArry = result as! [MarketClassifyModel]
-              self?.tableView.reloadData()
+                self?.dataArry = result as! [MarketClassifyModel]
+                self?.tableView.reloadData()
             }
         }) { [weak self](error) in
             self?.dataArry.removeAll()
             self?.tableView.reloadData()
         }
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text == "" {
             dataArry.removeAll()
@@ -58,27 +58,27 @@ class MarketSearchViewController: UIViewController , UITextFieldDelegate{
                 
             }
         }) { [weak self](error) in
-    self?.dataArry.removeAll()
-   self?.tableView.reloadData()
+            self?.dataArry.removeAll()
+            self?.tableView.reloadData()
         }
-       
+        
         return true
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }
 
 extension MarketSearchViewController:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath) as! SearchResultCell
         
-         cell.update(dataArry[indexPath.row])
+        cell.update(dataArry[indexPath.row])
         
         
-        
+        cell.selectionStyle = .none
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactListCell: UITableViewCell {
+class ContactListCell: OEZTableViewCell {
 
     @IBOutlet weak var jobLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -26,6 +26,14 @@ class ContactListCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    override func update(_ data: Any!) {
+        
+        
+        let model = data as! StarInfoModel
+        nameLabel.text = model.name
+        jobLabel.text = model.type
+        
     }
 
 }

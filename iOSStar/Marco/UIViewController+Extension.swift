@@ -10,20 +10,20 @@ import Foundation
 //import XCGLogger
 import SVProgressHUD
 extension UIViewController {
-
+    
     func errorBlockFunc()->ErrorBlock {
         return { [weak self] (error) in
-//            XCGLogger.error("\(error) \(self)")
+            //            XCGLogger.error("\(error) \(self)")
             self?.didRequestError(error)
         }
     }
     func LoginSuccess(){
-       
+        
     }
     func didRequestError(_ error:NSError) {
         self.showErrorWithStatus(error.localizedDescription)
     }
-   
+    
     func showErrorWithStatus(_ status: String!) {
         SVProgressHUD.showError(withStatus: status)
     }
@@ -34,46 +34,47 @@ extension UIViewController {
     //检查是否已登录
     func checkLogin() -> Bool {
         
-      if UserDefaults.standard.object(forKey: "phone") as? String == nil {
-        
-        let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController()
-        controller?.modalPresentationStyle = .custom
-        controller?.modalTransitionStyle = .crossDissolve
-        
-        present(controller!, animated: true, completion: nil)
-           
+        if UserDefaults.standard.object(forKey: "phone") as? String == nil {
+            
+            let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
+            let controller = storyboard.instantiateInitialViewController()
+            controller?.modalPresentationStyle = .custom
+            controller?.modalTransitionStyle = .crossDissolve
+            
+            present(controller!, animated: true, completion: nil)
+            
             return false
         }else{
             return true
         }
     }
-    
+      //登录网易云信
     func doYunxin(){
-    
-        AppAPIHelper.login().registWYIM(phone: (UserDefaults.standard.object(forKey: "phone") as? String)!, token:(UserDefaults.standard.object(forKey: "phone") as? String)!, complete: { (result) in
-            
-            let datadic = result as? Dictionary<String,String>
-            
-            if let _ = datadic {
-               
-                NIMSDK.shared().loginManager.login((UserDefaults.standard.object(forKey: "phone") as? String)!, token: (datadic?["token_value"])!, completion: { (error) in
-                    if (error != nil){
-                      
-                    }
-                    self.LoginSuccess()
-               
-                })
-              
-                UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
-                UserDefaults.standard.synchronize()
+        
+        if UserDefaults.standard.object(forKey: "phone") as? String != nil{
+            AppAPIHelper.login().registWYIM(phone: (UserDefaults.standard.object(forKey: "phone") as? String)!, token:(UserDefaults.standard.object(forKey: "phone") as? String)!, complete: { (result) in
                 
+                let datadic = result as? Dictionary<String,String>
+                
+                if let _ = datadic {
+                    
+                    NIMSDK.shared().loginManager.login((UserDefaults.standard.object(forKey: "phone") as? String)!, token: (datadic?["token_value"])!, completion: { (error) in
+                        if (error != nil){
+                            
+                        }
+                        self.LoginSuccess()
+                        
+                    })
+                    
+                    UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
+                    UserDefaults.standard.synchronize()
+                    
+                    
+                }
+                
+            }) { (error) in
                 
             }
-            
-        }) { (error) in
-            
-            
         }
     }
     //退出登录
@@ -87,7 +88,7 @@ extension UIViewController {
     func checkTextFieldEmpty(_ array:[UITextField]) -> Bool {
         for  textField in array {
             if  textField.text == ""  {
-                SVProgressHUD.showErrorMessage(ErrorMessage: textField.placeholder!, ForDuration: 0.5, completion: { 
+                SVProgressHUD.showErrorMessage(ErrorMessage: textField.placeholder!, ForDuration: 0.5, completion: {
                     
                 });
                 return false
@@ -116,12 +117,12 @@ extension UIViewController {
     //导航栏透明
     func translucent(clear: Bool) {
         
-//     let navImageName = clear ? "nav_clear" : "nav_color"
-//        let navImageName = "nav_bg"
-//        navigationController?.navigationBar.setBackgroundImage(UIImage.init(named: navImageName), for: .any, barMetrics: .default)
-     
-      navigationController?.navigationBar.isTranslucent = clear;
-
+        //     let navImageName = clear ? "nav_clear" : "nav_color"
+        //        let navImageName = "nav_bg"
+        //        navigationController?.navigationBar.setBackgroundImage(UIImage.init(named: navImageName), for: .any, barMetrics: .default)
+        
+        navigationController?.navigationBar.isTranslucent = clear;
+        
     }
     
     //MARK: -- 隐藏tabBar导航栏
@@ -145,7 +146,7 @@ extension UIViewController {
         label.font = UIFont.systemFont(ofSize: 17)
         label.textColor = UIColor(hexString: AppConst.Color.main)
         navigationItem.titleView = label
-
+        
     }
     func showTabBarWithAnimationDuration() {
         let tabBar = self.tabBarController?.tabBar
@@ -167,5 +168,5 @@ extension UIViewController {
         
     }
     
-    }
+}
 

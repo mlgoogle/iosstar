@@ -19,7 +19,7 @@ class SearchResultCell: OEZTableViewCell {
       
         let model = data as!  MarketClassifyModel
         
-        titleLabel.text = model.name
+        titleLabel.text = model.name + "(" + String.init(format: "%d", model.code) + ")"
         
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

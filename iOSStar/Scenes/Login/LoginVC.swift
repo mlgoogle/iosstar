@@ -32,6 +32,9 @@ class LoginVC: UIViewController {
         initUI()
     }
     func initUI(){
+        
+        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
+        view.addGestureRecognizer(tap)
         self.automaticallyAdjustsScrollViewInsets = false
         height.constant = 100 + UIScreen.main.bounds.size.height
         width.constant = UIScreen.main.bounds.size.width
@@ -44,6 +47,12 @@ class LoginVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    func tapClick(){
+        let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
+        let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
+        tabar.selectedIndex = 0
+        self.dismissController()
     }
     func initNav(){
         let btn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 20, height: 20))
@@ -70,14 +79,16 @@ class LoginVC: UIViewController {
         btn.isUserInteractionEnabled = false
         if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]){
             AppAPIHelper.login().login(phone: phone.text!, password: passPwd.text!, complete: { [weak self](result)  in
-                 let datadic = result as? Dictionary<String,AnyObject>
+                 let datadic = result as? UserModel
                 SVProgressHUD.showErrorMessage(ErrorMessage: "登录成功", ForDuration: 0.5, completion: {
                     btn.isUserInteractionEnabled = true
                     if let _ = datadic {
+                        
+                        UserModel.share().upateUserInfo(userObject: result!)
                         UserDefaults.standard.set(self?.phone.text, forKey: "phone")
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
                         UserDefaults.standard.synchronize()
-                      self?.LoginYunxin()
+                        self?.LoginYunxin()
                     }
                 })
             }) { (error) in

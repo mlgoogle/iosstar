@@ -36,6 +36,7 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
     
     func registWYIM(phone: String, token: String, complete: CompleteBlock?, error: ErrorBlock?){
         let param: [String: Any] = [SocketConst.Key.name_value: phone,
+                                    SocketConst.Key.phone: phone,
                                     SocketConst.Key.accid_value:  token,
                                     SocketConst.Key.memberId: 1001,
                                     SocketConst.Key.agentId:  "186681261",
@@ -53,8 +54,8 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
                                     SocketConst.Key.deviceId: "deviceId"]
         print(param)
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .login, dict: param as [String : AnyObject])
-        
-        startRequest(packet, complete: complete, error: error)
+        //startRequest(packet, complete: complete, error: error)
+        startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
     }
     //微信绑定
       func BindWeichat(phone: String, timeStamp: Int,vToken: String,pwd: String,openid: String,nickname: String,headerUrl: String,memberId: Int,agentId: String,recommend: String,deviceId: String,vCode: String, complete: CompleteBlock?, error: ErrorBlock?){
@@ -85,7 +86,7 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .WchatLogin, dict: param as [String : AnyObject])
         
        
-        startRequest(packet, complete: complete, error: error)
+        startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
     
     }
     func SendCode(phone: String, complete: CompleteBlock?, error: ErrorBlock?){
