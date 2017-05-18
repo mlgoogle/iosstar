@@ -12,10 +12,14 @@ import UIKit
 class MarketDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var handleMenuView: ImageMenuView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "112222"
+        setCustomTitle(title: "柳岩（423412）")
+        
+        automaticallyAdjustsScrollViewInsets = false
         tableView.register(MarketDetailMenuView.self, forHeaderFooterViewReuseIdentifier: "MarketDetailMenuView")
+        handleMenuView.titles = ["求购","转让","粉丝见面会","自选"]
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +38,14 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource 
         return  view
         
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 1 {
+            
+            return kScreenHeight - 50 - 64 - 50
+        }
+        return 305
+        
+    }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.001
@@ -46,6 +58,11 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource 
         return 50
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MarketDetailSubViewCell", for: indexPath) as! MarketDetailSubViewCell
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketDetailCell", for: indexPath) as! MarketDetailCell
         cell.setData()
         return cell
