@@ -56,9 +56,11 @@ class SocketConst: NSObject {
         //分类明星
         case marketStar = 11003
         
-        //
+        //分时图
         case lineData = 11017
 
+        //添加自选
+        case addOptinal = 11015
 
     }
     enum type:UInt8 {
@@ -117,6 +119,7 @@ class SocketConst: NSObject {
         static let all = "all"
         static let starCode = "code"
         static let type = "type"
+        static let sorttype = "sorttype"
 
         
     }

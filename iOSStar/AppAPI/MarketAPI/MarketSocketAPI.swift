@@ -31,7 +31,8 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
     func requestStarList(type:Int,startnum:Int, endnum:Int,complete: CompleteBlock?, error: ErrorBlock?) {
         let paramters:[String:Any] = [SocketConst.Key.startnum : startnum,
                                       SocketConst.Key.endnum : endnum,
-                                      SocketConst.Key.type : type]
+                                      SocketConst.Key.type : type,
+                                      SocketConst.Key.sorttype : 0]
         let packet = SocketDataPacket(opcode: .marketStar, parameters: paramters)
         
 
@@ -40,6 +41,9 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
     //自选明星
     func requestOptionalStarList(startnum:Int, endnum:Int,complete: CompleteBlock?, error: ErrorBlock?) {
         
+        guard UserDefaults.standard.string(forKey: SocketConst.Key.phone) != nil else {
+            return
+        }
         let paramters:[String:Any] = [SocketConst.Key.startnum : startnum,
                                       SocketConst.Key.endnum : endnum,
                                       SocketConst.Key.phone : UserDefaults.standard.string(forKey: SocketConst.Key.phone)!]
@@ -53,7 +57,18 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         let packet = SocketDataPacket(opcode: .lineData, parameters: parameters)
         startModelsRequest(packet, listName: "stastic", modelClass: LineModel.self, complete: complete, error: error)
     }
-    
+    //添加自选明星
+    func addOptinal(starcode:String,complete: CompleteBlock?, error: ErrorBlock?) {
+        guard UserDefaults.standard.string(forKey: SocketConst.Key.phone) != nil else {
+            return
+        }
+        let parameters:[String:Any] = [SocketConst.Key.starcode:starcode,
+                                       SocketConst.Key.phone:UserDefaults.standard.string(forKey: SocketConst.Key.phone)!]
+        
+        let packet = SocketDataPacket(opcode: .addOptinal, parameters: parameters)
+        startResultIntRequest(packet, complete: complete, error: error)
+    }
+
 
 
 }

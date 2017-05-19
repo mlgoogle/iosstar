@@ -36,7 +36,7 @@
 		6E193C4C1EB9C87B0049AEDE /* SubViewItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E193C4B1EB9C87B0049AEDE /* SubViewItemCell.swift */; };
 		6E193C4E1EBAD3240049AEDE /* MenuWidthLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E193C4D1EBAD3240049AEDE /* MenuWidthLayout.swift */; };
 		6E193C501EBADFC90049AEDE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E193C4F1EBADFC90049AEDE /* UIColor+Extension.swift */; };
-		6E1B56F31ECDC1F300A014AE /* NSDateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B56F21ECDC1F300A014AE /* NSDateExt.swift */; };
+		6E1B56F51ECE878D00A014AE /* FansListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B56F41ECE878D00A014AE /* FansListHeaderView.swift */; };
 		6E6027841EC9916C001FBAA6 /* MarketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */; };
 		6EBF590A1EC6EAAF003F67B4 /* MarketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF59091EC6EAAF003F67B4 /* MarketAPI.swift */; };
 		6EBF590C1EC6EB75003F67B4 /* MarketSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF590B1EC6EB75003F67B4 /* MarketSocketAPI.swift */; };
@@ -481,7 +481,7 @@
 		6E193C4B1EB9C87B0049AEDE /* SubViewItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubViewItemCell.swift; sourceTree = "<group>"; };
 		6E193C4D1EBAD3240049AEDE /* MenuWidthLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuWidthLayout.swift; sourceTree = "<group>"; };
 		6E193C4F1EBADFC90049AEDE /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		6E1B56F21ECDC1F300A014AE /* NSDateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExt.swift; sourceTree = "<group>"; };
+		6E1B56F41ECE878D00A014AE /* FansListHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FansListHeaderView.swift; sourceTree = "<group>"; };
 		6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailViewController.swift; sourceTree = "<group>"; };
 		6EBF59091EC6EAAF003F67B4 /* MarketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketAPI.swift; sourceTree = "<group>"; };
 		6EBF590B1EC6EB75003F67B4 /* MarketSocketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketSocketAPI.swift; sourceTree = "<group>"; };
@@ -1133,7 +1133,7 @@
 		A07DF7CB1EC072B700C2254E /* FriendApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendApi.swift; sourceTree = "<group>"; };
 		A07DF7CD1EC072D200C2254E /* FriendSocketApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSocketApi.swift; sourceTree = "<group>"; };
 		A08569F91EB08FCA004F349B /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseNavigationController.swift; path = iOSSTar/Other/BaseNavigationController.swift; sourceTree = SOURCE_ROOT; };
-		A0856A101EB0B5C3004F349B /* UIBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarExtension.swift; sourceTree = "<group>"; };
+		A0856A101EB0B5C3004F349B /* UIBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBarExtension.swift; path = ../../Other/UIBarExtension.swift; sourceTree = "<group>"; };
 		A085A51A1EB0771C00149F14 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		A085A51C1EB079F200149F14 /* InputPwdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPwdVC.swift; sourceTree = "<group>"; };
 		A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -1351,6 +1351,7 @@
 				6ECAA1AC1ECD75DB000FBED7 /* MaketBannerCell.swift */,
 				6ECAA1AE1ECD761A000FBED7 /* MarketFansCell.swift */,
 				6ECAA1B01ECD762D000FBED7 /* MarketSBFansCell.swift */,
+				6E1B56F41ECE878D00A014AE /* FansListHeaderView.swift */,
 			);
 			name = CustomView;
 			path = iOSStar/Scenes/Market/CustomView;
@@ -2877,8 +2878,6 @@
 				A072387A1EA76AA300E755DB /* ViewController.swift */,
 				A07238781EA76AA300E755DB /* BaseTabBarController.swift */,
 				6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */,
-				6E1B56F21ECDC1F300A014AE /* NSDateExt.swift */,
-				A0856A101EB0B5C3004F349B /* UIBarExtension.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -2934,6 +2933,7 @@
 		A07238881EA76AA300E755DB /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A0856A101EB0B5C3004F349B /* UIBarExtension.swift */,
 				A0F4FA201ECD70A200D13302 /* NSDateExt.swift */,
 				A07238891EA76AA300E755DB /* String+Extension.swift */,
 				A072388A1EA76AA300E755DB /* SVProgressHUDExt.swift */,
@@ -3271,6 +3271,7 @@
 				A03D3F351EA86A6400F85308 /* NIMSessionAudioContentView.m in Sources */,
 				A0EF3B0E1EB973F10023093A /* LocalSocketHelper.swift in Sources */,
 				A03D3F441EA86A6400F85308 /* NIMCardMemberItem.m in Sources */,
+				6E1B56F51ECE878D00A014AE /* FansListHeaderView.swift in Sources */,
 				A03D3FC41EA86A6500F85308 /* NTESGLView.m in Sources */,
 				6EFE79D61ECC3AD50096470D /* MarketDetailSubViewCell.swift in Sources */,
 				A03D3F581EA86A6500F85308 /* NIMKitUtil.m in Sources */,
@@ -3598,7 +3599,6 @@
 				A03D3EF41EA86A6400F85308 /* NIMCommonTableDelegate.m in Sources */,
 				A03D3FF51EA86A6600F85308 /* NTESSessionUtil.m in Sources */,
 				A03D3F241EA86A6400F85308 /* NIMTipContentConfig.m in Sources */,
-				6E1B56F31ECDC1F300A014AE /* NSDateExt.swift in Sources */,
 				A03D3F4A1EA86A6500F85308 /* NIMCreateTeamAnnouncement.m in Sources */,
 				6ECAA1AD1ECD75DB000FBED7 /* MaketBannerCell.swift in Sources */,
 				A03D3F041EA86A6400F85308 /* NIMGroupedDataCollection.m in Sources */,

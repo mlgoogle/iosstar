@@ -13,17 +13,33 @@ class MarketDetailSubViewCell: UITableViewCell {
     @IBOutlet weak var backView: UIView!
 
     @IBOutlet weak var width: NSLayoutConstraint!
+
+    
+    var scrollContenView:UIView = {
+       
+        let view = UIView()
+        
+        return view
+    }()
+    var scrollView:UIScrollView = {
+        
+       let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight))
+        
+        return scrollView
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        addSubview(scrollView)
+
+        scrollView.contentSize = CGSize(width: kScreenWidth * 4, height: 0)
+        scrollView.isPagingEnabled = true
     }
     
     func setSubViews(views:[UIView]) {
-        
-        for (index,subView) in views.enumerated() {
-            
-            subView.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 50 - 64 - 50)
-            
-            addSubview(subView)
+        for subView in views {
+            scrollView.addSubview(subView)
         }
     }
 
