@@ -34,9 +34,9 @@ class BaseSocketAPI: NSObject {
      - parameter complete: 成功回调 返回字典
      - parameter error:    失败回调
      */
-    func startResultIntRequest(_ packet: SocketDataPacket, complete: @escaping CompleteBlock, error: ErrorBlock?) {
+    func startResultIntRequest(_ packet: SocketDataPacket, complete: CompleteBlock?, error: ErrorBlock?) {
         SocketRequestManage.shared.startJsonRequest(packet,complete: {  (response) in
-            complete((response as? SocketJsonResponse)?.responseResult() as AnyObject?)
+            complete?((response as? SocketJsonResponse)?.responseResult() as AnyObject?)
         },error: error)
     }
     

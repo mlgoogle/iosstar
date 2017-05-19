@@ -22,13 +22,9 @@ class MarketViewController: UIViewController {
         
         
         menuView = MarketMenuView(frame: CGRect(x: 0, y: 64, width: kScreenWidth, height: kScreenHeight))
-        menuView?.items = ["自选","艺人","体育明星","网红","海外知名人士"]
         menuView?.navigationController = navigationController
     
-        for _ in (menuView?.items!)! {
-            let viewController = MarketSubViewController()
-            menuView?.subViews?.append(viewController.view)
-        }
+
         view.addSubview(menuView!)
         requestTypeList()
 
@@ -39,12 +35,15 @@ class MarketViewController: UIViewController {
                 var titles = [String]()
                 let customModel = MarketClassifyModel()
                 customModel.name = "自选"
-                titles.append(customModel.name)
                 models.insert(customModel, at: 0)
                 for model in models {
                     titles.append(model.name)
                 }
                 self.menuView?.items = titles
+                for _ in (self.menuView?.items!)! {
+                    let viewController = MarketSubViewController()
+                    self.menuView?.subViews?.append(viewController.view)
+                }
                 self.menuView?.types = models
             }
             

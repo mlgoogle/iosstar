@@ -34,7 +34,13 @@ class MarketSearchViewController: UIViewController , UITextFieldDelegate{
             tableView.reloadData()
             return
         }
-        AppAPIHelper.marketAPI().searchstar(code: textField.text!, complete: { [weak self](result) in
+        searchText(text: textField.text!)
+
+    }
+    
+    func searchText(text:String) {
+        
+        AppAPIHelper.marketAPI().searchstar(code:text, complete: { [weak self](result) in
             if let _ = result {
                 self?.dataArry = result as! [MarketClassifyModel]
                 self?.tableView.reloadData()
@@ -44,29 +50,17 @@ class MarketSearchViewController: UIViewController , UITextFieldDelegate{
             self?.tableView.reloadData()
         }
     }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text == "" {
             dataArry.removeAll()
             tableView.reloadData()
             return false
         }
-        AppAPIHelper.marketAPI().searchstar(code: textField.text!, complete: { [weak self](result) in
-            if let _ = result {
-                self?.dataArry = result as! [MarketClassifyModel]
-                self?.tableView.reloadData()
-                
-            }
-        }) { [weak self](error) in
-            self?.dataArry.removeAll()
-            self?.tableView.reloadData()
-        }
-        
+        searchText(text: textField.text!)
         return true
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

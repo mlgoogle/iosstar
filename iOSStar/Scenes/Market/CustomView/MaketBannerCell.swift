@@ -7,12 +7,15 @@
 //
 
 import UIKit
-
+import SDCycleScrollView
 class MaketBannerCell: UITableViewCell {
 
+    @IBOutlet weak var banner: SDCycleScrollView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        let urlString = "http://pic27.nipic.com/20130320/3822951_105204803000_2.jpg"
+        banner.imageURLStringsGroup = [urlString, urlString, urlString]
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
