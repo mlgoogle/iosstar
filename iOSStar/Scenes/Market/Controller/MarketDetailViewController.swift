@@ -20,10 +20,29 @@ class MarketDetailViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         tableView.register(MarketDetailMenuView.self, forHeaderFooterViewReuseIdentifier: "MarketDetailMenuView")
         handleMenuView.titles = ["求购","转让","粉丝见面会","自选"]
+        
+        requestLineData()
+        
+        let types = [MarketDetaiBaseInfoViewController.self, MarketFansListViewController.self, MarketAuctionViewController.self, MarketCommentViewController.self] as [Any]
+        for type in types {
+            
+
+        }
+
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    func requestLineData() {
+        AppAPIHelper.marketAPI().requestLineViewData(starcode: "1001", complete: { (response) in
+            if let models = response as? [LineModel] {
+                LineModel.cacheLineData(datas: models)
+                self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+            }
+            
+        }, error: errorBlockFunc())
     }
     
 
@@ -43,7 +62,7 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource 
             
             return kScreenHeight - 50 - 64 - 50
         }
-        return 305
+        return 400
         
     }
     
@@ -64,7 +83,7 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource 
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketDetailCell", for: indexPath) as! MarketDetailCell
-        cell.setData()
+        cell.setData(datas: LineModel.getLineData())
         return cell
     }
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -5,53 +5,88 @@
 //  Created by J-bb on 17/5/16.
 //  Copyright © 2017年 YunDian. All rights reserved.
 //
+class WPMarkerLineView: UIView {
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.numberOfLines = 0
+        label.textColor = UIColor.white
+        return label
+    }()
+    
+    lazy var backView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black
+        view.alpha = 0.8
+        return view
+    }()
+    
+    required override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        backgroundColor = UIColor.clear
+        layer.cornerRadius = 5
+        layer.masksToBounds = true
+        backView.frame = frame
+        titleLabel.frame = CGRect.init(x: 2, y: 2, width: frame.size.width-4, height: frame.size.height-4)
+        addSubview(backView)
+        addSubview(titleLabel)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
 import UIKit
 import Charts
 class MarketDetailCell: UITableViewCell,ChartViewDelegate{
     @IBOutlet weak var currentPriceLabel: UILabel!
-
+    var datas:[LineModel]?
     @IBOutlet weak var lineView: LineChartView!
     @IBOutlet weak var changeLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         changeLabel.layer.cornerRadius = 1
-        changeLabel.layer.masksToBounds = true
+        changeLabel.clipsToBounds = true
         lineView.legend.setCustom(entries: [])
         lineView.noDataText = "暂无数据"
         lineView.xAxis.labelPosition = .bottom
         lineView.xAxis.drawGridLinesEnabled = false
+        lineView.xAxis.drawAxisLineEnabled = false
         lineView.xAxis.axisMinimum = 0
+        lineView.xAxis.axisMaximum = 30
+        lineView.rightAxis.axisMinimum = 0
         lineView.xAxis.labelFont = UIFont.systemFont(ofSize: 0)
-        lineView.leftAxis.labelFont = UIFont.systemFont(ofSize: 0)
+        lineView.leftAxis.labelFont = UIFont.systemFont(ofSize: 10)
         lineView.leftAxis.gridColor = UIColor.init(rgbHex: 0xf2f2f2)
-        lineView.rightAxis.gridColor = UIColor.init(rgbHex: 0xf2f2f2)
+        lineView.rightAxis.labelFont = UIFont.systemFont(ofSize: 0)
         lineView.delegate = self
         lineView.chartDescription?.text = ""
-        lineView.xAxis.axisMaximum = 30
+        lineView.rightAxis.forceLabelsEnabled = false
         lineView.animate(xAxisDuration: 1)
     }
 
-    func setData() {
+    func setData(datas:[LineModel]) {
         
         var entrys: [ChartDataEntry] = []
-
-        let y = [11.1,12.1,15.1,9.1,4.1,17.0,20.1,17.1,4.1,17.0,20.1,17.1,4.1,17.0,20.1,17.1,11.1,12.1,15.1,9.1,4.1,17.0,20.1,17.1,4.1,17.0,20.1,17.1,4.1,17.0,20.1,17.1,12.1,15.1,9.1,4.1,17.0,20.1,17.1,4.1,17.0,20.1,17.1,4.1,17.0,20.1,17.1,11.1,12.1,15.1,9.1,4.1,17.0,20.1,17.1,4.1,17.0,20.1,17.1,4.1,17.0,20.1,17.1]
-        let x = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
-        for index in x {
-            let entry = ChartDataEntry(x: Double(index), y: y[index])
+        for (index,model) in datas.enumerated() {
+            
+            print(model.value)
+            let entry = ChartDataEntry(x: Double(index), y: model.value + 2)
             entrys.append(entry)
         }
+        self.datas = datas
         let set = LineChartDataSet(values: entrys, label: "分时图")
         set.colors = [UIColor.red]
         set.circleRadius = 0
         set.form = .empty
         set.circleHoleRadius = 0
-        set.mode = .cubicBezier
+        set.mode = .linear
         set.valueFont = UIFont.systemFont(ofSize: 0)
         set.drawFilledEnabled = true
-        set.fillColor = UIColor(hexString: "CB4232")
+        set.fillColor = UIColor(red: 203.0 / 255, green: 66.0 / 255, blue: 50.0 / 255, alpha: 0.5)
         let data: LineChartData  = LineChartData.init(dataSets: [set])
         lineView.data = data
         lineView.data?.notifyDataChanged()
@@ -59,13 +94,21 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-                let markerView = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 30))
-                markerView.text = "hhah"
-                let marker = MarkerImage.init()
-                marker.chartView = chartView
-                marker.image = imageFromUIView(markerView)
-                chartView.marker = marker
+        if let model:LineModel = datas?[Int(entry.x)] {
+            let markerView = WPMarkerLineView.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 50))
+            markerView.titleLabel.text = markerLineText(model: model)
+            let marker = MarkerImage.init()
+            marker.chartView = chartView
+            marker.image = imageFromUIView(markerView)
+            chartView.marker = marker
         }
+    }
+    
+    func markerLineText(model: LineModel) -> String {
+        let time = Date.yt_convertDateToStr(Date.init(timeIntervalSince1970: TimeInterval(model.timestamp)), format: "MM-dd HH:mm")
+        let price = String.init(format: "%.4f", model.value)
+        return "\(time)\n最新价\(price)"
+    }
     func imageFromUIView(_ view: UIView) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, UIScreen.main.scale)
         view.layer.render(in: UIGraphicsGetCurrentContext()!)

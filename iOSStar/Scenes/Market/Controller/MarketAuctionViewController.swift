@@ -9,11 +9,16 @@
 import UIKit
 
 class MarketAuctionViewController: UIViewController {
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var timeLabel: UILabel!
 
+    @IBOutlet weak var codeLabel: UILabel!
+    @IBOutlet weak var countLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        bottomView.layer.cornerRadius = 1
+        bottomView.clipsToBounds = true
     }
 
     override func didReceiveMemoryWarning() {

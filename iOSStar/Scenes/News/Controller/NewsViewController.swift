@@ -38,7 +38,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         titleView.isHidden = true
 
         
-        
+
         /**
          - 待修复，点击顶部滑动到最上部功能因隐藏状态栏失效
          */
@@ -175,12 +175,12 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         performSegue(withIdentifier: "newsToDeatail", sender: indexPath)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "newsToDeatail" {
-            
             let vc = segue.destination as! NewsDetailViewController
             let indexPath = sender as! IndexPath
             let model = newsData![indexPath.row]

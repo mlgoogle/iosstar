@@ -50,10 +50,15 @@ class SocketConst: NSObject {
         //行情分类
         case marketType = 11001
 
+        //搜索
         case searchStar = 11007
 
         //分类明星
         case marketStar = 11003
+        
+        //
+        case lineData = 11017
+
 
     }
     enum type:UInt8 {
