@@ -438,6 +438,8 @@
 		A0EF3B1B1EB9778F0023093A /* BaseSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3B1A1EB9778F0023093A /* BaseSocketAPI.swift */; };
 		A0EF3B1D1EB9C5860023093A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3B1C1EB9C5860023093A /* UserModel.swift */; };
 		A0EF98771EBCC498009B1D8A /* ContainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF98761EBCC498009B1D8A /* ContainVC.swift */; };
+		A0F4FA211ECD70A200D13302 /* NSDateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F4FA201ECD70A200D13302 /* NSDateExt.swift */; };
+		A0F4FA231ECD871500D13302 /* City.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0F4FA221ECD871500D13302 /* City.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1160,6 +1162,8 @@
 		A0EF3B1A1EB9778F0023093A /* BaseSocketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSocketAPI.swift; sourceTree = "<group>"; };
 		A0EF3B1C1EB9C5860023093A /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		A0EF98761EBCC498009B1D8A /* ContainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainVC.swift; sourceTree = "<group>"; };
+		A0F4FA201ECD70A200D13302 /* NSDateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExt.swift; sourceTree = "<group>"; };
+		A0F4FA221ECD871500D13302 /* City.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = City.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2871,6 +2875,7 @@
 		A072387E1EA76AA300E755DB /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				A0F4FA221ECD871500D13302 /* City.plist */,
 				A0C9D6591EAE102300FC438D /* Supporting Files */,
 				A072387F1EA76AA300E755DB /* WeChatSDK1.7.4 */,
 			);
@@ -2908,6 +2913,7 @@
 		A07238881EA76AA300E755DB /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A0F4FA201ECD70A200D13302 /* NSDateExt.swift */,
 				A07238891EA76AA300E755DB /* String+Extension.swift */,
 				A072388A1EA76AA300E755DB /* SVProgressHUDExt.swift */,
 				6E193C4F1EBADFC90049AEDE /* UIColor+Extension.swift */,
@@ -3163,6 +3169,7 @@
 				A07238951EA76AA300E755DB /* nav_clear@2x.png in Resources */,
 				A07238961EA76AA300E755DB /* nav_main@2x.png in Resources */,
 				A07238B91EA76F5600E755DB /* User.storyboard in Resources */,
+				A0F4FA231ECD871500D13302 /* City.plist in Resources */,
 				A0BC76401EC47C4E0050F1D6 /* Settings.bundle in Resources */,
 				A0155E0B1EA8C8850047B95B /* Login.storyboard in Resources */,
 				A0C9D66F1EAE102300FC438D /* NIMKitResource.bundle in Resources */,
@@ -3391,6 +3398,7 @@
 				A0A996C81EBC4D67000048DC /* LoginApi.swift in Sources */,
 				A03D3F391EA86A6400F85308 /* NIMSessionMessageContentView.m in Sources */,
 				A03D3F541EA86A6500F85308 /* NIMTimePickerView.m in Sources */,
+				A0F4FA211ECD70A200D13302 /* NSDateExt.swift in Sources */,
 				A03D3F491EA86A6500F85308 /* NIMAdvancedTeamCardViewController.m in Sources */,
 				A03D3F031EA86A6400F85308 /* NIMContactDataCell.m in Sources */,
 				A025E4BB1EB0457A002E1AA4 /* SettingVC.swift in Sources */,
