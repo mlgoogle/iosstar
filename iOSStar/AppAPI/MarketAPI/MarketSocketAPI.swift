@@ -17,7 +17,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         
         startModelsRequest(packet, listName: "list", modelClass: MarketClassifyModel.self, complete: complete, error: error)
     }
-    
+    //搜索
    func searchstar(code : String,  complete: CompleteBlock?, error: ErrorBlock?){
         
         let paramters:[String:Any] = [SocketConst.Key.starCode : code]
@@ -27,6 +27,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
     }
     
 
+    //单个分类明星列表
     func requestStarList(type:Int,startnum:Int, endnum:Int,complete: CompleteBlock?, error: ErrorBlock?) {
         let paramters:[String:Any] = [SocketConst.Key.startnum : startnum,
                                       SocketConst.Key.endnum : endnum,
@@ -36,4 +37,23 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
 
         startModelsRequest(packet, listName: "list", modelClass: MarketListStarModel.self, complete: complete, error: error)
     }
+    //自选明星
+    func requestOptionalStarList(startnum:Int, endnum:Int,complete: CompleteBlock?, error: ErrorBlock?) {
+        
+        let paramters:[String:Any] = [SocketConst.Key.startnum : startnum,
+                                      SocketConst.Key.endnum : endnum,
+                                      SocketConst.Key.phone : UserDefaults.standard.string(forKey: SocketConst.Key.phone)!]
+        let packet = SocketDataPacket(opcode: .marketStar, parameters: paramters)
+        startModelsRequest(packet, listName: "list", modelClass: MarketListStarModel.self, complete: complete, error: error)
+    }
+
+    //分时图
+    func requestLineViewData(starcode:String,complete: CompleteBlock?, error: ErrorBlock?) {
+        let parameters:[String : Any] = [SocketConst.Key.starcode:starcode]
+        let packet = SocketDataPacket(opcode: .lineData, parameters: parameters)
+        startModelsRequest(packet, listName: "stastic", modelClass: LineModel.self, complete: complete, error: error)
+    }
+    
+
+
 }

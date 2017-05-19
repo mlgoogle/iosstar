@@ -35,8 +35,12 @@ class MarketViewController: UIViewController {
     }
     func requestTypeList() {
         AppAPIHelper.marketAPI().requestTypeList(complete: { (response) in
-            if let models = response as? [MarketClassifyModel] {
+            if var models = response as? [MarketClassifyModel] {
                 var titles = [String]()
+                let customModel = MarketClassifyModel()
+                customModel.name = "自选"
+                titles.append(customModel.name)
+                models.insert(customModel, at: 0)
                 for model in models {
                     titles.append(model.name)
                 }

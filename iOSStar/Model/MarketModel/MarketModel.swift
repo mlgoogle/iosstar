@@ -24,3 +24,33 @@ class MarketListStarModel: Object {
     dynamic var head = ""
     
 }
+class LineModel: Object {
+    
+    dynamic var timestamp = 0
+    dynamic var value = 0.0
+ 
+    
+    
+    class func getLineData() -> [LineModel] {
+        let realm = try! Realm()
+        let resuls = realm.objects(LineModel.self).sorted(byProperty: "timestamp")
+        var array = [LineModel]()
+        for (_, model) in resuls.enumerated() {
+            if array.count == 30 {
+                break
+            }
+            array.append(model)
+        }
+        return array
+    }
+    //缓存分时数据
+    class func cacheLineData(datas:[LineModel]) {
+        let realm = try! Realm()
+        for (_, model) in datas.enumerated() {
+            try! realm.write {
+                realm.add(model)
+            }
+        }
+
+    }
+}

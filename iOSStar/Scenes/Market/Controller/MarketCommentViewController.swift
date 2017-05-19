@@ -9,6 +9,7 @@
 import UIKit
 
 class MarketCommentViewController: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()

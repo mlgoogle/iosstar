@@ -66,30 +66,12 @@ class SocketRequestManage: NSObject {
     func notifyResponsePacket(_ packet: SocketDataPacket) {
         
         objc_sync_enter(self)
-        let  socketReqeust = socketRequests[packet.session_id]
-
-        if packet.operate_code == SocketConst.OPCode.verifycode.rawValue + 1{
-            print("================")
-        }
-//        if packet.operate_code ==  SocketConst.OPCode.timeline.rawValue + 1{
-//            socketReqeust = timelineRequest
-//        }
-////        else if packet.operate_code == SocketConst.OPCode.products.rawValue + 1{
-////            socketReqeust = productsRequest
-////        }else if packet.operate_code == SocketConst.OPCode.kChart.rawValue + 1{
-////            socketReqeust = kchartRequest
-////        }
-//        else if packet.operate_code == SocketConst.OPCode.realtime.rawValue{
-//            socketReqeust = priceRequest
-//        }
-//        else if packet.operate_code == SocketConst.OPCode.balance.rawValue{
-//            let response:SocketJsonResponse = SocketJsonResponse(packet:packet)
-//            receiveBalanceBlock?(response)
-//        }
-        else{
+        var  socketReqeust = socketRequests[packet.session_id]
+        if packet.operate_code == SocketConst.OPCode.lineData.rawValue + 1{
+            socketReqeust = timelineRequest
+        }  else{
             socketRequests.removeValue(forKey: packet.session_id)
         }
-
         objc_sync_exit(self)
         let response:SocketJsonResponse = SocketJsonResponse(packet:packet)
         let statusCode:Int = response.statusCode;
@@ -143,22 +125,14 @@ class SocketRequestManage: NSObject {
         packet.session_id = sessionId;
         operate_code = Int(packet.operate_code)
         objc_sync_enter(self)
-//        if packet.operate_code ==  SocketConst.OPCode.timeline.rawValue{
-//            timelineRequest = socketReqeust
-//        }else if packet.operate_code == SocketConst.OPCode.products.rawValue{
-//            productsRequest = socketReqeust
-//        }else if packet.operate_code == SocketConst.OPCode.kChart.rawValue{
-//            kchartRequest = socketReqeust
-//        }else if packet.operate_code == SocketConst.OPCode.realtime.rawValue{
-//            priceRequest = socketReqeust
-//        }else if packet.operate_code == SocketConst.OPCode.balance.rawValue{
-//            balanceRequest = socketReqeust
-//        }
-//        else{
+        if packet.operate_code ==  SocketConst.OPCode.lineData.rawValue{
+            timelineRequest = socketReqeust
+        } else {
             socketRequests[packet.session_id] = socketReqeust
-//        }
+
+        }
+
         objc_sync_exit(self)
-//        print("\(packet.session_id)=================================\(packet.operate_code)")
         sendRequest(packet)
     }
   

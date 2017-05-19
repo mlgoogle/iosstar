@@ -46,15 +46,34 @@ class MenuSubViewCell: UICollectionViewCell {
 
     
     func requestStarList(type:Int) {
+        if type == 0 {
+            requestOptional()
+        } else {
+            requestCustomData(type: type)
+        }
+
+    }
+    func requestOptional() {
+        AppAPIHelper.marketAPI().requestOptionalStarList(startnum: 1, endnum: 10, complete: { (response) in
+            if let models = response as? [MarketListStarModel] {
+                self.reloadWithData(datas: models)
+            }
+        }, error: { (error) in
+        })
+    }
+    func requestCustomData(type:Int) {
+        
         AppAPIHelper.marketAPI().requestStarList(type: type, startnum: 1, endnum: 10, complete: { (response) in
             if let models = response as? [MarketListStarModel] {
-                self.dataSource = models
-                self.tableView.reloadData()
+                self.reloadWithData(datas: models)
             }
         }) { (error) in
         }
     }
-    
+    func reloadWithData(datas:[MarketListStarModel]) {
+        dataSource = datas
+        tableView.reloadData()
+    }
 }
 
 extension MenuSubViewCell:UITableViewDataSource, UITableViewDelegate {
