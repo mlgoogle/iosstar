@@ -17,6 +17,10 @@ class PublisherPageViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard bannerModel != nil else {
+            return
+        }
         setCustomTitle(title:"\(bannerModel!.name)（\(bannerModel!.code)）")
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: "PubInfoHeaderView")
         automaticallyAdjustsScrollViewInsets = false
@@ -33,8 +37,6 @@ class PublisherPageViewController: UIViewController {
     }
     func requestInfos() {
         AppAPIHelper.newsApi().requestStarInfo(code: code, complete: { (response) in
-            
-            
         }, error: errorBlockFunc())
     }
 }

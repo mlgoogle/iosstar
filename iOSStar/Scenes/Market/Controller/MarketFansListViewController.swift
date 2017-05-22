@@ -8,14 +8,16 @@
 
 import UIKit
 
-class MarketFansListViewController: UIViewController {
+class MarketFansListViewController: MarketBaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView = tableView
         tableView.bounces = true
         tableView.register(FansListHeaderView.self, forHeaderFooterViewReuseIdentifier: "FansListHeaderView")
+
         automaticallyAdjustsScrollViewInsets = false
     }
     

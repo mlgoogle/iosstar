@@ -41,7 +41,7 @@ class SocketConst: NSObject {
 
         case getorderstars = 10012
         //明星个人信息
-        case starInfo = 10001
+        case starInfo = 11005
         //资讯列表
         case newsInfo = 10013
        
@@ -61,7 +61,14 @@ class SocketConst: NSObject {
 
         //添加自选
         case addOptinal = 11015
-
+        
+        //评论列表
+        case commetList = 10017
+        
+        //明星经理
+        case starExperience = 11009
+        
+        
     }
     enum type:UInt8 {
         case error  = 0

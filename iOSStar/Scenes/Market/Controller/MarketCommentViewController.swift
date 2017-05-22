@@ -8,12 +8,12 @@
 
 import UIKit
 
-class MarketCommentViewController: UIViewController {
+class MarketCommentViewController: MarketBaseViewController {
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        scrollView = tableView
     }
 
     override func didReceiveMemoryWarning() {
