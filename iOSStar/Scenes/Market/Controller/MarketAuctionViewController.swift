@@ -14,7 +14,7 @@ class MarketAuctionViewController: MarketBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = tableView
-        tableView.register(FansListHeaderView.self, forCellReuseIdentifier: "FansListHeaderView")
+        tableView.register(FansListHeaderView.self, forHeaderFooterViewReuseIdentifier: "FansListHeaderView")
         
     }
 
