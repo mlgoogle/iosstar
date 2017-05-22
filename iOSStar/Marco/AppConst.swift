@@ -97,7 +97,34 @@ class AppConst {
         case CFBundleShortVersionString = "CFBundleShortVersionString"
         case CFBundleVersion = "CFBundleVersion"
     }
-
+    
+    enum StoryBoardName:String {
+        case Markt = "Market"
+        case News = "Home"
+        case Deal = "Deal"
+        case User = "User"
+        case Login = "Login"
+        case Exchange = "Exchange"
+    }
+    
+    enum RegisterIdentifier:String {
+        
+        case MarketDetailMenuView = "MarketDetailMenuView"
+        case PubInfoHeaderView = "PubInfoHeaderView"
+        case MaketBannerCell = "MaketBannerCell"
+        case MarketInfoCell = "MarketInfoCell"
+        case MarketExperienceCell = "MarketExperienceCell"
+        case FansListHeaderView = "FansListHeaderView"
+        case MarketFansCell = "MarketFansCell"
+        case MarketCommentCell = "MarketCommentCell"
+        case NewsListCell = "NewsListCell"
+    }
+    
+    enum SegueIdentifier:String {
+        case newsToDeatail = "newsToDeatail"
+        case showPubPage = "showPubPage"
+    }
+    
     class WechatKey {
         static let Scope = "snsapi_userinfo"
         static let State = "wpstate"

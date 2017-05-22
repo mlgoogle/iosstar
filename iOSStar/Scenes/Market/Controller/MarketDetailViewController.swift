@@ -11,30 +11,37 @@ import UIKit
 
 class MarketDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    
+
     var bottomScrollView:UIScrollView?
     var menuView:YD_VMenuView?
     var subViews = [UIView]()
     var starModel:MarketListStarModel?
+    var currentVC:MarketBaseViewController?
     @IBOutlet weak var handleMenuView: ImageMenuView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setCustomTitle(title: "柳岩（423412）")
         automaticallyAdjustsScrollViewInsets = false
         tableView.register(MarketDetailMenuView.self, forHeaderFooterViewReuseIdentifier: "MarketDetailMenuView")
-        handleMenuView.titles = ["求购","转让","粉丝见面会","自选"]
         requestLineData()
-        let types:[String] = ["MarketDetaiBaseInfoViewController", "MarketFansListViewController", "MarketAuctionViewController", "MarketCommentViewController"]
-        let storyboard = UIStoryboard(name: "Market", bundle: nil)
-        for (index, type) in types.enumerated() {
-            let vc = storyboard.instantiateViewController(withIdentifier: type)
-            addChildViewController(vc)
-            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 50 - 64 - 50 - 44)
-            subViews.append(vc.view)
-        }
+        setupSubView()
         handleMenuView.titles = ["求购", "转让", "粉丝见面会", "自选"]
         handleMenuView.delegate = self
     }
-
+    func setupSubView() {
+        let types:[String] = ["MarketDetaiBaseInfoViewController", "MarketFansListViewController", "MarketAuctionViewController", "MarketCommentViewController"]
+        let storyboard = UIStoryboard(name: "Market", bundle: nil)
+        for (index, type) in types.enumerated() {
+            let vc = storyboard.instantiateViewController(withIdentifier: type) as! MarketBaseViewController
+            addChildViewController(vc)
+            vc.delegate = self
+            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 50 - 64 - 50 - 44)
+            subViews.append(vc.view)
+            vc.scrollViewScrollEnabled(scroll: false)
+        }
+        currentVC = childViewControllers.first as? MarketBaseViewController
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -51,8 +58,9 @@ class MarketDetailViewController: UIViewController {
 
 }
 
-extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MenuViewDelegate, BottomItemSelectDelegate{
+extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MenuViewDelegate, BottomItemSelectDelegate, ScrollStopDelegate{
     
+
     func itemDidSelectAtIndex(index:Int) {
         switch index {
         case 3:
@@ -63,7 +71,6 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
     }
 
     func addOptinal() {
-        
         guard starModel  != nil else {return}
         AppAPIHelper.marketAPI().addOptinal(starcode: (starModel?.code)!, complete: { (response) in
             
@@ -133,18 +140,18 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
         if scrollView == bottomScrollView {
             let index = Int(scrollView.contentOffset.x / kScreenWidth)
             let indexPath = IndexPath(item: index, section: 0)
+            let scrollEnbled = currentVC?.scrollView?.isScrollEnabled
+            currentVC = childViewControllers[index] as? MarketBaseViewController
+            currentVC?.scrollViewScrollEnabled(scroll: scrollEnbled!)
             menuView?.selected(indexPath: indexPath)
         } else if scrollView == tableView {
-
             if scrollView.contentOffset.y > 400 {
-                scrollView.isScrollEnabled = false
-            }
-            
-        } else if scrollView != bottomScrollView {
-            if scrollView.contentOffset.y < 0 {
-                scrollView.isScrollEnabled = false
-                tableView.isScrollEnabled = true
+                tableView.isScrollEnabled = false
+                currentVC?.scrollViewScrollEnabled(scroll: true)
             }
         }
+    }
+    func scrollViewIsStop() {
+        tableView.isScrollEnabled = true
     }
 }

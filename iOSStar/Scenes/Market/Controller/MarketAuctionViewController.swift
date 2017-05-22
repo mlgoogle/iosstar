@@ -8,17 +8,14 @@
 
 import UIKit
 
-class MarketAuctionViewController: UIViewController {
-    @IBOutlet weak var bottomView: UIView!
-    @IBOutlet weak var timeLabel: UILabel!
+class MarketAuctionViewController: MarketBaseViewController {
 
-    @IBOutlet weak var codeLabel: UILabel!
-    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        bottomView.layer.cornerRadius = 3
-        bottomView.clipsToBounds = true
+        scrollView = tableView
+        tableView.register(FansListHeaderView.self, forCellReuseIdentifier: "FansListHeaderView")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,4 +34,28 @@ class MarketAuctionViewController: UIViewController {
     }
     */
 
+}
+
+extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return nil
+        }
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "FansListHeaderView")
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        }
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AuctionHeaderCell", for: indexPath)
+        
+        return cell
+    }
 }

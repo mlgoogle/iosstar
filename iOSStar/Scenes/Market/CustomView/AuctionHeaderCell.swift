@@ -1,18 +1,18 @@
 //
-//  MarketSBFansCell.swift
+//  AuctionHeaderCell.swift
 //  iOSStar
 //
-//  Created by J-bb on 17/5/18.
+//  Created by J-bb on 17/5/22.
 //  Copyright © 2017年 YunDian. All rights reserved.
 //
 
 import UIKit
 
-class MarketSBFansCell: UITableViewCell {
+class AuctionHeaderCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

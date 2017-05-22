@@ -28,9 +28,6 @@ class LineModel: Object {
     
     dynamic var timestamp = 0
     dynamic var value = 0.0
- 
-    
-    
     class func getLineData() -> [LineModel] {
         let realm = try! Realm()
         let resuls = realm.objects(LineModel.self).sorted(byProperty: "timestamp")
@@ -53,4 +50,15 @@ class LineModel: Object {
         }
 
     }
+}
+
+class ExperienceModel: Object {
+    dynamic var experience = ""
+    
+}
+class CommentModel: Object {
+    dynamic var comment = ""
+    dynamic var headurl = ""
+    dynamic var nickname = ""
+    dynamic var times = ""
 }
