@@ -14,6 +14,16 @@ class MarketCommentViewController: MarketBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = tableView
+        
+        requestCommentList()
+    }
+    
+    
+    func requestCommentList() {
+        AppAPIHelper.marketAPI().requestCommentList(starcode: "1001", complete: { (resonse) in
+            
+            
+        }, error: errorBlockFunc())
     }
 
     override func didReceiveMemoryWarning() {

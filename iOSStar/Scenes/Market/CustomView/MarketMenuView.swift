@@ -114,6 +114,12 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     }
     func reloadData() {
         menuCollectionView?.reloadData()
+        
+        perform(#selector(redressLineViewOrigin), with: nil, afterDelay: 0.5)
+    }
+    
+    func redressLineViewOrigin() {
+        moveLineView(indexPath: IndexPath(item: 0, section: 0))
     }
 }
 
@@ -124,12 +130,15 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         didSet{
             menuView?.items = items
             menuView?.reloadData()
+            menuView?.selected(indexPath: IndexPath(item: 1, section: 0))
             subViewCollectionView?.reloadData()
         }
     }
     var types:[MarketClassifyModel]? {
         didSet {
-            menuViewDidSelect(indexPath: IndexPath(item: 1, section: 0))
+            let indexPath = IndexPath(item: 1, section: 0)
+            menuViewDidSelect(indexPath: indexPath)
+            menuView?.selected(indexPath: indexPath)
         }
     }
     var subViews:[UIView]?
@@ -148,12 +157,10 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
-    lazy var priceTypeButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setTitleColor(UIColor(hexString: "333333"), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button.setTitle("最近价 元/小时", for: .normal)
-        return button
+    lazy var priceTypeButton: UILabel = {
+        let label = UILabel()
+        label.setAttributeText(text: "最近价 元/秒", firstFont: 14.0, secondFont: 12.0, firstColor: UIColor(hexString: "333333"), secondColor: UIColor(hexString: "333333"), range: NSRange(location: 4, length: 3))
+           return label
     }()
     lazy var priceChangeButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -161,6 +168,16 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.setTitleColor(UIColor(hexString: "333333"), for: .normal)
         return button
+    }()
+    
+    lazy var priceImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "8"))
+        return imageView
+    }()
+    
+    lazy var changeImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "8"))
+        return imageView
     }()
     
     lazy var lineView: UIView = {
@@ -213,19 +230,37 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         infoView.addSubview(allLabel)
         infoView.addSubview(priceTypeButton)
         infoView.addSubview(priceChangeButton)
+        infoView.addSubview(priceImageView)
+        infoView.addSubview(changeImageView)
+        changeImageView.snp.makeConstraints { (make) in
+            make.right.equalTo(-18)
+            make.height.equalTo(12)
+            make.width.equalTo(9)
+            make.centerY.equalTo(infoView)
+        }
+        priceChangeButton.snp.makeConstraints { (make) in
+            make.right.equalTo(changeImageView.snp.left).offset(-9)
+            make.centerY.equalTo(changeImageView)
+            make.width.equalTo(43)
+            make.height.equalTo(15)
+        }
+        priceImageView.snp.makeConstraints { (make) in
+            make.right.equalTo(priceChangeButton.snp.left).offset(-40)
+            make.width.equalTo(9)
+            make.height.equalTo(12)
+            make.centerY.equalTo(infoView)
+        }
+        priceTypeButton.snp.makeConstraints { (make) in
+            make.right.equalTo(priceImageView.snp.left).offset(-20)
+            make.centerY.equalTo(priceImageView)
+        }
         allLabel.snp.makeConstraints { (make) in
             make.left.equalTo(18)
             make.width.equalTo(30)
             make.height.equalTo(14)
             make.centerY.equalTo(infoView)
         }
-        priceTypeButton.snp.makeConstraints { (make) in
-            make.center.equalTo(infoView)
-        }
-        priceChangeButton.snp.makeConstraints { (make) in
-            make.right.equalTo(-36)
-            make.centerY.equalTo(infoView)
-        }
+
     }
     func requestDataWithIndexPath() {
 
@@ -258,7 +293,6 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
         if scrollView == subViewCollectionView {
             let index = Int(scrollView.contentOffset.x / kScreenWidth)
             let indexPath = IndexPath(item: index, section: 0)

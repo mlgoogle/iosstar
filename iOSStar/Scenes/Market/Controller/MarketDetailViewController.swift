@@ -36,7 +36,7 @@ class MarketDetailViewController: UIViewController {
             let vc = storyboard.instantiateViewController(withIdentifier: type) as! MarketBaseViewController
             addChildViewController(vc)
             vc.delegate = self
-            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 50 - 64 - 50 - 44)
+            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 50 - 64 - 50)
             subViews.append(vc.view)
             vc.scrollViewScrollEnabled(scroll: false)
         }
@@ -63,6 +63,8 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
 
     func itemDidSelectAtIndex(index:Int) {
         switch index {
+        case 2:
+            performSegue(withIdentifier: "meetFans", sender: nil)
         case 3:
             addOptinal()
         default:
@@ -71,9 +73,8 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
     }
 
     func addOptinal() {
-        guard starModel  != nil else {return}
-        AppAPIHelper.marketAPI().addOptinal(starcode: (starModel?.code)!, complete: { (response) in
-            
+//        guard starModel  != nil else {return}
+        AppAPIHelper.marketAPI().addOptinal(starcode: "1001", complete: { (response) in
             
         }, error: errorBlockFunc())
     }

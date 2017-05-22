@@ -7,12 +7,13 @@
 //
 
 import UIKit
-
+import MJRefresh
 protocol SubViewItemSelectDelegate {
     func selectItem(starModel:MarketListStarModel)
 }
 class MenuSubViewCell: UICollectionViewCell {
-  
+    var header:MJRefreshNormalHeader?
+    var footer:MJRefreshAutoNormalFooter?
     lazy var tableView:UITableView = {
 
         let tableView = UITableView(frame: CGRect(x: 0, y: 24, width: kScreenWidth, height: kScreenHeight - 90 - 44), style: .grouped)
@@ -24,24 +25,34 @@ class MenuSubViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.showsHorizontalScrollIndicator = false
-        tableView.showsVerticalScrollIndicator = false
-        tableView.register(SubViewItemCell.self, forCellReuseIdentifier: "SubViewItemCell")
-        contentView.addSubview(tableView)
+        addSubViews()
     }
     
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        addSubViews()
+    }
+    func addSubViews() {
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsHorizontalScrollIndicator = false
         tableView.showsVerticalScrollIndicator = false
         tableView.register(SubViewItemCell.self, forCellReuseIdentifier: "SubViewItemCell")
         contentView.addSubview(tableView)
+        
+        header = MJRefreshNormalHeader(refreshingBlock: { 
+            self.header?.endRefreshing()
+        })
+        tableView.mj_header = header
+        
+        footer = MJRefreshAutoNormalFooter(refreshingBlock: { 
+            self.footer?.endRefreshing()
+            
+        })
+        tableView.mj_footer = footer
+    
     }
 
     
