@@ -376,6 +376,10 @@
 		A06404851ECBF22E00ECD269 /* OrderStarCollectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06404841ECBF22E00ECD269 /* OrderStarCollectView.swift */; };
 		A0692AF91EC9461600D4240D /* BindingBankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0692AF81EC9461600D4240D /* BindingBankCardVC.swift */; };
 		A0692AFB1EC9488C00D4240D /* MoneyChangeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0692AFA1EC9488C00D4240D /* MoneyChangeVC.swift */; };
+		A06DA40A1ED40C97000A9CC3 /* SelectPayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06DA4091ED40C97000A9CC3 /* SelectPayType.swift */; };
+		A06DA40C1ED40CAC000A9CC3 /* SelectPayType.xib in Resources */ = {isa = PBXBuildFile; fileRef = A06DA40B1ED40CAC000A9CC3 /* SelectPayType.xib */; };
+		A06DA4101ED40ED6000A9CC3 /* SelectPayTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06DA40E1ED40ED6000A9CC3 /* SelectPayTypeCell.swift */; };
+		A06DA4111ED40ED6000A9CC3 /* SelectPayTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A06DA40F1ED40ED6000A9CC3 /* SelectPayTypeCell.xib */; };
 		A07238901EA76AA300E755DB /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = A07238691EA76AA300E755DB /* Contents.json */; };
 		A07238931EA76AA300E755DB /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = A072386F1EA76AA300E755DB /* back.png */; };
 		A07238941EA76AA300E755DB /* nav_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = A07238701EA76AA300E755DB /* nav_clear.png */; };
@@ -1100,6 +1104,10 @@
 		A06404841ECBF22E00ECD269 /* OrderStarCollectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderStarCollectView.swift; sourceTree = "<group>"; };
 		A0692AF81EC9461600D4240D /* BindingBankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingBankCardVC.swift; sourceTree = "<group>"; };
 		A0692AFA1EC9488C00D4240D /* MoneyChangeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyChangeVC.swift; sourceTree = "<group>"; };
+		A06DA4091ED40C97000A9CC3 /* SelectPayType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPayType.swift; sourceTree = "<group>"; };
+		A06DA40B1ED40CAC000A9CC3 /* SelectPayType.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectPayType.xib; sourceTree = "<group>"; };
+		A06DA40E1ED40ED6000A9CC3 /* SelectPayTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPayTypeCell.swift; sourceTree = "<group>"; };
+		A06DA40F1ED40ED6000A9CC3 /* SelectPayTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectPayTypeCell.xib; sourceTree = "<group>"; };
 		A072384A1EA768AD00E755DB /* iOSStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07238691EA76AA300E755DB /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		A072386F1EA76AA300E755DB /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
@@ -1432,6 +1440,7 @@
 		A03D3C4B1EA86A6300F85308 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				A06DA40D1ED40E87000A9CC3 /* selectPayType */,
 				A09667641EBB134F009C6A71 /* bankCard */,
 				A03D3FFA1EA8992E00F85308 /* HomeVC.swift */,
 				A025E4BC1EB04895002E1AA4 /* AccountInfoVC.swift */,
@@ -2785,6 +2794,17 @@
 			path = StarListModel;
 			sourceTree = "<group>";
 		};
+		A06DA40D1ED40E87000A9CC3 /* selectPayType */ = {
+			isa = PBXGroup;
+			children = (
+				A06DA4091ED40C97000A9CC3 /* SelectPayType.swift */,
+				A06DA40B1ED40CAC000A9CC3 /* SelectPayType.xib */,
+				A06DA40E1ED40ED6000A9CC3 /* SelectPayTypeCell.swift */,
+				A06DA40F1ED40ED6000A9CC3 /* SelectPayTypeCell.xib */,
+			);
+			name = selectPayType;
+			sourceTree = "<group>";
+		};
 		A07238411EA768AC00E755DB = {
 			isa = PBXGroup;
 			children = (
@@ -3149,8 +3169,10 @@
 			files = (
 				A05E5F3A1EB1949F0008888A /* close.png in Resources */,
 				A085A51F1EB0801300149F14 /* Main.storyboard in Resources */,
+				A06DA4111ED40ED6000A9CC3 /* SelectPayTypeCell.xib in Resources */,
 				A03D3FC31EA86A6500F85308 /* NTESVideoChatViewController.xib in Resources */,
 				A03D3FD31EA86A6500F85308 /* NTESNetDetectViewController.xib in Resources */,
+				A06DA40C1ED40CAC000A9CC3 /* SelectPayType.xib in Resources */,
 				A07238931EA76AA300E755DB /* back.png in Resources */,
 				A0C9D6701EAE102300FC438D /* NIMKitSettings.bundle in Resources */,
 				A0C9D66D1EAE102300FC438D /* SetupOSX.mpq in Resources */,
@@ -3338,6 +3360,7 @@
 				6E0C6B0B1EC4514400D9C2BC /* News.swift in Sources */,
 				6EFE79E01ECC49160096470D /* MarketDetaiBaseInfoViewController.swift in Sources */,
 				A03D3F891EA86A6500F85308 /* NTESGroupedUsrInfo.m in Sources */,
+				A06DA4101ED40ED6000A9CC3 /* SelectPayTypeCell.swift in Sources */,
 				A03D3F9E1EA86A6500F85308 /* NTESSessionConfig.m in Sources */,
 				A03D3F831EA86A6500F85308 /* NTESLiveMasterInfoView.m in Sources */,
 				A03D3FF81EA86A6600F85308 /* NTESPinyinConverter.m in Sources */,
@@ -3578,6 +3601,7 @@
 				A03D3EFB1EA86A6400F85308 /* NIMBadgeView.m in Sources */,
 				A03D3FE61EA86A6500F85308 /* NTESSettingCheckCell.m in Sources */,
 				A03D3F0B1EA86A6400F85308 /* NIMGrowingInternalTextView.m in Sources */,
+				A06DA40A1ED40C97000A9CC3 /* SelectPayType.swift in Sources */,
 				A03D3F8C1EA86A6500F85308 /* NTESUserListCell.m in Sources */,
 				6E193C501EBADFC90049AEDE /* UIColor+Extension.swift in Sources */,
 				A03D3FA31EA86A6500F85308 /* NTESSessionMsgConverter.m in Sources */,
