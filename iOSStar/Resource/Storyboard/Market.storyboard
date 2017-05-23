@@ -144,7 +144,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AuctionHeaderCell" rowHeight="581" id="tL1-1u-OAH" customClass="AuctionHeaderCell" customModule="iOSStar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="581"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="581"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tL1-1u-OAH" id="FqX-y7-B5N">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="580"/>
@@ -287,7 +287,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MarketAuctionCell" rowHeight="80" id="t94-Ik-j7r" customClass="MarketAuctionCell" customModule="iOSStar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="637" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="636.5" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t94-Ik-j7r" id="Z4G-lt-wRC">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
@@ -1377,7 +1377,7 @@
             <objects>
                 <navigationController storyboardIdentifier="Market" automaticallyAdjustsScrollViewInsets="NO" id="D4Y-gF-oKV" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jpd-CQ-nrk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Jpd-CQ-nrk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

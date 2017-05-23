@@ -44,6 +44,7 @@ class PublisherPageViewController: UIViewController {
     }
     func requestInfos() {
         AppAPIHelper.newsApi().requestStarInfo(code: code, complete: { (response) in
+            
         }, error: errorBlockFunc())
     }
 }

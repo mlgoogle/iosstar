@@ -43,6 +43,9 @@
 		6E1B56FF1ED296F100A014AE /* MarketAuctionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B56FE1ED296F100A014AE /* MarketAuctionCell.swift */; };
 		6E1B57031ED2EDEA00A014AE /* BuyOrSellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57021ED2EDEA00A014AE /* BuyOrSellViewController.swift */; };
 		6E1B57051ED305F600A014AE /* DealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57041ED305F600A014AE /* DealViewController.swift */; };
+		6E1B57071ED3CB1400A014AE /* BuyYetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57061ED3CB1400A014AE /* BuyYetViewController.swift */; };
+		6E1B57091ED3CB4100A014AE /* AllOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57081ED3CB4100A014AE /* AllOrderViewController.swift */; };
+		6E1B570B1ED3CBA800A014AE /* DealDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B570A1ED3CBA800A014AE /* DealDetailViewController.swift */; };
 		6E6027841EC9916C001FBAA6 /* MarketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */; };
 		6EBF590A1EC6EAAF003F67B4 /* MarketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF59091EC6EAAF003F67B4 /* MarketAPI.swift */; };
 		6EBF590C1EC6EB75003F67B4 /* MarketSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF590B1EC6EB75003F67B4 /* MarketSocketAPI.swift */; };
@@ -486,6 +489,9 @@
 		6E1B56FE1ED296F100A014AE /* MarketAuctionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketAuctionCell.swift; sourceTree = "<group>"; };
 		6E1B57021ED2EDEA00A014AE /* BuyOrSellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyOrSellViewController.swift; sourceTree = "<group>"; };
 		6E1B57041ED305F600A014AE /* DealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealViewController.swift; sourceTree = "<group>"; };
+		6E1B57061ED3CB1400A014AE /* BuyYetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyYetViewController.swift; sourceTree = "<group>"; };
+		6E1B57081ED3CB4100A014AE /* AllOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllOrderViewController.swift; sourceTree = "<group>"; };
+		6E1B570A1ED3CBA800A014AE /* DealDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealDetailViewController.swift; sourceTree = "<group>"; };
 		6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailViewController.swift; sourceTree = "<group>"; };
 		6EBF59091EC6EAAF003F67B4 /* MarketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketAPI.swift; sourceTree = "<group>"; };
 		6EBF590B1EC6EB75003F67B4 /* MarketSocketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketSocketAPI.swift; sourceTree = "<group>"; };
@@ -1362,6 +1368,9 @@
 			children = (
 				6E1B57041ED305F600A014AE /* DealViewController.swift */,
 				6E1B57021ED2EDEA00A014AE /* BuyOrSellViewController.swift */,
+				6E1B57061ED3CB1400A014AE /* BuyYetViewController.swift */,
+				6E1B57081ED3CB4100A014AE /* AllOrderViewController.swift */,
+				6E1B570A1ED3CBA800A014AE /* DealDetailViewController.swift */,
 			);
 			name = Controllers;
 			path = iOSStar/Scenes/Deal/Controllers;
@@ -3290,6 +3299,7 @@
 				A04C628A1EC15D98000BFC29 /* TradePdVC.swift in Sources */,
 				A03D3F211EA86A6400F85308 /* NIMLocationContentConfig.m in Sources */,
 				A03D3F5B1EA86A6500F85308 /* UINavigationBar+Swizzling.m in Sources */,
+				6E1B570B1ED3CBA800A014AE /* DealDetailViewController.swift in Sources */,
 				A03D3EE21EA86A6400F85308 /* NSData+NTES.m in Sources */,
 				A04C62881EC1580D000BFC29 /* CustomerServiceVC.swift in Sources */,
 				A03D3F591EA86A6500F85308 /* NIMPinyinConverter.m in Sources */,
@@ -3359,6 +3369,7 @@
 				A03D3FE91EA86A6500F85308 /* NTESDemoFetchChatroomTask.m in Sources */,
 				A03D3F4E1EA86A6500F85308 /* NIMTeamMemberListViewController.m in Sources */,
 				A03D3FA61EA86A6500F85308 /* NTESSearchMessageContentCell.m in Sources */,
+				6E1B57071ED3CB1400A014AE /* BuyYetViewController.swift in Sources */,
 				6EBF590C1EC6EB75003F67B4 /* MarketSocketAPI.swift in Sources */,
 				A0856A111EB0B5C3004F349B /* UIBarExtension.swift in Sources */,
 				A07238A01EA76AA300E755DB /* String+Extension.swift in Sources */,
@@ -3402,6 +3413,7 @@
 				A03D3FEB1EA86A6500F85308 /* NTESDemoService.m in Sources */,
 				A025E4BF1EB04A96002E1AA4 /* BankCardVC.swift in Sources */,
 				A025E4BD1EB04895002E1AA4 /* AccountInfoVC.swift in Sources */,
+				6E1B57091ED3CB4100A014AE /* AllOrderViewController.swift in Sources */,
 				6E16165E1EAF322F00D95CB6 /* NewsNavigationView.swift in Sources */,
 				A03D3F301EA86A6400F85308 /* NIMSessionLayoutImpl.m in Sources */,
 				A03D3FC51EA86A6500F85308 /* NTESRecordSelectView.m in Sources */,
@@ -3763,6 +3775,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 29FPYRHCKA;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iOSStar/Marco",
@@ -3791,6 +3804,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 29FPYRHCKA;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iOSStar/Marco",
