@@ -85,7 +85,7 @@
 {
     self.view.backgroundColor = [UIColor grayColor];
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    self.tableView.backgroundColor = NIMKit_UIColorFromRGB(0xe4e7ec);
+    self.tableView.backgroundColor = NIMKit_UIColorFromRGB(0xfafafa);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     

@@ -17,7 +17,7 @@ class MarketAuctionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bottomView.layer.cornerRadius = 1
+        bottomView.layer.cornerRadius = 3
         bottomView.clipsToBounds = true
     }
 

@@ -27,7 +27,14 @@ class ImageMenuCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        addSubView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        addSubView()
+    }
+    func addSubView() {
         addSubview(iconImageView)
         addSubview(titleLabel)
         iconImageView.snp.makeConstraints { (make) in
@@ -43,24 +50,8 @@ class ImageMenuCell: UICollectionViewCell {
             make.top.equalTo(iconImageView.snp.bottom).offset(1)
         }
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        addSubview(iconImageView)
-        addSubview(titleLabel)
-        iconImageView.snp.makeConstraints { (make) in
-            make.height.equalTo(22)
-            make.width.equalTo(22)
-            make.centerX.equalTo(self)
-            make.top.equalTo(5)
-        }
-        
-        titleLabel.snp.makeConstraints { (make) in
-            make.centerX.equalTo(iconImageView)
-            make.height.equalTo(10)
-            make.top.equalTo(iconImageView).offset(1)
-        }
+    func setTitle(text:String)  {
+        titleLabel.text = text
     }
-    
     
 }

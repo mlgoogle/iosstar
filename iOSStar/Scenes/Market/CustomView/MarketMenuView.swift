@@ -103,7 +103,6 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if isScreenWidth {
-            
             return CGSize(width: (kScreenWidth - 20 - 24 * (CGFloat(items!.count) - 1) ) / CGFloat(items!.count), height: 30)
         } else {
             let title = items?[indexPath.row]
@@ -230,6 +229,9 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }
     func requestDataWithIndexPath() {
 
+        guard types != nil else {
+            return
+        }
         let cell = subViewCollectionView?.cellForItem(at: selectIndexPath) as? MenuSubViewCell
         let model = types![selectIndexPath.item]
         cell?.requestStarList(type: model.type)
@@ -246,14 +248,11 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuSubViewCell", for: indexPath) as! MenuSubViewCell
-        
         cell.delegate = self
         return cell
     }
     func selectItem(starModel:MarketListStarModel) {
-        
         let storyBoard = UIStoryboard(name: "Market", bundle: nil)
-
         let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail")
         navigationController?.pushViewController(vc, animated: true)
     }

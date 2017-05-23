@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol BottomItemSelectDelegate {
+    func itemDidSelectAtIndex(index:Int)
+}
+
 class ImageMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
 
+    var delegate:BottomItemSelectDelegate?
     var images:[UIImage]?
     var titles:[String]? {
         didSet{
@@ -51,11 +56,11 @@ class ImageMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageMenuCell", for: indexPath) as! ImageMenuCell
 
-        
+        cell.setTitle(text: titles![indexPath.row])
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        delegate?.itemDidSelectAtIndex(index: indexPath.item)
     
     }
     

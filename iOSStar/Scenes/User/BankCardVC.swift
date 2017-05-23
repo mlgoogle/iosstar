@@ -31,8 +31,9 @@ class BankCardVC: UITableViewController {
         return 5
     }
 
+  
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 0.001 : 10
+        return 20
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows

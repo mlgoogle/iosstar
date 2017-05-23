@@ -11,24 +11,28 @@ import UIKit
 
 class MarketDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-
+    var bottomScrollView:UIScrollView?
+    var menuView:YD_VMenuView?
+    var subViews = [UIView]()
+    var starModel:MarketListStarModel?
     @IBOutlet weak var handleMenuView: ImageMenuView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setCustomTitle(title: "柳岩（423412）")
-        
         automaticallyAdjustsScrollViewInsets = false
         tableView.register(MarketDetailMenuView.self, forHeaderFooterViewReuseIdentifier: "MarketDetailMenuView")
         handleMenuView.titles = ["求购","转让","粉丝见面会","自选"]
-        
         requestLineData()
-        
-        let types = [MarketDetaiBaseInfoViewController.self, MarketFansListViewController.self, MarketAuctionViewController.self, MarketCommentViewController.self] as [Any]
-        for type in types {
-            
-
+        let types:[String] = ["MarketDetaiBaseInfoViewController", "MarketFansListViewController", "MarketAuctionViewController", "MarketCommentViewController"]
+        let storyboard = UIStoryboard(name: "Market", bundle: nil)
+        for (index, type) in types.enumerated() {
+            let vc = storyboard.instantiateViewController(withIdentifier: type)
+            addChildViewController(vc)
+            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 50 - 64 - 50 - 44)
+            subViews.append(vc.view)
         }
-
+        handleMenuView.titles = ["求购", "转让", "粉丝见面会", "自选"]
+        handleMenuView.delegate = self
     }
 
 
@@ -41,19 +45,48 @@ class MarketDetailViewController: UIViewController {
                 LineModel.cacheLineData(datas: models)
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
             }
-            
         }, error: errorBlockFunc())
     }
     
 
 }
-extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource {
+
+extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MenuViewDelegate, BottomItemSelectDelegate{
+    
+    func itemDidSelectAtIndex(index:Int) {
+        switch index {
+        case 3:
+            addOptinal()
+        default:
+            break
+        }
+    }
+
+    func addOptinal() {
+        
+        guard starModel  != nil else {return}
+        AppAPIHelper.marketAPI().addOptinal(starcode: (starModel?.code)!, complete: { (response) in
+            
+            
+        }, error: errorBlockFunc())
+    }
+    
+    func menuViewDidSelect(indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.3) {
+            self.bottomScrollView?.contentOffset = CGPoint(x: kScreenWidth * CGFloat(indexPath.row), y: 0)
+        }
+    }
+    
+    
+
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             return nil
         }
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MarketDetailMenuView") as! MarketDetailMenuView
+        view.menuView.delegate = self
+        menuView = view.menuView
         return  view
         
     }
@@ -80,6 +113,9 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource 
         
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MarketDetailSubViewCell", for: indexPath) as! MarketDetailSubViewCell
+            bottomScrollView = cell.scrollView
+            cell.scrollView.delegate = self
+            cell.setSubViews(views: subViews)
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketDetailCell", for: indexPath) as! MarketDetailCell
@@ -91,5 +127,24 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource 
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == bottomScrollView {
+            let index = Int(scrollView.contentOffset.x / kScreenWidth)
+            let indexPath = IndexPath(item: index, section: 0)
+            menuView?.selected(indexPath: indexPath)
+        } else if scrollView == tableView {
+
+            if scrollView.contentOffset.y > 400 {
+                scrollView.isScrollEnabled = false
+            }
+            
+        } else if scrollView != bottomScrollView {
+            if scrollView.contentOffset.y < 0 {
+                scrollView.isScrollEnabled = false
+                tableView.isScrollEnabled = true
+            }
+        }
     }
 }

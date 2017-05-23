@@ -13,7 +13,10 @@ class YDSSessionViewController: NTESSessionViewController {
     var isbool : Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
+        tableView.backgroundColor = UIColor.init(hexString: "FAFAFA")
+        
+        
         // Do any additional setup after loading the view.
     }
 

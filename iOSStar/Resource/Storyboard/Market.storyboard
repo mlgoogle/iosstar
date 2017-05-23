@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="D4Y-gF-oKV">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="D4Y-gF-oKV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,7 +56,7 @@
         <!--Market Comment View Controller-->
         <scene sceneID="5ce-5v-e74">
             <objects>
-                <viewController id="dUn-mb-NkQ" customClass="MarketCommentViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MarketCommentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dUn-mb-NkQ" customClass="MarketCommentViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xzc-Kl-IXY"/>
                         <viewControllerLayoutGuide type="bottom" id="RkY-TH-zMA"/>
@@ -69,7 +69,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="132" id="SZB-KZ-8X9" customClass="MarketCommentCell" customModule="iOSStar" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MarketCommentCell" rowHeight="132" id="SZB-KZ-8X9" customClass="MarketCommentCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="132"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SZB-KZ-8X9" id="72K-sv-dlm">
@@ -148,7 +148,7 @@
         <!--Market Auction View Controller-->
         <scene sceneID="YBH-Oa-d9t">
             <objects>
-                <viewController id="PUd-la-maf" customClass="MarketAuctionViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MarketAuctionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PUd-la-maf" customClass="MarketAuctionViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DDD-ke-Iv9"/>
                         <viewControllerLayoutGuide type="bottom" id="KCE-MN-WPk"/>
@@ -242,7 +242,7 @@
         <!--Market Fans List View Controller-->
         <scene sceneID="sjd-4X-ny5">
             <objects>
-                <viewController id="jBW-EL-wIz" customClass="MarketFansListViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MarketFansListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jBW-EL-wIz" customClass="MarketFansListViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NCV-iA-4S4"/>
                         <viewControllerLayoutGuide type="bottom" id="eGw-ef-wPJ"/>
@@ -251,18 +251,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VZy-cC-zm1">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="90" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="VZy-cC-zm1">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MarketFansCell" rowHeight="90" id="sMY-br-Ejh" customClass="MarketFansCell" customModule="iOSStar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sMY-br-Ejh" id="ERE-0j-JNk">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8" translatesAutoresizingMaskIntoConstraints="NO" id="1aD-l6-MpY" customClass="timg">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8" translatesAutoresizingMaskIntoConstraints="NO" id="1aD-l6-MpY">
                                                     <rect key="frame" x="12" y="31" width="28" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="28" id="bb9-Sg-MT4"/>
@@ -321,7 +321,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MarketSBFansCell" id="l7r-ub-FBS" customClass="MarketSBFansCell" customModule="iOSStar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="118" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="146" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l7r-ub-FBS" id="4og-1t-h9I">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
@@ -387,6 +387,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="jBW-EL-wIz" id="gTp-Td-PKM"/>
+                                    <outlet property="delegate" destination="jBW-EL-wIz" id="lgz-FB-U4k"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -405,10 +409,10 @@
             </objects>
             <point key="canvasLocation" x="-530.39999999999998" y="-1222.0389805097452"/>
         </scene>
-        <!--View Controller-->
+        <!--Market Detai Base Info View Controller-->
         <scene sceneID="6Ed-s6-1cv">
             <objects>
-                <viewController id="O7q-OD-VfE" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MarketDetaiBaseInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="O7q-OD-VfE" customClass="MarketDetaiBaseInfoViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ljH-VQ-7Jr"/>
                         <viewControllerLayoutGuide type="bottom" id="UxK-f8-WDB"/>
@@ -421,7 +425,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="177" id="E4S-bR-64I" customClass="MaketBannerCell" customModule="iOSStar" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MaketBannerCell" rowHeight="177" id="E4S-bR-64I" customClass="MaketBannerCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="177"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E4S-bR-64I" id="Dka-bq-lhJ">
@@ -440,8 +444,11 @@
                                                 <constraint firstAttribute="bottom" secondItem="2r7-Du-Ufr" secondAttribute="bottom" id="vHz-jU-sX3"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="banner" destination="2r7-Du-Ufr" id="n1Y-00-Yvi"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="infoCell" rowHeight="154" id="qIg-eq-9jR" customClass="MarketInfoCell" customModule="iOSStar" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MarketInfoCell" rowHeight="154" id="qIg-eq-9jR" customClass="MarketInfoCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="205" width="375" height="154"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qIg-eq-9jR" id="s1R-Au-nlB">
@@ -559,7 +566,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="38" id="4Zj-8E-HbA" customClass="MarketExperienceCell" customModule="iOSStar" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MarketExperienceCell" rowHeight="38" id="4Zj-8E-HbA" customClass="MarketExperienceCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="359" width="375" height="38"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Zj-8E-HbA" id="It2-q0-OOH">
@@ -577,6 +584,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="O7q-OD-VfE" id="3tH-CA-z6h"/>
+                                    <outlet property="delegate" destination="O7q-OD-VfE" id="swN-lI-uwW"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -587,6 +598,9 @@
                             <constraint firstAttribute="trailing" secondItem="azW-EC-10X" secondAttribute="trailing" id="vI8-FA-v7T"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="azW-EC-10X" id="NEm-XO-eNt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmw-ag-qzV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -674,38 +688,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vbw-7T-Xkz" id="a7j-8L-hzW">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="156.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IP4-wr-7b5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="156"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDv-it-RFC">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="156"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="375" id="08V-4G-1wx"/>
-                                                            </constraints>
-                                                        </view>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="DDv-it-RFC" firstAttribute="top" secondItem="IP4-wr-7b5" secondAttribute="top" id="4Hn-vb-dIN"/>
-                                                        <constraint firstItem="DDv-it-RFC" firstAttribute="centerY" secondItem="IP4-wr-7b5" secondAttribute="centerY" id="UNU-iN-wLS"/>
-                                                        <constraint firstItem="DDv-it-RFC" firstAttribute="leading" secondItem="IP4-wr-7b5" secondAttribute="leading" id="eAQ-Cf-W5l"/>
-                                                        <constraint firstAttribute="bottom" secondItem="DDv-it-RFC" secondAttribute="bottom" id="mWm-MN-NtS"/>
-                                                        <constraint firstAttribute="trailing" secondItem="DDv-it-RFC" secondAttribute="trailing" id="pe1-5j-HaW"/>
-                                                    </constraints>
-                                                </scrollView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="IP4-wr-7b5" firstAttribute="top" secondItem="a7j-8L-hzW" secondAttribute="top" id="IZo-59-y12"/>
-                                                <constraint firstAttribute="bottom" secondItem="IP4-wr-7b5" secondAttribute="bottom" id="Kmg-iy-tf5"/>
-                                                <constraint firstItem="IP4-wr-7b5" firstAttribute="leading" secondItem="a7j-8L-hzW" secondAttribute="leading" id="Wk7-gw-eLJ"/>
-                                                <constraint firstAttribute="trailing" secondItem="IP4-wr-7b5" secondAttribute="trailing" id="qdK-o9-c6g"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="backView" destination="DDv-it-RFC" id="jcM-ck-WS3"/>
-                                            <outlet property="width" destination="08V-4G-1wx" id="mL6-FG-ZwG"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

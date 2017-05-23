@@ -48,7 +48,7 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
     @IBOutlet weak var iconImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        changeLabel.layer.cornerRadius = 1
+        changeLabel.layer.cornerRadius = 3
         changeLabel.clipsToBounds = true
         lineView.legend.setCustom(entries: [])
         lineView.noDataText = "暂无数据"
@@ -57,7 +57,7 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
         lineView.xAxis.drawAxisLineEnabled = false
         lineView.xAxis.axisMinimum = 0
         lineView.xAxis.axisMaximum = 30
-        lineView.rightAxis.axisMinimum = 0
+        lineView.leftAxis.axisMinimum = 0
         lineView.xAxis.labelFont = UIFont.systemFont(ofSize: 0)
         lineView.leftAxis.labelFont = UIFont.systemFont(ofSize: 10)
         lineView.leftAxis.gridColor = UIColor.init(rgbHex: 0xf2f2f2)
@@ -74,7 +74,13 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
         for (index,model) in datas.enumerated() {
             
             print(model.value)
-            let entry = ChartDataEntry(x: Double(index), y: model.value + 2)
+           var y = 0.0
+            if model.value < 10 {
+              y =  model.value + 10
+            } else {
+                y = model.value
+            }
+            let entry = ChartDataEntry(x: Double(index), y: y)
             entrys.append(entry)
         }
         self.datas = datas
@@ -83,7 +89,7 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
         set.circleRadius = 0
         set.form = .empty
         set.circleHoleRadius = 0
-        set.mode = .linear
+        set.mode = .cubicBezier
         set.valueFont = UIFont.systemFont(ofSize: 0)
         set.drawFilledEnabled = true
         set.fillColor = UIColor(red: 203.0 / 255, green: 66.0 / 255, blue: 50.0 / 255, alpha: 0.5)

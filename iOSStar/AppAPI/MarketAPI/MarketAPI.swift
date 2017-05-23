@@ -15,4 +15,6 @@ protocol MarketAPI {
     func requestStarList(type:Int,startnum:Int, endnum:Int,complete: CompleteBlock?, error: ErrorBlock?)
     func requestOptionalStarList(startnum:Int, endnum:Int,complete: CompleteBlock?, error: ErrorBlock?)
     func requestLineViewData(starcode:String,complete: CompleteBlock?, error: ErrorBlock?)
+    func addOptinal(starcode:String,complete: CompleteBlock?, error: ErrorBlock?)
+    
 }
