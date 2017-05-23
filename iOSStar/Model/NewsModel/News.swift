@@ -29,12 +29,14 @@ class BannerModel: Object {
 }
 
 class BannerDetaiStarModel: Object {
-    dynamic var accid = ""
-    dynamic var brief = ""
-    dynamic var code = ""
-    dynamic var gender = 1
-    dynamic var name = ""
-    dynamic var phone = ""
-    dynamic var price = 0.0
-    dynamic var pic_url = ""
+    dynamic var achievement = ""
+    dynamic var birth = ""
+    dynamic var colleage = ""
+    dynamic var expeience = ""
+    dynamic var introduction = ""
+    dynamic var nation = ""
+    dynamic var nationality = ""
+    dynamic var pic1 = ""
+    dynamic var work = ""
+    dynamic var seconds = 0
 }

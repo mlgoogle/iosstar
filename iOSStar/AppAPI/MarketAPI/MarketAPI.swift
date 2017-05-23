@@ -16,5 +16,7 @@ protocol MarketAPI {
     func requestOptionalStarList(startnum:Int, endnum:Int,complete: CompleteBlock?, error: ErrorBlock?)
     func requestLineViewData(starcode:String,complete: CompleteBlock?, error: ErrorBlock?)
     func addOptinal(starcode:String,complete: CompleteBlock?, error: ErrorBlock?)
+    func requestCommentList(starcode:String,complete: CompleteBlock?, error: ErrorBlock?)
     
+    func requestStarExperience(code:String,complete: CompleteBlock?, error: ErrorBlock?)
 }

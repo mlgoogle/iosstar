@@ -8,12 +8,22 @@
 
 import UIKit
 
-class MarketCommentViewController: UIViewController {
+class MarketCommentViewController: MarketBaseViewController {
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        scrollView = tableView
+        
+        requestCommentList()
+    }
+    
+    
+    func requestCommentList() {
+        AppAPIHelper.marketAPI().requestCommentList(starcode: "1001", complete: { (resonse) in
+            
+            
+        }, error: errorBlockFunc())
     }
 
     override func didReceiveMemoryWarning() {

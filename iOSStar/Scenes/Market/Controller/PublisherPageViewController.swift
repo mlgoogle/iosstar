@@ -12,11 +12,17 @@ import SVProgressHUD
 class PublisherPageViewController: UIViewController {
     var code = "1001"
     var bannerModel:BannerModel?
+    var rows = [1, 1, 10]
+    var sectionHeight = [200, 170, 50]
     var titles = ["1","个人简介", "主要经历"]
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard bannerModel != nil else {
+            return
+        }
         setCustomTitle(title:"\(bannerModel!.name)（\(bannerModel!.code)）")
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: "PubInfoHeaderView")
         automaticallyAdjustsScrollViewInsets = false
@@ -29,12 +35,15 @@ class PublisherPageViewController: UIViewController {
     }
 
     @IBAction func buyButtonAction(_ sender: Any) {
-        SVProgressHUD.showInfo(withStatus: "完善中")
+        
+        let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Markt.rawValue, bundle: nil)
+        
+        let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail")
+        navigationController?.pushViewController(vc, animated: true)
+        
     }
     func requestInfos() {
         AppAPIHelper.newsApi().requestStarInfo(code: code, complete: { (response) in
-            
-            
         }, error: errorBlockFunc())
     }
 }
@@ -45,10 +54,10 @@ extension PublisherPageViewController:UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return rows[section]
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return CGFloat(sectionHeight[indexPath.section])
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
@@ -59,7 +68,7 @@ extension PublisherPageViewController:UITableViewDelegate, UITableViewDataSource
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath)
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MarketExperienceCell", for: indexPath)
             return cell
         default:
             return UITableViewCell()

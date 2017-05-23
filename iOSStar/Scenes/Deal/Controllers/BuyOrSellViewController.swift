@@ -1,16 +1,15 @@
 //
-//  HaveSoldVC.swift
+//  BuyOrSellViewController.swift
 //  iOSStar
 //
-//  Created by sum on 2017/4/24.
+//  Created by J-bb on 17/5/22.
 //  Copyright © 2017年 YunDian. All rights reserved.
 //
 
 import UIKit
 
-class HaveBuyVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
+class BuyOrSellViewController: UIViewController {
 
-    @IBOutlet weak var tabelView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,16 +21,6 @@ class HaveBuyVC: UIViewController ,UITableViewDataSource,UITableViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderListCell")
-        return cell!
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return   100
-    }
 
     /*
     // MARK: - Navigation

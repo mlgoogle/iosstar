@@ -15,6 +15,9 @@ private let alphaMargin:CGFloat = 136.0
 class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     @IBOutlet weak var tableView: UITableView!
 
+    var isRefresh = true
+    var header:MJRefreshNormalHeader?
+    var footer:MJRefreshAutoNormalFooter?
     var bannerModels:[BannerModel]?
     var bannerScrollView: SDCycleScrollView?
     var newsData:[NewsModel]?
@@ -28,52 +31,38 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         scrollViewDidScroll(tableView)
         titleView.setTime()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         UIApplication.shared.setStatusBarHidden(false, with: .none)
         titleView.isHidden = true
-
-        
-
-        /**
-         - 待修复，点击顶部滑动到最上部功能因隐藏状态栏失效
-         */
-        let tapGes = UITapGestureRecognizer(target: self, action: #selector(scrollToTop))
-        navigationController?.navigationBar.addGestureRecognizer(tapGes)
-        navigationController?.navigationBar.isUserInteractionEnabled = true
-        setUserInterraction()
-    }
-    func setUserInterraction() {
-        
-        for view in (navigationController?.navigationBar.subviews)! {
-            view.isUserInteractionEnabled = true
-        }
-    }
-    
-    func scrollToTop() {
-        
-        tableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .bottom, animated: true)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
         setupBannerView()
         setupNavigation()
         requestNewsList()
         requestBannerList()
+        header = MJRefreshNormalHeader(refreshingBlock: {
+            self.isRefresh = true
+            self.requestNewsList()
+            self.requestBannerList()
+        })
+        tableView.mj_header = header
+        
+        footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+            
+            self.isRefresh = false
+            self.requestNewsList()
+        })
+        tableView.mj_footer = footer
     }
+    
     func setupNavigation() {
         navigationController?.delegate = self;
         navigationController?.navigationBar.isTranslucent = true
         setImageWithAlpha(alpha: 0.0)
-        let view = navigationController?.navigationBar.subviews.first?.subviews.first
-        view?.isHidden = true
         navigationController?.navigationBar.addSubview(titleView)
         titleView.isHidden = true
     }
@@ -87,15 +76,14 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         backView.backgroundColor = UIColor(hexString: "EFF3F6")
         tableView.tableHeaderView = backView
         tableView.separatorStyle = .none
-
     }
     
     func requestBannerList() {
         AppAPIHelper.newsApi().requestBannerList(complete: { (response)  in
             if let models = response as? [BannerModel] {
+                
                 self.bannerModels = models
                 var bannersUrl:[String] = []
-                
                 for model in models {
                     bannersUrl.append(model.pic_url)
                 }
@@ -105,18 +93,46 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         }, error: errorBlockFunc())
         
     }
-    
+    func endRefresh() {
+        if header?.state == .refreshing {
+            header?.endRefreshing()
+        }
+        if footer?.state == .refreshing {
+            footer?.endRefreshing()
+        }
+    }
     func requestNewsList()  {
         
-        AppAPIHelper.newsApi().requestNewsList(startnum: 1, endnum: 10, complete: { (response)  in
-            self.newsData = response as? [NewsModel]
+        var startNumber = 0
+        if !isRefresh {
+            
+            startNumber = newsData == nil ? 0 : newsData!.count
+        }
+        
+        AppAPIHelper.newsApi().requestNewsList(startnum: startNumber, endnum: startNumber + 10, complete: { (response)  in
+            
+            self.endRefresh()
+            
+            if let models = response as? [NewsModel] {
+                if models.count < 10 {
+                    self.footer?.isHidden = true
+                } else {
+                    self.footer?.isHidden = false   
+                }
+                if self.isRefresh {
+                    self.newsData = models
+                } else {
+                    self.newsData?.append(contentsOf: models)
+                }
+            }
+
             self.tableView.reloadData()
+
         }, error: errorBlockFunc())
     }
 
     
     func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
-        
         
         performSegue(withIdentifier: "showPubPage", sender: index)
     }
@@ -124,7 +140,6 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
 }
 
 extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource{
-
 
     
     func setImageWithAlpha(alpha:CGFloat) {
