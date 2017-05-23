@@ -55,7 +55,6 @@ class RegistVC: UIViewController {
         let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
         let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
         tabar.selectedIndex = 0
-       
         self.dismissController()
     }
     override func viewDidLoad() {
@@ -89,10 +88,7 @@ class RegistVC: UIViewController {
                 }, error: { (error)  in
                     self.vaildCodeBtn.isEnabled = true
             })
-            
         }
-        
-        
     }
     //MARK:-   更新秒数
     func updatecodeBtnTitle() {

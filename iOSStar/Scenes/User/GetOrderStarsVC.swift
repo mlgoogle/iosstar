@@ -21,6 +21,10 @@ class GetOrderStarsVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         tableView.delegate = self
         initData()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     @IBAction func fans(_ sender: Any) {
     }
 
