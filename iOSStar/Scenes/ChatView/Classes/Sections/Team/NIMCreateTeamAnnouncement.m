@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"新建群公告";
-    self.view.backgroundColor = NIMKit_UIColorFromRGB(0xe4e7ec);
+    self.view.backgroundColor = NIMKit_UIColorFromRGB(0xfafafa);
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:self.scrollView];

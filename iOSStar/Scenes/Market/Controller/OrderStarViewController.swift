@@ -8,21 +8,31 @@
 
 import UIKit
 class OrderType : UITableViewCell{
-    
+     // 具体时间
     @IBOutlet weak var orderAccount: UILabel!
+    // 约见时间
     @IBOutlet weak var orderType: UILabel!
-    
-    @IBOutlet weak var inputType: UITextField!
+    // 意见反馈
+    @IBOutlet weak var feedBack: UITextView!
+
     
 }
 class OrderStarViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UIPickerViewDelegate,UIPickerViewDataSource{
-    
+    // 一个假的框为了弹出键盘
     @IBOutlet weak var inputPalace: UITextField!
+    //意见反馈
+    var feedBack : UITextView!
+    // 约见时间
     var orderTime: UILabel!
+    // 约见地址
     var orderPalace: UILabel!
+    //   城市列表
     var dataCity = Array<Dictionary<String, AnyObject>>()
+    // pickview选择的row
     var selectRow = 0
+    // pickview选择的Componentow
     var selectComponent = 0
+     // 一个假的框为了弹出键盘
     @IBOutlet weak var inputType: UITextField!
     @IBOutlet weak var tableView: UITableView!
     //定义pickerView
@@ -100,13 +110,16 @@ class OrderStarViewController: UIViewController,UITableViewDelegate,UITableViewD
         }
         if indexPath.row == 4{
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FeedbackCell")
-            cell?.selectionStyle = .none
-            return cell!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FeedbackCell") as! OrderType
+             feedBack = cell.feedBack
+            
+            cell.selectionStyle = .none
+            return cell
         }
         return cell!
         
     }
+    //MARK: 获取城市数据
     func initCity(){
         let address : String =  Bundle.main.path(forResource: "City", ofType: "plist")!
         let dic =  NSDictionary.init(contentsOfFile: address) as! [String : Array<Any>]
@@ -183,6 +196,7 @@ class OrderStarViewController: UIViewController,UITableViewDelegate,UITableViewD
         inputPalace.resignFirstResponder()
         
     }
+    //MARK: pickerView代理方法
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }

@@ -170,13 +170,13 @@
             right = 0;
             view.nim_width = 20;
             view.nim_height = 20;
-            view.nim_right = self.nim_right - (right + self.spacing  + 10);
+            view.nim_right = self.nim_right - (right + self.spacing  + 20);
 
         }
          else   if (type.integerValue == NIMInputBarItemTypeEmoticon) {
 
              right = 15;
-             view.nim_right =  self.nim_right - (right + self.spacing + 30 );
+             view.nim_right =  self.nim_right - (right + self.spacing + 60 );
                view.nim_bottom =  self.nim_bottom  - 10;
              view.nim_width = 20;
              view.nim_height = 20;
@@ -186,7 +186,7 @@
 
              right = 30;
             
-            view.nim_right = self.nim_right - (right + self.spacing + 50 );
+            view.nim_right = self.nim_right - (right + self.spacing + 100 );
            
             view.nim_bottom =  self.nim_bottom  - 10;
             view.nim_width = 20;
