@@ -67,15 +67,27 @@ class MenuSubViewCell: UICollectionViewCell {
     func requestOptional() {
         AppAPIHelper.marketAPI().requestOptionalStarList(startnum: 1, endnum: 10, complete: { (response) in
             if let models = response as? [MarketListStarModel] {
+                if models.count < 10 {
+                    self.footer?.isHidden = true
+                } else {
+                    self.footer?.isHidden = false
+                }
                 self.reloadWithData(datas: models)
             }
         }, error: { (error) in
+            
+            
         })
     }
     func requestCustomData(type:Int) {
         
         AppAPIHelper.marketAPI().requestStarList(type: type, startnum: 1, endnum: 10, complete: { (response) in
             if let models = response as? [MarketListStarModel] {
+                if models.count < 10 {
+                    self.footer?.isHidden = true
+                } else {
+                    self.footer?.isHidden = false
+                }
                 self.reloadWithData(datas: models)
             }
         }) { (error) in

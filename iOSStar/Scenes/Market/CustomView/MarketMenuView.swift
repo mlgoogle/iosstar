@@ -13,7 +13,7 @@ protocol MenuViewDelegate {
     func menuViewDidSelect(indexPath:IndexPath)
 }
 class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
-    
+    var selfLayout:UICollectionViewFlowLayout?
     //item宽度是否为整个屏幕宽度均分。默认false，刷新数据前配置
     var isScreenWidth = false
     var items:[String]?
@@ -50,7 +50,7 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
         } else {
             flowLayout = layout
         }
-
+        selfLayout = flowLayout
         menuCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 40), collectionViewLayout: flowLayout!)
         menuCollectionView?.showsHorizontalScrollIndicator = false
         menuCollectionView?.backgroundColor = UIColor.white
@@ -103,7 +103,10 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if isScreenWidth {
-            return CGSize(width: (kScreenWidth - 20 - 24 * (CGFloat(items!.count) - 1) ) / CGFloat(items!.count), height: 30)
+            
+            let margin = selfLayout!.sectionInset.left + selfLayout!.sectionInset.right + frame.origin.x
+            
+            return CGSize(width: (kScreenWidth - margin - selfLayout!.minimumInteritemSpacing * (CGFloat(items!.count) - 1) ) / CGFloat(items!.count), height: 30)
         } else {
             let title = items?[indexPath.row]
             guard title != nil else {
@@ -119,7 +122,7 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     }
     
     func redressLineViewOrigin() {
-        moveLineView(indexPath: IndexPath(item: 0, section: 0))
+        menuCollectionView?.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
     }
 }
 
@@ -129,7 +132,6 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     var items:[String]? {
         didSet{
             menuView?.items = items
-            menuView?.reloadData()
             menuView?.selected(indexPath: IndexPath(item: 1, section: 0))
             subViewCollectionView?.reloadData()
         }

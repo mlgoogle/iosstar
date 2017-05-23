@@ -15,7 +15,7 @@ private let alphaMargin:CGFloat = 136.0
 class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     @IBOutlet weak var tableView: UITableView!
 
-    
+    var isRefresh = true
     var header:MJRefreshNormalHeader?
     var footer:MJRefreshAutoNormalFooter?
     var bannerModels:[BannerModel]?
@@ -44,17 +44,21 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         setupNavigation()
         requestNewsList()
         requestBannerList()
-        header = MJRefreshNormalHeader(refreshingBlock: { 
+        header = MJRefreshNormalHeader(refreshingBlock: {
+            self.isRefresh = true
             self.requestNewsList()
             self.requestBannerList()
         })
         tableView.mj_header = header
         
         footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+            
+            self.isRefresh = false
             self.requestNewsList()
         })
         tableView.mj_footer = footer
     }
+    
     func setupNavigation() {
         navigationController?.delegate = self;
         navigationController?.navigationBar.isTranslucent = true
@@ -77,6 +81,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     func requestBannerList() {
         AppAPIHelper.newsApi().requestBannerList(complete: { (response)  in
             if let models = response as? [BannerModel] {
+                
                 self.bannerModels = models
                 var bannersUrl:[String] = []
                 for model in models {
@@ -97,10 +102,32 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         }
     }
     func requestNewsList()  {
-        endRefresh()
-        AppAPIHelper.newsApi().requestNewsList(startnum: 1, endnum: 10, complete: { (response)  in
-            self.newsData = response as? [NewsModel]
+        
+        var startNumber = 0
+        if !isRefresh {
+            
+            startNumber = newsData == nil ? 0 : newsData!.count
+        }
+        
+        AppAPIHelper.newsApi().requestNewsList(startnum: startNumber, endnum: startNumber + 10, complete: { (response)  in
+            
+            self.endRefresh()
+            
+            if let models = response as? [NewsModel] {
+                if models.count < 10 {
+                    self.footer?.isHidden = true
+                } else {
+                    self.footer?.isHidden = false   
+                }
+                if self.isRefresh {
+                    self.newsData = models
+                } else {
+                    self.newsData?.append(contentsOf: models)
+                }
+            }
+
             self.tableView.reloadData()
+
         }, error: errorBlockFunc())
     }
 

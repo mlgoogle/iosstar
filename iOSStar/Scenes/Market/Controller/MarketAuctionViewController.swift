@@ -58,11 +58,14 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
         if section == 0 {
             return 0.001
         }
-        return 50
+        return 40
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.001
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 530
+            return 580.5
         }
         return 90
     }

@@ -28,6 +28,7 @@ class MarketDetailViewController: UIViewController {
         setupSubView()
         handleMenuView.titles = ["求购", "转让", "粉丝见面会", "自选"]
         handleMenuView.delegate = self
+    
     }
     func setupSubView() {
         let types:[String] = ["MarketDetaiBaseInfoViewController", "MarketFansListViewController", "MarketAuctionViewController", "MarketCommentViewController"]
@@ -63,6 +64,8 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
 
     func itemDidSelectAtIndex(index:Int) {
         switch index {
+        case 1:
+            pushToDealPage()
         case 2:
             performSegue(withIdentifier: "meetFans", sender: nil)
         case 3:
@@ -70,6 +73,11 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
         default:
             break
         }
+    }
+    func pushToDealPage() {
+       let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController")
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     func addOptinal() {
