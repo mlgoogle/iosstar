@@ -17,6 +17,7 @@ class MarketDetailMenuView: UITableViewHeaderFooterView {
         menuView.reloadData()
         return menuView
     }()
+
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         addSubview(menuView)

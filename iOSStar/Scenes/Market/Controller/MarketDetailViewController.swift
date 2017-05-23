@@ -148,11 +148,10 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == bottomScrollView {
             let index = Int(scrollView.contentOffset.x / kScreenWidth)
-            let indexPath = IndexPath(item: index, section: 0)
             let scrollEnbled = currentVC?.scrollView?.isScrollEnabled
             currentVC = childViewControllers[index] as? MarketBaseViewController
             currentVC?.scrollViewScrollEnabled(scroll: scrollEnbled!)
-            menuView?.selected(indexPath: indexPath)
+            menuView?.selected(index: index)
         } else if scrollView == tableView {
             if scrollView.contentOffset.y > 400 {
                 tableView.isScrollEnabled = false

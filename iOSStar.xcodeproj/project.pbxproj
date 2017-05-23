@@ -46,7 +46,18 @@
 		6E1B57071ED3CB1400A014AE /* BuyYetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57061ED3CB1400A014AE /* BuyYetViewController.swift */; };
 		6E1B57091ED3CB4100A014AE /* AllOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57081ED3CB4100A014AE /* AllOrderViewController.swift */; };
 		6E1B570B1ED3CBA800A014AE /* DealDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B570A1ED3CBA800A014AE /* DealDetailViewController.swift */; };
+		6E1B570F1ED40A2800A014AE /* DealTitleMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B570E1ED40A2800A014AE /* DealTitleMenuCell.swift */; };
+		6E1B57111ED40A7700A014AE /* DealDoubleRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57101ED40A7700A014AE /* DealDoubleRowCell.swift */; };
+		6E1B57131ED40AEE00A014AE /* DealPropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57121ED40AEE00A014AE /* DealPropertyCell.swift */; };
+		6E1B57151ED40B0C00A014AE /* DealSelectDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57141ED40B0C00A014AE /* DealSelectDateCell.swift */; };
+		6E1B57171ED40F5300A014AE /* DealStarInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57161ED40F5300A014AE /* DealStarInfoCell.swift */; };
+		6E1B57191ED40F7800A014AE /* DealMarketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57181ED40F7800A014AE /* DealMarketCell.swift */; };
+		6E1B571B1ED40FA000A014AE /* DealOrderInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B571A1ED40FA000A014AE /* DealOrderInfoCell.swift */; };
+		6E1B571D1ED40FE100A014AE /* DealHintCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B571C1ED40FE100A014AE /* DealHintCell.swift */; };
+		6E1B571F1ED410C900A014AE /* DealSingleRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B571E1ED410C900A014AE /* DealSingleRowCell.swift */; };
+		6E1B57211ED41BDA00A014AE /* DealScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57201ED41BDA00A014AE /* DealScrollView.swift */; };
 		6E6027841EC9916C001FBAA6 /* MarketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */; };
+		6E88DA581ED4520A00EAA905 /* DetailCommenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88DA571ED4520A00EAA905 /* DetailCommenViewController.swift */; };
 		6EBF590A1EC6EAAF003F67B4 /* MarketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF59091EC6EAAF003F67B4 /* MarketAPI.swift */; };
 		6EBF590C1EC6EB75003F67B4 /* MarketSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF590B1EC6EB75003F67B4 /* MarketSocketAPI.swift */; };
 		6EBF590E1EC93BE9003F67B4 /* Label+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF590D1EC93BE9003F67B4 /* Label+Extension.swift */; };
@@ -493,7 +504,18 @@
 		6E1B57061ED3CB1400A014AE /* BuyYetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyYetViewController.swift; sourceTree = "<group>"; };
 		6E1B57081ED3CB4100A014AE /* AllOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllOrderViewController.swift; sourceTree = "<group>"; };
 		6E1B570A1ED3CBA800A014AE /* DealDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealDetailViewController.swift; sourceTree = "<group>"; };
+		6E1B570E1ED40A2800A014AE /* DealTitleMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealTitleMenuCell.swift; sourceTree = "<group>"; };
+		6E1B57101ED40A7700A014AE /* DealDoubleRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealDoubleRowCell.swift; sourceTree = "<group>"; };
+		6E1B57121ED40AEE00A014AE /* DealPropertyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealPropertyCell.swift; sourceTree = "<group>"; };
+		6E1B57141ED40B0C00A014AE /* DealSelectDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealSelectDateCell.swift; sourceTree = "<group>"; };
+		6E1B57161ED40F5300A014AE /* DealStarInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealStarInfoCell.swift; sourceTree = "<group>"; };
+		6E1B57181ED40F7800A014AE /* DealMarketCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealMarketCell.swift; sourceTree = "<group>"; };
+		6E1B571A1ED40FA000A014AE /* DealOrderInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealOrderInfoCell.swift; sourceTree = "<group>"; };
+		6E1B571C1ED40FE100A014AE /* DealHintCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealHintCell.swift; sourceTree = "<group>"; };
+		6E1B571E1ED410C900A014AE /* DealSingleRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealSingleRowCell.swift; sourceTree = "<group>"; };
+		6E1B57201ED41BDA00A014AE /* DealScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealScrollView.swift; sourceTree = "<group>"; };
 		6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailViewController.swift; sourceTree = "<group>"; };
+		6E88DA571ED4520A00EAA905 /* DetailCommenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCommenViewController.swift; sourceTree = "<group>"; };
 		6EBF59091EC6EAAF003F67B4 /* MarketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketAPI.swift; sourceTree = "<group>"; };
 		6EBF590B1EC6EB75003F67B4 /* MarketSocketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketSocketAPI.swift; sourceTree = "<group>"; };
 		6EBF590D1EC93BE9003F67B4 /* Label+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Label+Extension.swift"; sourceTree = "<group>"; };
@@ -1373,6 +1395,7 @@
 				6E1B57061ED3CB1400A014AE /* BuyYetViewController.swift */,
 				6E1B57081ED3CB4100A014AE /* AllOrderViewController.swift */,
 				6E1B570A1ED3CBA800A014AE /* DealDetailViewController.swift */,
+				6E88DA571ED4520A00EAA905 /* DetailCommenViewController.swift */,
 			);
 			name = Controllers;
 			path = iOSStar/Scenes/Deal/Controllers;
@@ -1381,6 +1404,16 @@
 		6E1B57011ED2EDC800A014AE /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				6E1B57201ED41BDA00A014AE /* DealScrollView.swift */,
+				6E1B57161ED40F5300A014AE /* DealStarInfoCell.swift */,
+				6E1B57181ED40F7800A014AE /* DealMarketCell.swift */,
+				6E1B571A1ED40FA000A014AE /* DealOrderInfoCell.swift */,
+				6E1B571C1ED40FE100A014AE /* DealHintCell.swift */,
+				6E1B570E1ED40A2800A014AE /* DealTitleMenuCell.swift */,
+				6E1B57101ED40A7700A014AE /* DealDoubleRowCell.swift */,
+				6E1B571E1ED410C900A014AE /* DealSingleRowCell.swift */,
+				6E1B57121ED40AEE00A014AE /* DealPropertyCell.swift */,
+				6E1B57141ED40B0C00A014AE /* DealSelectDateCell.swift */,
 			);
 			name = CustomView;
 			path = iOSStar/Scenes/Deal/CustomView;
@@ -3300,6 +3333,7 @@
 				A03D3FC41EA86A6500F85308 /* NTESGLView.m in Sources */,
 				6EFE79D61ECC3AD50096470D /* MarketDetailSubViewCell.swift in Sources */,
 				A03D3F581EA86A6500F85308 /* NIMKitUtil.m in Sources */,
+				6E1B57151ED40B0C00A014AE /* DealSelectDateCell.swift in Sources */,
 				A04C628A1EC15D98000BFC29 /* TradePdVC.swift in Sources */,
 				A03D3F211EA86A6400F85308 /* NIMLocationContentConfig.m in Sources */,
 				A03D3F5B1EA86A6500F85308 /* UINavigationBar+Swizzling.m in Sources */,
@@ -3320,6 +3354,7 @@
 				A07238A11EA76AA300E755DB /* SVProgressHUDExt.swift in Sources */,
 				A03D3EEA1EA86A6400F85308 /* UIScrollView+NTESDirection.m in Sources */,
 				A03D3F701EA86A6500F85308 /* NTESSearchTeamViewController.m in Sources */,
+				6E88DA581ED4520A00EAA905 /* DetailCommenViewController.swift in Sources */,
 				A03D3F691EA86A6500F85308 /* NTESChatroomTextContentConfig.m in Sources */,
 				A03D3F8E1EA86A6500F85308 /* NTESContactAddFriendViewController.m in Sources */,
 				A03D3F771EA86A6500F85308 /* NTESChatroomListViewController.m in Sources */,
@@ -3406,7 +3441,9 @@
 				A03D3F6C1EA86A6500F85308 /* NTESColorButtonCell.m in Sources */,
 				A03D3F7F1EA86A6500F85308 /* NTESChatroomMemberCell.m in Sources */,
 				A03D3F461EA86A6500F85308 /* NIMTeamCardRowItem.m in Sources */,
+				6E1B57111ED40A7700A014AE /* DealDoubleRowCell.swift in Sources */,
 				A03D3F6F1EA86A6500F85308 /* NTESPersonalCardViewController.m in Sources */,
+				6E1B571D1ED40FE100A014AE /* DealHintCell.swift in Sources */,
 				6EFE798C1ECB21F70096470D /* MarketDetailMenuView.swift in Sources */,
 				A0A996C91EBC4D67000048DC /* LoginSocketApi.swift in Sources */,
 				A03D3FDF1EA86A6500F85308 /* NTESGenderSettingViewController.m in Sources */,
@@ -3422,6 +3459,7 @@
 				A03D3F301EA86A6400F85308 /* NIMSessionLayoutImpl.m in Sources */,
 				A03D3FC51EA86A6500F85308 /* NTESRecordSelectView.m in Sources */,
 				A03D3F8D1EA86A6500F85308 /* NTESBlackListViewController.m in Sources */,
+				6E1B570F1ED40A2800A014AE /* DealTitleMenuCell.swift in Sources */,
 				A03D3EFC1EA86A6400F85308 /* NIMCustomLeftBarView.m in Sources */,
 				A03D3F641EA86A6500F85308 /* NTESBadgeView.m in Sources */,
 				A03D3FF71EA86A6600F85308 /* NTESUserUtil.m in Sources */,
@@ -3450,6 +3488,7 @@
 				A03D3FF01EA86A6500F85308 /* NTESDevice.m in Sources */,
 				A03D3F311EA86A6400F85308 /* NIMSessionMsgDatasource.m in Sources */,
 				A0A996C81EBC4D67000048DC /* LoginApi.swift in Sources */,
+				6E1B57191ED40F7800A014AE /* DealMarketCell.swift in Sources */,
 				A03D3F391EA86A6400F85308 /* NIMSessionMessageContentView.m in Sources */,
 				A03D3F541EA86A6500F85308 /* NIMTimePickerView.m in Sources */,
 				A0F4FA211ECD70A200D13302 /* NSDateExt.swift in Sources */,
@@ -3504,6 +3543,7 @@
 				A03D3FF91EA86A6600F85308 /* NTESSpellingCenter.m in Sources */,
 				A03D3FD71EA86A6500F85308 /* NTESTextSettingCell.m in Sources */,
 				A03D3F251EA86A6400F85308 /* NIMUnsupportContentConfig.m in Sources */,
+				6E1B57211ED41BDA00A014AE /* DealScrollView.swift in Sources */,
 				A03D3FCE1EA86A6500F85308 /* NTESLogManager.m in Sources */,
 				A03D3FDC1EA86A6500F85308 /* NTESAliasSettingViewController.m in Sources */,
 				6E1B57051ED305F600A014AE /* DealViewController.swift in Sources */,
@@ -3513,6 +3553,7 @@
 				A03D3FF61EA86A6600F85308 /* NTESTimerHolder.m in Sources */,
 				A03D3F3F1EA86A6400F85308 /* NIMLocationViewController.m in Sources */,
 				A03D3EFD1EA86A6400F85308 /* NIMKitMediaFetcher.m in Sources */,
+				6E1B571B1ED40FA000A014AE /* DealOrderInfoCell.swift in Sources */,
 				A03D3F9C1EA86A6500F85308 /* NTESRegisterViewController.m in Sources */,
 				A0504F831EC4476B008F4182 /* StarListModel.swift in Sources */,
 				A03D3FB91EA86A6500F85308 /* NTESWhiteboardViewController.m in Sources */,
@@ -3531,6 +3572,7 @@
 				A03D3F361EA86A6400F85308 /* NIMSessionFileTransContentView.m in Sources */,
 				A03D3FE31EA86A6500F85308 /* NTESUserInfoSettingViewController.m in Sources */,
 				6ECAA1A71ECD7527000FBED7 /* MarketCommentCell.swift in Sources */,
+				6E1B57171ED40F5300A014AE /* DealStarInfoCell.swift in Sources */,
 				A03D3FC11EA86A6500F85308 /* NTESNetChatViewController.m in Sources */,
 				A03D3F101EA86A6400F85308 /* NIMInputEmoticonContainerView.m in Sources */,
 				A04C628C1EC1CD65000BFC29 /* GetOrderStarsVC.swift in Sources */,
@@ -3598,6 +3640,7 @@
 				A03D3FB51EA86A6500F85308 /* NTESSessionLocalHistoryViewController.m in Sources */,
 				A03D3F081EA86A6400F85308 /* NIMContactSelectConfig.m in Sources */,
 				6EBF590A1EC6EAAF003F67B4 /* MarketAPI.swift in Sources */,
+				6E1B571F1ED410C900A014AE /* DealSingleRowCell.swift in Sources */,
 				A03D3F511EA86A6500F85308 /* NIMTeamCardHeaderCell.m in Sources */,
 				A03D3F531EA86A6500F85308 /* NIMTeamSwitchTableViewCell.m in Sources */,
 				6E120F971EB966F4004E1E33 /* HttpModelHelper.swift in Sources */,
@@ -3635,6 +3678,7 @@
 				A07DF7CC1EC072B700C2254E /* FriendApi.swift in Sources */,
 				A03D3FCA1EA86A6500F85308 /* NTESMutiClientsHeaderView.m in Sources */,
 				A03D3F5C1EA86A6500F85308 /* UINavigationController+Swizzling.m in Sources */,
+				6E1B57131ED40AEE00A014AE /* DealPropertyCell.swift in Sources */,
 				A0692AF91EC9461600D4240D /* BindingBankCardVC.swift in Sources */,
 				A072389A1EA76AA300E755DB /* BaseTabBarController.swift in Sources */,
 				A03D3FC21EA86A6500F85308 /* NTESVideoChatViewController.m in Sources */,
