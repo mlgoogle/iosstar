@@ -12,6 +12,7 @@ protocol SelectFansDelegate {
 }
 class FansListHeaderView: UITableViewHeaderFooterView {
     
+    var currentSelectIndex = 0
     var delegate:SelectFansDelegate?
     lazy var buyButton:UIButton = {
         let button = UIButton(type: .custom)
@@ -41,6 +42,12 @@ class FansListHeaderView: UITableViewHeaderFooterView {
        let imageView = UIImageView(image: UIImage.init(named: "8"))
         return imageView
     }()
+    
+    var isShowImage = false {
+        didSet {
+            imageView.isHidden = !isShowImage
+        }
+    }
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         addSubview(buyButton)
@@ -72,8 +79,18 @@ class FansListHeaderView: UITableViewHeaderFooterView {
         buyButton.addTarget(self, action: #selector(selectAtIndex(sender:)), for: .touchUpInside)
         sellButton.addTarget(self, action: #selector(selectAtIndex(sender:)), for: .touchUpInside)
     }
+    
+    func settitles(titles:[String]) {
+        buyButton.setTitle(titles.first, for: .normal)
+        sellButton.setTitle(titles.last, for: .normal)
+    }
     func selectAtIndex(sender:UIButton) {
         let index = sender.tag - 2222
+        
+        if index == currentSelectIndex {
+            return
+        }
+        currentSelectIndex = index
         var x:CGFloat = 0.0
         if index == 0 {
             x = kScreenWidth * 0.25

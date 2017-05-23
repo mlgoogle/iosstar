@@ -61,7 +61,6 @@ class ImageMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.itemDidSelectAtIndex(index: indexPath.item)
-    
     }
     
     required init?(coder aDecoder: NSCoder) {

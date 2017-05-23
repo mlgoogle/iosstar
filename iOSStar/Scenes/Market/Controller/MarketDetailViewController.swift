@@ -28,6 +28,7 @@ class MarketDetailViewController: UIViewController {
         setupSubView()
         handleMenuView.titles = ["求购", "转让", "粉丝见面会", "自选"]
         handleMenuView.delegate = self
+    
     }
     func setupSubView() {
         let types:[String] = ["MarketDetaiBaseInfoViewController", "MarketFansListViewController", "MarketAuctionViewController", "MarketCommentViewController"]
@@ -36,7 +37,7 @@ class MarketDetailViewController: UIViewController {
             let vc = storyboard.instantiateViewController(withIdentifier: type) as! MarketBaseViewController
             addChildViewController(vc)
             vc.delegate = self
-            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 50 - 64 - 50 - 44)
+            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 50 - 64 - 50)
             subViews.append(vc.view)
             vc.scrollViewScrollEnabled(scroll: false)
         }
@@ -63,17 +64,25 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
 
     func itemDidSelectAtIndex(index:Int) {
         switch index {
+        case 1:
+            pushToDealPage()
+        case 2:
+            performSegue(withIdentifier: "meetFans", sender: nil)
         case 3:
             addOptinal()
         default:
             break
         }
     }
+    func pushToDealPage() {
+       let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController")
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
     func addOptinal() {
-        guard starModel  != nil else {return}
-        AppAPIHelper.marketAPI().addOptinal(starcode: (starModel?.code)!, complete: { (response) in
-            
+//        guard starModel  != nil else {return}
+        AppAPIHelper.marketAPI().addOptinal(starcode: "1001", complete: { (response) in
             
         }, error: errorBlockFunc())
     }

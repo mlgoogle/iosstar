@@ -22,21 +22,22 @@ class MenuItemCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { (make) in
-            make.center.equalTo(self)
-        }
+        
+        addSubViews()
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        addSubViews()
+    }
+    func addSubViews() {
+        backgroundColor = UIColor.clear
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.center.equalTo(self)
         }
     }
-    
     
     func setTitle(title:String?, colorString:String?) {
         

@@ -65,6 +65,8 @@ class SubViewItemCell: UITableViewCell {
         addSubview(priceLabel)
         addSubview(changeLabel)
         addSubview(codeLabel)
+        
+        
         iconImageView.snp.makeConstraints { (make) in
             make.left.equalTo(12)
             make.top.equalTo(10)
@@ -88,19 +90,21 @@ class SubViewItemCell: UITableViewCell {
             make.centerY.equalTo(iconImageView.snp.centerY)
         }
         priceLabel.snp.makeConstraints { (make) in
-            make.centerX.equalTo(self)
             make.width.equalTo(43)
             make.height.equalTo(12)
             make.centerY.equalTo(changeLabel.snp.centerY)
+            make.right.equalTo(changeLabel.snp.left).offset(-34)
         }
+        changeLabel.layer.cornerRadius = 3
+        changeLabel.layer.masksToBounds = true
+        
     }
     
     func setupData(model:MarketListStarModel) {
-        
-        
         iconImageView.kf.setImage(with: URL(string: model.head), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         nameLabel.text = model.name
         codeLabel.text = model.code
+        
         
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -14,6 +14,7 @@ class ImageMenuCell: UICollectionViewCell {
        
         let imageView = UIImageView()
         imageView.image = UIImage(named: "8")
+        imageView.isUserInteractionEnabled = true   
         return imageView
     }()
     var titleLabel:UILabel = {
@@ -22,6 +23,7 @@ class ImageMenuCell: UICollectionViewCell {
         label.textColor = UIColor(hexString: "8C0808")
         label.text = "求购"
         label.font = UIFont.systemFont(ofSize: 10)
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -37,6 +39,7 @@ class ImageMenuCell: UICollectionViewCell {
     func addSubView() {
         addSubview(iconImageView)
         addSubview(titleLabel)
+        
         iconImageView.snp.makeConstraints { (make) in
             make.height.equalTo(22)
             make.width.equalTo(22)

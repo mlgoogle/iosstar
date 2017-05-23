@@ -71,10 +71,10 @@ extension MarketSearchViewController:UITableViewDelegate, UITableViewDataSource 
         
         cell.update(dataArry[indexPath.row])
         
-        
         cell.selectionStyle = .none
         return cell
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArry.count
     }
@@ -86,6 +86,9 @@ extension MarketSearchViewController:UITableViewDelegate, UITableViewDataSource 
         return 0.1
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Markt.rawValue, bundle: nil)
         
+        let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail")
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

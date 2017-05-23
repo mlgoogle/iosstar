@@ -74,7 +74,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         let packet = SocketDataPacket(opcode: .commetList, parameters: parameters)
         startModelsRequest(packet, listName: "list", modelClass: CommentModel.self, complete: complete, error: error)
     }
-    //获取明细经历
+    //获取明星经历
     func requestStarExperience(code:String,complete: CompleteBlock?, error: ErrorBlock?) {
         let parameters:[String:Any] = [SocketConst.Key.starCode : code]
         let packet = SocketDataPacket(opcode: .starExperience, parameters: parameters)

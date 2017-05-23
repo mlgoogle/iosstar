@@ -13,7 +13,7 @@ protocol MenuViewDelegate {
     func menuViewDidSelect(indexPath:IndexPath)
 }
 class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
-    
+    var selfLayout:UICollectionViewFlowLayout?
     //item宽度是否为整个屏幕宽度均分。默认false，刷新数据前配置
     var isScreenWidth = false
     var items:[String]?
@@ -50,7 +50,7 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
         } else {
             flowLayout = layout
         }
-
+        selfLayout = flowLayout
         menuCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 40), collectionViewLayout: flowLayout!)
         menuCollectionView?.showsHorizontalScrollIndicator = false
         menuCollectionView?.backgroundColor = UIColor.white
@@ -103,7 +103,10 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if isScreenWidth {
-            return CGSize(width: (kScreenWidth - 20 - 24 * (CGFloat(items!.count) - 1) ) / CGFloat(items!.count), height: 30)
+            
+            let margin = selfLayout!.sectionInset.left + selfLayout!.sectionInset.right + frame.origin.x
+            
+            return CGSize(width: (kScreenWidth - margin - selfLayout!.minimumInteritemSpacing * (CGFloat(items!.count) - 1) ) / CGFloat(items!.count), height: 30)
         } else {
             let title = items?[indexPath.row]
             guard title != nil else {
@@ -114,6 +117,12 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     }
     func reloadData() {
         menuCollectionView?.reloadData()
+        
+        perform(#selector(redressLineViewOrigin), with: nil, afterDelay: 0.5)
+    }
+    
+    func redressLineViewOrigin() {
+        menuCollectionView?.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
     }
 }
 
@@ -123,13 +132,15 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     var items:[String]? {
         didSet{
             menuView?.items = items
-            menuView?.reloadData()
+            menuView?.selected(indexPath: IndexPath(item: 1, section: 0))
             subViewCollectionView?.reloadData()
         }
     }
     var types:[MarketClassifyModel]? {
         didSet {
-            menuViewDidSelect(indexPath: IndexPath(item: 1, section: 0))
+            let indexPath = IndexPath(item: 1, section: 0)
+            menuViewDidSelect(indexPath: indexPath)
+            menuView?.selected(indexPath: indexPath)
         }
     }
     var subViews:[UIView]?
@@ -148,12 +159,10 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
-    lazy var priceTypeButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setTitleColor(UIColor(hexString: "333333"), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button.setTitle("最近价 元/小时", for: .normal)
-        return button
+    lazy var priceTypeButton: UILabel = {
+        let label = UILabel()
+        label.setAttributeText(text: "最近价 元/秒", firstFont: 14.0, secondFont: 12.0, firstColor: UIColor(hexString: "333333"), secondColor: UIColor(hexString: "333333"), range: NSRange(location: 4, length: 3))
+           return label
     }()
     lazy var priceChangeButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -161,6 +170,16 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.setTitleColor(UIColor(hexString: "333333"), for: .normal)
         return button
+    }()
+    
+    lazy var priceImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "8"))
+        return imageView
+    }()
+    
+    lazy var changeImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "8"))
+        return imageView
     }()
     
     lazy var lineView: UIView = {
@@ -213,19 +232,37 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         infoView.addSubview(allLabel)
         infoView.addSubview(priceTypeButton)
         infoView.addSubview(priceChangeButton)
+        infoView.addSubview(priceImageView)
+        infoView.addSubview(changeImageView)
+        changeImageView.snp.makeConstraints { (make) in
+            make.right.equalTo(-18)
+            make.height.equalTo(12)
+            make.width.equalTo(9)
+            make.centerY.equalTo(infoView)
+        }
+        priceChangeButton.snp.makeConstraints { (make) in
+            make.right.equalTo(changeImageView.snp.left).offset(-9)
+            make.centerY.equalTo(changeImageView)
+            make.width.equalTo(43)
+            make.height.equalTo(15)
+        }
+        priceImageView.snp.makeConstraints { (make) in
+            make.right.equalTo(priceChangeButton.snp.left).offset(-40)
+            make.width.equalTo(9)
+            make.height.equalTo(12)
+            make.centerY.equalTo(infoView)
+        }
+        priceTypeButton.snp.makeConstraints { (make) in
+            make.right.equalTo(priceImageView.snp.left).offset(-20)
+            make.centerY.equalTo(priceImageView)
+        }
         allLabel.snp.makeConstraints { (make) in
             make.left.equalTo(18)
             make.width.equalTo(30)
             make.height.equalTo(14)
             make.centerY.equalTo(infoView)
         }
-        priceTypeButton.snp.makeConstraints { (make) in
-            make.center.equalTo(infoView)
-        }
-        priceChangeButton.snp.makeConstraints { (make) in
-            make.right.equalTo(-36)
-            make.centerY.equalTo(infoView)
-        }
+
     }
     func requestDataWithIndexPath() {
 
@@ -258,7 +295,6 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
         if scrollView == subViewCollectionView {
             let index = Int(scrollView.contentOffset.x / kScreenWidth)
             let indexPath = IndexPath(item: index, section: 0)

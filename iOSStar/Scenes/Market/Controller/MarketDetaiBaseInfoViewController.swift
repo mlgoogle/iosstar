@@ -16,13 +16,25 @@ class MarketDetaiBaseInfoViewController: MarketBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = tableView
-        tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView")
+        tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: AppConst.RegisterIdentifier.PubInfoHeaderView.rawValue)
+        requestBaseInfo()
+        requestExperience()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+  
+    func requestBaseInfo() {
+        AppAPIHelper.newsApi().requestStarInfo(code: "1001", complete: { (response) in
+            
+        }, error: errorBlockFunc())
+    }
+    func requestExperience() {
+        AppAPIHelper.marketAPI().requestStarExperience(code: "1001", complete: { (response) in
+            
+        }, error: errorBlockFunc())
+    }
 
 
 }
@@ -49,14 +61,20 @@ extension MarketDetaiBaseInfoViewController:UITableViewDataSource, UITableViewDe
             return 0.0
         }
     }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0.001
+        }
+        return 40
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as? PubInfoHeaderView
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as! PubInfoHeaderView
         if section == 1 {
-            view?.setTitle(title: "个人简介")                                                                                             
+            view.setTitle(title: "个人简介")
             return view
         }else if section == 2 {
-            view?.setTitle(title: "主要经历")
+            view.setTitle(title: "主要经历")
             return view
         }
         

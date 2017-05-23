@@ -17,7 +17,6 @@ class MarketFansListViewController: MarketBaseViewController {
         scrollView = tableView
         tableView.bounces = true
         tableView.register(FansListHeaderView.self, forHeaderFooterViewReuseIdentifier: "FansListHeaderView")
-
         automaticallyAdjustsScrollViewInsets = false
     }
     
@@ -28,8 +27,11 @@ class MarketFansListViewController: MarketBaseViewController {
 }
 extension MarketFansListViewController:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketFansCell", for: indexPath)
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MarketSBFansCell", for: indexPath) as! MarketSBFansCell
+            return cell
+        }
+         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketFansCell", for: indexPath) as! MarketFansCell
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
