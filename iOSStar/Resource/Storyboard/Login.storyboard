@@ -391,7 +391,7 @@
         <scene sceneID="cNe-Mr-w6H">
             <objects>
                 <tableViewController storyboardIdentifier="ForgotPwdVC" title="忘记密码" id="YIj-ox-Gb7" customClass="ForgotPwdVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="g9a-Lb-xtm">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="g9a-Lb-xtm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -422,6 +422,9 @@
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                            <connections>
+                                                                <action selector="valuechange:" destination="YIj-ox-Gb7" eventType="valueChanged" id="mAU-OR-XMW"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -679,7 +682,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0el-0J-Upt">
                                                     <rect key="frame" x="13" y="36" width="294" height="44"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="iQL-dh-0Cr"/>
                                                     </constraints>
@@ -721,6 +724,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="codeTf" destination="R0Y-1I-QRL" id="qNI-of-NVt"/>
+                        <outlet property="doRset" destination="0el-0J-Upt" id="OGB-fb-bZ7"/>
                         <outlet property="first_input" destination="zqr-SU-x0S" id="4zO-0d-X7a"/>
                         <outlet property="phoneTf" destination="8Dc-4x-gqs" id="nQj-vN-pFT"/>
                         <outlet property="second_input" destination="9fQ-81-Mxi" id="1Uv-AV-bd2"/>
@@ -730,7 +734,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vY-rf-DqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="630" y="-209.1549295774648"/>
+            <point key="canvasLocation" x="696" y="-210"/>
         </scene>
         <!--输入密码-->
         <scene sceneID="ZGG-A3-zTo">

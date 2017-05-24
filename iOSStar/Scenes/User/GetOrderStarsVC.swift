@@ -52,10 +52,7 @@ class GetOrderStarsVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
 
    
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GetOrderStarsVCCell")
-
-       
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactListCell")
         return cell!
     }
   

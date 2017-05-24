@@ -408,6 +408,7 @@
 		A07DF7C91EC0132F00C2254E /* visible@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07DF7C51EC0132E00C2254E /* visible@3x.png */; };
 		A07DF7CC1EC072B700C2254E /* FriendApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07DF7CB1EC072B700C2254E /* FriendApi.swift */; };
 		A07DF7CE1EC072D200C2254E /* FriendSocketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07DF7CD1EC072D200C2254E /* FriendSocketApi.swift */; };
+		A084BB461ED52AD500DFC868 /* SystemMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084BB451ED52AD500DFC868 /* SystemMessageVC.swift */; };
 		A08569FA1EB08FCA004F349B /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08569F91EB08FCA004F349B /* BaseNavigationController.swift */; };
 		A0856A111EB0B5C3004F349B /* UIBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0856A101EB0B5C3004F349B /* UIBarExtension.swift */; };
 		A085A51B1EB0771C00149F14 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085A51A1EB0771C00149F14 /* LoginVC.swift */; };
@@ -1141,6 +1142,7 @@
 		A07DF7C51EC0132E00C2254E /* visible@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visible@3x.png"; sourceTree = "<group>"; };
 		A07DF7CB1EC072B700C2254E /* FriendApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendApi.swift; sourceTree = "<group>"; };
 		A07DF7CD1EC072D200C2254E /* FriendSocketApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSocketApi.swift; sourceTree = "<group>"; };
+		A084BB451ED52AD500DFC868 /* SystemMessageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemMessageVC.swift; sourceTree = "<group>"; };
 		A08569F91EB08FCA004F349B /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseNavigationController.swift; path = iOSSTar/Other/BaseNavigationController.swift; sourceTree = SOURCE_ROOT; };
 		A0856A101EB0B5C3004F349B /* UIBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIBarExtension.swift; path = ../../Other/UIBarExtension.swift; sourceTree = "<group>"; };
 		A085A51A1EB0771C00149F14 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -1305,6 +1307,7 @@
 			children = (
 				6E1616621EB04D0700D95CB6 /* ExchangeViewController.swift */,
 				6E1616651EB04D4E00D95CB6 /* ContactListViewController.swift */,
+				A084BB451ED52AD500DFC868 /* SystemMessageVC.swift */,
 			);
 			name = Controller;
 			path = iOSStar/Scenes/Exchange/Controller;
@@ -3631,6 +3634,7 @@
 				A03D3F921EA86A6500F85308 /* NTESCustomNotificationObject.m in Sources */,
 				6E1616701EB0A7AA00D95CB6 /* MenuItemCell.swift in Sources */,
 				A03D3F5F1EA86A6500F85308 /* UIViewController+Swizzling.m in Sources */,
+				A084BB461ED52AD500DFC868 /* SystemMessageVC.swift in Sources */,
 				A03D3FA91EA86A6500F85308 /* NTESSessionJankenponContentView.m in Sources */,
 				A03D3F411EA86A6400F85308 /* NIMSessionListDefaultConfig.m in Sources */,
 				A03D3FBC1EA86A6500F85308 /* NTESVideoViewController.m in Sources */,
