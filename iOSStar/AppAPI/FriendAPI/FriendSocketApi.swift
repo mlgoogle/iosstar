@@ -38,4 +38,13 @@ class FriendSocketApi: BaseSocketAPI, FriendApi  {
         startRequest(packet, complete: complete, error: error)
     
     }
+    func weixinpay(title:String,  price:Double, complete: CompleteBlock?, error: ErrorBlock?){
+        let param: [String : Any] = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
+                                    
+                                     SocketConst.Key.title: title,SocketConst.Key.price: price]
+        
+        let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .weixinpay, dict: param as [String : AnyObject], type: SocketConst.type.wp)
+        print(param)
+        startRequest(packet, complete: complete, error: error)
+    }
 }

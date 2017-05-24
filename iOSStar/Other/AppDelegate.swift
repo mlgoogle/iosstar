@@ -92,7 +92,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
                 }
                 return
             }
-            
+            else{
+                if resp.isKind(of: PayResp.classForCoder()) {
+                    let authResp:PayResp = resp as! PayResp
+                    
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.WechatPay.WechatKeyErrorCode), object: NSNumber.init(value: authResp.errCode), userInfo:nil)
+                    
+                    return
+                }
+            }
         }
         
         func accessToken(code: String)
