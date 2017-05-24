@@ -22,6 +22,7 @@ class RechargeListVCCell: OEZTableViewCell {
 class MoneyDetail: BaseCustomListTableViewController {
 
      var contentoffset = CGFloat()
+     var navLeft : UIButton?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -31,12 +32,12 @@ class MoneyDetail: BaseCustomListTableViewController {
 
         title = "资金明细"
   
-        let btn = UIButton.init(type: .custom)
-        btn.backgroundColor = UIColor.red
-        btn.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20)
-        let right = UIBarButtonItem.init(customView: btn)
+        navLeft = UIButton.init(type: .custom)
+        navLeft?.backgroundColor = UIColor.red
+        navLeft?.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20)
+        let right = UIBarButtonItem.init(customView: navLeft!)
     
-        btn.addTarget(self , action: #selector(selectDate), for: .touchUpInside)
+        navLeft?.addTarget(self , action: #selector(selectDate), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = right
         ShareDataModel.share().addObserver(self, forKeyPath: "selectMonth", options: .new, context: nil)
     }
@@ -51,7 +52,7 @@ class MoneyDetail: BaseCustomListTableViewController {
         if keyPath == "selectMonth" {
             
             if let selectMonth = change? [NSKeyValueChangeKey.newKey] as? String {
-                
+                navLeft?.isEnabled = true
                 self.tableView.isScrollEnabled = true
                 if selectMonth != "1000000" {
 //                    monthLb.text = "2017年" + " " + "\(selectMonth)" + "月"
@@ -82,6 +83,7 @@ class MoneyDetail: BaseCustomListTableViewController {
 
     func selectDate(){
         
+        navLeft?.isEnabled = false
         let customer : CustomeAlertView = CustomeAlertView.init(frame: CGRect.init(x: 0, y: -35, width: self.view.frame.size.width, height: self.view.frame.size.height + 40))
         tableView.isScrollEnabled = false
         self.view.addSubview(customer)
