@@ -31,7 +31,7 @@ extension MarketFansListViewController:UITableViewDelegate, UITableViewDataSourc
             let cell = tableView.dequeueReusableCell(withIdentifier: "MarketSBFansCell", for: indexPath) as! MarketSBFansCell
             return cell
         }
-         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketFansCell", for: indexPath) as! MarketFansCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MarketFansCell", for: indexPath) as! MarketFansCell
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

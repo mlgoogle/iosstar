@@ -124,6 +124,21 @@ class AppConst {
         case newsToDeatail = "newsToDeatail"
         case showPubPage = "showPubPage"
     }
+    enum DealType:UInt16 {
+        case buy = 0
+        case sell = 1
+    }
+    
+    enum DealDetailType:UInt16 {
+        //当日成交
+        case todayComplete = 0
+        //当日委托
+        case todayEntrust = 1
+        //历史交易
+        case allDeal = 2
+        //历史委托
+        case allEntrust = 3
+    }
     
     class WechatKey {
         static let Scope = "snsapi_userinfo"

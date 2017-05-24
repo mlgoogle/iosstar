@@ -9,27 +9,46 @@
 import UIKit
 
 class BuyOrSellViewController: UIViewController {
+    var identifiers = ["DealStarInfoCell","DealMarketCell","DealOrderInfoCell","DealHintCell"]
+    var rowHeights = [137, 188,133,82]
+    var dealType:AppConst.DealType = AppConst.DealType.sell {
+        didSet {
+            buyOrSellButton.setTitle("确认求购", for: .normal)
+        }
+    }
+    @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var orderPriceLabel: UILabel!
+    
+    @IBOutlet weak var buyOrSellButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+}
+
+extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource {
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(rowHeights[indexPath.row])
     }
-    */
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifiers[indexPath.row], for: indexPath)
+        
+        return cell
+    }
 }
