@@ -7,29 +7,44 @@
 //
 
 import UIKit
-
+import MJRefresh
 class GetOrderStarsVCCell: UITableViewCell {
     
 }
 class GetOrderStarsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    var header:MJRefreshNormalHeader?
+    var footer:MJRefreshAutoNormalFooter?
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "我预约的明星"
         tableView.dataSource = self
         tableView.delegate = self
         initData()
+    
+        header = MJRefreshNormalHeader(refreshingBlock: {
+         
+            self.dataList()
+           
+        })
+        tableView.mj_header = header
+        
+        footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+            
+           self.dataList()
+          
+        })
+        tableView.mj_footer = footer
+    }
+    func dataList(){
+    
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    @IBAction func fans(_ sender: Any) {
-    }
-
-    @IBAction func star(_ sender: Any) {
-    }
+  
     func initData(){
     
         AppAPIHelper.friend().getorderstars(phone: "18643803462", starcode: "", complete: { (result) in

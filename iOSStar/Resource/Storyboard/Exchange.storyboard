@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HtX-2B-HzA">
-                                <rect key="frame" x="17" y="80" width="341" height="130"/>
+                                <rect key="frame" x="17" y="96" width="341" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="Sub-xe-AWF"/>
                                 </constraints>
@@ -32,10 +32,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfa-ZX-ZSl">
-                                <rect key="frame" x="17" y="239" width="341" height="130"/>
+                                <rect key="frame" x="17" y="255" width="341" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="Zra-N4-bH2"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="130" id="g1S-h3-Rdi"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="timg.png"/>
                                 <connections>
@@ -43,10 +42,10 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.98028594255447388" green="0.98045331239700317" blue="0.98027533292770386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="HtX-2B-HzA" secondAttribute="trailing" constant="17" id="8Tr-EL-0eu"/>
-                            <constraint firstItem="HtX-2B-HzA" firstAttribute="top" secondItem="WtC-wE-Q9M" secondAttribute="bottom" constant="16" id="TY9-hu-paz"/>
+                            <constraint firstItem="HtX-2B-HzA" firstAttribute="top" secondItem="WtC-wE-Q9M" secondAttribute="bottom" constant="32" id="TY9-hu-paz"/>
                             <constraint firstAttribute="trailing" secondItem="dfa-ZX-ZSl" secondAttribute="trailing" constant="17" id="TYu-A8-9sh"/>
                             <constraint firstItem="dfa-ZX-ZSl" firstAttribute="top" secondItem="HtX-2B-HzA" secondAttribute="bottom" constant="29" id="fwm-f3-Zb1"/>
                             <constraint firstItem="dfa-ZX-ZSl" firstAttribute="leading" secondItem="8v1-wf-DlU" secondAttribute="leading" constant="17" id="xXX-aQ-TRq"/>
@@ -134,10 +133,6 @@
                                 <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="bu4-rE-Ts2" id="j5C-8c-FIB"/>
-                            <outlet property="delegate" destination="bu4-rE-Ts2" id="H2a-AB-G8j"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="gN6-8m-U29"/>
                 </tableViewController>
@@ -237,8 +232,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="cqX-5Q-VB5" id="0uI-VF-wkI"/>
-                                    <outlet property="delegate" destination="cqX-5Q-VB5" id="iYd-DM-cW7"/>
+                                    <outlet property="dataSource" destination="cqX-5Q-VB5" id="Wdv-IS-eJT"/>
+                                    <outlet property="delegate" destination="cqX-5Q-VB5" id="BzM-B5-uyP"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -251,13 +246,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iQM-nc-x8V"/>
-                    <connections>
-                        <outlet property="tableView" destination="DVL-Vw-lNd" id="73Q-Uv-vAQ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VLm-rZ-0Wq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644" y="163"/>
+            <point key="canvasLocation" x="1862" y="163"/>
         </scene>
         <!--Base Navigation Controller-->
         <scene sceneID="erg-Nj-ICR">
