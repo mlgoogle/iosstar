@@ -8,27 +8,40 @@
 
 import UIKit
 import SVProgressHUD
-class RechargeVC: UITableViewController ,WXApiDelegate{
-
+class RechargeVC: UITableViewController ,WXApiDelegate,UITextFieldDelegate{
+    
+    //选中支付方式银行卡号
+    @IBOutlet weak var payTypeNumber: UILabel!
+    //选中支付的银行
+    @IBOutlet weak var payTypeName: UILabel!
+    //输入金额
     @IBOutlet weak var inputMoney: UITextField!
+    //选中支付方式的图片
+    var selectBtn : Bool = false
+    @IBOutlet weak var payTypeImg: UIImageView!
     var  payView : SelectPayType!
     var rechargeMoney : Double = 0.00
     var  bgview : UIView!
     var  paytype  = Int()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-       NotificationCenter.default.addObserver(self, selector: #selector(paysuccess(_:)), name: Notification.Name(rawValue:AppConst.WechatPay.WechatKeyErrorCode), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(paysuccess(_:)), name: Notification.Name(rawValue:AppConst.WechatPay.WechatKeyErrorCode), object: nil)
         title = "充值"
-    
-//        tableView.isScrollEnabled = false
+        inputMoney.addTarget(self , action: #selector(valueChange(_:)), for: .valueChanged)
+        inputMoney.delegate = self
         loadview()
-       
+        
     }
+    //MARK:去充值
     func paysuccess(_ notice: NSNotification) {
         if let errorCode: Int = notice.object as? Int{
             //            var code = Int()
             if errorCode == 0 {
-                 SVProgressHUD.showError(withStatus: "充值成功")
+                SVProgressHUD.showError(withStatus: "充值成功")
                 return
                 
             }
@@ -42,57 +55,68 @@ class RechargeVC: UITableViewController ,WXApiDelegate{
             }
         }
     }
+    //MARK:键盘编辑
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if selectBtn == true {
+            let vi :UIButton =  self.view.viewWithTag(Int.init(rechargeMoney)) as! UIButton
+            vi.backgroundColor = UIColor.white
+            vi.setTitleColor(UIColor.init(hexString: "FB9938"), for: .normal)
+            selectBtn = false
+        }else{
+            
+        }
+    }
+    func valueChange(_ textFile : UITextField){
+        rechargeMoney = Double.init(textFile.text!)!
+    }
+    //MARK:去充值
     @IBAction func doRecharge(_ sender: Any) {
-        
         AppAPIHelper.friend().weixinpay(title: "余额充值", price: 0.01, complete: { (result) in
             SVProgressHUD.dismiss()
-                        if let object = result {
-                            let request : PayReq = PayReq()
-                            let str : String = object["timestamp"] as! String!
-//                            ShareModel.share().shareData["rid"] =  object["rid"] as! String!
-                            request.timeStamp = UInt32(str)!
-                            request.sign = object["sign"] as! String!
-                            request.package = object["package"] as! String!
-                            request.nonceStr = object["noncestr"] as! String!
-                            request.partnerId = object["partnerid"] as! String!
-                            request.prepayId = object["prepayid"] as! String!
-                            WXApi.send(request)
-                        }
-                       
+            if let object = result {
+                let request : PayReq = PayReq()
+                let str : String = object["timestamp"] as! String!
+                //                            ShareModel.share().shareData["rid"] =  object["rid"] as! String!
+                request.timeStamp = UInt32(str)!
+                request.sign = object["sign"] as! String!
+                request.package = object["package"] as! String!
+                request.nonceStr = object["noncestr"] as! String!
+                request.partnerId = object["partnerid"] as! String!
+                request.prepayId = object["prepayid"] as! String!
+                WXApi.send(request)
+            }
+            
         }) { (error ) in
             
         }
-
+        
     }
-
+    //MARK:选择充值金额
     @IBAction func chooseRechargeMoney(_ sender: Any) {
-        
-        
+        if selectBtn == false{
+            selectBtn = true
+            inputMoney.text = ""
+            rechargeMoney = 0.0
+        }
         let btn = sender as! UIButton
         if rechargeMoney != 0.0{
             let vi :UIButton =  self.view.viewWithTag(Int.init(rechargeMoney)) as! UIButton
             vi.backgroundColor = UIColor.white
             vi.setTitleColor(UIColor.init(hexString: "FB9938"), for: .normal)
-           rechargeMoney = Double.init(btn.tag)
-           btn.backgroundColor = UIColor.init(hexString: "FB9938")
-           btn.setTitleColor(UIColor.white, for: .normal)
+            rechargeMoney = Double.init(btn.tag)
+            btn.backgroundColor = UIColor.init(hexString: "FB9938")
+            btn.setTitleColor(UIColor.white, for: .normal)
+            rechargeMoney = Double.init(btn.tag)
             
         }else{
             btn.backgroundColor = UIColor.init(hexString: "FB9938")
             btn.setTitleColor(UIColor.white, for: .normal)
             rechargeMoney = Double.init(btn.tag)
-
+            
         }
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+    //MARK:tableView datasource
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 0 ? 10 : 10
     }
@@ -100,47 +124,44 @@ class RechargeVC: UITableViewController ,WXApiDelegate{
         return section == 0 ? 0.001 : 10
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if indexPath.section == 0 {
-        
-           inputMoney.resignFirstResponder()
+            inputMoney.resignFirstResponder()
             tableView.isScrollEnabled = false
             tableView.bringSubview(toFront: bgview)
             UIView.animate(withDuration: 0.4, animations: {
-                self.payView.frame = CGRect.init(x: 0, y: tableView.frame.size.height - 198, width: tableView.frame.size.width, height: 200)
+                self.payView.frame = CGRect.init(x: 0, y: tableView.frame.size.height - 198, width: tableView.frame.size.width, height: 198)
             })
         }
     }
-
+    //MARK:loadview添加支付方式的view
     func loadview(){
-        
         bgview = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: tableView.frame.size.height))
         bgview.backgroundColor = UIColor.clear
         tableView.addSubview(bgview)
         payView =  Bundle.main.loadNibNamed("SelectPayType", owner: nil, options: nil)?.last as? SelectPayType
         payView.frame = CGRect.init(x: 0, y: tableView.frame.size.height + 500, width: tableView.frame.size.width, height: 200)
         payView.resultBlock = {[weak self](result) in
-             let code = result as! Int
-           self?.tableView.isScrollEnabled = true
-                if code == 1000{
-                    self?.tableView.sendSubview(toBack: (self?.bgview)!)
-                   UIView.animate(withDuration: 0.25, animations: { 
-                    UIView.animate(withDuration: 0.5, animations: {
-                        self?.payView.frame = CGRect.init(x: 0, y: ((self?.tableView.frame.size.height)! + 198), width: (self?.tableView.frame.size.width)!, height: 200)
-                    })
-                   }, completion: { (result ) in
-                      self?.payView.frame = CGRect.init(x: 0, y: ((self?.tableView.frame.size.height)! + 500), width: (self?.tableView.frame.size.width)!, height: 200)
-                   })
-                    
-                }else{
             
-                    self?.paytype = code
+            self?.tableView.isScrollEnabled = true
+            let object = result
+            if object is Int {
+                self?.tableView.sendSubview(toBack: (self?.bgview)!)
+                UIView.animate(withDuration: 0.25, animations: {
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self?.payView.frame = CGRect.init(x: 0, y: ((self?.tableView.frame.size.height)! + 198), width: (self?.tableView.frame.size.width)!, height: 198)
+                    })
+                }, completion: { (result ) in
+                    self?.payView.frame = CGRect.init(x: 0, y: ((self?.tableView.frame.size.height)! + 500), width: (self?.tableView.frame.size.width)!, height: 200)
+                })
+            }else{
+                let model  = result as! SelectPayTypeModel
+                self?.paytype = model.id
             }
         }
-          tableView.sendSubview(toBack: bgview)
-          bgview.addSubview(payView)
+        tableView.sendSubview(toBack: bgview)
+        bgview.addSubview(payView)
         
-      }
+    }
     
-
+    
 }

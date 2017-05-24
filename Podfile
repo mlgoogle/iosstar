@@ -29,6 +29,7 @@ target 'iOSStar' do
     pod 'Toast', '~> 3.0'
     pod 'CocoaAsyncSocket', '~> 7.5.0'
     pod 'MJRefresh', '~> 3.1.12'
+    pod 'AliPay', '~> 2.1.2'
 end
 
 
