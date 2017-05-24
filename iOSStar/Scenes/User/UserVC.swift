@@ -96,7 +96,11 @@ class UserVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "GetOrderStarsVC")
                 self.navigationController?.pushViewController(vc, animated: true)
             }
-            
+            //CustomerServiceVC
+            if indexPath.row == 2{
+                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "CustomerServiceVC")
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             //CustomerServiceVC 客服中心
             if indexPath.row == 4{
                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "SettingVC")

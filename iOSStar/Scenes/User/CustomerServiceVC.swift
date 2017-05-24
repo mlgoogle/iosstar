@@ -13,19 +13,16 @@ class CustomerServiceVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
          title = "客服中心"
-
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let view = UIView.init()
+        view.backgroundColor = UIColor.clear
+        self.tableView.tableFooterView = view
         
-        return 4
+        
+
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
 }

@@ -18,5 +18,6 @@ class ShareDataModel: NSObject {
     var isweichaLogin : Bool = false
     var phone : String =   ""
     var codeToeken : String =   ""
+    dynamic var selectMonth : String = ""
   
 }
