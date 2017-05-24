@@ -30,9 +30,9 @@
 #import "NTESFilePreViewController.h"
 #import "NTESAudio2TextViewController.h"
 #import "NSDictionary+NTESJson.h"
-#import "NIMAdvancedTeamCardViewController.h"
+
 #import "NTESSessionRemoteHistoryViewController.h"
-#import "NIMNormalTeamCardViewController.h"
+
 #import "UIView+NTES.h"
 #import "NTESBundleSetting.h"
 #import "NTESPersonalCardViewController.h"
@@ -40,7 +40,7 @@
 #import "NTESSessionLocalHistoryViewController.h"
 #import "NIMContactSelectViewController.h"
 #import "SVProgressHUD.h"
-#import "NTESSessionCardViewController.h"
+
 #import "NTESFPSLabel.h"
 #import "UIAlertView+NTESBlock.h"
 #import "NIMKit.h"
@@ -477,8 +477,8 @@ NIMContactSelectDelegate>
 
 #pragma mark - 导航按钮
 - (void)onTouchUpInfoBtn:(id)sender{
-    NTESSessionCardViewController *vc = [[NTESSessionCardViewController alloc] initWithSession:self.session];
-    [self.navigationController pushViewController:vc animated:YES];
+//    NTESSessionCardViewController *vc = [[NTESSessionCardViewController alloc] initWithSession:self.session];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)enterHistory:(id)sender{
@@ -514,14 +514,14 @@ NIMContactSelectDelegate>
 }
 
 - (void)enterTeamCard:(id)sender{
-    NIMTeam *team = [[NIMSDK sharedSDK].teamManager teamById:self.session.sessionId];
-    UIViewController *vc;
-    if (team.type == NIMTeamTypeNormal) {
-        vc = [[NIMNormalTeamCardViewController alloc] initWithTeam:team];
-    }else if(team.type == NIMTeamTypeAdvanced){
-        vc = [[NIMAdvancedTeamCardViewController alloc] initWithTeam:team];
-    }
-    [self.navigationController pushViewController:vc animated:YES];
+//    NIMTeam *team = [[NIMSDK sharedSDK].teamManager teamById:self.session.sessionId];
+//    UIViewController *vc;
+//    if (team.type == NIMTeamTypeNormal) {
+//        vc = [[NIMNormalTeamCardViewController alloc] initWithTeam:team];
+//    }else if(team.type == NIMTeamTypeAdvanced){
+//        vc = [[NIMAdvancedTeamCardViewController alloc] initWithTeam:team];
+//    }
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 菜单
