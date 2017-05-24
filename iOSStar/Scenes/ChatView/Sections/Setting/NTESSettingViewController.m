@@ -19,7 +19,7 @@
 #import "NTESNotificationCenter.h"
 #import "NTESCustomNotificationDB.h"
 #import "NTESCustomSysNotificationViewController.h"
-#import "NTESNoDisturbSettingViewController.h"
+
 #import "NTESLogManager.h"
 #import "NTESColorButtonCell.h"
 #import "NTESAboutViewController.h"
@@ -187,12 +187,12 @@
 }
 
 - (void)onActionNoDisturbingSetting:(id)sender {
-    NTESNoDisturbSettingViewController *vc = [[NTESNoDisturbSettingViewController alloc] initWithNibName:nil bundle:nil];
-    __weak typeof(self) wself = self;
-    vc.handler = ^(){
-        [wself refreshData];
-    };
-    [self.navigationController pushViewController:vc animated:YES];
+//    NTESNoDisturbSettingViewController *vc = [[NTESNoDisturbSettingViewController alloc] initWithNibName:nil bundle:nil];
+//    __weak typeof(self) wself = self;
+//    vc.handler = ^(){
+//        [wself refreshData];
+//    };
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)onTouchShowLog:(id)sender{

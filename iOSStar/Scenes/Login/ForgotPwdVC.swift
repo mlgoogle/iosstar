@@ -34,6 +34,9 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
     }
+    deinit {
+        NotificationCenter.default.removeObserver(self) 
+    }
     //MARK: 监听输入址变化
     func valueChange(_ textFiled : Notification){
         if phoneTf.text != "" && codeTf.text != "" && first_input.text != "" && second_input.text != "" {
