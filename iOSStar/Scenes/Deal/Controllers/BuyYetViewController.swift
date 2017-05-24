@@ -28,7 +28,14 @@ class BuyYetViewController: UIViewController {
 
 extension BuyYetViewController:UITableViewDelegate, UITableViewDataSource {
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 100
+        } else if indexPath.row == 0 {
+            return 38
+        }
+        return 70
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }

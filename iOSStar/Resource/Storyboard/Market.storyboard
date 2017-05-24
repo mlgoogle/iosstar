@@ -211,9 +211,9 @@
                                                                 <constraint firstAttribute="height" constant="230" id="Ba6-qH-9UW"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WIm-gw-tSk">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WIm-gw-tSk" customClass="GradualColorView" customModule="iOSStar" customModuleProvider="target">
                                                             <rect key="frame" x="25" y="453" width="325" height="16"/>
-                                                            <color key="backgroundColor" red="1" green="0.35543323859999998" blue="0.35152698859999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.50495975378787883" green="0.39126420454545452" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="kea-or-fV4"/>
                                                             </constraints>
@@ -238,9 +238,28 @@
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9V-y9-ki0">
                                                             <rect key="frame" x="25" y="528" width="325" height="16"/>
-                                                            <color key="backgroundColor" red="0.39888731059999999" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Tu-LF-LFw" customClass="GradualColorView" customModule="iOSStar">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="16"/>
+                                                                    <color key="backgroundColor" red="1" green="1" blue="0.37529592803030304" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="100" id="2xU-bf-2vL"/>
+                                                                    </constraints>
+                                                                </view>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p82-Ta-oUM" customClass="GradualColorView" customModule="iOSStar">
+                                                                    <rect key="frame" x="100" y="0.0" width="225" height="16"/>
+                                                                    <color key="backgroundColor" red="0.50495975378787883" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </view>
+                                                            </subviews>
                                                             <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="p82-Ta-oUM" secondAttribute="bottom" id="T9t-OL-No4"/>
+                                                                <constraint firstItem="p82-Ta-oUM" firstAttribute="leading" secondItem="1Tu-LF-LFw" secondAttribute="trailing" id="Wf4-PB-F4b"/>
+                                                                <constraint firstItem="1Tu-LF-LFw" firstAttribute="leading" secondItem="K9V-y9-ki0" secondAttribute="leading" id="X2u-dc-A2g"/>
                                                                 <constraint firstAttribute="height" constant="16" id="Y9J-Tj-TAG"/>
+                                                                <constraint firstItem="p82-Ta-oUM" firstAttribute="top" secondItem="K9V-y9-ki0" secondAttribute="top" id="hqi-lA-RS5"/>
+                                                                <constraint firstItem="1Tu-LF-LFw" firstAttribute="top" secondItem="K9V-y9-ki0" secondAttribute="top" id="neq-nL-ACv"/>
+                                                                <constraint firstAttribute="trailing" secondItem="p82-Ta-oUM" secondAttribute="trailing" id="v4X-RJ-cIB"/>
+                                                                <constraint firstAttribute="bottom" secondItem="1Tu-LF-LFw" secondAttribute="bottom" id="z7m-fa-P75"/>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="买入：300人" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhn-O1-DFH">
@@ -285,6 +304,15 @@
                                                 <constraint firstAttribute="trailing" secondItem="es6-GG-EoH" secondAttribute="trailing" id="qAM-s8-zsD"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="buyProgressView" destination="1Tu-LF-LFw" id="KHe-2Q-wOT"/>
+                                            <outlet property="countProgressView" destination="WIm-gw-tSk" id="JhE-rH-JeC"/>
+                                            <outlet property="positionCount" destination="VNW-kB-6yj" id="Ltl-F6-QAe"/>
+                                            <outlet property="sellProgressView" destination="p82-Ta-oUM" id="q1c-G5-850"/>
+                                            <outlet property="showImageView" destination="exO-zc-VMk" id="ua7-FQ-cEl"/>
+                                            <outlet property="starCodeLabel" destination="Mlx-sL-6jZ" id="PlN-QH-tFE"/>
+                                            <outlet property="timeLabel" destination="l4d-xa-7KV" id="BbA-t8-NBh"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MarketAuctionCell" rowHeight="80" id="t94-Ik-j7r" customClass="MarketAuctionCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="637" width="375" height="80"/>
@@ -761,11 +789,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketDetailCell" rowHeight="396" id="42B-kw-wEy" customClass="MarketDetailCell" customModule="iOSStar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="396"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketDetailCell" rowHeight="417" id="42B-kw-wEy" customClass="MarketDetailCell" customModule="iOSStar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="417"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="42B-kw-wEy" id="WAs-vN-9AX">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="395"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="416"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fjo-mC-Sqx">
@@ -799,16 +827,32 @@
                                                     <color key="textColor" red="0.79607843137254897" green="0.25882352941176467" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-05-22 12:22:11" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K59-JS-Xpq">
+                                                    <rect key="frame" x="22" y="387" width="100" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-05-22 12:22:11" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlL-kS-aTf">
+                                                    <rect key="frame" x="253" y="387" width="100" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="hd2-pd-B9W" firstAttribute="bottom" secondItem="Fjo-mC-Sqx" secondAttribute="bottom" id="3yC-jM-q2Y"/>
                                                 <constraint firstItem="bO6-HN-btt" firstAttribute="bottom" secondItem="hd2-pd-B9W" secondAttribute="bottom" id="IiX-m5-F0s"/>
                                                 <constraint firstItem="jFZ-Nk-nIM" firstAttribute="top" secondItem="bO6-HN-btt" secondAttribute="bottom" constant="12" id="Mv6-vY-T7G"/>
+                                                <constraint firstItem="ZlL-kS-aTf" firstAttribute="top" secondItem="jFZ-Nk-nIM" secondAttribute="bottom" constant="5" id="Nhh-ds-eBT"/>
+                                                <constraint firstItem="ZlL-kS-aTf" firstAttribute="trailing" secondItem="jFZ-Nk-nIM" secondAttribute="trailing" constant="-10" id="Ovi-Kf-dkR"/>
                                                 <constraint firstAttribute="trailing" secondItem="bO6-HN-btt" secondAttribute="trailing" constant="12" id="j2U-36-tds"/>
                                                 <constraint firstAttribute="trailing" secondItem="jFZ-Nk-nIM" secondAttribute="trailing" constant="12" id="nB9-yR-APa"/>
                                                 <constraint firstItem="Fjo-mC-Sqx" firstAttribute="top" secondItem="WAs-vN-9AX" secondAttribute="top" constant="20" id="oDs-GG-2LX"/>
                                                 <constraint firstItem="Fjo-mC-Sqx" firstAttribute="leading" secondItem="WAs-vN-9AX" secondAttribute="leading" constant="12" id="peP-pt-ENh"/>
+                                                <constraint firstItem="K59-JS-Xpq" firstAttribute="leading" secondItem="jFZ-Nk-nIM" secondAttribute="leading" constant="10" id="uJ9-Qa-Uze"/>
+                                                <constraint firstItem="K59-JS-Xpq" firstAttribute="top" secondItem="jFZ-Nk-nIM" secondAttribute="bottom" constant="5" id="vPx-bC-qlU"/>
                                                 <constraint firstItem="hd2-pd-B9W" firstAttribute="leading" secondItem="Fjo-mC-Sqx" secondAttribute="trailing" constant="20" id="xWk-od-Mbv"/>
                                                 <constraint firstItem="jFZ-Nk-nIM" firstAttribute="leading" secondItem="WAs-vN-9AX" secondAttribute="leading" constant="12" id="yya-2j-21c"/>
                                             </constraints>
@@ -820,11 +864,11 @@
                                             <outlet property="lineView" destination="jFZ-Nk-nIM" id="lpk-cN-ffg"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketDetailSubViewCell" rowHeight="157" id="Vbw-7T-Xkz" customClass="MarketDetailSubViewCell" customModule="iOSStar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="424" width="375" height="157"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketDetailSubViewCell" rowHeight="136" id="Vbw-7T-Xkz" customClass="MarketDetailSubViewCell" customModule="iOSStar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="445" width="375" height="136"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vbw-7T-Xkz" id="a7j-8L-hzW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="156"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -859,7 +903,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N9M-ee-3yf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481" y="-779"/>
+            <point key="canvasLocation" x="1480.8" y="-779.46026986506752"/>
         </scene>
         <!--详情-->
         <scene sceneID="Nso-cR-caL">

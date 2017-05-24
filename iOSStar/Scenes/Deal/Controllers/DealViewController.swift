@@ -30,7 +30,6 @@ class DealViewController: UIViewController,DealScrollViewScrollDelegate,MenuView
         layout.sectionInset = UIEdgeInsets(top: -3, left: 0, bottom: 0, right: 28)
         layout.minimumInteritemSpacing = (kScreenWidth - 44 - 28 - 30 * 5) / 4
         layout.minimumLineSpacing = (kScreenWidth - 44 - 28 - 30 * 5) / 4
-        
         layout.scrollDirection =  .horizontal
         menuView = YD_VMenuView(frame: CGRect(x: 0, y: 0, width: kScreenWidth - 44, height: 40), layout: layout)
         menuView?.backgroundColor = UIColor.clear
@@ -51,9 +50,11 @@ class DealViewController: UIViewController,DealScrollViewScrollDelegate,MenuView
         
         let stroyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
         var views = [UIView]()
-        for identifier in identifiers {
+        for (index,identifier) in identifiers.enumerated() {
             let vc = stroyBoard.instantiateViewController(withIdentifier: identifier)
             views.append(vc.view)
+            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: backView.frame.size.height - 64)
+
             addChildViewController(vc)
             
         }
