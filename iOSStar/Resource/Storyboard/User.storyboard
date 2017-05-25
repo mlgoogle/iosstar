@@ -1090,7 +1090,7 @@
         <!--绑定银行卡提示-->
         <scene sceneID="6MO-Di-Aib">
             <objects>
-                <viewController storyboardIdentifier="TipBindCardVC" title="绑定银行卡提示" id="W8t-lD-LlN" customClass="TipBindCardVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TipBindVC" title="绑定银行卡提示" id="W8t-lD-LlN" customClass="TipBindVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IMI-DN-46r"/>
                         <viewControllerLayoutGuide type="bottom" id="drP-np-9EG"/>
@@ -1382,7 +1382,7 @@
         <!--设置交易密码-->
         <scene sceneID="e2v-KQ-eN9">
             <objects>
-                <viewController storyboardIdentifier="TradePdVC" title="设置交易密码" id="aBB-3D-vzh" customClass="TradePdVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TradePassWordVC" title="设置交易密码" id="aBB-3D-vzh" customClass="TradePassWordVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CJ1-Rb-76I"/>
                         <viewControllerLayoutGuide type="bottom" id="YyD-t7-mp5"/>
@@ -1554,8 +1554,19 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="15" id="OBJ-o2-dbP">
+                                        <rect key="frame" x="0.0" y="260" width="375" height="15"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OBJ-o2-dbP" id="HpR-ey-fIV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="28o-73-Hd1">
-                                        <rect key="frame" x="0.0" y="260" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="275" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="28o-73-Hd1" id="ONA-T6-DYG">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
@@ -1617,7 +1628,7 @@
                                         <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="15" id="tHz-2v-odc">
-                                        <rect key="frame" x="0.0" y="340" width="375" height="15"/>
+                                        <rect key="frame" x="0.0" y="355" width="375" height="15"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tHz-2v-odc" id="nTt-f6-GWM">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="14.5"/>
@@ -1628,7 +1639,7 @@
                                         <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="1Uk-WC-OYG">
-                                        <rect key="frame" x="0.0" y="355" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="370" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Uk-WC-OYG" id="TKe-EN-pRn">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
@@ -2344,9 +2355,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dKd-0Y-8sg"/>
-                    <connections>
-                        <outlet property="tableView" destination="IRq-br-yuk" id="Zil-0T-QpC"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rf6-8H-a1B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2528,7 +2536,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xLC-CD-Gu5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4084" y="1628"/>
+            <point key="canvasLocation" x="4052" y="1606"/>
         </scene>
         <!--Money Detail List-->
         <scene sceneID="Q77-TA-ldt">
@@ -2546,11 +2554,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RechargeListVCCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="RechargeListVCCell" rowHeight="70" id="pQ0-66-wmb" customClass="RechargeListVCCell" customModule="iOSStar" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RechargeListVCCell" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RechargeListVCCell" rowHeight="70" id="pQ0-66-wmb" customClass="RechargeListVCCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pQ0-66-wmb" id="wIe-wN-bet">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqT-rT-dfz">
@@ -2583,7 +2591,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+2000.00" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27o-Cu-waK">
-                                                    <rect key="frame" x="104" y="10" width="177" height="24"/>
+                                                    <rect key="frame" x="104" y="10" width="144" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="WdX-T5-yeC"/>
                                                     </constraints>
@@ -2592,7 +2600,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值成功" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPZ-I9-sOm">
-                                                    <rect key="frame" x="281" y="40" width="94" height="20"/>
+                                                    <rect key="frame" x="248" y="40" width="94" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="Al4-bF-Lxm"/>
                                                         <constraint firstAttribute="height" constant="20" id="r00-df-xah"/>
@@ -2610,7 +2618,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJs-1H-Ueg">
-                                                    <rect key="frame" x="281" y="10" width="94" height="24"/>
+                                                    <rect key="frame" x="248" y="10" width="94" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="0dX-9J-yil"/>
                                                         <constraint firstAttribute="height" constant="24" id="3dU-tY-AIf"/>
@@ -2646,6 +2654,7 @@
                                             <outlet property="timeLb" destination="TEP-oZ-a7c" id="fQV-pC-OPO"/>
                                             <outlet property="weekLb" destination="pqT-rT-dfz" id="dKT-dD-ZdD"/>
                                             <outlet property="withDrawto" destination="qPw-oP-taN" id="MbK-f8-9wT"/>
+                                            <segue destination="Dqe-BC-PaX" kind="push" id="ilu-o0-tvi"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2671,7 +2680,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9bu-T3-wkL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3026" y="1628"/>
+            <point key="canvasLocation" x="2982" y="1605"/>
         </scene>
     </scenes>
     <resources>

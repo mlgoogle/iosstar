@@ -1,5 +1,5 @@
 //
-//  TipBindCardVC.swift
+//  TipBindVC.swift
 //  iOSStar
 //
 //  Created by sum on 2017/5/4.
@@ -13,7 +13,7 @@ enum doTipClick{
   
     
 }
-class TipBindCardVC: UIViewController {
+class TipBindVC: UIViewController {
     var resultBlock: CompleteBlock?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +22,11 @@ class TipBindCardVC: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+       
     }
     
     @IBAction func bindCard(_ sender: Any) {
         self.resultBlock!(doTipClick.doVail as AnyObject)
-//        self.dismissController()
         
     }
 

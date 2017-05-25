@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingVC: UITableViewController {
+class SettingVC: BaseTableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -21,11 +21,7 @@ class SettingVC: UITableViewController {
         let view = UIView.init()
         view.backgroundColor = UIColor.clear
         self.tableView.tableFooterView = view
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+       
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

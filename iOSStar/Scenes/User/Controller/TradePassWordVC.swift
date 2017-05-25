@@ -1,5 +1,5 @@
 //
-//  TradePdVC.swift
+//  TradePassWordVC.swift
 //  iOSStar
 //
 //  Created by sum on 2017/5/9.
@@ -29,7 +29,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
         return rhs < lhs
     }
 }
-class TradePdVC: UIViewController ,UITextFieldDelegate{
+class TradePassWordVC: UIViewController ,UITextFieldDelegate{
 
     var setPass = false
     var showKeyBoard : Bool = false
@@ -65,8 +65,7 @@ class TradePdVC: UIViewController ,UITextFieldDelegate{
         
         
         for i in 0  ..< 6 {
-            
-            
+        
       
             let line:UIView = UIView(frame: CGRect(x: 30 + CGFloat(i) * 10 + (( kScreenWidth - 110) / 6.0) * CGFloat(i),y: 40, width: ((kScreenWidth - 110) / 6.0) ,height:  ((kScreenWidth - 110) / 6.0)))
             line.backgroundColor = UIColor.clear
@@ -108,7 +107,7 @@ class TradePdVC: UIViewController ,UITextFieldDelegate{
         if setPass == true{
         }else{
             if passString.length() == 6{
-                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePdVC") as! TradePdVC
+                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC") as! TradePassWordVC
                 vc .setPass = true
                 self.navigationController?.pushViewController(vc, animated: true )
             }else{

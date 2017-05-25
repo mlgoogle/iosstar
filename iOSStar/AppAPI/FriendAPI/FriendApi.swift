@@ -16,5 +16,6 @@ protocol UserApi {
       func reducetime(phone: String, starcode: String, complete: CompleteBlock?, error: ErrorBlock?)
       //预约的明细
       func getorderstars(phone: String, starcode: String, complete: CompleteBlock?, error: ErrorBlock?)
-       func weixinpay(title:String,  price:Double, complete: CompleteBlock?, error: ErrorBlock?)
+     // 微信支付
+      func weixinpay(title:String,  price:Double, complete: CompleteBlock?, error: ErrorBlock?)
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 import SVProgressHUD
-class RechargeVC: UITableViewController ,WXApiDelegate,UITextFieldDelegate{
+class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     
     
     var selectTypeHeight = CGFloat.init(140)

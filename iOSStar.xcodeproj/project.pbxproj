@@ -355,7 +355,7 @@
 		A04CF0741ED6AC9000B93D28 /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A04CF0731ED6AC9000B93D28 /* calendar@2x.png */; };
 		A04CF0911ED6CB6800B93D28 /* BankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0781ED6CB6800B93D28 /* BankCardVC.swift */; };
 		A04CF0921ED6CB6800B93D28 /* BindingBankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0791ED6CB6800B93D28 /* BindingBankCardVC.swift */; };
-		A04CF0931ED6CB6800B93D28 /* TipBindCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF07A1ED6CB6800B93D28 /* TipBindCardVC.swift */; };
+		A04CF0931ED6CB6800B93D28 /* TipBindVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF07A1ED6CB6800B93D28 /* TipBindVC.swift */; };
 		A04CF0941ED6CB6800B93D28 /* AccountInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF07C1ED6CB6800B93D28 /* AccountInfoVC.swift */; };
 		A04CF0951ED6CB6800B93D28 /* CustomerServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF07D1ED6CB6800B93D28 /* CustomerServiceVC.swift */; };
 		A04CF0961ED6CB6800B93D28 /* DealListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF07E1ED6CB6800B93D28 /* DealListVC.swift */; };
@@ -364,7 +364,7 @@
 		A04CF0991ED6CB6800B93D28 /* MoneyDetailList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0811ED6CB6800B93D28 /* MoneyDetailList.swift */; };
 		A04CF09A1ED6CB6800B93D28 /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0821ED6CB6800B93D28 /* ResultVC.swift */; };
 		A04CF09B1ED6CB6800B93D28 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0831ED6CB6800B93D28 /* SettingVC.swift */; };
-		A04CF09C1ED6CB6800B93D28 /* TradePdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0841ED6CB6800B93D28 /* TradePdVC.swift */; };
+		A04CF09C1ED6CB6800B93D28 /* TradePassWordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0841ED6CB6800B93D28 /* TradePassWordVC.swift */; };
 		A04CF09D1ED6CB6800B93D28 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0851ED6CB6800B93D28 /* UserInfoVC.swift */; };
 		A04CF09E1ED6CB6800B93D28 /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0861ED6CB6800B93D28 /* UserVC.swift */; };
 		A04CF09F1ED6CB6800B93D28 /* WealthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0871ED6CB6800B93D28 /* WealthVC.swift */; };
@@ -1081,7 +1081,7 @@
 		A04CF0731ED6AC9000B93D28 /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
 		A04CF0781ED6CB6800B93D28 /* BankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardVC.swift; sourceTree = "<group>"; };
 		A04CF0791ED6CB6800B93D28 /* BindingBankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingBankCardVC.swift; sourceTree = "<group>"; };
-		A04CF07A1ED6CB6800B93D28 /* TipBindCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipBindCardVC.swift; sourceTree = "<group>"; };
+		A04CF07A1ED6CB6800B93D28 /* TipBindVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipBindVC.swift; path = ../bankCard/TipBindVC.swift; sourceTree = "<group>"; };
 		A04CF07C1ED6CB6800B93D28 /* AccountInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountInfoVC.swift; sourceTree = "<group>"; };
 		A04CF07D1ED6CB6800B93D28 /* CustomerServiceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerServiceVC.swift; sourceTree = "<group>"; };
 		A04CF07E1ED6CB6800B93D28 /* DealListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealListVC.swift; sourceTree = "<group>"; };
@@ -1090,7 +1090,7 @@
 		A04CF0811ED6CB6800B93D28 /* MoneyDetailList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyDetailList.swift; sourceTree = "<group>"; };
 		A04CF0821ED6CB6800B93D28 /* ResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultVC.swift; sourceTree = "<group>"; };
 		A04CF0831ED6CB6800B93D28 /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
-		A04CF0841ED6CB6800B93D28 /* TradePdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradePdVC.swift; sourceTree = "<group>"; };
+		A04CF0841ED6CB6800B93D28 /* TradePassWordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradePassWordVC.swift; sourceTree = "<group>"; };
 		A04CF0851ED6CB6800B93D28 /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		A04CF0861ED6CB6800B93D28 /* UserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
 		A04CF0871ED6CB6800B93D28 /* WealthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WealthVC.swift; sourceTree = "<group>"; };
@@ -2847,7 +2847,6 @@
 			children = (
 				A04CF0781ED6CB6800B93D28 /* BankCardVC.swift */,
 				A04CF0791ED6CB6800B93D28 /* BindingBankCardVC.swift */,
-				A04CF07A1ED6CB6800B93D28 /* TipBindCardVC.swift */,
 			);
 			path = bankCard;
 			sourceTree = "<group>";
@@ -2855,6 +2854,7 @@
 		A04CF07B1ED6CB6800B93D28 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A04CF07A1ED6CB6800B93D28 /* TipBindVC.swift */,
 				A04CF07C1ED6CB6800B93D28 /* AccountInfoVC.swift */,
 				A04CF07D1ED6CB6800B93D28 /* CustomerServiceVC.swift */,
 				A04CF07E1ED6CB6800B93D28 /* DealListVC.swift */,
@@ -2863,7 +2863,7 @@
 				A04CF0811ED6CB6800B93D28 /* MoneyDetailList.swift */,
 				A04CF0821ED6CB6800B93D28 /* ResultVC.swift */,
 				A04CF0831ED6CB6800B93D28 /* SettingVC.swift */,
-				A04CF0841ED6CB6800B93D28 /* TradePdVC.swift */,
+				A04CF0841ED6CB6800B93D28 /* TradePassWordVC.swift */,
 				A04CF0851ED6CB6800B93D28 /* UserInfoVC.swift */,
 				A04CF0861ED6CB6800B93D28 /* UserVC.swift */,
 				A04CF0871ED6CB6800B93D28 /* WealthVC.swift */,
@@ -3588,7 +3588,7 @@
 				6ECAA1AB1ECD75B1000FBED7 /* MarketExperienceCell.swift in Sources */,
 				A03D3FE01EA86A6500F85308 /* NTESMobileSettingViewController.m in Sources */,
 				A04CF0A01ED6CB6800B93D28 /* RechargeVC.swift in Sources */,
-				A04CF0931ED6CB6800B93D28 /* TipBindCardVC.swift in Sources */,
+				A04CF0931ED6CB6800B93D28 /* TipBindVC.swift in Sources */,
 				A03D3F171EA86A6400F85308 /* NIMKitEvent.m in Sources */,
 				A03D3FDD1EA86A6500F85308 /* NTESBirthSettingViewController.m in Sources */,
 				A03D3FE91EA86A6500F85308 /* NTESDemoFetchChatroomTask.m in Sources */,
@@ -3628,7 +3628,7 @@
 				A03D3F6C1EA86A6500F85308 /* NTESColorButtonCell.m in Sources */,
 				A03D3F7F1EA86A6500F85308 /* NTESChatroomMemberCell.m in Sources */,
 				6E1B57111ED40A7700A014AE /* DealDoubleRowCell.swift in Sources */,
-				A04CF09C1ED6CB6800B93D28 /* TradePdVC.swift in Sources */,
+				A04CF09C1ED6CB6800B93D28 /* TradePassWordVC.swift in Sources */,
 				A03D3F6F1EA86A6500F85308 /* NTESPersonalCardViewController.m in Sources */,
 				6E1B571D1ED40FE100A014AE /* DealHintCell.swift in Sources */,
 				A084BB511ED57FAF00DFC868 /* BaseTableViewController.swift in Sources */,

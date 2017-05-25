@@ -21,8 +21,6 @@ class VaildNameVC:  BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "实名认证"
-
-        
     }
 
     override func didReceiveMemoryWarning() {

@@ -64,17 +64,16 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         if indexPath.section == 1 {
             if indexPath.row == 1{
                 
-                //                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePdVC") as! TradePdVC
+                //                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC") as! TradePassWordVC
                 //                 self.navigationController?.pushViewController(vc, animated: true )
                 //                vc.modalTransitionStyle = .crossDissolve
                 //                vc.modalPresentationStyle = .custom
                 //                vc.resultBlock = { (result) in
-                //                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePdVC")
+                //                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
                 //                    self.navigationController?.pushViewController(vc, animated: true )
                 //
                 //                }
-                
-                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TipBindCardVC") as! TipBindCardVC
+                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TipBindVC") as! TipBindVC
                 vc.modalTransitionStyle = .crossDissolve
                 vc.modalPresentationStyle = .custom
                 self.present(vc, animated: true, completion: {})

@@ -15,19 +15,14 @@ class TitleCell: UITableViewCell {
     
     
 }
-class UserVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
+class UserVC: BaseCustomTableViewController  {
 
     // 名字数组
     var titltArry = [""]
-    @IBOutlet weak var tableView: UITableView!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         titltArry = ["我的钱包","我预约的明星","客服中心","常见问题","通用设置"]
-        let view = UIView.init()
-        view.backgroundColor = UIColor.clear
-        self.tableView.tableFooterView = view
-        
-       
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -36,12 +31,12 @@ class UserVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
 
     }
     // MARK: Table view data source
-     func numberOfSections(in tableView: UITableView) -> Int {
+     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 3
     }
 
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return section == 0 ? 1 : (section == 1 ? 5 : (section == 2 ? 1 : 3 ))
     }
@@ -52,10 +47,10 @@ class UserVC: UIViewController,UITableViewDataSource,UITableViewDelegate  {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
          return  0
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0 ? 260: 44
     }
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         
