@@ -8,8 +8,16 @@
 
 import UIKit
 
+protocol SelectDateDelegate {
+    func startSelect(isStart:Bool)
+}
 class DealSelectDateCell: UITableViewCell {
+    var delegate:SelectDateDelegate?
 
+    @IBOutlet weak var endDateLabel: UILabel!
+
+    @IBOutlet weak var startDateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,7 +26,21 @@ class DealSelectDateCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
+
+    @IBAction func startDateAction(_ sender: Any) {
+
+        delegate?.startSelect(isStart: true)
+    }
+    @IBAction func endDateAction(_ sender: Any) {
+        delegate?.startSelect(isStart: false)
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+//可能会有问题
+        
+    }
 }

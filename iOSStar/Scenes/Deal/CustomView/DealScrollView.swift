@@ -16,7 +16,6 @@ class DealScrollView: UIView,UIScrollViewDelegate {
 
     var delegate:DealScrollViewScrollDelegate?
     lazy var scrollView:UIScrollView = {
-        
        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - 64))
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
@@ -27,15 +26,15 @@ class DealScrollView: UIView,UIScrollViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(scrollView)
-        scrollView.frame = frame
+        scrollView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         scrollView.isPagingEnabled = true
+
         
     }
 
     func setSubViews(customSubViews:[UIView]) {
        scrollView.contentSize = CGSize(width: CGFloat(customSubViews.count) * kScreenWidth, height: 0)
-        for (index, view) in customSubViews.enumerated() {
-            view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: frame.size.height - 64)
+        for (_, view) in customSubViews.enumerated() {
             scrollView.addSubview(view)
         }
     }
@@ -49,7 +48,7 @@ class DealScrollView: UIView,UIScrollViewDelegate {
     
     func moveToIndex(index:Int) {
         UIView.animate(withDuration: 0.5) {
-            self.scrollView.contentOffset = CGPoint(x: CGFloat(index), y: 0)
+            self.scrollView.contentOffset = CGPoint(x: CGFloat(index) * kScreenWidth, y: 0)
         }
         
     }

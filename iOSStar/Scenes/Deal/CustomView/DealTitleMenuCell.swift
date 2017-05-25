@@ -12,13 +12,20 @@ class DealTitleMenuCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    }
+    func setTitles(titles:[String]) {
+        
+        for (index, title) in titles.enumerated() {
+            let label = viewWithTag(3000 + index) as? UILabel
+            label?.text = title
+            
+        }
     }
 
 }

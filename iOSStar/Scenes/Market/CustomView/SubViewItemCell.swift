@@ -65,6 +65,7 @@ class SubViewItemCell: UITableViewCell {
         addSubview(priceLabel)
         addSubview(changeLabel)
         addSubview(codeLabel)
+        contentView.backgroundColor = UIColor(hexString: "FAFAFA")
         
         
         iconImageView.snp.makeConstraints { (make) in
