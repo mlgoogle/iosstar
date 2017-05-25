@@ -101,13 +101,8 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuItemCell", for: indexPath) as! MenuItemCell
-        
-        
 
         cell.setTitle(title: items![indexPath.item], colorString: indexPath.row == selectIndexPath.item ? AppConst.Color.main : "C2CFD8", isZoom:indexPath.row == selectIndexPath.item ? isSelectZoom : false)
-        
- 
-        
         return cell
     }
     
@@ -130,6 +125,7 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
         if isScreenWidth {
             let margin = selfLayout!.sectionInset.left + selfLayout!.sectionInset.right + frame.origin.x
             let size = CGSize(width: (kScreenWidth - margin - selfLayout!.minimumInteritemSpacing * (CGFloat(items!.count) - 1) ) / CGFloat(items!.count), height: 15)
+            print(size)
             return size
         } else {
             let title = items?[indexPath.row]

@@ -34,7 +34,8 @@ class MenuSubViewCell: UICollectionViewCell {
         addSubViews()
     }
     func addSubViews() {
-        
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor(hexString: "FAFAFA")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsHorizontalScrollIndicator = false
