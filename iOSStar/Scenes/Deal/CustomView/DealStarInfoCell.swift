@@ -9,6 +9,9 @@
 import UIKit
 
 class DealStarInfoCell: UITableViewCell {
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var positionLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

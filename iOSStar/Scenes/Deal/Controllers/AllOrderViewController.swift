@@ -51,6 +51,6 @@ extension AllOrderViewController:UITableViewDelegate, UITableViewDataSource {
             
             return 38
         }
-        return 70
+        return 80
     }
 }

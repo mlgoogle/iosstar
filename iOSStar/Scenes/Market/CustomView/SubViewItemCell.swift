@@ -105,9 +105,18 @@ class SubViewItemCell: UITableViewCell {
         iconImageView.kf.setImage(with: URL(string: model.head), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         nameLabel.text = model.name
         codeLabel.text = model.code
-        
-        
+        priceLabel.text = "\(model.price)"
+        var colorString = AppConst.Color.up
+        if model.updown < 0 {
+            changeLabel.text = "\(model.updown)%"
+            colorString = AppConst.Color.down
+        } else {
+            changeLabel.text = "+\(model.updown)%"
+        }
+        priceLabel.textColor = UIColor(hexString: colorString)
+        changeLabel.backgroundColor = UIColor(hexString: colorString)
     }
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

@@ -235,7 +235,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }
     func setSubCollectionView() {
         let subViewLayout = UICollectionViewFlowLayout()
-        subViewLayout.itemSize = CGSize(width: kScreenWidth, height: kScreenHeight - 90)
+        subViewLayout.itemSize = CGSize(width: kScreenWidth, height: kScreenHeight - 90 - 64)
         subViewLayout.scrollDirection = .horizontal
         subViewLayout.minimumInteritemSpacing = 0
         subViewLayout.minimumLineSpacing = 0
@@ -314,7 +314,8 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }
     func selectItem(starModel:MarketListStarModel) {
         let storyBoard = UIStoryboard(name: "Market", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail")
+        let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail") as! MarketDetailViewController
+        vc.starModel = starModel
         navigationController?.pushViewController(vc, animated: true)
     }
 

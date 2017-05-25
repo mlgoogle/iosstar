@@ -9,7 +9,9 @@
 import UIKit
 
 class DealPropertyCell: UITableViewCell {
+    @IBOutlet weak var availMoneyLabel: UILabel!
 
+    @IBOutlet weak var totalValueLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

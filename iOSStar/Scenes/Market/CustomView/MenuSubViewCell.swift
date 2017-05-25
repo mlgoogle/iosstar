@@ -16,7 +16,7 @@ class MenuSubViewCell: UICollectionViewCell {
     var footer:MJRefreshAutoNormalFooter?
     lazy var tableView:UITableView = {
 
-        let tableView = UITableView(frame: CGRect(x: 0, y: 24, width: kScreenWidth, height: kScreenHeight - 90 - 44), style: .grouped)
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - 90 - 64), style: .grouped)
 
         return tableView
     }()

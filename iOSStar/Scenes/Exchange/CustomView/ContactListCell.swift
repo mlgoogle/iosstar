@@ -28,8 +28,6 @@ class ContactListCell: OEZTableViewCell {
         // Configure the view for the selected state
     }
     override func update(_ data: Any!) {
-        
-        
         let model = data as! StarInfoModel
         nameLabel.text = model.name
         jobLabel.text = model.type

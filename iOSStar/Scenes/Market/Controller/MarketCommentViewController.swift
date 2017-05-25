@@ -42,4 +42,14 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
         
         return cell 
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        
+        let vc = MarketCommentViewController.storyboardInit(identifier:MarketCommentViewController.className(), storyboardName:AppConst.StoryBoardName.Markt.rawValue) as? MarketCommentViewController
+        guard vc != nil else {
+            return
+        }
+        parent?.navigationController?.pushViewController(vc!, animated: true)
+        
+    }
 }
