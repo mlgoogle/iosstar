@@ -407,8 +407,8 @@
 		A07DF7C71EC0132F00C2254E /* Novisible@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07DF7C31EC0132E00C2254E /* Novisible@3x.png */; };
 		A07DF7C81EC0132F00C2254E /* visible@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07DF7C41EC0132E00C2254E /* visible@2x.png */; };
 		A07DF7C91EC0132F00C2254E /* visible@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07DF7C51EC0132E00C2254E /* visible@3x.png */; };
-		A07DF7CC1EC072B700C2254E /* FriendApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07DF7CB1EC072B700C2254E /* FriendApi.swift */; };
-		A07DF7CE1EC072D200C2254E /* FriendSocketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07DF7CD1EC072D200C2254E /* FriendSocketApi.swift */; };
+		A07DF7CC1EC072B700C2254E /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07DF7CB1EC072B700C2254E /* UserApi.swift */; };
+		A07DF7CE1EC072D200C2254E /* UserSocketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07DF7CD1EC072D200C2254E /* UserSocketApi.swift */; };
 		A084BB461ED52AD500DFC868 /* SystemMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084BB451ED52AD500DFC868 /* SystemMessageVC.swift */; };
 		A084BB4D1ED5790E00DFC868 /* BaseCustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084BB4C1ED5790E00DFC868 /* BaseCustomTableViewController.swift */; };
 		A084BB4F1ED5793500DFC868 /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084BB4E1ED5793500DFC868 /* TableViewHelper.swift */; };
@@ -1138,8 +1138,8 @@
 		A07DF7C31EC0132E00C2254E /* Novisible@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Novisible@3x.png"; sourceTree = "<group>"; };
 		A07DF7C41EC0132E00C2254E /* visible@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visible@2x.png"; sourceTree = "<group>"; };
 		A07DF7C51EC0132E00C2254E /* visible@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visible@3x.png"; sourceTree = "<group>"; };
-		A07DF7CB1EC072B700C2254E /* FriendApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendApi.swift; sourceTree = "<group>"; };
-		A07DF7CD1EC072D200C2254E /* FriendSocketApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSocketApi.swift; sourceTree = "<group>"; };
+		A07DF7CB1EC072B700C2254E /* UserApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
+		A07DF7CD1EC072D200C2254E /* UserSocketApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSocketApi.swift; sourceTree = "<group>"; };
 		A084BB451ED52AD500DFC868 /* SystemMessageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemMessageVC.swift; sourceTree = "<group>"; };
 		A084BB4C1ED5790E00DFC868 /* BaseCustomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCustomTableViewController.swift; sourceTree = "<group>"; };
 		A084BB4E1ED5793500DFC868 /* TableViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
@@ -3110,8 +3110,8 @@
 		A07DF7CA1EC0728B00C2254E /* FriendAPI */ = {
 			isa = PBXGroup;
 			children = (
-				A07DF7CB1EC072B700C2254E /* FriendApi.swift */,
-				A07DF7CD1EC072D200C2254E /* FriendSocketApi.swift */,
+				A07DF7CB1EC072B700C2254E /* UserApi.swift */,
+				A07DF7CD1EC072D200C2254E /* UserSocketApi.swift */,
 			);
 			name = FriendAPI;
 			path = iOSSTar/AppAPI/FriendAPI;
@@ -3548,7 +3548,7 @@
 				A03D3F811EA86A6500F85308 /* NTESLiveActionView.m in Sources */,
 				A03D3F051EA86A6400F85308 /* NIMGroupedUsrInfo.m in Sources */,
 				A03D3F6A1EA86A6500F85308 /* NTESSessionCustomContentConfig.m in Sources */,
-				A07DF7CE1EC072D200C2254E /* FriendSocketApi.swift in Sources */,
+				A07DF7CE1EC072D200C2254E /* UserSocketApi.swift in Sources */,
 				A03D3F131EA86A6400F85308 /* NIMInputEmoticonTabView.m in Sources */,
 				A03D3EF51EA86A6400F85308 /* NIMKitColorButtonCell.m in Sources */,
 				A03D3FAC1EA86A6500F85308 /* NTESSessionWhiteBoardContentView.m in Sources */,
@@ -3864,7 +3864,7 @@
 				6E88DA981ED554B100EAA905 /* GradualColorView.swift in Sources */,
 				A03D3F571EA86A6500F85308 /* NIMKitTimerHolder.m in Sources */,
 				A03D3FAA1EA86A6500F85308 /* NTESSessionSnapchatContentView.m in Sources */,
-				A07DF7CC1EC072B700C2254E /* FriendApi.swift in Sources */,
+				A07DF7CC1EC072B700C2254E /* UserApi.swift in Sources */,
 				A03D3FCA1EA86A6500F85308 /* NTESMutiClientsHeaderView.m in Sources */,
 				A03D3F5C1EA86A6500F85308 /* UINavigationController+Swizzling.m in Sources */,
 				6E1B57131ED40AEE00A014AE /* DealPropertyCell.swift in Sources */,
