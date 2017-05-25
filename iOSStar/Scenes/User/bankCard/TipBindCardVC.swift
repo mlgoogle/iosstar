@@ -7,7 +7,12 @@
 //
 
 import UIKit
-
+enum doTipClick{
+    case doClose    //  关闭
+    case doVail     //  去实名认证
+  
+    
+}
 class TipBindCardVC: UIViewController {
     var resultBlock: CompleteBlock?
     override func viewDidLoad() {
@@ -21,9 +26,13 @@ class TipBindCardVC: UIViewController {
     }
     
     @IBAction func bindCard(_ sender: Any) {
-        self.dismissController()
-         self.resultBlock!(nil)
+        self.resultBlock!(doTipClick.doVail as AnyObject)
+//        self.dismissController()
+        
     }
 
+    @IBAction func close(_ sender: Any) {
+        self.resultBlock!(doTipClick.doClose as AnyObject)
+    }
    
 }

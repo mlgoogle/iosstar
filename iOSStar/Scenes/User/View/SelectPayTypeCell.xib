@@ -18,22 +18,39 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HmZ-34-Ip7">
-                        <rect key="frame" x="29" y="9" width="25" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HmZ-34-Ip7">
+                        <rect key="frame" x="21" y="9" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="1Ga-pE-Qpw"/>
+                            <constraint firstAttribute="height" constant="25" id="egr-qG-ueE"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8R-tN-zwl">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8R-tN-zwl">
                         <rect key="frame" x="62" y="11" width="145" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="6x0-lh-qSe"/>
+                            <constraint firstAttribute="width" constant="145" id="f1T-AG-eGX"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ajmd001.png" translatesAutoresizingMaskIntoConstraints="NO" id="Esb-LG-MBE">
-                        <rect key="frame" x="265" y="11" width="34" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ajmd001.png" translatesAutoresizingMaskIntoConstraints="NO" id="Esb-LG-MBE">
+                        <rect key="frame" x="278" y="11" width="21" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="21" id="F1d-Fp-FPK"/>
+                            <constraint firstAttribute="height" constant="21" id="M22-n2-QkY"/>
+                        </constraints>
                     </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="HmZ-34-Ip7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="5TD-Gu-6Yh"/>
+                    <constraint firstItem="G8R-tN-zwl" firstAttribute="leading" secondItem="HmZ-34-Ip7" secondAttribute="trailing" constant="16" id="9SJ-KQ-apr"/>
+                    <constraint firstItem="Esb-LG-MBE" firstAttribute="centerY" secondItem="HmZ-34-Ip7" secondAttribute="centerY" id="JyG-Rv-13E"/>
+                    <constraint firstItem="G8R-tN-zwl" firstAttribute="centerY" secondItem="HmZ-34-Ip7" secondAttribute="centerY" id="W2T-Rw-LAy"/>
+                    <constraint firstItem="HmZ-34-Ip7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="21" id="qQ2-xo-GoV"/>
+                    <constraint firstAttribute="trailing" secondItem="Esb-LG-MBE" secondAttribute="trailing" constant="21" id="uf1-lh-YgA"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="payTypeImg" destination="HmZ-34-Ip7" id="Jfv-3H-QZw"/>

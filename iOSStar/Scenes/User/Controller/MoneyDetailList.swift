@@ -1,5 +1,5 @@
 //
-//  MoneyDetail.swift
+//  MoneyDetailList.swift
 //  iOSStar
 //
 //  Created by sum on 2017/5/15.
@@ -19,7 +19,7 @@ class RechargeListVCCell: OEZTableViewCell {
    
 }
 
-class MoneyDetail: BaseCustomListTableViewController {
+class MoneyDetailList: BaseCustomListTableViewController {
 
      var contentoffset = CGFloat()
      var navLeft : UIButton?
@@ -33,12 +33,13 @@ class MoneyDetail: BaseCustomListTableViewController {
         title = "资金明细"
   
         navLeft = UIButton.init(type: .custom)
-        navLeft?.backgroundColor = UIColor.red
+
         navLeft?.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20)
         let right = UIBarButtonItem.init(customView: navLeft!)
     
         navLeft?.addTarget(self , action: #selector(selectDate), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = right
+        navLeft?.setImage(UIImage.init(named: "calendar@2x"), for: .normal)
         ShareDataModel.share().addObserver(self, forKeyPath: "selectMonth", options: .new, context: nil)
     }
     
@@ -65,12 +66,6 @@ class MoneyDetail: BaseCustomListTableViewController {
     }
     // MARK: - Table view data source
 
-   
-//     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 20
-//    }
-//
 //    
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     

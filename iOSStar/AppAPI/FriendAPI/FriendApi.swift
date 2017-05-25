@@ -1,5 +1,5 @@
 //
-//  FriendApi.swift
+//  UserApi.swift
 //  iOSStar
 //
 //  Created by sum on 2017/5/8.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol FriendApi {
+protocol UserApi {
     
       //获取好友列表
       func getfriendList(accid: String, createtime: String, complete: CompleteBlock?, error: ErrorBlock?)

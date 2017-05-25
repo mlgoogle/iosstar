@@ -29,7 +29,7 @@ class SettingVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 3 {
+        if indexPath.row == 5 {
             
             userLogout()
             self.navigationController?.popToRootViewController(animated: true)

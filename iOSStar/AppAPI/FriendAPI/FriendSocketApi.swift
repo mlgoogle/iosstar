@@ -1,5 +1,5 @@
 //
-//  FriendSocketApi.swift
+//  UserSocketApi.swift
 //  iOSStar
 //
 //  Created by sum on 2017/5/8.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FriendSocketApi: BaseSocketAPI, FriendApi  {
+class UserSocketApi: BaseSocketAPI, UserApi  {
     
     func getfriendList(accid: String, createtime: String, complete: CompleteBlock?, error: ErrorBlock?){
     

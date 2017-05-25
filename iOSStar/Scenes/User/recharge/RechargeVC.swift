@@ -10,6 +10,8 @@ import UIKit
 import SVProgressHUD
 class RechargeVC: UITableViewController ,WXApiDelegate,UITextFieldDelegate{
     
+    
+    var selectTypeHeight = CGFloat.init(140)
     //选中支付方式银行卡号
     @IBOutlet weak var payTypeNumber: UILabel!
     //选中支付的银行
@@ -129,7 +131,7 @@ class RechargeVC: UITableViewController ,WXApiDelegate,UITextFieldDelegate{
             tableView.isScrollEnabled = false
             tableView.bringSubview(toFront: bgview)
             UIView.animate(withDuration: 0.4, animations: {
-                self.payView.frame = CGRect.init(x: 0, y: tableView.frame.size.height - 198, width: tableView.frame.size.width, height: 198)
+                self.payView.frame = CGRect.init(x: 0, y: tableView.frame.size.height - self.selectTypeHeight, width: tableView.frame.size.width, height: self.selectTypeHeight)
             })
         }
     }
@@ -148,13 +150,15 @@ class RechargeVC: UITableViewController ,WXApiDelegate,UITextFieldDelegate{
                 self?.tableView.sendSubview(toBack: (self?.bgview)!)
                 UIView.animate(withDuration: 0.25, animations: {
                     UIView.animate(withDuration: 0.5, animations: {
-                        self?.payView.frame = CGRect.init(x: 0, y: ((self?.tableView.frame.size.height)! + 198), width: (self?.tableView.frame.size.width)!, height: 198)
+                        self?.payView.frame = CGRect.init(x: 0, y: ((self?.tableView.frame.size.height)! + (self?.selectTypeHeight)!), width: (self?.tableView.frame.size.width)!, height: (self?.selectTypeHeight)!)
                     })
                 }, completion: { (result ) in
-                    self?.payView.frame = CGRect.init(x: 0, y: ((self?.tableView.frame.size.height)! + 500), width: (self?.tableView.frame.size.width)!, height: 200)
+                    self?.payView.frame = CGRect.init(x: 0, y: ((self?.tableView.frame.size.height)! + 500), width: (self?.tableView.frame.size.width)!, height: (self?.selectTypeHeight)!)
                 })
             }else{
                 let model  = result as! SelectPayTypeModel
+                self?.payTypeName.text = model.id == 0 ? "微信" : "支付宝"
+                
                 self?.paytype = model.id
             }
         }
