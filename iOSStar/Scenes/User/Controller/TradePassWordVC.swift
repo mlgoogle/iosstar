@@ -33,10 +33,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
     var passString : String = ""
     @IBOutlet weak var doSetPass: UIButton!
     fileprivate var pwdCircleArr = [UILabel]()
-    fileprivate var inputViewWidth:CGFloat!
     fileprivate var textField:UITextField!
-    fileprivate var passheight:CGFloat!
-    fileprivate var inputViewX:CGFloat!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,7 +79,6 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
             circleLabel.font = UIFont.systemFont(ofSize: 17)
             circleLabel.layer.masksToBounds = true
             circleLabel.isHidden = true
-        
             pwdCircleArr.append(circleLabel)
             line.addSubview(circleLabel)
         }
@@ -91,7 +87,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
         btn.addTarget(self, action: #selector(showboard(_:)), for: .touchUpInside)
         view.addSubview(btn)
     }
-      //Mark: 显示键盘
+      // MARK:  显示键盘
     @IBAction func showboard(_ sender: Any) {
         if showKeyBoard == true
         {
@@ -102,19 +98,20 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
         showKeyBoard = !showKeyBoard
     }
    
-    //Mark: 点击下一步
+    // MARK:  点击下一步
     @IBAction func doSetPass(_ sender: Any) {
         
+        //  来判断是否请求接口设置交易密码
         if setPass == true{
+            
         }else{
+              //   来判断密码长度
             if passString.length() == 6{
                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC") as! TradePassWordVC
                 vc .setPass = true
                 self.navigationController?.pushViewController(vc, animated: true )
             }else{
-             SVProgressHUD.showErrorMessage(ErrorMessage: "密码需要6位", ForDuration: 1, completion: { 
-                
-             })
+               SVProgressHUD.showErrorMessage(ErrorMessage: "密码需要6位", ForDuration: 1, completion: {})
             }
            
         }

@@ -97,7 +97,10 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
     // MARK: - Table view data source
     
     //
-   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc  = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResultVC")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     func selectDate(){
         
