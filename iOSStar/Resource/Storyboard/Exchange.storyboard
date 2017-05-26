@@ -22,33 +22,89 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HtX-2B-HzA">
-                                <rect key="frame" x="17" y="96" width="341" height="130"/>
+                                <rect key="frame" x="17" y="96" width="341" height="150"/>
+                                <color key="backgroundColor" red="0.98431372549999996" green="0.59999999999999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="Sub-xe-AWF"/>
+                                    <constraint firstAttribute="height" constant="150" id="Sub-xe-AWF"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="timg.png"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="bu4-rE-Ts2" kind="push" id="pD7-UE-tKh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfa-ZX-ZSl">
-                                <rect key="frame" x="17" y="255" width="341" height="130"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exchange_system" translatesAutoresizingMaskIntoConstraints="NO" id="aAC-9H-p9N">
+                                <rect key="frame" x="36" y="113" width="174" height="117"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="Zra-N4-bH2"/>
+                                    <constraint firstAttribute="width" constant="174" id="5f0-on-fye"/>
+                                    <constraint firstAttribute="height" constant="117" id="z6v-fc-ysk"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="timg.png"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfa-ZX-ZSl">
+                                <rect key="frame" x="17" y="275" width="341" height="150"/>
+                                <color key="backgroundColor" red="0.65985888242721558" green="0.87984436750411987" blue="0.84377104043960571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Zra-N4-bH2"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="cqX-5Q-VB5" kind="push" id="R5b-Os-me3"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exchange_contact" translatesAutoresizingMaskIntoConstraints="NO" id="Oai-Gd-S1o">
+                                <rect key="frame" x="184" y="292" width="159" height="117"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="159" id="HRY-gA-gg0"/>
+                                    <constraint firstAttribute="height" constant="117" id="e4A-op-BXU"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="明星通讯录" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRf-qj-Okw">
+                                <rect key="frame" x="67" y="340" width="100" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20.5" id="Nux-jF-ljg"/>
+                                    <constraint firstAttribute="width" constant="100" id="a4s-OD-u9H"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="明星通讯录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwM-JX-LoU">
+                                <rect key="frame" x="228" y="151" width="87" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LZD-jJ-2BR"/>
+                                    <constraint firstAttribute="width" constant="87" id="pAD-dd-ouC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.98028594255447388" green="0.98045331239700317" blue="0.98027533292770386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="fwM-JX-LoU" firstAttribute="leading" secondItem="aAC-9H-p9N" secondAttribute="trailing" constant="18" id="7iq-1E-JrP"/>
                             <constraint firstAttribute="trailing" secondItem="HtX-2B-HzA" secondAttribute="trailing" constant="17" id="8Tr-EL-0eu"/>
+                            <constraint firstItem="aAC-9H-p9N" firstAttribute="leading" secondItem="HtX-2B-HzA" secondAttribute="leading" constant="19" id="8ZU-Sl-a64"/>
+                            <constraint firstItem="Oai-Gd-S1o" firstAttribute="trailing" secondItem="dfa-ZX-ZSl" secondAttribute="trailing" constant="-15" id="CnY-jf-eHr"/>
+                            <constraint firstItem="Oai-Gd-S1o" firstAttribute="bottom" secondItem="dfa-ZX-ZSl" secondAttribute="bottom" constant="-16" id="Idp-cf-K9e"/>
+                            <constraint firstItem="fwM-JX-LoU" firstAttribute="centerY" secondItem="aAC-9H-p9N" secondAttribute="centerY" id="MC9-0c-Vao"/>
                             <constraint firstItem="HtX-2B-HzA" firstAttribute="top" secondItem="WtC-wE-Q9M" secondAttribute="bottom" constant="32" id="TY9-hu-paz"/>
                             <constraint firstAttribute="trailing" secondItem="dfa-ZX-ZSl" secondAttribute="trailing" constant="17" id="TYu-A8-9sh"/>
+                            <constraint firstItem="aAC-9H-p9N" firstAttribute="top" secondItem="HtX-2B-HzA" secondAttribute="top" constant="17" id="XDU-6v-eMn"/>
+                            <constraint firstItem="aAC-9H-p9N" firstAttribute="bottom" secondItem="HtX-2B-HzA" secondAttribute="bottom" constant="-16" id="e0t-Ls-adx"/>
                             <constraint firstItem="dfa-ZX-ZSl" firstAttribute="top" secondItem="HtX-2B-HzA" secondAttribute="bottom" constant="29" id="fwm-f3-Zb1"/>
+                            <constraint firstItem="Oai-Gd-S1o" firstAttribute="top" secondItem="dfa-ZX-ZSl" secondAttribute="top" constant="17" id="i3m-Yn-7AX"/>
+                            <constraint firstItem="Oai-Gd-S1o" firstAttribute="leading" secondItem="qRf-qj-Okw" secondAttribute="trailing" constant="17" id="lkM-t4-yRz"/>
                             <constraint firstItem="dfa-ZX-ZSl" firstAttribute="leading" secondItem="8v1-wf-DlU" secondAttribute="leading" constant="17" id="xXX-aQ-TRq"/>
+                            <constraint firstItem="Oai-Gd-S1o" firstAttribute="centerY" secondItem="qRf-qj-Okw" secondAttribute="centerY" id="zVE-eG-zYz"/>
                             <constraint firstItem="HtX-2B-HzA" firstAttribute="leading" secondItem="8v1-wf-DlU" secondAttribute="leading" constant="17" id="znm-l4-01l"/>
                         </constraints>
                     </view>
@@ -275,6 +331,7 @@
     </scenes>
     <resources>
         <image name="8" width="55" height="55"/>
-        <image name="timg.png" width="180" height="180"/>
+        <image name="exchange_contact" width="159" height="116"/>
+        <image name="exchange_system" width="174" height="112"/>
     </resources>
 </document>

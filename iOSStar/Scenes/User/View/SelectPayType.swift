@@ -45,9 +45,10 @@ class SelectPayType: UIView,UITableViewDataSource,UITableViewDelegate {
         
         let model = modelArry[indexPath.row]
         
+        cell.payTypeImg.image = UIImage.init(named: model.img)
         cell.titleLb.text = model.name
         if indexPath.row == selectNumber {
-            cell.selectImg.image = UIImage.init(named: "timg")
+            cell.selectImg.image = UIImage.init(named: "icon_accessory_selected")
             
         }else{
             cell.selectImg.image = UIImage.init(named: "")

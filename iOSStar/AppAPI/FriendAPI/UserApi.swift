@@ -21,5 +21,5 @@ protocol UserApi {
      // 我的资产接口
      func accountMoney(complete: CompleteBlock?, error: ErrorBlock?)
       // 资金明细列表
-     func MoneyDetailList(complete: CompleteBlock?, error: ErrorBlock?)
+      func creditlist(status: Int32, pos: Int32, count: Int32, complete: CompleteBlock?, error: ErrorBlock?)
 }
