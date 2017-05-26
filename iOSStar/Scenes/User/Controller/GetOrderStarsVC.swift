@@ -47,7 +47,7 @@ class GetOrderStarsVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
   
     func initData(){
     
-        AppAPIHelper.friend().getorderstars(phone: "18643803462", starcode: "", complete: { (result) in
+        AppAPIHelper.user().getorderstars(phone: "18643803462", starcode: "", complete: { (result) in
             
         }) { (error) in
             

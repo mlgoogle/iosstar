@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Axr-ke-h87">
-                    <rect key="frame" x="0.0" y="53" width="375" height="147"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="156"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="iN0-l3-epB" id="sAT-Pb-E2y"/>
@@ -24,7 +24,7 @@
                     </connections>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTR-Qs-zUq">
-                    <rect key="frame" x="0.0" y="49" width="375" height="0.5"/>
+                    <rect key="frame" x="0.0" y="40" width="375" height="0.5"/>
                     <color key="backgroundColor" red="0.88235294119999996" green="0.89411764709999997" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="O0j-D5-PsO"/>
@@ -34,7 +34,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择支付方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEr-SU-YQX">
-                    <rect key="frame" x="100" y="14" width="86" height="17"/>
+                    <rect key="frame" x="85" y="14" width="86" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="86" id="w9S-xd-arg"/>
                     </constraints>
@@ -42,14 +42,14 @@
                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGF-iX-dTK">
-                    <rect key="frame" x="16" y="9" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGF-iX-dTK">
+                    <rect key="frame" x="16" y="15" width="15" height="15"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="30" id="2yN-fZ-F4s"/>
-                        <constraint firstAttribute="height" constant="30" id="Kqi-h6-28N"/>
+                        <constraint firstAttribute="width" constant="15" id="2yN-fZ-F4s"/>
+                        <constraint firstAttribute="height" constant="15" id="Kqi-h6-28N"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" backgroundImage="close.png"/>
                     <connections>
                         <action selector="close:" destination="iN0-l3-epB" eventType="touchUpInside" id="tIJ-Ig-pHS"/>
                     </connections>
@@ -58,7 +58,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="mTR-Qs-zUq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1Ii-1R-FZP"/>
-                <constraint firstItem="QGF-iX-dTK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="4gc-xw-p8r"/>
+                <constraint firstItem="QGF-iX-dTK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="4gc-xw-p8r"/>
                 <constraint firstAttribute="trailing" secondItem="Axr-ke-h87" secondAttribute="trailing" id="7vw-Ec-cgQ"/>
                 <constraint firstAttribute="bottom" secondItem="Axr-ke-h87" secondAttribute="bottom" id="7zq-rs-HZ3"/>
                 <constraint firstItem="Axr-ke-h87" firstAttribute="top" secondItem="mTR-Qs-zUq" secondAttribute="bottom" constant="3.5" id="8RM-vf-ItG"/>
@@ -76,4 +76,7 @@
             <point key="canvasLocation" x="106.5" y="102"/>
         </view>
     </objects>
+    <resources>
+        <image name="close.png" width="82" height="81"/>
+    </resources>
 </document>

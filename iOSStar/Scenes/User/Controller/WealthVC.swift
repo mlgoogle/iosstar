@@ -21,6 +21,13 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         self.tableView.tableFooterView = view
         
     }
+    func requestData() {
+      AppAPIHelper.user().accountMoney(complete: { (result) in
+        
+      }) { (error ) in
+        
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -64,22 +71,35 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         if indexPath.section == 1 {
             if indexPath.row == 1{
                 
-                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TipBindCardVC") as! TipBindCardVC
+                //                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC") as! TradePassWordVC
+                //                 self.navigationController?.pushViewController(vc, animated: true )
+                //                vc.modalTransitionStyle = .crossDissolve
+                //                vc.modalPresentationStyle = .custom
+                //                vc.resultBlock = { (result) in
+                //                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
+                //                    self.navigationController?.pushViewController(vc, animated: true )
+                //
+                //                }
+                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TipBindVC") as! TipBindVC
                 vc.modalTransitionStyle = .crossDissolve
                 vc.modalPresentationStyle = .custom
+                self.present(vc, animated: true, completion: {})
                 vc.resultBlock = { (result) in
-                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "BindingBankCardVC")
-                    self.navigationController?.pushViewController(vc, animated: true )
-                    
-                }
-                self.present(vc, animated: true) {
+                    switch result as! doTipClick {
+                    case .doClose:
+                        vc.dismissController()
+                        break
+                    default:
+                        vc.dismissController()
+                        
+                        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
+                        self.navigationController?.pushViewController(vc, animated: true )
+                    }
                 }
             }
             
         }
-        
     }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 1 ? 10 : 0.0001
     }
