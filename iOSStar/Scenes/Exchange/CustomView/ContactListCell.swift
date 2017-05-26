@@ -11,6 +11,7 @@ import UIKit
 class ContactListCell: OEZTableViewCell {
 
     @IBOutlet weak var jobLabel: UILabel!
+    @IBOutlet weak var statusBtn: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var iconImageView: UIImageView!
