@@ -101,7 +101,7 @@ class AppConst {
     
     enum StoryBoardName:String {
         case Markt = "Market"
-        case News = "Home"
+        case News = "News"
         case Deal = "Deal"
         case User = "User"
         case Login = "Login"
