@@ -161,6 +161,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
                 self?.payTypeName.text = model.id == 0 ? "微信" : "支付宝"
                 
                 self?.paytype = model.id
+                self?.payTypeImg.image = UIImage.init(named: model.img)
             }
         }
         tableView.sendSubview(toBack: bgview)
