@@ -2579,11 +2579,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MoneyDetailListCell" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MoneyDetailListCell" rowHeight="70" id="pQ0-66-wmb" customClass="MoneyDetailListCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MoneyDetailListCell" rowHeight="70" id="pQ0-66-wmb" customClass="MoneyDetailListCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pQ0-66-wmb" id="wIe-wN-bet">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqT-rT-dfz">
@@ -2616,7 +2616,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+2000.00" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27o-Cu-waK">
-                                                    <rect key="frame" x="104" y="10" width="144" height="24"/>
+                                                    <rect key="frame" x="104" y="10" width="177" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="WdX-T5-yeC"/>
                                                     </constraints>
@@ -2625,7 +2625,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充值成功" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPZ-I9-sOm">
-                                                    <rect key="frame" x="248" y="40" width="94" height="20"/>
+                                                    <rect key="frame" x="281" y="40" width="94" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="Al4-bF-Lxm"/>
                                                         <constraint firstAttribute="height" constant="20" id="r00-df-xah"/>
@@ -2643,7 +2643,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJs-1H-Ueg">
-                                                    <rect key="frame" x="248" y="10" width="94" height="24"/>
+                                                    <rect key="frame" x="281" y="10" width="94" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="0dX-9J-yil"/>
                                                         <constraint firstAttribute="height" constant="24" id="3dU-tY-AIf"/>
@@ -2673,21 +2673,16 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="minuteLb" destination="JJs-1H-Ueg" id="WOg-Ae-NLL"/>
-                                            <outlet property="moneyCountLb" destination="27o-Cu-waK" id="o55-eZ-Gdf"/>
-                                            <outlet property="statusLb" destination="BPZ-I9-sOm" id="cDI-3b-29e"/>
-                                            <outlet property="timeLb" destination="TEP-oZ-a7c" id="fQV-pC-OPO"/>
-                                            <outlet property="weekLb" destination="pqT-rT-dfz" id="dKT-dD-ZdD"/>
-                                            <outlet property="withDrawto" destination="qPw-oP-taN" id="MbK-f8-9wT"/>
-                                            <segue destination="Dqe-BC-PaX" kind="push" id="ilu-o0-tvi"/>
+                                            <outlet property="minuteLb" destination="JJs-1H-Ueg" id="3Jl-qj-lZs"/>
+                                            <outlet property="moneyCountLb" destination="27o-Cu-waK" id="TnU-0e-d5h"/>
+                                            <outlet property="statusLb" destination="BPZ-I9-sOm" id="vca-wI-plN"/>
+                                            <outlet property="timeLb" destination="TEP-oZ-a7c" id="j7F-bJ-Tuk"/>
+                                            <outlet property="weekLb" destination="pqT-rT-dfz" id="66h-7F-fz2"/>
+                                            <outlet property="withDrawto" destination="qPw-oP-taN" id="9kn-H4-viU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
-                                <connections>
-                                    <outlet property="dataSource" destination="SmR-GY-TC6" id="45K-Ny-4v3"/>
-                                    <outlet property="delegate" destination="SmR-GY-TC6" id="d6d-Xk-aJy"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2699,9 +2694,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cNo-9K-xsm"/>
-                    <connections>
-                        <outlet property="tableView" destination="Leo-5D-EfX" id="5RT-Y5-PFd"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9bu-T3-wkL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

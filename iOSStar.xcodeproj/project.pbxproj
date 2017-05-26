@@ -352,6 +352,7 @@
 		A03D3FF71EA86A6600F85308 /* NTESUserUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ED71EA86A6400F85308 /* NTESUserUtil.m */; };
 		A03D3FF81EA86A6600F85308 /* NTESPinyinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDA1EA86A6400F85308 /* NTESPinyinConverter.m */; };
 		A03D3FF91EA86A6600F85308 /* NTESSpellingCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */; };
+		A03F96A31ED7FF3800FC78D4 /* RechargeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03F96A21ED7FF3800FC78D4 /* RechargeListModel.swift */; };
 		A04CF0741ED6AC9000B93D28 /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A04CF0731ED6AC9000B93D28 /* calendar@2x.png */; };
 		A04CF0911ED6CB6800B93D28 /* BankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0781ED6CB6800B93D28 /* BankCardVC.swift */; };
 		A04CF0921ED6CB6800B93D28 /* BindingBankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0791ED6CB6800B93D28 /* BindingBankCardVC.swift */; };
@@ -1078,6 +1079,7 @@
 		A03D3EDA1EA86A6400F85308 /* NTESPinyinConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESPinyinConverter.m; sourceTree = "<group>"; };
 		A03D3EDB1EA86A6400F85308 /* NTESSpellingCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESSpellingCenter.h; sourceTree = "<group>"; };
 		A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESSpellingCenter.m; sourceTree = "<group>"; };
+		A03F96A21ED7FF3800FC78D4 /* RechargeListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeListModel.swift; sourceTree = "<group>"; };
 		A04CF0731ED6AC9000B93D28 /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
 		A04CF0781ED6CB6800B93D28 /* BankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardVC.swift; sourceTree = "<group>"; };
 		A04CF0791ED6CB6800B93D28 /* BindingBankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingBankCardVC.swift; sourceTree = "<group>"; };
@@ -1542,6 +1544,7 @@
 		A001A96F1EAD9F5A00752F1A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A03F96A11ED7FF2900FC78D4 /* RechargeListModel */,
 				6EDA46931EC5AE9E0004F942 /* MarketModel */,
 				6E0C6B091EC4513900D9C2BC /* NewsModel */,
 				A0504F811EC44733008F4182 /* StarListModel */,
@@ -2830,6 +2833,14 @@
 			path = Spelling;
 			sourceTree = "<group>";
 		};
+		A03F96A11ED7FF2900FC78D4 /* RechargeListModel */ = {
+			isa = PBXGroup;
+			children = (
+				A03F96A21ED7FF3800FC78D4 /* RechargeListModel.swift */,
+			);
+			name = RechargeListModel;
+			sourceTree = "<group>";
+		};
 		A04CF0761ED6CB6800B93D28 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -3872,6 +3883,7 @@
 				A03D3FC21EA86A6500F85308 /* NTESVideoChatViewController.m in Sources */,
 				6E16166C1EB0960E00D95CB6 /* MarketViewController.swift in Sources */,
 				A03D3F6D1EA86A6500F85308 /* NTESJionTeamViewController.m in Sources */,
+				A03F96A31ED7FF3800FC78D4 /* RechargeListModel.swift in Sources */,
 				6E0C6B081EC43ABF00D9C2BC /* NewsSocketAPI.swift in Sources */,
 				A03D3F321EA86A6400F85308 /* NIMSessionTableAdapter.m in Sources */,
 				A072389C1EA76AA300E755DB /* AppConst.swift in Sources */,
