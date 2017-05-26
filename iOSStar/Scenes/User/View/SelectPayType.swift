@@ -24,8 +24,8 @@ class SelectPayType: UIView,UITableViewDataSource,UITableViewDelegate {
     override func  awakeFromNib() {
         
         tableView.register(UINib.init(nibName: "SelectPayTypeCell", bundle: nil), forCellReuseIdentifier: "SelectPayTypeCell")
-        let titleArr = ["微信","支付宝","银联"]
-        for i in 0...2  {
+        let titleArr = ["微信","支付宝"]
+        for i in 0...1  {
             let model = SelectPayTypeModel.init()
             model.name = titleArr[i]
             model.img =  titleArr[i]
@@ -38,7 +38,7 @@ class SelectPayType: UIView,UITableViewDataSource,UITableViewDelegate {
     }
     //MARK: tableview的datasource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return modelArry.count
     }
     func  tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SelectPayTypeCell")  as! SelectPayTypeCell

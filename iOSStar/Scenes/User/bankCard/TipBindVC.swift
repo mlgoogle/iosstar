@@ -1,5 +1,5 @@
 //
-//  TipBindCardVC.swift
+//  TipBindVC.swift
 //  iOSStar
 //
 //  Created by sum on 2017/5/4.
@@ -7,8 +7,13 @@
 //
 
 import UIKit
-
-class TipBindCardVC: UIViewController {
+enum doTipClick{
+    case doClose    //  关闭
+    case doVail     //  去实名认证
+  
+    
+}
+class TipBindVC: UIViewController {
     var resultBlock: CompleteBlock?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,13 +22,16 @@ class TipBindCardVC: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+       
     }
     
     @IBAction func bindCard(_ sender: Any) {
-        self.dismissController()
-         self.resultBlock!(nil)
+        self.resultBlock!(doTipClick.doVail as AnyObject)
+        
     }
 
+    @IBAction func close(_ sender: Any) {
+        self.resultBlock!(doTipClick.doClose as AnyObject)
+    }
    
 }
