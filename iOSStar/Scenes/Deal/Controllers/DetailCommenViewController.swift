@@ -13,10 +13,15 @@ class DetailCommenViewController: UIViewController {
     
     var type:AppConst.DealDetailType = .allEntrust
     var identifiers = ["DealSelectDateCell","DealTitleMenuCell","DealDoubleRowCell"]
+    var sectionHeights:[CGFloat] = [80.0, 36.0, 80.0]
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
 
+        if type.hashValue < 2 {
+            identifiers.removeFirst()
+            sectionHeights.removeFirst()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,32 +42,31 @@ extension DetailCommenViewController :UITableViewDelegate, UITableViewDataSource
     func startSelect(isStart:Bool) {
         showDatePicker()
     }
-
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return identifiers.count
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+      
+        if section == identifiers.count - 1 {
+            
+        }
+        return 1
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifiers[indexPath.row], for: indexPath)
-        if type == .allDeal || type == .allEntrust{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {        
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifiers[indexPath.section], for: indexPath)
+        if type.rawValue > AppConst.DealDetailType.todayEntrust.rawValue{
             if indexPath.row == 0 {
                 if let dateCell = cell as? DealSelectDateCell {
                     dateCell.delegate = self
                 }
-                
             }
-            
         }
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        if indexPath.row == 0 {
-            return 80
-        } else if indexPath.row == 1 {
-            return 36
-        }
-        return 70
+        return sectionHeights[indexPath.section]
     }
 }

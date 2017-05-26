@@ -23,15 +23,16 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate{
     func initcustomer(){
         delegate = self
 
-        let storyboardNames = ["Home","Market","Exchange","User"]
+        let storyboardNames = ["News","Market","Exchange","User"]
         let titles = ["首页","行情","分答","个人中心"]
         for (index, name) in storyboardNames.enumerated() {
             let storyboard = UIStoryboard.init(name: name, bundle: nil)
             let controller = storyboard.instantiateInitialViewController()
             controller?.tabBarItem.title = titles[index]
-            controller?.tabBarItem.image = UIImage.init(named: "\(storyboardNames[index])UnSelect")?.withRenderingMode(.alwaysOriginal)
-            controller?.tabBarItem.selectedImage = UIImage.init(named: "\(storyboardNames[index])Select")?.withRenderingMode(.alwaysOriginal)
-            controller?.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.red], for: .selected)
+            controller?.tabBarItem.image = UIImage.init(named: "\(storyboardNames[index])_unselect")?.withRenderingMode(.alwaysOriginal)
+            controller?.tabBarItem.selectedImage = UIImage.init(named: "\(storyboardNames[index])_selected")?.withRenderingMode(.alwaysOriginal)
+            
+            controller?.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(hexString: AppConst.Color.titleColor)], for: .selected)
             addChildViewController(controller!)
         }
         

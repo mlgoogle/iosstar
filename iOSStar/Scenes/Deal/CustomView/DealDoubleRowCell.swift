@@ -9,7 +9,22 @@
 import UIKit
 
 class DealDoubleRowCell: UITableViewCell {
+    @IBOutlet weak var nameLabel: UILabel!
 
+    @IBOutlet weak var underNameLabel: UILabel!
+    
+    @IBOutlet weak var secondLabel1: UILabel!
+    
+    @IBOutlet weak var secondLabel2: UILabel!
+    
+    @IBOutlet weak var thirdLabel1: UILabel!
+    
+    @IBOutlet weak var thirdLabel2: UILabel!
+    
+    @IBOutlet weak var lastLabel1: UILabel!
+    
+    @IBOutlet weak var lastLabel2: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

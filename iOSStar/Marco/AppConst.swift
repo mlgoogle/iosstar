@@ -46,9 +46,10 @@ class AppConst {
     class Color {
 
         static let main = "921224"
+        static let up = "CB4232"
+        static let down = "18B03F"
+        static let titleColor = "8C0808"
         static let background = "background"
-        static let buyUp = "buyUp"
-        static let buyDown = "buyDown"
         static let auxiliary = "auxiliary"
         static let lightBlue = "lightBlue"
     };
@@ -100,7 +101,7 @@ class AppConst {
     
     enum StoryBoardName:String {
         case Markt = "Market"
-        case News = "Home"
+        case News = "News"
         case Deal = "Deal"
         case User = "User"
         case Login = "Login"
