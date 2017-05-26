@@ -27,6 +27,9 @@ class MarketCommentViewController: MarketBaseViewController {
     
     
     func requestCommentList() {
+        guard starModel != nil else {
+            return
+        }
         AppAPIHelper.marketAPI().requestCommentList(starcode: starModel!.code, complete: { (resonse) in
             
             
