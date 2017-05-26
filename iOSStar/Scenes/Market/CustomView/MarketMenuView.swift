@@ -197,7 +197,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }()
     
     lazy var priceImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "8"))
+        let imageView = UIImageView(image: UIImage(named: "market_price"))
         return imageView
     }()
     

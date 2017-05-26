@@ -212,9 +212,9 @@
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7V-T8-oUB">
-                                                    <rect key="frame" x="12" y="77" width="30" height="30"/>
-                                                    <state key="normal" title="-"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7V-T8-oUB">
+                                                    <rect key="frame" x="26" y="81" width="16" height="22"/>
+                                                    <state key="normal" image="pl"/>
                                                     <connections>
                                                         <action selector="priceReduce:" destination="gZS-bz-YA7" eventType="touchUpInside" id="osy-eM-2pd"/>
                                                     </connections>
@@ -1119,7 +1119,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lZT-k9-eNh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uUc-BT-dWh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uUc-BT-dWh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1137,7 +1137,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5RR-hx-khM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="T3V-av-IRf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T3V-av-IRf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1152,6 +1152,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="pl" width="16" height="16"/>
         <image name="timg.png" width="180" height="180"/>
     </resources>
 </document>

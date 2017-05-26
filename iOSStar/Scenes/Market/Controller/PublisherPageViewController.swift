@@ -28,8 +28,16 @@ class PublisherPageViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         requestInfos()
         
-    }
 
+    }
+    func shareAction() {
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
