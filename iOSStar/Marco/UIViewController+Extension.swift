@@ -11,6 +11,10 @@ import Foundation
 import SVProgressHUD
 extension UIViewController {
     
+    class func storyboardInit(identifier:String, storyboardName:String) -> UIViewController? {
+        let storyBoard = UIStoryboard(name: storyboardName, bundle: nil)
+        return storyBoard.instantiateViewController(withIdentifier: identifier)
+    }
     func errorBlockFunc()->ErrorBlock {
         return { [weak self] (error) in
             //            XCGLogger.error("\(error) \(self)")
@@ -20,6 +24,8 @@ extension UIViewController {
     func LoginSuccess(){
         
     }
+    
+    
     func didRequestError(_ error:NSError) {
         self.showErrorWithStatus(error.localizedDescription)
     }

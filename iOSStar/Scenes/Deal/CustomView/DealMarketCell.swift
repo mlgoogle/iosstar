@@ -9,6 +9,9 @@
 import UIKit
 
 class DealMarketCell: UITableViewCell {
+    @IBOutlet weak var changePercentLabel: UILabel!
+    @IBOutlet weak var changePriceLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

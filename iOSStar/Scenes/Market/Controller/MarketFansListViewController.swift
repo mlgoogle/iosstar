@@ -38,6 +38,9 @@ extension MarketFansListViewController:UITableViewDelegate, UITableViewDataSourc
         return 10
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.001
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "FansListHeaderView")
         
@@ -45,7 +48,7 @@ extension MarketFansListViewController:UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        return 80
     }
     
 }
