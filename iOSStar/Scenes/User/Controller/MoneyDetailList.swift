@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class RechargeListVCCell: OEZTableViewCell {
+class MoneyDetailListCell: OEZTableViewCell {
     
     @IBOutlet weak var weekLb: UILabel!            // 姓名LbstatusLb
     @IBOutlet weak var timeLb: UILabel!            // 时间Lb
@@ -16,27 +16,27 @@ class RechargeListVCCell: OEZTableViewCell {
     @IBOutlet weak var minuteLb: UILabel!          // 分秒
     @IBOutlet weak var bankLogo: UIImageView!      // 银行卡图片
     @IBOutlet weak var withDrawto: UILabel!        // 提现至
-   
+    
 }
 
-class MoneyDetailList: BaseCustomListTableViewController {
-
-     var contentoffset = CGFloat()
-     var navLeft : UIButton?
+class MoneyDetailList: BaseCustomPageListTableViewController {
+    
+    var contentoffset = CGFloat()
+    var navLeft : UIButton?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = "资金明细"
-  
+        
         navLeft = UIButton.init(type: .custom)
-
+        
         navLeft?.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20)
         let right = UIBarButtonItem.init(customView: navLeft!)
-    
+        
         navLeft?.addTarget(self , action: #selector(selectDate), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = right
         navLeft?.setImage(UIImage.init(named: "calendar@2x"), for: .normal)
@@ -44,8 +44,12 @@ class MoneyDetailList: BaseCustomListTableViewController {
     }
     
     override func didRequest(_ pageIndex : Int) {
-    
-    
+        
+         AppAPIHelper.user().MoneyDetailList(complete: { (result) in
+            self.didRequestComplete(["",""] as AnyObject)
+         }) { (error) in
+            
+        }
     }
     //MARK-
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -56,7 +60,7 @@ class MoneyDetailList: BaseCustomListTableViewController {
                 navLeft?.isEnabled = true
                 self.tableView.isScrollEnabled = true
                 if selectMonth != "1000000" {
-//                    monthLb.text = "2017年" + " " + "\(selectMonth)" + "月"
+                    //                    monthLb.text = "2017年" + " " + "\(selectMonth)" + "月"
                 }
             }
         }
@@ -65,17 +69,10 @@ class MoneyDetailList: BaseCustomListTableViewController {
         ShareDataModel.share().removeObserver(self, forKeyPath: "selectMonth", context: nil)
     }
     // MARK: - Table view data source
-
-//    
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RechargeListVCCell")
-       
-
-        return cell!
-    }
-
+    //
+   
+    
     func selectDate(){
         
         navLeft?.isEnabled = false
@@ -84,6 +81,6 @@ class MoneyDetailList: BaseCustomListTableViewController {
         self.view.addSubview(customer)
     }
     
-  
-
+    
+    
 }

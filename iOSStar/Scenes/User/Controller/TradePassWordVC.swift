@@ -18,9 +18,6 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
         return false
     }
 }
-
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
 fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {
     case let (l?, r?):
@@ -45,7 +42,9 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
         
         doSetPass.setTitle(setPass == false ? "下一步" :"确定", for: .normal)
         title = "设置交易密码"
+         self.doSetPass.backgroundColor = UIColor.gray
         initUI()
+       
 
        
     }
@@ -67,7 +66,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
         for i in 0  ..< 6 {
         
       
-            let line:UIView = UIView(frame: CGRect(x: 30 + CGFloat(i) * 10 + (( kScreenWidth - 110) / 6.0) * CGFloat(i),y: 40, width: ((kScreenWidth - 110) / 6.0) ,height:  ((kScreenWidth - 110) / 6.0)))
+            let line:UIView = UIView(frame: CGRect(x: 30 + CGFloat(i) * 10 + (( kScreenWidth - 110) / 6.0) * CGFloat(i),y: 120, width: ((kScreenWidth - 110) / 6.0) ,height:  ((kScreenWidth - 110) / 6.0)))
             line.backgroundColor = UIColor.clear
             line.alpha = 1
             line.layer.borderWidth = 1
@@ -76,17 +75,19 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
             view.addSubview(line)
            
            
-            let circleLabel:UILabel =  UILabel(frame: CGRect(x: line.frame.size.width / 2.0 - 5 ,y:  line.frame.size.width / 2.0 - 5,width: 10,height: 10))
-           
-            circleLabel.backgroundColor = UIColor.black
-            circleLabel.layer.cornerRadius = 5
+            let circleLabel:UILabel =  UILabel(frame: CGRect(x: 0 ,y:  0,width: ((kScreenWidth - 110) / 6.0),height: ((kScreenWidth - 110) / 6.0)))
+            
+            circleLabel.textAlignment = .center
+            circleLabel.text = "﹡"
+            circleLabel.font = UIFont.systemFont(ofSize: 17)
             circleLabel.layer.masksToBounds = true
             circleLabel.isHidden = true
+        
             pwdCircleArr.append(circleLabel)
-             line.addSubview(circleLabel)
+            line.addSubview(circleLabel)
         }
         let btn = UIButton.init(type: .custom)
-        btn.frame = CGRect.init(x: 0, y: 0, width: kScreenWidth, height: 100)
+        btn.frame = CGRect.init(x: 0, y: 0, width: kScreenWidth, height: 150)
         btn.addTarget(self, action: #selector(showboard(_:)), for: .touchUpInside)
         view.addSubview(btn)
     }
@@ -127,7 +128,8 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
         }
         
         var password : String
-        if string.characters.count <= 0 {
+        if string.characters.count <= 0 && textField.text?.length() != 0{
+            
             let index = textField.text?.characters.index((textField.text?.endIndex)!, offsetBy: -1)
             password = textField.text!.substring(to: index!)
         }
@@ -136,21 +138,33 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
             
         }
         passString = ""
+        self.doSetPass.backgroundColor = UIColor.gray
         self .setCircleShow(password.characters.count)
         
         if(password.characters.count == 6){
-          
            passString = password
+           self.doSetPass.backgroundColor =    UIColor(hexString: AppConst.Color.main)
+          
         }
         return true;
     }
     
     func setCircleShow(_ count:NSInteger){
         for circle in pwdCircleArr {
+           
+            let supView = circle.superview
+            supView?.layer.borderColor = UIColor.gray.cgColor
+            supView?.layer.borderWidth = 1
             circle.isHidden = true;
+            
         }
         for i in 0 ..< count {
             pwdCircleArr[i].isHidden = false
+            let view = pwdCircleArr[i]
+            let supView = view.superview
+            supView?.layer.borderColor = UIColor(hexString: AppConst.Color.main).cgColor
+            supView?.layer.borderWidth = 2
+//            let vie =  pwdCircleArr[i].sup
         }
     }
  

@@ -54,7 +54,9 @@ class SocketConst: NSObject {
         case searchStar = 11007
         //搜索
         case weixinpay = 7033
-
+        //我的资产
+        case accountMoney = 1004
+        case detailList = 1005
         //分类明星
         case marketStar = 11003
         

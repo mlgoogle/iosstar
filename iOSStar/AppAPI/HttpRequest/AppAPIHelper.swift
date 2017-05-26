@@ -18,7 +18,7 @@ class AppAPIHelper: NSObject {
     class func login() -> LoginApi{
         return _loginApi
     }
-    class func friend() -> UserApi{
+    class func user() -> UserApi{
         return _friendApi
     }
     

@@ -32,10 +32,10 @@
             </objects>
             <point key="canvasLocation" x="-489" y="-73"/>
         </scene>
-        <!--WealthVC-->
+        <!--我的资产-->
         <scene sceneID="Spa-qG-Rj0">
             <objects>
-                <viewController storyboardIdentifier="WealthVC" hidesBottomBarWhenPushed="YES" id="GAe-ph-a7d" customClass="WealthVC" customModule="iOSStar" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WealthVC" title="我的资产" hidesBottomBarWhenPushed="YES" id="GAe-ph-a7d" customClass="WealthVC" customModule="iOSStar" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eTG-cw-vLV"/>
                         <viewControllerLayoutGuide type="bottom" id="rup-vg-obE"/>
@@ -1121,7 +1121,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcY-3z-aG9">
                                         <rect key="frame" x="0.0" y="340" width="265" height="40"/>
                                         <color key="backgroundColor" red="0.55155301089999997" green="0.029463728889999999" blue="0.034804642199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="开 始 验 证">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -1188,7 +1188,7 @@
         <scene sceneID="AF1-GG-aHf">
             <objects>
                 <tableViewController storyboardIdentifier="UserInfoVC" title="个人信息" hidesBottomBarWhenPushed="YES" id="2rC-ev-DTV" customClass="UserInfoVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="aQo-eX-6Rk">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="aQo-eX-6Rk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1398,7 +1398,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bw9-m2-OGu">
-                                <rect key="frame" x="17" y="220" width="341" height="45"/>
+                                <rect key="frame" x="17" y="270" width="341" height="45"/>
                                 <color key="backgroundColor" red="0.97407889660000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="KwK-uE-g0Q"/>
@@ -1416,6 +1416,12 @@
                                     <action selector="doSetPass:" destination="aBB-3D-vzh" eventType="touchUpInside" id="JCA-ie-wzr"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="为保障您的交易安全,请设置支付密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3F-X4-H1B">
+                                <rect key="frame" x="63" y="43" width="249.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72156862749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1424,8 +1430,10 @@
                             <constraint firstItem="YyD-t7-mp5" firstAttribute="top" secondItem="2tg-1f-qK5" secondAttribute="bottom" id="JZS-EG-dGo"/>
                             <constraint firstItem="2tg-1f-qK5" firstAttribute="leading" secondItem="u5B-MM-ogb" secondAttribute="leading" id="JbO-f4-XSH"/>
                             <constraint firstAttribute="trailing" secondItem="2tg-1f-qK5" secondAttribute="trailing" id="Pk9-YR-dKD"/>
-                            <constraint firstItem="Bw9-m2-OGu" firstAttribute="top" secondItem="CJ1-Rb-76I" secondAttribute="bottom" constant="200" id="WRm-8O-NJA"/>
+                            <constraint firstItem="Bw9-m2-OGu" firstAttribute="top" secondItem="CJ1-Rb-76I" secondAttribute="bottom" constant="250" id="WRm-8O-NJA"/>
                             <constraint firstItem="Bw9-m2-OGu" firstAttribute="leading" secondItem="u5B-MM-ogb" secondAttribute="leading" constant="17" id="dlt-te-mfY"/>
+                            <constraint firstItem="W3F-X4-H1B" firstAttribute="centerX" secondItem="u5B-MM-ogb" secondAttribute="centerX" id="qc2-Kd-Br4"/>
+                            <constraint firstItem="W3F-X4-H1B" firstAttribute="top" secondItem="u5B-MM-ogb" secondAttribute="top" constant="43" id="uVa-AU-gQq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7JF-RP-fZB"/>
@@ -1912,9 +1920,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="acZ-1D-tnJ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="acZ-1D-tnJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContactListCell" rowHeight="60" id="fhk-4s-zqc" customClass="ContactListCell" customModule="iOSStar" customModuleProvider="target">
@@ -1970,6 +1977,15 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5i-5a-LmC">
+                                                    <rect key="frame" x="116" y="19" width="79" height="26"/>
+                                                    <color key="backgroundColor" red="0.98431372549999996" green="0.59999999999999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="26" id="PbI-df-hOv"/>
+                                                        <constraint firstAttribute="width" constant="79" id="lGe-Wa-wvV"/>
+                                                    </constraints>
+                                                    <state key="normal" title="已约见"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -1979,9 +1995,12 @@
                                                 <constraint firstItem="SRA-Ln-jZl" firstAttribute="top" secondItem="VOd-f7-cHo" secondAttribute="top" constant="10" id="MjP-jt-aaK"/>
                                                 <constraint firstItem="dHB-9q-3s6" firstAttribute="leading" secondItem="SRA-Ln-jZl" secondAttribute="trailing" constant="13" id="ThQ-b3-oC2"/>
                                                 <constraint firstItem="dHB-9q-3s6" firstAttribute="top" secondItem="SRA-Ln-jZl" secondAttribute="top" id="UiX-0n-VjP"/>
+                                                <constraint firstAttribute="bottom" secondItem="N5i-5a-LmC" secondAttribute="bottom" constant="15" id="bbC-iV-bqN"/>
                                                 <constraint firstItem="SRA-Ln-jZl" firstAttribute="leading" secondItem="VOd-f7-cHo" secondAttribute="leading" constant="12" id="k2C-AM-z9Y"/>
                                                 <constraint firstAttribute="trailing" secondItem="TwG-Vv-hpI" secondAttribute="trailing" constant="12" id="mBH-cW-MbA"/>
                                                 <constraint firstItem="bYw-xC-ktx" firstAttribute="leading" secondItem="SRA-Ln-jZl" secondAttribute="trailing" constant="13" id="q17-eO-l7Q"/>
+                                                <constraint firstItem="N5i-5a-LmC" firstAttribute="leading" secondItem="dHB-9q-3s6" secondAttribute="trailing" constant="8" id="q5k-5n-rna"/>
+                                                <constraint firstItem="N5i-5a-LmC" firstAttribute="top" secondItem="VOd-f7-cHo" secondAttribute="top" constant="19" id="tgb-sr-NJT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1999,6 +2018,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="acZ-1D-tnJ" firstAttribute="top" secondItem="FoH-3v-W4G" secondAttribute="top" id="3i6-fL-hfI"/>
+                            <constraint firstItem="acZ-1D-tnJ" firstAttribute="leading" secondItem="FoH-3v-W4G" secondAttribute="leading" id="79u-9u-Myx"/>
+                            <constraint firstAttribute="trailing" secondItem="acZ-1D-tnJ" secondAttribute="trailing" id="VXO-Kf-4WX"/>
+                            <constraint firstItem="D1C-pV-Khn" firstAttribute="top" secondItem="acZ-1D-tnJ" secondAttribute="bottom" id="t9F-Op-Z0e"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QGf-PE-c1G"/>
                     <connections>
@@ -2554,7 +2579,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RechargeListVCCell" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RechargeListVCCell" rowHeight="70" id="pQ0-66-wmb" customClass="RechargeListVCCell" customModule="iOSStar" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MoneyDetailListCell" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MoneyDetailListCell" rowHeight="70" id="pQ0-66-wmb" customClass="MoneyDetailListCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pQ0-66-wmb" id="wIe-wN-bet">

@@ -18,4 +18,8 @@ protocol UserApi {
       func getorderstars(phone: String, starcode: String, complete: CompleteBlock?, error: ErrorBlock?)
      // 微信支付
       func weixinpay(title:String,  price:Double, complete: CompleteBlock?, error: ErrorBlock?)
+     // 我的资产接口
+     func accountMoney(complete: CompleteBlock?, error: ErrorBlock?)
+      // 资金明细列表
+     func MoneyDetailList(complete: CompleteBlock?, error: ErrorBlock?)
 }

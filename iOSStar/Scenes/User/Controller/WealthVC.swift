@@ -21,6 +21,13 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         self.tableView.tableFooterView = view
         
     }
+    func requestData() {
+      AppAPIHelper.user().accountMoney(complete: { (result) in
+        
+      }) { (error ) in
+        
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -85,7 +92,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                     default:
                         vc.dismissController()
                         
-                        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
+                        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
                         self.navigationController?.pushViewController(vc, animated: true )
                     }
                 }
