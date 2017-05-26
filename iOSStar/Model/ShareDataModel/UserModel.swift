@@ -22,6 +22,7 @@ class UserModel: Object {
      dynamic var balance : Double = 0
      dynamic var userinfo  : UserModel?
      dynamic var result : Int64 = 0
+     dynamic var token : String = " "
     
     
     override static func primaryKey() -> String?{
