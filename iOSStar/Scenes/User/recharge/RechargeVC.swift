@@ -74,6 +74,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     //MARK:去充值
     @IBAction func doRecharge(_ sender: Any) {
         AppAPIHelper.user().weixinpay(title: "余额充值", price: 0.01, complete: { (result) in
+            
             SVProgressHUD.dismiss()
             if let object = result {
                 let request : PayReq = PayReq()
@@ -89,7 +90,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
             }
             
         }) { (error ) in
-            
+             print(error)
         }
         
     }
@@ -160,6 +161,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
                 self?.payTypeName.text = model.id == 0 ? "微信" : "支付宝"
                 
                 self?.paytype = model.id
+                self?.payTypeImg.image = UIImage.init(named: model.img)
             }
         }
         tableView.sendSubview(toBack: bgview)

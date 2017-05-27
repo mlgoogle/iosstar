@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DealViewController: UIViewController,DealScrollViewScrollDelegate,MenuViewDelegate{
+class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate,MenuViewDelegate{
 
     lazy var backView: DealScrollView = {
         let view = DealScrollView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight))
@@ -54,9 +54,7 @@ class DealViewController: UIViewController,DealScrollViewScrollDelegate,MenuView
             let vc = stroyBoard.instantiateViewController(withIdentifier: identifier)
             views.append(vc.view)
             vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: backView.frame.size.height - 64)
-
             addChildViewController(vc)
-            
         }
         backView.setSubViews(customSubViews: views)
 

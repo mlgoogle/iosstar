@@ -118,13 +118,7 @@ class LoginVC: UIViewController {
         }) { (error)  in
         }
     }
-    //MARK:- 忘记密码
-    @IBAction func forGotPass(_ sender: Any) {
-        
-          ShareDataModel.share().isweichaLogin = false
-        
-        self.performSegue(withIdentifier: "pushToLogin", sender: nil)
-    }
+  
     //MARK:-   微信登录
     @IBAction func wechatLogin(_ sender: Any) {
         let req = SendAuthReq.init()

@@ -57,6 +57,8 @@ class ImageMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageMenuCell", for: indexPath) as! ImageMenuCell
 
         cell.setTitle(text: titles![indexPath.row])
+      
+        cell.setImage(image: images![indexPath.row])
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

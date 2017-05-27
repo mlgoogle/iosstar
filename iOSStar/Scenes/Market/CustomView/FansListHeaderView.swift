@@ -18,14 +18,14 @@ class FansListHeaderView: UITableViewHeaderFooterView {
         let button = UIButton(type: .custom)
         button.tag = 2222
         button.setTitle("求购榜单", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 13.0)
         button.setTitleColor(UIColor(hexString: "333333"), for: .normal)
         return button
     }()
     lazy var sellButton:UIButton = {
        let button = UIButton(type: .custom)
         button.tag = 2223
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 13.0)
         button.setTitle("转让榜单", for: .normal)
         button.setTitleColor(UIColor(hexString: "333333"), for: .normal)
         return button
@@ -39,7 +39,8 @@ class FansListHeaderView: UITableViewHeaderFooterView {
     }()
     
     lazy var imageView:UIImageView = {
-       let imageView = UIImageView(image: UIImage.init(named: "8"))
+       let imageView = UIImageView(image: UIImage.init(named: "fanslist_bangdan"))
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -66,13 +67,10 @@ class FansListHeaderView: UITableViewHeaderFooterView {
             make.centerX.equalTo(kScreenWidth / 4)
             make.centerY.equalTo(buyButton)
             make.width.equalTo(110)
-            make.height.equalTo(25)
+            make.height.equalTo(35)
         }
         imageView.snp.makeConstraints { (make) in
-            make.left.equalTo(backView.snp.left)
-            make.width.equalTo(30)
-            make.height.equalTo(30)
-            make.bottom.equalTo(backView.snp.bottom).inset(5)
+            make.edges.equalTo(backView)
         }
         bringSubview(toFront: buyButton)
         bringSubview(toFront: sellButton)

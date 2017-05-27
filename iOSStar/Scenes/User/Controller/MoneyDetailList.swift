@@ -7,7 +7,11 @@
 //
 
 import UIKit
+import SVProgressHUD
 class MoneyDetailListCell: OEZTableViewCell {
+    
+
+    
     
     @IBOutlet weak var weekLb: UILabel!            // 姓名LbstatusLb
     @IBOutlet weak var timeLb: UILabel!            // 时间Lb
@@ -16,7 +20,20 @@ class MoneyDetailListCell: OEZTableViewCell {
     @IBOutlet weak var minuteLb: UILabel!          // 分秒
     @IBOutlet weak var bankLogo: UIImageView!      // 银行卡图片
     @IBOutlet weak var withDrawto: UILabel!        // 提现至
-    
+    override func update(_ data: Any!) {
+        let model = data as! Model
+        self.moneyCountLb.text = "+" + " "  + String.init(format: "%.2f", model.amount)
+        let timestr : Int = Date.stringToTimeStamp(stringTime: model.depositTime)
+        self.withDrawto.text = model.depositType == 1 ? "微信支付" :"银行卡"
+        self.weekLb.text = Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "yyyy")
+        self.statusLb.text = model.status == 1 ? "处理中" : (model.status == 2 ?  "充值成功":  "充值失败")
+        self.timeLb.text =  Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "MM-dd")
+        self.minuteLb.text =  Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "HH:mm:ss")
+        
+    }
+        //        BankLogoColor.share().checkLocalBank(string: model.ba)
+      
+
 }
 
 class MoneyDetailList: BaseCustomPageListTableViewController {
@@ -31,7 +48,6 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
         super.viewDidLoad()
         
         title = "资金明细"
-        
         navLeft = UIButton.init(type: .custom)
         
         navLeft?.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20)
@@ -44,12 +60,22 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
     }
     
     override func didRequest(_ pageIndex : Int) {
+
         
-         AppAPIHelper.user().MoneyDetailList(complete: { (result) in
-            self.didRequestComplete(["",""] as AnyObject)
-         }) { (error) in
+        AppAPIHelper.user().creditlist(status: 0, pos: Int32((pageIndex - 1) * 10), count: 10, complete: { (result) in
+            if let object = result {
+              let model : RechargeListModel = object as! RechargeListModel
+              self.didRequestComplete(model.depositsinfo as AnyObject)
+            }
+          
+        }) { (error ) in
             
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
+            })
+              self.didRequestComplete(nil)
         }
+       
+
     }
     //MARK-
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -71,7 +97,10 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
     // MARK: - Table view data source
     
     //
-   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc  = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResultVC")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     func selectDate(){
         

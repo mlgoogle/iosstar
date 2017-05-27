@@ -43,7 +43,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         return 2
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 269 : 44
+        return indexPath.section == 0 ? 280 : 44
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell")

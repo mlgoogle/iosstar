@@ -57,6 +57,7 @@ class SocketConst: NSObject {
         //我的资产
         case accountMoney = 1004
         case detailList = 1005
+        case creditlist = 6003
         //分类明星
         case marketStar = 11003
         
@@ -65,7 +66,7 @@ class SocketConst: NSObject {
 
         //添加自选
         case addOptinal = 11015
-        
+        case realName = 7045
         //评论列表
         case commetList = 10017
         
@@ -100,6 +101,7 @@ class SocketConst: NSObject {
         static let name = "name"
         static let phone = "phone"
         static let pwd = "pwd"
+        static let pos = "startPos"
         static let code = "vCode"
         static let appid = "appid"
         static let secret = "secret"
@@ -128,11 +130,13 @@ class SocketConst: NSObject {
         static let startnum = "startnum"
         static let endnum = "endnum"
         static let all = "all"
+        static let countNuber = "count"
         static let starCode = "code"
         static let type = "type"
         static let sorttype = "sorttype"
         static let title = "title"
         static let price = "price"
+        static let token = "token"
 
         
     }
