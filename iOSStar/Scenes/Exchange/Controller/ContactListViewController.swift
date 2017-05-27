@@ -38,6 +38,7 @@ class ContactListViewController: BaseCustomPageListTableViewController {
             self.dataList = Model.list!
             
             self.tableView.reloadData()
+            
             return
             
         }) { (error)  in

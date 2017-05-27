@@ -33,5 +33,10 @@ class TipBindVC: UIViewController {
     @IBAction func close(_ sender: Any) {
         self.resultBlock!(doTipClick.doClose as AnyObject)
     }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.dismissController()
+    }
    
 }
