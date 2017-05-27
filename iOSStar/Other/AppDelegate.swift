@@ -22,18 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
         
         
    
-        // //在注册 NIMSDK appKey 之前先进行配置信息的注册，如是否使用新路径,是否要忽略某些通知，是否需要多端同步未读数
-        
         sdkConfigDelegate = NTESSDKConfigDelegate.init()
-        
-        NIMSDKConfig.shared().delegate = sdkConfigDelegate
-        NIMSDKConfig.shared().shouldSyncUnreadCount = true//0d0f4b452de9695f91b0e4dc949d54cc
-                                             //9c3a406f233dea0d355c6458fb0171b8
-        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
-        NIMKit.shared().registerLayoutConfig(NTESCellLayoutConfig.self)
 
-        NIMCustomObject.registerCustomDecoder(NTESCustomAttachmentDecoder.init())
-        
+        AppConfigHelper.setupNIMSDK(sdkConfigDelegate:sdkConfigDelegate)
+        AppConfigHelper.setupUMSDK()
         WXApi.registerApp("wx9dc39aec13ee3158")
         //   NSString *appKey = [[NTESDemoConfig sharedConfig] appKey];
 //        NSString *cerName= [[NTESDemoConfig sharedConfig] cerName];

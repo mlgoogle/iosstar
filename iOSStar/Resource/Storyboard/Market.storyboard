@@ -59,9 +59,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQY-du-nZy">
-                                                    <rect key="frame" x="12" y="14" width="351" height="117.5"/>
+                                                    <rect key="frame" x="12" y="14" width="351" height="118"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timg.png" translatesAutoresizingMaskIntoConstraints="NO" id="LtK-1Z-LOK">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LtK-1Z-LOK">
                                                             <rect key="frame" x="14" y="10" width="40" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="UQZ-b0-3lk"/>
@@ -87,7 +87,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="谢谢，大家的支持哟，爱你们么么哒。谢谢，大家的支持哟，爱你们么么哒。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4J-OS-NZv">
-                                                            <rect key="frame" x="68" y="55" width="265" height="38.5"/>
+                                                            <rect key="frame" x="68" y="55" width="265" height="39"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -465,14 +465,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="8" translatesAutoresizingMaskIntoConstraints="NO" id="1aD-l6-MpY">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fansList_first" translatesAutoresizingMaskIntoConstraints="NO" id="1aD-l6-MpY">
                                                     <rect key="frame" x="12" y="31" width="28" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="28" id="bb9-Sg-MT4"/>
                                                         <constraint firstAttribute="height" constant="28" id="v9z-hZ-DP5"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timg.png" translatesAutoresizingMaskIntoConstraints="NO" id="n67-bQ-dLd">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n67-bQ-dLd">
                                                     <rect key="frame" x="50" y="20" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="2XN-lU-EMB"/>
@@ -542,7 +542,7 @@
                                                     <color key="textColor" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timg.png" translatesAutoresizingMaskIntoConstraints="NO" id="WyG-yR-8hR">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WyG-yR-8hR">
                                                     <rect key="frame" x="52" y="19" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="4h9-sx-AGg"/>
@@ -1337,7 +1337,6 @@
                             <constraint firstItem="zRP-6t-l12" firstAttribute="top" secondItem="jao-zU-N6A" secondAttribute="bottom" id="wi8-E7-m5O"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="dLd-iY-dUN"/>
                     <connections>
                         <outlet property="inputPalace" destination="BQU-Gp-rbz" id="AYh-NQ-wqd"/>
                         <outlet property="inputType" destination="8WL-dZ-Ns1" id="9HB-TW-dXz"/>
@@ -1455,9 +1454,12 @@
             <objects>
                 <navigationController storyboardIdentifier="Market" automaticallyAdjustsScrollViewInsets="NO" id="D4Y-gF-oKV" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Jpd-CQ-nrk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Jpd-CQ-nrk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.5490196078431373" green="0.031372549019607843" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1470,7 +1472,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="8" width="55" height="55"/>
+        <image name="fansList_first" width="28" height="28"/>
         <image name="liuyan.png" width="640" height="474"/>
         <image name="market_search" width="17" height="17"/>
         <image name="timg.png" width="180" height="180"/>

@@ -43,6 +43,7 @@ class BuyOrSellViewController: UIViewController {
         }
     }
     
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }

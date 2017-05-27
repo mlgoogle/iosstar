@@ -29,14 +29,12 @@ class MarketDetailViewController: UIViewController {
         let imageStrings = ["market_buy","market_sell","market_meetfans","market_optional"]
         var images:[UIImage] = []
         for string in imageStrings {
-            
             let image = UIImage(named: string)
             images.append(image!)
         }
         handleMenuView.images = images
         handleMenuView.titles = ["求购", "转让", "粉丝见面会", "自选"]
         handleMenuView.delegate = self
-        
     }
     func setupSubView() {
         let types:[String] = ["MarketDetaiBaseInfoViewController", "MarketFansListViewController", "MarketAuctionViewController", "MarketCommentViewController"]

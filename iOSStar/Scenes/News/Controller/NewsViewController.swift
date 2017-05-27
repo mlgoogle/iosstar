@@ -203,7 +203,7 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
             let indexPath = sender as! IndexPath
             let model = newsData![indexPath.row]
             vc.urlString = model.link_url
-            
+            vc.newsModel = model
         } else if segue.identifier == "showPubPage" {
             
             let index = sender as! Int

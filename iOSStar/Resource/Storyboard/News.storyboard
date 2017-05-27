@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Publisher Page View Controller-->
+        <!--Title-->
         <scene sceneID="qvs-yZ-Zli">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="XNP-vz-4lL" customClass="PublisherPageViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
@@ -290,7 +290,14 @@
                             <constraint firstItem="Gft-O8-8FQ" firstAttribute="leading" secondItem="DIe-Kj-61t" secondAttribute="leading" id="zsS-hp-PLY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mze-r3-jdV"/>
+                    <navigationItem key="navigationItem" title="Title" id="3if-LF-Bqq">
+                        <barButtonItem key="rightBarButtonItem" image="star_share" id="V2w-R3-XxT">
+                            <color key="tintColor" red="0.5490196078431373" green="0.031372549019607843" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="shareAction:" destination="XNP-vz-4lL" id="ibv-LR-cdd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Gft-O8-8FQ" id="NFQ-SU-351"/>
                         <outlet property="totalLabel" destination="G8m-tE-n83" id="gQf-AZ-4Yz"/>
@@ -337,7 +344,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20年情真！北影96班同学聚会 陈坤黄晓明献吻恩师" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ze-n6-zAD">
-                                                    <rect key="frame" x="12" y="33" width="211" height="34"/>
+                                                    <rect key="frame" x="12" y="33.5" width="211" height="33.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -403,6 +410,9 @@
                     <navigationItem key="navigationItem" id="Yy6-uW-4i6">
                         <barButtonItem key="rightBarButtonItem" image="star_share" id="k9a-Pj-DL4">
                             <color key="tintColor" red="0.5490196078431373" green="0.031372549019607843" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="shareAction:" destination="MmR-VE-X0R" id="pBu-Pa-gOX"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -415,7 +425,7 @@
             <objects>
                 <navigationController storyboardIdentifier="Home" automaticallyAdjustsScrollViewInsets="NO" id="zti-WN-NNc" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8PJ-E2-YVN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8PJ-E2-YVN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

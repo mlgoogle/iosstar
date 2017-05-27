@@ -48,7 +48,7 @@ extension MarketFansListViewController:UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 80
+        return 63
     }
     
 }

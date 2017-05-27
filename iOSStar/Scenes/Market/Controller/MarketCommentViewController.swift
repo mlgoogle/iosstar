@@ -17,15 +17,36 @@ class MarketCommentViewController: MarketBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = tableView
+        setCustomTitle(title: "评论")
         tableView.register(MarketDetailCommentHeaderView.self, forHeaderFooterViewReuseIdentifier: MarketDetailCommentHeaderView.className())
         requestCommentList()
         if isDetail {
             bottomMargin.constant = 0
             inputViewHeight.constant = 0
         }
+        registerNotification()
     }
     
+    func registerNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+    }
+    func keyboardWillShow(notification: NSNotification?) {
+        UIView.animate(withDuration: 0.5) {
+            self.view.frame = CGRect(x: self.view.frame.origin.x, y: -222, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        }
+    }
+    func keyboardWillHide(notification: NSNotification?) {
+        
+        UIView.animate(withDuration: 0.5) {
+            self.view.frame = CGRect(x: self.view.frame.origin.x, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        }
+    }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     func requestCommentList() {
         guard starModel != nil else {
             return
@@ -67,6 +88,7 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let vc = MarketCommentViewController.storyboardInit(identifier:MarketCommentViewController.className(), storyboardName:AppConst.StoryBoardName.Markt.rawValue) as? MarketCommentViewController
+        vc?.isDetail = false
         guard vc != nil else {
             return
         }

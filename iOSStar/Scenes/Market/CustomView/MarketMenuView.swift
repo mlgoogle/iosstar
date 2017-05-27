@@ -202,7 +202,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }()
     
     lazy var changeImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "8"))
+        let imageView = UIImageView(image: UIImage(named: "market_price"))
         return imageView
     }()
     
@@ -271,7 +271,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
             make.height.equalTo(15)
         }
         priceImageView.snp.makeConstraints { (make) in
-            make.right.equalTo(priceChangeButton.snp.left).offset(-40)
+            make.right.equalTo(priceChangeButton.snp.left).offset(-42)
             make.width.equalTo(9)
             make.height.equalTo(12)
             make.centerY.equalTo(infoView)

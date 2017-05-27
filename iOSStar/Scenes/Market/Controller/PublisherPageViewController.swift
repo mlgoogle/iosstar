@@ -13,6 +13,7 @@ class PublisherPageViewController: UIViewController {
     var code = "1001"
     var bannerModel:BannerModel?
     var rows = [1, 1, 10]
+    var starModel:MarketListStarModel?
     var sectionHeight = [200, 170, 50]
     var titles = ["1","个人简介", "主要经历"]
     @IBOutlet weak var totalLabel: UILabel!
@@ -27,7 +28,6 @@ class PublisherPageViewController: UIViewController {
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: "PubInfoHeaderView")
         automaticallyAdjustsScrollViewInsets = false
         requestInfos()
-        
 
     }
     func shareAction() {
@@ -35,11 +35,19 @@ class PublisherPageViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    @IBAction func shareAction(_ sender: Any) {
+
+        
+        UMSocialUIManager.showShareMenuViewInWindow { (platform, userInfo) in
+            
+            
+        }
+        
     }
 
     @IBAction func buyButtonAction(_ sender: Any) {

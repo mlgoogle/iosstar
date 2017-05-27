@@ -187,9 +187,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCM-p6-SkK">
-                                                    <rect key="frame" x="142" y="77" width="30" height="30"/>
-                                                    <state key="normal" title="+"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCM-p6-SkK">
+                                                    <rect key="frame" x="142" y="81" width="30" height="22"/>
+                                                    <state key="normal" title="+" image="market_plus"/>
                                                     <connections>
                                                         <action selector="pricePlus:" destination="gZS-bz-YA7" eventType="touchUpInside" id="hF2-OE-IdE"/>
                                                     </connections>
@@ -213,15 +213,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7V-T8-oUB">
-                                                    <rect key="frame" x="26" y="81" width="16" height="22"/>
-                                                    <state key="normal" image="pl"/>
+                                                    <rect key="frame" x="24" y="81" width="18" height="22"/>
+                                                    <state key="normal" image="market_reduce"/>
                                                     <connections>
                                                         <action selector="priceReduce:" destination="gZS-bz-YA7" eventType="touchUpInside" id="osy-eM-2pd"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2F5-pP-VsO">
-                                                    <rect key="frame" x="333" y="77" width="30" height="30"/>
-                                                    <state key="normal" title="+"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2F5-pP-VsO">
+                                                    <rect key="frame" x="333" y="81" width="30" height="22"/>
+                                                    <state key="normal" title="+" image="market_plus"/>
                                                     <connections>
                                                         <action selector="countPlus:" destination="gZS-bz-YA7" eventType="touchUpInside" id="H8q-T3-K0b"/>
                                                     </connections>
@@ -233,14 +233,14 @@
                                                         <constraint firstAttribute="width" constant="1" id="goU-Ve-UfX"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ZG-QU-PzX">
-                                                    <rect key="frame" x="203" y="77" width="30" height="30"/>
-                                                    <state key="normal" title="-"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ZG-QU-PzX">
+                                                    <rect key="frame" x="206" y="81" width="27" height="22"/>
+                                                    <state key="normal" title="-" image="market_reduce"/>
                                                     <connections>
                                                         <action selector="countReduce:" destination="gZS-bz-YA7" eventType="touchUpInside" id="A3n-mh-ORi"/>
                                                     </connections>
                                                 </button>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1.00" placeholder="价格" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="usQ-xy-qWs">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.01" placeholder="价格" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="usQ-xy-qWs">
                                                     <rect key="frame" x="57" y="81" width="70" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="ULP-mN-5uF"/>
@@ -248,11 +248,8 @@
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="yBZ-4D-Hdi" id="Rf8-H8-5DX"/>
-                                                    </connections>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1.00" placeholder="数量" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zac-Cc-3TB">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" placeholder="数量" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zac-Cc-3TB">
                                                     <rect key="frame" x="248" y="81" width="70" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="cdE-cF-1R7"/>
@@ -260,9 +257,6 @@
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="yBZ-4D-Hdi" id="GZ6-ne-CbR"/>
-                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -289,7 +283,13 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="countInfoLabel" destination="M7F-hh-H3i" id="QIc-3w-vfm"/>
+                                            <outlet property="countPlusButton" destination="2F5-pP-VsO" id="sML-Sp-FKG"/>
+                                            <outlet property="countReduceButton" destination="8ZG-QU-PzX" id="d2g-OH-A4A"/>
+                                            <outlet property="coutTextField" destination="zac-Cc-3TB" id="atg-X5-W3C"/>
                                             <outlet property="priceInfoLabel" destination="kTN-R8-Pny" id="MfQ-hT-nTE"/>
+                                            <outlet property="pricePlusButton" destination="OCM-p6-SkK" id="9pr-kx-a04"/>
+                                            <outlet property="priceReducButton" destination="m7V-T8-oUB" id="kdG-8w-CQh"/>
+                                            <outlet property="priceTextField" destination="usQ-xy-qWs" id="csk-cx-T32"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DealHintCell" rowHeight="82" id="oZh-FC-BvP" customClass="DealHintCell" customModule="iOSStar" customModuleProvider="target">
@@ -1119,7 +1119,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lZT-k9-eNh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uUc-BT-dWh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uUc-BT-dWh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1137,7 +1137,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5RR-hx-khM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T3V-av-IRf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="T3V-av-IRf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1152,7 +1152,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pl" width="16" height="16"/>
+        <image name="market_plus" width="18" height="18"/>
+        <image name="market_reduce" width="18" height="18"/>
         <image name="timg.png" width="180" height="180"/>
     </resources>
 </document>
