@@ -9,27 +9,60 @@
 import UIKit
 
 class BuyOrSellViewController: UIViewController {
+    var identifiers = ["DealStarInfoCell","DealMarketCell","DealOrderInfoCell","DealHintCell"]
+    var rowHeights = [137, 188,133,82]
+    var dealType:AppConst.DealType = AppConst.DealType.sell {
+        didSet {
+            buyOrSellButton.setTitle("确认求购", for: .normal)
+        }
+    }
+    @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var orderPriceLabel: UILabel!
+    
+    @IBOutlet weak var buyOrSellButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        registerNotification()
     }
+    func registerNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    func keyboardWillShow(notification: NSNotification?) {
+        UIView.animate(withDuration: 0.5) {
+            self.view.frame = CGRect(x: self.view.frame.origin.x, y: -100, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        }
+    }
+    func keyboardWillHide(notification: NSNotification?) {
+
+        UIView.animate(withDuration: 0.5) {
+            self.view.frame = CGRect(x: self.view.frame.origin.x, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
-    */
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
+extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView){
+        tableView.endEditing(true)
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(rowHeights[indexPath.row])
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return identifiers.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifiers[indexPath.row], for: indexPath)
+        return cell
+    }
 }

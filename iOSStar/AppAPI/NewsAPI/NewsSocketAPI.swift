@@ -24,7 +24,9 @@ class NewsSocketAPI: BaseSocketAPI, NewsApi {
     func requestBannerList(complete: CompleteBlock?, error: ErrorBlock?) {
         let parameters:[String:Any] = [SocketConst.Key.starCode : "1", SocketConst.Key.all : 1]
         let packet = SocketDataPacket(opcode: .banners, dict: parameters as [String : AnyObject], type: .news)
+        
         startModelsRequest(packet, listName: "list", modelClass: BannerModel.self, complete: complete, error: error)
+        
 
 
     }

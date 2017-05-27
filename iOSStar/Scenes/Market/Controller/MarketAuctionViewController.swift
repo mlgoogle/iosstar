@@ -10,6 +10,7 @@ import UIKit
 
 class MarketAuctionViewController: MarketBaseViewController {
 
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()

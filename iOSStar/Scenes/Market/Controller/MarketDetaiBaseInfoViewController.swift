@@ -17,6 +17,10 @@ class MarketDetaiBaseInfoViewController: MarketBaseViewController {
         super.viewDidLoad()
         scrollView = tableView
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: AppConst.RegisterIdentifier.PubInfoHeaderView.rawValue)
+        
+        guard starModel != nil else {
+            return
+        }
         requestBaseInfo()
         requestExperience()
     }
@@ -26,12 +30,13 @@ class MarketDetaiBaseInfoViewController: MarketBaseViewController {
     }
   
     func requestBaseInfo() {
-        AppAPIHelper.newsApi().requestStarInfo(code: "1001", complete: { (response) in
+
+        AppAPIHelper.newsApi().requestStarInfo(code: starModel!.code, complete: { (response) in
             
         }, error: errorBlockFunc())
     }
     func requestExperience() {
-        AppAPIHelper.marketAPI().requestStarExperience(code: "1001", complete: { (response) in
+        AppAPIHelper.marketAPI().requestStarExperience(code: starModel!.code, complete: { (response) in
             
         }, error: errorBlockFunc())
     }
@@ -66,6 +71,11 @@ extension MarketDetaiBaseInfoViewController:UITableViewDataSource, UITableViewDe
             return 0.001
         }
         return 40
+    }
+
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         

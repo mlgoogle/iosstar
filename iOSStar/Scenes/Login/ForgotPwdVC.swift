@@ -8,8 +8,9 @@
 
 import UIKit
 import SVProgressHUD
-class ForgotPwdVC: UITableViewController {
+class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
     
+    @IBOutlet weak var doRset: UIButton!
     //时间戳
     var timeStamp =  ""
     //token
@@ -22,24 +23,44 @@ class ForgotPwdVC: UITableViewController {
     
     @IBOutlet weak var codeTf: UITextField!
     @IBOutlet weak var first_input: UITextField!
-   
+    
     @IBOutlet weak var second_input: UITextField!
-   
+    
+    @IBAction func valuechange(_ sender: Any) {
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
     }
+    deinit {
+        NotificationCenter.default.removeObserver(self) 
+    }
+    //MARK: 监听输入址变化
+    func valueChange(_ textFiled : Notification){
+        if phoneTf.text != "" && codeTf.text != "" && first_input.text != "" && second_input.text != "" {
+            
+            self.doRset.isEnabled = true
+            self.doRset.backgroundColor = UIColor.init(hexString: "BCE0DA")
+        }else{
+            self.doRset.isEnabled = false
+            self.doRset.backgroundColor = UIColor.init(hexString: "B8B8B8")
+        }
+    }
+    //MARK: 界面消失删除通知
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "重置密码"
-      
-        // Do any additional setup after loading the view.
-    }
-  
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        //监听键盘弹起 来改变输入址
+        NotificationCenter.default.addObserver(self , selector: #selector(valueChange(_:)), name:NSNotification.Name.UITextFieldTextDidChange, object: first_input)
+        NotificationCenter.default.addObserver(self , selector: #selector(valueChange(_:)), name:NSNotification.Name.UITextFieldTextDidChange, object: phoneTf)
+        NotificationCenter.default.addObserver(self , selector: #selector(valueChange(_:)), name:NSNotification.Name.UITextFieldTextDidChange, object: codeTf)
+        NotificationCenter.default.addObserver(self , selector: #selector(valueChange(_:)), name:NSNotification.Name.UITextFieldTextDidChange, object: second_input)
+        
     }
     //MARK: 显示密码
     @IBAction func doShowPass(_ sender: Any) {
@@ -55,7 +76,6 @@ class ForgotPwdVC: UITableViewController {
     }
     //MARK: 发送验证码
     @IBAction func sendVaildCode(_ sender: Any) {
-        
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
             vaildCodeBtn.isEnabled = false
             AppAPIHelper.login().SendCode(phone: phoneTf.text!, complete: { [weak self](result)  in
@@ -68,11 +88,8 @@ class ForgotPwdVC: UITableViewController {
                         
                         self?.timeStamp = String.init(format: "%ld", response["timeStamp"] as!  Int)
                         self?.vToken = String.init(format: "%@", response["vToken"] as! String)
-                        
                     }
                 }
-                //                print(result)
-                
                 }, error: { (error)  in
                     self.vaildCodeBtn.isEnabled = true
             })
@@ -96,14 +113,14 @@ class ForgotPwdVC: UITableViewController {
         vaildCodeBtn.setTitle(title, for: .normal)
         vaildCodeBtn.backgroundColor = UIColor(hexString: "ECECEC")
     }
-      //MARK: 重置密码
+    //MARK: 重置密码
     @IBAction func doreset(_ sender: Any) {
         if first_input.text != second_input.text{
             
             SVProgressHUD.showErrorMessage(ErrorMessage: "两次密码不一致", ForDuration: 0.5, completion: {
                 
             })
-         return
+            return
         }
         let string = "yd1742653sd" + self.timeStamp + self.codeTf.text! + self.phoneTf.text!
         if string.md5_string() != self.vToken{
@@ -112,19 +129,19 @@ class ForgotPwdVC: UITableViewController {
             })
             return
         }
-       AppAPIHelper.login().ResetPassWd(phone: self.phoneTf.text!, pwd: self.first_input.text!, complete: { (result)  in
-        if let  response = result{
-            if response["result"] as! Int == 1{
-                //重置成功
-                self.navigationController?.popViewController(animated: true)
+        AppAPIHelper.login().ResetPassWd(phone: self.phoneTf.text!, pwd: self.first_input.text!, complete: { (result)  in
+            if let  response = result{
+                if response["result"] as! Int == 1{
+                    //重置成功
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
-        }
-       }) { (error) in
-        SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
-            
-        })
+        }) { (error) in
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
+                
+            })
         }
     }
-  
-
+    
+    
 }

@@ -121,7 +121,7 @@ class RegistVC: UIViewController {
         if !isTelNumber(num: phoneTf.text!){
             return
         }
-        if ShareDataModel.share().isweichaLogin == true{
+        if ShareDataModel.share().isweichaLogin == true && ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid] != "" {
             bindWeChat()
         }
         else {
@@ -135,13 +135,12 @@ class RegistVC: UIViewController {
         if string.md5_string() != self.vToken{
             return
         }
-        AppAPIHelper.login().regist(phone: phoneTf.text!, password: passTf.text!, complete: { [weak self](result)  in
+        AppAPIHelper.login().regist(phone: phoneTf.text!, password: (passTf.text?.md5_string())!, complete: { [weak self](result)  in
             if let response = result {
                 if response["result"] as! Int == 1 {
                     self?.LoginYunxin()
                 }
             }
-            
         }) { (error) in
         }
     }
@@ -150,7 +149,7 @@ class RegistVC: UIViewController {
         if string.md5_string() != self.vToken{
             return
         }
-        AppAPIHelper.login().BindWeichat(phone: phoneTf.text!, timeStamp: 123, vToken: "1233", pwd: passTf.text!, openid:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, nickname:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.nickname]!, headerUrl:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.headimgurl]!, memberId: 123, agentId: "123", recommend: "123", deviceId: "1123", vCode: "123", complete: { [weak self](result)  in
+        AppAPIHelper.login().BindWeichat(phone: phoneTf.text!, timeStamp: 123, vToken: "1233", pwd: (passTf.text?.md5_string())!, openid:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, nickname:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.nickname]!, headerUrl:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.headimgurl]!, memberId: 123, agentId: "123", recommend: "123", deviceId: "1123", vCode: "123", complete: { [weak self](result)  in
             
             self?.LoginYunxin()
 

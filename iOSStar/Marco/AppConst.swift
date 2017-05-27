@@ -46,9 +46,10 @@ class AppConst {
     class Color {
 
         static let main = "921224"
+        static let up = "CB4232"
+        static let down = "18B03F"
+        static let titleColor = "8C0808"
         static let background = "background"
-        static let buyUp = "buyUp"
-        static let buyDown = "buyDown"
         static let auxiliary = "auxiliary"
         static let lightBlue = "lightBlue"
     };
@@ -100,7 +101,7 @@ class AppConst {
     
     enum StoryBoardName:String {
         case Markt = "Market"
-        case News = "Home"
+        case News = "News"
         case Deal = "Deal"
         case User = "User"
         case Login = "Login"
@@ -123,6 +124,21 @@ class AppConst {
     enum SegueIdentifier:String {
         case newsToDeatail = "newsToDeatail"
         case showPubPage = "showPubPage"
+    }
+    enum DealType:UInt16 {
+        case buy = 0
+        case sell = 1
+    }
+    
+    enum DealDetailType:UInt16 {
+        //当日成交
+        case todayComplete = 0
+        //当日委托
+        case todayEntrust = 1
+        //历史交易
+        case allDeal = 2
+        //历史委托
+        case allEntrust = 3
     }
     
     class WechatKey {

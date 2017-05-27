@@ -8,24 +8,71 @@
 
 import UIKit
 
-class DealViewController: UIViewController {
+class DealViewController: UIViewController,DealScrollViewScrollDelegate,MenuViewDelegate{
 
-    
+    lazy var backView: DealScrollView = {
+        let view = DealScrollView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight))
+        return view
+    }()
     var menuView:YD_VMenuView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupMenuView()
+        view.addSubview(backView)
+        backView.delegate = self
+        addSubViews()
+    }
+    func setupMenuView() {
+        navigationController?.navigationBar.setBackgroundImage(UIColor.white.imageWithColor(), for: .default)
+        navigationController?.navigationBar.isTranslucent = false
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 28)
-        layout.itemSize = CGSize(width: 30, height: 15)
+        layout.sectionInset = UIEdgeInsets(top: -3, left: 0, bottom: 0, right: 28)
         layout.minimumInteritemSpacing = (kScreenWidth - 44 - 28 - 30 * 5) / 4
-        menuView = YD_VMenuView(frame: CGRect(x: 44, y: 0, width: kScreenWidth, height: 64), layout: layout)
+        layout.minimumLineSpacing = (kScreenWidth - 44 - 28 - 30 * 5) / 4
+        layout.scrollDirection =  .horizontal
+        menuView = YD_VMenuView(frame: CGRect(x: 0, y: 0, width: kScreenWidth - 44, height: 40), layout: layout)
         menuView?.backgroundColor = UIColor.clear
         menuView?.isScreenWidth = true
-        menuView?.reloadData()
         menuView?.items = ["求购","转让","已购","订单","明细"]
+        menuView?.reloadData()
+        menuView?.delegate = self
         navigationItem.titleView = menuView
+        
+        perform(#selector(refreshSelect), with: nil, afterDelay: 0.5)
     }
+    
+    func refreshSelect() {
+        menuView?.selected(index: 0)
+    }
+    func addSubViews() {
+        let identifiers = ["BuyOrSellViewController","BuyOrSellViewController","BuyYetViewController","AllOrderViewController","DealDetailViewController"]
+        
+        let stroyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
+        var views = [UIView]()
+        for (index,identifier) in identifiers.enumerated() {
+            let vc = stroyBoard.instantiateViewController(withIdentifier: identifier)
+            views.append(vc.view)
+            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: backView.frame.size.height - 64)
+
+            addChildViewController(vc)
+            
+        }
+        backView.setSubViews(customSubViews: views)
+
+    }
+    
+    
+    
+    //menuDelegate
+    func menuViewDidSelect(indexPath: IndexPath) {
+        backView.moveToIndex(index: indexPath.item)
+    }
+    //backViewDelegate
+    func scrollToIndex(index: Int) {
+        menuView?.selected(index: index)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

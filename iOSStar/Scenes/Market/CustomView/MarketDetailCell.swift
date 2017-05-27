@@ -68,6 +68,21 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
         lineView.animate(xAxisDuration: 1)
     }
 
+    func setStarModel(starModel:MarketListStarModel) {
+        
+        currentPriceLabel.text = "\(starModel.price)"
+        var colorString = AppConst.Color.up
+        if starModel.updown < 0 {
+            changeLabel.text = "\(starModel.updown)%"
+            colorString = AppConst.Color.down
+        }else{
+            changeLabel.text = "+\(starModel.updown)%"
+        }
+        currentPriceLabel.textColor = UIColor(hexString: colorString)
+        changeLabel.backgroundColor = UIColor(hexString: colorString)
+        iconImageView.kf.setImage(with: URL(string: starModel.head))
+
+    }
     func setData(datas:[LineModel]) {
         
         var entrys: [ChartDataEntry] = []

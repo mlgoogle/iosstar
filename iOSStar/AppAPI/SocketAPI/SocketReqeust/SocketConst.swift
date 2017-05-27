@@ -52,7 +52,11 @@ class SocketConst: NSObject {
 
         //搜索
         case searchStar = 11007
-
+        //搜索
+        case weixinpay = 7033
+        //我的资产
+        case accountMoney = 1004
+        case detailList = 1005
         //分类明星
         case marketStar = 11003
         
@@ -127,6 +131,8 @@ class SocketConst: NSObject {
         static let starCode = "code"
         static let type = "type"
         static let sorttype = "sorttype"
+        static let title = "title"
+        static let price = "price"
 
         
     }

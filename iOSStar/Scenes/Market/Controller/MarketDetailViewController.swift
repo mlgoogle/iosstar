@@ -21,7 +21,8 @@ class MarketDetailViewController: UIViewController {
     @IBOutlet weak var handleMenuView: ImageMenuView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        setCustomTitle(title: "柳岩（423412）")
+        
+        setCustomTitle(title: "\(starModel!.name)（\(starModel!.code)）")
         automaticallyAdjustsScrollViewInsets = false
         tableView.register(MarketDetailMenuView.self, forHeaderFooterViewReuseIdentifier: "MarketDetailMenuView")
         requestLineData()
@@ -36,6 +37,7 @@ class MarketDetailViewController: UIViewController {
         for (index, type) in types.enumerated() {
             let vc = storyboard.instantiateViewController(withIdentifier: type) as! MarketBaseViewController
             addChildViewController(vc)
+            vc.starModel = starModel
             vc.delegate = self
             vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 50 - 64 - 50)
             subViews.append(vc.view)
@@ -48,7 +50,7 @@ class MarketDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     func requestLineData() {
-        AppAPIHelper.marketAPI().requestLineViewData(starcode: "1001", complete: { (response) in
+        AppAPIHelper.marketAPI().requestLineViewData(starcode: starModel!.code, complete: { (response) in
             if let models = response as? [LineModel] {
                 LineModel.cacheLineData(datas: models)
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
@@ -135,7 +137,8 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketDetailCell", for: indexPath) as! MarketDetailCell
-        cell.setData(datas: LineModel.getLineData())
+        cell.setData(datas: LineModel.getLineData(starCode:starModel!.code))
+        cell.setStarModel(starModel: starModel!)
         return cell
     }
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -148,11 +151,10 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == bottomScrollView {
             let index = Int(scrollView.contentOffset.x / kScreenWidth)
-            let indexPath = IndexPath(item: index, section: 0)
             let scrollEnbled = currentVC?.scrollView?.isScrollEnabled
             currentVC = childViewControllers[index] as? MarketBaseViewController
             currentVC?.scrollViewScrollEnabled(scroll: scrollEnbled!)
-            menuView?.selected(indexPath: indexPath)
+            menuView?.selected(index: index)
         } else if scrollView == tableView {
             if scrollView.contentOffset.y > 400 {
                 tableView.isScrollEnabled = false

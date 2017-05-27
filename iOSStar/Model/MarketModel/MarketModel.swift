@@ -22,17 +22,20 @@ class MarketListStarModel: Object {
     dynamic var name = ""
     dynamic var type = 1
     dynamic var head = ""
+    dynamic var price = 0.0
+    dynamic var updown = 0.0
+    
     
 }
 class LineModel: Object {
     
     dynamic var timestamp = 0
     dynamic var value = 0.0
-    class func getLineData() -> [LineModel] {
+    class func getLineData(starCode:String) -> [LineModel] {
         let realm = try! Realm()
-        let resuls = realm.objects(LineModel.self).sorted(byProperty: "timestamp")
+        let results = realm.objects(LineModel.self).sorted(byProperty: "timestamp")
         var array = [LineModel]()
-        for (_, model) in resuls.enumerated() {
+        for (_, model) in results.enumerated() {
             if array.count == 30 {
                 break
             }

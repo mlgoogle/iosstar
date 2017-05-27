@@ -88,6 +88,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
                     bannersUrl.append(model.pic_url)
                 }
             self.bannerScrollView?.imageURLStringsGroup = bannersUrl
+            print("=======\(Thread.current)")
             }
             
         }, error: errorBlockFunc())

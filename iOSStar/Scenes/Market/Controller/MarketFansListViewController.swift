@@ -31,13 +31,16 @@ extension MarketFansListViewController:UITableViewDelegate, UITableViewDataSourc
             let cell = tableView.dequeueReusableCell(withIdentifier: "MarketSBFansCell", for: indexPath) as! MarketSBFansCell
             return cell
         }
-         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketFansCell", for: indexPath) as! MarketFansCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MarketFansCell", for: indexPath) as! MarketFansCell
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.001
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "FansListHeaderView")
         
@@ -45,7 +48,7 @@ extension MarketFansListViewController:UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        return 80
     }
     
 }

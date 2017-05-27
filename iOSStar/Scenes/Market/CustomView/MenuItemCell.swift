@@ -39,9 +39,18 @@ class MenuItemCell: UICollectionViewCell {
         }
     }
     
-    func setTitle(title:String?, colorString:String?) {
-        
+    func setTitle(title:String?, colorString:String?, isZoom:Bool) {
+
+        var fontSize:CGFloat = 14.0
+        var string = colorString
+        if isZoom {
+            fontSize = 16.0
+            string = "333333"
+        }
+        titleLabel.font = UIFont.systemFont(ofSize: fontSize)
         titleLabel.text = title
-        titleLabel.textColor = UIColor(hexString: colorString)
+        titleLabel.textColor = UIColor(hexString: string)
     }
+    
+
 }
