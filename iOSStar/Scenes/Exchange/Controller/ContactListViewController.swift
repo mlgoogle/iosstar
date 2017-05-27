@@ -26,23 +26,34 @@ class ContactListViewController: BaseCustomPageListTableViewController {
     
     func onlogin(){
         
-       self.doYunxin()
+       self.doYunxin { (resut) in
+        
+        }
         
     }
     override func didRequest(_ pageIndex: Int) {
         
-        AppAPIHelper.user().getfriendList(accid: UserDefaults.standard.object(forKey: "phone") as! String, createtime:  "0", complete: { (result) in
-            
-            let Model : StarListModel = result as! StarListModel
-            self.didRequestComplete( Model.list as AnyObject)
-            self.dataList = Model.list!
-            
-            self.tableView.reloadData()
-            return
-            
-        }) { (error)  in
-            
+//        AppAPIHelper.user().getfriendList(accid: UserDefaults.standard.object(forKey: "phone") as! String, createtime:  "0", complete: { (result) in
+//            
+//            let Model : StarListModel = result as! StarListModel
+//            self.didRequestComplete( Model.list as AnyObject)
+//            self.dataList = Model.list!
+//            
+//            self.tableView.reloadData()
+//            return
+//            
+//        }) { (error)  in
+//            
+//        }
+        
+        AppAPIHelper.user().starmaillist(status: 1, pos: Int32((pageIndex - 1) * 10), count: 10, complete: { (result) in
+             let Model : StarListModel = result as! StarListModel
+             self.didRequestComplete( Model.depositsinfo as AnyObject)
+        }) { (error ) in
+           self.didRequestComplete(nil)
+
         }
+
     }
     override func   LoginSuccess(){
      
@@ -52,7 +63,7 @@ class ContactListViewController: BaseCustomPageListTableViewController {
         
         
         //StarInfoModel
-        let model = dataList[indexPath.row]
+        let model = dataSource?[indexPath.row] as! StarInfoModel
         
         let session = NIMSession(model.faccid, type: .P2P)
         let vc = NTESSessionViewController(session: session)
@@ -62,12 +73,10 @@ class ContactListViewController: BaseCustomPageListTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactListCell", for: indexPath) as! ContactListCell
         
-        cell.update(dataList[indexPath.row])
+        cell.update(dataSource?[indexPath.row])
         return cell
     }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataList.count
-    }
+   
 
 
 }

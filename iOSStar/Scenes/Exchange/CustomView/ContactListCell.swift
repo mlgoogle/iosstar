@@ -21,6 +21,7 @@ class ContactListCell: OEZTableViewCell {
         chatButton.layer.borderColor = UIColor(hexString: AppConst.Color.main).cgColor
         chatButton.layer.cornerRadius = 2
         chatButton.layer.masksToBounds = true
+    
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,8 +31,12 @@ class ContactListCell: OEZTableViewCell {
     }
     override func update(_ data: Any!) {
         let model = data as! StarInfoModel
-        nameLabel.text = model.name
-        jobLabel.text = model.type
+        nameLabel.text = model.starname
+        jobLabel.text = model.faccid
+        if statusBtn != nil{
+         statusBtn.isHidden = model.appoint == 0  ? true : false
+        }
+       
         
     }
 

@@ -30,6 +30,11 @@ class SettingVC: BaseTableViewController {
             userLogout()
             self.navigationController?.popToRootViewController(animated: true)
         }
+        if indexPath.row == 3 {
+            let story = UIStoryboard.init(name: "Login", bundle: nil)
+            let vc = story.instantiateViewController(withIdentifier: "ForgotPwdVC")
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
   
 

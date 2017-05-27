@@ -23,7 +23,7 @@ class SocketConst: NSObject {
         // 注册
         case reducetime = 9017
        //减少时间
-        case getlist = 9013
+        case getlist = 6013
         // 重设密码
         case repwd = 3019
         // 声音验证码
@@ -58,6 +58,7 @@ class SocketConst: NSObject {
         case accountMoney = 1004
         case detailList = 1005
         case creditlist = 6003
+        case restPwd = 3005
         //分类明星
         case marketStar = 11003
         
@@ -114,6 +115,7 @@ class SocketConst: NSObject {
         static let vToken = "vToken"
         static let avatarLarge = "avatarLarge"
         static let timestamp = "timeStamp"
+        static let timetamp = "timestamp"
         static let aType = "aType"
         static let name_value = "name_value"
         static let accid_value = "accid_value"
