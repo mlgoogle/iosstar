@@ -23,11 +23,13 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     var newsData:[NewsModel]?
     lazy var titleView:NewsNavigationView = {
         let view = NewsNavigationView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 44))
+        view.backgroundColor = UIColor(hexString: AppConst.Color.main)
         return view
         
     }()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         scrollViewDidScroll(tableView)
         titleView.setTime()
     }
@@ -35,6 +37,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         UIApplication.shared.setStatusBarHidden(false, with: .none)
+        
         titleView.isHidden = true
     }
 
@@ -69,6 +72,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     func setupBannerView() {
         bannerScrollView = SDCycleScrollView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 200), imageNamesGroup: [""])
         bannerScrollView?.delegate = self
+        bannerScrollView?.bannerImageViewContentMode = .scaleAspectFill
         bannerScrollView?.autoScrollTimeInterval = 3.0
         automaticallyAdjustsScrollViewInsets = false
         let backView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 210))
@@ -147,18 +151,17 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
         if alpha > 1 {
             titleView.setTime()
             UIApplication.shared.setStatusBarHidden(true, with: .none)
-            navigationController?.navigationBar.isTranslucent = false
+            navigationController?.navigationBar.isTranslucent = true
             titleView.isHidden = false
-            color = UIColor(red: 146.0 / 255.0, green: 18.0 / 255.0, blue: 36.0/255.0, alpha: 1)
+            navigationController?.setNavigationBarHidden(false            , animated: false)
             
         } else {
             titleView.setTime()
             UIApplication.shared.setStatusBarHidden(false, with: .none)
             titleView.isHidden = true
             navigationController?.navigationBar.isTranslucent = true
-            color = UIColor(red: 146.0 / 255.0, green: 18.0 / 255.0, blue: 36.0/255.0, alpha: 0.0)
+            navigationController?.setNavigationBarHidden(true, animated: false)
         }
-        navigationController?.navigationBar.setBackgroundImage(color!.imageWithColor(), for: .default)
     }
     
     
@@ -200,7 +203,7 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
             let indexPath = sender as! IndexPath
             let model = newsData![indexPath.row]
             vc.urlString = model.link_url
-            
+            vc.newsModel = model
         } else if segue.identifier == "showPubPage" {
             
             let index = sender as! Int

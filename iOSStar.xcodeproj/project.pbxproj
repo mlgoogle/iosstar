@@ -61,6 +61,8 @@
 		6E6027841EC9916C001FBAA6 /* MarketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */; };
 		6E88DA581ED4520A00EAA905 /* DetailCommenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88DA571ED4520A00EAA905 /* DetailCommenViewController.swift */; };
 		6E88DA981ED554B100EAA905 /* GradualColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88DA971ED554B100EAA905 /* GradualColorView.swift */; };
+		6E9F31EF1ED85B04008B12A5 /* AppConfigHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9F31EE1ED85B04008B12A5 /* AppConfigHelper.swift */; };
+		6E9F31F11ED91258008B12A5 /* RedBackItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9F31F01ED91258008B12A5 /* RedBackItemViewController.swift */; };
 		6EBF590A1EC6EAAF003F67B4 /* MarketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF59091EC6EAAF003F67B4 /* MarketAPI.swift */; };
 		6EBF590C1EC6EB75003F67B4 /* MarketSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF590B1EC6EB75003F67B4 /* MarketSocketAPI.swift */; };
 		6EBF590E1EC93BE9003F67B4 /* Label+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF590D1EC93BE9003F67B4 /* Label+Extension.swift */; };
@@ -365,7 +367,6 @@
 		A04CF0951ED6CB6800B93D28 /* CustomerServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF07D1ED6CB6800B93D28 /* CustomerServiceVC.swift */; };
 		A04CF0961ED6CB6800B93D28 /* DealListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF07E1ED6CB6800B93D28 /* DealListVC.swift */; };
 		A04CF0971ED6CB6800B93D28 /* GetOrderStarsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF07F1ED6CB6800B93D28 /* GetOrderStarsVC.swift */; };
-		A04CF0981ED6CB6800B93D28 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0801ED6CB6800B93D28 /* HomeVC.swift */; };
 		A04CF0991ED6CB6800B93D28 /* MoneyDetailList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0811ED6CB6800B93D28 /* MoneyDetailList.swift */; };
 		A04CF09A1ED6CB6800B93D28 /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0821ED6CB6800B93D28 /* ResultVC.swift */; };
 		A04CF09B1ED6CB6800B93D28 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0831ED6CB6800B93D28 /* SettingVC.swift */; };
@@ -386,12 +387,9 @@
 		A05E5F3D1EB19D100008888A /* wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F3B1EB19D100008888A /* wechat@2x.png */; };
 		A05E5F3E1EB19D100008888A /* wechat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F3C1EB19D100008888A /* wechat@3x.png */; };
 		A06404851ECBF22E00ECD269 /* OrderStarCollectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06404841ECBF22E00ECD269 /* OrderStarCollectView.swift */; };
-		A07238901EA76AA300E755DB /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = A07238691EA76AA300E755DB /* Contents.json */; };
-		A07238931EA76AA300E755DB /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = A072386F1EA76AA300E755DB /* back.png */; };
 		A07238941EA76AA300E755DB /* nav_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = A07238701EA76AA300E755DB /* nav_clear.png */; };
 		A07238951EA76AA300E755DB /* nav_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07238711EA76AA300E755DB /* nav_clear@2x.png */; };
 		A07238961EA76AA300E755DB /* nav_main@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07238721EA76AA300E755DB /* nav_main@2x.png */; };
-		A07238971EA76AA300E755DB /* rechargebanner.png in Resources */ = {isa = PBXBuildFile; fileRef = A07238731EA76AA300E755DB /* rechargebanner.png */; };
 		A07238991EA76AA300E755DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07238771EA76AA300E755DB /* AppDelegate.swift */; };
 		A072389A1EA76AA300E755DB /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07238781EA76AA300E755DB /* BaseTabBarController.swift */; };
 		A072389B1EA76AA300E755DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072387A1EA76AA300E755DB /* ViewController.swift */; };
@@ -534,6 +532,8 @@
 		6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailViewController.swift; sourceTree = "<group>"; };
 		6E88DA571ED4520A00EAA905 /* DetailCommenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCommenViewController.swift; sourceTree = "<group>"; };
 		6E88DA971ED554B100EAA905 /* GradualColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradualColorView.swift; path = ../../Deal/CustomView/GradualColorView.swift; sourceTree = "<group>"; };
+		6E9F31EE1ED85B04008B12A5 /* AppConfigHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigHelper.swift; sourceTree = "<group>"; };
+		6E9F31F01ED91258008B12A5 /* RedBackItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedBackItemViewController.swift; sourceTree = "<group>"; };
 		6EBF59091EC6EAAF003F67B4 /* MarketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketAPI.swift; sourceTree = "<group>"; };
 		6EBF590B1EC6EB75003F67B4 /* MarketSocketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketSocketAPI.swift; sourceTree = "<group>"; };
 		6EBF590D1EC93BE9003F67B4 /* Label+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Label+Extension.swift"; sourceTree = "<group>"; };
@@ -1096,7 +1096,6 @@
 		A04CF07D1ED6CB6800B93D28 /* CustomerServiceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerServiceVC.swift; sourceTree = "<group>"; };
 		A04CF07E1ED6CB6800B93D28 /* DealListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealListVC.swift; sourceTree = "<group>"; };
 		A04CF07F1ED6CB6800B93D28 /* GetOrderStarsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetOrderStarsVC.swift; sourceTree = "<group>"; };
-		A04CF0801ED6CB6800B93D28 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		A04CF0811ED6CB6800B93D28 /* MoneyDetailList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyDetailList.swift; sourceTree = "<group>"; };
 		A04CF0821ED6CB6800B93D28 /* ResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultVC.swift; sourceTree = "<group>"; };
 		A04CF0831ED6CB6800B93D28 /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
@@ -1118,15 +1117,12 @@
 		A05E5F3C1EB19D100008888A /* wechat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@3x.png"; sourceTree = "<group>"; };
 		A06404841ECBF22E00ECD269 /* OrderStarCollectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderStarCollectView.swift; sourceTree = "<group>"; };
 		A072384A1EA768AD00E755DB /* iOSStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A07238691EA76AA300E755DB /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
-		A072386F1EA76AA300E755DB /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		A07238701EA76AA300E755DB /* nav_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_clear.png; sourceTree = "<group>"; };
 		A07238711EA76AA300E755DB /* nav_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_clear@2x.png"; sourceTree = "<group>"; };
 		A07238721EA76AA300E755DB /* nav_main@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_main@2x.png"; sourceTree = "<group>"; };
-		A07238731EA76AA300E755DB /* rechargebanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rechargebanner.png; sourceTree = "<group>"; };
 		A07238751EA76AA300E755DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A07238771EA76AA300E755DB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A07238781EA76AA300E755DB /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		A07238781EA76AA300E755DB /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTabBarController.swift; path = ../../Other/BaseTabBarController.swift; sourceTree = "<group>"; };
 		A072387A1EA76AA300E755DB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A072387C1EA76AA300E755DB /* AppConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
 		A07238801EA76AA300E755DB /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
@@ -1531,6 +1527,14 @@
 			name = CustomView;
 			path = iOSStar/Scenes/Deal/CustomView;
 			sourceTree = SOURCE_ROOT;
+		};
+		6E9F31EB1ED8596C008B12A5 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				6E9F31EE1ED85B04008B12A5 /* AppConfigHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
 		};
 		6EBF59081EC6EAA3003F67B4 /* MarketAPI */ = {
 			isa = PBXGroup;
@@ -2879,7 +2883,6 @@
 				A04CF07D1ED6CB6800B93D28 /* CustomerServiceVC.swift */,
 				A04CF07E1ED6CB6800B93D28 /* DealListVC.swift */,
 				A04CF07F1ED6CB6800B93D28 /* GetOrderStarsVC.swift */,
-				A04CF0801ED6CB6800B93D28 /* HomeVC.swift */,
 				A04CF0811ED6CB6800B93D28 /* MoneyDetailList.swift */,
 				A04CF0821ED6CB6800B93D28 /* ResultVC.swift */,
 				A04CF0831ED6CB6800B93D28 /* SettingVC.swift */,
@@ -2974,19 +2977,10 @@
 				A084BC291ED59CF800DFC868 /* alipay */,
 				6E0922A11EA88DFE002725A0 /* Base.lproj */,
 				A07238B31EA76F3500E755DB /* Storyboard */,
-				A07238681EA76AA300E755DB /* AppIcon.appiconset */,
 				A072386E1EA76AA300E755DB /* image */,
 				A07238741EA76AA300E755DB /* plist */,
 			);
 			path = Resource;
-			sourceTree = "<group>";
-		};
-		A07238681EA76AA300E755DB /* AppIcon.appiconset */ = {
-			isa = PBXGroup;
-			children = (
-				A07238691EA76AA300E755DB /* Contents.json */,
-			);
-			path = AppIcon.appiconset;
 			sourceTree = "<group>";
 		};
 		A072386E1EA76AA300E755DB /* image */ = {
@@ -3003,7 +2997,6 @@
 				A03F96AB1ED81F0600FC78D4 /* fenda@3x.png */,
 				A05E5F3B1EB19D100008888A /* wechat@2x.png */,
 				A05E5F3C1EB19D100008888A /* wechat@3x.png */,
-				A072386F1EA76AA300E755DB /* back.png */,
 				A07DF7C21EC0132E00C2254E /* Novisible@2x.png */,
 				A07DF7C31EC0132E00C2254E /* Novisible@3x.png */,
 				A07DF7C41EC0132E00C2254E /* visible@2x.png */,
@@ -3012,7 +3005,6 @@
 				A07238711EA76AA300E755DB /* nav_clear@2x.png */,
 				A07238721EA76AA300E755DB /* nav_main@2x.png */,
 				A05E5F391EB1949F0008888A /* close.png */,
-				A07238731EA76AA300E755DB /* rechargebanner.png */,
 			);
 			path = image;
 			sourceTree = "<group>";
@@ -3029,10 +3021,8 @@
 		A07238761EA76AA300E755DB /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				A08569F91EB08FCA004F349B /* BaseNavigationController.swift */,
 				A07238771EA76AA300E755DB /* AppDelegate.swift */,
 				A072387A1EA76AA300E755DB /* ViewController.swift */,
-				A07238781EA76AA300E755DB /* BaseTabBarController.swift */,
 				6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */,
 			);
 			path = Other;
@@ -3073,6 +3063,7 @@
 		A07238851EA76AA300E755DB /* General */ = {
 			isa = PBXGroup;
 			children = (
+				6E9F31EB1ED8596C008B12A5 /* Helper */,
 				A07238861EA76AA300E755DB /* Base */,
 				A07238881EA76AA300E755DB /* Extension */,
 			);
@@ -3082,9 +3073,12 @@
 		A07238861EA76AA300E755DB /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				A08569F91EB08FCA004F349B /* BaseNavigationController.swift */,
+				A07238781EA76AA300E755DB /* BaseTabBarController.swift */,
 				A084BB4E1ED5793500DFC868 /* TableViewHelper.swift */,
 				A084BB501ED57FAF00DFC868 /* BaseTableViewController.swift */,
 				A084BB4C1ED5790E00DFC868 /* BaseCustomTableViewController.swift */,
+				6E9F31F01ED91258008B12A5 /* RedBackItemViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -3406,7 +3400,6 @@
 				A03F96AF1ED81F0600FC78D4 /* fenda@3x.png in Resources */,
 				A03D3FD31EA86A6500F85308 /* NTESNetDetectViewController.xib in Resources */,
 				A04CF0A41ED6CB6800B93D28 /* SelectPayType.xib in Resources */,
-				A07238931EA76AA300E755DB /* back.png in Resources */,
 				A0C9D6701EAE102300FC438D /* NIMKitSettings.bundle in Resources */,
 				A0C9D66D1EAE102300FC438D /* SetupOSX.mpq in Resources */,
 				A05E5F3E1EB19D100008888A /* wechat@3x.png in Resources */,
@@ -3448,7 +3441,6 @@
 				6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */,
 				A03D3F9B1EA86A6500F85308 /* NTESLoginViewController.xib in Resources */,
 				A04CF0741ED6AC9000B93D28 /* calendar@2x.png in Resources */,
-				A07238901EA76AA300E755DB /* Contents.json in Resources */,
 				A07DF7C71EC0132F00C2254E /* Novisible@3x.png in Resources */,
 				A03F96AC1ED81F0600FC78D4 /* tongxunlu@2x.png in Resources */,
 				A03D3FC81EA86A6500F85308 /* NTESMutiClientsCell.xib in Resources */,
@@ -3458,7 +3450,6 @@
 				A03D3FC01EA86A6500F85308 /* NTESAudioChatViewController.xib in Resources */,
 				A03D3FDB1EA86A6500F85308 /* NTESSettingViewController.xib in Resources */,
 				A03D3FB01EA86A6500F85308 /* NTESFilePreViewController.xib in Resources */,
-				A07238971EA76AA300E755DB /* rechargebanner.png in Resources */,
 				A07238951EA76AA300E755DB /* nav_clear@2x.png in Resources */,
 				A07238961EA76AA300E755DB /* nav_main@2x.png in Resources */,
 				A07238B91EA76F5600E755DB /* User.storyboard in Resources */,
@@ -3666,6 +3657,7 @@
 				6EBF590E1EC93BE9003F67B4 /* Label+Extension.swift in Sources */,
 				A03D3F0E1EA86A6400F85308 /* NIMInputAudioRecordIndicatorView.m in Sources */,
 				A03D3FAF1EA86A6500F85308 /* NTESFilePreViewController.m in Sources */,
+				6E9F31F11ED91258008B12A5 /* RedBackItemViewController.swift in Sources */,
 				A03D3FE81EA86A6500F85308 /* NTESSettingSwitcherCell.m in Sources */,
 				A03D3FEB1EA86A6500F85308 /* NTESDemoService.m in Sources */,
 				6E1B57091ED3CB4100A014AE /* AllOrderViewController.swift in Sources */,
@@ -3756,6 +3748,7 @@
 				A03D3EEE1EA86A6400F85308 /* NIMExtensionHelper.m in Sources */,
 				6EFE79E41ECC49710096470D /* MarketAuctionViewController.swift in Sources */,
 				A03D3FF91EA86A6600F85308 /* NTESSpellingCenter.m in Sources */,
+				6E9F31EF1ED85B04008B12A5 /* AppConfigHelper.swift in Sources */,
 				A03D3FD71EA86A6500F85308 /* NTESTextSettingCell.m in Sources */,
 				A03D3F251EA86A6400F85308 /* NIMUnsupportContentConfig.m in Sources */,
 				6E1B57211ED41BDA00A014AE /* DealScrollView.swift in Sources */,
@@ -3859,7 +3852,6 @@
 				6E1B571F1ED410C900A014AE /* DealSingleRowCell.swift in Sources */,
 				6E120F971EB966F4004E1E33 /* HttpModelHelper.swift in Sources */,
 				A03D3F2A1EA86A6400F85308 /* NIMMessageCellFactory.m in Sources */,
-				A04CF0981ED6CB6800B93D28 /* HomeVC.swift in Sources */,
 				A03D3F8F1EA86A6500F85308 /* NTESContactViewController.m in Sources */,
 				A03D3F141EA86A6400F85308 /* NIMInputMoreContainerView.m in Sources */,
 				A03D3EF11EA86A6400F85308 /* UITableView+NIMScrollToBottom.m in Sources */,

@@ -56,5 +56,7 @@ class ImageMenuCell: UICollectionViewCell {
     func setTitle(text:String)  {
         titleLabel.text = text
     }
-    
+    func setImage(image:UIImage?) {
+        iconImageView.image = image
+    }
 }
