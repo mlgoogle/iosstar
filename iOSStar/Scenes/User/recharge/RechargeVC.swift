@@ -73,9 +73,10 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     }
     //MARK:去充值
     @IBAction func doRecharge(_ sender: Any) {
+        SVProgressHUD.show(withStatus: "加载中")
         AppAPIHelper.user().weixinpay(title: "余额充值", price: 0.01, complete: { (result) in
             
-            SVProgressHUD.dismiss()
+           SVProgressHUD.dismiss()
             if let object = result {
                 let request : PayReq = PayReq()
                 let str : String = object["timestamp"] as! String!

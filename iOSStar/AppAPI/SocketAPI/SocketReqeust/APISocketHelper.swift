@@ -22,6 +22,9 @@ class APISocketHelper:NSObject, GCDAsyncSocketDelegate,SocketHelper {
         super.init()
         dispatch_queue = DispatchQueue(label: "APISocket_Queue", attributes: DispatchQueue.Attributes.concurrent)
         socket = GCDAsyncSocket.init(delegate: self, delegateQueue: dispatch_queue);
+        
+        // print("当前处于-------------\(Thread.current)")
+        
         connect()
     }
 

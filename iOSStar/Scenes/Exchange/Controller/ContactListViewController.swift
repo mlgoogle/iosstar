@@ -33,18 +33,6 @@ class ContactListViewController: BaseCustomPageListTableViewController {
     }
     override func didRequest(_ pageIndex: Int) {
         
-//        AppAPIHelper.user().getfriendList(accid: UserDefaults.standard.object(forKey: "phone") as! String, createtime:  "0", complete: { (result) in
-//            
-//            let Model : StarListModel = result as! StarListModel
-//            self.didRequestComplete( Model.list as AnyObject)
-//            self.dataList = Model.list!
-//            
-//            self.tableView.reloadData()
-//            return
-//            
-//        }) { (error)  in
-//            
-//        }
         
         AppAPIHelper.user().starmaillist(status: 1, pos: Int32((pageIndex - 1) * 10), count: 10, complete: { (result) in
              let Model : StarListModel = result as! StarListModel

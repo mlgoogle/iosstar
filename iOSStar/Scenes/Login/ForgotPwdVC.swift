@@ -129,7 +129,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
             })
             return
         }
-        AppAPIHelper.login().ResetPassWd(phone: self.phoneTf.text!, pwd: self.first_input.text!, complete: { (result)  in
+        AppAPIHelper.login().ResetPassWd(phone: self.phoneTf.text!, pwd: (self.first_input.text?.md5_string())!, complete: { (result)  in
             if let  response = result{
                 if response["result"] as! Int == 1{
                     //重置成功

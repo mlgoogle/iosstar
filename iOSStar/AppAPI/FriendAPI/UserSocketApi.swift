@@ -47,7 +47,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
                                      SocketConst.Key.title: title,SocketConst.Key.price: price]
         
         let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .weixinpay, dict: param  as [String : AnyObject])
-//        print(param)
+        print(param)
         startRequest(packet, complete: complete, error: error)
     }
     //我的资产
@@ -93,10 +93,36 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
                      SocketConst.Key.realname: realname,
                      SocketConst.Key.id_card: id_card,
                        ] as [String : Any]
-        let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .restPwd, dict: param  as [String : AnyObject])
+        let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .authentication, dict: param  as [String : AnyObject])
         
         startRequest(packet, complete: complete, error: error)
 
+    }
+    func getauthentication( complete: CompleteBlock?, error: ErrorBlock?) {
+    
+        let param: [String: Any] = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
+                                    SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
+        
+        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .getRealm, dict: param as [String : AnyObject])
+        startRequest(packet, complete: complete, error: error)
+
+    }
+    func getauserinfo( complete: CompleteBlock?, error: ErrorBlock?) {
+        
+        let param: [String: Any] = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
+                                    SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
+        
+        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .userinfo, dict: param as [String : AnyObject])
+        startRequest(packet, complete: complete, error: error)
+        
+    }
+    func tokenLogin( complete: CompleteBlock?, error: ErrorBlock?){
+        let param: [String: Any] = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
+                                    SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
+        print(param)
+        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .tokenLogin, dict: param as [String : AnyObject])
+        //startRequest(packet, complete: complete, error: error)
+        startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
     }
     
 

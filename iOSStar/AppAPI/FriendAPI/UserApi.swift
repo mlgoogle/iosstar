@@ -25,4 +25,7 @@ protocol UserApi {
     
      func ResetPassWd(timestamp : Int64,vCode : String,vToken : String,pwd: String,type : Int, complete: CompleteBlock?, error: ErrorBlock?)
      func authentication(realname: String, id_card: String, complete: CompleteBlock?, error: ErrorBlock?)
+     func getauthentication( complete: CompleteBlock?, error: ErrorBlock?)
+     func getauserinfo( complete: CompleteBlock?, error: ErrorBlock?)
+     func tokenLogin( complete: CompleteBlock?, error: ErrorBlock?)
 }

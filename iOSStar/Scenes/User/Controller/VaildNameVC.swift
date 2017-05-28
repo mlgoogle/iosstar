@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import  SVProgressHUD
 class VaildNameVC:  BaseTableViewController {
 
     //身份证号
@@ -27,7 +27,21 @@ class VaildNameVC:  BaseTableViewController {
         if checkTextFieldEmpty([name,card]){
             
             AppAPIHelper.user().authentication(realname: name.text!, id_card: card.text!, complete: { (result) in
-                print(result)
+                if let model = result {
+                    
+                    let dic = model as! [String : AnyObject]
+                    if dic["result"] as! Int  == 0 {
+                        SVProgressHUD.showErrorMessage(ErrorMessage: "实名认证成功", ForDuration: 1, completion: {
+                            self.navigationController?.popViewController(animated: true)
+                        })
+                    }else{
+                        SVProgressHUD.showErrorMessage(ErrorMessage: "实名认证失败", ForDuration: 1, completion: {
+                            self.navigationController?.popViewController(animated: true)
+                        })
+
+                    }
+                    
+                }
             }) { (error ) in
                 
             }

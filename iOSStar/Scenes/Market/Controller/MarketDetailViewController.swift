@@ -21,6 +21,7 @@ class MarketDetailViewController: UIViewController {
     @IBOutlet weak var handleMenuView: ImageMenuView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setCustomTitle(title: "\(starModel!.name)（\(starModel!.code)）")
         automaticallyAdjustsScrollViewInsets = false
         tableView.register(MarketDetailMenuView.self, forHeaderFooterViewReuseIdentifier: "MarketDetailMenuView")

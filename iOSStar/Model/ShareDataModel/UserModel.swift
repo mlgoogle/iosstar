@@ -36,6 +36,7 @@ class UserModel: Object {
             UserDefaults.standard.setValue( UserModel.share().currentUserId, forKey: SocketConst.Key.uid)
             
             
+            
             UserDefaults.standard.setValue( UserModel.share().currentUserId, forKey: SocketConst.Key.uid)
             let realm = try! Realm()
             try! realm.write {

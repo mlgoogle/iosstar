@@ -7,9 +7,7 @@
 //
 
 import UIKit
-class HeaderCell: UITableViewCell {
-    
-}
+
 class TitleCell: UITableViewCell {
     @IBOutlet weak var titleLb: UILabel!
     
@@ -20,6 +18,7 @@ class UserVC: BaseCustomTableViewController  {
     // 名字数组
     var titltArry = [""]
   
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         titltArry = ["我的钱包","我预约的明星","客服中心","常见问题","通用设置"]
@@ -54,9 +53,11 @@ class UserVC: BaseCustomTableViewController  {
         
         
         
-        let cell  = tableView.dequeueReusableCell(withIdentifier: "headerCell")
+        let cell  = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
         if indexPath.section == 0{
-           return cell!
+          
+            
+           return cell
         }else if indexPath.section == 2{
             
           let cell  = tableView.dequeueReusableCell(withIdentifier: "recommandCell")
