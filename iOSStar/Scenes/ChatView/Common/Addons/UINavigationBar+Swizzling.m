@@ -30,16 +30,18 @@
     
     //解决标题过长时，设置navigationItem.title导致标题偏移的问题
     UILabel *label = (UILabel *)navigationItem.titleView;
-    UIFont *font   = self.titleTextAttributes[NSFontAttributeName];
-    if (font) {
-        label.font = font;
+    if (                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               [label isKindOfClass:[UILabel class]]) {
+        UIFont *font   = self.titleTextAttributes[NSFontAttributeName];
+        if (font) {
+            label.font = font;
+        }
+        UIColor *color = self.titleTextAttributes[NSForegroundColorAttributeName];
+        if (color) {
+            label.textColor = color;
+        }
+        [label sizeToFit];
+        [self layoutLabel];
     }
-    UIColor *color = self.titleTextAttributes[NSForegroundColorAttributeName];
-    if (color) {
-        label.textColor = color;
-    }
-    [label sizeToFit];
-    [self layoutLabel];
     
     if (!IOS8) {
         UIViewController *vc = self.viewController;

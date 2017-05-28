@@ -59,6 +59,7 @@ class SocketConst: NSObject {
         case detailList = 1005
         case creditlist = 6003
         case restPwd = 3005
+        case authentication = 3021
         //分类明星
         case marketStar = 11003
         
@@ -139,6 +140,8 @@ class SocketConst: NSObject {
         static let title = "title"
         static let price = "price"
         static let token = "token"
+        static let realname = "realname"
+        static let id_card = "id_card"
 
         
     }

@@ -1175,7 +1175,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你还没有身份验证" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oI-4k-3Of">
                                 <rect key="frame" x="109" y="338" width="156" height="27"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="156" id="0nQ-Bb-cqX"/>
                                     <constraint firstAttribute="height" constant="27" id="VZz-Vv-JP2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -2176,6 +2175,9 @@
                                                             <integer key="value" value="3"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="doVailiName:" destination="a1r-49-cXg" eventType="touchUpInside" id="1of-Oc-edK"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

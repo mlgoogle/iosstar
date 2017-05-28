@@ -43,9 +43,19 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
     
         btn.addTarget(self, action: #selector(popself), for: UIControlEvents.touchUpInside)
         
-        btn.frame = CGRect.init(x: -5, y: 0, width: 9, height: 17)
+
+      
         
         let barItem : UIBarButtonItem = UIBarButtonItem.init(customView: btn)
+
+        btn.frame = CGRect.init(x: 0, y: 13, width: 9, height: 17)
+        let view = UIView(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
+       
+        view.addSubview(btn)
+        let tapGes = UITapGestureRecognizer(target: self, action: #selector(popself))
+        view.addGestureRecognizer(tapGes)
+    
+
         viewController.navigationItem.leftBarButtonItem = barItem
         interactivePopGestureRecognizer?.delegate = self
     }

@@ -88,6 +88,16 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
          startRequest(packet, complete: complete, error: error)
     
     }
+    func authentication(realname: String, id_card: String, complete: CompleteBlock?, error: ErrorBlock?){
+        let param = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
+                     SocketConst.Key.realname: realname,
+                     SocketConst.Key.id_card: id_card,
+                       ] as [String : Any]
+        let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .restPwd, dict: param  as [String : AnyObject])
+        
+        startRequest(packet, complete: complete, error: error)
+
+    }
     
 
 }

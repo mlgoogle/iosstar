@@ -68,9 +68,7 @@ class MarketSearchViewController: UIViewController , UITextFieldDelegate{
 extension MarketSearchViewController:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath) as! SearchResultCell
-        
         cell.update(dataArry[indexPath.row])
-        
         cell.selectionStyle = .none
         return cell
     }

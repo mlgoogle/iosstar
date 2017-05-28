@@ -24,4 +24,5 @@ protocol UserApi {
      func creditlist(status: Int32, pos: Int32, count: Int32, complete: CompleteBlock?, error: ErrorBlock?)
     
      func ResetPassWd(timestamp : Int64,vCode : String,vToken : String,pwd: String,type : Int, complete: CompleteBlock?, error: ErrorBlock?)
+     func authentication(realname: String, id_card: String, complete: CompleteBlock?, error: ErrorBlock?)
 }

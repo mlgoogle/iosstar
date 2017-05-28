@@ -31,7 +31,6 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate{
             controller?.tabBarItem.title = titles[index]
             controller?.tabBarItem.image = UIImage.init(named: "\(storyboardNames[index])_unselect")?.withRenderingMode(.alwaysOriginal)
             controller?.tabBarItem.selectedImage = UIImage.init(named: "\(storyboardNames[index])_selected")?.withRenderingMode(.alwaysOriginal)
-            
             controller?.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(hexString: AppConst.Color.titleColor)], for: .selected)
             addChildViewController(controller!)
         }
@@ -41,8 +40,7 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate{
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
         
         if tabBarController.selectedIndex == 2  || tabBarController.selectedIndex == 3{
-            
-          
+
             if  checkLogin(){
             
             }

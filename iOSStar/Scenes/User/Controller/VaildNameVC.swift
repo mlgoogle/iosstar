@@ -23,6 +23,18 @@ class VaildNameVC:  BaseTableViewController {
         title = "实名认证"
     }
 
+    @IBAction func doVailiName(_ sender: Any) {
+        if checkTextFieldEmpty([name,card]){
+            
+            AppAPIHelper.user().authentication(realname: name.text!, id_card: card.text!, complete: { (result) in
+                print(result)
+            }) { (error ) in
+                
+            }
+
+        }
+      
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

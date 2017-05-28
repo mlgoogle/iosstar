@@ -92,7 +92,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                     default:
                         vc.dismissController()
                         
-                        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
+                        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
                         self.navigationController?.pushViewController(vc, animated: true )
                     }
                 }
