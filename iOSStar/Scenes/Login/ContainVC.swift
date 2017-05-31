@@ -53,7 +53,10 @@ class ContainVC: UIViewController {
                     UserDefaults.standard.set(phone, forKey: "phone")
                     UserDefaults.standard.synchronize()
                     
-                   self?.doYunxin()
+                  self?.doYunxin(complete: { (result) in
+                    
+                  })
+    
 
                 self?.dismissController()
                 }

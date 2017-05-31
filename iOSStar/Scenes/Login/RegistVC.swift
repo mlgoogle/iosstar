@@ -138,7 +138,9 @@ class RegistVC: UIViewController {
         AppAPIHelper.login().regist(phone: phoneTf.text!, password: (passTf.text?.md5_string())!, complete: { [weak self](result)  in
             if let response = result {
                 if response["result"] as! Int == 1 {
-                    self?.LoginYunxin()
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "注册成功", ForDuration: 0.5, completion: { 
+                          self?.resultBlock!(doStateClick.doLogin as AnyObject)
+                    })
                 }
             }
         }) { (error) in

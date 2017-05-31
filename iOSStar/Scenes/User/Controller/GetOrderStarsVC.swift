@@ -18,14 +18,11 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController {
     }
     override func didRequest(_ pageIndex: Int) {
         
-        AppAPIHelper.user().getfriendList(accid: UserDefaults.standard.object(forKey: "phone") as! String, createtime:  "0", complete: { (result) in
-            
+        AppAPIHelper.user().starmaillist(status: 1, pos: Int32((pageIndex - 1) * 10), count: 10, complete: { (result) in
             let Model : StarListModel = result as! StarListModel
-            self.didRequestComplete( Model.list as AnyObject)
-
-            return
-            
-        }) { (error)  in
+            self.didRequestComplete( Model.depositsinfo as AnyObject)
+        }) { (error ) in
+            self.didRequestComplete(nil)
             
         }
     }
@@ -33,7 +30,16 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
-  
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        //StarInfoModel
+        let model = dataSource?[indexPath.row] as! StarInfoModel
+        
+        let session = NIMSession(model.faccid, type: .P2P)
+        let vc = NTESSessionViewController(session: session)
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
   
     // MARK: - Table view data source
 
