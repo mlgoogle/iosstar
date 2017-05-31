@@ -80,7 +80,8 @@ class LoginVC: UIViewController {
         if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]){
             AppAPIHelper.login().login(phone: phone.text!, password: (passPwd.text?.md5_string())!, complete: { [weak self](result)  in
                   let datadic = result as? UserModel
-                SVProgressHUD.showErrorMessage(ErrorMessage: "登录成功", ForDuration: 0.5, completion: {
+
+                SVProgressHUD.showSuccessMessage(SuccessMessage:"登录成功", ForDuration: 0.5, completion: {
                     btn.isUserInteractionEnabled = true
                     if let _ = datadic {
                         

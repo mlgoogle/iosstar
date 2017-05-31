@@ -53,7 +53,7 @@ class GradualColorView: UIView {
         self.completeColors = completeColors
         animation(percent: percent)
     }
-    func addGradualColorLayer() {
+    func addGradualColorLayer(isRound:Bool) {
         var colors:[CGColor] = []
         if completeColors.count == 0 {
             completeColors.append(UIColor(red: 251 / 255.0, green: 153 / 255.0, blue: 56 / 255.0, alpha: 1.0))
@@ -72,6 +72,9 @@ class GradualColorView: UIView {
         }
         layer.insertSublayer(gradientLayer, below: imageView.layer)
         subLayer = gradientLayer
+        if isRound {
+            subLayer?.cornerRadius = 8
+        }
     }
     
     func animation(percent:CGFloat) {

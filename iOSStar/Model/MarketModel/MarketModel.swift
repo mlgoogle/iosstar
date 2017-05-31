@@ -12,12 +12,14 @@ import RealmSwift
 class MarketClassifyModel: Object {
     dynamic var name = ""
     dynamic var type = 0
-    dynamic var code = 0
+    dynamic var code = ""
 }
+
 
 class MarketListStarModel: Object {
     dynamic var accid = ""
     dynamic var code = ""
+    // 0 女  1 男
     dynamic var gender = 1
     dynamic var name = ""
     dynamic var type = 1

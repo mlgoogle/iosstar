@@ -35,7 +35,7 @@ class NewsDetailViewController: UIViewController {
             shareObject.descr = self.newsModel!.remarks
             shareObject.thumbImage = self.newsModel!.showpic_url
             shareObject.webpageUrl = self.newsModel!.link_url
-            AppConfigHelper.share(type: platform, shareObject: shareObject, viewControlller: self)
+            AppConfigHelper.shared().share(type: platform, shareObject: shareObject, viewControlller: self)
         }
     }
 

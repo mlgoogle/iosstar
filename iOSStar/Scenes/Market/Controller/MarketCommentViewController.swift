@@ -12,11 +12,13 @@ class MarketCommentViewController: MarketBaseViewController {
     @IBOutlet weak var inputViewHeight: NSLayoutConstraint!
     @IBOutlet weak var bottomMargin: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
-
+    var currentY:CGFloat = 0
+    
     var isDetail = true
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = tableView
+        automaticallyAdjustsScrollViewInsets = false
         setCustomTitle(title: "评论")
         tableView.register(MarketDetailCommentHeaderView.self, forHeaderFooterViewReuseIdentifier: MarketDetailCommentHeaderView.className())
         requestCommentList()
@@ -25,6 +27,9 @@ class MarketCommentViewController: MarketBaseViewController {
             inputViewHeight.constant = 0
         }
         registerNotification()
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     func registerNotification() {
@@ -34,7 +39,7 @@ class MarketCommentViewController: MarketBaseViewController {
     }
     func keyboardWillShow(notification: NSNotification?) {
         UIView.animate(withDuration: 0.5) {
-            self.view.frame = CGRect(x: self.view.frame.origin.x, y: -222, width: self.view.frame.size.width, height: self.view.frame.size.height)
+            self.view.frame = CGRect(x: self.view.frame.origin.x, y: -286, width: self.view.frame.size.width, height: self.view.frame.size.height)
         }
     }
     func keyboardWillHide(notification: NSNotification?) {
@@ -43,15 +48,15 @@ class MarketCommentViewController: MarketBaseViewController {
             self.view.frame = CGRect(x: self.view.frame.origin.x, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         }
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     func requestCommentList() {
-        guard starModel != nil else {
+        guard starCode != nil else {
             return
         }
-        AppAPIHelper.marketAPI().requestCommentList(starcode: starModel!.code, complete: { (resonse) in
+        AppAPIHelper.marketAPI().requestCommentList(starcode: starCode!, complete: { (resonse) in
             
             
         }, error: errorBlockFunc())
@@ -89,6 +94,7 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
         
         let vc = MarketCommentViewController.storyboardInit(identifier:MarketCommentViewController.className(), storyboardName:AppConst.StoryBoardName.Markt.rawValue) as? MarketCommentViewController
         vc?.isDetail = false
+        vc?.isSubView = false
         guard vc != nil else {
             return
         }

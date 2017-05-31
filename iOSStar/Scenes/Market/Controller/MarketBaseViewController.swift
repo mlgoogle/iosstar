@@ -15,7 +15,7 @@ protocol ScrollStopDelegate {
 }
 
 class MarketBaseViewController: UIViewController, UIScrollViewDelegate{
-    var starModel:MarketListStarModel?
+    var starCode:String?
     var delegate:ScrollStopDelegate?
     var scrollView:UIScrollView?
     var isSubView = true

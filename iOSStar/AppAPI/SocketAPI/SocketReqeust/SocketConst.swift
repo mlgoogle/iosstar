@@ -76,6 +76,7 @@ class SocketConst: NSObject {
         //明星经理
         case starExperience = 11009
         
+        case newsStarInfo = 10001
         
     }
     enum type:UInt8 {

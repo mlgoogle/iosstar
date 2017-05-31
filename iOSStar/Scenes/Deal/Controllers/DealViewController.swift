@@ -25,7 +25,7 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
     }
     func setupMenuView() {
         navigationController?.navigationBar.setBackgroundImage(UIColor.white.imageWithColor(), for: .default)
-        navigationController?.navigationBar.isTranslucent = false
+
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: -3, left: 0, bottom: 0, right: 28)
         layout.minimumInteritemSpacing = (kScreenWidth - 44 - 28 - 30 * 5) / 4
@@ -38,7 +38,6 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
         menuView?.reloadData()
         menuView?.delegate = self
         navigationItem.titleView = menuView
-        
         perform(#selector(refreshSelect), with: nil, afterDelay: 0.5)
     }
     
@@ -53,7 +52,7 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
         for (index,identifier) in identifiers.enumerated() {
             let vc = stroyBoard.instantiateViewController(withIdentifier: identifier)
             views.append(vc.view)
-            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: backView.frame.size.height - 64)
+            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 64, width: kScreenWidth, height: backView.frame.size.height - 64)
             addChildViewController(vc)
         }
         backView.setSubViews(customSubViews: views)

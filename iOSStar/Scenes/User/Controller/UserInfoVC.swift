@@ -35,7 +35,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         
         }
         
-        self.phone.text = UserDefaults.standard.object(forKey: "phone") as! String
+        phone.text = UserDefaults.standard.object(forKey: "phone") as? String
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -123,7 +123,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         //当选择的类型是图片
         if type=="public.image"
         {
-            let img = info[UIImagePickerControllerOriginalImage]as?UIImage
+            _ = info[UIImagePickerControllerOriginalImage]as?UIImage
 //            self.headImg.image =cropToBounds(image: img!)
 //            let imgData =UIImageJPEGRepresentation(self.headImg.image!,0.5)
             picker.dismiss(animated:true, completion:nil)

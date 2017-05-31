@@ -149,7 +149,7 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
                 let dic = model as! [String : AnyObject]
                 if dic["status"] as! Int  == 0 {
                     SVProgressHUD.showErrorMessage(ErrorMessage: "重置成功", ForDuration: 1, completion: {
-                    self.navigationController?.popViewController(animated: true)
+                       _ = self.navigationController?.popViewController(animated: true)
                     })
                 }
                 
@@ -157,7 +157,7 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
         }) { (error) in
             
         }
-      
+        
     }
-
+    
 }

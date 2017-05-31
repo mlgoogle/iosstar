@@ -24,13 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
    
         sdkConfigDelegate = NTESSDKConfigDelegate.init()
 
-        AppConfigHelper.setupNIMSDK(sdkConfigDelegate:sdkConfigDelegate)
-        AppConfigHelper.setupUMSDK()
+        AppConfigHelper.shared().setupNIMSDK(sdkConfigDelegate:sdkConfigDelegate)
+        AppConfigHelper.shared().setupUMSDK()
         WXApi.registerApp("wx9dc39aec13ee3158")
         //   NSString *appKey = [[NTESDemoConfig sharedConfig] appKey];
 //        NSString *cerName= [[NTESDemoConfig sharedConfig] cerName];
     
-        self.login()
+        login()
 //        [[NIMSDK sharedSDK] registerWithAppID:您的APPKEY
 //            cerName:您的推送证书名]
         UIApplication.shared.statusBarStyle = .default
@@ -38,22 +38,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
         return true
     }
     func login(){
-    
-      if  UserDefaults.standard.object(forKey: "phone") as? String == nil {
-        return
-        }
-       AppAPIHelper.user().tokenLogin(complete: { (result) in
-      let datadic = result as? UserModel
-    if let _ = datadic {
         
-        UserModel.share().upateUserInfo(userObject: result!)
-        UserDefaults.standard.synchronize()
-        self.LoginYunxin()
-    }
-    }) { (error ) in
-    
+        if  UserDefaults.standard.object(forKey: "phone") as? String == nil {
+            return
         }
-    
+        AppAPIHelper.user().tokenLogin(complete: { (result) in
+            let datadic = result as? UserModel
+            if let _ = datadic {
+                
+                UserModel.share().upateUserInfo(userObject: result!)
+                UserDefaults.standard.synchronize()
+                self.LoginYunxin()
+            }
+        }) { (error ) in
+            
+        }
+        
     }
     func LoginYunxin(){
         

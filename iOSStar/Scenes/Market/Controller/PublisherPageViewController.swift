@@ -41,22 +41,19 @@ class PublisherPageViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     @IBAction func shareAction(_ sender: Any) {
-
         UMSocialUIManager.showShareMenuViewInWindow { (platform, userInfo) in
         }
-        
     }
 
     @IBAction func buyButtonAction(_ sender: Any) {
-        
         let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Markt.rawValue, bundle: nil)
-        
-        let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail")
-        navigationController?.pushViewController(vc, animated: true)
-        
+        let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail") as? MarketDetailViewController
+        vc?.starName = bannerModel?.name
+        vc?.starCode = bannerModel?.code
+        navigationController?.pushViewController(vc!, animated: true)
     }
     func requestInfos() {
-        AppAPIHelper.newsApi().requestStarInfo(code: code, complete: { (response) in
+        AppAPIHelper.newsApi().requestStarInfo(code: bannerModel!.code, complete: { (response) in
             
         }, error: errorBlockFunc())
     }
@@ -104,7 +101,6 @@ extension PublisherPageViewController:UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section != 0 {
-            
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as! PubInfoHeaderView
             header.setTitle(title:titles[section])
             return header

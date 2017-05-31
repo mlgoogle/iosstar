@@ -70,7 +70,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
 
     //获取评论列表
     func requestCommentList(starcode:String,complete: CompleteBlock?, error: ErrorBlock?) {
-        let parameters:[String : Any] = [SocketConst.Key.starcode : starcode]
+        let parameters:[String : Any] = [SocketConst.Key.starcode : "1001"]
         let packet = SocketDataPacket(opcode: .commetList, parameters: parameters)
         startModelsRequest(packet, listName: "list", modelClass: CommentModel.self, complete: complete, error: error)
     }

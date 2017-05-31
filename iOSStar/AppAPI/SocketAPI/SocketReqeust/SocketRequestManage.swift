@@ -70,8 +70,7 @@ class SocketRequestManage: NSObject {
         if packet.operate_code == SocketConst.OPCode.lineData.rawValue + 1{
             socketReqeust = timelineRequest
         }else if packet.operate_code == SocketConst.OPCode.commetList.rawValue + 1 {
-            
-            
+
         }else{
             socketRequests.removeValue(forKey: packet.session_id)
         }
