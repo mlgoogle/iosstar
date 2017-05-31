@@ -18,6 +18,7 @@ class MarketBaseViewController: UIViewController, UIScrollViewDelegate{
     var starModel:MarketListStarModel?
     var delegate:ScrollStopDelegate?
     var scrollView:UIScrollView?
+    var isSubView = true
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -27,13 +28,19 @@ class MarketBaseViewController: UIViewController, UIScrollViewDelegate{
     }
     
     func scrollViewScrollEnabled(scroll:Bool) {
-        scrollView?.isScrollEnabled = scroll
+        if isSubView {
+            scrollView?.isScrollEnabled = scroll
+        }
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y < 0 {
-            scrollView.isScrollEnabled = false
-            delegate?.scrollViewIsStop()
+        
+        view.endEditing(true)
+        if isSubView {            
+            if scrollView.contentOffset.y < 0 {
+                scrollView.isScrollEnabled = false
+                delegate?.scrollViewIsStop()
+            }
         }
     }
 }

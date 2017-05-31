@@ -42,10 +42,7 @@ class PublisherPageViewController: UIViewController {
     }
     @IBAction func shareAction(_ sender: Any) {
 
-        
         UMSocialUIManager.showShareMenuViewInWindow { (platform, userInfo) in
-            
-            
         }
         
     }
