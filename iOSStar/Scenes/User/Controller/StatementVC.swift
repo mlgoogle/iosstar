@@ -1,42 +1,39 @@
 //
-//  SettingVC.swift
+//  StatementVC.swift
 //  iOSStar
 //
-//  Created by sum on 2017/4/26.
+//  Created by sum on 2017/5/28.
 //  Copyright © 2017年 YunDian. All rights reserved.
 //
 
 import UIKit
 
-class SettingVC: BaseTableViewController {
+class StatementVC: UITableViewController {
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
-  
-        title = "设置"
-        let view = UIView.init()
-        view.backgroundColor = UIColor.clear
-        self.tableView.tableFooterView = view
-       
+
+        title = ""
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 5 {
-            
-            userLogout()
-            self.navigationController?.popToRootViewController(animated: true)
-        }
-        if indexPath.row == 3 {
-            let story = UIStoryboard.init(name: "Login", bundle: nil)
-            let vc = story.instantiateViewController(withIdentifier: "ForgotPwdVC")
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
   
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 1
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -103,12 +103,44 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
         
         //  来判断是否请求接口设置交易密码
         if setPass == true{
+            if passString.length() == 6{
+                
+                if ShareDataModel.share().wechatUserInfo["passString"] != passString{
+                 SVProgressHUD.showErrorMessage(ErrorMessage: "两次密码输入不一致", ForDuration: 1, completion: {})
+                    return
+                }
+            
+            }
+            AppAPIHelper.user().ResetPassWd(timestamp: 1, vCode: " ", vToken: " ", pwd: passString.md5_string()  , type: 0, complete: { (result) in
+              
+                if let model = result {
+                
+                    let dic = model as! [String : AnyObject]
+                    if dic["status"] as! Int  == 0 {
+                      SVProgressHUD.showSuccessMessage(SuccessMessage: "设置成功", ForDuration: 0.5, completion: {
+                        for controller   in (self.navigationController?.viewControllers)!{
+                            if controller.isKind(of: WealthVC.self){
+                                self.navigationController?.popToViewController(controller, animated: true)
+                            }
+                        }
+                      })
+                    }else{
+                        SVProgressHUD.showSuccessMessage(SuccessMessage: "设置失败", ForDuration: 0.5, completion: {
+                        })
+                    }
+                    
+                }
+            }) { (error) in
+                
+            }
+            
             
         }else{
               //   来判断密码长度
             if passString.length() == 6{
                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC") as! TradePassWordVC
                 vc .setPass = true
+                ShareDataModel.share().wechatUserInfo["passString"] = passString
                 self.navigationController?.pushViewController(vc, animated: true )
             }else{
                SVProgressHUD.showErrorMessage(ErrorMessage: "密码需要6位", ForDuration: 1, completion: {})

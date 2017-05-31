@@ -19,11 +19,10 @@ class BaseModel: OEZModel {
 class StarListModel: BaseModel {
 
   
-    var list : [StarInfoModel]?
-    var result : Int = 3
-    var size : Int = 3
+    var depositsinfo : [StarInfoModel]?
+    
 
-    class func listModelClass() ->AnyClass {
+    class func depositsinfoModelClass() ->AnyClass {
         return  StarInfoModel.classForCoder()
     }
 
@@ -31,9 +30,13 @@ class StarListModel: BaseModel {
 class StarInfoModel: NSObject {
     
     var faccid : String = ""
-    var head : String = ""
-    var name : String = ""
-    var type : String = ""
+    var status : Int64 = 0
+    var ownseconds : Int64 = 0
+    var appoint : Int64 = 0
+    var starcode : String = ""
+    var starname : String = ""
+    var uid : Int64 = 0
+
     
     
 }

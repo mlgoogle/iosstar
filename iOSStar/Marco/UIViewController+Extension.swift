@@ -55,7 +55,7 @@ extension UIViewController {
         }
     }
       //登录网易云信
-    func doYunxin(){
+    func doYunxin(complete: CompleteBlock?){
         
         if UserDefaults.standard.object(forKey: "phone") as? String != nil{
             AppAPIHelper.login().registWYIM(phone: (UserDefaults.standard.object(forKey: "phone") as? String)!, token:(UserDefaults.standard.object(forKey: "phone") as? String)!, complete: { (result) in
@@ -68,7 +68,8 @@ extension UIViewController {
                         if (error != nil){
                             
                         }
-                        self.LoginSuccess()
+                        complete?(true as AnyObject)
+//                        self.LoginSuccess()
                         
                     })
                     
@@ -172,6 +173,51 @@ extension UIViewController {
         
         view.endEditing(true)
         
+    }
+    //判断是否使命认证
+    func checkVaildName(complete: CompleteBlock?){
+        
+//        if UserDefaults.standard.object(forKey: "phone") as? String != nil{
+//            AppAPIHelper.login().registWYIM(phone: (UserDefaults.standard.object(forKey: "phone") as? String)!, token:(UserDefaults.standard.object(forKey: "phone") as? String)!, complete: { (result) in
+//                
+//                let datadic = result as? Dictionary<String,String>
+//                
+//                if let _ = datadic {
+//                    
+//                    NIMSDK.shared().loginManager.login((UserDefaults.standard.object(forKey: "phone") as? String)!, token: (datadic?["token_value"])!, completion: { (error) in
+//                        if (error != nil){
+//                            
+//                        }
+//                        complete?(true as AnyObject)
+//                        //                        self.LoginSuccess()
+//                        
+//                    })
+//                    UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
+//                    UserDefaults.standard.synchronize()
+//                    
+//                    
+//                }
+//                
+//            }) { (error) in
+//                
+//            }
+//        }
+    }
+    func getUserrealmInfo(complete: CompleteBlock?){
+    
+        AppAPIHelper.user().getauthentication(complete: { (result) in
+            complete?(result as AnyObject)
+        }) { (result) in
+            
+        }
+    }
+    func getUserInfo(complete: CompleteBlock?){
+        
+        AppAPIHelper.user().getauserinfo(complete: { (result) in
+            complete?(result as AnyObject)
+        }) { (error) in
+            
+        }
     }
     
 }

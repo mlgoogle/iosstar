@@ -1,18 +1,19 @@
 //
-//  FindPwdVC.swift
+//  ResetTradePassVC.swift
 //  iOSStar
 //
-//  Created by sum on 2017/4/21.
+//  Created by sum on 2017/5/27.
 //  Copyright © 2017年 YunDian. All rights reserved.
 //
 
 import UIKit
 import SVProgressHUD
-class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
-    
+
+class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
+
     @IBOutlet weak var doRset: UIButton!
     //时间戳
-    var timeStamp =  ""
+    var timeStamp =  1
     //token
     var vToken = ""
     private var timer: Timer?
@@ -35,7 +36,14 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
         
     }
     deinit {
-        NotificationCenter.default.removeObserver(self) 
+        NotificationCenter.default.removeObserver(self)
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if((textField.text?.characters.count)! > 5 && string.characters.count > 0){
+            return false
+        }
+        
+        return true;
     }
     //MARK: 监听输入址变化
     func valueChange(_ textFiled : Notification){
@@ -48,14 +56,20 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
             self.doRset.backgroundColor = UIColor.init(hexString: "B8B8B8")
         }
     }
+  
+
     //MARK: 界面消失删除通知
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "重置密码"
+        self.title = "重置交易密码"
+        self.phoneTf.text = UserDefaults.standard.object(forKey: SocketConst.Key.phone) as? String
+        self.phoneTf.isUserInteractionEnabled = true
         //监听键盘弹起 来改变输入址
+        first_input.delegate = self
+        second_input.delegate = self
         NotificationCenter.default.addObserver(self , selector: #selector(valueChange(_:)), name:NSNotification.Name.UITextFieldTextDidChange, object: first_input)
         NotificationCenter.default.addObserver(self , selector: #selector(valueChange(_:)), name:NSNotification.Name.UITextFieldTextDidChange, object: phoneTf)
         NotificationCenter.default.addObserver(self , selector: #selector(valueChange(_:)), name:NSNotification.Name.UITextFieldTextDidChange, object: codeTf)
@@ -86,7 +100,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
                         self?.timer = Timer.scheduledTimer(timeInterval: 1, target:
                             self!, selector: #selector(self?.updatecodeBtnTitle), userInfo: nil, repeats: true)
                         
-                        self?.timeStamp = String.init(format: "%ld", response["timeStamp"] as!  Int)
+                        self?.timeStamp = response["timeStamp"] as!  Int
                         self?.vToken = String.init(format: "%@", response["vToken"] as! String)
                     }
                 }
@@ -122,26 +136,28 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
             })
             return
         }
-        let string = "yd1742653sd" + self.timeStamp + self.codeTf.text! + self.phoneTf.text!
+        let string = "yd1742653sd" + String.init(format: "%ld", self.timeStamp) + self.codeTf.text! + self.phoneTf.text!
         if string.md5_string() != self.vToken{
             SVProgressHUD.showErrorMessage(ErrorMessage: "验证码不正确", ForDuration: 0.5, completion: {
                 
             })
             return
         }
-        AppAPIHelper.login().ResetPassWd(phone: self.phoneTf.text!, pwd: (self.first_input.text?.md5_string())!, complete: { (result)  in
-            if let  response = result{
-                if response["result"] as! Int == 1{
-                    //重置成功
+        AppAPIHelper.user().ResetPassWd(timestamp: Int64(timeStamp), vCode: self.codeTf.text!, vToken: self.vToken, pwd: (first_input.text?.md5_string())! , type: 1, complete: { (result) in
+            if let model = result {
+                
+                let dic = model as! [String : AnyObject]
+                if dic["status"] as! Int  == 0 {
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "重置成功", ForDuration: 1, completion: {
                     self.navigationController?.popViewController(animated: true)
+                    })
                 }
+                
             }
         }) { (error) in
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
-                
-            })
+            
         }
+      
     }
-    
-    
+
 }

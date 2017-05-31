@@ -9,7 +9,10 @@
 import UIKit
 
 class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavigationControllerDelegate {
-
+    @IBOutlet weak var phone: UILabel!
+    
+    @IBOutlet weak var realCard: UILabel!
+    @IBOutlet weak var realname: UILabel!
     var uploadAlertController:UIAlertController!
     var imagePickerController:UIImagePickerController!
     override func viewDidLoad() {
@@ -22,6 +25,17 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         title = "个人信息"
         initAlertController()
         initImagePickerController()
+      
+        self.getUserrealmInfo { (result) in
+            if let model = result{
+                let object =  model as! [String : AnyObject]
+                self.realname.text = object["realname"] as? String
+                self.realCard.text = object["id_card"] as? String
+            }
+        
+        }
+        
+        self.phone.text = UserDefaults.standard.object(forKey: "phone") as! String
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

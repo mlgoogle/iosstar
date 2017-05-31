@@ -23,7 +23,7 @@ class SocketConst: NSObject {
         // 注册
         case reducetime = 9017
        //减少时间
-        case getlist = 9013
+        case getlist = 6013
         // 重设密码
         case repwd = 3019
         // 声音验证码
@@ -34,12 +34,13 @@ class SocketConst: NSObject {
         //设置账号信息
         case WchatLogin = 3013
         case verifycode = 3011
-
+        case getRealm = 3027
         //网易云
         case registWY = 9005
-
+        case userinfo = 3007
 
         case getorderstars = 10012
+       case  tokenLogin  = 3009
         //明星个人信息
         case starInfo = 11005
         //资讯列表
@@ -58,6 +59,8 @@ class SocketConst: NSObject {
         case accountMoney = 1004
         case detailList = 1005
         case creditlist = 6003
+        case restPwd = 3005
+        case authentication = 3021
         //分类明星
         case marketStar = 11003
         
@@ -114,6 +117,7 @@ class SocketConst: NSObject {
         static let vToken = "vToken"
         static let avatarLarge = "avatarLarge"
         static let timestamp = "timeStamp"
+        static let timetamp = "timestamp"
         static let aType = "aType"
         static let name_value = "name_value"
         static let accid_value = "accid_value"
@@ -137,6 +141,8 @@ class SocketConst: NSObject {
         static let title = "title"
         static let price = "price"
         static let token = "token"
+        static let realname = "realname"
+        static let id_card = "id_card"
 
         
     }

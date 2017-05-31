@@ -11,7 +11,7 @@ import UIKit
 protocol UserApi {
     
       //获取好友列表
-      func getfriendList(accid: String, createtime: String, complete: CompleteBlock?, error: ErrorBlock?)
+       func starmaillist(status: Int32, pos: Int32, count: Int32, complete: CompleteBlock?, error: ErrorBlock?)
       //发送时间少一秒
       func reducetime(phone: String, starcode: String, complete: CompleteBlock?, error: ErrorBlock?)
       //预约的明细
@@ -20,6 +20,12 @@ protocol UserApi {
       func weixinpay(title:String,  price:Double, complete: CompleteBlock?, error: ErrorBlock?)
      // 我的资产接口
      func accountMoney(complete: CompleteBlock?, error: ErrorBlock?)
-      // 资金明细列表
-      func creditlist(status: Int32, pos: Int32, count: Int32, complete: CompleteBlock?, error: ErrorBlock?)
+     // 资金明细列表
+     func creditlist(status: Int32, pos: Int32, count: Int32, complete: CompleteBlock?, error: ErrorBlock?)
+    
+     func ResetPassWd(timestamp : Int64,vCode : String,vToken : String,pwd: String,type : Int, complete: CompleteBlock?, error: ErrorBlock?)
+     func authentication(realname: String, id_card: String, complete: CompleteBlock?, error: ErrorBlock?)
+     func getauthentication( complete: CompleteBlock?, error: ErrorBlock?)
+     func getauserinfo( complete: CompleteBlock?, error: ErrorBlock?)
+     func tokenLogin( complete: CompleteBlock?, error: ErrorBlock?)
 }
