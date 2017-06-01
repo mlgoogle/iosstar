@@ -143,7 +143,7 @@ class TableViewHelper {
     
     func removeCacheCellHeights(_ indexPaths:Array<IndexPath>)  {
         for indexPath in indexPaths {
-            removeCacheCellHeight(indexPath);
+            _ = removeCacheCellHeight(indexPath);
         }
     }
     

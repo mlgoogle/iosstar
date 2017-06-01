@@ -92,7 +92,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
                     bannersUrl.append(model.pic_url)
                 }
             self.bannerScrollView?.imageURLStringsGroup = bannersUrl
-            print("=======\(Thread.current)")
+            // print("=======\(Thread.current)")
             }
             
         }, error: errorBlockFunc())
@@ -148,7 +148,6 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
 
     
     func setImageWithAlpha(alpha:CGFloat) {
-        var color:UIColor?
         if alpha > 1 {
             titleView.setTime()
             UIApplication.shared.setStatusBarHidden(true, with: .none)
@@ -206,7 +205,6 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
             vc.urlString = model.link_url
             vc.newsModel = model
         } else if segue.identifier == "showPubPage" {
-            
             let index = sender as! Int
             let vc = segue.destination as! PublisherPageViewController
             vc.bannerModel = bannerModels?[index]

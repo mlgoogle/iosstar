@@ -64,13 +64,14 @@ class FansListHeaderView: UITableViewHeaderFooterView {
             make.centerY.equalTo(buyButton)
         }
         backView.snp.makeConstraints { (make) in
-            make.centerX.equalTo(kScreenWidth / 4)
-            make.centerY.equalTo(buyButton)
-            make.width.equalTo(110)
-            make.height.equalTo(35)
+            make.centerX.equalTo(kScreenWidth / 4 - 4)
+            make.centerY.equalTo(buyButton.snp.centerY)
+            make.width.equalTo(80)
+            make.height.equalTo(25)
         }
         imageView.snp.makeConstraints { (make) in
-            make.edges.equalTo(backView)
+            make.centerX.equalTo(backView)
+            make.centerY.equalTo(backView.snp.centerY).offset(-4)
         }
         bringSubview(toFront: buyButton)
         bringSubview(toFront: sellButton)

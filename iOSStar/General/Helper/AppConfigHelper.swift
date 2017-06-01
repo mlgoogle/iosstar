@@ -9,9 +9,13 @@
 import UIKit
 
 class AppConfigHelper: NSObject {
-
+    private static var helper = AppConfigHelper()
+    class func shared() -> AppConfigHelper {
+        
+        return helper
+    }
     
-  class func setupNIMSDK(sdkConfigDelegate:NTESSDKConfigDelegate?) {
+    func setupNIMSDK(sdkConfigDelegate:NTESSDKConfigDelegate?) {
         // //在注册 NIMSDK appKey 之前先进行配置信息的注册，如是否使用新路径,是否要忽略某些通知，是否需要多端同步未读数
         
         
@@ -26,8 +30,8 @@ class AppConfigHelper: NSObject {
     }
 
     
-
-    class func share(type:UMSocialPlatformType, shareObject:UMShareWebpageObject, viewControlller:UIViewController) {
+  
+    func share(type:UMSocialPlatformType, shareObject:UMShareWebpageObject, viewControlller:UIViewController) {
         
         let messageObject = UMSocialMessageObject()
 
@@ -41,7 +45,7 @@ class AppConfigHelper: NSObject {
         
     }
     
-    class func setupUMSDK() {
+    func setupUMSDK() {
         UMSocialManager.default().openLog(true)
         UMSocialManager.default().umSocialAppkey = "5861e5daf5ade41326001eab"
 //        UMSocialManager.default().umSocialAppSecret = ""
@@ -49,5 +53,10 @@ class AppConfigHelper: NSObject {
         UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "3921700954", appSecret: "04b48b094faeb16683c32669824ebdad", redirectURL: "www.baidu.com")
         UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1105821097", appSecret: nil, redirectURL: "www.baidu.com")
 
+    }
+    
+    func setupRealConfig() {
+        
+        
     }
 }

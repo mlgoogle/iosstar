@@ -12,21 +12,32 @@ import UIKit
 class MarketDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-
+    var bannerDetailModel:BannerDetaiStarModel?
+    
     var bottomScrollView:UIScrollView?
     var menuView:YD_VMenuView?
     var subViews = [UIView]()
     var starModel:MarketListStarModel?
+    
+    var starCode:String?
+    var starName:String?
     var currentVC:MarketBaseViewController?
     @IBOutlet weak var handleMenuView: ImageMenuView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setCustomTitle(title: "\(starModel!.name)（\(starModel!.code)）")
+        setCustomTitle(title: "\(starName!)（\(starCode!)）")
         automaticallyAdjustsScrollViewInsets = false
         tableView.register(MarketDetailMenuView.self, forHeaderFooterViewReuseIdentifier: "MarketDetailMenuView")
         requestLineData()
         setupSubView()
+
+
+        
+    
+    }
+    
+    func setupSubView() {
         let imageStrings = ["market_buy","market_sell","market_meetfans","market_optional"]
         var images:[UIImage] = []
         for string in imageStrings {
@@ -36,14 +47,12 @@ class MarketDetailViewController: UIViewController {
         handleMenuView.images = images
         handleMenuView.titles = ["求购", "转让", "粉丝见面会", "自选"]
         handleMenuView.delegate = self
-    }
-    func setupSubView() {
         let types:[String] = ["MarketDetaiBaseInfoViewController", "MarketFansListViewController", "MarketAuctionViewController", "MarketCommentViewController"]
         let storyboard = UIStoryboard(name: "Market", bundle: nil)
         for (index, type) in types.enumerated() {
             let vc = storyboard.instantiateViewController(withIdentifier: type) as! MarketBaseViewController
             addChildViewController(vc)
-            vc.starModel = starModel
+            vc.starCode = starCode
             vc.delegate = self
             vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 50 - 64 - 50)
             subViews.append(vc.view)
@@ -55,13 +64,25 @@ class MarketDetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+
     func requestLineData() {
-        AppAPIHelper.marketAPI().requestLineViewData(starcode: starModel!.code, complete: { (response) in
+        AppAPIHelper.marketAPI().requestLineViewData(starcode: starCode!, complete: { (response) in
             if let models = response as? [LineModel] {
                 LineModel.cacheLineData(datas: models)
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
             }
         }, error: errorBlockFunc())
+    }
+    func requestRealTime() {
+        let requestModel = RealTimeRequestModel()
+        let syModel = SymbolInfo()
+        requestModel.symbolInfos.append(syModel)
+        AppAPIHelper.marketAPI().requestRealTime(requestModel: requestModel, complete: { (response) in
+            
+        }) { (error) in
+            
+        }
     }
     
 
@@ -92,11 +113,11 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
     }
 
     func addOptinal() {
-//        guard starModel  != nil else {return}
-        AppAPIHelper.marketAPI().addOptinal(starcode: "1001", complete: { (response) in
+        AppAPIHelper.marketAPI().addOptinal(starcode: starCode!, complete: { (response) in
             
         }, error: errorBlockFunc())
     }
+    
     
     func menuViewDidSelect(indexPath: IndexPath) {
         UIView.animate(withDuration: 0.3) {
@@ -146,8 +167,12 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketDetailCell", for: indexPath) as! MarketDetailCell
-        cell.setData(datas: LineModel.getLineData(starCode:starModel!.code))
-        cell.setStarModel(starModel: starModel!)
+        cell.setData(datas: LineModel.getLineData(starCode:starCode!))
+        if starModel != nil {
+            cell.setStarModel(starModel: starModel!)
+        } else {
+            
+        }
         return cell
     }
     func numberOfSections(in tableView: UITableView) -> Int {

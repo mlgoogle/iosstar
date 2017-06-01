@@ -32,11 +32,12 @@ class VaildNameVC:  BaseTableViewController {
                     let dic = model as! [String : AnyObject]
                     if dic["result"] as! Int  == 0 {
                         SVProgressHUD.showErrorMessage(ErrorMessage: "实名认证成功", ForDuration: 1, completion: {
-                            self.navigationController?.popViewController(animated: true)
+                            _ = self.navigationController?.popViewController(animated: true)
                         })
                     }else{
                         SVProgressHUD.showErrorMessage(ErrorMessage: "实名认证失败", ForDuration: 1, completion: {
-                            self.navigationController?.popViewController(animated: true)
+                            _ = self.navigationController?.popViewController(animated: true)
+
                         })
 
                     }

@@ -22,9 +22,7 @@ class MenuItemCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         addSubViews()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

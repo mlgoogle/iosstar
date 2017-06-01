@@ -46,7 +46,6 @@ extension UIViewController {
             let controller = storyboard.instantiateInitialViewController()
             controller?.modalPresentationStyle = .custom
             controller?.modalTransitionStyle = .crossDissolve
-            
             present(controller!, animated: true, completion: nil)
             
             return false
@@ -69,7 +68,6 @@ extension UIViewController {
                             
                         }
                         complete?(true as AnyObject)
-//                        self.LoginSuccess()
                         
                     })
                     
@@ -211,14 +209,18 @@ extension UIViewController {
             
         }
     }
+    
+    
     func getUserInfo(complete: CompleteBlock?){
         
+        if checkLogin() {
         AppAPIHelper.user().getauserinfo(complete: { (result) in
             complete?(result as AnyObject)
         }) { (error) in
             
         }
+      }
     }
-    
+ 
 }
 

@@ -133,7 +133,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
             if let  response = result{
                 if response["result"] as! Int == 1{
                     //重置成功
-                    self.navigationController?.popViewController(animated: true)
+                    _ = self.navigationController?.popViewController(animated: true)
                 }
             }
         }) { (error) in

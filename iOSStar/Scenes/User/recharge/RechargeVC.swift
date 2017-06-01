@@ -75,10 +75,32 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     
     //MARK:去充值
     @IBAction func doRecharge(_ sender: Any) {
+//<<<<<<< HEAD
         
         if self.payTypeName.text == "支付宝" { // 此处接入支付宝支付
         
             doAliPay()
+//=======
+//        SVProgressHUD.show(withStatus: "加载中")
+//        AppAPIHelper.user().weixinpay(title: "余额充值", price: rechargeMoney, complete: { (result) in
+//            
+//           SVProgressHUD.dismiss()
+//            if let object = result {
+//                let request : PayReq = PayReq()
+//                let str : String = object["timestamp"] as! String!
+//                //                            ShareModel.share().shareData["rid"] =  object["rid"] as! String!
+//                request.timeStamp = UInt32(str)!
+//                request.sign = object["sign"] as! String!
+//                request.package = object["package"] as! String!
+//                request.nonceStr = object["noncestr"] as! String!
+//                request.partnerId = object["partnerid"] as! String!
+//                request.prepayId = object["prepayid"] as! String!
+//                WXApi.send(request)
+//            }
+//            
+//        }) { (error ) in
+//             print(error)
+//>>>>>>> star/master
         }
         if self.payTypeName.text == "微信"  { // 此处微信支付
 
@@ -262,6 +284,7 @@ extension RechargeVC {
                                             }
     
     }) { (error ) in
+        
         print(error)
        }
     }

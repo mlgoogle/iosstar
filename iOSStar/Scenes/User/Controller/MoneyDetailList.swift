@@ -112,9 +112,8 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
         
         let moder = self.reponseData as! RechargeListModel
         
-        if moder != nil {
-            (vc as! ResultVC).responseData = moder.depositsinfo?[indexPath.row]
-        }
+        (vc as! ResultVC).responseData = moder.depositsinfo?[indexPath.row]
+
         print(vc)
         
         self.navigationController?.pushViewController(vc, animated: true)
