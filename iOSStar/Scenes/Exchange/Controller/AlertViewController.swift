@@ -93,9 +93,9 @@ class AlertViewController: UIViewController {
     // 文本
     fileprivate func setupSubTitleTextView() {
         subTitleTextView.text = ""
-        subTitleTextView.textAlignment = .center
-        subTitleTextView.font = UIFont.systemFont(ofSize: 14.0)
-        subTitleTextView.textColor = UIColor.colorFromRGB(0x999999)
+        // subTitleTextView.textAlignment = .center
+        // subTitleTextView.font = UIFont.systemFont(ofSize: 14.0)
+        // subTitleTextView.textColor = UIColor.colorFromRGB(0x999999)
         subTitleTextView.isEditable = false
         subTitleTextView.isScrollEnabled = false
         subTitleTextView.isSelectable = false
@@ -188,7 +188,18 @@ extension AlertViewController {
         
         self.picImageView.image = UIImage(named: "\(imageName)")
         self.titleLabel.text = titleLabelText
-        self.subTitleTextView.text = subTitleText;
+        
+        // 设置行间距?
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 10
+        paragraphStyle.alignment = .center
+        let attributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 14.0),
+                          NSParagraphStyleAttributeName: paragraphStyle,
+                          NSForegroundColorAttributeName:UIColor.colorFromRGB(0x999999)]
+        self.subTitleTextView.attributedText = NSAttributedString(string: subTitleText, attributes: attributes)
+        
+        
+        // self.subTitleTextView.text = subTitleText;
         self.completeButton.setTitle("\(completeButtonTitle)", for: .normal);
         
         resizeAndLayout()
