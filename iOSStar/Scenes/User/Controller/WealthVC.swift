@@ -121,38 +121,38 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         if indexPath.section == 1 {
          
             if indexPath.row == 0{
-                
-                if self.needPwd == 0{
-                    self.getUserrealmInfo { (result) in
-                        if let model = result{
-                            let object =  model as! [String : AnyObject]
-                            
-                            if object["realname"] as! String == ""{
-                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "StatementVC")
-                                self.navigationController?.pushViewController(vc, animated: true)
-                            }
-                            else {
+                self.getUserrealmInfo { (result) in
+                    if let model = result{
+                        let object =  model as! [String : AnyObject]
+                        
+                        if object["realname"] as! String == ""{
+                            let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "StatementVC")
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                        else {
+                            if self.needPwd == 0{
                                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")
                                 self.navigationController?.pushViewController(vc, animated: true)
+                            }// 设置交易密码
+                            else{
+                                
+                                let alertVc = AlertViewController()
+                                alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
+                                                    titleLabelText: "还没有设置交易密码",
+                                                    subTitleText: "去设置才可以进行交易",
+                                                    completeButtonTitle: "确定") { (completeButton) in
+                                                        alertVc.dismissAlertVc()
+                                                        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
+                                                        self.navigationController?.pushViewController(vc, animated: true )
+                                                        return
+                                }
+                                
+
                             }
                         }
+                        }
                     }
-                    
-                }// 设置交易密码
-                else{
-                    
-                    let alertVc = AlertViewController()
-                    alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-                                        titleLabelText: "还没有设置交易密码",
-                                        subTitleText: "去设置才可以进行交易",
-                                        completeButtonTitle: "确定") { (completeButton) in
-                                            alertVc.dismissAlertVc()
-                                            let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
-                                            self.navigationController?.pushViewController(vc, animated: true )
-                                            
-                    }
-                    
-                }
+               
             }
         }
     }

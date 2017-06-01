@@ -9,10 +9,15 @@
 import UIKit
 
 class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavigationControllerDelegate {
+    // 手机号
     @IBOutlet weak var phone: UILabel!
-    
+    // 昵称
+    @IBOutlet var nickName: UITextField!
+    // 头像
     @IBOutlet var headerImg: UIImageView!
+    // 身份证号
     @IBOutlet weak var realCard: UILabel!
+    // 真实姓名
     @IBOutlet weak var realname: UILabel!
     var uploadAlertController:UIAlertController!
     var imagePickerController:UIImagePickerController!
@@ -29,18 +34,18 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
       
         self.getUserrealmInfo { (result) in
             if let model = result{
-                
-               
-                
-                
+
                 let object =  model as! [String : String]
                  if object["realname"] != "" {
                 self.realname.text = object["realname"]
                 let  card = object["id_card"]
                 let index = card?.index((card?.startIndex)!, offsetBy: 3)
-                let index1 = card?.index((card?.startIndex)!, offsetBy: -4)
-                self.realCard.text = (card?.substring(to: index!))! + "****" + (card?.substring(to: index1!))!
-            }
+                let index1 = card?.index((card?.endIndex)!, offsetBy: -4)
+                self.realCard.text = (card?.substring(to: index!))! + "****" + (card?.substring(from: index1!))!
+                 }else{
+                    self.realname.text = "未实名认证"
+                    self.realCard.text = "未实名认证"
+                }
             }
         
         }
@@ -49,7 +54,8 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         let index = phonetext.index(phonetext.startIndex, offsetBy: 3)
         let index1 = phonetext.index(phonetext.endIndex, offsetBy: -4)
         self.phone.text =  (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
-     
+        
+        self.nickName.text = (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
     }
  
 
@@ -69,7 +75,9 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
 //               
                    present(self.uploadAlertController, animated:true, completion: nil)
             }
+            
         }
+       
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

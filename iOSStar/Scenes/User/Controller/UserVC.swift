@@ -118,11 +118,13 @@ class UserVC: BaseCustomTableViewController  {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             //CustomerServiceVC 客服中心
-            if indexPath.row == 4{
-                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "SettingVC")
+            if indexPath.row == 3{
+                let vc = BaseWebVC()
+                vc.loadRequest = "http://www.baidu.com"
+                vc.navtitle = "常见问题"
                 self.navigationController?.pushViewController(vc, animated: true)
             }
-            if indexPath.row == 5 {
+            if indexPath.row == 4 {
                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "SettingVC")
                 self.navigationController?.pushViewController(vc, animated: true)
             }
@@ -147,11 +149,7 @@ class UserVC: BaseCustomTableViewController  {
         
                     if isTelNumber(num: string!){
         
-                    
                     }
-        
-        
-        
                 })
                 let alertViewCancelAction: UIAlertAction = UIAlertAction.init(title: "取消", style: UIAlertActionStyle.cancel, handler: nil)
                 alertview.addAction(alertViewAction)
