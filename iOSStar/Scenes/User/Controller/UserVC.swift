@@ -15,6 +15,7 @@ class TitleCell: UITableViewCell {
 }
 class UserVC: BaseCustomTableViewController  {
 
+    var  account : UILabel?
     // 名字数组
     var titltArry = [""]
   
@@ -27,6 +28,16 @@ class UserVC: BaseCustomTableViewController  {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.getUserInfo { (result) in
+            
+            if let response = result{
+                let object = response as! [String : AnyObject]
+               self.account?.text =  String.init(format: "%.2f", object["balance"] as! Double)
+              
+                
+            }
+            
+        }
 
     }
     // MARK: Table view data source
@@ -56,7 +67,7 @@ class UserVC: BaseCustomTableViewController  {
         let cell  = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
         if indexPath.section == 0{
           
-            
+            account = cell.balance
            return cell
         }else if indexPath.section == 2{
             

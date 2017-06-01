@@ -35,7 +35,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         
         }
         
-        self.phone.text = UserDefaults.standard.object(forKey: "phone") as! String
+        self.phone.text =  (UserDefaults.standard.object(forKey: "phone") as! String)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
