@@ -70,9 +70,9 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             
             if let response = result{
                 let object = response as! [String : AnyObject]
-                self.balance?.text =  String.init(format: "%.2f", object["balance"] as! CVarArg)
-                self.market_cap?.text = String.init(format: "%.2f", object["total_amt"] as! CVarArg)
-                self.total_amt?.text = String.init(format: "%.2f", object["total_amt"] as! CVarArg)
+                self.balance?.text =  String.init(format: "%.2f", object["balance"] as! Double)
+                self.market_cap?.text = String.init(format: "%.2f", object["total_amt"] as! Double)
+                self.total_amt?.text = String.init(format: "%.2f", object["total_amt"] as! Double)
                 self.needPwd = object["is_setpwd"] as! Int
                 
             }
@@ -119,86 +119,44 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 1 {
+         
             if indexPath.row == 0{
-                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-            if indexPath.row == 1{
                 
-                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "StatementVC")
-                self.navigationController?.pushViewController(vc, animated: true)
-//                if self.needPwd == 0{
-//                    self.getUserrealmInfo { (result) in
-//                        if let model = result{
-//                            let object =  model as! [String : AnyObject]
-//                            
-//                            if object["realname"] as! String == ""{
-//                                let alertVc = AlertViewController()
-//                                alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-//                                                    titleLabelText: "还没有实名认证",
-//                                                    subTitleText: "去实名认证才可以进行交易",
-//                                                    completeButtonTitle: "允 许") { (completeButton) in
-//                                                        alertVc.dismissAlertVc()
-//                                                        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
-//                                                        self.navigationController?.pushViewController(vc, animated: true )
-//                                                        
-//                                }
-//                            }
-//                        }else{
-//                            
-//                            
-//                        }
-//                    }
-//                    
-//                }// 设置交易密码
-//                else{
-//                    
-//                    let alertVc = AlertViewController()
-//                    alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-//                                        titleLabelText: "还没有设置交易密码",
-//                                        subTitleText: "去设置才可以进行交易",
-//                                        completeButtonTitle: "确定") { (completeButton) in
-//                                            alertVc.dismissAlertVc()
-//                                            let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
-//                                            self.navigationController?.pushViewController(vc, animated: true )
-//                                            
-//                    }
-//                    
-//                    
-//                }
-//            }
-            
-            
-            //                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC") as! TradePassWordVC
-            //                 self.navigationController?.pushViewController(vc, animated: true )
-            //                vc.modalTransitionStyle = .crossDissolve
-            //                vc.modalPresentationStyle = .custom
-            //                vc.resultBlock = { (result) in
-            //                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
-            //                    self.navigationController?.pushViewController(vc, animated: true )
-            //
-            //                }
-            //                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TipBindVC") as! TipBindVC
-            //                vc.modalTransitionStyle = .crossDissolve
-            //                vc.modalPresentationStyle = .custom
-            //                self.present(vc, animated: true, completion: {})
-            //                vc.resultBlock = { (result) in
-            //                    switch result as! doTipClick {
-            //                    case .doClose:
-            //                        vc.dismissController()
-            //                        break
-            //                    default:
-            //                        vc.dismissController()
-            //
-            //                        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
-            //                        self.navigationController?.pushViewController(vc, animated: true )
-            //                    }
-            //                }
-            //            }
-            
-        }
+                if self.needPwd == 0{
+                    self.getUserrealmInfo { (result) in
+                        if let model = result{
+                            let object =  model as! [String : AnyObject]
+                            
+                            if object["realname"] as! String == ""{
+                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "StatementVC")
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            }
+                            else {
+                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            }
+                        }
+                    }
+                    
+                }// 设置交易密码
+                else{
+                    
+                    let alertVc = AlertViewController()
+                    alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
+                                        titleLabelText: "还没有设置交易密码",
+                                        subTitleText: "去设置才可以进行交易",
+                                        completeButtonTitle: "确定") { (completeButton) in
+                                            alertVc.dismissAlertVc()
+                                            let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
+                                            self.navigationController?.pushViewController(vc, animated: true )
+                                            
+                    }
+                    
+                }
+            }
         }
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 1 ? 10 : 0.0001
     }

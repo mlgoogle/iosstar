@@ -24,8 +24,12 @@ protocol UserApi {
      func creditlist(status: Int32, pos: Int32, count: Int32, complete: CompleteBlock?, error: ErrorBlock?)
     
      func ResetPassWd(timestamp : Int64,vCode : String,vToken : String,pwd: String,type : Int, complete: CompleteBlock?, error: ErrorBlock?)
+     // 实名认证
      func authentication(realname: String, id_card: String, complete: CompleteBlock?, error: ErrorBlock?)
+    // 获取实名认证信息
      func getauthentication( complete: CompleteBlock?, error: ErrorBlock?)
+     // 获取用户信息
      func getauserinfo( complete: CompleteBlock?, error: ErrorBlock?)
+    // tokenLogin token登录
      func tokenLogin( complete: CompleteBlock?, error: ErrorBlock?)
 }

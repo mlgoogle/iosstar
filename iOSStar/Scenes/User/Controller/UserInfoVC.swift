@@ -11,6 +11,7 @@ import UIKit
 class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavigationControllerDelegate {
     @IBOutlet weak var phone: UILabel!
     
+    @IBOutlet var headerImg: UIImageView!
     @IBOutlet weak var realCard: UILabel!
     @IBOutlet weak var realname: UILabel!
     var uploadAlertController:UIAlertController!
@@ -28,19 +29,27 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
       
         self.getUserrealmInfo { (result) in
             if let model = result{
-                let object =  model as! [String : AnyObject]
-                self.realname.text = object["realname"] as? String
-                self.realCard.text = object["id_card"] as? String
+                
+               
+                
+                
+                let object =  model as! [String : String]
+                 if object["realname"] != "" {
+                self.realname.text = object["realname"]
+                let  card = object["id_card"]
+                let index = card?.index((card?.startIndex)!, offsetBy: 3)
+                let index1 = card?.index((card?.startIndex)!, offsetBy: -4)
+                self.realCard.text = (card?.substring(to: index!))! + "****" + (card?.substring(to: index1!))!
+            }
             }
         
         }
-        
-        self.phone.text = UserDefaults.standard.object(forKey: "phone") as! String
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let  phonetext  = (UserDefaults.standard.object(forKey: "phone") as! String)
+      
+        let index = phonetext.index(phonetext.startIndex, offsetBy: 3)
+        let index1 = phonetext.index(phonetext.endIndex, offsetBy: -4)
+        self.phone.text =  (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
+     
     }
  
 
@@ -124,7 +133,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         if type=="public.image"
         {
             let img = info[UIImagePickerControllerOriginalImage]as?UIImage
-//            self.headImg.image =cropToBounds(image: img!)
+            self.headerImg.image = img
 //            let imgData =UIImageJPEGRepresentation(self.headImg.image!,0.5)
             picker.dismiss(animated:true, completion:nil)
         }
