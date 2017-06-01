@@ -41,8 +41,8 @@ class MarketSearchViewController: UIViewController , UITextFieldDelegate{
     func searchText(text:String) {
         
         AppAPIHelper.marketAPI().searchstar(code:text, complete: { [weak self](result) in
-            if let _ = result {
-                self?.dataArry = result as! [MarketClassifyModel]
+            if let models = result as? [MarketClassifyModel]{
+                self?.dataArry = models
                 self?.tableView.reloadData()
             }
         }) { [weak self](error) in
@@ -86,7 +86,11 @@ extension MarketSearchViewController:UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Markt.rawValue, bundle: nil)
         
-        let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail")
-        navigationController?.pushViewController(vc, animated: true)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail") as? MarketDetailViewController
+        
+        let model = dataArry[indexPath.row]
+        vc?.starCode = model.code
+        vc?.starName = model.name
+        navigationController?.pushViewController(vc!, animated: true)
     }
 }

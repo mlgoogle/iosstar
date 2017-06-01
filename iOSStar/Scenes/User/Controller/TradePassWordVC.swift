@@ -120,7 +120,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
                       SVProgressHUD.showSuccessMessage(SuccessMessage: "设置成功", ForDuration: 0.5, completion: {
                         for controller   in (self.navigationController?.viewControllers)!{
                             if controller.isKind(of: WealthVC.self){
-                                self.navigationController?.popToViewController(controller, animated: true)
+                                _ = self.navigationController?.popToViewController(controller, animated: true)
                             }
                         }
                       })

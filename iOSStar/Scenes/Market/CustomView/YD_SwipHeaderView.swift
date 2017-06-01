@@ -51,7 +51,7 @@ class YD_SwipHeaderView: UIView {
         case .changed:
             tracking = true
             dragging = true
-            let selfFrame = frame
+            _ = frame
             
             
         case .ended:

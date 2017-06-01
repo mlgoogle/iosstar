@@ -15,7 +15,7 @@ class MaketBannerCell: UITableViewCell {
         super.awakeFromNib()
         
         let urlString = "http://pic27.nipic.com/20130320/3822951_105204803000_2.jpg"
-        banner.imageURLStringsGroup = [urlString, urlString, urlString]
+        banner.imageURLStringsGroup = [urlString]
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

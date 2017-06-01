@@ -80,7 +80,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
     }
     @IBAction func doBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     //MARK: tableViewdelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -9,6 +9,7 @@
 import UIKit
 
 class AuctionHeaderCell: UITableViewCell {
+    @IBOutlet weak var backView: UIView!
     //顶部展示star图片
     @IBOutlet var showImageView: UIImageView!
     //当前持有此明星时间数量
@@ -25,17 +26,17 @@ class AuctionHeaderCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         countProgressView.percent = 0.5
-        countProgressView.addGradualColorLayer()
+        countProgressView.addGradualColorLayer(isRound:true)
         countProgressView.layer.cornerRadius = 8
-        countProgressView.clipsToBounds = true
         buyProgressView.isShowImage = false
         buyProgressView.percent = 1
         sellProgressView.isShowImage = false
         sellProgressView.percent = 1
-        buyProgressView.addGradualColorLayer()
-        sellProgressView.addGradualColorLayer()
+        buyProgressView.addGradualColorLayer(isRound:false)
+        sellProgressView.addGradualColorLayer(isRound:false)
         sellProgressView.setCornoerRadius(byRoundingCorners: [.bottomRight, .topRight], cornerRadii: CGSize(width: 8.0, height: 8.0))
         buyProgressView.setCornoerRadius(byRoundingCorners: [.bottomLeft, .topLeft], cornerRadii: CGSize(width: 8.0, height: 8.0))
+        backView.layer.cornerRadius = 3
     }
     
 

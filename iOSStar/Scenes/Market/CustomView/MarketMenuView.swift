@@ -316,6 +316,8 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         let storyBoard = UIStoryboard(name: "Market", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail") as! MarketDetailViewController
         vc.starModel = starModel
+        vc.starCode = starModel.code
+        vc.starName = starModel.name
         navigationController?.pushViewController(vc, animated: true)
     }
 

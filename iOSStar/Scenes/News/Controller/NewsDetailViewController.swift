@@ -18,13 +18,12 @@ class NewsDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setCustomTitle(title: "资讯详情")
-        let webView = WKWebView(frame: view.bounds)
+        let webView = WKWebView(frame: CGRect(x: 0, y: 44, width: kScreenWidth, height: kScreenHeight - 44))
         UIApplication.shared.statusBarStyle = .default;
         let url = URL(string: urlString!)
         let request = URLRequest(url: url!)
         webView.load(request)
         view.addSubview(webView)
-
 
     }
 
@@ -36,10 +35,7 @@ class NewsDetailViewController: UIViewController {
             shareObject.descr = self.newsModel!.remarks
             shareObject.thumbImage = self.newsModel!.showpic_url
             shareObject.webpageUrl = self.newsModel!.link_url
-            AppConfigHelper.share(type: platform, shareObject: shareObject, viewControlller: self)
-            
-            
-            
+            AppConfigHelper.shared().share(type: platform, shareObject: shareObject, viewControlller: self)
         }
     }
 
