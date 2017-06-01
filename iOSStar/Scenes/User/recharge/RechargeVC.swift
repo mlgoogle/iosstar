@@ -43,7 +43,8 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         if let errorCode: Int = notice.object as? Int{
             //            var code = Int()
             if errorCode == 0 {
-                SVProgressHUD.showError(withStatus: "充值成功")
+//                SVProgressHUD.showError(withStatus: "充值成功")
+                SVProgressHUD.showSuccess(withStatus: "充值成功")
                 return
                 
             }
@@ -71,28 +72,19 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     func valueChange(_ textFile : UITextField){
         rechargeMoney = Double.init(textFile.text!)!
     }
+    
     //MARK:去充值
     @IBAction func doRecharge(_ sender: Any) {
-        SVProgressHUD.show(withStatus: "加载中")
-        AppAPIHelper.user().weixinpay(title: "余额充值", price: 0.01, complete: { (result) in
-            
-           SVProgressHUD.dismiss()
-            if let object = result {
-                let request : PayReq = PayReq()
-                let str : String = object["timestamp"] as! String!
-                //                            ShareModel.share().shareData["rid"] =  object["rid"] as! String!
-                request.timeStamp = UInt32(str)!
-                request.sign = object["sign"] as! String!
-                request.package = object["package"] as! String!
-                request.nonceStr = object["noncestr"] as! String!
-                request.partnerId = object["partnerid"] as! String!
-                request.prepayId = object["prepayid"] as! String!
-                WXApi.send(request)
-            }
-            
-        }) { (error ) in
-             print(error)
+        
+        if self.payTypeName.text == "支付宝" { // 此处接入支付宝支付
+        
+            doAliPay()
         }
+        if self.payTypeName.text == "微信"  { // 此处微信支付
+
+            doWeiXinPay()
+        }
+        
         
     }
     //MARK:选择充值金额
@@ -171,4 +163,105 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     }
     
     
+}
+
+// MARK: - 支付处理
+extension RechargeVC {
+    
+    fileprivate func doAliPay() {
+        
+        let order = Order()
+        
+        // 需要APPID and privateKey
+        let appID = "APPID"
+        let privateKey = ""
+        
+        // NOTE: app_id设置
+        order.app_id = appID;
+        
+        // NOTE: 支付接口名称
+        order.method = "alipay.trade.app.pay";
+        
+        // NOTE: 参数编码格式
+        order.charset = "utf-8";
+        
+        // NOTE: 当前时间点
+        // let formatter = DateFormatter()
+        // formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        // order.timestamp = formatter.string(from: NSDate() as Date)
+        
+        // NOTE: 支付版本
+        order.version = "1.0";
+        
+        // NOTE: sign_type 根据商户设置的私钥来决定
+        order.sign_type = privateKey
+        
+        
+        order.biz_content = BizContent()
+        // NOTE: 商品数据
+        order.biz_content.body = "我是测试数据" // 标题
+        order.biz_content.subject = "1"
+        // 订单ID（由商家自行制定）
+        order.biz_content.out_trade_no = "1273218732168376218312"
+        // 超时时间设置
+        order.biz_content.timeout_express = "30m"
+        // 商品价格
+        order.biz_content.total_amount = "0.01"
+        
+        print(order.biz_content.description)
+        
+        //将商品信息拼接成字符串
+        //            NSString *orderInfo = [order orderInfoEncoded:NO];
+        //            NSString *orderInfoEncoded = [order orderInfoEncoded:YES];
+        let orderInfo = order.orderInfoEncoded(false)
+        let orderInfoEncoded = order.orderInfoEncoded(true)
+        
+        print("orderSpec = \(String(describing: orderInfo))")
+        print("orderSpec = \(orderInfo)")
+        
+        // NOTE: 获取私钥并将商户信息签名，外部商户的加签过程请务必放在服务端，防止公私钥数据泄露；
+        //       需要遵循RSA签名规范，并将签名字符串base64编码和UrlEncode
+        let signer = RSADataSigner(privateKey: privateKey)
+        
+        let signedString = signer?.sign(orderInfo, withRSA2: true)
+        
+        // 应用注册scheme,在AliSDKDemo-Info.plist定义URL types
+        let appScheme = "AliPayScheme"
+        
+        // NOTE: 将签名成功字符串格式化为订单字符串,请严格按照该格式
+        let orderString = "\(orderInfoEncoded)&sign=\"\(signedString)\"&sign_type=\"RSA\""
+        
+        print("orderString == \(orderString)")
+        
+        // NOTE: 调用支付结果开始支付
+        AlipaySDK.defaultService().payOrder(orderString, fromScheme: appScheme, callback: { (resultDic) in
+            print("resultDic =\(resultDic)")
+        })
+    }
+    
+    
+    fileprivate func doWeiXinPay() {
+    
+        SVProgressHUD.show(withStatus: "加载中")
+        AppAPIHelper.user().weixinpay(title: "余额充值",
+                                      price: 0.01,
+                                      complete: { (result) in
+                                            SVProgressHUD.dismiss()
+                                                if let object = result {
+                                                    let request : PayReq = PayReq()
+                                                    let str : String = object["timestamp"] as! String!
+                                                    //                            ShareModel.share().shareData["rid"] =  object["rid"] as! String!
+                                                    request.timeStamp = UInt32(str)!
+                                                    request.sign = object["sign"] as! String!
+                                                    request.package = object["package"] as! String!
+                                                    request.nonceStr = object["noncestr"] as! String!
+                                                    request.partnerId = object["partnerid"] as! String!
+                                                    request.prepayId = object["prepayid"] as! String!
+                                                    WXApi.send(request)
+                                            }
+    
+    }) { (error ) in
+        print(error)
+       }
+    }
 }

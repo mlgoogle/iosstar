@@ -11,8 +11,6 @@ import SVProgressHUD
 class MoneyDetailListCell: OEZTableViewCell {
     
 
-    
-    
     @IBOutlet weak var weekLb: UILabel!            // 姓名LbstatusLb
     @IBOutlet weak var timeLb: UILabel!            // 时间Lb
     @IBOutlet weak var moneyCountLb: UILabel!      // 充值金额Lb
@@ -21,6 +19,9 @@ class MoneyDetailListCell: OEZTableViewCell {
     @IBOutlet weak var bankLogo: UIImageView!      // 银行卡图片
     @IBOutlet weak var withDrawto: UILabel!        // 提现至
     override func update(_ data: Any!) {
+        
+        // print(data)
+        
         let model = data as! Model
         self.moneyCountLb.text = "+" + " "  + String.init(format: "%.2f", model.amount)
         let timestr : Int = Date.stringToTimeStamp(stringTime: model.depositTime)
@@ -98,6 +99,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
     
     //
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let vc  = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResultVC")
         self.navigationController?.pushViewController(vc, animated: true)
     }
