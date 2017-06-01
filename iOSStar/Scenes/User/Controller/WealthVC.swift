@@ -126,8 +126,17 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                         let object =  model as! [String : AnyObject]
                         
                         if object["realname"] as! String == ""{
-                            let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "StatementVC")
-                            self.navigationController?.pushViewController(vc, animated: true)
+                            let alertVc = AlertViewController()
+                            alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
+                                                titleLabelText: "您还没有身份验证",
+                                                subTitleText: "您需要进行身份验证,之后才可以进行明星时间交易",
+                                                completeButtonTitle: "开始验证") { (completeButton) in
+                                                    alertVc.dismissAlertVc()
+                                                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
+                                                    self.navigationController?.pushViewController(vc, animated: true )
+                                                    return
+                            }
+                           
                         }
                         else {
                             if self.needPwd == 0{
