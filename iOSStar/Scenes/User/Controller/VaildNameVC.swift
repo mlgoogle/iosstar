@@ -37,6 +37,7 @@ class VaildNameVC:  BaseTableViewController {
                     }else{
                         SVProgressHUD.showErrorMessage(ErrorMessage: "实名认证失败", ForDuration: 1, completion: {
                             _ = self.navigationController?.popViewController(animated: true)
+
                         })
 
                     }
