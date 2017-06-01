@@ -119,17 +119,24 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 1 {
-            if indexPath.row == 0{
-                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
+         
             if indexPath.row == 1{
                 
-               
-                if self.needPwd == 0{
-                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "StatementVC")
-                    self.navigationController?.pushViewController(vc, animated: true)
-            
+                if self.needPwd == 1{
+                    self.getUserrealmInfo { (result) in
+                        if let model = result{
+                            let object =  model as! [String : AnyObject]
+                            
+                            if object["realname"] as! String == ""{
+                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "StatementVC")
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            }
+                            else {
+                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            }
+                        }
+                    }
                     
                 }// 设置交易密码
                 else{
@@ -149,6 +156,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             }
         }
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 1 ? 10 : 0.0001
     }
