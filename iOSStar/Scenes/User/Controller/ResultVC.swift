@@ -28,10 +28,17 @@ class ResultVC: UITableViewController {
     @IBOutlet weak var bankInfo: UILabel!
     //手续费
     @IBOutlet weak var feedBack: UILabel!
+    
+    
+    var responseData : Any?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    
+        print("\(self.responseData as! Model)")
+        
+        self.tableView.tableFooterView = UIView()
+        
     }
 
 

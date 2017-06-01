@@ -16,7 +16,7 @@
                 <navigationController useStoryboardIdentifierAsRestorationIdentifier="YES" id="2vG-Fh-E77" customClass="BaseNavigationController" customModule="iOSStar" sceneMemberID="viewController">
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="j70-IU-m3w">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="j70-IU-m3w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3069,37 +3069,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-<<<<<<< HEAD
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="400" id="ARt-cn-sdb">
-                                <rect key="frame" x="0.0" y="28" width="375" height="400"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ARt-cn-sdb" id="2Z1-ys-oKc">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="399.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTL-mg-zq8">
-                                            <rect key="frame" x="21" y="8" width="335" height="384"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <string key="text">    在使用本系统的所有功能之前，请您务必仔细阅读并透彻理解本声明。您可以选择不使用本系统，但如果您使用本系统，您的使用行为将被视为对本声明全部内容的认可。 　　免责声明： 鉴于本系统使用非人工检索/分析方式，无法确定您输入的条件进行是否合法，所以本系统对检索/分析出的结果不承担责任。如果因以本系统的检索/分析结果作为任何商业行为或者学术研究的依据而产生不良后果，本系统不承担任何法律责任。 　　关于隐私权： 访问者在本系统注册时提供的一些个人资料，本系统除您本人同意外不会将用户的任何资料以任何方式泄露给第三方。当政府部门、司法机关等依照法定程序要求本系统披露个人资料时，本系统将根据执法单位之要求或为公共安全之目的提供个人资料，在此情况下的披露，本系统不承担任何责任。</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="113" id="K9S-6V-lA5">
-                                <rect key="frame" x="0.0" y="428" width="375" height="113"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K9S-6V-lA5" id="eHX-gg-PWl">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="112.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uv4-IR-Jyp">
-                                            <rect key="frame" x="27" y="30" width="320" height="34"/>
-                                            <color key="backgroundColor" red="0.55155301089999997" green="0.029463728889999999" blue="0.034804642199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-=======
                         <sections>
                             <tableViewSection id="iBI-3g-X7t">
                                 <cells>
@@ -3118,7 +3087,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
->>>>>>> star/master
                                             <constraints>
                                                 <constraint firstItem="OTL-mg-zq8" firstAttribute="top" secondItem="2Z1-ys-oKc" secondAttribute="top" constant="8" id="700-2V-kB2"/>
                                                 <constraint firstItem="OTL-mg-zq8" firstAttribute="leading" secondItem="2Z1-ys-oKc" secondAttribute="leading" constant="21" id="EzV-Xn-d4g"/>
