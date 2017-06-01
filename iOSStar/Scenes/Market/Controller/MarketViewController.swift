@@ -13,6 +13,14 @@ class MarketViewController: UIViewController {
     var menuView:MarketMenuView?
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        let requestModel = TimeLineRequestModel()
+        AppAPIHelper.marketAPI().requestTimeLine(requestModel: requestModel, complete: { (response) in
+            
+        }) { (error) in
+            
+        }
+        
         setCustomTitle(title: "明星热度")
         translucent(clear: true)
         let color = UIColor.white

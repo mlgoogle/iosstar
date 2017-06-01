@@ -16,4 +16,7 @@ protocol MarketAPI {
     func addOptinal(starcode:String,complete: CompleteBlock?, error: ErrorBlock?)
     func requestCommentList(starcode:String,complete: CompleteBlock?, error: ErrorBlock?)
     func requestStarExperience(code:String,complete: CompleteBlock?, error: ErrorBlock?)
+    
+    func requestRealTime(requestModel:RealTimeRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
+    func requestTimeLine(requestModel:TimeLineRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
 }

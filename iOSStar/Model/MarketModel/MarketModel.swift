@@ -67,3 +67,30 @@ class CommentModel: Object {
     dynamic var nickname = ""
     dynamic var times = ""
 }
+
+class PirceBaseModel: Object {
+    dynamic var currentPrice = 0.0
+    dynamic var change = 0.0
+    dynamic var openingTodayPrice = 0.0
+    dynamic var closedYesterdayPrice = 0.0
+    dynamic var highPrice = 0.0
+    dynamic var lowPrice = 0.0
+    dynamic var priceTime:Int64 = 0
+    dynamic var symbol = ""
+    dynamic var pchg = 0.0
+
+
+
+}
+class TimeLineModel: PirceBaseModel {
+    override static func primaryKey() -> String?{
+        return "symbol"
+    }
+}
+class RealTimeModel: PirceBaseModel {
+    dynamic var sysTime:Int64 = 0
+    override static func primaryKey() -> String?{
+        return "symbol"
+    }
+}
+

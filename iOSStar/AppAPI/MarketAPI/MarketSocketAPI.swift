@@ -19,10 +19,8 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
     }
     //搜索
    func searchstar(code : String,  complete: CompleteBlock?, error: ErrorBlock?){
-        
         let paramters:[String:Any] = [SocketConst.Key.starCode : code]
         let packet = SocketDataPacket(opcode: .searchStar, parameters: paramters)
-        
         startModelsRequest(packet, listName: "list", modelClass: MarketClassifyModel.self, complete: complete, error: error)
     }
     
@@ -79,6 +77,17 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         let parameters:[String:Any] = [SocketConst.Key.starCode : code]
         let packet = SocketDataPacket(opcode: .starExperience, parameters: parameters)
         startModelsRequest(packet, listName: "list", modelClass: ExperienceModel.self, complete: complete, error: error)
+    }
+
+    //获取实时报价
+    func requestRealTime(requestModel:RealTimeRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .realTime, model: requestModel)
+        startModelsRequest(packet, listName: "priceinfo", modelClass: RealTimeModel.self, complete: complete, error: error)
+    }
+    //获取分时图
+    func requestTimeLine(requestModel:TimeLineRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .timeLine, model: requestModel)
+        startModelsRequest(packet, listName: "priceinfo", modelClass: TimeLineModel.self, complete: complete, error: error)
     }
 
 }

@@ -9,7 +9,9 @@
 import UIKit
 
 class MarketDetaiBaseInfoViewController: MarketBaseViewController {
-
+    
+    var bannerDetailModel:BannerDetaiStarModel?
+    
     var rows:[Int] = [1, 1, 10]
     var identifiers:[String] = ["MaketBannerCell","MarketInfoCell","MarketExperienceCell"]
     var expericences:[ExperienceModel]?
@@ -22,7 +24,7 @@ class MarketDetaiBaseInfoViewController: MarketBaseViewController {
         guard starCode != nil else {
             return
         }
-        requestBaseInfo()
+        requestInfos()
         requestExperience()
     }
 
@@ -30,10 +32,12 @@ class MarketDetaiBaseInfoViewController: MarketBaseViewController {
         super.didReceiveMemoryWarning()
     }
   
-    func requestBaseInfo() {
-
+    func requestInfos() {
         AppAPIHelper.newsApi().requestStarInfo(code: starCode!, complete: { (response) in
-            
+            if let model = response as? BannerDetaiStarModel {
+                self.bannerDetailModel = model
+                self.tableView.reloadData()
+            }
         }, error: errorBlockFunc())
     }
     func requestExperience() {
@@ -56,7 +60,14 @@ extension MarketDetaiBaseInfoViewController:UITableViewDataSource, UITableViewDe
         switch indexPath.section {
         case 0:
             let bannerCell = cell as! MaketBannerCell
-            bannerCell.banner.imageURLStringsGroup = ["http://chuantu.biz/t5/94/1495791704x2890171719.png"]
+            if bannerDetailModel != nil {
+                bannerCell.banner.imageURLStringsGroup = [bannerDetailModel!.pic1]
+            }
+        case 1:
+            let infoCell = cell as! MarketInfoCell
+            
+            infoCell.setData(model:bannerDetailModel)
+
         case 2:
             let expericenCell = cell as! MarketExperienceCell
            

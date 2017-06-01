@@ -12,7 +12,8 @@ import UIKit
 class MarketDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-
+    var bannerDetailModel:BannerDetaiStarModel?
+    
     var bottomScrollView:UIScrollView?
     var menuView:YD_VMenuView?
     var subViews = [UIView]()
@@ -30,6 +31,13 @@ class MarketDetailViewController: UIViewController {
         tableView.register(MarketDetailMenuView.self, forHeaderFooterViewReuseIdentifier: "MarketDetailMenuView")
         requestLineData()
         setupSubView()
+
+
+        
+    
+    }
+    
+    func setupSubView() {
         let imageStrings = ["market_buy","market_sell","market_meetfans","market_optional"]
         var images:[UIImage] = []
         for string in imageStrings {
@@ -39,8 +47,6 @@ class MarketDetailViewController: UIViewController {
         handleMenuView.images = images
         handleMenuView.titles = ["求购", "转让", "粉丝见面会", "自选"]
         handleMenuView.delegate = self
-    }
-    func setupSubView() {
         let types:[String] = ["MarketDetaiBaseInfoViewController", "MarketFansListViewController", "MarketAuctionViewController", "MarketCommentViewController"]
         let storyboard = UIStoryboard(name: "Market", bundle: nil)
         for (index, type) in types.enumerated() {
@@ -58,6 +64,8 @@ class MarketDetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+
     func requestLineData() {
         AppAPIHelper.marketAPI().requestLineViewData(starcode: starCode!, complete: { (response) in
             if let models = response as? [LineModel] {
@@ -65,6 +73,16 @@ class MarketDetailViewController: UIViewController {
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
             }
         }, error: errorBlockFunc())
+    }
+    func requestRealTime() {
+        let requestModel = RealTimeRequestModel()
+        let syModel = SymbolInfo()
+        requestModel.symbolInfos.append(syModel)
+        AppAPIHelper.marketAPI().requestRealTime(requestModel: requestModel, complete: { (response) in
+            
+        }) { (error) in
+            
+        }
     }
     
 

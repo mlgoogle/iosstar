@@ -37,7 +37,6 @@ class BuyOrSellViewController: UIViewController {
         }
     }
     func keyboardWillHide(notification: NSNotification?) {
-
         UIView.animate(withDuration: 0.5) {
             self.view.frame = CGRect(x: self.view.frame.origin.x, y: 64, width: self.view.frame.size.width, height: self.view.frame.size.height)
         }

@@ -78,6 +78,10 @@ class SocketConst: NSObject {
         
         case newsStarInfo = 10001
         
+        //实时报价
+        case realTime = 4001
+        //分时图
+        case timeLine = 4003
     }
     enum type:UInt8 {
         case error  = 0

@@ -80,7 +80,11 @@ class SocketDataPacket {
         let data: Data! = strData.data(using: String.Encoding.utf8)
         self.init( opcode: opcode, data: data,type: type)
     }
-
+    convenience init(opcode: SocketConst.OPCode, model: BaseModel) {
+        let strData = model.description
+        let type = opcode.rawValue / 1000
+        self.init( opcode: opcode, strData: strData,type:SocketConst.type(rawValue: UInt8(type))!)
+    }
   
     convenience init(opcode:SocketConst.OPCode, parameters:[String : Any]) {
         let type = opcode.rawValue / 1000

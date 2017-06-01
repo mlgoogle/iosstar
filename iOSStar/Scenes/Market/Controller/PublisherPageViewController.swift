@@ -13,9 +13,10 @@ class PublisherPageViewController: UIViewController {
     var code = "1001"
     var bannerModel:BannerModel?
     var rows = [1, 1, 10]
-    var starModel:MarketListStarModel?
-    var sectionHeight = [200, 170, 50]
+    var sectionHeight = [200, 150, 50]
     var titles = ["1","个人简介", "主要经历"]
+    var expericences:[ExperienceModel]?
+    var bannerDetailModel:BannerDetaiStarModel?
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -28,7 +29,7 @@ class PublisherPageViewController: UIViewController {
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: "PubInfoHeaderView")
         automaticallyAdjustsScrollViewInsets = false
         requestInfos()
-
+        requestExperience()
     }
     func shareAction() {
         
@@ -54,9 +55,26 @@ class PublisherPageViewController: UIViewController {
     }
     func requestInfos() {
         AppAPIHelper.newsApi().requestStarInfo(code: bannerModel!.code, complete: { (response) in
-            
+            if let model = response as? BannerDetaiStarModel {
+                self.bannerDetailModel = model
+                self.tableView.reloadData()
+                let string = "\(model.seconds)秒"
+                
+                self.totalLabel.setAttributeText(text: "总时长\(string)", firstFont: 18, secondFont: 18, firstColor: UIColor(hexString: "999999"), secondColor: UIColor(hexString: "FB9938"), range: NSRange(location: 3, length: string.length()))
+            }
         }, error: errorBlockFunc())
     }
+    func requestExperience() {
+        
+        AppAPIHelper.marketAPI().requestStarExperience(code: bannerModel!.code, complete: { (response) in
+            if let models =  response as? [ExperienceModel] {
+                self.expericences = models
+                self.tableView.reloadSections(IndexSet(integer: 2), with: .none)
+            }
+        }, error: errorBlockFunc())
+    }
+
+    
 }
 
 extension PublisherPageViewController:UITableViewDelegate, UITableViewDataSource{
@@ -65,7 +83,11 @@ extension PublisherPageViewController:UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rows[section]
+        if section == 2 {
+            
+            return expericences == nil ? 0 : expericences!.count
+        }
+        return 1
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(sectionHeight[indexPath.section])
@@ -73,13 +95,24 @@ extension PublisherPageViewController:UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "iconImageCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "iconImageCell", for: indexPath) as! BannerDetailImageCell
+            
+            cell.setImage(imageUrl: bannerDetailModel?.pic1)
+            
+            
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! BannerDetailInfoCell
+            
+            
+            cell.setData(model: bannerDetailModel)
+        
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MarketExperienceCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MarketExperienceCell", for: indexPath) as! MarketExperienceCell
+            
+            let model = expericences?[indexPath.row]
+            cell.setTitle(title: (model?.experience)!)
             return cell
         default:
             return UITableViewCell()
