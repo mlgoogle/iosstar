@@ -11,6 +11,7 @@ import UIKit
 class TitleCell: UITableViewCell {
     @IBOutlet weak var titleLb: UILabel!
     
+    @IBOutlet var version: UILabel!
     
 }
 class UserVC: BaseCustomTableViewController  {
@@ -43,19 +44,19 @@ class UserVC: BaseCustomTableViewController  {
     // MARK: Table view data source
      override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return 4
     }
 
      override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return section == 0 ? 1 : (section == 1 ? 5 : (section == 2 ? 1 : 3 ))
+        return section == 0 ? 1 : (section == 1 ? 5 : (section == 2 ? 1 : (section == 3 ? 1 : 3 ) ))
     }
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 2 ? 20 : 0.001
+        return section == 2 ? 20 : (section == 3 ? 20 : 0.001)
       
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-         return  0
+         return  0.01
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0 ? 260: 44
@@ -74,7 +75,15 @@ class UserVC: BaseCustomTableViewController  {
           let cell  = tableView.dequeueReusableCell(withIdentifier: "recommandCell")
             
             return cell!
-        }else{
+        }else if indexPath.section == 3{
+            
+            let cell  = tableView.dequeueReusableCell(withIdentifier: "versionCode") as! TitleCell
+            
+            cell.contentView.backgroundColor = UIColor.clear
+             cell.version.text = "版本号" + " " + (Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String)!
+            return cell
+        }
+        else{
             let cell  = tableView.dequeueReusableCell(withIdentifier: "titleCell") as! TitleCell
             cell.titleLb.text = titltArry[indexPath.row]
             return cell
@@ -113,6 +122,10 @@ class UserVC: BaseCustomTableViewController  {
                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "SettingVC")
                 self.navigationController?.pushViewController(vc, animated: true)
             }
+            if indexPath.row == 5 {
+                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "SettingVC")
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
         if indexPath.section == 2{
         
@@ -145,6 +158,18 @@ class UserVC: BaseCustomTableViewController  {
                 alertview.addAction(alertViewCancelAction)
                 self.present(alertview, animated:true , completion: nil)
     }
+   
+    func  tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let vi : UIView = UIView.init()
+        vi.backgroundColor = UIColor.clear
+        
+        return vi
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let vi : UIView = UIView.init()
 
+        vi.backgroundColor = UIColor.clear
+       return vi
+    }
    
 }

@@ -122,7 +122,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
          
             if indexPath.row == 0{
                 
-                if self.needPwd == 1{
+                if self.needPwd == 0{
                     self.getUserrealmInfo { (result) in
                         if let model = result{
                             let object =  model as! [String : AnyObject]
