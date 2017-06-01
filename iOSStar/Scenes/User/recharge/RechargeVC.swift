@@ -94,6 +94,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
             inputMoney.text = ""
             rechargeMoney = 0.0
         }
+        inputMoney.resignFirstResponder()
         let btn = sender as! UIButton
         if rechargeMoney != 0.0{
             let vi :UIButton =  self.view.viewWithTag(Int.init(rechargeMoney)) as! UIButton

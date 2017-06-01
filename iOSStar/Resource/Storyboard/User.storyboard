@@ -232,9 +232,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <connections>
-                                            <segue destination="oWR-z7-wWN" kind="push" id="7OP-Qm-Uqw"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WithDrawCell" editingAccessoryType="checkmark" id="Spv-fd-JG2">
                                         <rect key="frame" x="0.0" y="344" width="375" height="44"/>
@@ -412,7 +409,7 @@
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 </textField>
                                                 <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anZ-Or-cHJ">
                                                     <rect key="frame" x="143.5" y="90" width="88.5" height="27"/>
@@ -3068,10 +3065,11 @@
         <scene sceneID="VM7-OY-6H9">
             <objects>
                 <tableViewController storyboardIdentifier="StatementVC" title="免责声明" id="4BM-0F-Yny" customClass="StatementVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="365" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tj5-Kx-WIh">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="365" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tj5-Kx-WIh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+<<<<<<< HEAD
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="400" id="ARt-cn-sdb">
                                 <rect key="frame" x="0.0" y="28" width="375" height="400"/>
@@ -3101,30 +3099,76 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uv4-IR-Jyp">
                                             <rect key="frame" x="27" y="30" width="320" height="34"/>
                                             <color key="backgroundColor" red="0.55155301089999997" green="0.029463728889999999" blue="0.034804642199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+=======
+                        <sections>
+                            <tableViewSection id="iBI-3g-X7t">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="400" id="ARt-cn-sdb">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ARt-cn-sdb" id="2Z1-ys-oKc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="399.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTL-mg-zq8">
+                                                    <rect key="frame" x="21" y="8" width="333" height="384"/>
+                                                    <string key="text">    在使用本系统的所有功能之前，请您务必仔细阅读并透彻理解本声明。您可以选择不使用本系统，但如果您使用本系统，您的使用行为将被视为对本声明全部内容的认可。 　　免责声明： 鉴于本系统使用非人工检索/分析方式，无法确定您输入的条件进行是否合法，所以本系统对检索/分析出的结果不承担责任。如果因以本系统的检索/分析结果作为任何商业行为或者学术研究的依据而产生不良后果，本系统不承担任何法律责任。 　　关于隐私权： 访问者在本系统注册时提供的一些个人资料，本系统除您本人同意外不会将用户的任何资料以任何方式泄露给第三方。当政府部门、司法机关等依照法定程序要求本系统披露个人资料时，本系统将根据执法单位之要求或为公共安全之目的提供个人资料，在此情况下的披露，本系统不承担任何责任。</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+>>>>>>> star/master
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="34" id="3kp-KK-8k0"/>
+                                                <constraint firstItem="OTL-mg-zq8" firstAttribute="top" secondItem="2Z1-ys-oKc" secondAttribute="top" constant="8" id="700-2V-kB2"/>
+                                                <constraint firstItem="OTL-mg-zq8" firstAttribute="leading" secondItem="2Z1-ys-oKc" secondAttribute="leading" constant="21" id="EzV-Xn-d4g"/>
+                                                <constraint firstAttribute="bottom" secondItem="OTL-mg-zq8" secondAttribute="bottom" constant="7.5" id="TFd-eH-W8y"/>
+                                                <constraint firstAttribute="trailing" secondItem="OTL-mg-zq8" secondAttribute="trailing" constant="21" id="Vpg-5S-rMX"/>
                                             </constraints>
-                                            <state key="normal" title="同意">
-                                                <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <segue destination="aBB-3D-vzh" kind="push" id="sZD-ic-Pi5"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Uv4-IR-Jyp" secondAttribute="trailing" constant="28" id="bF9-v6-xVW"/>
-                                        <constraint firstItem="Uv4-IR-Jyp" firstAttribute="leading" secondItem="eHX-gg-PWl" secondAttribute="leading" constant="27" id="bgB-tM-z7g"/>
-                                        <constraint firstItem="Uv4-IR-Jyp" firstAttribute="top" secondItem="eHX-gg-PWl" secondAttribute="top" constant="30" id="y4r-X1-gIh"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="113" id="K9S-6V-lA5">
+                                        <rect key="frame" x="0.0" y="400" width="375" height="113"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K9S-6V-lA5" id="eHX-gg-PWl">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uv4-IR-Jyp">
+                                                    <rect key="frame" x="27" y="30" width="320" height="44"/>
+                                                    <color key="backgroundColor" red="0.55155301089999997" green="0.029463728889999999" blue="0.034804642199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="3kp-KK-8k0"/>
+                                                    </constraints>
+                                                    <state key="normal" title="同意">
+                                                        <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <segue destination="aBB-3D-vzh" kind="push" id="sZD-ic-Pi5"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Uv4-IR-Jyp" secondAttribute="trailing" constant="28" id="bF9-v6-xVW"/>
+                                                <constraint firstItem="Uv4-IR-Jyp" firstAttribute="leading" secondItem="eHX-gg-PWl" secondAttribute="leading" constant="27" id="bgB-tM-z7g"/>
+                                                <constraint firstItem="Uv4-IR-Jyp" firstAttribute="top" secondItem="eHX-gg-PWl" secondAttribute="top" constant="30" id="y4r-X1-gIh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uON-6T-A3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3797.5999999999999" y="2296.1019490254876"/>
+            <point key="canvasLocation" x="4052" y="2296"/>
         </scene>
     </scenes>
     <resources>
