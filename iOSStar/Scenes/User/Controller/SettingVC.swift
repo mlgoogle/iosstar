@@ -28,7 +28,7 @@ class SettingVC: BaseTableViewController {
         if indexPath.row == 5 {
             
             userLogout()
-            self.navigationController?.popToRootViewController(animated: true)
+            _ = self.navigationController?.popToRootViewController(animated: true)
         }
         if indexPath.row == 3 {
             let story = UIStoryboard.init(name: "Login", bundle: nil)

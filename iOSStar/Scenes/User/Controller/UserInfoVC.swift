@@ -44,6 +44,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
             }
         
         }
+
         let  phonetext  = (UserDefaults.standard.object(forKey: "phone") as! String)
       
         let index = phonetext.index(phonetext.startIndex, offsetBy: 3)
@@ -132,9 +133,9 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         //当选择的类型是图片
         if type=="public.image"
         {
+
             let img = info[UIImagePickerControllerOriginalImage]as?UIImage
             self.headerImg.image = img
-//            let imgData =UIImageJPEGRepresentation(self.headImg.image!,0.5)
             picker.dismiss(animated:true, completion:nil)
         }
     }

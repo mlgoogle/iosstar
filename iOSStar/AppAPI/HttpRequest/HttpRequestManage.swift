@@ -20,9 +20,9 @@ typealias errorBlock = (_ error:AnyObject)->Void
 
 
 class HttpRequestManage: NSObject {
-
-private static var instance = HttpRequestManage()
-   
+    
+    private static var instance = HttpRequestManage()
+    
     static func shared()-> HttpRequestManage {
         return instance
     }

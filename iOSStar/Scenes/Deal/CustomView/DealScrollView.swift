@@ -31,6 +31,10 @@ class DealScrollView: UIView,UIScrollViewDelegate {
 
         
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollView.endEditing(true)
+    }
 
     func setSubViews(customSubViews:[UIView]) {
        scrollView.contentSize = CGSize(width: CGFloat(customSubViews.count) * kScreenWidth, height: 0)

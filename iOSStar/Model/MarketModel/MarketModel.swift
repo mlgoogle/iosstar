@@ -12,12 +12,14 @@ import RealmSwift
 class MarketClassifyModel: Object {
     dynamic var name = ""
     dynamic var type = 0
-    dynamic var code = 0
+    dynamic var code = ""
 }
+
 
 class MarketListStarModel: Object {
     dynamic var accid = ""
     dynamic var code = ""
+    // 0 女  1 男
     dynamic var gender = 1
     dynamic var name = ""
     dynamic var type = 1
@@ -65,3 +67,30 @@ class CommentModel: Object {
     dynamic var nickname = ""
     dynamic var times = ""
 }
+
+class PirceBaseModel: Object {
+    dynamic var currentPrice = 0.0
+    dynamic var change = 0.0
+    dynamic var openingTodayPrice = 0.0
+    dynamic var closedYesterdayPrice = 0.0
+    dynamic var highPrice = 0.0
+    dynamic var lowPrice = 0.0
+    dynamic var priceTime:Int64 = 0
+    dynamic var symbol = ""
+    dynamic var pchg = 0.0
+
+
+
+}
+class TimeLineModel: PirceBaseModel {
+    override static func primaryKey() -> String?{
+        return "symbol"
+    }
+}
+class RealTimeModel: PirceBaseModel {
+    dynamic var sysTime:Int64 = 0
+    override static func primaryKey() -> String?{
+        return "symbol"
+    }
+}
+

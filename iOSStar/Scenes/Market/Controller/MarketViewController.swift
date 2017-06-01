@@ -13,14 +13,20 @@ class MarketViewController: UIViewController {
     var menuView:MarketMenuView?
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        let requestModel = TimeLineRequestModel()
+        AppAPIHelper.marketAPI().requestTimeLine(requestModel: requestModel, complete: { (response) in
+            
+        }) { (error) in
+            
+        }
+        
         setCustomTitle(title: "明星热度")
-        let lineView = navigationController?.navigationBar.subviews.first?.subviews.first
-        lineView?.isHidden = true
+        translucent(clear: true)
         let color = UIColor.white
         navigationController?.navigationBar.setBackgroundImage(color.imageWithColor(), for: .default)
         automaticallyAdjustsScrollViewInsets = false
-
-        menuView = MarketMenuView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight))
+        menuView = MarketMenuView(frame: CGRect(x: 0, y: 64, width: kScreenWidth, height: kScreenHeight))
         menuView?.navigationController = navigationController
         menuView?.items = ["自选","明星"]
         view.addSubview(menuView!)
@@ -44,9 +50,7 @@ class MarketViewController: UIViewController {
                 }
                 self.menuView?.types = models
             }
-            
         }, error: errorBlockFunc())
-        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

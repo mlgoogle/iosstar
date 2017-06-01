@@ -42,13 +42,11 @@ class MenuSubViewCell: UICollectionViewCell {
         tableView.showsVerticalScrollIndicator = false
         tableView.register(SubViewItemCell.self, forCellReuseIdentifier: "SubViewItemCell")
         contentView.addSubview(tableView)
-        
         header = MJRefreshNormalHeader(refreshingBlock: { 
             self.header?.endRefreshing()
         })
         tableView.mj_header = header
-        
-        footer = MJRefreshAutoNormalFooter(refreshingBlock: { 
+        footer = MJRefreshAutoNormalFooter(refreshingBlock: {
             self.footer?.endRefreshing()
             
         })
@@ -63,39 +61,33 @@ class MenuSubViewCell: UICollectionViewCell {
         } else {
             requestCustomData(type: type)
         }
-
     }
     func requestOptional() {
         AppAPIHelper.marketAPI().requestOptionalStarList(startnum: 1, endnum: 10, complete: { (response) in
-            if let models = response as? [MarketListStarModel] {
-                if models.count < 10 {
-                    self.footer?.isHidden = true
-                } else {
-                    self.footer?.isHidden = false
-                }
-                self.reloadWithData(datas: models)
-            }
+            self.reloadWithData(response: response)
         }, error: { (error) in
-            
-            
+            self.reloadWithData(response: nil)
         })
     }
     func requestCustomData(type:Int) {
-        
         AppAPIHelper.marketAPI().requestStarList(type: type, startnum: 1, endnum: 10, complete: { (response) in
-            if let models = response as? [MarketListStarModel] {
-                if models.count < 10 {
-                    self.footer?.isHidden = true
-                } else {
-                    self.footer?.isHidden = false
-                }
-                self.reloadWithData(datas: models)
-            }
+            self.reloadWithData(response: response)
         }) { (error) in
+            self.reloadWithData(response: nil)
         }
     }
-    func reloadWithData(datas:[MarketListStarModel]) {
-        dataSource = datas
+    func reloadWithData(response:AnyObject?) {
+        if let models = response as? [MarketListStarModel] {
+            if models.count < 10 {
+               footer?.isHidden = true
+            } else {
+                footer?.isHidden = false
+            }
+            dataSource = models
+        } else {
+            dataSource?.removeAll()
+            footer?.isHidden = true
+        }
         tableView.reloadData()
     }
 }
