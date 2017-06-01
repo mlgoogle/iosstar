@@ -8,54 +8,90 @@
 
 import UIKit
 
+
 class YD_CountDownHelper: NSObject {
 
     
     static let shared = YD_CountDownHelper()
-    var timer:CADisplayLink?
-    private var isCountDown = false
     private override init() {}
-    var finishBlock: CompleteBlock?
-
+    var timer:CADisplayLink?
+    var isCountDown = false
+    
+    var countDownRefresh:CompleteBlock?
+    
+    var auctionRefresh:CompleteBlock?
+    
+    var marketListRefresh:CompleteBlock?
+    
+    var marketTimeLineRefresh:CompleteBlock?
+    
+    var marketBuyOrSellListRefresh:CompleteBlock?
+    
+    var marketInfoRefresh:CompleteBlock?
+    //行情刷新轮询标记
+    private var marketIdentifier = 0
+    //行情刷新轮询标记最大值
+    private var maxCount = 3
+    
+    
     func countDown() {
-
+        //倒计时
+        if countDownRefresh != nil {
+            countDownRefresh!(nil)
+        }
+        
+        //行情数据 多秒刷新
+        marketIdentifier += 1
+        if marketIdentifier == maxCount {
+            marketRefresh()
+        }
     }
     
+    
+    
+    func marketRefresh() {
+        if auctionRefresh != nil {
+            auctionRefresh!(nil)
+        }
+        if marketListRefresh != nil {
+            marketListRefresh!(nil)
+        }
+        if marketTimeLineRefresh != nil {
+            marketTimeLineRefresh!(nil)
+        }
+        if marketBuyOrSellListRefresh != nil {
+            marketBuyOrSellListRefresh!(nil)
+        }
+        if marketInfoRefresh != nil {
+            marketInfoRefresh!(nil)
+        }
+    }
 
     
     func getResidueCount(closeTime:Int) -> Int {
         let diffTime = 0
         return  closeTime - Int(NSDate().timeIntervalSince1970) - diffTime
     }
+    
     func getTextWithStartTime(closeTime:Int) -> String{
         
         let count = getResidueCount(closeTime: closeTime)
         
         return getTextWithTimeCount(timeCount: count)
     }
+    
     func getTextWithTimeCount(timeCount:Int) -> String {
-        
         let hours = timeCount / 3600
         let minutes = (timeCount % 3600) / 60
         let seconds = timeCount % 60
         return String(format: "%.2d:%.2d:%.2ds", hours, minutes, seconds)
     }
     
-    
     func resetDataSource() {
 
-//        table?.dataArray = DealModel.getAllPositionModel()
-//        table?.reloadData()
-//        if table?.dataArray?.count == 0 {
-//            timer?.invalidate()
-//        }
-        if let finish = finishBlock{
-            finish(nil)
-        }
-
     }
+    
     func reStart() {
-
         resetDataSource()
         if timer != nil {
             start()
@@ -70,19 +106,15 @@ class YD_CountDownHelper: NSObject {
         timer = CADisplayLink(target: self, selector: #selector(countDown))
         timer?.frameInterval = 60
         timer?.add(to: RunLoop.current, forMode: .commonModes)
-        isCountDown = true
     }
     
     func pause() {
-        isCountDown = false
         timer?.invalidate()
     }
     func stop() {
-        isCountDown = false
         if timer != nil {
             timer?.invalidate()
             timer = nil
         }
     }
-    
 }

@@ -43,6 +43,12 @@ class PublisherPageViewController: UIViewController {
     }
     @IBAction func shareAction(_ sender: Any) {
         UMSocialUIManager.showShareMenuViewInWindow { (platform, userInfo) in
+            let shareObject = UMShareWebpageObject()
+            shareObject.title = "星资讯"
+            shareObject.descr = "1111111"
+            shareObject.thumbImage = self.bannerDetailModel?.pic1
+            shareObject.webpageUrl = "www.baidu.com"
+            AppConfigHelper.shared().share(type: platform, shareObject: shareObject, viewControlller: self)
         }
     }
 
@@ -58,8 +64,7 @@ class PublisherPageViewController: UIViewController {
             if let model = response as? BannerDetaiStarModel {
                 self.bannerDetailModel = model
                 self.tableView.reloadData()
-                let string = "\(model.seconds)秒"
-                
+                let string = " \(model.seconds) 秒"
                 self.totalLabel.setAttributeText(text: "总时长\(string)", firstFont: 18, secondFont: 18, firstColor: UIColor(hexString: "999999"), secondColor: UIColor(hexString: "FB9938"), range: NSRange(location: 3, length: string.length()))
             }
         }, error: errorBlockFunc())

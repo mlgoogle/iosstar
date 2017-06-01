@@ -31,25 +31,20 @@ class MarketDetailViewController: UIViewController {
         tableView.register(MarketDetailMenuView.self, forHeaderFooterViewReuseIdentifier: "MarketDetailMenuView")
         requestLineData()
         setupSubView()
-
-
-        
-    
+        YD_CountDownHelper.shared.marketTimeLineRefresh = { [weak self] (result)in
+            self?.requestRealTime()
+        }
     }
     
     func setupSubView() {
         let imageStrings = ["market_buy","market_sell","market_meetfans","market_optional"]
         var images:[UIImage] = []
-        for string in imageStrings {
-            let image = UIImage(named: string)
-            images.append(image!)
-        }
-        handleMenuView.images = images
-        handleMenuView.titles = ["求购", "转让", "粉丝见面会", "自选"]
-        handleMenuView.delegate = self
+
         let types:[String] = ["MarketDetaiBaseInfoViewController", "MarketFansListViewController", "MarketAuctionViewController", "MarketCommentViewController"]
         let storyboard = UIStoryboard(name: "Market", bundle: nil)
         for (index, type) in types.enumerated() {
+            let image = UIImage(named: imageStrings[index])
+            images.append(image!)
             let vc = storyboard.instantiateViewController(withIdentifier: type) as! MarketBaseViewController
             addChildViewController(vc)
             vc.starCode = starCode
@@ -58,6 +53,9 @@ class MarketDetailViewController: UIViewController {
             subViews.append(vc.view)
             vc.scrollViewScrollEnabled(scroll: false)
         }
+        handleMenuView.images = images
+        handleMenuView.titles = ["求购", "转让", "粉丝见面会", "自选"]
+        handleMenuView.delegate = self
         currentVC = childViewControllers.first as? MarketBaseViewController
     }
 

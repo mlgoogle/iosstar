@@ -31,7 +31,7 @@ class MarketViewController: UIViewController {
         menuView?.items = ["自选","明星"]
         view.addSubview(menuView!)
         requestTypeList()
-
+        
     }
     func requestTypeList() {
         AppAPIHelper.marketAPI().requestTypeList(complete: { (response) in
@@ -60,4 +60,18 @@ class MarketViewController: UIViewController {
         
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        
+        YD_CountDownHelper.shared.marketListRefresh = nil
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        YD_CountDownHelper.shared.marketListRefresh = { [weak self] (result)in
+            
+            
+        }
+    }
 }

@@ -11,12 +11,23 @@ import UIKit
 class MarketAuctionViewController: MarketBaseViewController {
 
     
+    var timeLabel:UILabel?
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = tableView
         tableView.register(FansListHeaderView.self, forHeaderFooterViewReuseIdentifier: "FansListHeaderView")
 
+        
+        YD_CountDownHelper.shared.countDownRefresh = { [weak self] (result)in
+     
+
+        }
+        YD_CountDownHelper.shared.marketBuyOrSellListRefresh = { [weak self] (result)in
+            
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,25 +36,21 @@ class MarketAuctionViewController: MarketBaseViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
-extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate {
+extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate, SelectFansDelegate{
+    
+    func selectAtIndex(index: Int) {
+        
+        
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             return nil
         }
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "FansListHeaderView") as! FansListHeaderView
+        headerView.delegate = self
         headerView.settitles(titles: ["买入","卖出"])
         headerView.isShowImage = false
         return headerView
