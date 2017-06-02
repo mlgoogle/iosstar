@@ -8,12 +8,18 @@
 
 import UIKit
 
-class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate{
+class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSystemNotificationManagerDelegate,NIMConversationManagerDelegate{
 
+    var showRed : Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initcustomer()
+        
+    }
+    
+    func onSystemNotificationCountChanged(_ unreadCount: Int) {
+        print(unreadCount)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -22,7 +28,8 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate{
 
     func initcustomer(){
         delegate = self
-
+     
+        
         let storyboardNames = ["News","Market","Exchange","User"]
         let titles = ["首页","行情","分答","个人中心"]
         for (index, name) in storyboardNames.enumerated() {
@@ -35,7 +42,21 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate{
             addChildViewController(controller!)
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccess(_:)), name: Notification.Name(rawValue:AppConst.loginSuccess), object: nil)
+        
 
+    }
+    func didAdd(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
+        
+    }
+    func didUpdate(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
+        
+    }
+    func LoginSuccess(_ LoginSuccess : NSNotification){
+        NIMSDK.shared().systemNotificationManager.add(self)
+        NIMSDK.shared().conversationManager.add(self)
+        print(NIMSDK.shared().conversationManager.allUnreadCount())
+        
     }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
         
