@@ -70,17 +70,19 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
 
     func setStarModel(starModel:MarketListStarModel) {
         
-        currentPriceLabel.text = "\(starModel.price)"
+        let percent = (starModel.change / starModel.currentPrice) * 100
+        
+        currentPriceLabel.text = "\(starModel.currentPrice)"
         var colorString = AppConst.Color.up
-        if starModel.updown < 0 {
-            changeLabel.text = "\(starModel.updown)%"
+        if starModel.change < 0 {
+            changeLabel.text = String(format: "-%.2f%%", percent)
             colorString = AppConst.Color.down
         }else{
-            changeLabel.text = "+\(starModel.updown)%"
+            changeLabel.text = String(format: "+%.2f%%", percent)
         }
         currentPriceLabel.textColor = UIColor(hexString: colorString)
         changeLabel.backgroundColor = UIColor(hexString: colorString)
-        iconImageView.kf.setImage(with: URL(string: starModel.head))
+        iconImageView.kf.setImage(with: URL(string: starModel.pic))
 
     }
     func setData(datas:[LineModel]) {
@@ -88,7 +90,6 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
         var entrys: [ChartDataEntry] = []
         for (index,model) in datas.enumerated() {
             
-            print(model.value)
            var y = 0.0
             if model.value < 10 {
               y =  model.value + 10

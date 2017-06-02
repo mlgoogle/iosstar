@@ -18,6 +18,11 @@ class DealDetailViewController: UIViewController ,DealScrollViewScrollDelegate,M
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+
+        
+        
         setupMenuView()
         automaticallyAdjustsScrollViewInsets = false
         view.addSubview(backView)

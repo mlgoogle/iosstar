@@ -13,14 +13,13 @@ class MarketViewController: UIViewController {
     var menuView:MarketMenuView?
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        let requestModel = TimeLineRequestModel()
-        AppAPIHelper.marketAPI().requestTimeLine(requestModel: requestModel, complete: { (response) in
+        let requetModel = StarListRequestModel()
+        AppAPIHelper.marketAPI().requestStarList(requestModel: requetModel, complete: { (response) in
+            
             
         }) { (error) in
             
         }
-        
         setCustomTitle(title: "明星热度")
         translucent(clear: true)
         let color = UIColor.white
@@ -44,10 +43,6 @@ class MarketViewController: UIViewController {
                     titles.append(model.name)
                 }
                 self.menuView?.items = titles
-                for _ in (self.menuView?.items!)! {
-                    let viewController = MarketSubViewController()
-                    self.menuView?.subViews?.append(viewController.view)
-                }
                 self.menuView?.types = models
             }
         }, error: errorBlockFunc())
@@ -64,11 +59,13 @@ class MarketViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         
+        print("--------marketLsit---------结束----------------")
         YD_CountDownHelper.shared.marketListRefresh = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("--------marketLsit---------开始----------------")        
         YD_CountDownHelper.shared.marketListRefresh = { [weak self] (result)in
             
             

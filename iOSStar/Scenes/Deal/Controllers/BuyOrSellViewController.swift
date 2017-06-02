@@ -16,6 +16,8 @@ class BuyOrSellViewController: UIViewController {
             buyOrSellButton.setTitle("确认求购", for: .normal)
         }
     }
+    
+    
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var orderPriceLabel: UILabel!

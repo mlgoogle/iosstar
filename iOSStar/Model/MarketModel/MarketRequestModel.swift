@@ -28,3 +28,12 @@ class TimeLineRequestModel: MarketBaseModel {
     var symbol = "1011650450024"
     var aType = 5
 }
+
+class StarListRequestModel: MarketBaseModel {
+    
+    var sort = 0
+    var aType:Int32 = 5
+    var start:Int32 = 0
+    var count:Int32 = 10
+    
+}

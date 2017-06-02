@@ -82,6 +82,8 @@ class SocketConst: NSObject {
         case realTime = 4001
         //分时图
         case timeLine = 4003
+        //明星列表
+        case starList = 4007
     }
     enum type:UInt8 {
         case error  = 0
@@ -148,7 +150,5 @@ class SocketConst: NSObject {
         static let token = "token"
         static let realname = "realname"
         static let id_card = "id_card"
-
-        
     }
 }

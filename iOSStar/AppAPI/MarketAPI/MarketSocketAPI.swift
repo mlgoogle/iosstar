@@ -26,15 +26,11 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
     
 
     //单个分类明星列表
-    func requestStarList(type:Int,startnum:Int, endnum:Int,complete: CompleteBlock?, error: ErrorBlock?) {
-        let paramters:[String:Any] = [SocketConst.Key.startnum : startnum,
-                                      SocketConst.Key.endnum : endnum,
-                                      SocketConst.Key.type : type,
-                                      SocketConst.Key.sorttype : 0]
-        let packet = SocketDataPacket(opcode: .marketStar, parameters: paramters)
-        
+    func requestStarList(requestModel:StarListRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
 
-        startModelsRequest(packet, listName: "list", modelClass: MarketListStarModel.self, complete: complete, error: error)
+        let packet = SocketDataPacket(opcode: .starList, model: requestModel)
+
+        startModelsRequest(packet, listName: "symbol_info", modelClass: MarketListStarModel.self, complete: complete, error: error)
     }
     //自选明星
     func requestOptionalStarList(startnum:Int, endnum:Int,complete: CompleteBlock?, error: ErrorBlock?) {

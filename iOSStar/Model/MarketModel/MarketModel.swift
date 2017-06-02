@@ -17,15 +17,15 @@ class MarketClassifyModel: Object {
 
 
 class MarketListStarModel: Object {
-    dynamic var accid = ""
-    dynamic var code = ""
-    // 0 女  1 男
-    dynamic var gender = 1
+    dynamic var wid = ""
+    dynamic var sysTime:Int64 = 0
+    dynamic var symbol = ""
+    dynamic var priceTime:Int64 = 0
+    dynamic var pic = ""
     dynamic var name = ""
-    dynamic var type = 1
-    dynamic var head = ""
-    dynamic var price = 0.0
-    dynamic var updown = 0.0
+    dynamic var currentPrice = 0.0
+    dynamic var change = 0.0
+    
     
     
 }

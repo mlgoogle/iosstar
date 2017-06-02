@@ -31,9 +31,6 @@ class MarketDetailViewController: UIViewController {
         tableView.register(MarketDetailMenuView.self, forHeaderFooterViewReuseIdentifier: "MarketDetailMenuView")
         requestLineData()
         setupSubView()
-        YD_CountDownHelper.shared.marketTimeLineRefresh = { [weak self] (result)in
-            self?.requestRealTime()
-        }
     }
     
     func setupSubView() {
@@ -59,6 +56,20 @@ class MarketDetailViewController: UIViewController {
         currentVC = childViewControllers.first as? MarketBaseViewController
     }
 
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("--------marketTimeLine---------结束----------------")
+        YD_CountDownHelper.shared.marketTimeLineRefresh = nil
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("--------marketTimeLine---------开始----------------")
+
+        YD_CountDownHelper.shared.marketTimeLineRefresh = { [weak self] (result)in
+            self?.requestRealTime()
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

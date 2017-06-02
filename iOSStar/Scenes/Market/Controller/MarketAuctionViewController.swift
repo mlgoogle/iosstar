@@ -30,6 +30,24 @@ class MarketAuctionViewController: MarketBaseViewController {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("--------countDownRefresh---------开始----------------")
+
+        YD_CountDownHelper.shared.countDownRefresh = { [weak self] (result)in
+            
+            
+        }
+        YD_CountDownHelper.shared.marketBuyOrSellListRefresh = { [weak self] (result)in
+            
+            
+        }
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("--------countDownRefresh---------结束----------------")
+
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

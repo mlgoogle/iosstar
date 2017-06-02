@@ -55,11 +55,11 @@ class MenuSubViewCell: UICollectionViewCell {
     }
 
     
-    func requestStarList(type:Int) {
+    func requestStarList(type:Int, sortType:AppConst.SortType) {
         if type == 0 {
             requestOptional()
         } else {
-            requestCustomData(type: type)
+            requestCustomData(type: type, sortType:sortType)
         }
     }
     func requestOptional() {
@@ -69,8 +69,11 @@ class MenuSubViewCell: UICollectionViewCell {
             self.reloadWithData(response: nil)
         })
     }
-    func requestCustomData(type:Int) {
-        AppAPIHelper.marketAPI().requestStarList(type: type, startnum: 1, endnum: 10, complete: { (response) in
+    func requestCustomData(type:Int, sortType:AppConst.SortType) {
+        let requetModel = StarListRequestModel()
+        requetModel.sort = sortType.rawValue
+        AppAPIHelper.marketAPI().requestStarList(requestModel: requetModel, complete: { (response) in
+            
             self.reloadWithData(response: response)
         }) { (error) in
             self.reloadWithData(response: nil)
