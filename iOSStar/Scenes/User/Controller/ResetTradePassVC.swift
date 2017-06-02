@@ -141,13 +141,18 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
             })
             return
         }
-        AppAPIHelper.user().ResetPassWd(timestamp: Int64(timeStamp), vCode: self.codeTf.text!, vToken: self.vToken, pwd: (first_input.text?.md5_string())! , type: 1, complete: { (result) in
+        AppAPIHelper.user().ResetPassWd(timestamp: Int64(timeStamp), vCode: self.codeTf.text!, vToken: self.vToken, pwd: (first_input.text?.md5_string())! , type: 1, phone: self.phoneTf.text!, complete: { (result) in
             if let model = result {
+                
+                // print("-----\(result)")
                 
                 let dic = model as! [String : AnyObject]
                 if dic["status"] as! Int  == 0 {
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "重置成功", ForDuration: 1, completion: {
-                       _ = self.navigationController?.popViewController(animated: true)
+//                    SVProgressHUD.showErrorMessage(ErrorMessage: "重置成功", ForDuration: 1, completion: {
+//                       _ = self.navigationController?.popViewController(animated: true)
+//                    })
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功", ForDuration: 1, completion: {
+                        self.navigationController?.popViewController(animated: true)
                     })
                 }
                 

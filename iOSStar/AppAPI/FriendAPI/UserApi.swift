@@ -23,7 +23,8 @@ protocol UserApi {
      // 资金明细列表
      func creditlist(status: Int32, pos: Int32, count: Int32, complete: CompleteBlock?, error: ErrorBlock?)
     
-     func ResetPassWd(timestamp : Int64,vCode : String,vToken : String,pwd: String,type : Int, complete: CompleteBlock?, error: ErrorBlock?)
+    // 重置交易密码
+    func ResetPassWd(timestamp : Int64,vCode : String,vToken : String,pwd: String,type : Int, phone :String, complete: CompleteBlock?, error: ErrorBlock?)
      // 实名认证
      func authentication(realname: String, id_card: String, complete: CompleteBlock?, error: ErrorBlock?)
     // 获取实名认证信息

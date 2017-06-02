@@ -213,13 +213,13 @@ extension UIViewController {
     
     func getUserInfo(complete: CompleteBlock?){
         
-        if checkLogin() {
-        AppAPIHelper.user().getauserinfo(complete: { (result) in
-            complete?(result as AnyObject)
-        }) { (error) in
-            
+         if UserDefaults.standard.object(forKey: "phone") as? String != nil{
+            AppAPIHelper.user().getauserinfo(complete: { (result) in
+                complete?(result as AnyObject)
+            }) { (error) in
+                
+            }
         }
-      }
     }
  
 }

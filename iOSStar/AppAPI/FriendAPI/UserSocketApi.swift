@@ -72,7 +72,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         startModelRequest(packet, modelClass: RechargeListModel.self, complete: complete, error: error)
     }
     
-    func ResetPassWd(timestamp : Int64,vCode : String,vToken : String,pwd: String,type : Int, complete: CompleteBlock?, error: ErrorBlock?)
+    func ResetPassWd(timestamp : Int64,vCode : String,vToken : String,pwd: String,type : Int, phone :String, complete: CompleteBlock?, error: ErrorBlock?)
      {
         
         let param = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
@@ -80,7 +80,9 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
                      SocketConst.Key.vCode: vCode,
                      SocketConst.Key.type: type,
                      SocketConst.Key.vToken: vToken,
-                     SocketConst.Key.pwd: pwd] as [String : Any]
+                     SocketConst.Key.pwd: pwd,
+                     SocketConst.Key.phone: phone] as [String : Any]
+        
         
         
         let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .restPwd, dict: param  as [String : AnyObject])
@@ -119,6 +121,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         
     }
     func tokenLogin( complete: CompleteBlock?, error: ErrorBlock?){
+        
         let param: [String: Any] = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
                                     SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
         print(param)

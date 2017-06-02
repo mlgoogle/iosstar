@@ -34,6 +34,7 @@ class ContactListCell: OEZTableViewCell {
         nameLabel.text = model.starname
         jobLabel.text = model.faccid
         if statusBtn != nil{
+        // 0 已拒绝 1 约见
          statusBtn.isHidden = model.appoint == 0  ? true : false
         }
        

@@ -110,11 +110,11 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
         
         let vc  = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResultVC")
         
-        let moder = self.reponseData as! RechargeListModel
+        // let moder = self.reponseData as! RechargeListModel
         
-        (vc as! ResultVC).responseData = moder.depositsinfo?[indexPath.row]
+        // (vc as! ResultVC).responseData = moder.depositsinfo?[indexPath.row]
 
-        print(vc)
+        // print(vc)
         
         self.navigationController?.pushViewController(vc, animated: true)
         
