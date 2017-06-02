@@ -47,7 +47,8 @@ class MenuSubViewCell: UICollectionViewCell {
         })
         tableView.mj_header = header
         footer = MJRefreshAutoNormalFooter(refreshingBlock: {
-            self.footer?.endRefreshing()
+
+            
             
         })
         tableView.mj_footer = footer
@@ -72,6 +73,7 @@ class MenuSubViewCell: UICollectionViewCell {
     func requestCustomData(type:Int, sortType:AppConst.SortType) {
         let requetModel = StarListRequestModel()
         requetModel.sort = sortType.rawValue
+
         AppAPIHelper.marketAPI().requestStarList(requestModel: requetModel, complete: { (response) in
             
             self.reloadWithData(response: response)

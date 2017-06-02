@@ -202,6 +202,8 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
             let vc = segue.destination as! NewsDetailViewController
             let indexPath = sender as! IndexPath
             let model = newsData![indexPath.row]
+            let cell = tableView.cellForRow(at: indexPath) as! NewsListCell
+            vc.shareImage = cell.newsImageView?.image
             vc.urlString = model.link_url
             vc.newsModel = model
         } else if segue.identifier == "showPubPage" {

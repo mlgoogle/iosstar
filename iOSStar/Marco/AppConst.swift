@@ -31,6 +31,7 @@ class AppConst {
     static let sha256Key = "t1@s#df!"
     static let pid = 1002
     static let bundleId = "com.newxfin.goods"
+    static let loginSuccess = "loginSuccess"
     
     enum KVOKey: String {
         case selectProduct = "selectProduct"
@@ -65,7 +66,7 @@ class AppConst {
     class Network {
         #if true //是否测试环境
         static let TcpServerIP:String = "139.224.34.22";
-        static let TcpServerPort:UInt16 = 16105
+        static let TcpServerPort:UInt16 = 16005
         static let TttpHostUrl:String = "139.224.34.22";
         #else
         static let TcpServerIP:String = "139.224.34.22";
@@ -151,7 +152,7 @@ class AppConst {
         static let State = "wpstate"
         static let AccessTokenUrl = "https://api.weixin.qq.com/sns/oauth2/access_token"
         static let Appid = "wx9dc39aec13ee3158"
-        static let Secret = "f3f983753c28f85ce2d23bcd1b479115"
+        static let Secret = "a12a88f2c4596b2726dd4ba7623bc27e"
         static let ErrorCode = "ErrorCode"
         static let wechetUserInfo = "https://api.weixin.qq.com/sns/userinfo"
     }

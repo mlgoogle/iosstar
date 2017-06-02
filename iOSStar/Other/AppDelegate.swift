@@ -24,15 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
    
         sdkConfigDelegate = NTESSDKConfigDelegate.init()
 
+        NIMSDKConfig.shared().delegate = sdkConfigDelegate
+        NIMSDKConfig.shared().shouldSyncUnreadCount = true
         AppConfigHelper.shared().setupNIMSDK(sdkConfigDelegate:sdkConfigDelegate)
         AppConfigHelper.shared().setupUMSDK()
+        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
+        NIMCustomObject.registerCustomDecoder(NTESCustomAttachmentDecoder())
         WXApi.registerApp("wx9dc39aec13ee3158")
-        //   NSString *appKey = [[NTESDemoConfig sharedConfig] appKey];
-//        NSString *cerName= [[NTESDemoConfig sharedConfig] cerName];
+      
     
         login()
-//        [[NIMSDK sharedSDK] registerWithAppID:您的APPKEY
-//            cerName:您的推送证书名]
+
+       
+// /       [[NIMSDKConfig sharedConfig] setShouldSyncUnreadCount:YES];
         UIApplication.shared.statusBarStyle = .default
 
         return true
@@ -45,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
         AppAPIHelper.user().tokenLogin(complete: { (result) in
             let datadic = result as? UserModel
             if let _ = datadic {
-                
+           
                 UserModel.share().upateUserInfo(userObject: result!)
                 UserDefaults.standard.synchronize()
                 self.LoginYunxin()
@@ -61,12 +65,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
                 let datadic = result as? Dictionary<String,String>
                 if let _ = datadic {
                    
-                    UserDefaults.standard.synchronize()
+            
                     
-                    NIMSDK.shared().loginManager.login(UserDefaults.standard.object(forKey: "phone") as! String, token:UserDefaults.standard.object(forKey: "phone") as! String, completion: { (error) in
-                        if (error != nil){
+                    NIMSDK.shared().loginManager.login(UserDefaults.standard.object(forKey: "phone") as! String, token: (datadic?["token_value"]!)!, completion: { (error) in
+                        if (error == nil){
                             
+                              NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
                         }
+                
+                        print(error)
                     })
             }
         }) { (error)  in
@@ -144,7 +151,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
                     }
                     if let access_token = resultJson[SocketConst.Key.accessToken] as? String {
                         if let openid = resultJson[SocketConst.Key.openid] as? String{
-                            
                           self?.wechatUserInfo(token: access_token, openid: openid)
                          
 

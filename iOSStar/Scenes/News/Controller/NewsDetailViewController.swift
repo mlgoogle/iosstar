@@ -14,7 +14,7 @@ class NewsDetailViewController: UIViewController {
     
     var newsModel:NewsModel?
     var urlString:String?
-    
+    var shareImage:UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
         setCustomTitle(title: "资讯详情")
@@ -32,8 +32,8 @@ class NewsDetailViewController: UIViewController {
         UMSocialUIManager.showShareMenuViewInWindow { (platform, userInfo) in
             let shareObject = UMShareWebpageObject()
             shareObject.title = "星资讯"
-            shareObject.descr = self.newsModel!.remarks
-            shareObject.thumbImage = self.newsModel!.showpic_url
+            shareObject.descr = self.newsModel!.subject_name
+            shareObject.thumbImage = self.shareImage
             shareObject.webpageUrl = self.newsModel!.link_url
             AppConfigHelper.shared().share(type: platform, shareObject: shareObject, viewControlller: self)
         }

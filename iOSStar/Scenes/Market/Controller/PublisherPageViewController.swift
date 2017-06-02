@@ -44,10 +44,14 @@ class PublisherPageViewController: UIViewController {
     @IBAction func shareAction(_ sender: Any) {
         UMSocialUIManager.showShareMenuViewInWindow { (platform, userInfo) in
             let shareObject = UMShareWebpageObject()
-            shareObject.title = "星资讯"
-            shareObject.descr = "1111111"
-            shareObject.thumbImage = self.bannerDetailModel?.pic1
+            shareObject.title = self.bannerModel!.name
+            shareObject.descr = self.bannerDetailModel?.introduction
+            
+            let cell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) as! BannerDetailImageCell
+            
+            shareObject.thumbImage = cell.iconImageView.image
             shareObject.webpageUrl = "www.baidu.com"
+            
             AppConfigHelper.shared().share(type: platform, shareObject: shareObject, viewControlller: self)
         }
     }

@@ -156,7 +156,6 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     var items:[String]? {
         didSet{
             menuView?.items = items
-            menuView?.selected(index: 1)
             subViewCollectionView?.reloadData()
         }
     }

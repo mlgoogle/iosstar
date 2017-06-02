@@ -75,10 +75,10 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
         currentPriceLabel.text = "\(starModel.currentPrice)"
         var colorString = AppConst.Color.up
         if starModel.change < 0 {
-            changeLabel.text = String(format: "-%.2f%%", percent)
+            changeLabel.text = String(format: "%@/%.2f%%", starModel.currentPrice, percent)
             colorString = AppConst.Color.down
         }else{
-            changeLabel.text = String(format: "+%.2f%%", percent)
+            changeLabel.text = String(format: "%@/+%.2f%%",starModel.currentPrice,percent)
         }
         currentPriceLabel.textColor = UIColor(hexString: colorString)
         changeLabel.backgroundColor = UIColor(hexString: colorString)

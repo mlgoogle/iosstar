@@ -13,13 +13,6 @@ class MarketViewController: UIViewController {
     var menuView:MarketMenuView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        let requetModel = StarListRequestModel()
-        AppAPIHelper.marketAPI().requestStarList(requestModel: requetModel, complete: { (response) in
-            
-            
-        }) { (error) in
-            
-        }
         setCustomTitle(title: "明星热度")
         translucent(clear: true)
         let color = UIColor.white
@@ -29,9 +22,13 @@ class MarketViewController: UIViewController {
         menuView?.navigationController = navigationController
         menuView?.items = ["自选","明星"]
         view.addSubview(menuView!)
-        requestTypeList()
         
+        perform(#selector(setTypes), with: nil, afterDelay: 0.5)
     }
+    func setTypes() {
+        menuView?.types = [MarketClassifyModel]()
+    }
+    
     func requestTypeList() {
         AppAPIHelper.marketAPI().requestTypeList(complete: { (response) in
             if var models = response as? [MarketClassifyModel] {
@@ -52,7 +49,6 @@ class MarketViewController: UIViewController {
     }
 
     func searchAction() {
-        
     }
 
     override func viewWillDisappear(_ animated: Bool) {

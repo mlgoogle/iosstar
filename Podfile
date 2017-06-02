@@ -8,6 +8,7 @@ target 'iOSStar' do
   
  
     # Pods for iosblackcwpard
+    pod 'Alamofire', '~> 4.2.0'
     pod 'SDCycleScrollView','~> 1.64'
     pod 'SVProgressHUD', '~> 2.0.3'
     pod 'Kingfisher', '~> 3.2.2'

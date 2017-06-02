@@ -117,6 +117,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         
     }
     func tokenLogin( complete: CompleteBlock?, error: ErrorBlock?){
+        
         let param: [String: Any] = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
                                     SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
         print(param)
