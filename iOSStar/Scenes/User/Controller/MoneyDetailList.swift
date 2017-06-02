@@ -32,7 +32,7 @@ class MoneyDetailListCell: OEZTableViewCell {
         
     }
         //        BankLogoColor.share().checkLocalBank(string: model.ba)
-      
+    
 
 }
 
@@ -108,16 +108,10 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let vc  = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResultVC")
-        
-        // let moder = self.reponseData as! RechargeListModel
-        
-        // (vc as! ResultVC).responseData = moder.depositsinfo?[indexPath.row]
-
-        // print(vc)
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-        
+        let ResultVC = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResultVC")
+        let moder = self.reponseData as! RechargeListModel
+        (ResultVC as! ResultVC).responseData = moder.depositsinfo?[indexPath.row]
+        self.navigationController?.pushViewController(ResultVC, animated: true)
     }
     
     func selectDate(){

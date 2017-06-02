@@ -70,11 +70,15 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
             
         }
     }
-    func textFieldDidChange(_ textFile : NSNotification){
-//        inputMoney.keyboardType = .decimalPad
+    func textFieldDidChange(_ textFile : NSNotification) {
+        
         if inputMoney.text != "" {
-//            UIKeyboardTypeDecimalPad
-         rechargeMoney = Double.init(inputMoney.text!)!
+            if Double.init(inputMoney.text!)! > 50000 {
+                SVProgressHUD.showError(withStatus: "金额不能大于50000")
+                inputMoney.text = ""
+                return
+            }
+           rechargeMoney = Double.init(inputMoney.text!)!
         }
      
     }

@@ -59,6 +59,8 @@ class RegistVC: UIViewController {
         let rbackViewTap = UITapGestureRecognizer.init(target: self, action: #selector(rbackViewTapClick))
         rbackView.addGestureRecognizer(rbackViewTap)
     }
+    
+    // 拦截中间contentView的点击事件
     func rtapClick(){
        
     }

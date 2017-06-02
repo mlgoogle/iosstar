@@ -16,7 +16,7 @@
                 <navigationController useStoryboardIdentifierAsRestorationIdentifier="YES" id="2vG-Fh-E77" customClass="BaseNavigationController" customModule="iOSStar" sceneMemberID="viewController">
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="j70-IU-m3w">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="j70-IU-m3w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2453,7 +2453,7 @@
                         <sections>
                             <tableViewSection id="WBc-me-Nw0">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="194" id="Gst-oZ-JR5">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultHeaderCell" rowHeight="194" id="Gst-oZ-JR5">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="194"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gst-oZ-JR5" id="01G-hP-yN8">
@@ -2505,7 +2505,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="slB-cD-Q3J">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultPoundageCell" rowHeight="64" id="slB-cD-Q3J">
                                         <rect key="frame" x="0.0" y="194" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="slB-cD-Q3J" id="QkW-dk-gy0">
@@ -2535,7 +2535,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="Sjl-XJ-D11">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultBankCell" rowHeight="64" id="Sjl-XJ-D11">
                                         <rect key="frame" x="0.0" y="258" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sjl-XJ-D11" id="WJb-jN-HYe">
@@ -2565,7 +2565,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="qiW-EE-DpG">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultDateCell" rowHeight="64" id="qiW-EE-DpG">
                                         <rect key="frame" x="0.0" y="322" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qiW-EE-DpG" id="BEU-GR-Rtw">
@@ -2614,11 +2614,12 @@
                         <outlet property="img" destination="0T3-xa-fgA" id="10T-wf-oCf"/>
                         <outlet property="money" destination="D6y-gl-2jN" id="nn0-P3-kdA"/>
                         <outlet property="status" destination="wzL-aa-j5B" id="WdF-iy-Ycq"/>
+                        <outlet property="titleInfo" destination="emC-Y5-cbP" id="cat-8C-1Fp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xLC-CD-Gu5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4052" y="1606"/>
+            <point key="canvasLocation" x="4080" y="1514"/>
         </scene>
         <!--资金明细列表-->
         <scene sceneID="Q77-TA-ldt">
@@ -3099,7 +3100,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QPM-69-vJl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2982" y="2297"/>
+            <point key="canvasLocation" x="2956" y="2333"/>
         </scene>
         <!--免责声明-->
         <scene sceneID="VM7-OY-6H9">
@@ -3152,7 +3153,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uON-6T-A3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4052" y="2295.2023988005999"/>
+            <point key="canvasLocation" x="4031" y="2352"/>
         </scene>
     </scenes>
     <resources>
