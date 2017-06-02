@@ -22,7 +22,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     var selectBtn : Bool = false
     @IBOutlet weak var payTypeImg: UIImageView!
     var  payView : SelectPayType!
-    var rechargeMoney : Double = 0.00
+    var   rechargeMoney : Double = 0.00
     var  bgview : UIView!
     var  paytype  = Int()
     override func viewWillAppear(_ animated: Bool) {
@@ -33,12 +33,12 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(paysuccess(_:)), name: Notification.Name(rawValue:AppConst.WechatPay.WechatKeyErrorCode), object: nil)
         title = "充值"
-        inputMoney.addTarget(self , action: #selector(valueChange(_:)), for: .valueChanged)
         inputMoney.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange(_:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
         loadview()
         
     }
-    //MARK:去充值
+    //MARK:微信充值成功回调充值
     func paysuccess(_ notice: NSNotification) {
         if let errorCode: Int = notice.object as? Int{
             //            var code = Int()
@@ -68,15 +68,34 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
             
         }
     }
-    func valueChange(_ textFile : UITextField){
-        rechargeMoney = Double.init(textFile.text!)!
+    func textFieldDidChange(_ textFile : NSNotification){
+        
+        if inputMoney.text != "" {
+         rechargeMoney = Double.init(inputMoney.text!)!
+        }
+     
     }
+
     //MARK:去充值
     @IBAction func doRecharge(_ sender: Any) {
+        //微信充值
+        if paytype == 0 {
+           weixinpay()
+        }else{
+           alipay()
+        }
+        
+       
+        
+    }
+    func alipay(){
+    
+    }
+    func weixinpay(){
         SVProgressHUD.show(withStatus: "加载中")
         AppAPIHelper.user().weixinpay(title: "余额充值", price: rechargeMoney, complete: { (result) in
             
-           SVProgressHUD.dismiss()
+            SVProgressHUD.dismiss()
             if let object = result {
                 let request : PayReq = PayReq()
                 let str : String = object["timestamp"] as! String!
@@ -91,9 +110,8 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
             }
             
         }) { (error ) in
-             print(error)
+            print(error)
         }
-        
     }
     //MARK:选择充值金额
     @IBAction func chooseRechargeMoney(_ sender: Any) {
@@ -171,5 +189,8 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         
     }
     
-    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
 }

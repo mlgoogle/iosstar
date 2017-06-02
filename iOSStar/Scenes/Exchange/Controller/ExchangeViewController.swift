@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExchangeViewController: UIViewController {
+class ExchangeViewController: UIViewController ,UITabBarControllerDelegate,NIMSystemNotificationManagerDelegate,NIMConversationManagerDelegate{
 
     override func viewDidLoad() {
         
@@ -18,11 +18,11 @@ class ExchangeViewController: UIViewController {
         rightItemClick()
 
         // 测试弹窗
-        // navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "record_selected"), style: .done, target: self, action: #selector(rightItemClick(_ :)))
+        // navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "record_selected"), style: .done, 
         
         
-        // Do any additional setup after loading the view.
     }
+
     
     func rightItemClick()  {
         
