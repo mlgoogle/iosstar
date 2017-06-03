@@ -90,6 +90,7 @@
 		6EFE79E61ECC49810096470D /* MarketCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */; };
 		8D5C28521ED6FB520005B2BE /* OrderStartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5C28511ED6FB520005B2BE /* OrderStartViewCell.swift */; };
 		8DAC7E291EE1419D001AD3EF /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAC7E281EE1419D001AD3EF /* User.storyboard */; };
+		8DAC7E2F1EE26455001AD3EF /* UserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */; };
 		8DD224C11ED820970048D7D3 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DD224C01ED820970048D7D3 /* Market.storyboard */; };
 		8DD224C51ED916460048D7D3 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD224C41ED916460048D7D3 /* AlertViewController.swift */; };
 		8DE79EA31EDE912500F1F24A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE79EA21EDE912500F1F24A /* Foundation.framework */; };
@@ -573,6 +574,7 @@
 		8408122B704986AA5A9C486E /* Pods-iOSStar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.debug.xcconfig"; sourceTree = "<group>"; };
 		8D5C28511ED6FB520005B2BE /* OrderStartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderStartViewCell.swift; sourceTree = "<group>"; };
 		8DAC7E281EE1419D001AD3EF /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequestModel.swift; sourceTree = "<group>"; };
 		8DD224C01ED820970048D7D3 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
 		8DD224C41ED916460048D7D3 /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		8DE79EA21EDE912500F1F24A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1601,6 +1603,7 @@
 			children = (
 				A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */,
 				A0EF3B1C1EB9C5860023093A /* UserModel.swift */,
+				8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */,
 			);
 			path = ShareDataModel;
 			sourceTree = "<group>";
@@ -3600,6 +3603,7 @@
 				A07DF7CE1EC072D200C2254E /* UserSocketApi.swift in Sources */,
 				A03D3F131EA86A6400F85308 /* NIMInputEmoticonTabView.m in Sources */,
 				A03D3EF51EA86A6400F85308 /* NIMKitColorButtonCell.m in Sources */,
+				8DAC7E2F1EE26455001AD3EF /* UserRequestModel.swift in Sources */,
 				A03D3FAC1EA86A6500F85308 /* NTESSessionWhiteBoardContentView.m in Sources */,
 				A03D3FC61EA86A6500F85308 /* NTESVideoChatNetStatusView.m in Sources */,
 				A03D3EF91EA86A6400F85308 /* NIMKit.m in Sources */,

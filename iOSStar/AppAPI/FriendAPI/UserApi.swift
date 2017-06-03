@@ -25,6 +25,10 @@ protocol UserApi {
     
     // 重置交易密码
     func ResetPassWd(timestamp : Int64,vCode : String,vToken : String,pwd: String,type : Int, phone :String, complete: CompleteBlock?, error: ErrorBlock?)
+    
+    // 重置支付密码
+    func ResetPayPwd(requestModel:ResetPayPwdRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
+    
      // 实名认证
      func authentication(realname: String, id_card: String, complete: CompleteBlock?, error: ErrorBlock?)
     // 获取实名认证信息
@@ -33,4 +37,5 @@ protocol UserApi {
      func getauserinfo( complete: CompleteBlock?, error: ErrorBlock?)
     // tokenLogin token登录
      func tokenLogin( complete: CompleteBlock?, error: ErrorBlock?)
+    
 }

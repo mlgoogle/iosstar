@@ -90,6 +90,9 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
     }
     //MARK: 发送验证码
     @IBAction func sendVaildCode(_ sender: Any) {
+        
+        print("点击了发送验证码按钮")
+        
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
             vaildCodeBtn.isEnabled = false
             AppAPIHelper.login().SendCode(phone: phoneTf.text!, complete: { [weak self](result)  in
@@ -141,21 +144,45 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
             })
             return
         }
-        AppAPIHelper.user().ResetPassWd(timestamp: Int64(timeStamp), vCode: self.codeTf.text!, vToken: self.vToken, pwd: (first_input.text?.md5_string())! , type: 1, phone: self.phoneTf.text!, complete: { (result) in
-            if let model = result {
-                
-                // print("-----\(result)")
-                
-                let dic = model as! [String : AnyObject]
-                if dic["status"] as! Int  == 0 {
-//                    SVProgressHUD.showErrorMessage(ErrorMessage: "重置成功", ForDuration: 1, completion: {
-//                       _ = self.navigationController?.popViewController(animated: true)
+//        AppAPIHelper.user().ResetPassWd(timestamp: Int64(timeStamp), vCode: self.codeTf.text!, vToken: self.vToken, pwd: (first_input.text?.md5_string())! , type: 1, phone: self.phoneTf.text!, complete: { (result) in
+//            if let model = result {
+//                
+//                // print("-----\(result)")
+//                
+//                let dic = model as! [String : AnyObject]
+//                if dic["status"] as! Int  == 0 {
+//                    SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功", ForDuration: 1, completion: {
+//                        self.navigationController?.popViewController(animated: true)
 //                    })
-                    SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功", ForDuration: 1, completion: {
-                        self.navigationController?.popViewController(animated: true)
-                    })
-                }
+//                }
+//                
+//            }
+//        }) { (error) in
+//            
+//        }
+        let requestModel = ResetPayPwdRequestModel()
+        requestModel.id = (UserModel.share().getCurrentUser()?.userinfo?.id)!
+        requestModel.timestamp = Int64(timeStamp)
+        requestModel.vCode = self.codeTf.text!
+        requestModel.vToken = self.vToken
+        requestModel.pwd = (first_input.text?.md5_string())!
+        requestModel.phone = self.phoneTf.text!
+        
+        AppAPIHelper.user().ResetPayPwd(requestModel: requestModel, complete: { (result) in
+            
+            if let resultModel = result {
                 
+                print("=====\(resultModel)")
+                
+                let dict = resultModel as! [String : AnyObject]
+                if dict["status"] as! Int == 0 {
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功",
+                                                     ForDuration: 1,
+                                                     completion: {
+                                                self.navigationController?.popViewController(animated: true)
+                                            })
+                                        }
+
             }
         }) { (error) in
             
