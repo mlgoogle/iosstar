@@ -145,6 +145,8 @@ class LoginVC: UIViewController {
         req.scope = AppConst.WechatKey.Scope
         req.state = AppConst.WechatKey.State
         WXApi.send(req)
+        
+        // self.navigationController?.pushViewController(, animated: <#T##Bool#>)
     }
     @IBAction func didMiss(_ sender: Any) {
         didClose()
