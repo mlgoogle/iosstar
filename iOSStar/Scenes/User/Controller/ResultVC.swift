@@ -31,13 +31,12 @@ class ResultVC: UITableViewController {
     //手续费
     @IBOutlet weak var feedBack: UILabel!
     
-    
     var responseData : Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-         print("\(self.responseData as! Model)")
+        // print("\(self.responseData as! Model)")
         
         title = "账单详情"
         
