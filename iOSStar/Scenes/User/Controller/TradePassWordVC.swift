@@ -111,7 +111,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
                 }
             
             }
-            AppAPIHelper.user().ResetPassWd(timestamp: 1, vCode: " ", vToken: " ", pwd: passString.md5_string()  , type: 0, complete: { (result) in
+            AppAPIHelper.user().ResetPassWd(timestamp: 1, vCode: " ", vToken: " ", pwd: passString.md5_string()  , type: 0, phone: " ", complete: { (result) in
               
                 if let model = result {
                 
