@@ -10,18 +10,21 @@ import UIKit
 
 class MarketAuctionViewController: MarketBaseViewController {
 
-    
+    var count = 540
     var timeLabel:UILabel?
-    
+    var headerCell:AuctionHeaderCell?
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = tableView
         tableView.register(FansListHeaderView.self, forHeaderFooterViewReuseIdentifier: "FansListHeaderView")
-
-        
         YD_CountDownHelper.shared.countDownRefresh = { [weak self] (result)in
-     
+            self?.count -= 1
+            if self?.count != 0 {
+                self?.headerCell?.setTimeText(text:YD_CountDownHelper.shared.getTextWithTimeCount(timeCount:(self?.count)!))
+            } else {
+                self?.headerCell?.setTimeText(text: "拍卖未开始")
+            }
 
         }
         YD_CountDownHelper.shared.marketBuyOrSellListRefresh = { [weak self] (result)in
@@ -45,6 +48,8 @@ class MarketAuctionViewController: MarketBaseViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        YD_CountDownHelper.shared.countDownRefresh = nil
+        YD_CountDownHelper.shared.marketBuyOrSellListRefresh = nil
         print("--------countDownRefresh---------结束----------------")
 
     }
@@ -59,8 +64,6 @@ class MarketAuctionViewController: MarketBaseViewController {
 extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate, SelectFansDelegate{
     
     func selectAtIndex(index: Int) {
-        
-        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -107,7 +110,7 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
             
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "AuctionHeaderCell", for: indexPath) as! AuctionHeaderCell
-        
+        self.headerCell = cell
         return cell
     }
 }

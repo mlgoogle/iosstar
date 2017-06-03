@@ -116,6 +116,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="mQY-du-nZy" secondAttribute="trailing" constant="12" id="mdn-on-lzu"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentLabel" destination="c4J-OS-NZv" id="K7y-f5-UON"/>
+                                            <outlet property="iconImageView" destination="LtK-1Z-LOK" id="IY2-JX-cLr"/>
+                                            <outlet property="nicknameLabel" destination="0Xz-Zg-RsA" id="yH4-qN-Jyz"/>
+                                            <outlet property="timeLabel" destination="Hef-a0-Qob" id="Rso-gc-K1k"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -133,7 +139,10 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="dUn-mb-NkQ" id="a5M-3Z-Zxm"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -192,25 +201,13 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="es6-GG-EoH">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="581"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4d-xa-7KV">
-                                                            <rect key="frame" x="97" y="257" width="182" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09:00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4d-xa-7KV">
+                                                            <rect key="frame" x="153" y="257" width="69" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="b8h-CM-daE"/>
                                                             </constraints>
-                                                            <attributedString key="attributedText">
-                                                                <fragment content="剩余交易时间：">
-                                                                    <attributes>
-                                                                        <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <font key="NSFont" size="16" name=".PingFangSC-Regular"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                                <fragment content="09:00:00">
-                                                                    <attributes>
-                                                                        <color key="NSColor" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <font key="NSFont" size="16" name=".AppleSystemUIFont"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                            </attributedString>
+                                                            <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="16"/>
+                                                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a37-Bd-isu">
@@ -549,7 +546,7 @@
                                             <constraint firstItem="1aD-l6-MpY" firstAttribute="centerY" secondItem="sMY-br-Ejh" secondAttribute="centerY" id="fxc-az-Exr"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MarketFansCell" id="l7r-ub-FBS" customClass="MarketFansCell" customModule="iOSStar" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketFansCell" id="l7r-ub-FBS" customClass="MarketFansCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="146" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l7r-ub-FBS" id="4og-1t-h9I">

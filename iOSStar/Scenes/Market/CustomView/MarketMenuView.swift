@@ -247,6 +247,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         subViewCollectionView?.bounces = false
         subViewCollectionView?.showsVerticalScrollIndicator = false
         subViewCollectionView?.showsHorizontalScrollIndicator = false
+        subViewCollectionView?.backgroundColor = UIColor.white
         subViewCollectionView?.register(MenuSubViewCell.self, forCellWithReuseIdentifier: "MenuSubViewCell")
         addSubview(subViewCollectionView!)
     }

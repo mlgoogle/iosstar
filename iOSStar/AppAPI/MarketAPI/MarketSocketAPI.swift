@@ -18,7 +18,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         startModelsRequest(packet, listName: "list", modelClass: MarketClassifyModel.self, complete: complete, error: error)
     }
     //搜索
-   func searchstar(code : String,  complete: CompleteBlock?, error: ErrorBlock?){
+   func searchstar(code:String, complete: CompleteBlock?, error: ErrorBlock?){
         let paramters:[String:Any] = [SocketConst.Key.starCode : code]
         let packet = SocketDataPacket(opcode: .searchStar, parameters: paramters)
         startModelsRequest(packet, listName: "list", modelClass: MarketClassifyModel.self, complete: complete, error: error)
@@ -45,12 +45,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         startModelsRequest(packet, listName: "list", modelClass: MarketListStarModel.self, complete: complete, error: error)
     }
 
-    //分时图
-    func requestLineViewData(starcode:String,complete: CompleteBlock?, error: ErrorBlock?) {
-        let parameters:[String : Any] = [SocketConst.Key.starcode:starcode]
-        let packet = SocketDataPacket(opcode: .lineData, parameters: parameters)
-        startModelsRequest(packet, listName: "stastic", modelClass: LineModel.self, complete: complete, error: error)
-    }
+
     //添加自选明星
     func addOptinal(starcode:String,complete: CompleteBlock?, error: ErrorBlock?) {
         guard UserDefaults.standard.string(forKey: SocketConst.Key.phone) != nil else {
@@ -62,12 +57,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         startResultIntRequest(packet, complete: complete, error: error)
     }
 
-    //获取评论列表
-    func requestCommentList(starcode:String,complete: CompleteBlock?, error: ErrorBlock?) {
-        let parameters:[String : Any] = [SocketConst.Key.starcode : "1001"]
-        let packet = SocketDataPacket(opcode: .commetList, parameters: parameters)
-        startModelsRequest(packet, listName: "list", modelClass: CommentModel.self, complete: complete, error: error)
-    }
+
     //获取明星经历
     func requestStarExperience(code:String,complete: CompleteBlock?, error: ErrorBlock?) {
         let parameters:[String:Any] = [SocketConst.Key.starCode : code]
@@ -85,5 +75,17 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         let packet = SocketDataPacket(opcode: .timeLine, model: requestModel)
         startModelsRequest(packet, listName: "priceinfo", modelClass: TimeLineModel.self, complete: complete, error: error)
     }
+    //发送评论
+    func sendComment(requestModel:SendCommentModel,complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .sendComment, model: requestModel)
+        startRequest(packet, complete: complete, error: error)
+        
+    }
+    //获取评论列表
 
+    func requestCommentList(requestModel:CommentListRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .commentList, model: requestModel)
+        startRequest(packet, complete: complete, error: error)
+
+    }
 }

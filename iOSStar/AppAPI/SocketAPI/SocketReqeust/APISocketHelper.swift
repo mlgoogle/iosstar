@@ -35,7 +35,6 @@ class APISocketHelper:NSObject, GCDAsyncSocketDelegate,SocketHelper {
                 if AppConst.isMock{
                     host = AppConst.Network.TcpServerIP
                     port = AppConst.Network.TcpServerPort
-
                 }else{
                     host = AppConst.Network.TcpServerIP
                     port = AppConst.Network.TcpServerPort

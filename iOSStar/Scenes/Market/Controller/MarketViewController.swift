@@ -13,6 +13,7 @@ class MarketViewController: UIViewController {
     var menuView:MarketMenuView?
     override func viewDidLoad() {
         super.viewDidLoad()
+        YD_CountDownHelper.shared.start()
         setCustomTitle(title: "明星热度")
         translucent(clear: true)
         let color = UIColor.white
@@ -25,6 +26,7 @@ class MarketViewController: UIViewController {
         
         perform(#selector(setTypes), with: nil, afterDelay: 0.5)
     }
+
     func setTypes() {
         menuView?.types = [MarketClassifyModel]()
     }
@@ -61,9 +63,10 @@ class MarketViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("--------marketLsit---------开始----------------")        
+
+        print("--------marketLsit---------开始----------------")
         YD_CountDownHelper.shared.marketListRefresh = { [weak self] (result)in
-            
+            self?.menuView?.requestDataWithIndexPath()
             
         }
     }

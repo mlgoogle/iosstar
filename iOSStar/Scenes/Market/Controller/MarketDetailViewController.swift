@@ -18,9 +18,10 @@ class MarketDetailViewController: UIViewController {
     var menuView:YD_VMenuView?
     var subViews = [UIView]()
     var starModel:MarketListStarModel?
-    
     var starCode:String?
     var starName:String?
+    
+    var realTimeModel:RealTimeModel?
     var currentVC:MarketBaseViewController?
     @IBOutlet weak var handleMenuView: ImageMenuView!
     override func viewDidLoad() {
@@ -67,6 +68,7 @@ class MarketDetailViewController: UIViewController {
         print("--------marketTimeLine---------开始----------------")
 
         YD_CountDownHelper.shared.marketTimeLineRefresh = { [weak self] (result)in
+            self?.requestLineData()
             self?.requestRealTime()
         }
     }
@@ -76,9 +78,14 @@ class MarketDetailViewController: UIViewController {
     
 
     func requestLineData() {
-        AppAPIHelper.marketAPI().requestLineViewData(starcode: starCode!, complete: { (response) in
-            if let models = response as? [LineModel] {
-                LineModel.cacheLineData(datas: models)
+        guard starModel != nil else {
+            return
+        }
+        let requestModel = TimeLineRequestModel()
+        requestModel.symbol = starModel!.wid
+        AppAPIHelper.marketAPI().requestTimeLine(requestModel: requestModel, complete: { (response) in
+            if let models = response as? [TimeLineModel] {
+                TimeLineModel.cacheLineData(datas: models)
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
             }
         }, error: errorBlockFunc())
@@ -88,7 +95,10 @@ class MarketDetailViewController: UIViewController {
         let syModel = SymbolInfo()
         requestModel.symbolInfos.append(syModel)
         AppAPIHelper.marketAPI().requestRealTime(requestModel: requestModel, complete: { (response) in
-            
+            if let model = response as? [RealTimeModel] {
+                self.realTimeModel = model.first
+                self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+            }
         }) { (error) in
             
         }
@@ -176,11 +186,13 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketDetailCell", for: indexPath) as! MarketDetailCell
-        cell.setData(datas: LineModel.getLineData(starCode:starCode!))
+
         if starModel != nil {
+            cell.setData(datas: TimeLineModel.getLineData(starWid:starModel!.wid))
             cell.setStarModel(starModel: starModel!)
-        } else {
-            
+        }
+        if realTimeModel != nil {
+            cell.setRealTimeData(realTimeModel: realTimeModel!)
         }
         return cell
     }
@@ -197,6 +209,7 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
             let scrollEnbled = currentVC?.scrollView?.isScrollEnabled
             currentVC = childViewControllers[index] as? MarketBaseViewController
             currentVC?.scrollViewScrollEnabled(scroll: scrollEnbled!)
+            currentVC?.scrollView?.contentOffset = CGPoint(x: 0, y: 0)
             menuView?.selected(index: index)
         } else if scrollView == tableView {
             if scrollView.contentOffset.y > 400 {

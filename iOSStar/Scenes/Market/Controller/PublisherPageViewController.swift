@@ -47,9 +47,9 @@ class PublisherPageViewController: UIViewController {
             shareObject.title = self.bannerModel!.name
             shareObject.descr = self.bannerDetailModel?.introduction
             
-            let cell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) as! BannerDetailImageCell
+            let cell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? BannerDetailImageCell
             
-            shareObject.thumbImage = cell.iconImageView.image
+            shareObject.thumbImage = cell?.iconImageView.image
             shareObject.webpageUrl = "www.baidu.com"
             
             AppConfigHelper.shared().share(type: platform, shareObject: shareObject, viewControlller: self)
