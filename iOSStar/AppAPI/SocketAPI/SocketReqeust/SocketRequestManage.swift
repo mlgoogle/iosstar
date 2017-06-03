@@ -77,8 +77,9 @@ class SocketRequestManage: NSObject {
         objc_sync_exit(self)
         let response:SocketJsonResponse = SocketJsonResponse(packet:packet)
         let statusCode:Int = response.statusCode;
-        if ( statusCode < 0) {
+        if ( statusCode < 0) && packet.data?.count != 0 {
             socketReqeust?.onError(statusCode)
+            
         } else {
             socketReqeust?.onComplete(response)
         }
@@ -90,7 +91,7 @@ class SocketRequestManage: NSObject {
         for (key,reqeust) in socketRequests {
             if reqeust.isReqeustTimeout() {
                 socketRequests.removeValue(forKey: key)
-                reqeust.onError(-11011)
+//                reqeust.onError(-11011)
                 print(">>>>>>>>>>>>>>>>>>>>>>>>>>\(key)")
                 break
             }

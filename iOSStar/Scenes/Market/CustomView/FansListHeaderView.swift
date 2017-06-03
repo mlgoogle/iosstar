@@ -47,31 +47,44 @@ class FansListHeaderView: UITableViewHeaderFooterView {
     var isShowImage = false {
         didSet {
             imageView.isHidden = !isShowImage
+            
+            if !isShowImage {
+                buyButton.snp.remakeConstraints({ (make) in
+                    make.centerX.equalTo(kScreenWidth / 4)
+                    make.centerY.equalTo(self)
+                })
+                sellButton.snp.remakeConstraints({ (make) in
+                    make.centerX.equalTo(kScreenWidth / 4 * 3)
+                    make.centerY.equalTo(buyButton)
+                })
+            }
         }
     }
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        backgroundColor = UIColor(hexString: "fafafa")
+        contentView.backgroundColor = UIColor(hexString: "fafafa")
         addSubview(buyButton)
         addSubview(sellButton)
         addSubview(backView)
         backView.addSubview(imageView)
         buyButton.snp.makeConstraints { (make) in
-            make.centerX.equalTo(kScreenWidth / 4)
+            make.centerX.equalTo(kScreenWidth / 4 + 5)
             make.centerY.equalTo(self)
         }
         sellButton.snp.makeConstraints { (make) in
-            make.centerX.equalTo(kScreenWidth / 4 * 3)
+            make.centerX.equalTo(kScreenWidth / 4 * 3 + 5)
             make.centerY.equalTo(buyButton)
         }
         backView.snp.makeConstraints { (make) in
             make.centerX.equalTo(kScreenWidth / 4 - 4)
             make.centerY.equalTo(buyButton.snp.centerY)
             make.width.equalTo(80)
-            make.height.equalTo(25)
+            make.height.equalTo(23)
         }
         imageView.snp.makeConstraints { (make) in
             make.centerX.equalTo(backView)
-            make.centerY.equalTo(backView.snp.centerY).offset(-4)
+            make.centerY.equalTo(backView.snp.centerY).offset(-6)
         }
         bringSubview(toFront: buyButton)
         bringSubview(toFront: sellButton)

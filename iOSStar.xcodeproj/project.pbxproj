@@ -13,8 +13,6 @@
 		6E0C6B0B1EC4514400D9C2BC /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0C6B0A1EC4514400D9C2BC /* News.swift */; };
 		6E0C6B0D1EC46A0300D9C2BC /* liuyan.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E0C6B0C1EC46A0300D9C2BC /* liuyan.png */; };
 		6E120F961EB966F4004E1E33 /* AppAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E120F8B1EB966F4004E1E33 /* AppAPIHelper.swift */; };
-		6E120F971EB966F4004E1E33 /* HttpModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E120F8C1EB966F4004E1E33 /* HttpModelHelper.swift */; };
-		6E120F981EB966F4004E1E33 /* HttpRequestManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E120F8D1EB966F4004E1E33 /* HttpRequestManage.swift */; };
 		6E1616551EAEF0CF00D95CB6 /* SDCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E1616541EAEF0CF00D95CB6 /* SDCycleScrollView.framework */; };
 		6E1616591EAF1F4C00D95CB6 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616581EAF1F4C00D95CB6 /* NewsViewController.swift */; };
 		6E16165C1EAF2EF100D95CB6 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16165B1EAF2EF100D95CB6 /* NewsDetailViewController.swift */; };
@@ -364,11 +362,6 @@
 		A03D3FF81EA86A6600F85308 /* NTESPinyinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDA1EA86A6400F85308 /* NTESPinyinConverter.m */; };
 		A03D3FF91EA86A6600F85308 /* NTESSpellingCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */; };
 		A03F96A31ED7FF3800FC78D4 /* RechargeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03F96A21ED7FF3800FC78D4 /* RechargeListModel.swift */; };
-		A03F96A61ED81C6500FC78D4 /* tongxunlu.png in Resources */ = {isa = PBXBuildFile; fileRef = A03F96A41ED81C6500FC78D4 /* tongxunlu.png */; };
-		A03F96AC1ED81F0600FC78D4 /* tongxunlu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A03F96A81ED81F0600FC78D4 /* tongxunlu@2x.png */; };
-		A03F96AD1ED81F0600FC78D4 /* tongxunlu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A03F96A91ED81F0600FC78D4 /* tongxunlu@3x.png */; };
-		A03F96AE1ED81F0600FC78D4 /* fenda@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A03F96AA1ED81F0600FC78D4 /* fenda@2x.png */; };
-		A03F96AF1ED81F0600FC78D4 /* fenda@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A03F96AB1ED81F0600FC78D4 /* fenda@3x.png */; };
 		A04CF0741ED6AC9000B93D28 /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A04CF0731ED6AC9000B93D28 /* calendar@2x.png */; };
 		A04CF0911ED6CB6800B93D28 /* BankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0781ED6CB6800B93D28 /* BankCardVC.swift */; };
 		A04CF0921ED6CB6800B93D28 /* BindingBankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0791ED6CB6800B93D28 /* BindingBankCardVC.swift */; };
@@ -399,7 +392,6 @@
 		A0675F921EDA78FC00147B3B /* StatementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0675F911EDA78FC00147B3B /* StatementVC.swift */; };
 		A07238941EA76AA300E755DB /* nav_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = A07238701EA76AA300E755DB /* nav_clear.png */; };
 		A07238951EA76AA300E755DB /* nav_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07238711EA76AA300E755DB /* nav_clear@2x.png */; };
-		A07238961EA76AA300E755DB /* nav_main@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07238721EA76AA300E755DB /* nav_main@2x.png */; };
 		A07238991EA76AA300E755DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07238771EA76AA300E755DB /* AppDelegate.swift */; };
 		A072389A1EA76AA300E755DB /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07238781EA76AA300E755DB /* BaseTabBarController.swift */; };
 		A072389B1EA76AA300E755DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072387A1EA76AA300E755DB /* ViewController.swift */; };
@@ -431,8 +423,6 @@
 		A084BB591ED5923200DFC868 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A084BB581ED5923200DFC868 /* CoreGraphics.framework */; };
 		A084BB5B1ED5923C00DFC868 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A084BB5A1ED5923C00DFC868 /* UIKit.framework */; };
 		A084BB5D1ED5924600DFC868 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A084BB5C1ED5924600DFC868 /* CoreMotion.framework */; };
-		A084BB601ED5928C00DFC868 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A084BB5E1ED5928C00DFC868 /* libcrypto.a */; };
-		A084BB611ED5928C00DFC868 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A084BB5F1ED5928C00DFC868 /* libssl.a */; };
 		A084BC861ED59CF800DFC868 /* APAuthV2Info.m in Sources */ = {isa = PBXBuildFile; fileRef = A084BC2B1ED59CF800DFC868 /* APAuthV2Info.m */; };
 		A084BC871ED59CF800DFC868 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = A084BC791ED59CF800DFC868 /* Order.m */; };
 		A084BC881ED59CF800DFC868 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = A084BC7C1ED59CF800DFC868 /* base64.m */; };
@@ -457,9 +447,6 @@
 		A0A996C91EBC4D67000048DC /* LoginSocketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A996C71EBC4D67000048DC /* LoginSocketApi.swift */; };
 		A0B6FB861ED952F10060CCDC /* ResetTradePassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6FB851ED952F10060CCDC /* ResetTradePassVC.swift */; };
 		A0BC76401EC47C4E0050F1D6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0BC763F1EC47C4E0050F1D6 /* Settings.bundle */; };
-		A0C9D66B1EAE102300FC438D /* BlizzardReg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D65B1EAE102300FC438D /* BlizzardReg.ttf */; };
-		A0C9D66C1EAE102300FC438D /* d3.icns in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D65C1EAE102300FC438D /* d3.icns */; };
-		A0C9D66D1EAE102300FC438D /* SetupOSX.mpq in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D65D1EAE102300FC438D /* SetupOSX.mpq */; };
 		A0C9D66E1EAE102300FC438D /* NIMKitEmoticon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D65F1EAE102300FC438D /* NIMKitEmoticon.bundle */; };
 		A0C9D66F1EAE102300FC438D /* NIMKitResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D6601EAE102300FC438D /* NIMKitResource.bundle */; };
 		A0C9D6701EAE102300FC438D /* NIMKitSettings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D6611EAE102300FC438D /* NIMKitSettings.bundle */; };
@@ -495,8 +482,6 @@
 		6E0C6B0A1EC4514400D9C2BC /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		6E0C6B0C1EC46A0300D9C2BC /* liuyan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liuyan.png; sourceTree = "<group>"; };
 		6E120F8B1EB966F4004E1E33 /* AppAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAPIHelper.swift; sourceTree = "<group>"; };
-		6E120F8C1EB966F4004E1E33 /* HttpModelHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpModelHelper.swift; sourceTree = "<group>"; };
-		6E120F8D1EB966F4004E1E33 /* HttpRequestManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequestManage.swift; sourceTree = "<group>"; };
 		6E1616541EAEF0CF00D95CB6 /* SDCycleScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDCycleScrollView.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-bmxtycnpdoqrbibukoqgcsvtsgdm/Build/Products/Debug-iphonesimulator/SDCycleScrollView/SDCycleScrollView.framework"; sourceTree = "<group>"; };
 		6E1616581EAF1F4C00D95CB6 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		6E16165B1EAF2EF100D95CB6 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
@@ -1104,11 +1089,6 @@
 		A03D3EDB1EA86A6400F85308 /* NTESSpellingCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESSpellingCenter.h; sourceTree = "<group>"; };
 		A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESSpellingCenter.m; sourceTree = "<group>"; };
 		A03F96A21ED7FF3800FC78D4 /* RechargeListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeListModel.swift; sourceTree = "<group>"; };
-		A03F96A41ED81C6500FC78D4 /* tongxunlu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tongxunlu.png; sourceTree = "<group>"; };
-		A03F96A81ED81F0600FC78D4 /* tongxunlu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tongxunlu@2x.png"; sourceTree = "<group>"; };
-		A03F96A91ED81F0600FC78D4 /* tongxunlu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tongxunlu@3x.png"; sourceTree = "<group>"; };
-		A03F96AA1ED81F0600FC78D4 /* fenda@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fenda@2x.png"; sourceTree = "<group>"; };
-		A03F96AB1ED81F0600FC78D4 /* fenda@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fenda@3x.png"; sourceTree = "<group>"; };
 		A04CF0731ED6AC9000B93D28 /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
 		A04CF0781ED6CB6800B93D28 /* BankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardVC.swift; sourceTree = "<group>"; };
 		A04CF0791ED6CB6800B93D28 /* BindingBankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingBankCardVC.swift; sourceTree = "<group>"; };
@@ -1140,7 +1120,6 @@
 		A072384A1EA768AD00E755DB /* iOSStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07238701EA76AA300E755DB /* nav_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_clear.png; sourceTree = "<group>"; };
 		A07238711EA76AA300E755DB /* nav_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_clear@2x.png"; sourceTree = "<group>"; };
-		A07238721EA76AA300E755DB /* nav_main@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_main@2x.png"; sourceTree = "<group>"; };
 		A07238751EA76AA300E755DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A07238771EA76AA300E755DB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A07238781EA76AA300E755DB /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTabBarController.swift; path = ../../Other/BaseTabBarController.swift; sourceTree = "<group>"; };
@@ -1176,8 +1155,6 @@
 		A084BB581ED5923200DFC868 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A084BB5A1ED5923C00DFC868 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A084BB5C1ED5924600DFC868 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		A084BB5E1ED5928C00DFC868 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
-		A084BB5F1ED5928C00DFC868 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		A084BC2A1ED59CF800DFC868 /* APAuthV2Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAuthV2Info.h; sourceTree = "<group>"; };
 		A084BC2B1ED59CF800DFC868 /* APAuthV2Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAuthV2Info.m; sourceTree = "<group>"; };
 		A084BC2D1ED59CF800DFC868 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
@@ -1278,15 +1255,12 @@
 		A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		A08A9BB41EA99547009E6B2B /* ForgotPwdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPwdVC.swift; sourceTree = "<group>"; };
 		A0A667EA1EC2B67D00612510 /* UIViewController+ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ChatView.swift"; sourceTree = "<group>"; };
-		A0A667EC1EC2B71C00612510 /* YDSSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDSSessionViewController.swift; sourceTree = "<group>"; };
+		A0A667EC1EC2B71C00612510 /* YDSSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YDSSessionViewController.swift; path = ../../../../iOSSTar/Scenes/ChatView/YDSSessionViewController.swift; sourceTree = "<group>"; };
 		A0A667EE1EC31D6800612510 /* errorcode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = errorcode.plist; sourceTree = "<group>"; };
 		A0A996C61EBC4D67000048DC /* LoginApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
 		A0A996C71EBC4D67000048DC /* LoginSocketApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSocketApi.swift; sourceTree = "<group>"; };
 		A0B6FB851ED952F10060CCDC /* ResetTradePassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetTradePassVC.swift; sourceTree = "<group>"; };
 		A0BC763F1EC47C4E0050F1D6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		A0C9D65B1EAE102300FC438D /* BlizzardReg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BlizzardReg.ttf; sourceTree = "<group>"; };
-		A0C9D65C1EAE102300FC438D /* d3.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = d3.icns; sourceTree = "<group>"; };
-		A0C9D65D1EAE102300FC438D /* SetupOSX.mpq */ = {isa = PBXFileReference; lastKnownFileType = file; path = SetupOSX.mpq; sourceTree = "<group>"; };
 		A0C9D65E1EAE102300FC438D /* NIMDev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NIMDev.entitlements; sourceTree = "<group>"; };
 		A0C9D65F1EAE102300FC438D /* NIMKitEmoticon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NIMKitEmoticon.bundle; sourceTree = "<group>"; };
 		A0C9D6601EAE102300FC438D /* NIMKitResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NIMKitResource.bundle; sourceTree = "<group>"; };
@@ -1329,7 +1303,6 @@
 				A084BB571ED5922A00DFC868 /* CoreText.framework in Frameworks */,
 				A084BB551ED5921D00DFC868 /* QuartzCore.framework in Frameworks */,
 				6E1616551EAEF0CF00D95CB6 /* SDCycleScrollView.framework in Frameworks */,
-				A084BB601ED5928C00DFC868 /* libcrypto.a in Frameworks */,
 				A03D31581EA846B900F85308 /* libc++.tbd in Frameworks */,
 				A03D31561EA846AC00F85308 /* VideoToolbox.framework in Frameworks */,
 				A084BC901ED59DA500DFC868 /* libssl.a in Frameworks */,
@@ -1339,7 +1312,6 @@
 				A07238A81EA76B6D00E755DB /* CoreTelephony.framework in Frameworks */,
 				A03D31501EA8466500F85308 /* AVFoundation.framework in Frameworks */,
 				A07238AC1EA76B9A00E755DB /* SystemConfiguration.framework in Frameworks */,
-				A084BB611ED5928C00DFC868 /* libssl.a in Frameworks */,
 				A03D314E1EA8465000F85308 /* MobileCoreServices.framework in Frameworks */,
 				A07238B21EA76D9100E755DB /* libsqlite3.tbd in Frameworks */,
 				A07238AA1EA76B7600E755DB /* libz.tbd in Frameworks */,
@@ -1356,6 +1328,7 @@
 		514D3E8AF1A3675B9BA8BCD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+
 				8DE79EA41EDE913600F1F24A /* CFNetwork.framework */,
 				8DE79EA21EDE912500F1F24A /* Foundation.framework */,
 				A084BB5E1ED5928C00DFC868 /* libcrypto.a */,
@@ -1423,8 +1396,6 @@
 			isa = PBXGroup;
 			children = (
 				6E120F8B1EB966F4004E1E33 /* AppAPIHelper.swift */,
-				6E120F8C1EB966F4004E1E33 /* HttpModelHelper.swift */,
-				6E120F8D1EB966F4004E1E33 /* HttpRequestManage.swift */,
 			);
 			path = HttpRequest;
 			sourceTree = "<group>";
@@ -1456,6 +1427,7 @@
 		6E1616611EB04D0700D95CB6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A0A667EC1EC2B71C00612510 /* YDSSessionViewController.swift */,
 				6E1616621EB04D0700D95CB6 /* ExchangeViewController.swift */,
 				6E1616651EB04D4E00D95CB6 /* ContactListViewController.swift */,
 				A084BB451ED52AD500DFC868 /* SystemMessageVC.swift */,
@@ -1673,7 +1645,6 @@
 				A03D3D9B1EA86A6400F85308 /* Sections */,
 				A03D3EB71EA86A6400F85308 /* Service */,
 				A03D3EBF1EA86A6400F85308 /* Util */,
-				A0A667EC1EC2B71C00612510 /* YDSSessionViewController.swift */,
 			);
 			name = ChatView;
 			path = iOSSTar/Scenes/ChatView;
@@ -3022,13 +2993,8 @@
 			children = (
 				A04CF0731ED6AC9000B93D28 /* calendar@2x.png */,
 				A0189C111ED2EE2D0025B7FD /* bg.png */,
-				A03F96A41ED81C6500FC78D4 /* tongxunlu.png */,
 				6E0C6B0C1EC46A0300D9C2BC /* liuyan.png */,
 				A0155E061EA8ABF20047B95B /* Images.xcassets */,
-				A03F96A81ED81F0600FC78D4 /* tongxunlu@2x.png */,
-				A03F96A91ED81F0600FC78D4 /* tongxunlu@3x.png */,
-				A03F96AA1ED81F0600FC78D4 /* fenda@2x.png */,
-				A03F96AB1ED81F0600FC78D4 /* fenda@3x.png */,
 				A05E5F3B1EB19D100008888A /* wechat@2x.png */,
 				A05E5F3C1EB19D100008888A /* wechat@3x.png */,
 				A07DF7C21EC0132E00C2254E /* Novisible@2x.png */,
@@ -3037,7 +3003,6 @@
 				A07DF7C51EC0132E00C2254E /* visible@3x.png */,
 				A07238701EA76AA300E755DB /* nav_clear.png */,
 				A07238711EA76AA300E755DB /* nav_clear@2x.png */,
-				A07238721EA76AA300E755DB /* nav_main@2x.png */,
 				A05E5F391EB1949F0008888A /* close.png */,
 			);
 			path = image;
@@ -3299,7 +3264,6 @@
 			isa = PBXGroup;
 			children = (
 				A0BC763F1EC47C4E0050F1D6 /* Settings.bundle */,
-				A0C9D65A1EAE102300FC438D /* Files */,
 				A0C9D65E1EAE102300FC438D /* NIMDev.entitlements */,
 				A0C9D65F1EAE102300FC438D /* NIMKitEmoticon.bundle */,
 				A0C9D6601EAE102300FC438D /* NIMKitResource.bundle */,
@@ -3310,16 +3274,6 @@
 			name = "Supporting Files";
 			path = "iOSSTar/Library/Supporting Files";
 			sourceTree = SOURCE_ROOT;
-		};
-		A0C9D65A1EAE102300FC438D /* Files */ = {
-			isa = PBXGroup;
-			children = (
-				A0C9D65B1EAE102300FC438D /* BlizzardReg.ttf */,
-				A0C9D65C1EAE102300FC438D /* d3.icns */,
-				A0C9D65D1EAE102300FC438D /* SetupOSX.mpq */,
-			);
-			path = Files;
-			sourceTree = "<group>";
 		};
 		A0C9D6631EAE102300FC438D /* Sounds */ = {
 			isa = PBXGroup;
@@ -3432,11 +3386,9 @@
 				A085A51F1EB0801300149F14 /* Main.storyboard in Resources */,
 				A04CF0A61ED6CB6800B93D28 /* SelectPayTypeCell.xib in Resources */,
 				A03D3FC31EA86A6500F85308 /* NTESVideoChatViewController.xib in Resources */,
-				A03F96AF1ED81F0600FC78D4 /* fenda@3x.png in Resources */,
 				A03D3FD31EA86A6500F85308 /* NTESNetDetectViewController.xib in Resources */,
 				A04CF0A41ED6CB6800B93D28 /* SelectPayType.xib in Resources */,
 				A0C9D6701EAE102300FC438D /* NIMKitSettings.bundle in Resources */,
-				A0C9D66D1EAE102300FC438D /* SetupOSX.mpq in Resources */,
 				A05E5F3E1EB19D100008888A /* wechat@3x.png in Resources */,
 				A07238B51EA76F4100E755DB /* News.storyboard in Resources */,
 				A03D3F981EA86A6500F85308 /* NTESSystemNotificationViewController.xib in Resources */,
@@ -3445,15 +3397,12 @@
 				A03D3FD91EA86A6500F85308 /* NTESAboutViewController.xib in Resources */,
 				A03D3FE41EA86A6500F85308 /* NTESUserInfoSettingViewController.xib in Resources */,
 				A03D3F9D1EA86A6500F85308 /* NTESRegisterViewController.xib in Resources */,
-				A03F96A61ED81C6500FC78D4 /* tongxunlu.png in Resources */,
-				A03F96AD1ED81F0600FC78D4 /* tongxunlu@3x.png in Resources */,
 				A0C9D6741EAE102300FC438D /* video_chat_tip_onTimer.aac in Resources */,
 				A0C9D6721EAE102300FC438D /* video_chat_tip_HangUp.aac in Resources */,
 				A07DF7C61EC0132F00C2254E /* Novisible@2x.png in Resources */,
 				A03D3F901EA86A6500F85308 /* NTESContactViewController.xib in Resources */,
 				A07DF7C91EC0132F00C2254E /* visible@3x.png in Resources */,
 				A0189C121ED2EE2D0025B7FD /* bg.png in Resources */,
-				A0C9D66B1EAE102300FC438D /* BlizzardReg.ttf in Resources */,
 				A0C9D6761EAE102300FC438D /* video_chat_tip_sender.aac in Resources */,
 				A03D3FB21EA86A6500F85308 /* NTESFileTransSelectViewController.xib in Resources */,
 				A0C9D6711EAE102300FC438D /* message.wav in Resources */,
@@ -3468,7 +3417,6 @@
 				8DAC7E291EE1419D001AD3EF /* User.storyboard in Resources */,
 				A0C9D66E1EAE102300FC438D /* NIMKitEmoticon.bundle in Resources */,
 				A0C9D6751EAE102300FC438D /* video_chat_tip_receiver.aac in Resources */,
-				A0C9D66C1EAE102300FC438D /* d3.icns in Resources */,
 				A0C9D6771EAE102300FC438D /* video_connect_chat_tip_sender.aac in Resources */,
 				A07238941EA76AA300E755DB /* nav_clear.png in Resources */,
 				A072389E1EA76AA300E755DB /* README.txt in Resources */,
@@ -3478,7 +3426,6 @@
 				A03D3F9B1EA86A6500F85308 /* NTESLoginViewController.xib in Resources */,
 				A04CF0741ED6AC9000B93D28 /* calendar@2x.png in Resources */,
 				A07DF7C71EC0132F00C2254E /* Novisible@3x.png in Resources */,
-				A03F96AC1ED81F0600FC78D4 /* tongxunlu@2x.png in Resources */,
 				A03D3FC81EA86A6500F85308 /* NTESMutiClientsCell.xib in Resources */,
 				A03D3F961EA86A6500F85308 /* NTESSystemNotificationCell.xib in Resources */,
 				A03D3F741EA86A6500F85308 /* NTESTeamListViewController.xib in Resources */,
@@ -3487,6 +3434,7 @@
 				A03D3FDB1EA86A6500F85308 /* NTESSettingViewController.xib in Resources */,
 				A03D3FB01EA86A6500F85308 /* NTESFilePreViewController.xib in Resources */,
 				A07238951EA76AA300E755DB /* nav_clear@2x.png in Resources */,
+				A07238B91EA76F5600E755DB /* User.storyboard in Resources */,
 				A07238961EA76AA300E755DB /* nav_main@2x.png in Resources */,
 				A0F4FA231ECD871500D13302 /* City.plist in Resources */,
 				A0BC76401EC47C4E0050F1D6 /* Settings.bundle in Resources */,
@@ -3495,7 +3443,6 @@
 				A03D3F6E1EA86A6500F85308 /* NTESJionTeamViewController.xib in Resources */,
 				A03D3FAE1EA86A6500F85308 /* NTESAudio2TextViewController.xib in Resources */,
 				A05E5F3D1EB19D100008888A /* wechat@2x.png in Resources */,
-				A03F96AE1ED81F0600FC78D4 /* fenda@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3892,7 +3839,6 @@
 				6EBF590A1EC6EAAF003F67B4 /* MarketAPI.swift in Sources */,
 				6E1B571F1ED410C900A014AE /* DealSingleRowCell.swift in Sources */,
 				A0B6FB861ED952F10060CCDC /* ResetTradePassVC.swift in Sources */,
-				6E120F971EB966F4004E1E33 /* HttpModelHelper.swift in Sources */,
 				A03D3F2A1EA86A6400F85308 /* NIMMessageCellFactory.m in Sources */,
 				A03D3F8F1EA86A6500F85308 /* NTESContactViewController.m in Sources */,
 				A03D3F141EA86A6400F85308 /* NIMInputMoreContainerView.m in Sources */,
@@ -3947,7 +3893,6 @@
 				A03D3F971EA86A6500F85308 /* NTESSystemNotificationViewController.m in Sources */,
 				A03D3F781EA86A6500F85308 /* NTESChatroomMaker.m in Sources */,
 				A03D3FB31EA86A6500F85308 /* NTESGalleryViewController.m in Sources */,
-				6E120F981EB966F4004E1E33 /* HttpRequestManage.swift in Sources */,
 				A04CF0951ED6CB6800B93D28 /* CustomerServiceVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,14 +13,7 @@ class MarketViewController: UIViewController {
     var menuView:MarketMenuView?
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        let requestModel = TimeLineRequestModel()
-        AppAPIHelper.marketAPI().requestTimeLine(requestModel: requestModel, complete: { (response) in
-            
-        }) { (error) in
-            
-        }
-        
+        YD_CountDownHelper.shared.start()
         setCustomTitle(title: "明星热度")
         translucent(clear: true)
         let color = UIColor.white
@@ -30,9 +23,14 @@ class MarketViewController: UIViewController {
         menuView?.navigationController = navigationController
         menuView?.items = ["自选","明星"]
         view.addSubview(menuView!)
-        requestTypeList()
-
+        
+        perform(#selector(setTypes), with: nil, afterDelay: 0.5)
     }
+
+    func setTypes() {
+        menuView?.types = [MarketClassifyModel]()
+    }
+    
     func requestTypeList() {
         AppAPIHelper.marketAPI().requestTypeList(complete: { (response) in
             if var models = response as? [MarketClassifyModel] {
@@ -44,10 +42,6 @@ class MarketViewController: UIViewController {
                     titles.append(model.name)
                 }
                 self.menuView?.items = titles
-                for _ in (self.menuView?.items!)! {
-                    let viewController = MarketSubViewController()
-                    self.menuView?.subViews?.append(viewController.view)
-                }
                 self.menuView?.types = models
             }
         }, error: errorBlockFunc())
@@ -57,7 +51,23 @@ class MarketViewController: UIViewController {
     }
 
     func searchAction() {
-        
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        
+        print("--------marketLsit---------结束----------------")
+        YD_CountDownHelper.shared.marketListRefresh = nil
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        print("--------marketLsit---------开始----------------")
+        YD_CountDownHelper.shared.marketListRefresh = { [weak self] (result)in
+            self?.menuView?.requestDataWithIndexPath()
+            
+        }
+    }
 }

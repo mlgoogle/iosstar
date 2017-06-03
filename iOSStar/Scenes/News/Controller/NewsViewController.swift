@@ -136,9 +136,9 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         }, error: errorBlockFunc())
     }
 
-    
+
     func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
-        
+
         performSegue(withIdentifier: "showPubPage", sender: index)
     }
 
@@ -202,7 +202,8 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
             let vc = segue.destination as! NewsDetailViewController
             let indexPath = sender as! IndexPath
             let model = newsData![indexPath.row]
-            vc.urlString = model.link_url
+            let cell = tableView.cellForRow(at: indexPath) as! NewsListCell
+            vc.shareImage = cell.newsImageView?.image
             vc.newsModel = model
         } else if segue.identifier == "showPubPage" {
             let index = sender as! Int

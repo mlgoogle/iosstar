@@ -18,9 +18,10 @@ class MarketDetailViewController: UIViewController {
     var menuView:YD_VMenuView?
     var subViews = [UIView]()
     var starModel:MarketListStarModel?
-    
     var starCode:String?
     var starName:String?
+    
+    var realTimeModel:RealTimeModel?
     var currentVC:MarketBaseViewController?
     @IBOutlet weak var handleMenuView: ImageMenuView!
     override func viewDidLoad() {
@@ -31,25 +32,17 @@ class MarketDetailViewController: UIViewController {
         tableView.register(MarketDetailMenuView.self, forHeaderFooterViewReuseIdentifier: "MarketDetailMenuView")
         requestLineData()
         setupSubView()
-
-
-        
-    
     }
     
     func setupSubView() {
         let imageStrings = ["market_buy","market_sell","market_meetfans","market_optional"]
         var images:[UIImage] = []
-        for string in imageStrings {
-            let image = UIImage(named: string)
-            images.append(image!)
-        }
-        handleMenuView.images = images
-        handleMenuView.titles = ["求购", "转让", "粉丝见面会", "自选"]
-        handleMenuView.delegate = self
+
         let types:[String] = ["MarketDetaiBaseInfoViewController", "MarketFansListViewController", "MarketAuctionViewController", "MarketCommentViewController"]
         let storyboard = UIStoryboard(name: "Market", bundle: nil)
         for (index, type) in types.enumerated() {
+            let image = UIImage(named: imageStrings[index])
+            images.append(image!)
             let vc = storyboard.instantiateViewController(withIdentifier: type) as! MarketBaseViewController
             addChildViewController(vc)
             vc.starCode = starCode
@@ -58,18 +51,41 @@ class MarketDetailViewController: UIViewController {
             subViews.append(vc.view)
             vc.scrollViewScrollEnabled(scroll: false)
         }
+        handleMenuView.images = images
+        handleMenuView.titles = ["求购", "转让", "粉丝见面会", "自选"]
+        handleMenuView.delegate = self
         currentVC = childViewControllers.first as? MarketBaseViewController
     }
 
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("--------marketTimeLine---------结束----------------")
+        YD_CountDownHelper.shared.marketTimeLineRefresh = nil
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("--------marketTimeLine---------开始----------------")
+
+        YD_CountDownHelper.shared.marketTimeLineRefresh = { [weak self] (result)in
+            self?.requestLineData()
+            self?.requestRealTime()
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
 
     func requestLineData() {
-        AppAPIHelper.marketAPI().requestLineViewData(starcode: starCode!, complete: { (response) in
-            if let models = response as? [LineModel] {
-                LineModel.cacheLineData(datas: models)
+        guard starModel != nil else {
+            return
+        }
+        let requestModel = TimeLineRequestModel()
+        requestModel.symbol = starModel!.wid
+        AppAPIHelper.marketAPI().requestTimeLine(requestModel: requestModel, complete: { (response) in
+            if let models = response as? [TimeLineModel] {
+                TimeLineModel.cacheLineData(datas: models)
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
             }
         }, error: errorBlockFunc())
@@ -79,7 +95,10 @@ class MarketDetailViewController: UIViewController {
         let syModel = SymbolInfo()
         requestModel.symbolInfos.append(syModel)
         AppAPIHelper.marketAPI().requestRealTime(requestModel: requestModel, complete: { (response) in
-            
+            if let model = response as? [RealTimeModel] {
+                self.realTimeModel = model.first
+                self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+            }
         }) { (error) in
             
         }
@@ -167,11 +186,13 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketDetailCell", for: indexPath) as! MarketDetailCell
-        cell.setData(datas: LineModel.getLineData(starCode:starCode!))
+
         if starModel != nil {
+            cell.setData(datas: TimeLineModel.getLineData(starWid:starModel!.wid))
             cell.setStarModel(starModel: starModel!)
-        } else {
-            
+        }
+        if realTimeModel != nil {
+            cell.setRealTimeData(realTimeModel: realTimeModel!)
         }
         return cell
     }
@@ -188,6 +209,7 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
             let scrollEnbled = currentVC?.scrollView?.isScrollEnabled
             currentVC = childViewControllers[index] as? MarketBaseViewController
             currentVC?.scrollViewScrollEnabled(scroll: scrollEnbled!)
+            currentVC?.scrollView?.contentOffset = CGPoint(x: 0, y: 0)
             menuView?.selected(index: index)
         } else if scrollView == tableView {
             if scrollView.contentOffset.y > 400 {

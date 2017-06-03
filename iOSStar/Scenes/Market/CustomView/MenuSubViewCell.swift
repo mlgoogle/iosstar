@@ -16,10 +16,13 @@ class MenuSubViewCell: UICollectionViewCell {
     var footer:MJRefreshAutoNormalFooter?
     lazy var tableView:UITableView = {
 
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - 90 - 64), style: .grouped)
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - 90 - 64 - 44), style: .grouped)
 
         return tableView
     }()
+    
+    var sortType = AppConst.SortType.down.rawValue
+    var isLoadMore = true
     var dataSource:[MarketListStarModel]?
     var delegate:SubViewItemSelectDelegate?
     
@@ -43,23 +46,19 @@ class MenuSubViewCell: UICollectionViewCell {
         tableView.register(SubViewItemCell.self, forCellReuseIdentifier: "SubViewItemCell")
         contentView.addSubview(tableView)
         header = MJRefreshNormalHeader(refreshingBlock: { 
-            self.header?.endRefreshing()
+            self.requestCustomData(type: 0, sortType: AppConst.SortType(rawValue: self.sortType)!)
+            YD_CountDownHelper.shared.marketIdentifier = 0
         })
         tableView.mj_header = header
-        footer = MJRefreshAutoNormalFooter(refreshingBlock: {
-            self.footer?.endRefreshing()
-            
-        })
-        tableView.mj_footer = footer
-    
+
     }
 
     
-    func requestStarList(type:Int) {
+    func requestStarList(type:Int, sortType:AppConst.SortType) {
         if type == 0 {
             requestOptional()
         } else {
-            requestCustomData(type: type)
+            requestCustomData(type: type, sortType:sortType)
         }
     }
     func requestOptional() {
@@ -69,26 +68,28 @@ class MenuSubViewCell: UICollectionViewCell {
             self.reloadWithData(response: nil)
         })
     }
-    func requestCustomData(type:Int) {
-        AppAPIHelper.marketAPI().requestStarList(type: type, startnum: 1, endnum: 10, complete: { (response) in
+    func requestCustomData(type:Int, sortType:AppConst.SortType) {
+        let requetModel = StarListRequestModel()
+        requetModel.sort = sortType.rawValue
+
+        AppAPIHelper.marketAPI().requestStarList(requestModel: requetModel, complete: { (response) in
             self.reloadWithData(response: response)
         }) { (error) in
             self.reloadWithData(response: nil)
         }
     }
     func reloadWithData(response:AnyObject?) {
+        if header?.state == .refreshing {
+            header?.endRefreshing()
+        }
+
         if let models = response as? [MarketListStarModel] {
-            if models.count < 10 {
-               footer?.isHidden = true
-            } else {
-                footer?.isHidden = false
-            }
             dataSource = models
         } else {
             dataSource?.removeAll()
-            footer?.isHidden = true
         }
         tableView.reloadData()
+
     }
 }
 

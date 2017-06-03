@@ -125,7 +125,6 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
         if isScreenWidth {
             let margin = selfLayout!.sectionInset.left + selfLayout!.sectionInset.right + frame.origin.x
             let size = CGSize(width: (kScreenWidth - margin - selfLayout!.minimumInteritemSpacing * (CGFloat(items!.count) - 1) ) / CGFloat(items!.count), height: 15)
-            print(size)
             return size
         } else {
             let title = items?[indexPath.row]
@@ -157,7 +156,6 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     var items:[String]? {
         didSet{
             menuView?.items = items
-            menuView?.selected(index: 1)
             subViewCollectionView?.reloadData()
         }
     }
@@ -203,6 +201,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     
     lazy var changeImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "market_price"))
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -211,6 +210,8 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         view.backgroundColor = UIColor(hexString: AppConst.Color.main)
         return view
     }()
+    
+    var sortType = AppConst.SortType.down
     var menuView:YD_VMenuView?
     var subViewCollectionView:UICollectionView?
     var navigationController:UINavigationController?
@@ -246,6 +247,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         subViewCollectionView?.bounces = false
         subViewCollectionView?.showsVerticalScrollIndicator = false
         subViewCollectionView?.showsHorizontalScrollIndicator = false
+        subViewCollectionView?.backgroundColor = UIColor.white
         subViewCollectionView?.register(MenuSubViewCell.self, forCellWithReuseIdentifier: "MenuSubViewCell")
         addSubview(subViewCollectionView!)
     }
@@ -280,6 +282,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
             make.right.equalTo(priceImageView.snp.left).offset(-20)
             make.centerY.equalTo(priceImageView)
         }
+        
         allLabel.snp.makeConstraints { (make) in
             make.left.equalTo(18)
             make.width.equalTo(30)
@@ -287,15 +290,24 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
             make.centerY.equalTo(infoView)
         }
 
+        priceChangeButton.addTarget(self, action: #selector(modfySortType), for: .touchUpInside)
+        let tapGes = UITapGestureRecognizer(target: self, action: #selector(modfySortType))
+        changeImageView.addGestureRecognizer(tapGes)
+        
+        
+    }
+    func modfySortType() {
+        if sortType.rawValue == 0 {
+            sortType = AppConst.SortType.up
+        } else {
+            sortType = AppConst.SortType.down
+        }
+        requestDataWithIndexPath()
+        
     }
     func requestDataWithIndexPath() {
-
-        guard types != nil else {
-            return
-        }
         let cell = subViewCollectionView?.cellForItem(at: selectIndexPath) as? MenuSubViewCell
-        let model = types![selectIndexPath.item]
-        cell?.requestStarList(type: model.type)
+        cell?.requestStarList(type: 1, sortType:sortType)
     }
 
     func menuViewDidSelect(indexPath: IndexPath) {
@@ -316,7 +328,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         let storyBoard = UIStoryboard(name: "Market", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail") as! MarketDetailViewController
         vc.starModel = starModel
-        vc.starCode = starModel.code
+        vc.starCode = starModel.symbol
         vc.starName = starModel.name
         navigationController?.pushViewController(vc, animated: true)
     }

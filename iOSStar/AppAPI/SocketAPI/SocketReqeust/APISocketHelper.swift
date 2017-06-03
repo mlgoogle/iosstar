@@ -23,8 +23,6 @@ class APISocketHelper:NSObject, GCDAsyncSocketDelegate,SocketHelper {
         dispatch_queue = DispatchQueue(label: "APISocket_Queue", attributes: DispatchQueue.Attributes.concurrent)
         socket = GCDAsyncSocket.init(delegate: self, delegateQueue: dispatch_queue);
         
-        // print("当前处于-------------\(Thread.current)")
-        
         connect()
     }
 
@@ -37,7 +35,6 @@ class APISocketHelper:NSObject, GCDAsyncSocketDelegate,SocketHelper {
                 if AppConst.isMock{
                     host = AppConst.Network.TcpServerIP
                     port = AppConst.Network.TcpServerPort
-
                 }else{
                     host = AppConst.Network.TcpServerIP
                     port = AppConst.Network.TcpServerPort
