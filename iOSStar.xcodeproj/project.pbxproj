@@ -87,8 +87,12 @@
 		6EFE79E41ECC49710096470D /* MarketAuctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E31ECC49710096470D /* MarketAuctionViewController.swift */; };
 		6EFE79E61ECC49810096470D /* MarketCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */; };
 		8D5C28521ED6FB520005B2BE /* OrderStartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5C28511ED6FB520005B2BE /* OrderStartViewCell.swift */; };
+		8DAC7E291EE1419D001AD3EF /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAC7E281EE1419D001AD3EF /* User.storyboard */; };
+		8DAC7E2F1EE26455001AD3EF /* UserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */; };
 		8DD224C11ED820970048D7D3 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DD224C01ED820970048D7D3 /* Market.storyboard */; };
 		8DD224C51ED916460048D7D3 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD224C41ED916460048D7D3 /* AlertViewController.swift */; };
+		8DE79EA31EDE912500F1F24A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE79EA21EDE912500F1F24A /* Foundation.framework */; };
+		8DE79EA51EDE913600F1F24A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE79EA41EDE913600F1F24A /* CFNetwork.framework */; };
 		A001A9721EAD9F8D00752F1A /* ShareDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */; };
 		A0155E071EA8ABF20047B95B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0155E061EA8ABF20047B95B /* Images.xcassets */; };
 		A0155E0B1EA8C8850047B95B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0155E0A1EA8C8850047B95B /* Login.storyboard */; };
@@ -403,7 +407,6 @@
 		A07238B21EA76D9100E755DB /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A07238B11EA76D9100E755DB /* libsqlite3.tbd */; };
 		A07238B51EA76F4100E755DB /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B41EA76F4100E755DB /* News.storyboard */; };
 		A07238B71EA76F4D00E755DB /* Deal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B61EA76F4D00E755DB /* Deal.storyboard */; };
-		A07238B91EA76F5600E755DB /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B81EA76F5600E755DB /* User.storyboard */; };
 		A07DF7C61EC0132F00C2254E /* Novisible@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07DF7C21EC0132E00C2254E /* Novisible@2x.png */; };
 		A07DF7C71EC0132F00C2254E /* Novisible@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07DF7C31EC0132E00C2254E /* Novisible@3x.png */; };
 		A07DF7C81EC0132F00C2254E /* visible@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07DF7C41EC0132E00C2254E /* visible@2x.png */; };
@@ -555,8 +558,12 @@
 		6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketCommentViewController.swift; sourceTree = "<group>"; };
 		8408122B704986AA5A9C486E /* Pods-iOSStar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.debug.xcconfig"; sourceTree = "<group>"; };
 		8D5C28511ED6FB520005B2BE /* OrderStartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderStartViewCell.swift; sourceTree = "<group>"; };
+		8DAC7E281EE1419D001AD3EF /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequestModel.swift; sourceTree = "<group>"; };
 		8DD224C01ED820970048D7D3 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
 		8DD224C41ED916460048D7D3 /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		8DE79EA21EDE912500F1F24A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8DE79EA41EDE913600F1F24A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareDataModel.swift; sourceTree = "<group>"; };
 		A0155E061EA8ABF20047B95B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -1132,7 +1139,6 @@
 		A07238B11EA76D9100E755DB /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		A07238B41EA76F4100E755DB /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		A07238B61EA76F4D00E755DB /* Deal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Deal.storyboard; sourceTree = "<group>"; };
-		A07238B81EA76F5600E755DB /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		A07DF7C21EC0132E00C2254E /* Novisible@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Novisible@2x.png"; sourceTree = "<group>"; };
 		A07DF7C31EC0132E00C2254E /* Novisible@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Novisible@3x.png"; sourceTree = "<group>"; };
 		A07DF7C41EC0132E00C2254E /* visible@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visible@2x.png"; sourceTree = "<group>"; };
@@ -1288,6 +1294,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DE79EA51EDE913600F1F24A /* CFNetwork.framework in Frameworks */,
+				8DE79EA31EDE912500F1F24A /* Foundation.framework in Frameworks */,
 				A084BB5D1ED5924600DFC868 /* CoreMotion.framework in Frameworks */,
 				A084BB5B1ED5923C00DFC868 /* UIKit.framework in Frameworks */,
 				A084BC8F1ED59DA500DFC868 /* libcrypto.a in Frameworks */,
@@ -1320,6 +1328,11 @@
 		514D3E8AF1A3675B9BA8BCD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+
+				8DE79EA41EDE913600F1F24A /* CFNetwork.framework */,
+				8DE79EA21EDE912500F1F24A /* Foundation.framework */,
+				A084BB5E1ED5928C00DFC868 /* libcrypto.a */,
+				A084BB5F1ED5928C00DFC868 /* libssl.a */,
 				A084BB5C1ED5924600DFC868 /* CoreMotion.framework */,
 				A084BB5A1ED5923C00DFC868 /* UIKit.framework */,
 				A084BB581ED5923200DFC868 /* CoreGraphics.framework */,
@@ -1562,6 +1575,7 @@
 			children = (
 				A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */,
 				A0EF3B1C1EB9C5860023093A /* UserModel.swift */,
+				8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */,
 			);
 			path = ShareDataModel;
 			sourceTree = "<group>";
@@ -3102,7 +3116,7 @@
 			children = (
 				A07238B41EA76F4100E755DB /* News.storyboard */,
 				A07238B61EA76F4D00E755DB /* Deal.storyboard */,
-				A07238B81EA76F5600E755DB /* User.storyboard */,
+				8DAC7E281EE1419D001AD3EF /* User.storyboard */,
 				6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */,
 				8DD224C01ED820970048D7D3 /* Market.storyboard */,
 				A0155E0A1EA8C8850047B95B /* Login.storyboard */,
@@ -3400,6 +3414,7 @@
 				8DD224C11ED820970048D7D3 /* Market.storyboard in Resources */,
 				6E0C6B0D1EC46A0300D9C2BC /* liuyan.png in Resources */,
 				A07DF7C81EC0132F00C2254E /* visible@2x.png in Resources */,
+				8DAC7E291EE1419D001AD3EF /* User.storyboard in Resources */,
 				A0C9D66E1EAE102300FC438D /* NIMKitEmoticon.bundle in Resources */,
 				A0C9D6751EAE102300FC438D /* video_chat_tip_receiver.aac in Resources */,
 				A0C9D6771EAE102300FC438D /* video_connect_chat_tip_sender.aac in Resources */,
@@ -3420,6 +3435,7 @@
 				A03D3FB01EA86A6500F85308 /* NTESFilePreViewController.xib in Resources */,
 				A07238951EA76AA300E755DB /* nav_clear@2x.png in Resources */,
 				A07238B91EA76F5600E755DB /* User.storyboard in Resources */,
+				A07238961EA76AA300E755DB /* nav_main@2x.png in Resources */,
 				A0F4FA231ECD871500D13302 /* City.plist in Resources */,
 				A0BC76401EC47C4E0050F1D6 /* Settings.bundle in Resources */,
 				A0155E0B1EA8C8850047B95B /* Login.storyboard in Resources */,
@@ -3534,6 +3550,7 @@
 				A07DF7CE1EC072D200C2254E /* UserSocketApi.swift in Sources */,
 				A03D3F131EA86A6400F85308 /* NIMInputEmoticonTabView.m in Sources */,
 				A03D3EF51EA86A6400F85308 /* NIMKitColorButtonCell.m in Sources */,
+				8DAC7E2F1EE26455001AD3EF /* UserRequestModel.swift in Sources */,
 				A03D3FAC1EA86A6500F85308 /* NTESSessionWhiteBoardContentView.m in Sources */,
 				A03D3FC61EA86A6500F85308 /* NTESVideoChatNetStatusView.m in Sources */,
 				A03D3EF91EA86A6400F85308 /* NIMKit.m in Sources */,
@@ -4020,6 +4037,8 @@
 					"\"${PODS_ROOT}/Headers/Public/NIMSDK\"",
 					"\"$(SRCROOT)/iOSSTar/Resource/alipay\"",
 					"\"$(SRCROOT)/Pods/AliPay/AlipaySDK.framework\"",
+					"\"$(SRCROOT)/Util\"",
+					"\"$(SRCROOT)/openssl\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iOSStar/Resource/plist/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -4067,6 +4086,8 @@
 					"\"${PODS_ROOT}/Headers/Public/NIMSDK\"",
 					"\"$(SRCROOT)/iOSSTar/Resource/alipay\"",
 					"\"$(SRCROOT)/Pods/AliPay/AlipaySDK.framework\"",
+					"\"$(SRCROOT)/Util\"",
+					"\"$(SRCROOT)/openssl\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iOSStar/Resource/plist/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

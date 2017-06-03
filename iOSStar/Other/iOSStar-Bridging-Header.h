@@ -29,3 +29,6 @@ struct SocketPacketHead {
     UInt32 request_id ;
 };
 #import "NTESCustomAttachmentDecoder.h"
+#import <AlipaySDK/AlipaySDK.h> 
+#import "RSADataSigner.h"
+#import "Order.h"

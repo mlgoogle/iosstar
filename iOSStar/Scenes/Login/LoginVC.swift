@@ -11,6 +11,8 @@ import SVProgressHUD
 
 class LoginVC: UIViewController {
 
+    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var contentView: UIView!
     //定义block来判断选择哪个试图
      var resultBlock: CompleteBlock?
     //左边距
@@ -26,15 +28,23 @@ class LoginVC: UIViewController {
     @IBOutlet weak var passPwd: UITextField!
     // 登录密码
     @IBOutlet weak var phone: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initNav()
         initUI()
+        
     }
     func initUI(){
         
         let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
-        view.addGestureRecognizer(tap)
+//        view.addGestureRecognizer(tap)
+        contentView.addGestureRecognizer(tap)
+        
+        let backViewTap = UITapGestureRecognizer.init(target: self, action: #selector(backViewTapClick))
+        backView.addGestureRecognizer(backViewTap)
+        
+        // contentView.removeGestureRecognizer(tap)
         self.automaticallyAdjustsScrollViewInsets = false
         height.constant = 100 + UIScreen.main.bounds.size.height
         width.constant = UIScreen.main.bounds.size.width
@@ -43,17 +53,25 @@ class LoginVC: UIViewController {
         print(self.top.constant)
         self.left.constant = UIScreen.main.bounds.size.width/320.0 * 30
         self.right.constant = UIScreen.main.bounds.size.width/320.0 * 30
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     func tapClick(){
-        let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
-        let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
-        tabar.selectedIndex = 0
-        self.dismissController()
+        
+        print("此处是conntentView手势点击位置")
+        // let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
+        // let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
+        // tabar.selectedIndex = 0
+        // self.dismissController()
     }
+    func backViewTapClick() {
+        
+        didClose()
+    }
+    
     func initNav(){
         let btn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 20, height: 20))
         btn.setBackgroundImage(UIImage.init(named: "close"), for: .normal)
@@ -134,7 +152,12 @@ class LoginVC: UIViewController {
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
        
-           view.endEditing(true)
-        
+         view.endEditing(true)
     }
+    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        
+//        self.view.removeFromSuperview()
+//        didClose()
+//    }
 }

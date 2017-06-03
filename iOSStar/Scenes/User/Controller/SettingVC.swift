@@ -23,12 +23,14 @@ class SettingVC: BaseTableViewController {
         self.tableView.tableFooterView = view
        
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 5 {
             
-            userLogout()
-            _ = self.navigationController?.popToRootViewController(animated: true)
+            logout()
+            
+            // userLogout()
+            // _ = self.navigationController?.popToRootViewController(animated: true)
         }
         if indexPath.row == 3 {
             let story = UIStoryboard.init(name: "Login", bundle: nil)
@@ -48,8 +50,28 @@ class SettingVC: BaseTableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-  
-
+    
+    // MARK: - 注销账号
+    func logout() {
+        
+        let alertController = UIAlertController(title: "提示", message: "你确定要退出吗？", preferredStyle:.alert)
+        // 设置2个UIAlertAction
+        let cancelAction = UIAlertAction(title: "取消", style:.cancel, handler: nil)
+        let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
+            // 退出
+            self.userLogout()
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        
+        // 添加
+        alertController.addAction(cancelAction)
+        alertController.addAction(completeAction)
+        
+        // 弹出
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

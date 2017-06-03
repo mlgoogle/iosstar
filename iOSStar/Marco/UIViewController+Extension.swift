@@ -209,6 +209,8 @@ extension UIViewController {
             
         }
     }
+    
+    
     func getUserInfo(complete: CompleteBlock?){
         
          if UserDefaults.standard.object(forKey: "phone") as? String != nil{
@@ -218,8 +220,7 @@ extension UIViewController {
                 
             }
         }
-       
     }
-    
+ 
 }
 

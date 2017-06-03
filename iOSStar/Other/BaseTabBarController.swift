@@ -48,11 +48,19 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
     }
     func didAdd(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
         
+        print("--------什么时候调用这个方法呢?")
+        
     }
     func didUpdate(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
         
+        
+        print("=====什么时候调用这个方法呢? \(totalUnreadCount)")
+        
     }
     func LoginSuccess(_ LoginSuccess : NSNotification){
+        
+        
+        
         NIMSDK.shared().systemNotificationManager.add(self)
         NIMSDK.shared().conversationManager.add(self)
         print(NIMSDK.shared().conversationManager.allUnreadCount())
@@ -68,7 +76,4 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
            
         }
     }
-
-    
-
 }

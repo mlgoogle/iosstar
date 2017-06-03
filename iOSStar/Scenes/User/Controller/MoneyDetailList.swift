@@ -11,8 +11,6 @@ import SVProgressHUD
 class MoneyDetailListCell: OEZTableViewCell {
     
 
-    
-    
     @IBOutlet weak var weekLb: UILabel!            // 姓名LbstatusLb
     @IBOutlet weak var timeLb: UILabel!            // 时间Lb
     @IBOutlet weak var moneyCountLb: UILabel!      // 充值金额Lb
@@ -20,7 +18,9 @@ class MoneyDetailListCell: OEZTableViewCell {
     @IBOutlet weak var minuteLb: UILabel!          // 分秒
     @IBOutlet weak var bankLogo: UIImageView!      // 银行卡图片
     @IBOutlet weak var withDrawto: UILabel!        // 提现至
+    
     override func update(_ data: Any!) {
+        
         let model = data as! Model
         self.moneyCountLb.text = "+" + " "  + String.init(format: "%.2f", model.amount)
         let timestr : Int = Date.stringToTimeStamp(stringTime: model.depositTime)
@@ -32,7 +32,7 @@ class MoneyDetailListCell: OEZTableViewCell {
         
     }
         //        BankLogoColor.share().checkLocalBank(string: model.ba)
-      
+    
 
 }
 
@@ -40,6 +40,10 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
     
     var contentoffset = CGFloat()
     var navLeft : UIButton?
+    
+    // 存储模型数据传入下一个界面
+    var reponseData : Any!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -63,6 +67,10 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
 
         
         AppAPIHelper.user().creditlist(status: 0, pos: Int32((pageIndex - 1) * 10), count: 10, complete: { (result) in
+            
+//            print(result)
+            self.reponseData = result
+            
             if let object = result {
               let model : RechargeListModel = object as! RechargeListModel
               self.didRequestComplete(model.depositsinfo as AnyObject)
@@ -91,15 +99,19 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
             }
         }
     }
+    
     deinit {
         ShareDataModel.share().removeObserver(self, forKeyPath: "selectMonth", context: nil)
     }
+    
     // MARK: - Table view data source
     
-    //
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc  = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResultVC")
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        let ResultVC = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResultVC")
+        let moder = self.reponseData as! RechargeListModel
+        (ResultVC as! ResultVC).responseData = moder.depositsinfo?[indexPath.row]
+        self.navigationController?.pushViewController(ResultVC, animated: true)
     }
     
     func selectDate(){
