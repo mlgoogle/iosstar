@@ -91,12 +91,12 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
     //MARK: 发送验证码
     @IBAction func sendVaildCode(_ sender: Any) {
         
-        print("点击了发送验证码按钮")
-        
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
             vaildCodeBtn.isEnabled = false
+            SVProgressHUD.showProgressMessage(ProgressMessage: "")
             AppAPIHelper.login().SendCode(phone: phoneTf.text!, complete: { [weak self](result)  in
-                
+                SVProgressHUD.dismiss()
+                self?.vaildCodeBtn.isEnabled = true
                 if let response = result  {
                     
                     if response["result"] as! Int == 1 {
@@ -108,6 +108,7 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
                     }
                 }
                 }, error: { (error)  in
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "短信发送失败,请稍后再试", ForDuration: 2, completion: nil)
                     self.vaildCodeBtn.isEnabled = true
             })
             
@@ -172,8 +173,8 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
             
             if let resultModel = result {
                 
-                print("=====\(resultModel)")
-                
+                // print("=====\(resultModel)")
+
                 let dict = resultModel as! [String : AnyObject]
                 if dict["status"] as! Int == 0 {
                     SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功",

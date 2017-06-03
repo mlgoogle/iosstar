@@ -18,11 +18,25 @@ class SettingVC: BaseTableViewController {
         super.viewDidLoad()
   
         title = "设置"
+        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
+        self.tableView.backgroundColor = UIColor.colorFromRGB(0xFAFAFA)
         let view = UIView.init()
-        view.backgroundColor = UIColor.clear
+        view.backgroundColor = UIColor.colorFromRGB(0xFAFAFA)
         self.tableView.tableFooterView = view
        
     }
+    
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        
+//        if section == 0 {
+//            
+//            return 21.0
+//        } else {
+//            return 0.01
+//        }
+//        
+//    }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 5 {

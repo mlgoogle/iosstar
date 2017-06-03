@@ -86,8 +86,10 @@ class RegistVC: UIViewController {
         
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
             vaildCodeBtn.isEnabled = false
+            SVProgressHUD.showProgressMessage(ProgressMessage: "")
             AppAPIHelper.login().SendCode(phone: phoneTf.text!, complete: { [weak self](result)  in
-                
+                SVProgressHUD.dismiss()
+                self?.vaildCodeBtn.isEnabled = true
                 if let response = result  {
                     
                     if response["result"] as! Int == 1 {
@@ -99,9 +101,10 @@ class RegistVC: UIViewController {
                         
                     }
                 }
-                //                print(result)
      
                 }, error: { (error)  in
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "短信发送失败,请稍后再试", ForDuration: 2, completion: nil)
+                    print("----\(error.description)")
                     self.vaildCodeBtn.isEnabled = true
             })
         }
