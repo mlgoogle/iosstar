@@ -102,7 +102,6 @@ class LoginVC: UIViewController {
                 SVProgressHUD.showSuccessMessage(SuccessMessage:"登录成功", ForDuration: 0.5, completion: {
                     btn.isUserInteractionEnabled = true
                     if let _ = datadic {
-                        
                         UserModel.share().upateUserInfo(userObject: result!)
                         UserDefaults.standard.set(self?.phone.text, forKey: "phone")
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
@@ -120,7 +119,6 @@ class LoginVC: UIViewController {
     
     //MARK:- 网易云登录
     func LoginYunxin(){
-        
         AppAPIHelper.login().registWYIM(phone: self.phone.text!, token: self
             .phone.text!, complete: { (result) in
                 let datadic = result as? Dictionary<String,String>
@@ -128,7 +126,6 @@ class LoginVC: UIViewController {
                     UserDefaults.standard.set(self.phone.text, forKey: "phone")
                     UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
                     UserDefaults.standard.synchronize()
-                   
                     NIMSDK.shared().loginManager.login(self.phone.text!, token: self.phone.text!, completion: { (error) in
                         if (error != nil){
                             self.dismissController()

@@ -25,6 +25,7 @@ class SubViewItemCell: UITableViewCell {
     lazy var priceLabel:UILabel = {
         let label = UILabel()
         label.textColor = UIColor(hexString: "cb4232")
+        label.textAlignment = NSTextAlignment.right
         label.text = "11111"
         label.font = UIFont.systemFont(ofSize: 16)
         return label
@@ -33,6 +34,7 @@ class SubViewItemCell: UITableViewCell {
         let label = UILabel()
         label.backgroundColor = UIColor(hexString: "CB4232")
         label.text = "0.22%"
+        
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16)
@@ -91,7 +93,6 @@ class SubViewItemCell: UITableViewCell {
             make.centerY.equalTo(iconImageView.snp.centerY)
         }
         priceLabel.snp.makeConstraints { (make) in
-            make.width.equalTo(43)
             make.height.equalTo(12)
             make.centerY.equalTo(changeLabel.snp.centerY)
             make.right.equalTo(changeLabel.snp.left).offset(-34)
@@ -102,16 +103,17 @@ class SubViewItemCell: UITableViewCell {
     }
     
     func setupData(model:MarketListStarModel) {
-        iconImageView.kf.setImage(with: URL(string: model.head), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        let percent = (model.change / model.currentPrice) * 100
+        iconImageView.kf.setImage(with: URL(string: model.pic), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         nameLabel.text = model.name
-        codeLabel.text = model.code
-        priceLabel.text = "\(model.price)"
+        codeLabel.text = model.symbol
+        priceLabel.text = String(format: "%.2f", model.currentPrice)
         var colorString = AppConst.Color.up
-        if model.updown < 0 {
-            changeLabel.text = "\(model.updown)%"
+        if model.change < 0 {
+            changeLabel.text = String(format: "%.2f%%", percent)
             colorString = AppConst.Color.down
         } else {
-            changeLabel.text = "+\(model.updown)%"
+            changeLabel.text = String(format: "+%.2f%%", percent)
         }
         priceLabel.textColor = UIColor(hexString: colorString)
         changeLabel.backgroundColor = UIColor(hexString: colorString)

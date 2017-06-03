@@ -38,8 +38,16 @@ class AuctionHeaderCell: UITableViewCell {
         buyProgressView.setCornoerRadius(byRoundingCorners: [.bottomLeft, .topLeft], cornerRadii: CGSize(width: 8.0, height: 8.0))
         backView.layer.cornerRadius = 3
     }
+    func setTimeText(text:String) {
+        
+        if text == "拍卖未开始" {
+            timeLabel.text = text
+        } else {
+            timeLabel.setAttributeText(text: "剩余拍卖时间: \(text)", firstFont: 16, secondFont: 16, firstColor: UIColor(hexString: "333333"), secondColor: UIColor(hexString: "FB9938"), range: NSRange(location: 8, length: text.length()))
+        }
+        
+    }
     
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

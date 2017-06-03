@@ -109,7 +109,7 @@ FOUNDATION_EXPORT const unsigned char NIMKitVersionString[];
 /**
  *  群成员变更通知接口
  *
- *  @param teamId 群id
+ *  @param teamIds 群id
  */
 - (void)notifyTeamMemebersChanged:(NSArray *)teamIds;
 

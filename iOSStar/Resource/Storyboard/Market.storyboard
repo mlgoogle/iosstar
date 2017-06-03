@@ -116,6 +116,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="mQY-du-nZy" secondAttribute="trailing" constant="12" id="mdn-on-lzu"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentLabel" destination="c4J-OS-NZv" id="K7y-f5-UON"/>
+                                            <outlet property="iconImageView" destination="LtK-1Z-LOK" id="IY2-JX-cLr"/>
+                                            <outlet property="nicknameLabel" destination="0Xz-Zg-RsA" id="yH4-qN-Jyz"/>
+                                            <outlet property="timeLabel" destination="Hef-a0-Qob" id="Rso-gc-K1k"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -133,7 +139,10 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="dUn-mb-NkQ" id="a5M-3Z-Zxm"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -192,25 +201,13 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="es6-GG-EoH">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="581"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4d-xa-7KV">
-                                                            <rect key="frame" x="97" y="257" width="182" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09:00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4d-xa-7KV">
+                                                            <rect key="frame" x="153" y="257" width="69" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="b8h-CM-daE"/>
                                                             </constraints>
-                                                            <attributedString key="attributedText">
-                                                                <fragment content="剩余交易时间：">
-                                                                    <attributes>
-                                                                        <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <font key="NSFont" size="16" name=".PingFangSC-Regular"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                                <fragment content="09:00:00">
-                                                                    <attributes>
-                                                                        <color key="NSColor" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <font key="NSFont" size="16" name=".AppleSystemUIFont"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                            </attributedString>
+                                                            <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="16"/>
+                                                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a37-Bd-isu">
@@ -549,7 +546,7 @@
                                             <constraint firstItem="1aD-l6-MpY" firstAttribute="centerY" secondItem="sMY-br-Ejh" secondAttribute="centerY" id="fxc-az-Exr"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MarketFansCell" id="l7r-ub-FBS" customClass="MarketFansCell" customModule="iOSStar" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketFansCell" id="l7r-ub-FBS" customClass="MarketFansCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="146" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l7r-ub-FBS" id="4og-1t-h9I">
@@ -733,13 +730,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出生日期：" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLQ-Ft-zUT">
-                                                            <rect key="frame" x="13" y="107" width="61.5" height="12"/>
+                                                            <rect key="frame" x="13" y="107" width="62" height="12"/>
                                                             <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="12"/>
                                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="毕业院校：" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iw1-z0-rWb">
-                                                            <rect key="frame" x="13" y="129" width="61.5" height="12"/>
+                                                            <rect key="frame" x="13" y="129" width="62" height="12"/>
                                                             <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="12"/>
                                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -769,13 +766,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1980年11月8日" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKI-9b-JvM">
-                                                            <rect key="frame" x="82.5" y="106" width="96" height="14"/>
+                                                            <rect key="frame" x="83" y="106" width="96" height="14"/>
                                                             <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="14"/>
                                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="湖南师范大学" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zg7-cr-zVU">
-                                                            <rect key="frame" x="82.5" y="128" width="86" height="14"/>
+                                                            <rect key="frame" x="83" y="128" width="86" height="14"/>
                                                             <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="14"/>
                                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -838,7 +835,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017年，主演" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvi-ZZ-OM8">
-                                                    <rect key="frame" x="13" y="10" width="88.5" height="17"/>
+                                                    <rect key="frame" x="13" y="10" width="89" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1529,7 +1526,7 @@
             <objects>
                 <navigationController storyboardIdentifier="Market" automaticallyAdjustsScrollViewInsets="NO" id="D4Y-gF-oKV" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Jpd-CQ-nrk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Jpd-CQ-nrk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">

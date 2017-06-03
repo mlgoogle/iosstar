@@ -86,6 +86,7 @@ class AppConst {
         static let ErrorDomain = "com.newxfin.goods"
         static let PhoneFormat = "^1[3|4|5|7|8][0-9]\\d{8}$"
         static let RegisterPhoneError = "输入的手机号已注册"
+        static let numberReg = "^(?!0(\\d|\\.0+$|$))\\d+(\\.\\d{1,2})?$"
     }
     
     
@@ -131,15 +132,19 @@ class AppConst {
         case sell = 1
     }
     
+    enum SortType:Int {
+        case down = 0
+        case up = 1
+    }
     enum DealDetailType:UInt16 {
         //当日成交
         case todayComplete = 0
         //当日委托
         case todayEntrust = 1
-        //历史交易
-        case allDeal = 2
         //历史委托
-        case allEntrust = 3
+        case allEntrust = 2
+        //历史交易
+        case allDeal = 3
     }
     
     class WechatKey {
@@ -147,7 +152,7 @@ class AppConst {
         static let State = "wpstate"
         static let AccessTokenUrl = "https://api.weixin.qq.com/sns/oauth2/access_token"
         static let Appid = "wx9dc39aec13ee3158"
-        static let Secret = "f3f983753c28f85ce2d23bcd1b479115"
+        static let Secret = "a12a88f2c4596b2726dd4ba7623bc27e"
         static let ErrorCode = "ErrorCode"
         static let wechetUserInfo = "https://api.weixin.qq.com/sns/userinfo"
     }

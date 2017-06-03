@@ -7,14 +7,18 @@
 //
 
 import UIKit
-
-class MarketCommentViewController: MarketBaseViewController {
+import MJRefresh
+class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate{
     @IBOutlet weak var inputViewHeight: NSLayoutConstraint!
     @IBOutlet weak var bottomMargin: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     var currentY:CGFloat = 0
-    
+    var dataSource:[CommentModel]?
+    var totalCount = 0
     var isDetail = true
+    var isRefresh = true
+    var header:MJRefreshNormalHeader?
+    var footer:MJRefreshAutoNormalFooter?
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = tableView
@@ -30,8 +34,22 @@ class MarketCommentViewController: MarketBaseViewController {
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
+        requestCommentList()
+        setupRefresh()
     }
     
+    func setupRefresh() {
+        header = MJRefreshNormalHeader(refreshingBlock: {
+            self.isRefresh = true
+            self.requestCommentList()
+        })
+        footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+            self.isRefresh = false
+            self.requestCommentList()
+        })
+        tableView.mj_header = header
+        tableView.mj_footer = footer
+    }
     func registerNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -48,20 +66,67 @@ class MarketCommentViewController: MarketBaseViewController {
             self.view.frame = CGRect(x: self.view.frame.origin.x, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         }
     }
-
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
+    
     func requestCommentList() {
+
         guard starCode != nil else {
             return
         }
-        AppAPIHelper.marketAPI().requestCommentList(starcode: starCode!, complete: { (resonse) in
-            
-            
+        let requestModel = CommentListRequestModel()
+        requestModel.symbol = starCode!
+        if !isRefresh {
+            requestModel.startPos = dataSource?.count ?? 0
+        }
+        AppAPIHelper.marketAPI().requestCommentList(requestModel: requestModel, complete: { (response) in
+
+            if let dict = response as? [String : Any] {
+                let array:[Any]? = dict["commentsinfo"] as? [Any]
+                if let totalCount = dict["total_count"] as? Int {
+                    self.totalCount = totalCount
+                }
+                if array != nil  {
+                    let responseObject = try! OEZJsonModelAdapter.models(of: CommentModel.self, fromJSONArray: array) as AnyObject?
+                    let models = responseObject as! [CommentModel]
+                    if self.isRefresh {
+                        self.dataSource = models
+                    } else {
+                        self.dataSource?.append(contentsOf: models)
+                    }
+                    if models.count < 10 {
+                        self.footer?.isHidden = true
+                    }
+                    self.tableView.reloadData()
+                }
+            }
         }, error: errorBlockFunc())
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    
+        textField.endEditing(true)
+        if textField.text != nil {
+            sendComment(commentText: textField.text!)
+        }
+        textField.text = ""
+
+        return true
+    }
+    
+    func sendComment(commentText:String) {
+        guard starCode != nil else {
+            return
+        }
+        let requestModel = SendCommentModel()
+        requestModel.comments = commentText
+        requestModel.symbol = starCode!
+        AppAPIHelper.marketAPI().sendComment(requestModel: requestModel, complete: { (response) in
+        }, error: errorBlockFunc())
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -71,8 +136,13 @@ class MarketCommentViewController: MarketBaseViewController {
 extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: MarketDetailCommentHeaderView.className())
+        
+        if dataSource?.count ?? 0  == 0 {
+            return nil
+        }
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: MarketDetailCommentHeaderView.className())  as? MarketDetailCommentHeaderView
         header?.contentView.backgroundColor = UIColor(hexString: "FAFAFA")
+        header?.setCount(count: totalCount)
         return header
     }
     
@@ -83,11 +153,11 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
         return 40
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return dataSource?.count ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MarketCommentCell", for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MarketCommentCell", for: indexPath) as! MarketCommentCell
+        cell.setData(model: dataSource![indexPath.row])
         return cell 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -95,6 +165,7 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
         let vc = MarketCommentViewController.storyboardInit(identifier:MarketCommentViewController.className(), storyboardName:AppConst.StoryBoardName.Markt.rawValue) as? MarketCommentViewController
         vc?.isDetail = false
         vc?.isSubView = false
+        vc?.starCode = starCode
         guard vc != nil else {
             return
         }

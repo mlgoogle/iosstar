@@ -10,40 +10,68 @@ import UIKit
 
 class MarketAuctionViewController: MarketBaseViewController {
 
-    
+    var count = 540
+    var timeLabel:UILabel?
+    var headerCell:AuctionHeaderCell?
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = tableView
         tableView.register(FansListHeaderView.self, forHeaderFooterViewReuseIdentifier: "FansListHeaderView")
+        YD_CountDownHelper.shared.countDownRefresh = { [weak self] (result)in
+            self?.count -= 1
+            if self?.count != 0 {
+                self?.headerCell?.setTimeText(text:YD_CountDownHelper.shared.getTextWithTimeCount(timeCount:(self?.count)!))
+            } else {
+                self?.headerCell?.setTimeText(text: "拍卖未开始")
+            }
 
+        }
+        YD_CountDownHelper.shared.marketBuyOrSellListRefresh = { [weak self] (result)in
+            
+            
+        }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("--------countDownRefresh---------开始----------------")
+
+        YD_CountDownHelper.shared.countDownRefresh = { [weak self] (result)in
+            
+            
+        }
+        YD_CountDownHelper.shared.marketBuyOrSellListRefresh = { [weak self] (result)in
+            
+            
+        }
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        YD_CountDownHelper.shared.countDownRefresh = nil
+        YD_CountDownHelper.shared.marketBuyOrSellListRefresh = nil
+        print("--------countDownRefresh---------结束----------------")
+
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
-extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate {
+extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate, SelectFansDelegate{
+    
+    func selectAtIndex(index: Int) {
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             return nil
         }
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "FansListHeaderView") as! FansListHeaderView
+        headerView.delegate = self
         headerView.settitles(titles: ["买入","卖出"])
         headerView.isShowImage = false
         return headerView
@@ -82,7 +110,7 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
             
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "AuctionHeaderCell", for: indexPath) as! AuctionHeaderCell
-        
+        self.headerCell = cell
         return cell
     }
 }

@@ -78,11 +78,7 @@ class NewsNavigationView: UIView {
         setTime()
     }
     func setTitle(title:String) {
-        
-
-        
         dateLabel.text = title.substring(to:title.index(title.startIndex, offsetBy: 10))
-        
     }
     
     func setTime() {

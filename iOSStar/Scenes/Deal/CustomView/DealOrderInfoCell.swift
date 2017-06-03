@@ -21,12 +21,55 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
     @IBOutlet weak var priceTextField: UITextField!
  
     @IBOutlet weak var coutTextField: UITextField!
+    
+    
+    lazy var predicate:NSPredicate = {
+       let predicate = NSPredicate(format: "SELF MATCHES %@", AppConst.Text.numberReg)
+        
+        return predicate
+    }()
     var count = 1
     var price = 0.01
     override func awakeFromNib() {
         super.awakeFromNib()
         coutTextField.delegate = self
         priceTextField.delegate = self
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        
+        //如果删除成 "" 字符 允许通过
+        if range.location == 0 && string == "" {
+            return true
+        }
+        let ran = textField.text!.index((textField.text!.startIndex), offsetBy: range.location)..<textField.text!.index((textField.text!.startIndex), offsetBy: range.location + range.length)
+
+        let str = textField.text?.replacingCharacters(in: ran, with: string)
+
+        //正则判断替换为后字符串是否为符合要求的字符
+        if predicate.evaluate(with: str) {
+            //如果为00不允许通过
+            if str! == "00" {
+                return false
+            }
+            return true
+        } else {
+            //如果为单纯的 . 字符，不允许通过
+            if str == "." {
+                return false
+            }
+
+            let array = str?.components(separatedBy: ".")
+            if array == nil {
+                return true
+            } else if array!.count == 1 {
+                return true
+            } else if array!.last! == "" || array!.last! == "0" || array!.last! == "00" {
+                return true
+            }
+        }
+        return false
     }
     
     func setPrice() {
@@ -82,7 +125,6 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }
