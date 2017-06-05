@@ -131,7 +131,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                             alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
                                                 titleLabelText: "您还没有身份验证",
 
-                                                subTitleText: "您需要进行身份验证,之后才可以进行明星时间交易",
+                                                subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
                                                 completeButtonTitle: "开 始 验 证") { (completeButton) in
                                                     alertVc.dismissAlertVc()
 
