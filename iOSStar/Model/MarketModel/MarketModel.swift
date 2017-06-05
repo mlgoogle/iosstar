@@ -40,6 +40,7 @@ class CommentModel: Object {
     dynamic var nick_name = ""
     dynamic var head_url = ""
     dynamic var comments = ""
+    dynamic var cms_time:Int64 = 0
 }
 
 class PirceBaseModel: Object {
