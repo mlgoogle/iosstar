@@ -93,6 +93,9 @@ class MarketDetailViewController: UIViewController {
     func requestRealTime() {
         let requestModel = RealTimeRequestModel()
         let syModel = SymbolInfo()
+        if starModel != nil {
+            syModel.symbol = starModel!.wid
+        }
         requestModel.symbolInfos.append(syModel)
         AppAPIHelper.marketAPI().requestRealTime(requestModel: requestModel, complete: { (response) in
             if let model = response as? [RealTimeModel] {
