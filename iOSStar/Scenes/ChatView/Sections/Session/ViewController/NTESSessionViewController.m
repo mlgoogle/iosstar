@@ -116,6 +116,7 @@ NIMContactSelectDelegate>
 - (id<NIMSessionConfig>)sessionConfig
 {
     if (_sessionConfig == nil) {
+        
         _sessionConfig = [[NTESSessionConfig alloc] init];
         _sessionConfig.session = self.session;
     }
@@ -411,8 +412,8 @@ NIMContactSelectDelegate>
 
 #pragma mark - 进入个人信息界面
 - (BOOL)onTapAvatar:(NSString *)userId{
-    UIViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:userId];
-    [self.navigationController pushViewController:vc animated:YES];
+//    UIViewController *vc = [[NTESPersonalCardViewController alloc] initWithUserId:userId];
+//    [self.navigationController pushViewController:vc animated:YES];
     return YES;
 }
 

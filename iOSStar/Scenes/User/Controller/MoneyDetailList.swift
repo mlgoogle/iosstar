@@ -98,8 +98,8 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
     
     //
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc  = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResultVC")
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc  = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResultVC")
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func selectDate(){
