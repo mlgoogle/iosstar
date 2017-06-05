@@ -8,7 +8,13 @@
 
 import UIKit
 import MJRefresh
+
+protocol RefreshListDelegate {
+    func refreshList(dataSource:[CommentModel]?, totalCount:Int)
+}
+
 class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate{
+    @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var inputViewHeight: NSLayoutConstraint!
     @IBOutlet weak var bottomMargin: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
@@ -19,6 +25,17 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
     var isRefresh = true
     var header:MJRefreshNormalHeader?
     var footer:MJRefreshAutoNormalFooter?
+    
+    var refreshDelegate:RefreshListDelegate?
+    
+    var noDataButton:UIButton = {
+       let button = UIButton(type: .custom)
+        button.setTitle("暂无评论", for: .normal)
+        button.setTitleColor(UIColor(hexString:AppConst.Color.main), for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 200, height: 100)
+        button.addTarget(self, action: #selector(pushToDetail), for: .touchUpInside)
+        return button
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = tableView
@@ -36,6 +53,10 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
         tableView.rowHeight = UITableViewAutomaticDimension
         requestCommentList()
         setupRefresh()
+        self.noDataButton.center = self.tableView.center
+        self.tableView.addSubview(self.noDataButton)
+
+        
     }
     
     func setupRefresh() {
@@ -49,6 +70,7 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
         })
         tableView.mj_header = header
         tableView.mj_footer = footer
+        footer?.isHidden = true
     }
     func registerNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -56,8 +78,14 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
         
     }
     func keyboardWillShow(notification: NSNotification?) {
+        let rect = notification?.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
+        var y:CGFloat = -286.0
+        if rect != nil {
+        
+            y = -rect!.size.height
+        }
         UIView.animate(withDuration: 0.5) {
-            self.view.frame = CGRect(x: self.view.frame.origin.x, y: -286, width: self.view.frame.size.width, height: self.view.frame.size.height)
+            self.view.frame = CGRect(x: self.view.frame.origin.x, y: y, width: self.view.frame.size.width, height: self.view.frame.size.height)
         }
     }
     func keyboardWillHide(notification: NSNotification?) {
@@ -69,7 +97,16 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+    func endRefresh() {
+        if header?.state == .refreshing {
+            
+            header?.endRefreshing()
+        }
+        if  footer?.state == .refreshing {
+            
+            footer?.endRefreshing()
+        }
+    }
     
     func requestCommentList() {
 
@@ -83,7 +120,9 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
         }
         AppAPIHelper.marketAPI().requestCommentList(requestModel: requestModel, complete: { (response) in
 
+            self.endRefresh()
             if let dict = response as? [String : Any] {
+                self.noDataButton.isHidden = true
                 let array:[Any]? = dict["commentsinfo"] as? [Any]
                 if let totalCount = dict["total_count"] as? Int {
                     self.totalCount = totalCount
@@ -96,15 +135,32 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
                     } else {
                         self.dataSource?.append(contentsOf: models)
                     }
-                    if models.count < 10 {
-                        self.footer?.isHidden = true
+                    if models.count == 10 {
+                        self.footer?.isHidden = false
                     }
                     self.tableView.reloadData()
+                    
                 }
             }
-        }, error: errorBlockFunc())
-    }
+            if self.dataSource?.count ?? 0 == 0 {
+                self.addNodataButton()
+            }
 
+            self.refreshDelegate?.refreshList(dataSource: self.dataSource, totalCount: self.totalCount)
+   
+        }) { (error) in
+            self.addNodataButton()
+        }
+        
+    }
+    func addNodataButton() {
+        endRefresh()
+        noDataButton.center = self.tableView.center
+        tableView.addSubview(self.noDataButton)
+    }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return checkLogin()
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     
         textField.endEditing(true)
@@ -117,13 +173,16 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
     }
     
     func sendComment(commentText:String) {
-        guard starCode != nil else {
+    
+        guard starCode != nil && commentText != "" else {
             return
         }
         let requestModel = SendCommentModel()
         requestModel.comments = commentText
         requestModel.symbol = starCode!
         AppAPIHelper.marketAPI().sendComment(requestModel: requestModel, complete: { (response) in
+            self.header?.beginRefreshing()
+
         }, error: errorBlockFunc())
     }
     
@@ -133,7 +192,16 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
 
 }
 
-extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate {
+extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate, RefreshListDelegate{
+    
+    func refreshList(dataSource: [CommentModel]?, totalCount:Int) {
+        self.dataSource = dataSource
+        self.totalCount = totalCount
+        if totalCount > 0 {
+            noDataButton.isHidden = true
+        }
+        tableView.reloadData()
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -161,15 +229,26 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
         return cell 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        pushToDetail()
+    }
+    
+    func pushToDetail() {
         
-        let vc = MarketCommentViewController.storyboardInit(identifier:MarketCommentViewController.className(), storyboardName:AppConst.StoryBoardName.Markt.rawValue) as? MarketCommentViewController
-        vc?.isDetail = false
-        vc?.isSubView = false
-        vc?.starCode = starCode
-        guard vc != nil else {
-            return
+        if !isDetail {
+            if checkLogin() {
+                textField.becomeFirstResponder()
+            }
+        } else {
+            let vc = MarketCommentViewController.storyboardInit(identifier:MarketCommentViewController.className(), storyboardName:AppConst.StoryBoardName.Markt.rawValue) as? MarketCommentViewController
+            vc?.isDetail = false
+            vc?.isSubView = false
+            vc?.refreshDelegate = self
+            vc?.starCode = starCode
+            guard vc != nil else {
+                return
+            }
+            parent?.navigationController?.pushViewController(vc!, animated: true)
         }
-        parent?.navigationController?.pushViewController(vc!, animated: true)
-        
+
     }
 }

@@ -151,7 +151,6 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
         if alpha > 1 {
             titleView.setTime()
             UIApplication.shared.setStatusBarHidden(true, with: .none)
-            navigationController?.navigationBar.isTranslucent = true
             titleView.isHidden = false
             navigationController?.setNavigationBarHidden(false            , animated: false)
             
@@ -159,7 +158,6 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
             titleView.setTime()
             UIApplication.shared.setStatusBarHidden(false, with: .none)
             titleView.isHidden = true
-            navigationController?.navigationBar.isTranslucent = true
             navigationController?.setNavigationBarHidden(true, animated: false)
         }
     }
