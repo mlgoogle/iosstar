@@ -10,6 +10,7 @@ import UIKit
 import  SVProgressHUD
 class VaildNameVC:  BaseTableViewController {
 
+    @IBOutlet var selectBtn: UIButton!
     //身份证号
     @IBOutlet weak var card: UITextField!
     //姓名
@@ -21,11 +22,21 @@ class VaildNameVC:  BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "实名认证"
+        selectBtn.isSelected = true
     }
 
+    @IBAction func selectClick(_ sender: Any) {
+        selectBtn.isSelected = !selectBtn.isSelected
+    }
     @IBAction func doVailiName(_ sender: Any) {
         if checkTextFieldEmpty([name,card]){
             
+            if selectBtn.isSelected == false{
+                SVProgressHUD.showErrorMessage(ErrorMessage: "请先同意免责声明", ForDuration: 1, completion: {
+                   
+                    
+                })
+            }
             AppAPIHelper.user().authentication(realname: name.text!, id_card: card.text!, complete: { (result) in
                 if let model = result {
                     

@@ -51,9 +51,8 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
         self.right.constant = UIScreen.main.bounds.size.width/320.0 * 30
         height.constant = 100 + UIScreen.main.bounds.size.height
         width.constant = UIScreen.main.bounds.size.width
-//        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
-//        view.addGestureRecognizer(tap)
-        
+
+    
         let rbackViewTap = UITapGestureRecognizer.init(target: self, action: #selector(rbackViewTapClick))
         rbackViewTap.delegate = self
         rbackView.addGestureRecognizer(rbackViewTap)
