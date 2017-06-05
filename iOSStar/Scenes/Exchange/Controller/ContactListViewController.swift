@@ -56,13 +56,13 @@ class ContactListViewController: BaseCustomPageListTableViewController {
         let vc = NTESSessionViewController(session: session)
         self.navigationController?.pushViewController(vc!, animated: true)
     }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactListCell", for: indexPath) as! ContactListCell
-        
-        cell.update(dataSource?[indexPath.row])
-        return cell
-    }
+//    
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactListCell", for: indexPath) as! ContactListCell
+//        
+//        cell.update(dataSource?[indexPath.row])
+//        return cell
+//    }
    
 
 

@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
 
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var contentView: UIView!
@@ -37,14 +37,14 @@ class LoginVC: UIViewController {
     }
     func initUI(){
         
-        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
+//        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
 //        view.addGestureRecognizer(tap)
-        contentView.addGestureRecognizer(tap)
+//        contentView.addGestureRecognizer(tap)
         
         let backViewTap = UITapGestureRecognizer.init(target: self, action: #selector(backViewTapClick))
         backView.addGestureRecognizer(backViewTap)
-        
-        // contentView.removeGestureRecognizer(tap)
+        backViewTap.delegate = self
+    
         self.automaticallyAdjustsScrollViewInsets = false
         height.constant = 100 + UIScreen.main.bounds.size.height
         width.constant = UIScreen.main.bounds.size.width
@@ -55,18 +55,18 @@ class LoginVC: UIViewController {
         self.right.constant = UIScreen.main.bounds.size.width/320.0 * 30
         
     }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if (touch.view?.isDescendant(of: contentView))! {
+            return false;
+        }
+        
+        return true;
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    func tapClick(){
-        
-        print("此处是conntentView手势点击位置")
-        // let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
-        // let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
-        // tabar.selectedIndex = 0
-        // self.dismissController()
-    }
+ 
     func backViewTapClick() {
         
         didClose()
@@ -114,6 +114,8 @@ class LoginVC: UIViewController {
                 SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
                 })
             }
+        }else{
+        btn.isUserInteractionEnabled = true
         }
     }
     

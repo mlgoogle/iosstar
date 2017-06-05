@@ -117,7 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
   
         
         // 支付返回
-        func onResp(_ resp: BaseResp!) {
+     func onResp(_ resp: BaseResp!) {
             //微信登录返回
             if resp.isKind(of: SendAuthResp.classForCoder()) {
                 let authResp:SendAuthResp = resp as! SendAuthResp
