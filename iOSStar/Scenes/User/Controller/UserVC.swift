@@ -24,6 +24,7 @@ class UserVC: BaseCustomTableViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         titltArry = ["我的钱包","我预约的明星","客服中心","常见问题","通用设置"]
+        self.tableView.reloadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +33,9 @@ class UserVC: BaseCustomTableViewController  {
         self.getUserInfo { (result) in
             
             if let response = result{
+                
+                print("-\(response)")
+                
                 let object = response as! [String : AnyObject]
                self.account?.text =  String.init(format: "%.2f", object["balance"] as! Double)
               

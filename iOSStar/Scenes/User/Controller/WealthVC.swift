@@ -9,10 +9,11 @@
 import UIKit
 class HeaderCell: UITableViewCell {
     
-    
+    // 星享币
     @IBOutlet weak var balance: UILabel!
+    // 持有市值
     @IBOutlet var market_cap: UILabel!
-    
+    // 可用余额
     @IBOutlet var total_amt: UILabel!
 }
 class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {

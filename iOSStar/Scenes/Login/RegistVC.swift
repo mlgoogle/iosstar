@@ -90,8 +90,10 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
         
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
             vaildCodeBtn.isEnabled = false
+            SVProgressHUD.showProgressMessage(ProgressMessage: "")
             AppAPIHelper.login().SendCode(phone: phoneTf.text!, complete: { [weak self](result)  in
-                
+                SVProgressHUD.dismiss()
+                self?.vaildCodeBtn.isEnabled = true
                 if let response = result  {
                     
                     if response["result"] as! Int == 1 {
@@ -103,9 +105,10 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
                         
                     }
                 }
-                //                print(result)
      
                 }, error: { (error)  in
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "短信发送失败,请稍后再试", ForDuration: 2, completion: nil)
+                    print("----\(error.description)")
                     self.vaildCodeBtn.isEnabled = true
             })
         }
@@ -149,7 +152,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
         }
 
     }
-    //MARK:-  login()
+    //MARK:-  regist()
     func login() {
         let string = "yd1742653sd" + self.timeStamp + self.codeTf.text! + self.phoneTf.text!
         if string.md5_string() != self.vToken{
@@ -158,12 +161,14 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
         AppAPIHelper.login().regist(phone: phoneTf.text!, password: (passTf.text?.md5_string())!, complete: { [weak self](result)  in
             if let response = result {
                 if response["result"] as! Int == 1 {
-                    SVProgressHUD.showSuccessMessage(SuccessMessage: "注册成功", ForDuration: 0.5, completion: { 
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "注册成功", ForDuration: 1.0, completion: {
                           self?.resultBlock!(doStateClick.doLogin as AnyObject)
                     })
                 }
             }
         }) { (error) in
+            // print("--------- \(error.userInfo["NSLocalizedDescription"] as! String)")
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 1.0, completion: nil)
         }
     }
     func bindWeChat() {
@@ -177,9 +182,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
 
         }) { (error )  in
             print(error)
-            SVProgressHUD.showErrorMessage(ErrorMessage:  error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: { 
-                
-            })
+            SVProgressHUD.showErrorMessage(ErrorMessage:  error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: nil)
         }
     }
        //MARK:-   去登录

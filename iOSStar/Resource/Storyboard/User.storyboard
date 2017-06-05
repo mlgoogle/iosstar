@@ -16,7 +16,7 @@
                 <navigationController useStoryboardIdentifierAsRestorationIdentifier="YES" id="2vG-Fh-E77" customClass="BaseNavigationController" customModule="iOSStar" sceneMemberID="viewController">
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="j70-IU-m3w">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="j70-IU-m3w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -939,7 +939,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySX-e6-v5z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1190" y="800"/>
+            <point key="canvasLocation" x="1199" y="798"/>
         </scene>
         <!--账户信息-->
         <scene sceneID="0MH-gd-qUg">
@@ -1747,7 +1747,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ann-Ex-Gar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1189.5999999999999" y="1606.1469265367318"/>
+            <point key="canvasLocation" x="1010" y="1604"/>
         </scene>
         <!--绑定银行卡-->
         <scene sceneID="Gyx-js-MiN">
@@ -2003,14 +2003,20 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5i-5a-LmC">
-                                                    <rect key="frame" x="116" y="33" width="50" height="15"/>
+                                                    <rect key="frame" x="99" y="34" width="45" height="20"/>
                                                     <color key="backgroundColor" red="0.98431372549999996" green="0.59999999999999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="15" id="ipY-HT-fhz"/>
-                                                        <constraint firstAttribute="width" constant="50" id="lGe-Wa-wvV"/>
+                                                        <constraint firstAttribute="height" constant="20" id="ipY-HT-fhz"/>
+                                                        <constraint firstAttribute="width" constant="45" id="lGe-Wa-wvV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <state key="normal" title="已约见"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -2021,11 +2027,11 @@
                                                 <constraint firstItem="SRA-Ln-jZl" firstAttribute="top" secondItem="VOd-f7-cHo" secondAttribute="top" constant="10" id="MjP-jt-aaK"/>
                                                 <constraint firstItem="dHB-9q-3s6" firstAttribute="leading" secondItem="SRA-Ln-jZl" secondAttribute="trailing" constant="13" id="ThQ-b3-oC2"/>
                                                 <constraint firstItem="dHB-9q-3s6" firstAttribute="top" secondItem="SRA-Ln-jZl" secondAttribute="top" id="UiX-0n-VjP"/>
-                                                <constraint firstAttribute="bottom" secondItem="N5i-5a-LmC" secondAttribute="bottom" constant="12" id="bbC-iV-bqN"/>
+                                                <constraint firstItem="N5i-5a-LmC" firstAttribute="leading" secondItem="bYw-xC-ktx" secondAttribute="trailing" constant="9" id="bJD-oC-DNO"/>
+                                                <constraint firstItem="N5i-5a-LmC" firstAttribute="centerY" secondItem="bYw-xC-ktx" secondAttribute="centerY" id="duu-s4-hbU"/>
                                                 <constraint firstItem="SRA-Ln-jZl" firstAttribute="leading" secondItem="VOd-f7-cHo" secondAttribute="leading" constant="12" id="k2C-AM-z9Y"/>
                                                 <constraint firstAttribute="trailing" secondItem="TwG-Vv-hpI" secondAttribute="trailing" constant="12" id="mBH-cW-MbA"/>
                                                 <constraint firstItem="bYw-xC-ktx" firstAttribute="leading" secondItem="SRA-Ln-jZl" secondAttribute="trailing" constant="13" id="q17-eO-l7Q"/>
-                                                <constraint firstItem="N5i-5a-LmC" firstAttribute="leading" secondItem="dHB-9q-3s6" secondAttribute="trailing" constant="8" id="q5k-5n-rna"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -2921,7 +2927,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mcj-zm-N4c">
                                                     <rect key="frame" x="13" y="0.0" width="349" height="40"/>
                                                     <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ebs-L4-agQ">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ebs-L4-agQ">
                                                             <rect key="frame" x="8" y="0.0" width="291" height="40"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2932,8 +2938,8 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="28" id="22D-Tb-Sud"/>
                                                             </constraints>
-                                                            <state key="normal" title="Button" image="visible.png"/>
-                                                            <state key="selected" image="Novisible.png"/>
+                                                            <state key="normal" title="Button" image="Novisible.png"/>
+                                                            <state key="selected" image="visible.png"/>
                                                             <connections>
                                                                 <action selector="doShowPass:" destination="obG-jX-Bck" eventType="touchUpInside" id="gMe-bc-06P"/>
                                                             </connections>
@@ -2990,7 +2996,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xr7-EX-D4W">
                                                     <rect key="frame" x="13" y="0.0" width="349" height="40"/>
                                                     <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yh8-le-adn">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="yh8-le-adn">
                                                             <rect key="frame" x="8" y="0.0" width="291" height="40"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -3001,8 +3007,8 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="28" id="4BI-WG-4q2"/>
                                                             </constraints>
-                                                            <state key="normal" title="Button" image="visible.png"/>
-                                                            <state key="selected" image="Novisible.png"/>
+                                                            <state key="normal" title="Button" image="Novisible.png"/>
+                                                            <state key="selected" image="visible.png"/>
                                                             <connections>
                                                                 <action selector="doShowPass:" destination="obG-jX-Bck" eventType="touchUpInside" id="Gah-WC-RFx"/>
                                                             </connections>
@@ -3100,7 +3106,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QPM-69-vJl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2956" y="2333"/>
+            <point key="canvasLocation" x="3031" y="2530"/>
         </scene>
         <!--免责声明-->
         <scene sceneID="VM7-OY-6H9">

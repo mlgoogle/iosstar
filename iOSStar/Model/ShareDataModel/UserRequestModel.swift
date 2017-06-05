@@ -11,7 +11,8 @@ import Foundation
 
 class UserBaseModel: BaseModel {
     
-    var id:Int64 = 0
+//    var id : Int64 = (UserModel.share().getCurrentUser()?.userinfo?.id)!
+    var id : Int64 = UserModel.share().getCurrentUser()?.userinfo?.id ?? 0
 }
 
 class ResetPayPwdRequestModel: UserBaseModel {
