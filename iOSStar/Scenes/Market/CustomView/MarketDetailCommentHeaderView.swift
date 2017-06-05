@@ -30,6 +30,19 @@ class MarketDetailCommentHeaderView: UITableViewHeaderFooterView {
             make.height.equalTo(14)
         }
     }
+    
+    
+    func setCount(count:Int) {
+       
+        var text = "评价 \(count)"
+        if count > 999 {
+            
+            text = "评价 999+"
+        }
+        
+        
+        infoLabel.setAttributeText(text: text, firstFont: 14, secondFont: 14, firstColor: UIColor(hexString: "070707"), secondColor: UIColor(hexString: "FB9938"), range: NSRange(location: 3, length: text.length() - 3))
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         addSubViews()

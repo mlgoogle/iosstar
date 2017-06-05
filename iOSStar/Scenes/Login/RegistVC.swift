@@ -8,7 +8,10 @@
 
 import UIKit
 import SVProgressHUD
-class RegistVC: UIViewController {
+class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
+    
+    @IBOutlet weak var rbackView: UIView!
+    @IBOutlet weak var rcontentView: UIView!
     
     @IBOutlet var left: NSLayoutConstraint!
     
@@ -48,15 +51,32 @@ class RegistVC: UIViewController {
         self.right.constant = UIScreen.main.bounds.size.width/320.0 * 30
         height.constant = 100 + UIScreen.main.bounds.size.height
         width.constant = UIScreen.main.bounds.size.width
-        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
-        view.addGestureRecognizer(tap)
+//        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
+//        view.addGestureRecognizer(tap)
+        
+        let rbackViewTap = UITapGestureRecognizer.init(target: self, action: #selector(rbackViewTapClick))
+        rbackViewTap.delegate = self
+        rbackView.addGestureRecognizer(rbackViewTap)
     }
-    func tapClick(){
+    
+    // 拦截中间contentView的点击事件
+  
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if (touch.view?.isDescendant(of: rbackView))! {
+            return false;
+        }
+        
+        return true;
+    }
+
+    func rbackViewTapClick() {
+        
         let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
         let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
         tabar.selectedIndex = 0
         self.dismissController()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

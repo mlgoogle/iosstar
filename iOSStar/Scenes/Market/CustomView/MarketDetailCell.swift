@@ -42,7 +42,7 @@ import UIKit
 import Charts
 class MarketDetailCell: UITableViewCell,ChartViewDelegate{
     @IBOutlet weak var currentPriceLabel: UILabel!
-    var datas:[LineModel]?
+    var datas:[TimeLineModel]?
     @IBOutlet weak var lineView: LineChartView!
     @IBOutlet weak var changeLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -69,33 +69,26 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
     }
 
     func setStarModel(starModel:MarketListStarModel) {
-        
-        currentPriceLabel.text = "\(starModel.price)"
+        iconImageView.kf.setImage(with: URL(string: starModel.pic))
+    }
+    func setRealTimeData(realTimeModel:RealTimeModel) {
+        let percent = (realTimeModel.change / realTimeModel.currentPrice) * 100
+        currentPriceLabel.text = "\(realTimeModel.currentPrice)"
         var colorString = AppConst.Color.up
-        if starModel.updown < 0 {
-            changeLabel.text = "\(starModel.updown)%"
+        if realTimeModel.change < 0 {
+            changeLabel.text = String(format: "%.2f/%.2f%%", realTimeModel.change, -percent)
             colorString = AppConst.Color.down
         }else{
-            changeLabel.text = "+\(starModel.updown)%"
+            changeLabel.text = String(format: "%.2f/+%.2f%%",realTimeModel.change,percent)
         }
         currentPriceLabel.textColor = UIColor(hexString: colorString)
         changeLabel.backgroundColor = UIColor(hexString: colorString)
-        iconImageView.kf.setImage(with: URL(string: starModel.head))
-
     }
-    func setData(datas:[LineModel]) {
+    func setData(datas:[TimeLineModel]) {
         
         var entrys: [ChartDataEntry] = []
         for (index,model) in datas.enumerated() {
-            
-            print(model.value)
-           var y = 0.0
-            if model.value < 10 {
-              y =  model.value + 10
-            } else {
-                y = model.value
-            }
-            let entry = ChartDataEntry(x: Double(index), y: y)
+            let entry = ChartDataEntry(x: Double(index), y: model.currentPrice)
             entrys.append(entry)
         }
         self.datas = datas
@@ -115,7 +108,7 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        if let model:LineModel = datas?[Int(entry.x)] {
+        if let model:TimeLineModel = datas?[Int(entry.x)] {
             let markerView = WPMarkerLineView.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 50))
             markerView.titleLabel.text = markerLineText(model: model)
             let marker = MarkerImage.init()
@@ -125,9 +118,9 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
         }
     }
     
-    func markerLineText(model: LineModel) -> String {
-        let time = Date.yt_convertDateToStr(Date.init(timeIntervalSince1970: TimeInterval(model.timestamp)), format: "MM-dd HH:mm")
-        let price = String.init(format: "%.4f", model.value)
+    func markerLineText(model: TimeLineModel) -> String {
+        let time = Date.yt_convertDateToStr(Date.init(timeIntervalSince1970: TimeInterval(model.priceTime)), format: "MM-dd HH:mm")
+        let price = String.init(format: "%.4f", model.currentPrice)
         return "\(time)\n最新价\(price)"
     }
     func imageFromUIView(_ view: UIView) -> UIImage {

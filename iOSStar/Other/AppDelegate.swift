@@ -151,7 +151,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
                     }
                     if let access_token = resultJson[SocketConst.Key.accessToken] as? String {
                         if let openid = resultJson[SocketConst.Key.openid] as? String{
-                            
                           self?.wechatUserInfo(token: access_token, openid: openid)
                          
 

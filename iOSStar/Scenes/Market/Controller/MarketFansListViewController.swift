@@ -25,7 +25,12 @@ class MarketFansListViewController: MarketBaseViewController {
     }
 
 }
-extension MarketFansListViewController:UITableViewDelegate, UITableViewDataSource {
+extension MarketFansListViewController:UITableViewDelegate, UITableViewDataSource, SelectFansDelegate {
+    
+    func selectAtIndex(index: Int) {
+        
+        //doSomething
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MarketSBFansCell", for: indexPath) as! MarketSBFansCell
@@ -42,8 +47,8 @@ extension MarketFansListViewController:UITableViewDelegate, UITableViewDataSourc
         return 0.001
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "FansListHeaderView")
-        
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "FansListHeaderView") as! FansListHeaderView
+        header.delegate = self
         return header
     }
     

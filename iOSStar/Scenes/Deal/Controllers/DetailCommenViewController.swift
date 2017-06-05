@@ -10,7 +10,9 @@ import UIKit
 
 class DetailCommenViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    
+    var dealTitles = ["名称/代码","成交时间","成交价/成交量","成交额"]
+    var entrustTitles = ["名称/代码","委托价/时间","委托量/成交量","状态"]
+
     var type:AppConst.DealDetailType = .allEntrust
     var identifiers = ["DealSelectDateCell","DealTitleMenuCell","DealDoubleRowCell"]
     var sectionHeights:[CGFloat] = [80.0, 36.0, 80.0]
@@ -58,10 +60,36 @@ extension DetailCommenViewController :UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {        
         let cell = tableView.dequeueReusableCell(withIdentifier: identifiers[indexPath.section], for: indexPath)
         if type.rawValue > AppConst.DealDetailType.todayEntrust.rawValue{
-            if indexPath.row == 0 {
+           
+            switch indexPath.section {
+            case 0:
                 if let dateCell = cell as? DealSelectDateCell {
                     dateCell.delegate = self
                 }
+            case 1:
+                if let menuCell = cell as? DealTitleMenuCell {
+                    if type.rawValue == AppConst.DealDetailType.allEntrust.rawValue {
+                        menuCell.setTitles(titles: entrustTitles)
+                    } else {
+                        menuCell.setTitles(titles: dealTitles)
+                    }
+                }
+            default:
+                break
+            }
+
+        } else {
+            switch indexPath.section {
+            case 0:
+                if let menuCell = cell as? DealTitleMenuCell {
+                    if type.rawValue == AppConst.DealDetailType.todayEntrust.rawValue {
+                        
+                        menuCell.setTitles(titles: entrustTitles)
+                    } else {
+                        menuCell.setTitles(titles: dealTitles)
+                    }                }
+            default:
+                break
             }
         }
         return cell

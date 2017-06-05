@@ -47,15 +47,15 @@ class AppConfigHelper: NSObject {
     
     func setupUMSDK() {
         UMSocialManager.default().openLog(true)
-        UMSocialManager.default().umSocialAppkey = "5861e5daf5ade41326001eab"
+        UMSocialManager.default().umSocialAppkey = "592fbfb09f06fd64b0001fdb"
 //        UMSocialManager.default().umSocialAppSecret = ""
-        UMSocialManager.default().setPlaform(UMSocialPlatformType.wechatSession, appKey: "wxdc1e388c3822c80b", appSecret: "3baf1193c85774b3fd9d18447d76cab0", redirectURL: "www.baidu.com")
+        UMSocialManager.default().setPlaform(UMSocialPlatformType.wechatSession, appKey: "wx9dc39aec13ee3158", appSecret: "a12a88f2c4596b2726dd4ba7623bc27e", redirectURL: "www.baidu.com")
         UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "3921700954", appSecret: "04b48b094faeb16683c32669824ebdad", redirectURL: "www.baidu.com")
         UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1105821097", appSecret: nil, redirectURL: "www.baidu.com")
 
     }
     
-    func setupRealConfig() {
+    func setupRealmConfig() {
         
         
     }

@@ -10,6 +10,23 @@ import UIKit
 
 class MarketCommentCell: UITableViewCell {
 
+    @IBOutlet weak var nicknameLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
+    
+    func setData(model:CommentModel) {
+    
+    
+        commentLabel.text = model.comments
+        
+        nicknameLabel.text = model.nick_name
+        
+        iconImageView.kf.setImage(with: URL(string: model.head_url))
+    
+        timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.cms_time), format: "YYYY-MM-dd")
+        
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

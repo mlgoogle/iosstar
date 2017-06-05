@@ -9,8 +9,10 @@
 import UIKit
 import SVProgressHUD
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
 
+    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var contentView: UIView!
     //定义block来判断选择哪个试图
      var resultBlock: CompleteBlock?
     //左边距
@@ -26,15 +28,23 @@ class LoginVC: UIViewController {
     @IBOutlet weak var passPwd: UITextField!
     // 登录密码
     @IBOutlet weak var phone: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initNav()
         initUI()
+        
     }
     func initUI(){
         
-        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
-        view.addGestureRecognizer(tap)
+//        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
+//        view.addGestureRecognizer(tap)
+//        contentView.addGestureRecognizer(tap)
+        
+        let backViewTap = UITapGestureRecognizer.init(target: self, action: #selector(backViewTapClick))
+        backView.addGestureRecognizer(backViewTap)
+        backViewTap.delegate = self
+    
         self.automaticallyAdjustsScrollViewInsets = false
         height.constant = 100 + UIScreen.main.bounds.size.height
         width.constant = UIScreen.main.bounds.size.width
@@ -43,17 +53,25 @@ class LoginVC: UIViewController {
         print(self.top.constant)
         self.left.constant = UIScreen.main.bounds.size.width/320.0 * 30
         self.right.constant = UIScreen.main.bounds.size.width/320.0 * 30
+        
+    }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if (touch.view?.isDescendant(of: contentView))! {
+            return false;
+        }
+        
+        return true;
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    func tapClick(){
-        let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
-        let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
-        tabar.selectedIndex = 0
-        self.dismissController()
+ 
+    func backViewTapClick() {
+        
+        didClose()
     }
+    
     func initNav(){
         let btn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 20, height: 20))
         btn.setBackgroundImage(UIImage.init(named: "close"), for: .normal)
@@ -84,7 +102,6 @@ class LoginVC: UIViewController {
                 SVProgressHUD.showSuccessMessage(SuccessMessage:"登录成功", ForDuration: 0.5, completion: {
                     btn.isUserInteractionEnabled = true
                     if let _ = datadic {
-                        
                         UserModel.share().upateUserInfo(userObject: result!)
                         UserDefaults.standard.set(self?.phone.text, forKey: "phone")
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
@@ -97,12 +114,13 @@ class LoginVC: UIViewController {
                 SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
                 })
             }
+        }else{
+        btn.isUserInteractionEnabled = true
         }
     }
     
     //MARK:- 网易云登录
     func LoginYunxin(){
-        
         AppAPIHelper.login().registWYIM(phone: self.phone.text!, token: self
             .phone.text!, complete: { (result) in
                 let datadic = result as? Dictionary<String,String>
@@ -110,7 +128,6 @@ class LoginVC: UIViewController {
                     UserDefaults.standard.set(self.phone.text, forKey: "phone")
                     UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
                     UserDefaults.standard.synchronize()
-                   
                     NIMSDK.shared().loginManager.login(self.phone.text!, token: self.phone.text!, completion: { (error) in
                         if (error != nil){
                             self.dismissController()
@@ -137,7 +154,12 @@ class LoginVC: UIViewController {
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
        
-           view.endEditing(true)
-        
+         view.endEditing(true)
     }
+    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        
+//        self.view.removeFromSuperview()
+//        didClose()
+//    }
 }

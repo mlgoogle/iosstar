@@ -92,7 +92,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
                     bannersUrl.append(model.pic_url)
                 }
             self.bannerScrollView?.imageURLStringsGroup = bannersUrl
-            print("=======\(Thread.current)")
+            // print("=======\(Thread.current)")
             }
             
         }, error: errorBlockFunc())
@@ -136,9 +136,9 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         }, error: errorBlockFunc())
     }
 
-    
+
     func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
-        
+
         performSegue(withIdentifier: "showPubPage", sender: index)
     }
 
@@ -151,7 +151,6 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
         if alpha > 1 {
             titleView.setTime()
             UIApplication.shared.setStatusBarHidden(true, with: .none)
-            navigationController?.navigationBar.isTranslucent = true
             titleView.isHidden = false
             navigationController?.setNavigationBarHidden(false            , animated: false)
             
@@ -159,7 +158,6 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
             titleView.setTime()
             UIApplication.shared.setStatusBarHidden(false, with: .none)
             titleView.isHidden = true
-            navigationController?.navigationBar.isTranslucent = true
             navigationController?.setNavigationBarHidden(true, animated: false)
         }
     }
@@ -202,7 +200,8 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
             let vc = segue.destination as! NewsDetailViewController
             let indexPath = sender as! IndexPath
             let model = newsData![indexPath.row]
-            vc.urlString = model.link_url
+            let cell = tableView.cellForRow(at: indexPath) as! NewsListCell
+            vc.shareImage = cell.newsImageView?.image
             vc.newsModel = model
         } else if segue.identifier == "showPubPage" {
             let index = sender as! Int

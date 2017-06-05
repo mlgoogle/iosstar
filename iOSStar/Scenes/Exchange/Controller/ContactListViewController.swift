@@ -33,7 +33,6 @@ class ContactListViewController: BaseCustomPageListTableViewController {
     }
     override func didRequest(_ pageIndex: Int) {
         
-        
         AppAPIHelper.user().starmaillist(status: 1, pos: Int32((pageIndex - 1) * 10), count: 10, complete: { (result) in
              let Model : StarListModel = result as! StarListModel
              self.didRequestComplete( Model.depositsinfo as AnyObject)

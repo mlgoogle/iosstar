@@ -17,44 +17,17 @@ class MarketClassifyModel: Object {
 
 
 class MarketListStarModel: Object {
-    dynamic var accid = ""
-    dynamic var code = ""
-    // 0 女  1 男
-    dynamic var gender = 1
+    dynamic var wid = ""
+    dynamic var sysTime:Int64 = 0
+    dynamic var symbol = ""
+    dynamic var priceTime:Int64 = 0
+    dynamic var pic = ""
     dynamic var name = ""
-    dynamic var type = 1
-    dynamic var head = ""
-    dynamic var price = 0.0
-    dynamic var updown = 0.0
+    dynamic var currentPrice = 0.0
+    dynamic var change = 0.0
     
     
-}
-class LineModel: Object {
     
-    dynamic var timestamp = 0
-    dynamic var value = 0.0
-    class func getLineData(starCode:String) -> [LineModel] {
-        let realm = try! Realm()
-        let results = realm.objects(LineModel.self).sorted(byProperty: "timestamp")
-        var array = [LineModel]()
-        for (_, model) in results.enumerated() {
-            if array.count == 30 {
-                break
-            }
-            array.append(model)
-        }
-        return array
-    }
-    //缓存分时数据
-    class func cacheLineData(datas:[LineModel]) {
-        let realm = try! Realm()
-        for (_, model) in datas.enumerated() {
-            try! realm.write {
-                realm.add(model)
-            }
-        }
-
-    }
 }
 
 class ExperienceModel: Object {
@@ -62,10 +35,12 @@ class ExperienceModel: Object {
     
 }
 class CommentModel: Object {
-    dynamic var comment = ""
-    dynamic var headurl = ""
-    dynamic var nickname = ""
-    dynamic var times = ""
+    dynamic var symbol = ""
+    dynamic var fans_id = ""
+    dynamic var nick_name = ""
+    dynamic var head_url = ""
+    dynamic var comments = ""
+    dynamic var cms_time:Int64 = 0
 }
 
 class PirceBaseModel: Object {
@@ -83,8 +58,28 @@ class PirceBaseModel: Object {
 
 }
 class TimeLineModel: PirceBaseModel {
-    override static func primaryKey() -> String?{
-        return "symbol"
+    
+    class func getLineData(starWid:String) -> [TimeLineModel] {
+        let realm = try! Realm()
+        let results = realm.objects(TimeLineModel.self).filter("symbol = '\(starWid)'").sorted(byProperty: "priceTime")
+        var array = [TimeLineModel]()
+        for (_, model) in results.enumerated() {
+            if array.count == 30 {
+                break
+            }
+            array.append(model)
+        }
+        return array
+    }
+    //缓存分时数据
+    class func cacheLineData(datas:[TimeLineModel]) {
+        let realm = try! Realm()
+        for (_, model) in datas.enumerated() {
+            try! realm.write {
+                realm.add(model)
+            }
+        }
+        
     }
 }
 class RealTimeModel: PirceBaseModel {
@@ -93,4 +88,6 @@ class RealTimeModel: PirceBaseModel {
         return "symbol"
     }
 }
+
+
 
