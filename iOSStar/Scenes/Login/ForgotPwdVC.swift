@@ -78,8 +78,10 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
     @IBAction func sendVaildCode(_ sender: Any) {
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
             vaildCodeBtn.isEnabled = false
+            SVProgressHUD.showProgressMessage(ProgressMessage: "")
             AppAPIHelper.login().SendCode(phone: phoneTf.text!, complete: { [weak self](result)  in
-                
+                SVProgressHUD.dismiss()
+                self?.vaildCodeBtn.isEnabled = true
                 if let response = result  {
                     
                     if response["result"] as! Int == 1 {
@@ -91,6 +93,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
                     }
                 }
                 }, error: { (error)  in
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "短信发送失败,请稍后再试", ForDuration: 2, completion: nil)
                     self.vaildCodeBtn.isEnabled = true
             })
             
@@ -133,6 +136,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
             if let  response = result{
                 if response["result"] as! Int == 1{
                     //重置成功
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功", ForDuration: 2.0, completion: nil)
                     _ = self.navigationController?.popViewController(animated: true)
                 }
             }
