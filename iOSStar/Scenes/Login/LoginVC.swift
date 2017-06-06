@@ -62,6 +62,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         
         return true;
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -71,7 +72,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         
         didClose()
     }
-    
+    // MARK: - 导航栏
     func initNav(){
         let btn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 20, height: 20))
         btn.setBackgroundImage(UIImage.init(named: "close"), for: .normal)
@@ -93,7 +94,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         self.resultBlock!(doStateClick.doRegist as AnyObject?)
         
     }
-      //登录
+    //MARK:-  登录
     @IBAction func doLogin(_ sender: Any) {
         let btn = sender as! UIButton
         btn.isUserInteractionEnabled = false
@@ -147,8 +148,9 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         req.state = AppConst.WechatKey.State
         WXApi.send(req)
         
-        // self.navigationController?.pushViewController(, animated: <#T##Bool#>)
     }
+    
+    // MARK: - 关闭视图
     @IBAction func didMiss(_ sender: Any) {
         didClose()
     }
@@ -160,10 +162,4 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
        
          view.endEditing(true)
     }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        
-//        self.view.removeFromSuperview()
-//        didClose()
-//    }
 }

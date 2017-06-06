@@ -154,7 +154,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
                                                     titleLabelText: "你还没有开通支付",
                                                     subTitleText: "开通支付之后才可以进行交易",
-                                                    completeButtonTitle: "确 定 开 通") { (completeButton) in
+                                                    completeButtonTitle: "我 知 道 了") { (completeButton) in
                                                         alertVc.dismissAlertVc()
 
                                                         let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")

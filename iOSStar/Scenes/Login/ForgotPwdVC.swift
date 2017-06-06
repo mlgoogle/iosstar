@@ -86,8 +86,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
                     
                     if response["result"] as! Int == 1 {
                         self?.timer = Timer.scheduledTimer(timeInterval: 1, target:
-                            self!, selector: #selector(self?.updatecodeBtnTitle), userInfo: nil, repeats: true)
-                        
+                        self!, selector: #selector(self?.updatecodeBtnTitle), userInfo: nil, repeats: true)
                         self?.timeStamp = String.init(format: "%ld", response["timeStamp"] as!  Int)
                         self?.vToken = String.init(format: "%@", response["vToken"] as! String)
                     }
@@ -118,13 +117,11 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
     }
     //MARK: 重置密码
     @IBAction func doreset(_ sender: Any) {
-        if first_input.text != second_input.text{
-            
-            SVProgressHUD.showErrorMessage(ErrorMessage: "两次密码不一致", ForDuration: 0.5, completion: {
-                
-            })
+        if first_input.text != second_input.text {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "两次密码不一致", ForDuration: 0.5, completion: nil)
             return
         }
+        
         let string = "yd1742653sd" + self.timeStamp + self.codeTf.text! + self.phoneTf.text!
         if string.md5_string() != self.vToken{
             SVProgressHUD.showErrorMessage(ErrorMessage: "验证码不正确", ForDuration: 0.5, completion:nil)
@@ -139,9 +136,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
                 }
             }
         }) { (error) in
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
-                
-            })
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: nil)
         }
     }
     
