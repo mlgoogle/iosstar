@@ -16,6 +16,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     @IBOutlet var left: NSLayoutConstraint!
     
     
+    @IBOutlet weak var registeredButton: UIButton!
     //时间戳
     var timeStamp =  ""
     //token
@@ -38,11 +39,18 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     @IBOutlet var passTf: UITextField!
     //验证码
     private var codeTime = 60
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+    
+        
     }
+    
     func initUI(){
+        
+        codeTf.keyboardType =  .numberPad
+//        inputMoney.keyboardType = .decimalPad
         
         let h  = UIScreen.main.bounds.size.height <= 568 ? 70.0 : 90
         self.top.constant = UIScreen.main.bounds.size.height/568.0 * CGFloat.init(h)
@@ -56,12 +64,29 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
         let rbackViewTap = UITapGestureRecognizer.init(target: self, action: #selector(rbackViewTapClick))
         rbackViewTap.delegate = self
         rbackView.addGestureRecognizer(rbackViewTap)
+        
+        ShareDataModel.share().addObserver(self, forKeyPath: "isweichaLogin", options: .new, context: nil)
+        
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "isweichaLogin" {
+            
+            if (change? [NSKeyValueChangeKey.newKey] as? Bool) == false {
+                self.registeredButton .setTitle("注册", for: .normal)
+            } else {
+               self.registeredButton .setTitle("微信绑定", for: .normal)
+            }
+        }
+    }
+    deinit {
+        ShareDataModel.share().removeObserver(self, forKeyPath: "isweichaLogin", context: nil)
     }
     
     // 拦截中间contentView的点击事件
   
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if (touch.view?.isDescendant(of: rbackView))! {
+        if (touch.view?.isDescendant(of: rcontentView))! {
             return false;
         }
         
@@ -97,7 +122,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
                     
                     if response["result"] as! Int == 1 {
                         self?.timer = Timer.scheduledTimer(timeInterval: 1, target:
-                            self!, selector: #selector(self?.updatecodeBtnTitle), userInfo: nil, repeats: true)
+                        self!, selector: #selector(self?.updatecodeBtnTitle), userInfo: nil, repeats: true)
                         
                         self?.timeStamp = String.init(format: "%ld", response["timeStamp"] as!  Int)
                         self?.vToken = String.init(format: "%@", response["vToken"] as! String)
@@ -137,7 +162,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
       //MARK:-   注册
     @IBAction func doregist(_ sender: Any) {
         
-        if !checkTextFieldEmpty([phoneTf,passTf,codeTf]) {
+        if !checkTextFieldEmpty([phoneTf,codeTf,passTf]) {
             return
         }
         if !isTelNumber(num: phoneTf.text!){
@@ -152,9 +177,18 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
 
     }
     //MARK:-  regist()
+    
     func login() {
+        
+//        MARK: - 此处先给"123456"的验证码
+//        if codeTf.text != "123456" {
+//            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)
+//            return
+//        }
+        
         let string = "yd1742653sd" + self.timeStamp + self.codeTf.text! + self.phoneTf.text!
         if string.md5_string() != self.vToken{
+            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)
             return
         }
         AppAPIHelper.login().regist(phone: phoneTf.text!, password: (passTf.text?.md5_string())!, complete: { [weak self](result)  in
@@ -166,21 +200,34 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
                 }
             }
         }) { (error) in
-            // print("--------- \(error.userInfo["NSLocalizedDescription"] as! String)")
             SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 1.0, completion: nil)
         }
     }
+    
+    // MARK: - 微信绑定注册
     func bindWeChat() {
         let string = "yd1742653sd" + self.timeStamp + self.codeTf.text! + self.phoneTf.text!
         if string.md5_string() != self.vToken{
+            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)
             return
         }
-        AppAPIHelper.login().BindWeichat(phone: phoneTf.text!, timeStamp: 123, vToken: "1233", pwd: (passTf.text?.md5_string())!, openid:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, nickname:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.nickname]!, headerUrl:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.headimgurl]!, memberId: 123, agentId: "123", recommend: "123", deviceId: "1123", vCode: "123", complete: { [weak self](result)  in
+        AppAPIHelper.login().BindWeichat(phone: phoneTf.text!,
+                                         timeStamp: 123,
+                                         vToken: "1233",
+                                         pwd: (passTf.text?.md5_string())!,
+                                         openid:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!,
+                                         nickname:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.nickname]!,
+                                         headerUrl:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.headimgurl]!,
+                                         memberId: 123,
+                                         agentId: "123",
+                                         recommend: "123",
+                                         deviceId: "1123",
+                                         vCode: "123", complete: { [weak self](result)  in
             
             self?.LoginYunxin()
 
         }) { (error )  in
-            print(error)
+            
             SVProgressHUD.showErrorMessage(ErrorMessage:  error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: nil)
         }
     }
@@ -196,7 +243,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
         req.state = AppConst.WechatKey.State
         WXApi.send(req)
     }
-         //MARK:-   忘记密码
+    //MARK:-   忘记密码
     @IBAction func doResetPass(_ sender: Any) {
         self.resultBlock!(doStateClick.doResetPwd as AnyObject)
     }
@@ -220,6 +267,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
         }) { (error)  in
         }
     }
+    
     @IBAction func didMiss(_ sender: Any) {
         let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
         let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
