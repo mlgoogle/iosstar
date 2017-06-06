@@ -144,8 +144,11 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                         }
                         else {
                             if self.needPwd == 0{
-                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")
-                                self.navigationController?.pushViewController(vc, animated: true)
+                                
+                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
+                                self.navigationController?.pushViewController(vc, animated: true )
+//                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")
+//                                self.navigationController?.pushViewController(vc, animated: true)
                             }// 设置交易密码
                             else{
                                 
