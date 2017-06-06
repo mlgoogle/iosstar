@@ -97,7 +97,18 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
     //MARK:-  登录
     @IBAction func doLogin(_ sender: Any) {
         let btn = sender as! UIButton
-        btn.isUserInteractionEnabled = false
+        // btn.isUserInteractionEnabled = false
+        
+        if !checkTextFieldEmpty([phone]) {
+            return
+        }
+        if !checkTextFieldEmpty([passPwd]) {
+            return
+        }
+        if !isTelNumber(num: phone.text!) {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "手机号码格式错误", ForDuration: 1.0, completion: nil)
+            return
+        }
         if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]){
             AppAPIHelper.login().login(phone: phone.text!, password: (passPwd.text?.md5_string())!, complete: { [weak self](result)  in
                   let datadic = result as? UserModel

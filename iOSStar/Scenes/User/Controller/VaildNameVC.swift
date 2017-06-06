@@ -32,10 +32,8 @@ class VaildNameVC:  BaseTableViewController {
         if checkTextFieldEmpty([name,card]){
             
             if selectBtn.isSelected == false{
-                SVProgressHUD.showErrorMessage(ErrorMessage: "请先同意免责声明", ForDuration: 1, completion: {
-                   
-                    
-                })
+                SVProgressHUD.showErrorMessage(ErrorMessage: "请先同意免责声明", ForDuration: 1, completion: nil)
+                return
             }
             AppAPIHelper.user().authentication(realname: name.text!, id_card: card.text!, complete: { (result) in
                 if let model = result {
@@ -50,9 +48,7 @@ class VaildNameVC:  BaseTableViewController {
                             _ = self.navigationController?.popViewController(animated: true)
 
                         })
-
                     }
-                    
                 }
             }) { (error ) in
                 

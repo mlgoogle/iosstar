@@ -142,28 +142,7 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
             SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)
             return
         }
- 
-        // MARK: - 此处先给"123456"的验证码
-//        if codeTf.text != "123456" {
-//            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)
-//            return
-//        }
-//        AppAPIHelper.user().ResetPassWd(timestamp: Int64(timeStamp), vCode: self.codeTf.text!, vToken: self.vToken, pwd: (first_input.text?.md5_string())! , type: 1, phone: self.phoneTf.text!, complete: { (result) in
-//            if let model = result {
-//                
-//                // print("-----\(result)")
-//                
-//                let dic = model as! [String : AnyObject]
-//                if dic["status"] as! Int  == 0 {
-//                    SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功", ForDuration: 1, completion: {
-//                        self.navigationController?.popViewController(animated: true)
-//                    })
-//                }
-//                
-//            }
-//        }) { (error) in
-//            
-//        }
+        
         let requestModel = ResetPayPwdRequestModel()
         requestModel.id = (UserModel.share().getCurrentUser()?.userinfo?.id)!
         requestModel.timestamp = Int64(timeStamp)
@@ -187,9 +166,28 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
                                         }
             }
         }) { (error) in
-            
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 1, completion:nil)
         }
         
     }
     
 }
+
+
+// FIXME: - 之前的接口
+//        AppAPIHelper.user().ResetPassWd(timestamp: Int64(timeStamp), vCode: self.codeTf.text!, vToken: self.vToken, pwd: (first_input.text?.md5_string())! , type: 1, phone: self.phoneTf.text!, complete: { (result) in
+//            if let model = result {
+//
+//                // print("-----\(result)")
+//
+//                let dic = model as! [String : AnyObject]
+//                if dic["status"] as! Int  == 0 {
+//                    SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功", ForDuration: 1, completion: {
+//                        self.navigationController?.popViewController(animated: true)
+//                    })
+//                }
+//
+//            }
+//        }) { (error) in
+//
+//        }

@@ -15,6 +15,7 @@ class ContactListCell: OEZTableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var iconImageView: UIImageView!
+    var cellModel: StarInfoModel = StarInfoModel()
     override func awakeFromNib() {
         super.awakeFromNib()
         chatButton.layer.borderWidth = 1
@@ -29,8 +30,14 @@ class ContactListCell: OEZTableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func haveAChat(_sender: UIButton) {
+        didSelectRowAction(3, data: cellModel)
+    }
+    
     override func update(_ data: Any!) {
         let model = data as! StarInfoModel
+        cellModel = model
         nameLabel.text = model.starname
         jobLabel.text = model.faccid
         if statusBtn != nil{

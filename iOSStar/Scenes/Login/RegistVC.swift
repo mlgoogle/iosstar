@@ -70,15 +70,18 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
         if keyPath == "isweichaLogin" {
-            
-            if (change? [NSKeyValueChangeKey.newKey] as? Bool) == false {
-                self.registeredButton .setTitle("注册", for: .normal)
+            if let Ischange = (change? [NSKeyValueChangeKey.newKey] as? Bool) {
+                if Ischange == false {
+//            if (change? [NSKeyValueChangeKey.newKey] as? Bool) == false {
+                self.registeredButton.setTitle("注册", for: .normal)
             } else {
-               self.registeredButton .setTitle("微信绑定", for: .normal)
+               self.registeredButton.setTitle("微信绑定", for: .normal)
             }
         }
     }
+}
     deinit {
         ShareDataModel.share().removeObserver(self, forKeyPath: "isweichaLogin", context: nil)
     }
@@ -179,18 +182,19 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     //MARK:-  regist()
     
     func login() {
-        
-//        MARK: - 此处先给"123456"的验证码
-//        if codeTf.text != "123456" {
-//            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)
-//            return
-//        }
-        
+
+//        FIXME: - 此处先给"123456"的验证码
+        if codeTf.text != "123456" {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)
+            return
+        }
+        /*
         let string = "yd1742653sd" + self.timeStamp + self.codeTf.text! + self.phoneTf.text!
         if string.md5_string() != self.vToken{
             SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)
             return
         }
+        */
         AppAPIHelper.login().regist(phone: phoneTf.text!, password: (passTf.text?.md5_string())!, complete: { [weak self](result)  in
             if let response = result {
                 if response["result"] as! Int == 1 {

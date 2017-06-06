@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactListViewController: BaseCustomPageListTableViewController {
+class ContactListViewController: BaseCustomPageListTableViewController, OEZTableViewDelegate {
     
     var dataList = [StarInfoModel]()
     override func viewDidLoad() {
@@ -21,8 +21,6 @@ class ContactListViewController: BaseCustomPageListTableViewController {
       
         
     }
-    
-   
     
     func onlogin(){
         
@@ -47,14 +45,22 @@ class ContactListViewController: BaseCustomPageListTableViewController {
 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
+    
         //StarInfoModel
         let model = dataSource?[indexPath.row] as! StarInfoModel
-        
         let session = NIMSession(model.faccid, type: .P2P)
         let vc = NTESSessionViewController(session: session)
         self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!) {
+        
+        if action == 3 {
+            // print((data as AnyObject).description)
+            let starInfoModel = data as! StarInfoModel
+            let session = NIMSession(starInfoModel.faccid, type: .P2P)
+            let vc = NTESSessionViewController(session: session)
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
     }
 //    
 //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,7 +69,7 @@ class ContactListViewController: BaseCustomPageListTableViewController {
 //        cell.update(dataSource?[indexPath.row])
 //        return cell
 //    }
-   
+    
 
 
 }
