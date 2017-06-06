@@ -49,6 +49,7 @@ class MarketDetailViewController: UIViewController {
             vc.delegate = self
             vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 50 - 64 - 50)
             subViews.append(vc.view)
+            vc.scrollViewScrollEnabled(scroll: false)
         }
         handleMenuView.images = images
         handleMenuView.titles = ["求购", "转让", "粉丝见面会", "自选"]
@@ -113,7 +114,6 @@ class MarketDetailViewController: UIViewController {
 }
 
 extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MenuViewDelegate, BottomItemSelectDelegate, ScrollStopDelegate{
-
     
 
     func itemDidSelectAtIndex(index:Int) {
@@ -192,14 +192,14 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketDetailCell", for: indexPath) as! MarketDetailCell
-        cell.currentView = currentVC?.view
 
         if starModel != nil {
             cell.setData(datas: TimeLineModel.getLineData(starWid:starModel!.wid))
             cell.setStarModel(starModel: starModel!)
         } else if bannerDetailModel != nil {
             cell.setData(datas: TimeLineModel.getLineData(starWid:bannerDetailModel!.weibo_index_id))
-            cell.setBannerModel(bannerModel:bannerDetailModel!)
+            
+            
         }
         if realTimeModel != nil {
             cell.setRealTimeData(realTimeModel: realTimeModel!)
@@ -216,18 +216,19 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == bottomScrollView {
             let index = Int(scrollView.contentOffset.x / kScreenWidth)
-  //          let scrollEnbled = currentVC?.scrollView?.isScrollEnabled
-    //        currentVC = childViewControllers[index] as? MarketBaseViewController
-         //   currentVC?.scrollViewScrollEnabled(scroll: scrollEnbled!)
+            let scrollEnbled = currentVC?.scrollView?.isScrollEnabled
+            currentVC = childViewControllers[index] as? MarketBaseViewController
+            currentVC?.scrollViewScrollEnabled(scroll: scrollEnbled!)
             currentVC?.scrollView?.contentOffset = CGPoint(x: 0, y: 0)
             menuView?.selected(index: index)
         } else if scrollView == tableView {
-            if scrollView.contentOffset.y <  40 {
-
+            if scrollView.contentOffset.y > 400 {
+                tableView.isScrollEnabled = false
+                currentVC?.scrollViewScrollEnabled(scroll: true)
             }
         }
     }
     func scrollViewIsStop() {
-       // tableView.isScrollEnabled = true
+        tableView.isScrollEnabled = true
     }
 }
