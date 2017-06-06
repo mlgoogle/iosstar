@@ -217,7 +217,10 @@ extension UIViewController {
             AppAPIHelper.user().getauserinfo(complete: { (result) in
                 complete?(result as AnyObject)
             }) { (error) in
-                
+                print(error)
+                 self.userLogout()
+                self.navigationController?.popToRootViewController(animated: true)
+               
             }
         }
     }

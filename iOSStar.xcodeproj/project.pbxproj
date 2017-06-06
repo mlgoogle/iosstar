@@ -438,6 +438,9 @@
 		A085A51D1EB079F200149F14 /* InputPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085A51C1EB079F200149F14 /* InputPwdVC.swift */; };
 		A085A51F1EB0801300149F14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E0922A41EA88DFE002725A0 /* Main.storyboard */; };
 		A086FE161EDFF3F500AD04AD /* BaseWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A086FE151EDFF3F500AD04AD /* BaseWebVC.swift */; };
+		A089C7181EE65A2500371024 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A089C7171EE65A2500371024 /* CoreLocation.framework */; };
+		A089C71A1EE65A2E00371024 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A089C7191EE65A2E00371024 /* ImageIO.framework */; };
+		A089C71C1EE65B3B00371024 /* Bugout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A089C71B1EE65B3B00371024 /* Bugout.framework */; };
 		A08A9BB11EA991D5009E6B2B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */; };
 		A08A9BB51EA99547009E6B2B /* ForgotPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB41EA99547009E6B2B /* ForgotPwdVC.swift */; };
 		A0A667EB1EC2B67D00612510 /* UIViewController+ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A667EA1EC2B67D00612510 /* UIViewController+ChatView.swift */; };
@@ -1252,6 +1255,9 @@
 		A085A51A1EB0771C00149F14 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		A085A51C1EB079F200149F14 /* InputPwdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPwdVC.swift; sourceTree = "<group>"; };
 		A086FE151EDFF3F500AD04AD /* BaseWebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWebVC.swift; sourceTree = "<group>"; };
+		A089C7171EE65A2500371024 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A089C7191EE65A2E00371024 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		A089C71B1EE65B3B00371024 /* Bugout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugout.framework; path = iOSSTar/Library/Bugout.framework; sourceTree = SOURCE_ROOT; };
 		A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		A08A9BB41EA99547009E6B2B /* ForgotPwdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPwdVC.swift; sourceTree = "<group>"; };
 		A0A667EA1EC2B67D00612510 /* UIViewController+ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ChatView.swift"; sourceTree = "<group>"; };
@@ -1294,9 +1300,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DE79EA51EDE913600F1F24A /* CFNetwork.framework in Frameworks */,
-				8DE79EA31EDE912500F1F24A /* Foundation.framework in Frameworks */,
 				A084BB5D1ED5924600DFC868 /* CoreMotion.framework in Frameworks */,
+				A089C71A1EE65A2E00371024 /* ImageIO.framework in Frameworks */,
+				A089C7181EE65A2500371024 /* CoreLocation.framework in Frameworks */,
+				A07238AC1EA76B9A00E755DB /* SystemConfiguration.framework in Frameworks */,
+				A07238A81EA76B6D00E755DB /* CoreTelephony.framework in Frameworks */,
+				8DE79EA51EDE913600F1F24A /* CFNetwork.framework in Frameworks */,
+				A089C71C1EE65B3B00371024 /* Bugout.framework in Frameworks */,
+				8DE79EA31EDE912500F1F24A /* Foundation.framework in Frameworks */,
 				A084BB5B1ED5923C00DFC868 /* UIKit.framework in Frameworks */,
 				A084BC8F1ED59DA500DFC868 /* libcrypto.a in Frameworks */,
 				A084BB591ED5923200DFC868 /* CoreGraphics.framework in Frameworks */,
@@ -1309,9 +1320,7 @@
 				A0EF3B171EB974D80023093A /* OEZCommSDK.framework in Frameworks */,
 				A03D31541EA846A100F85308 /* AudioToolbox.framework in Frameworks */,
 				A03D31521EA8469900F85308 /* CoreMedia.framework in Frameworks */,
-				A07238A81EA76B6D00E755DB /* CoreTelephony.framework in Frameworks */,
 				A03D31501EA8466500F85308 /* AVFoundation.framework in Frameworks */,
-				A07238AC1EA76B9A00E755DB /* SystemConfiguration.framework in Frameworks */,
 				A03D314E1EA8465000F85308 /* MobileCoreServices.framework in Frameworks */,
 				A07238B21EA76D9100E755DB /* libsqlite3.tbd in Frameworks */,
 				A07238AA1EA76B7600E755DB /* libz.tbd in Frameworks */,
@@ -1328,6 +1337,9 @@
 		514D3E8AF1A3675B9BA8BCD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+
+				A089C7191EE65A2E00371024 /* ImageIO.framework */,
+				A089C7171EE65A2500371024 /* CoreLocation.framework */,
 				8DE79EA41EDE913600F1F24A /* CFNetwork.framework */,
 				8DE79EA21EDE912500F1F24A /* Foundation.framework */,
 				A084BB5C1ED5924600DFC868 /* CoreMotion.framework */,
@@ -3037,6 +3049,7 @@
 		A072387E1EA76AA300E755DB /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				A089C71B1EE65B3B00371024 /* Bugout.framework */,
 				A0F4FA221ECD871500D13302 /* City.plist */,
 				A0C9D6591EAE102300FC438D /* Supporting Files */,
 				A072387F1EA76AA300E755DB /* WeChatSDK1.7.4 */,
@@ -4024,6 +4037,8 @@
 					"\"$(SRCROOT)/iOSSTar/Resource/alipay/AlipaySDK.framework\"",
 					"\"$(SRCROOT)/iOSSTar/Resource/alipay\"",
 					"\"$(SRCROOT)/iOSSTar/Resource/alipay/openssl\"",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/iOSSTar/Library",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4073,6 +4088,8 @@
 					"\"$(SRCROOT)/iOSSTar/Resource/alipay/AlipaySDK.framework\"",
 					"\"$(SRCROOT)/iOSSTar/Resource/alipay\"",
 					"\"$(SRCROOT)/iOSSTar/Resource/alipay/openssl\"",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/iOSSTar/Library",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

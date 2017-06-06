@@ -135,7 +135,6 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                                 completeButtonTitle: "开 始 验 证") { (completeButton) in
                                                     alertVc.dismissAlertVc()
 
-
                                                     let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
                                                     self.navigationController?.pushViewController(vc, animated: true )
                                                     return
@@ -147,6 +146,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                 
 //                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
 //                                self.navigationController?.pushViewController(vc, animated: true )
+
                                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")
                                 self.navigationController?.pushViewController(vc, animated: true)
                             }// 设置交易密码
