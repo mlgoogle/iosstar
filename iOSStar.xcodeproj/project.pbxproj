@@ -89,13 +89,13 @@
 		8D5C28521ED6FB520005B2BE /* OrderStartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5C28511ED6FB520005B2BE /* OrderStartViewCell.swift */; };
 		8DAC7E291EE1419D001AD3EF /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAC7E281EE1419D001AD3EF /* User.storyboard */; };
 		8DAC7E2F1EE26455001AD3EF /* UserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */; };
+		8DAC7E331EE640F3001AD3EF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAC7E321EE640F3001AD3EF /* Login.storyboard */; };
 		8DD224C11ED820970048D7D3 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DD224C01ED820970048D7D3 /* Market.storyboard */; };
 		8DD224C51ED916460048D7D3 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD224C41ED916460048D7D3 /* AlertViewController.swift */; };
 		8DE79EA31EDE912500F1F24A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE79EA21EDE912500F1F24A /* Foundation.framework */; };
 		8DE79EA51EDE913600F1F24A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE79EA41EDE913600F1F24A /* CFNetwork.framework */; };
 		A001A9721EAD9F8D00752F1A /* ShareDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */; };
 		A0155E071EA8ABF20047B95B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0155E061EA8ABF20047B95B /* Images.xcassets */; };
-		A0155E0B1EA8C8850047B95B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0155E0A1EA8C8850047B95B /* Login.storyboard */; };
 		A0155E101EA8C9760047B95B /* RegistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0155E0F1EA8C9760047B95B /* RegistVC.swift */; };
 		A0189C121ED2EE2D0025B7FD /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A0189C111ED2EE2D0025B7FD /* bg.png */; };
 		A03D314E1EA8465000F85308 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D314D1EA8465000F85308 /* MobileCoreServices.framework */; };
@@ -560,6 +560,7 @@
 		8D5C28511ED6FB520005B2BE /* OrderStartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderStartViewCell.swift; sourceTree = "<group>"; };
 		8DAC7E281EE1419D001AD3EF /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequestModel.swift; sourceTree = "<group>"; };
+		8DAC7E321EE640F3001AD3EF /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		8DD224C01ED820970048D7D3 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
 		8DD224C41ED916460048D7D3 /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		8DE79EA21EDE912500F1F24A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -567,7 +568,6 @@
 		8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareDataModel.swift; sourceTree = "<group>"; };
 		A0155E061EA8ABF20047B95B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		A0155E0A1EA8C8850047B95B /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		A0155E0F1EA8C9760047B95B /* RegistVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistVC.swift; sourceTree = "<group>"; };
 		A0189C111ED2EE2D0025B7FD /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		A03D314D1EA8465000F85308 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -3116,7 +3116,7 @@
 				8DAC7E281EE1419D001AD3EF /* User.storyboard */,
 				6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */,
 				8DD224C01ED820970048D7D3 /* Market.storyboard */,
-				A0155E0A1EA8C8850047B95B /* Login.storyboard */,
+				8DAC7E321EE640F3001AD3EF /* Login.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -3394,6 +3394,7 @@
 				A03D3FD91EA86A6500F85308 /* NTESAboutViewController.xib in Resources */,
 				A03D3FE41EA86A6500F85308 /* NTESUserInfoSettingViewController.xib in Resources */,
 				A03D3F9D1EA86A6500F85308 /* NTESRegisterViewController.xib in Resources */,
+				8DAC7E331EE640F3001AD3EF /* Login.storyboard in Resources */,
 				A0C9D6741EAE102300FC438D /* video_chat_tip_onTimer.aac in Resources */,
 				A0C9D6721EAE102300FC438D /* video_chat_tip_HangUp.aac in Resources */,
 				A07DF7C61EC0132F00C2254E /* Novisible@2x.png in Resources */,
@@ -3433,7 +3434,6 @@
 				A07238951EA76AA300E755DB /* nav_clear@2x.png in Resources */,
 				A0F4FA231ECD871500D13302 /* City.plist in Resources */,
 				A0BC76401EC47C4E0050F1D6 /* Settings.bundle in Resources */,
-				A0155E0B1EA8C8850047B95B /* Login.storyboard in Resources */,
 				A0C9D66F1EAE102300FC438D /* NIMKitResource.bundle in Resources */,
 				A03D3F6E1EA86A6500F85308 /* NTESJionTeamViewController.xib in Resources */,
 				A03D3FAE1EA86A6500F85308 /* NTESAudio2TextViewController.xib in Resources */,
@@ -4014,6 +4014,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 29FPYRHCKA;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4097,7 +4098,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.inf.aviation.cn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d0424e09-037a-4302-96ee-505121a59664";
+				PROVISIONING_PROFILE = "3ed33143-a3ce-44d7-a23e-4a80aa16231c";
 				PROVISIONING_PROFILE_SPECIFIER = 20170516;
 				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
