@@ -13,9 +13,10 @@ class PublisherPageViewController: UIViewController {
     var code = "1001"
     var bannerModel:BannerModel?
     var rows = [1, 1, 10]
-    var sectionHeight = [200, 150, 50]
-    var titles = ["1","个人简介", "主要经历"]
+    var sectionHeight = [200, 150, 50, 50]
+    var titles = ["1","个人简介", "主要经历", "主要成就"]
     var expericences:[ExperienceModel]?
+    var achives:[AchiveModel]?
     var bannerDetailModel:BannerDetaiStarModel?
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -30,6 +31,7 @@ class PublisherPageViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         requestInfos()
         requestExperience()
+        requestAchive()
     }
     func shareAction() {
         
@@ -46,12 +48,9 @@ class PublisherPageViewController: UIViewController {
             let shareObject = UMShareWebpageObject()
             shareObject.title = self.bannerModel!.name
             shareObject.descr = self.bannerDetailModel?.introduction
-            
             let cell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? BannerDetailImageCell
-            
             shareObject.thumbImage = cell?.iconImageView.image
             shareObject.webpageUrl = "www.baidu.com"
-            
             AppConfigHelper.shared().share(type: platform, shareObject: shareObject, viewControlller: self)
         }
     }
@@ -61,6 +60,7 @@ class PublisherPageViewController: UIViewController {
         let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail") as? MarketDetailViewController
         vc?.starName = bannerModel?.name
         vc?.starCode = bannerModel?.code
+        vc?.bannerDetailModel = bannerDetailModel
         navigationController?.pushViewController(vc!, animated: true)
     }
     func requestInfos() {
@@ -68,13 +68,12 @@ class PublisherPageViewController: UIViewController {
             if let model = response as? BannerDetaiStarModel {
                 self.bannerDetailModel = model
                 self.tableView.reloadData()
-                let string = " \(model.seconds) 秒"
+                let string = " \(model.owntimes) 秒"
                 self.totalLabel.setAttributeText(text: "总时长\(string)", firstFont: 18, secondFont: 18, firstColor: UIColor(hexString: "999999"), secondColor: UIColor(hexString: "FB9938"), range: NSRange(location: 3, length: string.length()))
             }
         }, error: errorBlockFunc())
     }
     func requestExperience() {
-        
         AppAPIHelper.marketAPI().requestStarExperience(code: bannerModel!.code, complete: { (response) in
             if let models =  response as? [ExperienceModel] {
                 self.expericences = models
@@ -82,19 +81,28 @@ class PublisherPageViewController: UIViewController {
             }
         }, error: errorBlockFunc())
     }
-
+    func requestAchive() {
+        AppAPIHelper.marketAPI().requestStarArachive(code:  bannerModel!.code, complete: { (response) in
+            if let models =  response as? [AchiveModel] {
+                self.achives = models
+                self.tableView.reloadSections(IndexSet(integer: 3), with: .none)
+            }
+        }, error: errorBlockFunc())
+    }
     
 }
 
 extension PublisherPageViewController:UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 2 {
             
-            return expericences == nil ? 0 : expericences!.count
+            return expericences?.count ??  0
+        } else if section == 3 {
+            return achives?.count ?? 0
         }
         return 1
     }
@@ -105,14 +113,10 @@ extension PublisherPageViewController:UITableViewDelegate, UITableViewDataSource
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "iconImageCell", for: indexPath) as! BannerDetailImageCell
-            
-            cell.setImage(imageUrl: bannerDetailModel?.pic1)
-            
-            
+            cell.setImage(imageUrl: bannerDetailModel?.pic_url)
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! BannerDetailInfoCell
-            
             
             cell.setData(model: bannerDetailModel)
         
@@ -123,6 +127,15 @@ extension PublisherPageViewController:UITableViewDelegate, UITableViewDataSource
             let model = expericences?[indexPath.row]
             cell.setTitle(title: (model?.experience)!)
             return cell
+            
+            
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MarketExperienceCell", for: indexPath) as! MarketExperienceCell
+            
+            let model = achives?[indexPath.row]
+            cell.setTitle(title: (model?.achive)!)
+            return cell
+ 
         default:
             return UITableViewCell()
         }

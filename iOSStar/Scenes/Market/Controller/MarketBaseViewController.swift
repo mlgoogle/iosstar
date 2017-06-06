@@ -29,7 +29,7 @@ class MarketBaseViewController: UIViewController, UIScrollViewDelegate{
     
     func scrollViewScrollEnabled(scroll:Bool) {
         if isSubView {
-            scrollView?.isScrollEnabled = scroll
+  //          scrollView?.isScrollEnabled = scroll
         }
     }
 
@@ -38,7 +38,7 @@ class MarketBaseViewController: UIViewController, UIScrollViewDelegate{
         view.endEditing(true)
         if isSubView {            
             if scrollView.contentOffset.y < 0 {
-                scrollView.isScrollEnabled = false
+//                scrollView.isScrollEnabled = false
                 delegate?.scrollViewIsStop()
             }
         }

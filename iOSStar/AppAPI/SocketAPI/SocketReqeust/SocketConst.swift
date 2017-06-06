@@ -73,8 +73,10 @@ class SocketConst: NSObject {
         //评论列表
         case commetList = 10017
         
-        //明星经理
+        //明星经历
         case starExperience = 11009
+        //明星成就
+        case starAchive = 11011
         
         case newsStarInfo = 10001
         

@@ -13,7 +13,6 @@ class MarketDetailSubViewCell: UITableViewCell {
     @IBOutlet weak var backView: UIView!
 
     @IBOutlet weak var width: NSLayoutConstraint!
-
     
     var scrollContenView:UIView = {
        
@@ -47,5 +46,7 @@ class MarketDetailSubViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+
 
 }

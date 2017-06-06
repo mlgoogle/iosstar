@@ -131,7 +131,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         self.imagePickerController.sourceType = type
         //判断是否支持相册
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            self.present(self.imagePickerController, animated: true, completion:nil)
+            self.navigationController?.present(self.imagePickerController, animated: true, completion:nil)
         }
     }
     //MARK: UIImagePickerControllerDelegate

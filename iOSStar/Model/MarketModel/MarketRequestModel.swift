@@ -30,7 +30,7 @@ class TimeLineRequestModel: MarketBaseModel {
 
 class StarListRequestModel: MarketBaseModel {
     
-    var sort = 0
+    var sort = 0 
     var aType:Int32 = 5
     var start:Int32 = 0
     var count:Int32 = 20

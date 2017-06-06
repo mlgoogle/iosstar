@@ -64,7 +64,12 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         let packet = SocketDataPacket(opcode: .starExperience, parameters: parameters)
         startModelsRequest(packet, listName: "list", modelClass: ExperienceModel.self, complete: complete, error: error)
     }
+    func requestStarArachive(code:String,complete: CompleteBlock?, error: ErrorBlock?) {
+        let parameters:[String:Any] = [SocketConst.Key.starCode : code]
+        let packet = SocketDataPacket(opcode: .starAchive, parameters: parameters)
+        startModelsRequest(packet, listName: "list", modelClass: AchiveModel.self, complete: complete, error: error)
 
+    }
     //获取实时报价
     func requestRealTime(requestModel:RealTimeRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .realTime, model: requestModel)

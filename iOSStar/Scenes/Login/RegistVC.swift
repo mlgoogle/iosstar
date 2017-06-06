@@ -8,7 +8,7 @@
 
 import UIKit
 import SVProgressHUD
-class RegistVC: UIViewController {
+class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     
     @IBOutlet weak var rbackView: UIView!
     @IBOutlet weak var rcontentView: UIView!
@@ -53,18 +53,22 @@ class RegistVC: UIViewController {
         width.constant = UIScreen.main.bounds.size.width
 //        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
 //        view.addGestureRecognizer(tap)
-        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(rtapClick))
-        rcontentView.addGestureRecognizer(tap)
         
         let rbackViewTap = UITapGestureRecognizer.init(target: self, action: #selector(rbackViewTapClick))
+        rbackViewTap.delegate = self
         rbackView.addGestureRecognizer(rbackViewTap)
     }
     
     // 拦截中间contentView的点击事件
-    func rtapClick(){
-       
+  
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if (touch.view?.isDescendant(of: rbackView))! {
+            return false;
+        }
+        
+        return true;
     }
-    
+
     func rbackViewTapClick() {
         
         let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
@@ -86,8 +90,10 @@ class RegistVC: UIViewController {
         
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
             vaildCodeBtn.isEnabled = false
+            SVProgressHUD.showProgressMessage(ProgressMessage: "")
             AppAPIHelper.login().SendCode(phone: phoneTf.text!, complete: { [weak self](result)  in
-                
+                SVProgressHUD.dismiss()
+                self?.vaildCodeBtn.isEnabled = true
                 if let response = result  {
                     
                     if response["result"] as! Int == 1 {
@@ -99,9 +105,10 @@ class RegistVC: UIViewController {
                         
                     }
                 }
-                //                print(result)
      
                 }, error: { (error)  in
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "短信发送失败,请稍后再试", ForDuration: 2, completion: nil)
+                    print("----\(error.description)")
                     self.vaildCodeBtn.isEnabled = true
             })
         }
@@ -145,7 +152,7 @@ class RegistVC: UIViewController {
         }
 
     }
-    //MARK:-  login()
+    //MARK:-  regist()
     func login() {
         let string = "yd1742653sd" + self.timeStamp + self.codeTf.text! + self.phoneTf.text!
         if string.md5_string() != self.vToken{
@@ -154,12 +161,14 @@ class RegistVC: UIViewController {
         AppAPIHelper.login().regist(phone: phoneTf.text!, password: (passTf.text?.md5_string())!, complete: { [weak self](result)  in
             if let response = result {
                 if response["result"] as! Int == 1 {
-                    SVProgressHUD.showSuccessMessage(SuccessMessage: "注册成功", ForDuration: 0.5, completion: { 
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "注册成功", ForDuration: 1.0, completion: {
                           self?.resultBlock!(doStateClick.doLogin as AnyObject)
                     })
                 }
             }
         }) { (error) in
+            // print("--------- \(error.userInfo["NSLocalizedDescription"] as! String)")
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 1.0, completion: nil)
         }
     }
     func bindWeChat() {
@@ -173,9 +182,7 @@ class RegistVC: UIViewController {
 
         }) { (error )  in
             print(error)
-            SVProgressHUD.showErrorMessage(ErrorMessage:  error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: { 
-                
-            })
+            SVProgressHUD.showErrorMessage(ErrorMessage:  error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: nil)
         }
     }
        //MARK:-   去登录

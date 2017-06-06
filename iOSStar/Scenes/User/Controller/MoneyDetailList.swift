@@ -107,6 +107,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         
         let ResultVC = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResultVC")
         let moder = self.reponseData as! RechargeListModel

@@ -91,6 +91,11 @@ class NewsNavigationView: UIView {
         } else {
             PMLabel.text = "A M"
         }
+        if Int(hour)! > 6  && Int(hour)! < 18{
+            imageView.image = UIImage(named: "news_day")
+        } else {
+            imageView.image = UIImage(named: "news_night")
+        }
         formatter.dateFormat = "HH:mm"
         timeLabel.text = formatter.string(from: date)
         

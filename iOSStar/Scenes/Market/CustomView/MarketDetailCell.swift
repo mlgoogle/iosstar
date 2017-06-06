@@ -41,6 +41,7 @@ class WPMarkerLineView: UIView {
 import UIKit
 import Charts
 class MarketDetailCell: UITableViewCell,ChartViewDelegate{
+    var currentView:UIView?
     @IBOutlet weak var currentPriceLabel: UILabel!
     var datas:[TimeLineModel]?
     @IBOutlet weak var lineView: LineChartView!
@@ -71,6 +72,13 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
     func setStarModel(starModel:MarketListStarModel) {
         iconImageView.kf.setImage(with: URL(string: starModel.pic))
     }
+    
+    func setBannerModel(bannerModel:BannerDetaiStarModel) {
+        iconImageView.kf.setImage(with: URL(string: bannerModel.head_url))
+
+        
+    }
+    
     func setRealTimeData(realTimeModel:RealTimeModel) {
         let percent = (realTimeModel.change / realTimeModel.currentPrice) * 100
         currentPriceLabel.text = "\(realTimeModel.currentPrice)"
@@ -137,5 +145,8 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
 
         // Configure the view for the selected state
     }
-
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let view = super.hitTest(point, with: event)
+        return currentView
+    }
 }
