@@ -121,6 +121,8 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
                         UserDefaults.standard.synchronize()
                         self?.LoginYunxin()
+                        
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
                     }
                 })
             }) { (error) in
