@@ -2217,14 +2217,22 @@
                                                         <action selector="doVailiName:" destination="a1r-49-cXg" eventType="touchUpInside" id="1of-Oc-edK"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55I-Dc-zn3">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="55I-Dc-zn3">
                                                     <rect key="frame" x="136.5" y="13" width="103" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="103" id="75D-cx-GVL"/>
                                                         <constraint firstAttribute="height" constant="30" id="yqP-sY-AXc"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <state key="normal" title="我已同意《免责声明》"/>
+                                                    <state key="normal">
+                                                        <attributedString key="attributedTitle">
+                                                            <fragment content="我已同意《免责声明》">
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <font key="NSFont" size="10" name=".PingFangSC-Regular"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                    </state>
                                                     <connections>
                                                         <segue destination="4BM-0F-Yny" kind="push" id="3Ba-Ag-dcT"/>
                                                     </connections>

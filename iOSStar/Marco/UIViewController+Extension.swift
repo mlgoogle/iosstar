@@ -217,12 +217,16 @@ extension UIViewController {
             AppAPIHelper.user().getauserinfo(complete: { (result) in
                 complete?(result as AnyObject)
             }) { (error) in
-                let nav : UINavigationController = self.tabBarController?.selectedViewController as! UINavigationController
-                if nav.viewControllers.count > 0{
-                    self.userLogout()
-                  self.navigationController?.popToRootViewController(animated: true)
-                    
+                
+                if let nav : UINavigationController = self.tabBarController?.selectedViewController as? UINavigationController{
+                    if nav.viewControllers.count > 0{
+                        self.userLogout()
+                        self.navigationController?.popToRootViewController(animated: true)
+                        
+                    }
                 }
+                
+                
                
             }
         }
