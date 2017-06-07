@@ -123,9 +123,9 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
          
             if indexPath.row == 0{
                 
-                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")
-                self.navigationController?.pushViewController(vc, animated: true)
-                return
+//                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")
+//                self.navigationController?.pushViewController(vc, animated: true)
+//                return
                 
                 self.getUserrealmInfo { (result) in
                     if let model = result{
