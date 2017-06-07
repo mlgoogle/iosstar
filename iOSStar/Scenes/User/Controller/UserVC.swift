@@ -14,9 +14,14 @@ class TitleCell: UITableViewCell {
     @IBOutlet var version: UILabel!
     
 }
+
 class UserVC: BaseCustomTableViewController  {
 
+    // 资产总额
     var  account : UILabel?
+    
+    // 昵称
+    var  nickNameLabel : UILabel?
     // 名字数组
     var titltArry = [""]
   
@@ -38,6 +43,7 @@ class UserVC: BaseCustomTableViewController  {
                 
                 let object = response as! [String : AnyObject]
                self.account?.text =  String.init(format: "%.2f", object["balance"] as! Double)
+                self.nickNameLabel?.text = UserDefaults.standard.object(forKey: "phone") as? String
               
                 
             }
@@ -73,6 +79,7 @@ class UserVC: BaseCustomTableViewController  {
         if indexPath.section == 0{
           
             account = cell.balance
+            nickNameLabel = cell.nicknameLabel
            return cell
         }else if indexPath.section == 2{
             

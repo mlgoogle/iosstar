@@ -15,6 +15,12 @@ class HeaderCell: UITableViewCell {
     @IBOutlet var market_cap: UILabel!
     // 可用余额
     @IBOutlet var total_amt: UILabel!
+    
+    @IBOutlet weak var nicknameLabel: UILabel!
+    
+    @IBOutlet weak var buyStarLabel: UILabel!
+    
+    @IBOutlet weak var iconImageView: UIImageView!
 }
 class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var needPwd : Int = 2
@@ -161,7 +167,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                 alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
 
                                                     titleLabelText: "开通支付",
-                                                    subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购明星时间，\n转让明星时间，和明星在‘星聊’中聊天，并且还能约见明星。",
+                                                    subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购明星时间，转让明星时间，\n和明星在‘星聊’中聊天，并且还能约见明星。",
                                                     completeButtonTitle: "我 知 道 了") {[weak alertVc] (completeButton) in
                                                         alertVc?.dismissAlertVc()
 

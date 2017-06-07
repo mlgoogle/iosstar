@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+    
          let config = BugoutConfig.default()
          config?.enabledShakeFeedback = true
          Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
@@ -67,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
 
         return true
     }
+        
     func login(){
         
         if  UserDefaults.standard.object(forKey: "phone") as? String == nil {
