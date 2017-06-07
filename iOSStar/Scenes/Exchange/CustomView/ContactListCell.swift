@@ -42,7 +42,13 @@ class ContactListCell: OEZTableViewCell {
         jobLabel.text = model.faccid
         if statusBtn != nil{
         // 0 已拒绝 1 约见
-         statusBtn.isHidden = model.appoint == 0  ? true : false
+         // statusBtn.isHidden = model.appoint == 0  ? true : false
+            if model.appoint == 0 {
+                statusBtn.setTitle("已拒绝", for: .normal)
+            } else {
+                statusBtn.setTitle("已约见", for: .normal)
+            }
+        
         }
        
         
