@@ -171,6 +171,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                                     completeButtonTitle: "我 知 道 了") {[weak alertVc] (completeButton) in
                                                         alertVc?.dismissAlertVc()
 
+
                                                         let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
                                                         self.navigationController?.pushViewController(vc, animated: true )
                                                         return

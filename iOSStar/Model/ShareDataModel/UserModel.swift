@@ -23,6 +23,8 @@ class UserModel: Object {
      dynamic var userinfo  : UserModel?
      dynamic var result : Int64 = 0
      dynamic var token : String = " "
+     dynamic var name : String = " "
+     dynamic var hader : String = " "
     
     
     override static func primaryKey() -> String?{

@@ -19,6 +19,7 @@ class AlertViewController: UIViewController {
     
     // 按钮动作
     var completeAction:((_ button: UIButton) -> Void)? = nil
+    
     // 内部控件
     var contentView = UIView()
     var closeButton = UIButton()

@@ -38,7 +38,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
         super.viewDidLoad()
         
         doSetPass.setTitle(setPass == false ? "下一步" :"确定", for: .normal)
-        title = "设置交易密码"
+        title = setPass == true ? "请确认交易密码" :  "设置交易密码"
          self.doSetPass.backgroundColor = UIColor.gray
         initUI()
        
@@ -120,7 +120,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
                       SVProgressHUD.showSuccessMessage(SuccessMessage: "设置成功", ForDuration: 0.5, completion: {
                         for controller   in (self.navigationController?.viewControllers)!{
                             if controller.isKind(of: WealthVC.self){
-                                _ = self.navigationController?.popToViewController(controller, animated: true)
+                                _ = self.navigationController?.popToRootViewController(animated: true)
                             }
                         }
                       })
