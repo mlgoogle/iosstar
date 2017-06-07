@@ -66,6 +66,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
             vi.backgroundColor = UIColor.white
             vi.setTitleColor(UIColor.init(hexString: "FB9938"), for: .normal)
             selectBtn = false
+             rechargeMoney = 0.0
         }else{
             
         }
@@ -86,18 +87,23 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     //MARK:去充值
     @IBAction func doRecharge(_ sender: Any) {
         //微信充值
+        print(rechargeMoney)
+        if rechargeMoney == 0.0 {
+        SVProgressHUD.showErrorMessage(ErrorMessage: "请输入充值金额", ForDuration: 0.5, completion: {
+           
+        })
+             return
+        }
         if paytype == 0 {
-           weixinpay()
+           doWeiXinPay()
         }else{
-           alipay()
+           doAliPay()
         }
         
        
         
     }
-    func alipay(){
-    
-    }
+   
     func weixinpay(){
         SVProgressHUD.show(withStatus: "加载中")
         AppAPIHelper.user().weixinpay(title: "余额充值", price: rechargeMoney, complete: { (result) in
