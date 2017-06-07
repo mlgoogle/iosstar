@@ -19,7 +19,6 @@ class ContainVC: UIViewController {
 
     var scrollView : UIScrollView?
     
-   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -43,6 +42,7 @@ class ContainVC: UIViewController {
           
                 if response?.result  == -302{
                        ShareDataModel.share().isweichaLogin = true
+                     // ShareDataModel.addObserver(self, forKeyPath: "isweichaLogin", options: .new, context: &myContext)
                        self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.frame.size.width)!, y: 0), animated: true)
                 }else{
                     
@@ -68,6 +68,9 @@ class ContainVC: UIViewController {
         }
 
     }
+    
+
+    
    //MARK:- 设置UI
     func initUI(){
         self.automaticallyAdjustsScrollViewInsets = false;

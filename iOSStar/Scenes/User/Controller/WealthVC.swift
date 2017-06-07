@@ -131,7 +131,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                             alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
                                                 titleLabelText: "您还没有身份验证",
 
-                                                subTitleText: "您需要进行身份验证,之后才可以进行明星时间交易",
+                                                subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
                                                 completeButtonTitle: "开 始 验 证") { (completeButton) in
                                                     alertVc.dismissAlertVc()
 
@@ -144,6 +144,9 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                         else {
                             if self.needPwd == 0{
                                 
+//                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
+//                                self.navigationController?.pushViewController(vc, animated: true )
+
                                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")
                                 self.navigationController?.pushViewController(vc, animated: true)
                             }// 设置交易密码
@@ -154,7 +157,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
                                                     titleLabelText: "你还没有开通支付",
                                                     subTitleText: "开通支付之后才可以进行交易",
-                                                    completeButtonTitle: "确 定 开 通") { (completeButton) in
+                                                    completeButtonTitle: "我 知 道 了") { (completeButton) in
                                                         alertVc.dismissAlertVc()
 
                                                         let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
