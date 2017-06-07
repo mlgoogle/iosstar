@@ -91,8 +91,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
                 let datadic = result as? Dictionary<String,String>
                 if let _ = datadic {
                    
-            
-                    
                     NIMSDK.shared().loginManager.login(UserDefaults.standard.object(forKey: "phone") as! String, token: (datadic?["token_value"]!)!, completion: { (error) in
                         if (error == nil){
                             
@@ -254,7 +252,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         }
     }
     
-    // MARK: - GeTuiSdkDelegate
+    // MARK: - 远程通知(推送)回调
     /** 远程通知注册成功委托 */
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceToken_ns = NSData.init(data: deviceToken);    // 转换成NSData类型
@@ -267,9 +265,112 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         NSLog("\n>>>[DeviceToken Success]:%@\n\n",token);
     }
     
+    /** 远程通知注册失败委托 */
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("\n>>>[DeviceToken Error]:%@\n\n",error.localizedDescription);
     }
+    
+    
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        // 唤醒
+        GeTuiSdk.resume()
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
+    
+    // MARK: - APP运行中接收到通知(推送)处理 - iOS 10 以下
+    
+    /** APP已经接收到“远程”通知(推送) - (App运行在后台) */
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        application.applicationIconBadgeNumber = 0;        // 标签
+        
+        NSLog("\n>>>[Receive RemoteNotification]:%@\n\n",userInfo);
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        // [ GTSdk ]：将收到的APNs信息传给个推统计
+        GeTuiSdk.handleRemoteNotification(userInfo);
+        
+        NSLog("\n>>>[Receive RemoteNotification]:%@\n\n",userInfo);
+        completionHandler(UIBackgroundFetchResult.newData);
+    }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        print("willPresentNotification: %@",notification.request.content.userInfo);
+        
+        completionHandler([.badge,.sound,.alert]);
+    }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        print("didReceiveNotificationResponse: %@",response.notification.request.content.userInfo);
+        
+        // [ GTSdk ]：将收到的APNs信息传给个推统计
+        GeTuiSdk.handleRemoteNotification(response.notification.request.content.userInfo);
+        
+        
+        if UIApplication.shared.applicationState == .active {
+            
+            let alertController = UIAlertController(title: "提示", message: "你确定要退出吗？", preferredStyle:.alert)
+            // 设置2个UIAlertAction
+            let cancelAction = UIAlertAction(title: "取消", style:.cancel, handler: nil)
+            let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
+            }
+            
+            // 添加
+            alertController.addAction(cancelAction)
+            alertController.addAction(completeAction)
+            
+            // 弹出
+            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+            
+        }
+        
+        completionHandler();
+    }
+    
+    // MARK: - GeTuiSdkDelegate
+    
+    /**
+     
+    /** SDK启动成功返回cid */
+    func geTuiSdkDidRegisterClient(_ clientId: String!) {
+        // [4-EXT-1]: 个推SDK已注册，返回clientId
+        NSLog("\n>>>[GeTuiSdk RegisterClient]:%@\n\n", clientId);
+        
+    }
+    /** SDK遇到错误回调 */
+    func geTuiSdkDidOccurError(_ error: Error!) {
+        // [EXT]:个推错误报告，集成步骤发生的任何错误都在这里通知，如果集成后，无法正常收到消息，查看这里的通知。
+        NSLog("\n>>>[GeTuiSdk error]:%@\n\n", error.localizedDescription);
+    }
+    
+    /** SDK收到sendMessage消息回调 */
+    func geTuiSdkDidSendMessage(_ messageId: String!, result: Int32) {
+        // [4-EXT]:发送上行消息结果反馈
+        let msg:String = "sendmessage=\(messageId),result=\(result)";
+        NSLog("\n>>>[GeTuiSdk DidSendMessage]:%@\n\n",msg);
+    }
+    
+    /** SDK收到透传消息回调 */
+    func geTuiSdkDidReceivePayloadData(_ payloadData: Data!, andTaskId taskId: String!, andMsgId msgId: String!, andOffLine offLine: Bool, fromGtAppId appId: String!) {
+        
+        var payloadMsg = "";
+        if((payloadData) != nil) {
+            payloadMsg = String.init(data: payloadData, encoding: String.Encoding.utf8)!;
+        }
+        
+        let msg:String = "Receive Payload: \(payloadMsg), taskId:\(taskId), messageId:\(msgId)";
+        
+        NSLog("\n>>>[GeTuiSdk DidReceivePayload]:%@\n\n",msg);
+    }
+     
+    */
+    
 }
 
     

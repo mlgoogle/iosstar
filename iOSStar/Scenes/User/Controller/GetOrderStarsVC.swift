@@ -45,8 +45,11 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!) {
         
         if action == 3 {
-            
-            print("点击了聊一聊按钮?")
+            let starInfoModel = data as! StarInfoModel
+            let session = NIMSession(starInfoModel.faccid, type: .P2P)
+            let vc = NTESSessionViewController(session: session)
+            self.navigationController?.pushViewController(vc!, animated: true)
+//            print("点击了聊一聊按钮?")
         }
     }
     
