@@ -154,12 +154,12 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                 
                                 let alertVc = AlertViewController()
                                 alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-
+                                                    
                                                     titleLabelText: "你还没有开通支付",
                                                     subTitleText: "开通支付之后才可以进行交易",
                                                     completeButtonTitle: "我 知 道 了") { (completeButton) in
                                                         alertVc.dismissAlertVc()
-
+                                                        
                                                         let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
                                                         self.navigationController?.pushViewController(vc, animated: true )
                                                         return
