@@ -264,6 +264,9 @@
                                                             <integer key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="haveAChatWith_sender:" destination="muT-dB-dre" eventType="touchUpInside" id="d0m-Gu-NB3"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
@@ -312,7 +315,7 @@
             <objects>
                 <navigationController storyboardIdentifier="Exchange" automaticallyAdjustsScrollViewInsets="NO" id="IUx-14-n82" customClass="BaseNavigationController" customModule="iOSStar" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Rqe-GR-WuM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rqe-GR-WuM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2vG-Fh-E77">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2vG-Fh-E77">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -474,10 +474,10 @@
                                                         <action selector="chooseRechargeMoney:" destination="oWR-z7-wWN" eventType="touchUpInside" id="Lry-gl-cZp"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="100000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xot-CT-BPD">
+                                                <button opaque="NO" tag="50000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xot-CT-BPD">
                                                     <rect key="frame" x="261.5" y="130" width="88.5" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" title="100000元">
+                                                    <state key="normal" title="50000元">
                                                         <color key="titleColor" red="0.98431372549999996" green="0.59999999999999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <userDefinedRuntimeAttributes>
@@ -2021,6 +2021,9 @@
                                                             <integer key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="haveAChatWith_sender:" destination="fhk-4s-zqc" eventType="touchUpInside" id="2Zl-ve-GjS"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5i-5a-LmC">
                                                     <rect key="frame" x="99" y="34" width="45" height="20"/>
@@ -2411,6 +2414,9 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="balance" destination="VaA-Q0-wjK" id="L38-oO-Puy"/>
+                                            <outlet property="buyStarLabel" destination="5NP-2v-LoD" id="TLR-2Q-9Qu"/>
+                                            <outlet property="iconImageView" destination="rLj-B3-Ohu" id="Oob-ym-tCi"/>
+                                            <outlet property="nicknameLabel" destination="EnC-VG-Jk9" id="JrE-do-nxl"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="titleCell" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="titleCell" rowHeight="50" id="v1W-ng-Seo" customClass="TitleCell" customModule="iOSStar" customModuleProvider="target">
@@ -3174,6 +3180,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="575.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTL-mg-zq8">
                                                     <rect key="frame" x="21" y="20" width="333" height="548"/>
                                                     <mutableString key="text">       在使用本系统的所有功能之前，请您务必仔细阅读并透彻理解本声明。您可以选择不使用本系统，但如果您使用本系统，您的使用行为将被视为对本声明全部内容的认可。

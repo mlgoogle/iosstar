@@ -30,12 +30,11 @@ class VaildNameVC:  BaseTableViewController {
     }
     @IBAction func doVailiName(_ sender: Any) {
         if checkTextFieldEmpty([name,card]){
-            
+            self.name.resignFirstResponder()
+            self.card.resignFirstResponder()
             if selectBtn.isSelected == false{
-                SVProgressHUD.showErrorMessage(ErrorMessage: "请先同意免责声明", ForDuration: 1, completion: {
-                   
-                    
-                })
+                SVProgressHUD.showErrorMessage(ErrorMessage: "您尚未勾选《免责声明》，请选择", ForDuration: 1, completion: nil)
+                return
             }
             AppAPIHelper.user().authentication(realname: name.text!, id_card: card.text!, complete: { (result) in
                 if let model = result {
@@ -60,12 +59,10 @@ class VaildNameVC:  BaseTableViewController {
                         })
                     }else{
                         SVProgressHUD.showErrorMessage(ErrorMessage: "实名认证失败", ForDuration: 1, completion: {
-                            _ = self.navigationController?.popViewController(animated: true)
+                           // _ = self.navigationController?.popViewController(animated: true)
 
                         })
-
                     }
-                    
                 }
             }) { (error ) in
                 

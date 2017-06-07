@@ -15,6 +15,12 @@ class HeaderCell: UITableViewCell {
     @IBOutlet var market_cap: UILabel!
     // 可用余额
     @IBOutlet var total_amt: UILabel!
+    
+    @IBOutlet weak var nicknameLabel: UILabel!
+    
+    @IBOutlet weak var buyStarLabel: UILabel!
+    
+    @IBOutlet weak var iconImageView: UIImageView!
 }
 class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var needPwd : Int = 2
@@ -122,6 +128,11 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         if indexPath.section == 1 {
          
             if indexPath.row == 0{
+                
+//                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")
+//                self.navigationController?.pushViewController(vc, animated: true)
+//                return
+                
                 self.getUserrealmInfo { (result) in
                     if let model = result{
                         let object =  model as! [String : AnyObject]
@@ -132,8 +143,8 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                                 titleLabelText: "您还没有身份验证",
 
                                                 subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
-                                                completeButtonTitle: "开 始 验 证") { (completeButton) in
-                                                    alertVc.dismissAlertVc()
+                                                completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
+                                                    alertVc?.dismissAlertVc()
 
                                                     let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
                                                     self.navigationController?.pushViewController(vc, animated: true )
@@ -154,12 +165,13 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                 
                                 let alertVc = AlertViewController()
                                 alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-                                                    
-                                                    titleLabelText: "你还没有开通支付",
-                                                    subTitleText: "开通支付之后才可以进行交易",
-                                                    completeButtonTitle: "我 知 道 了") { (completeButton) in
-                                                        alertVc.dismissAlertVc()
-                                                        
+
+                                                    titleLabelText: "开通支付",
+                                                    subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购明星时间，转让明星时间，\n和明星在‘星聊’中聊天，并且还能约见明星。",
+                                                    completeButtonTitle: "我 知 道 了") {[weak alertVc] (completeButton) in
+                                                        alertVc?.dismissAlertVc()
+
+
                                                         let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
                                                         self.navigationController?.pushViewController(vc, animated: true )
                                                         return

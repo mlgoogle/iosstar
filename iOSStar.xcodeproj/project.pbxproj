@@ -94,6 +94,10 @@
 		8DD224C51ED916460048D7D3 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD224C41ED916460048D7D3 /* AlertViewController.swift */; };
 		8DE79EA31EDE912500F1F24A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE79EA21EDE912500F1F24A /* Foundation.framework */; };
 		8DE79EA51EDE913600F1F24A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE79EA41EDE913600F1F24A /* CFNetwork.framework */; };
+		8DE8493D1EE7CEBD00D31B1C /* libGeTuiSdk-1.6.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE8493B1EE7CEBD00D31B1C /* libGeTuiSdk-1.6.3.0.a */; };
+		8DE8493E1EE7CEBD00D31B1C /* libGtExtensionSdk-1.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE8493C1EE7CEBD00D31B1C /* libGtExtensionSdk-1.2.0.a */; };
+		8DE849401EE7D0DF00D31B1C /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE8493F1EE7D0DF00D31B1C /* UserNotifications.framework */; };
+		8DE849421EE7D10500D31B1C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE849411EE7D10500D31B1C /* AdSupport.framework */; };
 		A001A9721EAD9F8D00752F1A /* ShareDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */; };
 		A0155E071EA8ABF20047B95B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0155E061EA8ABF20047B95B /* Images.xcassets */; };
 		A0155E101EA8C9760047B95B /* RegistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0155E0F1EA8C9760047B95B /* RegistVC.swift */; };
@@ -568,6 +572,13 @@
 		8DD224C41ED916460048D7D3 /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		8DE79EA21EDE912500F1F24A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8DE79EA41EDE913600F1F24A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		8DE849391EE7CEBD00D31B1C /* GeTuiExtSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiExtSdk.h; sourceTree = "<group>"; };
+		8DE8493A1EE7CEBD00D31B1C /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
+		8DE8493B1EE7CEBD00D31B1C /* libGeTuiSdk-1.6.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGeTuiSdk-1.6.3.0.a"; sourceTree = "<group>"; };
+		8DE8493C1EE7CEBD00D31B1C /* libGtExtensionSdk-1.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGtExtensionSdk-1.2.0.a"; sourceTree = "<group>"; };
+		8DE8493F1EE7D0DF00D31B1C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		8DE849411EE7D10500D31B1C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		8DE849431EE7D20300D31B1C /* iOSStar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSStar.entitlements; sourceTree = "<group>"; };
 		8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareDataModel.swift; sourceTree = "<group>"; };
 		A0155E061EA8ABF20047B95B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -1300,31 +1311,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DE849421EE7D10500D31B1C /* AdSupport.framework in Frameworks */,
+				8DE849401EE7D0DF00D31B1C /* UserNotifications.framework in Frameworks */,
+				A089C7181EE65A2500371024 /* CoreLocation.framework in Frameworks */,
+				A03D31501EA8466500F85308 /* AVFoundation.framework in Frameworks */,
+				A07238A81EA76B6D00E755DB /* CoreTelephony.framework in Frameworks */,
+				A07238AC1EA76B9A00E755DB /* SystemConfiguration.framework in Frameworks */,
+				A03D314E1EA8465000F85308 /* MobileCoreServices.framework in Frameworks */,
+				A07238A61EA76B5E00E755DB /* Security.framework in Frameworks */,
+				A07238B21EA76D9100E755DB /* libsqlite3.tbd in Frameworks */,
+				A07238AA1EA76B7600E755DB /* libz.tbd in Frameworks */,
+				A03D31581EA846B900F85308 /* libc++.tbd in Frameworks */,
 				A084BB5D1ED5924600DFC868 /* CoreMotion.framework in Frameworks */,
 				A089C71A1EE65A2E00371024 /* ImageIO.framework in Frameworks */,
-				A089C7181EE65A2500371024 /* CoreLocation.framework in Frameworks */,
-				A07238AC1EA76B9A00E755DB /* SystemConfiguration.framework in Frameworks */,
-				A07238A81EA76B6D00E755DB /* CoreTelephony.framework in Frameworks */,
+				8DE8493D1EE7CEBD00D31B1C /* libGeTuiSdk-1.6.3.0.a in Frameworks */,
 				8DE79EA51EDE913600F1F24A /* CFNetwork.framework in Frameworks */,
 				A089C71C1EE65B3B00371024 /* Bugout.framework in Frameworks */,
 				8DE79EA31EDE912500F1F24A /* Foundation.framework in Frameworks */,
+				8DE8493E1EE7CEBD00D31B1C /* libGtExtensionSdk-1.2.0.a in Frameworks */,
 				A084BB5B1ED5923C00DFC868 /* UIKit.framework in Frameworks */,
 				A084BC8F1ED59DA500DFC868 /* libcrypto.a in Frameworks */,
 				A084BB591ED5923200DFC868 /* CoreGraphics.framework in Frameworks */,
 				A084BB571ED5922A00DFC868 /* CoreText.framework in Frameworks */,
 				A084BB551ED5921D00DFC868 /* QuartzCore.framework in Frameworks */,
 				6E1616551EAEF0CF00D95CB6 /* SDCycleScrollView.framework in Frameworks */,
-				A03D31581EA846B900F85308 /* libc++.tbd in Frameworks */,
 				A03D31561EA846AC00F85308 /* VideoToolbox.framework in Frameworks */,
 				A084BC901ED59DA500DFC868 /* libssl.a in Frameworks */,
 				A0EF3B171EB974D80023093A /* OEZCommSDK.framework in Frameworks */,
 				A03D31541EA846A100F85308 /* AudioToolbox.framework in Frameworks */,
 				A03D31521EA8469900F85308 /* CoreMedia.framework in Frameworks */,
-				A03D31501EA8466500F85308 /* AVFoundation.framework in Frameworks */,
-				A03D314E1EA8465000F85308 /* MobileCoreServices.framework in Frameworks */,
-				A07238B21EA76D9100E755DB /* libsqlite3.tbd in Frameworks */,
-				A07238AA1EA76B7600E755DB /* libz.tbd in Frameworks */,
-				A07238A61EA76B5E00E755DB /* Security.framework in Frameworks */,
 				A084BB531ED591F600DFC868 /* AlipaySDK.framework in Frameworks */,
 				A072389D1EA76AA300E755DB /* libWeChatSDK.a in Frameworks */,
 				6C914579279831D674DBBB68 /* Pods_iOSStar.framework in Frameworks */,
@@ -1337,7 +1352,8 @@
 		514D3E8AF1A3675B9BA8BCD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-
+				8DE849411EE7D10500D31B1C /* AdSupport.framework */,
+				8DE8493F1EE7D0DF00D31B1C /* UserNotifications.framework */,
 				A089C7191EE65A2E00371024 /* ImageIO.framework */,
 				A089C7171EE65A2500371024 /* CoreLocation.framework */,
 				8DE79EA41EDE913600F1F24A /* CFNetwork.framework */,
@@ -1565,6 +1581,17 @@
 			name = MarketModel;
 			path = iOSStar/Model/MarketModel;
 			sourceTree = SOURCE_ROOT;
+		};
+		8DE849381EE7CEBD00D31B1C /* GtSdkLib */ = {
+			isa = PBXGroup;
+			children = (
+				8DE849391EE7CEBD00D31B1C /* GeTuiExtSdk.h */,
+				8DE8493A1EE7CEBD00D31B1C /* GeTuiSdk.h */,
+				8DE8493B1EE7CEBD00D31B1C /* libGeTuiSdk-1.6.3.0.a */,
+				8DE8493C1EE7CEBD00D31B1C /* libGtExtensionSdk-1.2.0.a */,
+			);
+			path = GtSdkLib;
+			sourceTree = "<group>";
 		};
 		A001A96F1EAD9F5A00752F1A /* Model */ = {
 			isa = PBXGroup;
@@ -2959,6 +2986,7 @@
 		A072384C1EA768AD00E755DB /* iOSStar */ = {
 			isa = PBXGroup;
 			children = (
+				8DE849431EE7D20300D31B1C /* iOSStar.entitlements */,
 				A072388B1EA76AA300E755DB /* AppAPI */,
 				A001A96F1EAD9F5A00752F1A /* Model */,
 				A072385F1EA76AA300E755DB /* Scenes */,
@@ -2988,6 +3016,7 @@
 		A07238671EA76AA300E755DB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				8DE849381EE7CEBD00D31B1C /* GtSdkLib */,
 				A084BC291ED59CF800DFC868 /* alipay */,
 				6E0922A11EA88DFE002725A0 /* Base.lproj */,
 				A07238B31EA76F3500E755DB /* Storyboard */,
@@ -3366,6 +3395,14 @@
 						DevelopmentTeam = 29FPYRHCKA;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -4026,6 +4063,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = iOSStar/iOSStar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 29FPYRHCKA;
@@ -4061,6 +4099,7 @@
 					"\"$(SRCROOT)/Pods/AliPay/AlipaySDK.framework\"",
 					"$(PROJECT_DIR)",
 					"\"$(SRCROOT)/iOSSTar/Resource/alipay\"",
+					"$(PROJECT_DIR)/iOSStar/Resource/GtSdkLib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.inf.aviation.cn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4078,6 +4117,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = iOSStar/iOSStar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 29FPYRHCKA;
 				ENABLE_BITCODE = NO;
@@ -4112,6 +4152,7 @@
 					"\"$(SRCROOT)/Pods/AliPay/AlipaySDK.framework\"",
 					"$(PROJECT_DIR)",
 					"\"$(SRCROOT)/iOSSTar/Resource/alipay\"",
+					"$(PROJECT_DIR)/iOSStar/Resource/GtSdkLib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.inf.aviation.cn;
 				PRODUCT_NAME = "$(TARGET_NAME)";

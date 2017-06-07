@@ -9,7 +9,7 @@
 import UIKit
 import MJRefresh
 
-class GetOrderStarsVC: BaseCustomPageListTableViewController {
+class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "我预约的明星"
@@ -41,6 +41,18 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController {
         self.navigationController?.pushViewController(vc!, animated: true)
     }
   
+    
+    func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!) {
+        
+        if action == 3 {
+            let starInfoModel = data as! StarInfoModel
+            let session = NIMSession(starInfoModel.faccid, type: .P2P)
+            let vc = NTESSessionViewController(session: session)
+            self.navigationController?.pushViewController(vc!, animated: true)
+//            print("点击了聊一聊按钮?")
+        }
+    }
+    
     // MARK: - Table view data source
 
     
