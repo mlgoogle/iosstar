@@ -95,6 +95,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
     @IBAction func doLogin(_ sender: Any) {
         let btn = sender as! UIButton
         btn.isUserInteractionEnabled = false
+         SVProgressHUD.show(withStatus: "登录中")
         if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]){
             AppAPIHelper.login().login(phone: phone.text!, password: (passPwd.text?.md5_string())!, complete: { [weak self](result)  in
                   let datadic = result as? UserModel
