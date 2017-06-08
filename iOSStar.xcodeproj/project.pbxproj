@@ -87,6 +87,7 @@
 		6EFE79E41ECC49710096470D /* MarketAuctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E31ECC49710096470D /* MarketAuctionViewController.swift */; };
 		6EFE79E61ECC49810096470D /* MarketCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */; };
 		8D5C28521ED6FB520005B2BE /* OrderStartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5C28511ED6FB520005B2BE /* OrderStartViewCell.swift */; };
+		8D5D21521EE8F92B00DE25A9 /* UITabBar+badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D21511EE8F92B00DE25A9 /* UITabBar+badge.swift */; };
 		8DAC7E291EE1419D001AD3EF /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAC7E281EE1419D001AD3EF /* User.storyboard */; };
 		8DAC7E2F1EE26455001AD3EF /* UserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */; };
 		8DAC7E331EE640F3001AD3EF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAC7E321EE640F3001AD3EF /* Login.storyboard */; };
@@ -565,6 +566,7 @@
 		6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketCommentViewController.swift; sourceTree = "<group>"; };
 		8408122B704986AA5A9C486E /* Pods-iOSStar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.debug.xcconfig"; sourceTree = "<group>"; };
 		8D5C28511ED6FB520005B2BE /* OrderStartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderStartViewCell.swift; sourceTree = "<group>"; };
+		8D5D21511EE8F92B00DE25A9 /* UITabBar+badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITabBar+badge.swift"; sourceTree = "<group>"; };
 		8DAC7E281EE1419D001AD3EF /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequestModel.swift; sourceTree = "<group>"; };
 		8DAC7E321EE640F3001AD3EF /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -3133,6 +3135,7 @@
 				A0A667EA1EC2B67D00612510 /* UIViewController+ChatView.swift */,
 				6EBF590D1EC93BE9003F67B4 /* Label+Extension.swift */,
 				6E54EE0E1ED566F100E14EC3 /* UIView+Extension.swift */,
+				8D5D21511EE8F92B00DE25A9 /* UITabBar+badge.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -3866,6 +3869,7 @@
 				A03D3EEB1EA86A6400F85308 /* UIScrollView+NTESPullToRefresh.m in Sources */,
 				A03D3F761EA86A6500F85308 /* NTESChatroomManager.m in Sources */,
 				A03D3F371EA86A6400F85308 /* NIMSessionImageContentView.m in Sources */,
+				8D5D21521EE8F92B00DE25A9 /* UITabBar+badge.swift in Sources */,
 				A03D3F2F1EA86A6400F85308 /* NIMSessionInteractorImpl.m in Sources */,
 				A03D3FD61EA86A6500F85308 /* NTESNoDisturbTimeCell.m in Sources */,
 				A03D3F3E1EA86A6400F85308 /* NIMSessionVideoContentView.m in Sources */,

@@ -45,6 +45,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
 
        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -106,7 +107,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
             if passString.length() == 6{
                 
                 if ShareDataModel.share().wechatUserInfo["passString"] != passString{
-                 SVProgressHUD.showErrorMessage(ErrorMessage: "两次密码输入不一致", ForDuration: 1, completion: {})
+                 SVProgressHUD.showErrorMessage(ErrorMessage: "两次密码输入不一致", ForDuration: 2.0, completion: {})
                     return
                 }
             
@@ -117,7 +118,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
                 
                     let dic = model as! [String : AnyObject]
                     if dic["status"] as! Int  == 0 {
-                      SVProgressHUD.showSuccessMessage(SuccessMessage: "设置成功", ForDuration: 0.5, completion: {
+                      SVProgressHUD.showSuccessMessage(SuccessMessage: "设置成功", ForDuration: 2.0, completion: {
                         for controller   in (self.navigationController?.viewControllers)!{
                             if controller.isKind(of: WealthVC.self){
                                 _ = self.navigationController?.popToRootViewController(animated: true)
@@ -125,7 +126,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
                         }
                       })
                     }else{
-                        SVProgressHUD.showSuccessMessage(SuccessMessage: "设置失败", ForDuration: 0.5, completion: {
+                        SVProgressHUD.showSuccessMessage(SuccessMessage: "设置失败", ForDuration: 2.0, completion: {
                         })
                     }
                     
@@ -143,7 +144,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
                 ShareDataModel.share().wechatUserInfo["passString"] = passString
                 self.navigationController?.pushViewController(vc, animated: true )
             }else{
-               SVProgressHUD.showErrorMessage(ErrorMessage: "密码需要6位", ForDuration: 1, completion: {})
+               SVProgressHUD.showErrorMessage(ErrorMessage: "密码需要6位", ForDuration: 2.0, completion: {})
             }
            
         }
@@ -196,7 +197,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
 //            let vie =  pwdCircleArr[i].sup
         }
     }
- 
+
 
 
 }

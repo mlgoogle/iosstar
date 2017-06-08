@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         GeTuiSdk.runBackgroundEnable(true);
         
         // [ GTSdk ]：是否运行电子围栏Lbs功能和是否SDK主动请求用户定位
-        GeTuiSdk.lbsLocationEnable(true, andUserVerify: true);
+        // GeTuiSdk.lbsLocationEnable(true, andUserVerify: true);
         
         // [ GTSdk ]：自定义渠道
         GeTuiSdk.setChannelId("GT-Channel");
