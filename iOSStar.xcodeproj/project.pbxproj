@@ -95,8 +95,6 @@
 		8DD224C51ED916460048D7D3 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD224C41ED916460048D7D3 /* AlertViewController.swift */; };
 		8DE79EA31EDE912500F1F24A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE79EA21EDE912500F1F24A /* Foundation.framework */; };
 		8DE79EA51EDE913600F1F24A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE79EA41EDE913600F1F24A /* CFNetwork.framework */; };
-		8DE8493D1EE7CEBD00D31B1C /* libGeTuiSdk-1.6.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE8493B1EE7CEBD00D31B1C /* libGeTuiSdk-1.6.3.0.a */; };
-		8DE8493E1EE7CEBD00D31B1C /* libGtExtensionSdk-1.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE8493C1EE7CEBD00D31B1C /* libGtExtensionSdk-1.2.0.a */; };
 		8DE849401EE7D0DF00D31B1C /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE8493F1EE7D0DF00D31B1C /* UserNotifications.framework */; };
 		8DE849421EE7D10500D31B1C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE849411EE7D10500D31B1C /* AdSupport.framework */; };
 		A001A9721EAD9F8D00752F1A /* ShareDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */; };
@@ -574,10 +572,6 @@
 		8DD224C41ED916460048D7D3 /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		8DE79EA21EDE912500F1F24A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8DE79EA41EDE913600F1F24A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		8DE849391EE7CEBD00D31B1C /* GeTuiExtSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiExtSdk.h; sourceTree = "<group>"; };
-		8DE8493A1EE7CEBD00D31B1C /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
-		8DE8493B1EE7CEBD00D31B1C /* libGeTuiSdk-1.6.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGeTuiSdk-1.6.3.0.a"; sourceTree = "<group>"; };
-		8DE8493C1EE7CEBD00D31B1C /* libGtExtensionSdk-1.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGtExtensionSdk-1.2.0.a"; sourceTree = "<group>"; };
 		8DE8493F1EE7D0DF00D31B1C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8DE849411EE7D10500D31B1C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8DE849431EE7D20300D31B1C /* iOSStar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSStar.entitlements; sourceTree = "<group>"; };
@@ -1326,11 +1320,9 @@
 				A03D31581EA846B900F85308 /* libc++.tbd in Frameworks */,
 				A084BB5D1ED5924600DFC868 /* CoreMotion.framework in Frameworks */,
 				A089C71A1EE65A2E00371024 /* ImageIO.framework in Frameworks */,
-				8DE8493D1EE7CEBD00D31B1C /* libGeTuiSdk-1.6.3.0.a in Frameworks */,
 				8DE79EA51EDE913600F1F24A /* CFNetwork.framework in Frameworks */,
 				A089C71C1EE65B3B00371024 /* Bugout.framework in Frameworks */,
 				8DE79EA31EDE912500F1F24A /* Foundation.framework in Frameworks */,
-				8DE8493E1EE7CEBD00D31B1C /* libGtExtensionSdk-1.2.0.a in Frameworks */,
 				A084BB5B1ED5923C00DFC868 /* UIKit.framework in Frameworks */,
 				A084BC8F1ED59DA500DFC868 /* libcrypto.a in Frameworks */,
 				A084BB591ED5923200DFC868 /* CoreGraphics.framework in Frameworks */,
@@ -1583,17 +1575,6 @@
 			name = MarketModel;
 			path = iOSStar/Model/MarketModel;
 			sourceTree = SOURCE_ROOT;
-		};
-		8DE849381EE7CEBD00D31B1C /* GtSdkLib */ = {
-			isa = PBXGroup;
-			children = (
-				8DE849391EE7CEBD00D31B1C /* GeTuiExtSdk.h */,
-				8DE8493A1EE7CEBD00D31B1C /* GeTuiSdk.h */,
-				8DE8493B1EE7CEBD00D31B1C /* libGeTuiSdk-1.6.3.0.a */,
-				8DE8493C1EE7CEBD00D31B1C /* libGtExtensionSdk-1.2.0.a */,
-			);
-			path = GtSdkLib;
-			sourceTree = "<group>";
 		};
 		A001A96F1EAD9F5A00752F1A /* Model */ = {
 			isa = PBXGroup;
@@ -3018,7 +2999,6 @@
 		A07238671EA76AA300E755DB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				8DE849381EE7CEBD00D31B1C /* GtSdkLib */,
 				A084BC291ED59CF800DFC868 /* alipay */,
 				6E0922A11EA88DFE002725A0 /* Base.lproj */,
 				A07238B31EA76F3500E755DB /* Storyboard */,
@@ -3552,7 +3532,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

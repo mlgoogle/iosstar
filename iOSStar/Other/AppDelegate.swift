@@ -309,6 +309,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
+        // 此处接收到通知的userInfo
         print("didReceiveNotificationResponse: %@",response.notification.request.content.userInfo);
         
         // [ GTSdk ]：将收到的APNs信息传给个推统计
