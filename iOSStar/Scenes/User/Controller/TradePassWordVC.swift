@@ -41,11 +41,6 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
         title = setPass == true ? "请确认交易密码" :  "设置交易密码"
          self.doSetPass.backgroundColor = UIColor.gray
         initUI()
-        
-        for subViewss: UIView in self.view.subviews as [UIView] {
-            print("--------\(subViewss)")
-        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -61,12 +61,12 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
         NIMSDK.shared().systemNotificationManager.add(self)
         NIMSDK.shared().conversationManager.add(self)
         
-        if NIMSDK.shared().conversationManager.allUnreadCount() != 0 {
+        //if NIMSDK.shared().conversationManager.allUnreadCount() != 0 {
             self.tabBar.showshowBadgeOnItemIndex(index: 2)
-        } else {
-            self.tabBar.hideBadgeOnItemIndex(index: 2)
-        }
-        print("这里打印的是?-------------\(NIMSDK.shared().conversationManager.allUnreadCount())")
+       // } else {
+        //  self.tabBar.hideBadgeOnItemIndex(index: 2)
+       // }
+        print("这里打印的是未读消息条数?-------------\(NIMSDK.shared().conversationManager.allUnreadCount())")
         
     }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
