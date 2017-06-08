@@ -10,7 +10,7 @@ import UIKit
 
 class DetailCommenViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    var dealTitles = ["名称/代码","成交时间","成交价/成交量","成交额"]
+    var dealTitles = ["名称/代码","成交时间","成交价/成交量","状态/成交额"]
     var entrustTitles = ["名称/代码","委托价/时间","委托量/成交量","状态"]
 
     var type:AppConst.DealDetailType = .allEntrust

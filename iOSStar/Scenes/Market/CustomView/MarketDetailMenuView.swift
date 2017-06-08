@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MarketDetailMenuView: UITableViewHeaderFooterView {
+class MarketDetailMenuView: UIView {
     
     lazy var menuView:YD_VMenuView = {
         let menuView = YD_VMenuView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 50), layout: nil)
@@ -18,13 +18,16 @@ class MarketDetailMenuView: UITableViewHeaderFooterView {
         return menuView
     }()
 
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
         addSubview(menuView)
     }
-    
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        addSubview(menuView)
+
     }
     /*
     // Only override draw() if you perform custom drawing.

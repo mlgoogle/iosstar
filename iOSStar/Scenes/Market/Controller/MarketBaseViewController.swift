@@ -11,7 +11,8 @@ import UIKit
 
 protocol ScrollStopDelegate {
     
-    func scrollViewIsStop()
+    func subScrollViewDidScroll(scrollView: UIScrollView)
+    func scrollStop()
 }
 
 class MarketBaseViewController: UIViewController, UIScrollViewDelegate{
@@ -26,21 +27,17 @@ class MarketBaseViewController: UIViewController, UIScrollViewDelegate{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    func scrollViewScrollEnabled(scroll:Bool) {
-        if isSubView {
-          scrollView?.isScrollEnabled = scroll
-        }
-    }
 
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+     delegate?.scrollStop()
+    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         view.endEditing(true)
-        if isSubView {            
-            if scrollView.contentOffset.y < 0 {
-               scrollView.isScrollEnabled = false
-                delegate?.scrollViewIsStop()
-            }
+        if isSubView {
+            delegate?.subScrollViewDidScroll(scrollView: scrollView)
+
         }
     }
 }

@@ -26,7 +26,7 @@ class PubInfoHeaderView: UITableViewHeaderFooterView {
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor(hexString: "fafafa")
+        contentView.backgroundColor = UIColor(hexString: "fafafa")
         addSubview(lineView)
         addSubview(titleLabel)
         lineView.snp.makeConstraints { (make) in
@@ -36,10 +36,6 @@ class PubInfoHeaderView: UITableViewHeaderFooterView {
             make.centerY.equalTo(self)
         }
 
-        
-        
-        
-        
         titleLabel.snp.makeConstraints { (make) in
             make.left.equalTo(lineView.snp.right).offset(7)
             make.centerY.equalTo(lineView)

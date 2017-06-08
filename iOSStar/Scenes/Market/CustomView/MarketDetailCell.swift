@@ -5,38 +5,6 @@
 //  Created by J-bb on 17/5/16.
 //  Copyright © 2017年 YunDian. All rights reserved.
 //
-class WPMarkerLineView: UIView {
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.numberOfLines = 0
-        label.textColor = UIColor.white
-        return label
-    }()
-    
-    lazy var backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.black
-        view.alpha = 0.8
-        return view
-    }()
-    
-    required override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        backgroundColor = UIColor.clear
-        layer.cornerRadius = 5
-        layer.masksToBounds = true
-        backView.frame = frame
-        titleLabel.frame = CGRect.init(x: 2, y: 2, width: frame.size.width-4, height: frame.size.height-4)
-        addSubview(backView)
-        addSubview(titleLabel)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
 
 import UIKit
 import Charts
@@ -145,8 +113,5 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
 
         // Configure the view for the selected state
     }
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        let view = super.hitTest(point, with: event)
-        return currentView
-    }
+ 
 }

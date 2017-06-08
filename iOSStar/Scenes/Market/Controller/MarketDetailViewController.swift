@@ -8,19 +8,29 @@
 //
 
 import UIKit
+import Charts
+class MarketDetailViewController: UIViewController,ChartViewDelegate {
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var timeLineView: LineChartView!
+    @IBOutlet weak var changeLabel: UILabel!
+    var datas:[TimeLineModel]?
+    @IBOutlet weak var headerView: MarketDetailHeaderView!
 
-class MarketDetailViewController: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
-    
     var bannerDetailModel:BannerDetaiStarModel?
     
-    var bottomScrollView:UIScrollView?
-    var menuView:YD_VMenuView?
+    
+    @IBOutlet weak var menuView: MarketDetailMenuView!
+    @IBOutlet weak var bottomScrollView: MarketDetailScrollView!
+    @IBOutlet weak var headerTopMargin: NSLayoutConstraint!
+
     var subViews = [UIView]()
     var starModel:MarketListStarModel?
     var starCode:String?
     var starName:String?
+    var currentY:CGFloat = 0
     
+
     var realTimeModel:RealTimeModel?
     var currentVC:MarketBaseViewController?
     @IBOutlet weak var handleMenuView: ImageMenuView!
@@ -29,32 +39,53 @@ class MarketDetailViewController: UIViewController {
         
         setCustomTitle(title: "\(starName!)（\(starCode!)）")
         automaticallyAdjustsScrollViewInsets = false
-        tableView.register(MarketDetailMenuView.self, forHeaderFooterViewReuseIdentifier: "MarketDetailMenuView")
+
+        requestRealTime()
         requestLineData()
         setupSubView()
+        setupCustomUI()
+        setIcon()
+    }
+    
+    func setIcon() {
+        var string = ""
+        if starModel != nil {
+            string = starModel!.pic
+        } else if bannerDetailModel != nil {
+            string  = bannerDetailModel!.head_url
+        }
+        let url = URL(string: string)
+        iconImageView.kf.setImage(with: url)
     }
     
     func setupSubView() {
         let imageStrings = ["market_buy","market_sell","market_meetfans","market_optional"]
         var images:[UIImage] = []
-
         let types:[String] = ["MarketDetaiBaseInfoViewController", "MarketFansListViewController", "MarketAuctionViewController", "MarketCommentViewController"]
         let storyboard = UIStoryboard(name: "Market", bundle: nil)
+        
         for (index, type) in types.enumerated() {
             let image = UIImage(named: imageStrings[index])
             images.append(image!)
+
             let vc = storyboard.instantiateViewController(withIdentifier: type) as! MarketBaseViewController
             addChildViewController(vc)
             vc.starCode = starCode
             vc.delegate = self
-            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 50 - 64 - 50)
+            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 50 - 64)
             subViews.append(vc.view)
-            vc.scrollViewScrollEnabled(scroll: false)
         }
+        bottomScrollView.scrollView.delegate = self
+        currentVC = childViewControllers.first as? MarketBaseViewController
+        headerView.currentSubView = currentVC?.scrollView
+        headerView.menuView = menuView.menuView
+        headerView.timeLineView = timeLineView
+        bottomScrollView.setSubViews(views: subViews)
         handleMenuView.images = images
         handleMenuView.titles = ["求购", "转让", "粉丝见面会", "自选"]
         handleMenuView.delegate = self
         currentVC = childViewControllers.first as? MarketBaseViewController
+        menuView.menuView.delegate = self
     }
 
     
@@ -76,18 +107,18 @@ class MarketDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-
+    
     func requestLineData() {
         let requestModel = TimeLineRequestModel()
         if starModel != nil {
-                  requestModel.symbol = starModel!.wid
+            requestModel.symbol = starModel!.wid
         } else if bannerDetailModel != nil {
             requestModel.symbol = bannerDetailModel!.weibo_index_id
         }
         AppAPIHelper.marketAPI().requestTimeLine(requestModel: requestModel, complete: { (response) in
             if let models = response as? [TimeLineModel] {
                 TimeLineModel.cacheLineData(datas: models)
-                self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+                self.setData(datas: models)
             }
         }, error: errorBlockFunc())
     }
@@ -102,18 +133,105 @@ class MarketDetailViewController: UIViewController {
         requestModel.symbolInfos.append(syModel)
         AppAPIHelper.marketAPI().requestRealTime(requestModel: requestModel, complete: { (response) in
             if let model = response as? [RealTimeModel] {
-                self.realTimeModel = model.first
-                self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+
+                self.setRealTimeData(realTimeModel: model.first!)
             }
         }) { (error) in
             
         }
     }
     
+    
+    func setupCustomUI() {
+        
+        changeLabel.layer.cornerRadius = 3
+        changeLabel.clipsToBounds = true
+        timeLineView.legend.setCustom(entries: [])
+        timeLineView.noDataText = "暂无数据"
+        timeLineView.xAxis.labelPosition = .bottom
+        timeLineView.xAxis.drawGridLinesEnabled = false
+        timeLineView.xAxis.drawAxisLineEnabled = false
+        timeLineView.doubleTapToZoomEnabled = false
+        timeLineView.scaleXEnabled = false
+        timeLineView.scaleYEnabled = false
+        timeLineView.xAxis.axisMinimum = 0
+        timeLineView.xAxis.axisMaximum = 30
+        timeLineView.leftAxis.axisMinimum = 0
+        timeLineView.xAxis.labelFont = UIFont.systemFont(ofSize: 0)
+        timeLineView.leftAxis.labelFont = UIFont.systemFont(ofSize: 10)
+        timeLineView.leftAxis.gridColor = UIColor.init(rgbHex: 0xf2f2f2)
+        timeLineView.rightAxis.labelFont = UIFont.systemFont(ofSize: 0)
+        timeLineView.delegate = self
+        timeLineView.chartDescription?.text = ""
+        timeLineView.rightAxis.forceLabelsEnabled = false
+        timeLineView.animate(xAxisDuration: 1)
+    }
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        if let model:TimeLineModel = datas?[Int(entry.x)] {
+            let markerView = WPMarkerLineView.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 50))
+            markerView.titleLabel.text = markerLineText(model: model)
+            let marker = MarkerImage.init()
+            marker.chartView = chartView
+            marker.image = imageFromUIView(markerView)
+            chartView.marker = marker
+        }
+    }
+    
+    func markerLineText(model: TimeLineModel) -> String {
+        let time = Date.yt_convertDateToStr(Date.init(timeIntervalSince1970: TimeInterval(model.priceTime)), format: "MM-dd HH:mm")
+        let price = String.init(format: "%.4f", model.currentPrice)
+        return "\(time)\n最新价\(price)"
+    }
+    func imageFromUIView(_ view: UIView) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, UIScreen.main.scale)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let viewImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return viewImage!
+    }
+    
+    func setRealTimeData(realTimeModel:RealTimeModel) {
+        let percent = (realTimeModel.change / realTimeModel.currentPrice) * 100
+        priceLabel.text = "\(realTimeModel.currentPrice)"
+        var colorString = AppConst.Color.up
+        if realTimeModel.change < 0 {
+            changeLabel.text = String(format: "%.2f/%.2f%%", realTimeModel.change, -percent)
+            colorString = AppConst.Color.down
+        }else{
+            changeLabel.text = String(format: "%.2f/+%.2f%%",realTimeModel.change,percent)
+        }
+        priceLabel.textColor = UIColor(hexString: colorString)
+        changeLabel.backgroundColor = UIColor(hexString: colorString)
 
+    }
+    
+    func setData(datas:[TimeLineModel]) {
+        var entrys: [ChartDataEntry] = []
+        for (index,model) in datas.enumerated() {
+            let entry = ChartDataEntry(x: Double(index), y: model.currentPrice)
+            entrys.append(entry)
+        }
+        self.datas = datas.sorted(by: { (model1, model2) -> Bool in
+            
+            return model1.priceTime < model2.priceTime
+        })
+        let set = LineChartDataSet(values: entrys, label: "分时图")
+        set.colors = [UIColor.red]
+        set.circleRadius = 0
+        set.form = .empty
+        set.circleHoleRadius = 0
+        set.mode = .cubicBezier
+        set.valueFont = UIFont.systemFont(ofSize: 0)
+        set.drawFilledEnabled = true
+        set.fillColor = UIColor(red: 203.0 / 255, green: 66.0 / 255, blue: 50.0 / 255, alpha: 0.5)
+        let data: LineChartData  = LineChartData.init(dataSets: [set])
+        timeLineView.data = data
+        timeLineView.data?.notifyDataChanged()
+        timeLineView.setNeedsDisplay()
+    }
 }
 
-extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MenuViewDelegate, BottomItemSelectDelegate, ScrollStopDelegate{
+extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, BottomItemSelectDelegate, ScrollStopDelegate{
     
 
     func itemDidSelectAtIndex(index:Int) {
@@ -146,74 +264,70 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
     
     func menuViewDidSelect(indexPath: IndexPath) {
         UIView.animate(withDuration: 0.3) {
-            self.bottomScrollView?.contentOffset = CGPoint(x: kScreenWidth * CGFloat(indexPath.row), y: 0)
+            self.bottomScrollView.scrollView.contentOffset = CGPoint(x: kScreenWidth * CGFloat(indexPath.row), y: 0)
         }
     }
-    
-    
 
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            return nil
+    func scrollStop() {
+        var contentOffset = currentVC?.scrollView?.contentOffset
+        if contentOffset!.y > 400{
+            contentOffset =   CGPoint(x: contentOffset!.x, y: 424)
         }
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MarketDetailMenuView") as! MarketDetailMenuView
-        view.menuView.delegate = self
-        menuView = view.menuView
-        return  view
-        
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 1 {
-            
-            return kScreenHeight - 50 - 64 - 50
+        for vc in childViewControllers {
+            let viewController = vc as? MarketBaseViewController
+            if viewController != currentVC {
+                viewController?.scrollView?.contentOffset = contentOffset!
+            }
         }
-        return 400
-        
     }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.001
-    }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            
-            return 0.001
+    func subScrollViewDidScroll(scrollView: UIScrollView) {
+        if scrollView != bottomScrollView.scrollView {
+            let distance = scrollView.contentOffset.y - currentY
+            if scrollView.contentOffset.y > 0 {
+                print(headerTopMargin.constant)
+                if headerTopMargin.constant > -400  || distance < 0{
+                    headerTopMargin.constant -= distance
+                    currentY = scrollView.contentOffset.y
+                } else if headerTopMargin.constant < -400{
+                    headerTopMargin.constant = -400
+                    currentY = 400
+                    
+                }
+            } else {
+                headerTopMargin.constant = 0
+            }
         }
-        return 50
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MarketDetailSubViewCell", for: indexPath) as! MarketDetailSubViewCell
-            bottomScrollView = cell.scrollView
-            cell.scrollView.delegate = self
-            cell.setSubViews(views: subViews)
-            return cell
-        }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MarketDetailCell", for: indexPath) as! MarketDetailCell
+     }
 
-        if starModel != nil {
-            cell.setData(datas: TimeLineModel.getLineData(starWid:starModel!.wid))
-            cell.setStarModel(starModel: starModel!)
-        } else if bannerDetailModel != nil {
-            cell.setData(datas: TimeLineModel.getLineData(starWid:bannerDetailModel!.weibo_index_id))
-            
-            
-        }
-        if realTimeModel != nil {
-            cell.setRealTimeData(realTimeModel: realTimeModel!)
-        }
-        return cell
-    }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
+
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+        if scrollView != bottomScrollView.scrollView {
+            
+            if scrollView.contentOffset.y > 0 {
+//                topMargin.constant -= (scrollView.contentOffset.y - currentY)
+                headerTopMargin.constant -= (scrollView.contentOffset.y - currentY)
+                currentY = headerTopMargin.constant
+
+            }
+        } else {
+            let index = Int(scrollView.contentOffset.x / kScreenWidth)
+            let vc = childViewControllers[index] as? MarketBaseViewController
+            var contentOffset = currentVC?.scrollView?.contentOffset
+            if contentOffset!.y > 400{
+              contentOffset =   CGPoint(x: contentOffset!.x, y: 400)
+            }
+            vc?.scrollView?.contentOffset = contentOffset!
+            
+            currentVC = vc
+            headerView.currentSubView = currentVC?.scrollView
+            
+            menuView.menuView.selected(index: index)
+
+        }
+        
+    /*
         if scrollView == bottomScrollView {
             let index = Int(scrollView.contentOffset.x / kScreenWidth)
             let scrollEnbled = currentVC?.scrollView?.isScrollEnabled
@@ -227,8 +341,42 @@ extension MarketDetailViewController:UITableViewDelegate, UITableViewDataSource,
                 currentVC?.scrollViewScrollEnabled(scroll: true)
             }
         }
+ */
     }
-    func scrollViewIsStop() {
-        tableView.isScrollEnabled = true
+
+    
+    
+    
+}
+class WPMarkerLineView: UIView {
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.numberOfLines = 0
+        label.textColor = UIColor.white
+        return label
+    }()
+    
+    lazy var backView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black
+        view.alpha = 0.8
+        return view
+    }()
+    
+    required override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        backgroundColor = UIColor.clear
+        layer.cornerRadius = 5
+        layer.masksToBounds = true
+        backView.frame = frame
+        titleLabel.frame = CGRect.init(x: 2, y: 2, width: frame.size.width-4, height: frame.size.height-4)
+        addSubview(backView)
+        addSubview(titleLabel)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

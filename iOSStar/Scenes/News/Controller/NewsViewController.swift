@@ -107,7 +107,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         }
     }
     func requestNewsList()  {
-        
+        return
         var startNumber = 0
         if !isRefresh {
             
@@ -204,7 +204,12 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
             vc.shareImage = cell.newsImageView?.image
             vc.newsModel = model
         } else if segue.identifier == "showPubPage" {
+            
+            
             let index = sender as! Int
+            guard bannerModels != nil else {
+                return
+            }
             let vc = segue.destination as! PublisherPageViewController
             vc.bannerModel = bannerModels?[index]
         }

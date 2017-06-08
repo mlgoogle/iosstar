@@ -18,10 +18,9 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         startModelsRequest(packet, listName: "list", modelClass: MarketClassifyModel.self, complete: complete, error: error)
     }
     //搜索
-   func searchstar(code:String, complete: CompleteBlock?, error: ErrorBlock?){
-        let paramters:[String:Any] = [SocketConst.Key.starCode : code]
-        let packet = SocketDataPacket(opcode: .searchStar, parameters: paramters)
-        startModelsRequest(packet, listName: "list", modelClass: MarketClassifyModel.self, complete: complete, error: error)
+    func searchstar(requestModel:MarketSearhModel,  complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .searchStar, model: requestModel, type:.search)
+        startModelsRequest(packet, listName: "starsinfo", modelClass: SearchResultModel.self, complete: complete, error: error)
     }
     
 

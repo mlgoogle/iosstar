@@ -46,11 +46,13 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
         if isDetail {
             bottomMargin.constant = 0
             inputViewHeight.constant = 0
+            tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 450))
+
         }
         registerNotification()
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableView.register(NoDataCell.self, forCellReuseIdentifier: NoDataCell.className())
         tableView.estimatedRowHeight = 100
-        tableView.rowHeight = UITableViewAutomaticDimension
         requestCommentList()
         setupRefresh()
         self.noDataButton.center = self.tableView.center
@@ -99,11 +101,9 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
     }
     func endRefresh() {
         if header?.state == .refreshing {
-            
             header?.endRefreshing()
         }
         if  footer?.state == .refreshing {
-            
             footer?.endRefreshing()
         }
     }
@@ -145,9 +145,7 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
             if self.dataSource?.count ?? 0 == 0 {
                 self.addNodataButton()
             }
-
             self.refreshDelegate?.refreshList(dataSource: self.dataSource, totalCount: self.totalCount)
-   
         }) { (error) in
             self.addNodataButton()
         }
@@ -202,7 +200,15 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
         }
         tableView.reloadData()
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if dataSource?.count ?? 0 == 0 {
+            
+            return 500
+        }
+        
+        return UITableViewAutomaticDimension
+
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if dataSource?.count ?? 0  == 0 {
@@ -218,12 +224,22 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
         return 0.01
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if dataSource?.count ?? 0 == 0 {
+            return 0.001
+        }
         return 40
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.count ?? 0
+        return dataSource?.count ?? 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if dataSource?.count ?? 0 == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: NoDataCell.className(), for: indexPath) as! NoDataCell
+            cell.infoImageView.image = UIImage(named: "timg")
+            return cell
+            
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketCommentCell", for: indexPath) as! MarketCommentCell
         cell.setData(model: dataSource![indexPath.row])
         return cell 

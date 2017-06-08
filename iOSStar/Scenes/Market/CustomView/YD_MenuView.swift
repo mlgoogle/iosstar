@@ -148,4 +148,5 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     func redressLineViewOrigin() {
         menuCollectionView?.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
     }
+    
 }

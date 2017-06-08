@@ -21,6 +21,8 @@ class MarketDetaiBaseInfoViewController: MarketBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = tableView
+        
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 474))
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: AppConst.RegisterIdentifier.PubInfoHeaderView.rawValue)
         
         guard starCode != nil else {
@@ -64,6 +66,8 @@ class MarketDetaiBaseInfoViewController: MarketBaseViewController {
 }
 
 extension MarketDetaiBaseInfoViewController:UITableViewDataSource, UITableViewDelegate{
+    
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifiers[indexPath.section], for: indexPath)
@@ -134,7 +138,7 @@ extension MarketDetaiBaseInfoViewController:UITableViewDataSource, UITableViewDe
             view.setTitle(title: titles[section])
             return view
         }
-        return nil  
+        return nil
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return  4

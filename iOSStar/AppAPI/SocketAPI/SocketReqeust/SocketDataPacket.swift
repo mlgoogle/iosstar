@@ -85,7 +85,10 @@ class SocketDataPacket {
         let type = opcode.rawValue / 1000
         self.init( opcode: opcode, strData: strData,type:SocketConst.type(rawValue: UInt8(type))!)
     }
-  
+    convenience init(opcode: SocketConst.OPCode, model: BaseModel, type:SocketConst.type) {
+        let strData = model.description
+        self.init( opcode: opcode, strData: strData,type:type)
+    }
     convenience init(opcode:SocketConst.OPCode, parameters:[String : Any]) {
         let type = opcode.rawValue / 1000
         self.init(opcode:opcode,dict:parameters as [String : AnyObject],type:SocketConst.type(rawValue: UInt8(type))!)

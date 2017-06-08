@@ -9,7 +9,7 @@
 import Foundation
 protocol MarketAPI {
     func requestTypeList(complete: CompleteBlock?, error: ErrorBlock?)
-    func searchstar(code : String,  complete: CompleteBlock?, error: ErrorBlock?)
+    func searchstar(requestModel:MarketSearhModel,  complete: CompleteBlock?, error: ErrorBlock?)
     func requestStarList(requestModel:StarListRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
     func requestOptionalStarList(startnum:Int, endnum:Int,complete: CompleteBlock?, error: ErrorBlock?)
     func addOptinal(starcode:String,complete: CompleteBlock?, error: ErrorBlock?)

@@ -58,7 +58,6 @@ class PirceBaseModel: Object {
     dynamic var pchg = 0.0
 
 
-
 }
 class TimeLineModel: PirceBaseModel {
     
@@ -92,5 +91,13 @@ class RealTimeModel: PirceBaseModel {
     }
 }
 
+
+class SearchResultModel: BaseModel {
+    dynamic var gender = 1
+    dynamic var name = ""
+    dynamic var pic = ""
+    dynamic var symbol = ""
+    dynamic var wid = ""
+}
 
 
