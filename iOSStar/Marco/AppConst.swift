@@ -128,8 +128,8 @@ class AppConst {
         case showPubPage = "showPubPage"
     }
     enum DealType:UInt16 {
-        case buy = 0
-        case sell = 1
+        case buy = 1
+        case sell = 2
     }
     
     enum SortType:Int {

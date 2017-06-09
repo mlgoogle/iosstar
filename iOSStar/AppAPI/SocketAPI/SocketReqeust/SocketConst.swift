@@ -91,9 +91,11 @@ class SocketConst: NSObject {
         case sendComment = 12001
         //评论列表
         case commentList = 12003
+        //发起委托
+        case buyOrSell = 5001
         
-        csae buyOrSell = 5001
-        
+        //收到匹配成功
+        case receiveMatching = 5030
     }
     enum type:UInt8 {
         case error  = 0

@@ -43,6 +43,9 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+
+        
         setupBannerView()
         setupNavigation()
         requestNewsList()
@@ -107,7 +110,6 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         }
     }
     func requestNewsList()  {
-        return
         var startNumber = 0
         if !isRefresh {
             

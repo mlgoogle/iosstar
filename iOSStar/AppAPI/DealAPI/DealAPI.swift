@@ -9,6 +9,6 @@
 import Foundation
 
 protocol DealAPI {
-    
-    
+    func buyOrSell(requestModel:BuyOrSellRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
+    func setReceiveMatching(complete:@escaping CompleteBlock)
 }
