@@ -14,6 +14,7 @@ class AppAPIHelper: NSObject {
     fileprivate static var _friendApi = UserSocketApi()
     fileprivate static var _newsApi = NewsSocketAPI()
     fileprivate static var _marketAPI = MarketSocketAPI()
+    fileprivate static var _dealAPI = DealSocketAPI()
 
     class func login() -> LoginApi{
         return _loginApi
@@ -28,6 +29,9 @@ class AppAPIHelper: NSObject {
     }
     class func marketAPI()-> MarketAPI{
         return _marketAPI
+    }
+    class func dealAPI()-> DealAPI {
+        return _dealAPI
     }
     
     

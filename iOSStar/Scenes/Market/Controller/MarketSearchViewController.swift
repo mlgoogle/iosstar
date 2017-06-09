@@ -11,9 +11,13 @@ import SVProgressHUD
 class MarketSearchViewController: UIViewController , UITextFieldDelegate{
     @IBOutlet weak var searchTextField: UITextField!
     
+    lazy var requestModel: MarketSearhModel = {
+        let model = MarketSearhModel()
+        return model
+    }()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backView: UIView!
-    var dataArry = [MarketClassifyModel]()
+    var dataArry = [SearchResultModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
@@ -39,16 +43,19 @@ class MarketSearchViewController: UIViewController , UITextFieldDelegate{
     }
     
     func searchText(text:String) {
-        
-        AppAPIHelper.marketAPI().searchstar(code:text, complete: { [weak self](result) in
-            if let models = result as? [MarketClassifyModel]{
+    
+        requestModel.message = text
+
+        AppAPIHelper.marketAPI().searchstar(requestModel: requestModel, complete: { [weak self](result) in
+            if let models = result as? [SearchResultModel]{
                 self?.dataArry = models
                 self?.tableView.reloadData()
             }
-        }) { [weak self](error) in
-            self?.dataArry.removeAll()
-            self?.tableView.reloadData()
+        }) { (error) in
+            self.dataArry.removeAll()
+            self.tableView.reloadData()
         }
+
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.text == "" {
@@ -87,9 +94,14 @@ extension MarketSearchViewController:UITableViewDelegate, UITableViewDataSource 
         let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Markt.rawValue, bundle: nil)
         
         let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail") as? MarketDetailViewController
+        let starListModel = MarketListStarModel()
         
         let model = dataArry[indexPath.row]
-        vc?.starCode = model.code
+        starListModel.wid = model.wid
+        starListModel.pic = model.pic
+        starListModel.symbol = model.symbol
+        vc?.starModel = starListModel
+        vc?.starCode = model.symbol
         vc?.starName = model.name
         navigationController?.pushViewController(vc!, animated: true)
     }

@@ -10,15 +10,19 @@ import UIKit
 
 class MarketDetaiBaseInfoViewController: MarketBaseViewController {
     
+    var achives:[AchiveModel]?
+
     var bannerDetailModel:BannerDetaiStarModel?
-    
+    var titles = ["1","个人简介", "主要经历", "主要成就"]
     var rows:[Int] = [1, 1, 10]
-    var identifiers:[String] = ["MaketBannerCell","MarketInfoCell","MarketExperienceCell"]
+    var identifiers:[String] = ["MaketBannerCell","MarketInfoCell","MarketExperienceCell","MarketExperienceCell"]
     var expericences:[ExperienceModel]?
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = tableView
+        
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 474))
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: AppConst.RegisterIdentifier.PubInfoHeaderView.rawValue)
         
         guard starCode != nil else {
@@ -26,6 +30,7 @@ class MarketDetaiBaseInfoViewController: MarketBaseViewController {
         }
         requestInfos()
         requestExperience()
+        requestAchive()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,11 +54,20 @@ class MarketDetaiBaseInfoViewController: MarketBaseViewController {
             }
         }, error: errorBlockFunc())
     }
-
+    func requestAchive() {
+        AppAPIHelper.marketAPI().requestStarArachive(code:  starCode!, complete: { (response) in
+            if let models =  response as? [AchiveModel] {
+                self.achives = models
+                self.tableView.reloadSections(IndexSet(integer: 3), with: .none)
+            }
+        }, error: errorBlockFunc())
+    }
 
 }
 
 extension MarketDetaiBaseInfoViewController:UITableViewDataSource, UITableViewDelegate{
+    
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifiers[indexPath.section], for: indexPath)
@@ -61,7 +75,7 @@ extension MarketDetaiBaseInfoViewController:UITableViewDataSource, UITableViewDe
         case 0:
             let bannerCell = cell as! MaketBannerCell
             if bannerDetailModel != nil {
-                bannerCell.banner.imageURLStringsGroup = [bannerDetailModel!.pic1]
+                bannerCell.banner.imageURLStringsGroup = [bannerDetailModel!.pic_url]
             }
         case 1:
             let infoCell = cell as! MarketInfoCell
@@ -74,6 +88,12 @@ extension MarketDetaiBaseInfoViewController:UITableViewDataSource, UITableViewDe
             let model = expericences![indexPath.row]
             expericenCell.setTitle(title: model.experience)
             
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MarketExperienceCell", for: indexPath) as! MarketExperienceCell
+            
+            let model = achives?[indexPath.row]
+            cell.setTitle(title: (model?.achive)!)
+            return cell
         default:
             break
         }
@@ -82,7 +102,9 @@ extension MarketDetaiBaseInfoViewController:UITableViewDataSource, UITableViewDe
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 2 {
-            return expericences == nil ? 0 :  expericences!.count
+            return expericences?.count ?? 0
+        } else if section == 3 {
+            return achives?.count ?? 0
         }
         return 1
     }
@@ -112,16 +134,13 @@ extension MarketDetaiBaseInfoViewController:UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as! PubInfoHeaderView
-        if section == 1 {
-            view.setTitle(title: "个人简介")
-            return view
-        }else if section == 2 {
-            view.setTitle(title: "主要经历")
+        if section != 0 {
+            view.setTitle(title: titles[section])
             return view
         }
-        return nil  
+        return nil
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return  3
+        return  4
     }
 }

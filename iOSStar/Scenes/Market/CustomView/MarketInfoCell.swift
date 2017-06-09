@@ -31,7 +31,7 @@ class MarketInfoCell: UITableViewCell {
         nationLabel.text = model?.nation
         birthLabel.text = model?.birth
         colleageLabel.text = model?.colleage
-        
+        constellationLabel.text = model?.constellaction
     }
 
 }

@@ -11,8 +11,8 @@ import Foundation
 
 class MarketBaseModel: BaseModel {
     
-    var id:Int64 = 0
-    var token = ""
+    var id:Int64 = 145
+    var token = "6902464177061903496"
 }
 
 class RealTimeRequestModel:MarketBaseModel {
@@ -30,7 +30,7 @@ class TimeLineRequestModel: MarketBaseModel {
 
 class StarListRequestModel: MarketBaseModel {
     
-    var sort = 0
+    var sort = 0 
     var aType:Int32 = 5
     var start:Int32 = 0
     var count:Int32 = 20
@@ -50,5 +50,9 @@ class CommentListRequestModel: BaseModel {
     var token = UserModel.share().token
     var startPos = 0
     var count = 10
+}
+
+class MarketSearhModel: MarketBaseModel {
+    var message = ""
 }
 
