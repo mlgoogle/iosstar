@@ -16,10 +16,8 @@ class SearchResultCell: OEZTableViewCell {
         // Initialization code
     }
     override func update(_ data: Any!) {
-      
-        let model = data as!  MarketClassifyModel
-        
-        titleLabel.text = "\(model.name)(\(model.code))"
+        let model = data as!  SearchResultModel
+        titleLabel.text = "\(model.name)(\(model.symbol))"
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -52,7 +52,8 @@ class SocketConst: NSObject {
         case marketType = 11001
 
         //搜索
-        case searchStar = 11007
+        case searchStar = 13001
+
         //搜索
         case weixinpay = 7033
         //我的资产
@@ -73,8 +74,10 @@ class SocketConst: NSObject {
         //评论列表
         case commetList = 10017
         
-        //明星经理
+        //明星经历
         case starExperience = 11009
+        //明星成就
+        case starAchive = 11011
         
         case newsStarInfo = 10001
         
@@ -88,6 +91,11 @@ class SocketConst: NSObject {
         case sendComment = 12001
         //评论列表
         case commentList = 12003
+        //发起委托
+        case buyOrSell = 5001
+        
+        //收到匹配成功
+        case receiveMatching = 5030
     }
     enum type:UInt8 {
         case error  = 0
@@ -101,6 +109,7 @@ class SocketConst: NSObject {
         case news = 10
         case market = 11
         case comment = 12
+        case search = 13
     }
     
     enum aType:UInt8 {

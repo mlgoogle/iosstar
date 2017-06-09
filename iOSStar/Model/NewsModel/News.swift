@@ -29,14 +29,18 @@ class BannerModel: Object {
 }
 
 class BannerDetaiStarModel: Object {
-    dynamic var achievement = ""
+    dynamic var constellaction = ""
     dynamic var birth = ""
     dynamic var colleage = ""
     dynamic var expeience = ""
     dynamic var introduction = ""
     dynamic var nation = ""
     dynamic var nationality = ""
-    dynamic var pic1 = ""
+    dynamic var pic_url = ""
     dynamic var work = ""
-    dynamic var seconds = 0
+    dynamic var owntimes = 0
+    dynamic var head_url = ""
+    dynamic var weibo_index_id = ""
+    dynamic var gender = 0
+    dynamic var symbol = ""
 }

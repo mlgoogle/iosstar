@@ -32,8 +32,11 @@ class AuctionHeaderCell: UITableViewCell {
         buyProgressView.percent = 1
         sellProgressView.isShowImage = false
         sellProgressView.percent = 1
+        
+        sellProgressView.completeColors = [UIColor(hexString: "4BE2C9"), UIColor(hexString: "BCE0DA")]
         buyProgressView.addGradualColorLayer(isRound:false)
         sellProgressView.addGradualColorLayer(isRound:false)
+    
         sellProgressView.setCornoerRadius(byRoundingCorners: [.bottomRight, .topRight], cornerRadii: CGSize(width: 8.0, height: 8.0))
         buyProgressView.setCornoerRadius(byRoundingCorners: [.bottomLeft, .topLeft], cornerRadii: CGSize(width: 8.0, height: 8.0))
         backView.layer.cornerRadius = 3

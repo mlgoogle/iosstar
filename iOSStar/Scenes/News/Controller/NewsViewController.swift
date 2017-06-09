@@ -43,6 +43,9 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+
+        
         setupBannerView()
         setupNavigation()
         requestNewsList()
@@ -107,7 +110,6 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         }
     }
     func requestNewsList()  {
-        
         var startNumber = 0
         if !isRefresh {
             
@@ -204,7 +206,12 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
             vc.shareImage = cell.newsImageView?.image
             vc.newsModel = model
         } else if segue.identifier == "showPubPage" {
+            
+            
             let index = sender as! Int
+            guard bannerModels != nil else {
+                return
+            }
             let vc = segue.destination as! PublisherPageViewController
             vc.bannerModel = bannerModels?[index]
         }

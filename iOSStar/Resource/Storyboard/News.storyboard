@@ -23,7 +23,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Gft-O8-8FQ">
                                 <rect key="frame" x="0.0" y="64" width="375" height="553"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="iconImageCell" rowHeight="200" id="d6o-PN-h5l" customClass="BannerDetailImageCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="56" width="375" height="200"/>
@@ -59,7 +59,6 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EH0-g5-xQ3">
                                                             <rect key="frame" x="12" y="0.0" width="351" height="1"/>
-                                                            <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="7XG-v3-dpi"/>
                                                             </constraints>
@@ -149,7 +148,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="Pnu-DR-Y2L" firstAttribute="width" secondItem="WUY-zZ-NFk" secondAttribute="width" id="0AX-pf-vab"/>
                                                         <constraint firstItem="7h9-6b-PfH" firstAttribute="height" secondItem="v6q-FC-ycb" secondAttribute="height" id="0RU-Zs-jrT"/>
@@ -198,6 +197,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="7Lc-al-hbn" secondAttribute="trailing" id="teK-hA-0eu"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="birthLabel" destination="f2P-wP-32D" id="L1y-f6-BpY"/>
                                             <outlet property="collageLabel" destination="RoX-Sd-va4" id="gIL-Fb-WQI"/>
@@ -226,6 +226,7 @@
                                                 <constraint firstItem="2pc-BA-uDg" firstAttribute="centerY" secondItem="5VP-O3-VsU" secondAttribute="centerY" id="t9X-tU-kNa"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="titleLabel" destination="2pc-BA-uDg" id="rTP-BF-nUs"/>
                                         </connections>
@@ -442,7 +443,7 @@
             <objects>
                 <navigationController storyboardIdentifier="Home" automaticallyAdjustsScrollViewInsets="NO" id="zti-WN-NNc" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8PJ-E2-YVN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8PJ-E2-YVN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

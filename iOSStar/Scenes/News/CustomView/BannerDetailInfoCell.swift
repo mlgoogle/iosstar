@@ -34,7 +34,7 @@ class BannerDetailInfoCell: UITableViewCell {
         nationLabel.text = model?.nation
         birthLabel.text = model?.birth
         collageLabel.text = model?.colleage
-        
+        constellationLabel.text = model?.constellaction
     }
 
 }

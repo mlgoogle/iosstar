@@ -16,6 +16,8 @@ class MarketFansListViewController: MarketBaseViewController {
         super.viewDidLoad()
         scrollView = tableView
         tableView.bounces = true
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 450))
+
         tableView.register(FansListHeaderView.self, forHeaderFooterViewReuseIdentifier: "FansListHeaderView")
         automaticallyAdjustsScrollViewInsets = false
     }

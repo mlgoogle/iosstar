@@ -21,6 +21,7 @@ class MenuSubViewCell: UICollectionViewCell {
         return tableView
     }()
     
+
     var sortType = AppConst.SortType.down.rawValue
     var isLoadMore = true
     var dataSource:[MarketListStarModel]?
@@ -55,6 +56,7 @@ class MenuSubViewCell: UICollectionViewCell {
 
     
     func requestStarList(type:Int, sortType:AppConst.SortType) {
+        self.sortType = sortType.rawValue
         if type == 0 {
             requestOptional()
         } else {

@@ -26,7 +26,7 @@ class PubInfoHeaderView: UITableViewHeaderFooterView {
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        
+        contentView.backgroundColor = UIColor(hexString: "fafafa")
         addSubview(lineView)
         addSubview(titleLabel)
         lineView.snp.makeConstraints { (make) in
@@ -35,12 +35,24 @@ class PubInfoHeaderView: UITableViewHeaderFooterView {
             make.height.equalTo(17)
             make.centerY.equalTo(self)
         }
-        
+
         titleLabel.snp.makeConstraints { (make) in
             make.left.equalTo(lineView.snp.right).offset(7)
             make.centerY.equalTo(lineView)
             make.height.equalTo(15)
         }
+        let bottomLineView = UIView()
+        bottomLineView.backgroundColor = UIColor(hexString: "E5E5E5")
+        addSubview(bottomLineView)
+        
+        bottomLineView.snp.makeConstraints { (make) in
+            make.bottom.equalTo(-1)
+            make.height.equalTo(1)
+            make.left.equalTo(lineView)
+            make.right.equalTo(-12)
+        }
+        bringSubview(toFront: bottomLineView)
+        
     }
     
     func setTitle(title:String) {

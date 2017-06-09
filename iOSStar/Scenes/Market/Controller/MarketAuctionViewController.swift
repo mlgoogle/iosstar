@@ -17,6 +17,8 @@ class MarketAuctionViewController: MarketBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = tableView
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 450))
+
         tableView.register(FansListHeaderView.self, forHeaderFooterViewReuseIdentifier: "FansListHeaderView")
         YD_CountDownHelper.shared.countDownRefresh = { [weak self] (result)in
             self?.count -= 1

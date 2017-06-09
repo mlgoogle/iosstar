@@ -19,13 +19,11 @@ class SocketRequestManage: NSObject {
     fileprivate var _reqeustId:UInt32 = 10000
     fileprivate var _socketHelper:SocketHelper?
     fileprivate var _sessionId:UInt64 = 0
+
+    var receiveMatching:CompleteBlock?
+
     fileprivate var timelineRequest: SocketRequest?
-    fileprivate var productsRequest:  SocketRequest?
-    fileprivate var kchartRequest: SocketRequest?
-    fileprivate var priceRequest: SocketRequest?
-    fileprivate var balanceRequest: SocketRequest?
-    var receiveChatMsgBlock:CompleteBlock?
-    var receiveBalanceBlock:CompleteBlock?
+
     var operate_code = 0
     func start() {
         _lastHeardBeatTime = timeNow()
@@ -69,8 +67,10 @@ class SocketRequestManage: NSObject {
         var  socketReqeust = socketRequests[packet.session_id]
         if packet.operate_code == SocketConst.OPCode.lineData.rawValue + 1{
             socketReqeust = timelineRequest
-        }else if packet.operate_code == SocketConst.OPCode.commetList.rawValue + 1 {
-
+        }else if packet.operate_code == SocketConst.OPCode.receiveMatching.rawValue {
+            let response:SocketJsonResponse = SocketJsonResponse(packet:packet)           
+            self.receiveMatching!(response)
+            
         }else{
             socketRequests.removeValue(forKey: packet.session_id)
         }
