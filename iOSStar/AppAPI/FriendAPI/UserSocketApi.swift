@@ -23,6 +23,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         
           startModelRequest(packet, modelClass: StarListModel.self, complete: complete, error: error)
     }
+    //聊天减时间
     func reducetime(phone: String, starcode: String, complete: CompleteBlock?, error: ErrorBlock?){
         
         let param: [String: Any] = [SocketConst.Key.phone: phone,
