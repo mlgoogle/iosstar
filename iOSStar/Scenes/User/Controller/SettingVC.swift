@@ -42,6 +42,9 @@ class SettingVC: BaseTableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.tableView.deselectRow(at: indexPath, animated: false)
+        
         if indexPath.row == 5 {
             
             logout()

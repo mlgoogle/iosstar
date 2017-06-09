@@ -50,12 +50,16 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
         
         if title == "设置交易密码"  {
             print("设置交易密码")
+//            ShareDataModel.share().isReturnBackClick = true;
+            UserDefaults.standard.set(true, forKey: "isReturnBackClick")
             self.navigationController?.popViewController(animated: true)
+            
         } else {
              print("点击了请确认交易密码")
-            for controller   in (self.navigationController?.viewControllers)!{
+            for controller in (self.navigationController?.viewControllers)!{
                 if controller.isKind(of: WealthVC.self){
-                self.navigationController?.popToRootViewController(animated: true)
+//                self.navigationController?.popToRootViewController(animated: true)
+                self.navigationController?.popToViewController(controller, animated: true)
                 }
             }
         }
@@ -132,7 +136,9 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
             AppAPIHelper.user().ResetPassWd(timestamp: 1, vCode: " ", vToken: " ", pwd: passString.md5_string()  , type: 0, phone: " ", complete: { (result) in
               
                 if let model = result {
-                
+                    
+                    // print("=========\(String(describing: result))")
+                    
                     let dic = model as! [String : AnyObject]
                     if dic["status"] as! Int  == 0 {
                       SVProgressHUD.showSuccessMessage(SuccessMessage: "设置成功", ForDuration: 2.0, completion: {
@@ -143,8 +149,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
                         }
                       })
                     }else{
-                        SVProgressHUD.showSuccessMessage(SuccessMessage: "设置失败", ForDuration: 2.0, completion: {
-                        })
+                        SVProgressHUD.showErrorMessage(ErrorMessage: "设置失败", ForDuration: 2.0, completion: nil)
                     }
                     
                 }
