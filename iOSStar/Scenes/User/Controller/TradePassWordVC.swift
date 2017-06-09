@@ -42,13 +42,23 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
          self.doSetPass.backgroundColor = UIColor.gray
         initUI()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "record_selected"), style: .done, target: self, action: #selector(leftButtonItemClick(_ :)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backClick"), style: .done, target: self, action: #selector(leftButtonItemClick(_ :)))
         
     }
     
     func leftButtonItemClick(_ sender : Any) {
         
-        print("点击了左边按钮");
+        if title == "设置交易密码"  {
+            print("设置交易密码")
+            self.navigationController?.popViewController(animated: true)
+        } else {
+             print("点击了请确认交易密码")
+            for controller   in (self.navigationController?.viewControllers)!{
+                if controller.isKind(of: WealthVC.self){
+                self.navigationController?.popToRootViewController(animated: true)
+                }
+            }
+        }
     }
 
     
