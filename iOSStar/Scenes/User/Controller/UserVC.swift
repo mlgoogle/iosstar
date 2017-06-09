@@ -14,9 +14,14 @@ class TitleCell: UITableViewCell {
     @IBOutlet var version: UILabel!
     
 }
+
 class UserVC: BaseCustomTableViewController  {
 
+    // 资产总额
     var  account : UILabel?
+    
+    // 昵称
+    var  nickNameLabel : UILabel?
     // 名字数组
     var titltArry = [""]
   
@@ -25,26 +30,34 @@ class UserVC: BaseCustomTableViewController  {
         super.viewDidLoad()
         titltArry = ["我的钱包","我预约的明星","客服中心","常见问题","通用设置"]
         self.tableView.reloadData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccessNotice), name: Notification.Name(rawValue:AppConst.loginSuccessNotice), object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+
+        LoginSuccessNotice()
+    }
+    
+    func LoginSuccessNotice() {
+        
         self.getUserInfo { (result) in
             
             if let response = result{
                 
-                print("-\(response)")
+                // print("-\(response)")
                 
                 let object = response as! [String : AnyObject]
-               self.account?.text =  String.init(format: "%.2f", object["balance"] as! Double)
-              
-                
+                self.account?.text =  String.init(format: "%.2f", object["balance"] as! Double)
+                self.nickNameLabel?.text = UserDefaults.standard.object(forKey: "phone") as? String
             }
             
         }
-
+        
     }
+    
     // MARK: Table view data source
      override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -73,6 +86,7 @@ class UserVC: BaseCustomTableViewController  {
         if indexPath.section == 0{
           
             account = cell.balance
+            nickNameLabel = cell.nicknameLabel
            return cell
         }else if indexPath.section == 2{
             

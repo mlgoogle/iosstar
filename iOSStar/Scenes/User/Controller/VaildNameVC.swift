@@ -10,6 +10,7 @@ import UIKit
 import  SVProgressHUD
 class VaildNameVC:  BaseTableViewController {
 
+    @IBOutlet var selectBtn: UIButton!
     //身份证号
     @IBOutlet weak var card: UITextField!
     //姓名
@@ -21,27 +22,46 @@ class VaildNameVC:  BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "实名认证"
+        selectBtn.isSelected = true
     }
 
+    @IBAction func selectClick(_ sender: Any) {
+        selectBtn.isSelected = !selectBtn.isSelected
+    }
     @IBAction func doVailiName(_ sender: Any) {
         if checkTextFieldEmpty([name,card]){
-            
+            self.name.resignFirstResponder()
+            self.card.resignFirstResponder()
+            if selectBtn.isSelected == false{
+                SVProgressHUD.showErrorMessage(ErrorMessage: "您尚未勾选《免责声明》，请选择", ForDuration: 2.0, completion: nil)
+                return
+            }
             AppAPIHelper.user().authentication(realname: name.text!, id_card: card.text!, complete: { (result) in
                 if let model = result {
                     
                     let dic = model as! [String : AnyObject]
                     if dic["result"] as! Int  == 0 {
-                        SVProgressHUD.showSuccessMessage(SuccessMessage: "实名认证成功", ForDuration: 1, completion: {
-                            _ = self.navigationController?.popViewController(animated: true)
+                        SVProgressHUD.showSuccessMessage(SuccessMessage: "实名认证成功", ForDuration: 2.0, completion: {
+                            
+                            let alertVc = AlertViewController()
+                            alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
+                                                titleLabelText: "你还没有开通支付",
+                                                subTitleText: "开通支付之后才可以进行交易",
+                                                completeButtonTitle: "我 知 道 了") { (completeButton) in
+                                                    alertVc.dismissAlertVc()
+                                                    
+                                                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
+                                                    self.navigationController?.pushViewController(vc, animated: true )
+                                                    return
+                            }
+//                            _ = self.navigationController?.popViewController(animated: true)
                         })
                     }else{
-                        SVProgressHUD.showErrorMessage(ErrorMessage: "实名认证失败", ForDuration: 1, completion: {
-                            _ = self.navigationController?.popViewController(animated: true)
+                        SVProgressHUD.showErrorMessage(ErrorMessage: "实名认证失败", ForDuration: 2.0, completion: {
+                           // _ = self.navigationController?.popViewController(animated: true)
 
                         })
-
                     }
-                    
                 }
             }) { (error ) in
                 

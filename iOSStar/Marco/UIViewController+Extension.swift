@@ -93,7 +93,7 @@ extension UIViewController {
     func checkTextFieldEmpty(_ array:[UITextField]) -> Bool {
         for  textField in array {
             if  textField.text == ""  {
-                SVProgressHUD.showErrorMessage(ErrorMessage: textField.placeholder!, ForDuration: 0.5, completion: {
+                SVProgressHUD.showErrorMessage(ErrorMessage: textField.placeholder!, ForDuration: 2.0, completion: {
                     
                 });
                 return false
@@ -218,6 +218,16 @@ extension UIViewController {
                 complete?(result as AnyObject)
             }) { (error) in
                 
+                if let nav : UINavigationController = self.tabBarController?.selectedViewController as? UINavigationController{
+                    if nav.viewControllers.count > 0{
+                        self.userLogout()
+                        self.navigationController?.popToRootViewController(animated: true)
+                        
+                    }
+                }
+                
+                
+               
             }
         }
     }

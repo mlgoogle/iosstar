@@ -56,7 +56,8 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         let index1 = phonetext.index(phonetext.endIndex, offsetBy: -4)
         self.phone.text =  (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
         
-        self.nickName.text = (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
+//        self.nickName.text = (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
+        self.nickName.text = phonetext
     }
  
 

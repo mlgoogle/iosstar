@@ -14,6 +14,7 @@
 #import "WXApiObject.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import <UShareUI/UShareUI.h>
+#import <Bugout/Bugout.h>
 //#import "NIMMessageObjectProtocol.h"
 #import <OEZCommSDK/OEZCommSDK.h>
 #pragma pack(1)
@@ -32,3 +33,7 @@ struct SocketPacketHead {
 #import <AlipaySDK/AlipaySDK.h> 
 #import "RSADataSigner.h"
 #import "Order.h"
+
+#import "GeTuiSdk.h"
+// #import "GeTuiExtSdk.h"
+

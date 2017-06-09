@@ -62,6 +62,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         
         return true;
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -71,7 +72,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         
         didClose()
     }
-    
+    // MARK: - 导航栏
     func initNav(){
         let btn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 20, height: 20))
         btn.setBackgroundImage(UIImage.init(named: "close"), for: .normal)
@@ -89,17 +90,31 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
     //MARK:   注册
     @IBAction func doRegist(_ sender: Any) {
         view.endEditing(true)
+        ShareDataModel.share().isweichaLogin = false
         self.resultBlock!(doStateClick.doRegist as AnyObject?)
+        
     }
-      //登录
+    //MARK:-  登录
     @IBAction func doLogin(_ sender: Any) {
         let btn = sender as! UIButton
-        btn.isUserInteractionEnabled = false
+        // btn.isUserInteractionEnabled = false
+        
+        if !checkTextFieldEmpty([phone]) {
+            return
+        }
+        if !checkTextFieldEmpty([passPwd]) {
+            return
+        }
+        if !isTelNumber(num: phone.text!) {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "手机号码格式错误", ForDuration: 2.0, completion: nil)
+            return
+        }
+
         if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]){
             AppAPIHelper.login().login(phone: phone.text!, password: (passPwd.text?.md5_string())!, complete: { [weak self](result)  in
                   let datadic = result as? UserModel
 
-                SVProgressHUD.showSuccessMessage(SuccessMessage:"登录成功", ForDuration: 0.5, completion: {
+                SVProgressHUD.showSuccessMessage(SuccessMessage:"登录成功", ForDuration: 2.0, completion: {
                     btn.isUserInteractionEnabled = true
                     if let _ = datadic {
                         UserModel.share().upateUserInfo(userObject: result!)
@@ -107,11 +122,13 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
                         UserDefaults.standard.synchronize()
                         self?.LoginYunxin()
+                        
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
                     }
                 })
             }) { (error) in
                  btn.isUserInteractionEnabled = true
-                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: {
                 })
             }
         }else{
@@ -145,8 +162,9 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         req.state = AppConst.WechatKey.State
         WXApi.send(req)
         
-        // self.navigationController?.pushViewController(, animated: <#T##Bool#>)
     }
+    
+    // MARK: - 关闭视图
     @IBAction func didMiss(_ sender: Any) {
         didClose()
     }
@@ -158,10 +176,4 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
        
          view.endEditing(true)
     }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        
-//        self.view.removeFromSuperview()
-//        didClose()
-//    }
 }

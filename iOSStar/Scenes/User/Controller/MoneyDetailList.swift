@@ -78,8 +78,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
           
         }) { (error ) in
             
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
-            })
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
               self.didRequestComplete(nil)
         }
        

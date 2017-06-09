@@ -55,15 +55,18 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
         
         
         print("=====什么时候调用这个方法呢? \(totalUnreadCount)")
-        
     }
     func LoginSuccess(_ LoginSuccess : NSNotification){
         
-        
-        
         NIMSDK.shared().systemNotificationManager.add(self)
         NIMSDK.shared().conversationManager.add(self)
-        print(NIMSDK.shared().conversationManager.allUnreadCount())
+        
+        //if NIMSDK.shared().conversationManager.allUnreadCount() != 0 {
+            self.tabBar.showshowBadgeOnItemIndex(index: 2)
+       // } else {
+        //  self.tabBar.hideBadgeOnItemIndex(index: 2)
+       // }
+        print("这里打印的是未读消息条数?-------------\(NIMSDK.shared().conversationManager.allUnreadCount())")
         
     }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
@@ -73,7 +76,6 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
             if  checkLogin(){
             
             }
-           
         }
     }
 }

@@ -13,13 +13,15 @@ extension SVProgressHUD{
     
     public class func showErrorMessage(ErrorMessage message: String, ForDuration duration: Double, completion: (() -> Void)?) {
         initStyle()
-        SVProgressHUD.showError(withStatus: message)
+//        SVProgressHUD.showError(withStatus: message)
+        SVProgressHUD.show(UIImage(named: "errorMessageImage"), status: message)
         dismissWithDuration(Duration: duration,completion:completion)
     }
     
     public class func showSuccessMessage(SuccessMessage message: String, ForDuration duration: Double, completion: (() -> Void)?){
         initStyle()
-        SVProgressHUD.showSuccess(withStatus: message)
+//        SVProgressHUD.showSuccess(withStatus: message)
+        SVProgressHUD.show(UIImage(named: "successMessageImage"), status: message)
         dismissWithDuration(Duration: duration,completion:completion)
     }
     

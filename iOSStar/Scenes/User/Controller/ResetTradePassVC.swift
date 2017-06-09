@@ -108,7 +108,7 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
                     }
                 }
                 }, error: { (error)  in
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "短信发送失败,请稍后再试", ForDuration: 2, completion: nil)
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "短信发送失败,请稍后再试", ForDuration: 2.0, completion: nil)
                     self.vaildCodeBtn.isEnabled = true
             })
             
@@ -131,36 +131,18 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
     }
     //MARK: 重置密码
     @IBAction func doreset(_ sender: Any) {
+        
         if first_input.text != second_input.text{
-            
-            SVProgressHUD.showErrorMessage(ErrorMessage: "两次密码不一致", ForDuration: 0.5, completion: {
-                
-            })
+            SVProgressHUD.showErrorMessage(ErrorMessage: "两次密码不一致", ForDuration: 2.0, completion: nil)
             return
         }
+        
         let string = "yd1742653sd" + String.init(format: "%ld", self.timeStamp) + self.codeTf.text! + self.phoneTf.text!
         if string.md5_string() != self.vToken{
-            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码不正确", ForDuration: 0.5, completion: {
-                
-            })
+            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 2.0, completion: nil)
             return
         }
-//        AppAPIHelper.user().ResetPassWd(timestamp: Int64(timeStamp), vCode: self.codeTf.text!, vToken: self.vToken, pwd: (first_input.text?.md5_string())! , type: 1, phone: self.phoneTf.text!, complete: { (result) in
-//            if let model = result {
-//                
-//                // print("-----\(result)")
-//                
-//                let dic = model as! [String : AnyObject]
-//                if dic["status"] as! Int  == 0 {
-//                    SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功", ForDuration: 1, completion: {
-//                        self.navigationController?.popViewController(animated: true)
-//                    })
-//                }
-//                
-//            }
-//        }) { (error) in
-//            
-//        }
+        
         let requestModel = ResetPayPwdRequestModel()
         requestModel.id = (UserModel.share().getCurrentUser()?.userinfo?.id)!
         requestModel.timestamp = Int64(timeStamp)
@@ -173,22 +155,39 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
             
             if let resultModel = result {
                 
-                // print("=====\(resultModel)")
-
+                
                 let dict = resultModel as! [String : AnyObject]
                 if dict["status"] as! Int == 0 {
                     SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功",
-                                                     ForDuration: 1,
+                                                     ForDuration: 2.0,
                                                      completion: {
                                                 self.navigationController?.popViewController(animated: true)
                                             })
                                         }
-
             }
         }) { (error) in
-            
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion:nil)
         }
         
     }
     
 }
+
+
+// FIXME: - 之前的接口
+//        AppAPIHelper.user().ResetPassWd(timestamp: Int64(timeStamp), vCode: self.codeTf.text!, vToken: self.vToken, pwd: (first_input.text?.md5_string())! , type: 1, phone: self.phoneTf.text!, complete: { (result) in
+//            if let model = result {
+//
+//                // print("-----\(result)")
+//
+//                let dic = model as! [String : AnyObject]
+//                if dic["status"] as! Int  == 0 {
+//                    SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功", ForDuration: 1, completion: {
+//                        self.navigationController?.popViewController(animated: true)
+//                    })
+//                }
+//
+//            }
+//        }) { (error) in
+//
+//        }

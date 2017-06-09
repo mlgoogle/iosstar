@@ -15,7 +15,7 @@ class ShareDataModel: NSObject {
         return model
     }
     var wechatUserInfo = [String:String]()
-    var isweichaLogin : Bool = false
+    dynamic var isweichaLogin : Bool = false
     var phone : String =   ""
     var codeToeken : String =   ""
     dynamic var selectMonth : String = ""

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j9j-xh-Qc8">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j9j-xh-Qc8">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -270,7 +270,6 @@
                                                     <constraint firstAttribute="trailing" secondItem="wtV-qR-Xdw" secondAttribute="trailing" constant="14" id="ToQ-Pb-c05"/>
                                                     <constraint firstAttribute="trailing" secondItem="ele-vB-QK5" secondAttribute="trailing" constant="14" id="UCy-C0-3Py"/>
                                                     <constraint firstItem="AJt-bV-4sD" firstAttribute="leading" secondItem="v8t-gG-Ohf" secondAttribute="trailing" constant="4" id="Wvn-DF-Ku9"/>
-                                                    <constraint firstAttribute="width" constant="268" id="Yhb-Cu-dTY"/>
                                                     <constraint firstItem="v8t-gG-Ohf" firstAttribute="centerX" secondItem="vCM-jS-ch8" secondAttribute="centerX" constant="-30.5" id="bBU-e8-o2d"/>
                                                     <constraint firstItem="be4-FP-WI1" firstAttribute="leading" secondItem="vCM-jS-ch8" secondAttribute="leading" constant="60" id="fbd-ph-H65"/>
                                                     <constraint firstItem="CS8-z7-ec1" firstAttribute="top" secondItem="9VM-nH-Rga" secondAttribute="bottom" constant="20" id="fqb-92-Kad"/>
@@ -556,7 +555,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="em5-J6-Bnt">
                                                     <rect key="frame" x="13" y="0.0" width="294" height="40"/>
                                                     <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zqr-SU-x0S">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入新登录密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zqr-SU-x0S">
                                                             <rect key="frame" x="8" y="0.0" width="236" height="40"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -625,7 +624,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Uh-NF-z04">
                                                     <rect key="frame" x="13" y="0.0" width="294" height="40"/>
                                                     <subviews>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9fQ-81-Mxi">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入新登录密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9fQ-81-Mxi">
                                                             <rect key="frame" x="8" y="0.0" width="236" height="40"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -736,7 +735,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vY-rf-DqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="696" y="-210"/>
+            <point key="canvasLocation" x="266" y="-227"/>
         </scene>
         <!--输入密码-->
         <scene sceneID="ZGG-A3-zTo">
@@ -1092,7 +1091,7 @@
                                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1283,6 +1282,7 @@
                         <outlet property="phoneTf" destination="Uml-Jq-dSm" id="80P-1n-9SR"/>
                         <outlet property="rbackView" destination="pke-hk-xlg" id="5zK-8A-Zvj"/>
                         <outlet property="rcontentView" destination="l57-Hb-DPU" id="cgd-Gs-KzE"/>
+                        <outlet property="registeredButton" destination="NPL-Td-WuB" id="UWt-gH-wwz"/>
                         <outlet property="right" destination="HQU-al-8Sb" id="AeV-zp-NC2"/>
                         <outlet property="top" destination="Q7P-1y-qbQ" id="Gik-VR-vRI"/>
                         <outlet property="vaildCodeBtn" destination="bnh-93-zmc" id="lJd-pA-aSN"/>

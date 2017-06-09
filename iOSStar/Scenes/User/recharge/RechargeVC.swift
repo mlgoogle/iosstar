@@ -42,9 +42,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     //MARK:微信充值成功回调充值
     func paysuccess(_ notice: NSNotification) {
         if let errorCode: Int = notice.object as? Int{
-            //            var code = Int()
             if errorCode == 0 {
-//                SVProgressHUD.showError(withStatus: "充值成功")
                 SVProgressHUD.showSuccess(withStatus: "充值成功")
                 return
                 
@@ -53,7 +51,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
                 SVProgressHUD.showError(withStatus: "支付失败")
                 return
             }
-            else   if errorCode == -2{
+            else if errorCode == -2{
                 SVProgressHUD.showError(withStatus: "用户中途取消")
                 return
             }
@@ -66,6 +64,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
             vi.backgroundColor = UIColor.white
             vi.setTitleColor(UIColor.init(hexString: "FB9938"), for: .normal)
             selectBtn = false
+             rechargeMoney = 0.0
         }else{
             
         }
@@ -86,18 +85,23 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     //MARK:去充值
     @IBAction func doRecharge(_ sender: Any) {
         //微信充值
+        print(rechargeMoney)
+        if rechargeMoney == 0.0 {
+        SVProgressHUD.showErrorMessage(ErrorMessage: "请输入充值金额", ForDuration: 2.0, completion: {
+           
+        })
+             return
+        }
         if paytype == 0 {
-           weixinpay()
+           doWeiXinPay()
         }else{
-           alipay()
+           doAliPay()
         }
         
        
         
     }
-    func alipay(){
-    
-    }
+   
     func weixinpay(){
         SVProgressHUD.show(withStatus: "加载中")
         AppAPIHelper.user().weixinpay(title: "余额充值", price: rechargeMoney, complete: { (result) in
@@ -128,6 +132,11 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
             inputMoney.text = ""
             rechargeMoney = 0.0
         }
+        
+        let moneyStr = String(stringInterpolationSegment:((sender as! UIButton).tag))
+       
+        inputMoney.text = moneyStr
+        
         inputMoney.resignFirstResponder()
         let btn = sender as! UIButton
         if rechargeMoney != 0.0{
@@ -138,7 +147,6 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
             btn.backgroundColor = UIColor.init(hexString: "FB9938")
             btn.setTitleColor(UIColor.white, for: .normal)
             rechargeMoney = Double.init(btn.tag)
-            
         }else{
             btn.backgroundColor = UIColor.init(hexString: "FB9938")
             btn.setTitleColor(UIColor.white, for: .normal)
