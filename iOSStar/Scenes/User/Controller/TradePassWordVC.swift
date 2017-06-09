@@ -41,7 +41,17 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
         title = setPass == true ? "请确认交易密码" :  "设置交易密码"
          self.doSetPass.backgroundColor = UIColor.gray
         initUI()
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "record_selected"), style: .done, target: self, action: #selector(leftButtonItemClick(_ :)))
+        
     }
+    
+    func leftButtonItemClick(_ sender : Any) {
+        
+        print("点击了左边按钮");
+    }
+
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

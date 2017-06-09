@@ -311,27 +311,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         
         // 此处接收到通知的userInfo
         print("didReceiveNotificationResponse: %@",response.notification.request.content.userInfo);
+        UIApplication.shared.applicationIconBadgeNumber = 0;
         
         // [ GTSdk ]：将收到的APNs信息传给个推统计
         GeTuiSdk.handleRemoteNotification(response.notification.request.content.userInfo);
-        
-        
-        if UIApplication.shared.applicationState == .active {
-            
-            let alertController = UIAlertController(title: "提示", message: "你确定要退出吗？", preferredStyle:.alert)
-            // 设置2个UIAlertAction
-            let cancelAction = UIAlertAction(title: "取消", style:.cancel, handler: nil)
-            let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
-            }
-            
-            // 添加
-            alertController.addAction(cancelAction)
-            alertController.addAction(completeAction)
-            
-            // 弹出
-            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
-            
-        }
         
         completionHandler();
     }

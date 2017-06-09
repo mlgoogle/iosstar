@@ -109,11 +109,12 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
             SVProgressHUD.showErrorMessage(ErrorMessage: "手机号码格式错误", ForDuration: 2.0, completion: nil)
             return
         }
-
+        SVProgressHUD.showProgressMessage(ProgressMessage: "登录中······")
+        // SVProgressHUD.showProgressMessage(ProgressMessage: "")
         if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]){
             AppAPIHelper.login().login(phone: phone.text!, password: (passPwd.text?.md5_string())!, complete: { [weak self](result)  in
+                SVProgressHUD.dismiss()
                   let datadic = result as? UserModel
-
                 SVProgressHUD.showSuccessMessage(SuccessMessage:"登录成功", ForDuration: 2.0, completion: {
                     btn.isUserInteractionEnabled = true
                     if let _ = datadic {
