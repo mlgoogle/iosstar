@@ -14,15 +14,9 @@ class ExchangeViewController: UIViewController ,UITabBarControllerDelegate,NIMSy
         
         super.viewDidLoad()
         title = "分答"
-        
-
-        
-        
-        
         // 测试弹窗
         // navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "record_selected"), style: .done, 
-        
-        
+
     }
 
     

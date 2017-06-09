@@ -51,7 +51,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
                 SVProgressHUD.showError(withStatus: "支付失败")
                 return
             }
-            else   if errorCode == -2{
+            else if errorCode == -2{
                 SVProgressHUD.showError(withStatus: "用户中途取消")
                 return
             }
@@ -87,7 +87,10 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         //微信充值
         print(rechargeMoney)
         if rechargeMoney == 0.0 {
-        SVProgressHUD.showErrorMessage(ErrorMessage: "请输入充值金额", ForDuration: 0.5, completion: {
+
+        SVProgressHUD.showErrorMessage(ErrorMessage: "请输入充值金额", ForDuration: 2.0, completion: {
+           
+
         })
              return
         }

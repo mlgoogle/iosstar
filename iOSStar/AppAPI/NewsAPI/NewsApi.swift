@@ -10,10 +10,7 @@ import Foundation
 
 protocol NewsApi {
     func requestNewsList(startnum:Int, endnum:Int, complete: CompleteBlock?, error: ErrorBlock?)
-    
-    
     func requestBannerList(complete: CompleteBlock?, error: ErrorBlock?)
     func requestStarInfo(code:String,complete: CompleteBlock?, error: ErrorBlock?)
 
-    
 }

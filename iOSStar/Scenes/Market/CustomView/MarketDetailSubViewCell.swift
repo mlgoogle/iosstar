@@ -9,12 +9,8 @@
 
 import UIKit
 
-class MarketDetailSubViewCell: UITableViewCell {
-    @IBOutlet weak var backView: UIView!
+class MarketDetailScrollView: UIView {
 
-    @IBOutlet weak var width: NSLayoutConstraint!
-
-    
     var scrollContenView:UIView = {
        
         let view = UIView()
@@ -32,7 +28,6 @@ class MarketDetailSubViewCell: UITableViewCell {
         super.awakeFromNib()
         
         addSubview(scrollView)
-
         scrollView.contentSize = CGSize(width: kScreenWidth * 4, height: 0)
         scrollView.isPagingEnabled = true
     }
@@ -42,9 +37,8 @@ class MarketDetailSubViewCell: UITableViewCell {
             scrollView.addSubview(subView)
         }
     }
+    
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
+
 
 }

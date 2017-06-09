@@ -22,7 +22,6 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
  
     @IBOutlet weak var coutTextField: UITextField!
     
-    
     lazy var predicate:NSPredicate = {
        let predicate = NSPredicate(format: "SELF MATCHES %@", AppConst.Text.numberReg)
         

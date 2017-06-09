@@ -17,7 +17,7 @@ class GradualColorView: UIView {
     var percent:CGFloat = 0.0
     var completeColors:[UIColor] = []
     private lazy var imageView:UIImageView = {
-        let imageView = UIImageView(image:UIImage(named: "timg"))
+        let imageView = UIImageView(image:UIImage(named: "auction_button"))
         imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         return imageView
         

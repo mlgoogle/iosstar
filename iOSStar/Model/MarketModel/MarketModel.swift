@@ -29,6 +29,9 @@ class MarketListStarModel: Object {
     
     
 }
+class AchiveModel: Object {
+    dynamic var achive = ""
+}
 
 class ExperienceModel: Object {
     dynamic var experience = ""
@@ -55,13 +58,12 @@ class PirceBaseModel: Object {
     dynamic var pchg = 0.0
 
 
-
 }
 class TimeLineModel: PirceBaseModel {
     
     class func getLineData(starWid:String) -> [TimeLineModel] {
         let realm = try! Realm()
-        let results = realm.objects(TimeLineModel.self).filter("symbol = '\(starWid)'").sorted(byProperty: "priceTime")
+        let results = realm.objects(TimeLineModel.self).filter("symbol = '\(starWid)'").sorted(byProperty: "priceTime", ascending: false)
         var array = [TimeLineModel]()
         for (_, model) in results.enumerated() {
             if array.count == 30 {
@@ -89,5 +91,13 @@ class RealTimeModel: PirceBaseModel {
     }
 }
 
+
+class SearchResultModel: BaseModel {
+    dynamic var gender = 1
+    dynamic var name = ""
+    dynamic var pic = ""
+    dynamic var symbol = ""
+    dynamic var wid = ""
+}
 
 

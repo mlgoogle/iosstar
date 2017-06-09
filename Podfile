@@ -34,6 +34,7 @@ target 'iOSStar' do
     pod 'UMengUShare/Social/ReducedWeChat'
     pod 'UMengUShare/UI'
     pod 'UMengUShare/Social/ReducedSina'
+    pod 'GTSDK'
 end
 
 

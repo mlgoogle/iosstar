@@ -92,7 +92,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
                     }
                 }
                 }, error: { (error)  in
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "短信发送失败,请稍后再试", ForDuration: 2, completion: nil)
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "短信发送失败,请稍后再试", ForDuration: 2.0, completion: nil)
                     self.vaildCodeBtn.isEnabled = true
             })
             
@@ -118,7 +118,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
     //MARK: 重置密码
     @IBAction func doreset(_ sender: Any) {
         if first_input.text != second_input.text {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "两次密码不一致", ForDuration: 0.5, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "两次密码不一致", ForDuration: 2.0, completion: nil)
             return
         }
         /*
@@ -130,7 +130,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
         */
         // FIXME: - 此处先给"123456"的验证码
         if codeTf.text != "123456" {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 2.0, completion: nil)
             return
         }
         AppAPIHelper.login().ResetPassWd(phone: self.phoneTf.text!, pwd: (self.first_input.text?.md5_string())!, complete: { (result)  in
@@ -143,7 +143,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
                 }
             }
         }) { (error) in
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
         }
     }
     

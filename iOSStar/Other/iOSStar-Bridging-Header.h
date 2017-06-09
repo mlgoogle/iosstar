@@ -35,5 +35,5 @@ struct SocketPacketHead {
 #import "Order.h"
 
 #import "GeTuiSdk.h"
-#import "GeTuiExtSdk.h"
+// #import "GeTuiExtSdk.h"
 

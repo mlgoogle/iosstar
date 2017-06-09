@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class BuyOrSellViewController: UIViewController {
     var identifiers = ["DealStarInfoCell","DealMarketCell","DealOrderInfoCell","DealHintCell"]
     var rowHeights = [137, 188,133,82]
@@ -16,7 +16,6 @@ class BuyOrSellViewController: UIViewController {
             buyOrSellButton.setTitle("确认求购", for: .normal)
         }
     }
-    
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -51,6 +50,19 @@ class BuyOrSellViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func buyOrSellAction(_ sender: Any) {
+        let model = BuyOrSellRequestModel()
+        model.buySell = 2
+        model.symbol = "1001"
+        AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: { (response) in
+            SVProgressHUD.showSuccess(withStatus: "委托成功")
+        }) { (error) in
+            
+            
+        }
+    }
+
 }
 
 extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {

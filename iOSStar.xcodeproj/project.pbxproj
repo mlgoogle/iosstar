@@ -61,6 +61,13 @@
 		6E54EE131ED5A13B00E14EC3 /* YD_DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54EE121ED5A13B00E14EC3 /* YD_DatePickerViewController.swift */; };
 		6E54EE171ED70DDE00E14EC3 /* MarketDetailCommentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54EE161ED70DDE00E14EC3 /* MarketDetailCommentHeaderView.swift */; };
 		6E6027841EC9916C001FBAA6 /* MarketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */; };
+		6E7A1F6B1EE579E9007BF6D8 /* YD_MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F6A1EE579E9007BF6D8 /* YD_MenuView.swift */; };
+		6E7A1F6D1EE652E4007BF6D8 /* MarketDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F6C1EE652E4007BF6D8 /* MarketDetailHeaderView.swift */; };
+		6E7A1F701EE6DC22007BF6D8 /* NoDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F6F1EE6DC22007BF6D8 /* NoDataCell.swift */; };
+		6E7A1F731EE96BD1007BF6D8 /* DealAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F721EE96BD1007BF6D8 /* DealAPI.swift */; };
+		6E7A1F761EE96C7E007BF6D8 /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F751EE96C7E007BF6D8 /* DealModel.swift */; };
+		6E7A1F781EE96C8B007BF6D8 /* DealRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F771EE96C8B007BF6D8 /* DealRequestModel.swift */; };
+		6E7A1F7A1EE96DE1007BF6D8 /* DealSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F791EE96DE1007BF6D8 /* DealSocketAPI.swift */; };
 		6E88DA581ED4520A00EAA905 /* DetailCommenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88DA571ED4520A00EAA905 /* DetailCommenViewController.swift */; };
 		6E88DA981ED554B100EAA905 /* GradualColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88DA971ED554B100EAA905 /* GradualColorView.swift */; };
 		6E9F31EF1ED85B04008B12A5 /* AppConfigHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9F31EE1ED85B04008B12A5 /* AppConfigHelper.swift */; };
@@ -87,6 +94,7 @@
 		6EFE79E41ECC49710096470D /* MarketAuctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E31ECC49710096470D /* MarketAuctionViewController.swift */; };
 		6EFE79E61ECC49810096470D /* MarketCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */; };
 		8D5C28521ED6FB520005B2BE /* OrderStartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5C28511ED6FB520005B2BE /* OrderStartViewCell.swift */; };
+		8D5D21521EE8F92B00DE25A9 /* UITabBar+badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D21511EE8F92B00DE25A9 /* UITabBar+badge.swift */; };
 		8DAC7E291EE1419D001AD3EF /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAC7E281EE1419D001AD3EF /* User.storyboard */; };
 		8DAC7E2F1EE26455001AD3EF /* UserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */; };
 		8DAC7E331EE640F3001AD3EF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAC7E321EE640F3001AD3EF /* Login.storyboard */; };
@@ -94,8 +102,6 @@
 		8DD224C51ED916460048D7D3 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD224C41ED916460048D7D3 /* AlertViewController.swift */; };
 		8DE79EA31EDE912500F1F24A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE79EA21EDE912500F1F24A /* Foundation.framework */; };
 		8DE79EA51EDE913600F1F24A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE79EA41EDE913600F1F24A /* CFNetwork.framework */; };
-		8DE8493D1EE7CEBD00D31B1C /* libGeTuiSdk-1.6.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE8493B1EE7CEBD00D31B1C /* libGeTuiSdk-1.6.3.0.a */; };
-		8DE8493E1EE7CEBD00D31B1C /* libGtExtensionSdk-1.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE8493C1EE7CEBD00D31B1C /* libGtExtensionSdk-1.2.0.a */; };
 		8DE849401EE7D0DF00D31B1C /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE8493F1EE7D0DF00D31B1C /* UserNotifications.framework */; };
 		8DE849421EE7D10500D31B1C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE849411EE7D10500D31B1C /* AdSupport.framework */; };
 		A001A9721EAD9F8D00752F1A /* ShareDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */; };
@@ -390,6 +396,7 @@
 		A04CF0A61ED6CB6800B93D28 /* SelectPayTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A04CF0901ED6CB6800B93D28 /* SelectPayTypeCell.xib */; };
 		A04CF0A81ED6CBB900B93D28 /* VaildNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0A71ED6CBB900B93D28 /* VaildNameVC.swift */; };
 		A0504F831EC4476B008F4182 /* StarListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0504F821EC4476B008F4182 /* StarListModel.swift */; };
+		A05A3D4A1EEA464800476481 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05A3D491EEA464800476481 /* UIViewController+Extension.swift */; };
 		A05E5F3A1EB1949F0008888A /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F391EB1949F0008888A /* close.png */; };
 		A05E5F3D1EB19D100008888A /* wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F3B1EB19D100008888A /* wechat@2x.png */; };
 		A05E5F3E1EB19D100008888A /* wechat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F3C1EB19D100008888A /* wechat@3x.png */; };
@@ -445,7 +452,6 @@
 		A089C7181EE65A2500371024 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A089C7171EE65A2500371024 /* CoreLocation.framework */; };
 		A089C71A1EE65A2E00371024 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A089C7191EE65A2E00371024 /* ImageIO.framework */; };
 		A089C71C1EE65B3B00371024 /* Bugout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A089C71B1EE65B3B00371024 /* Bugout.framework */; };
-		A08A9BB11EA991D5009E6B2B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */; };
 		A08A9BB51EA99547009E6B2B /* ForgotPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB41EA99547009E6B2B /* ForgotPwdVC.swift */; };
 		A0A667EB1EC2B67D00612510 /* UIViewController+ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A667EA1EC2B67D00612510 /* UIViewController+ChatView.swift */; };
 		A0A667ED1EC2B71C00612510 /* YDSSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A667EC1EC2B71C00612510 /* YDSSessionViewController.swift */; };
@@ -465,7 +471,6 @@
 		A0C9D6761EAE102300FC438D /* video_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D6691EAE102300FC438D /* video_chat_tip_sender.aac */; };
 		A0C9D6771EAE102300FC438D /* video_connect_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D66A1EAE102300FC438D /* video_connect_chat_tip_sender.aac */; };
 		A0EF3B0D1EB973F10023093A /* APISocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AF81EB973F10023093A /* APISocketHelper.swift */; };
-		A0EF3B0E1EB973F10023093A /* LocalSocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AF91EB973F10023093A /* LocalSocketHelper.swift */; };
 		A0EF3B0F1EB973F10023093A /* SocketDataPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFA1EB973F10023093A /* SocketDataPacket.swift */; };
 		A0EF3B101EB973F10023093A /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFB1EB973F10023093A /* SocketHelper.swift */; };
 		A0EF3B111EB973F10023093A /* SocketRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFC1EB973F10023093A /* SocketRequest.swift */; };
@@ -537,6 +542,13 @@
 		6E54EE121ED5A13B00E14EC3 /* YD_DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YD_DatePickerViewController.swift; sourceTree = "<group>"; };
 		6E54EE161ED70DDE00E14EC3 /* MarketDetailCommentHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailCommentHeaderView.swift; sourceTree = "<group>"; };
 		6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailViewController.swift; sourceTree = "<group>"; };
+		6E7A1F6A1EE579E9007BF6D8 /* YD_MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YD_MenuView.swift; sourceTree = "<group>"; };
+		6E7A1F6C1EE652E4007BF6D8 /* MarketDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailHeaderView.swift; sourceTree = "<group>"; };
+		6E7A1F6F1EE6DC22007BF6D8 /* NoDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataCell.swift; sourceTree = "<group>"; };
+		6E7A1F721EE96BD1007BF6D8 /* DealAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealAPI.swift; sourceTree = "<group>"; };
+		6E7A1F751EE96C7E007BF6D8 /* DealModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealModel.swift; sourceTree = "<group>"; };
+		6E7A1F771EE96C8B007BF6D8 /* DealRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealRequestModel.swift; sourceTree = "<group>"; };
+		6E7A1F791EE96DE1007BF6D8 /* DealSocketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealSocketAPI.swift; sourceTree = "<group>"; };
 		6E88DA571ED4520A00EAA905 /* DetailCommenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCommenViewController.swift; sourceTree = "<group>"; };
 		6E88DA971ED554B100EAA905 /* GradualColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradualColorView.swift; path = ../../Deal/CustomView/GradualColorView.swift; sourceTree = "<group>"; };
 		6E9F31EE1ED85B04008B12A5 /* AppConfigHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigHelper.swift; sourceTree = "<group>"; };
@@ -565,6 +577,7 @@
 		6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketCommentViewController.swift; sourceTree = "<group>"; };
 		8408122B704986AA5A9C486E /* Pods-iOSStar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.debug.xcconfig"; sourceTree = "<group>"; };
 		8D5C28511ED6FB520005B2BE /* OrderStartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderStartViewCell.swift; sourceTree = "<group>"; };
+		8D5D21511EE8F92B00DE25A9 /* UITabBar+badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITabBar+badge.swift"; sourceTree = "<group>"; };
 		8DAC7E281EE1419D001AD3EF /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequestModel.swift; sourceTree = "<group>"; };
 		8DAC7E321EE640F3001AD3EF /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -572,10 +585,6 @@
 		8DD224C41ED916460048D7D3 /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		8DE79EA21EDE912500F1F24A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8DE79EA41EDE913600F1F24A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		8DE849391EE7CEBD00D31B1C /* GeTuiExtSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiExtSdk.h; sourceTree = "<group>"; };
-		8DE8493A1EE7CEBD00D31B1C /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
-		8DE8493B1EE7CEBD00D31B1C /* libGeTuiSdk-1.6.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGeTuiSdk-1.6.3.0.a"; sourceTree = "<group>"; };
-		8DE8493C1EE7CEBD00D31B1C /* libGtExtensionSdk-1.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGtExtensionSdk-1.2.0.a"; sourceTree = "<group>"; };
 		8DE8493F1EE7D0DF00D31B1C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8DE849411EE7D10500D31B1C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8DE849431EE7D20300D31B1C /* iOSStar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSStar.entitlements; sourceTree = "<group>"; };
@@ -1127,6 +1136,7 @@
 		A04CF0901ED6CB6800B93D28 /* SelectPayTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectPayTypeCell.xib; sourceTree = "<group>"; };
 		A04CF0A71ED6CBB900B93D28 /* VaildNameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaildNameVC.swift; sourceTree = "<group>"; };
 		A0504F821EC4476B008F4182 /* StarListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarListModel.swift; sourceTree = "<group>"; };
+		A05A3D491EEA464800476481 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extension.swift"; path = "iOSSTar/General/Extension/UIViewController+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		A05E5F391EB1949F0008888A /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		A05E5F3B1EB19D100008888A /* wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@2x.png"; sourceTree = "<group>"; };
 		A05E5F3C1EB19D100008888A /* wechat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@3x.png"; sourceTree = "<group>"; };
@@ -1269,7 +1279,6 @@
 		A089C7171EE65A2500371024 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A089C7191EE65A2E00371024 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		A089C71B1EE65B3B00371024 /* Bugout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugout.framework; path = iOSSTar/Library/Bugout.framework; sourceTree = SOURCE_ROOT; };
-		A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		A08A9BB41EA99547009E6B2B /* ForgotPwdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPwdVC.swift; sourceTree = "<group>"; };
 		A0A667EA1EC2B67D00612510 /* UIViewController+ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ChatView.swift"; sourceTree = "<group>"; };
 		A0A667EC1EC2B71C00612510 /* YDSSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YDSSessionViewController.swift; path = ../../../../iOSSTar/Scenes/ChatView/YDSSessionViewController.swift; sourceTree = "<group>"; };
@@ -1291,7 +1300,6 @@
 		A0C9D6691EAE102300FC438D /* video_chat_tip_sender.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_sender.aac; sourceTree = "<group>"; };
 		A0C9D66A1EAE102300FC438D /* video_connect_chat_tip_sender.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_connect_chat_tip_sender.aac; sourceTree = "<group>"; };
 		A0EF3AF81EB973F10023093A /* APISocketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISocketHelper.swift; sourceTree = "<group>"; };
-		A0EF3AF91EB973F10023093A /* LocalSocketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSocketHelper.swift; sourceTree = "<group>"; };
 		A0EF3AFA1EB973F10023093A /* SocketDataPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketDataPacket.swift; sourceTree = "<group>"; };
 		A0EF3AFB1EB973F10023093A /* SocketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
 		A0EF3AFC1EB973F10023093A /* SocketRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketRequest.swift; sourceTree = "<group>"; };
@@ -1324,11 +1332,9 @@
 				A03D31581EA846B900F85308 /* libc++.tbd in Frameworks */,
 				A084BB5D1ED5924600DFC868 /* CoreMotion.framework in Frameworks */,
 				A089C71A1EE65A2E00371024 /* ImageIO.framework in Frameworks */,
-				8DE8493D1EE7CEBD00D31B1C /* libGeTuiSdk-1.6.3.0.a in Frameworks */,
 				8DE79EA51EDE913600F1F24A /* CFNetwork.framework in Frameworks */,
 				A089C71C1EE65B3B00371024 /* Bugout.framework in Frameworks */,
 				8DE79EA31EDE912500F1F24A /* Foundation.framework in Frameworks */,
-				8DE8493E1EE7CEBD00D31B1C /* libGtExtensionSdk-1.2.0.a in Frameworks */,
 				A084BB5B1ED5923C00DFC868 /* UIKit.framework in Frameworks */,
 				A084BC8F1ED59DA500DFC868 /* libcrypto.a in Frameworks */,
 				A084BB591ED5923200DFC868 /* CoreGraphics.framework in Frameworks */,
@@ -1493,6 +1499,8 @@
 			isa = PBXGroup;
 			children = (
 				6E16166D1EB0973700D95CB6 /* MarketMenuView.swift */,
+				6E7A1F6A1EE579E9007BF6D8 /* YD_MenuView.swift */,
+				6E7A1F6C1EE652E4007BF6D8 /* MarketDetailHeaderView.swift */,
 				6E16166F1EB0A7AA00D95CB6 /* MenuItemCell.swift */,
 				6E1616711EB1EF2300D95CB6 /* MenuSubViewCell.swift */,
 				6E193C4B1EB9C87B0049AEDE /* SubViewItemCell.swift */,
@@ -1554,6 +1562,33 @@
 			path = iOSStar/Scenes/Deal/CustomView;
 			sourceTree = SOURCE_ROOT;
 		};
+		6E7A1F6E1EE6DB02007BF6D8 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				6E7A1F6F1EE6DC22007BF6D8 /* NoDataCell.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		6E7A1F711EE96BAF007BF6D8 /* DealAPI */ = {
+			isa = PBXGroup;
+			children = (
+				6E7A1F721EE96BD1007BF6D8 /* DealAPI.swift */,
+				6E7A1F791EE96DE1007BF6D8 /* DealSocketAPI.swift */,
+			);
+			path = DealAPI;
+			sourceTree = "<group>";
+		};
+		6E7A1F741EE96C75007BF6D8 /* DealModel */ = {
+			isa = PBXGroup;
+			children = (
+				6E7A1F751EE96C7E007BF6D8 /* DealModel.swift */,
+				6E7A1F771EE96C8B007BF6D8 /* DealRequestModel.swift */,
+			);
+			name = DealModel;
+			path = iOSStar/Model/DealModel;
+			sourceTree = SOURCE_ROOT;
+		};
 		6E9F31EB1ED8596C008B12A5 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -1582,20 +1617,10 @@
 			path = iOSStar/Model/MarketModel;
 			sourceTree = SOURCE_ROOT;
 		};
-		8DE849381EE7CEBD00D31B1C /* GtSdkLib */ = {
-			isa = PBXGroup;
-			children = (
-				8DE849391EE7CEBD00D31B1C /* GeTuiExtSdk.h */,
-				8DE8493A1EE7CEBD00D31B1C /* GeTuiSdk.h */,
-				8DE8493B1EE7CEBD00D31B1C /* libGeTuiSdk-1.6.3.0.a */,
-				8DE8493C1EE7CEBD00D31B1C /* libGtExtensionSdk-1.2.0.a */,
-			);
-			path = GtSdkLib;
-			sourceTree = "<group>";
-		};
 		A001A96F1EAD9F5A00752F1A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6E7A1F741EE96C75007BF6D8 /* DealModel */,
 				A03F96A11ED7FF2900FC78D4 /* RechargeListModel */,
 				6EDA46931EC5AE9E0004F942 /* MarketModel */,
 				6E0C6B091EC4513900D9C2BC /* NewsModel */,
@@ -3016,7 +3041,6 @@
 		A07238671EA76AA300E755DB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				8DE849381EE7CEBD00D31B1C /* GtSdkLib */,
 				A084BC291ED59CF800DFC868 /* alipay */,
 				6E0922A11EA88DFE002725A0 /* Base.lproj */,
 				A07238B31EA76F3500E755DB /* Storyboard */,
@@ -3069,7 +3093,6 @@
 			isa = PBXGroup;
 			children = (
 				A0EF3B161EB974D80023093A /* OEZCommSDK.framework */,
-				A08A9BB01EA991D5009E6B2B /* UIViewController+Extension.swift */,
 				A072387C1EA76AA300E755DB /* AppConst.swift */,
 			);
 			path = Marco;
@@ -3101,6 +3124,7 @@
 		A07238851EA76AA300E755DB /* General */ = {
 			isa = PBXGroup;
 			children = (
+				6E7A1F6E1EE6DB02007BF6D8 /* CustomView */,
 				6E9F31EB1ED8596C008B12A5 /* Helper */,
 				A07238861EA76AA300E755DB /* Base */,
 				A07238881EA76AA300E755DB /* Extension */,
@@ -3125,6 +3149,7 @@
 		A07238881EA76AA300E755DB /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A05A3D491EEA464800476481 /* UIViewController+Extension.swift */,
 				A0856A101EB0B5C3004F349B /* UIBarExtension.swift */,
 				A0F4FA201ECD70A200D13302 /* NSDateExt.swift */,
 				A07238891EA76AA300E755DB /* String+Extension.swift */,
@@ -3133,6 +3158,7 @@
 				A0A667EA1EC2B67D00612510 /* UIViewController+ChatView.swift */,
 				6EBF590D1EC93BE9003F67B4 /* Label+Extension.swift */,
 				6E54EE0E1ED566F100E14EC3 /* UIView+Extension.swift */,
+				8D5D21511EE8F92B00DE25A9 /* UITabBar+badge.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -3140,6 +3166,7 @@
 		A072388B1EA76AA300E755DB /* AppAPI */ = {
 			isa = PBXGroup;
 			children = (
+				6E7A1F711EE96BAF007BF6D8 /* DealAPI */,
 				6EBF59081EC6EAA3003F67B4 /* MarketAPI */,
 				6E0C6B041EC43A4B00D9C2BC /* NewsAPI */,
 				A07DF7CA1EC0728B00C2254E /* FriendAPI */,
@@ -3343,7 +3370,6 @@
 				A0EF3B1A1EB9778F0023093A /* BaseSocketAPI.swift */,
 				A0EF3B181EB975B10023093A /* SocketConst.swift */,
 				A0EF3AF81EB973F10023093A /* APISocketHelper.swift */,
-				A0EF3AF91EB973F10023093A /* LocalSocketHelper.swift */,
 				A0EF3AFA1EB973F10023093A /* SocketDataPacket.swift */,
 				A0EF3AFB1EB973F10023093A /* SocketHelper.swift */,
 				A0EF3AFC1EB973F10023093A /* SocketRequest.swift */,
@@ -3560,7 +3586,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A03D3F351EA86A6400F85308 /* NIMSessionAudioContentView.m in Sources */,
-				A0EF3B0E1EB973F10023093A /* LocalSocketHelper.swift in Sources */,
 				6E1B56F51ECE878D00A014AE /* FansListHeaderView.swift in Sources */,
 				A03D3FC41EA86A6500F85308 /* NTESGLView.m in Sources */,
 				6EFE79D61ECC3AD50096470D /* MarketDetailSubViewCell.swift in Sources */,
@@ -3641,6 +3666,7 @@
 				A03D3FE91EA86A6500F85308 /* NTESDemoFetchChatroomTask.m in Sources */,
 				A084BC871ED59CF800DFC868 /* Order.m in Sources */,
 				A03D3FA61EA86A6500F85308 /* NTESSearchMessageContentCell.m in Sources */,
+				6E7A1F761EE96C7E007BF6D8 /* DealModel.swift in Sources */,
 				6E1B57071ED3CB1400A014AE /* BuyYetViewController.swift in Sources */,
 				A04CF0921ED6CB6800B93D28 /* BindingBankCardVC.swift in Sources */,
 				A084BB4F1ED5793500DFC868 /* TableViewHelper.swift in Sources */,
@@ -3668,6 +3694,7 @@
 				A03D3F661EA86A6500F85308 /* NTESMarginButton.m in Sources */,
 				A03D3F271EA86A6400F85308 /* NIMCellLayoutConfig.m in Sources */,
 				6E16166E1EB0973700D95CB6 /* MarketMenuView.swift in Sources */,
+				6E7A1F781EE96C8B007BF6D8 /* DealRequestModel.swift in Sources */,
 				A03D3F0D1EA86A6400F85308 /* NIMInputAtCache.m in Sources */,
 				A03D3EED1EA86A6400F85308 /* M80AttributedLabel+NIMKit.m in Sources */,
 				A03D3FEF1EA86A6500F85308 /* NTESDemoConfig.m in Sources */,
@@ -3743,6 +3770,7 @@
 				A0A667ED1EC2B71C00612510 /* YDSSessionViewController.swift in Sources */,
 				A04CF0941ED6CB6800B93D28 /* AccountInfoVC.swift in Sources */,
 				A03D3FED1EA86A6500F85308 /* NTESCADisplayLinkHolder.m in Sources */,
+				6E7A1F7A1EE96DE1007BF6D8 /* DealSocketAPI.swift in Sources */,
 				A03D3F181EA86A6400F85308 /* NIMKitInfo.m in Sources */,
 				6E192DF01EC2E14900915D08 /* PublisherPageViewController.swift in Sources */,
 				A03D3F6B1EA86A6500F85308 /* NTESCardPortraitCell.m in Sources */,
@@ -3763,7 +3791,6 @@
 				A03D3F421EA86A6400F85308 /* NIMSessionListViewController.m in Sources */,
 				A03D3F401EA86A6400F85308 /* NIMSessionViewController.m in Sources */,
 				A04CF0911ED6CB6800B93D28 /* BankCardVC.swift in Sources */,
-				A08A9BB11EA991D5009E6B2B /* UIViewController+Extension.swift in Sources */,
 				A03D3F0F1EA86A6400F85308 /* NIMInputEmoticonButton.m in Sources */,
 				A03D3F381EA86A6400F85308 /* NIMSessionLocationContentView.m in Sources */,
 				A03D3F7E1EA86A6500F85308 /* NTESChatroomListCell.m in Sources */,
@@ -3804,6 +3831,7 @@
 				6E192DEC1EC2B69600915D08 /* MarketSearchViewController.swift in Sources */,
 				6EFE79C81ECBE1970096470D /* OrderStarViewController.swift in Sources */,
 				A086FE161EDFF3F500AD04AD /* BaseWebVC.swift in Sources */,
+				6E7A1F6B1EE579E9007BF6D8 /* YD_MenuView.swift in Sources */,
 				A03D3FE11EA86A6500F85308 /* NTESNickNameSettingViewController.m in Sources */,
 				A03D3F651EA86A6500F85308 /* NTESFPSLabel.m in Sources */,
 				A03D3FD01EA86A6500F85308 /* NTESLogViewController.m in Sources */,
@@ -3814,6 +3842,7 @@
 				A03D3EE41EA86A6400F85308 /* NSString+NTES.m in Sources */,
 				A03D3FA21EA86A6500F85308 /* NTESSearchLocalHistoryObject.m in Sources */,
 				A03D3F361EA86A6400F85308 /* NIMSessionFileTransContentView.m in Sources */,
+				6E7A1F6D1EE652E4007BF6D8 /* MarketDetailHeaderView.swift in Sources */,
 				A03D3FE31EA86A6500F85308 /* NTESUserInfoSettingViewController.m in Sources */,
 				6ECAA1A71ECD7527000FBED7 /* MarketCommentCell.swift in Sources */,
 				6E1B57171ED40F5300A014AE /* DealStarInfoCell.swift in Sources */,
@@ -3862,10 +3891,12 @@
 				A03D3F1C1EA86A6400F85308 /* NIMTimestampModel.m in Sources */,
 				A03D3F7A1EA86A6500F85308 /* NTESChatroomMessageDataProvider.m in Sources */,
 				6E1B56FB1ED2745400A014AE /* YD_SwipHeaderView.swift in Sources */,
+				6E7A1F731EE96BD1007BF6D8 /* DealAPI.swift in Sources */,
 				A03D3FAB1EA86A6500F85308 /* NTESSessionTipContentView.m in Sources */,
 				A03D3EEB1EA86A6400F85308 /* UIScrollView+NTESPullToRefresh.m in Sources */,
 				A03D3F761EA86A6500F85308 /* NTESChatroomManager.m in Sources */,
 				A03D3F371EA86A6400F85308 /* NIMSessionImageContentView.m in Sources */,
+				8D5D21521EE8F92B00DE25A9 /* UITabBar+badge.swift in Sources */,
 				A03D3F2F1EA86A6400F85308 /* NIMSessionInteractorImpl.m in Sources */,
 				A03D3FD61EA86A6500F85308 /* NTESNoDisturbTimeCell.m in Sources */,
 				A03D3F3E1EA86A6400F85308 /* NIMSessionVideoContentView.m in Sources */,
@@ -3914,6 +3945,7 @@
 				6ECAA1AD1ECD75DB000FBED7 /* MaketBannerCell.swift in Sources */,
 				A03D3F041EA86A6400F85308 /* NIMGroupedDataCollection.m in Sources */,
 				A03D3F201EA86A6400F85308 /* NIMImageContentConfig.m in Sources */,
+				A05A3D4A1EEA464800476481 /* UIViewController+Extension.swift in Sources */,
 				6E88DA981ED554B100EAA905 /* GradualColorView.swift in Sources */,
 				A03D3F571EA86A6500F85308 /* NIMKitTimerHolder.m in Sources */,
 				A03D3FAA1EA86A6500F85308 /* NTESSessionSnapchatContentView.m in Sources */,
@@ -3936,6 +3968,7 @@
 				A03D3F681EA86A6500F85308 /* NTESCellLayoutConfig.m in Sources */,
 				6E1616601EB0343600D95CB6 /* NewsListCell.swift in Sources */,
 				A03D3F971EA86A6500F85308 /* NTESSystemNotificationViewController.m in Sources */,
+				6E7A1F701EE6DC22007BF6D8 /* NoDataCell.swift in Sources */,
 				A03D3F781EA86A6500F85308 /* NTESChatroomMaker.m in Sources */,
 				A03D3FB31EA86A6500F85308 /* NTESGalleryViewController.m in Sources */,
 				A04CF0951ED6CB6800B93D28 /* CustomerServiceVC.swift in Sources */,
@@ -4119,6 +4152,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iOSStar/iOSStar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 29FPYRHCKA;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
