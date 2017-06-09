@@ -33,7 +33,7 @@ class VaildNameVC:  BaseTableViewController {
             self.name.resignFirstResponder()
             self.card.resignFirstResponder()
             if selectBtn.isSelected == false{
-                SVProgressHUD.showErrorMessage(ErrorMessage: "您尚未勾选《免责声明》，请选择", ForDuration: 1, completion: nil)
+                SVProgressHUD.showErrorMessage(ErrorMessage: "您尚未勾选《免责声明》，请选择", ForDuration: 2.0, completion: nil)
                 return
             }
             AppAPIHelper.user().authentication(realname: name.text!, id_card: card.text!, complete: { (result) in
@@ -41,11 +41,10 @@ class VaildNameVC:  BaseTableViewController {
                     
                     let dic = model as! [String : AnyObject]
                     if dic["result"] as! Int  == 0 {
-                        SVProgressHUD.showSuccessMessage(SuccessMessage: "实名认证成功", ForDuration: 1, completion: {
+                        SVProgressHUD.showSuccessMessage(SuccessMessage: "实名认证成功", ForDuration: 2.0, completion: {
                             
                             let alertVc = AlertViewController()
                             alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-                                                
                                                 titleLabelText: "你还没有开通支付",
                                                 subTitleText: "开通支付之后才可以进行交易",
                                                 completeButtonTitle: "我 知 道 了") { (completeButton) in
@@ -58,7 +57,7 @@ class VaildNameVC:  BaseTableViewController {
 //                            _ = self.navigationController?.popViewController(animated: true)
                         })
                     }else{
-                        SVProgressHUD.showErrorMessage(ErrorMessage: "实名认证失败", ForDuration: 1, completion: {
+                        SVProgressHUD.showErrorMessage(ErrorMessage: "实名认证失败", ForDuration: 2.0, completion: {
                            // _ = self.navigationController?.popViewController(animated: true)
 
                         })

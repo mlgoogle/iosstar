@@ -106,7 +106,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
             return
         }
         if !isTelNumber(num: phone.text!) {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "手机号码格式错误", ForDuration: 1.0, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "手机号码格式错误", ForDuration: 2.0, completion: nil)
             return
         }
 
@@ -114,7 +114,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
             AppAPIHelper.login().login(phone: phone.text!, password: (passPwd.text?.md5_string())!, complete: { [weak self](result)  in
                   let datadic = result as? UserModel
 
-                SVProgressHUD.showSuccessMessage(SuccessMessage:"登录成功", ForDuration: 0.5, completion: {
+                SVProgressHUD.showSuccessMessage(SuccessMessage:"登录成功", ForDuration: 2.0, completion: {
                     btn.isUserInteractionEnabled = true
                     if let _ = datadic {
                         UserModel.share().upateUserInfo(userObject: result!)
@@ -128,7 +128,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
                 })
             }) { (error) in
                  btn.isUserInteractionEnabled = true
-                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: {
                 })
             }
         }else{

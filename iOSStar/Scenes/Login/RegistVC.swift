@@ -134,7 +134,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
                 }
      
                 }, error: { (error)  in
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "短信发送失败,请稍后再试", ForDuration: 2, completion: nil)
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "短信发送失败,请稍后再试", ForDuration: 2.0, completion: nil)
                     print("----\(error.description)")
                     self.vaildCodeBtn.isEnabled = true
             })
@@ -185,7 +185,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
 
 //        FIXME: - 此处先给"123456"的验证码
         if codeTf.text != "123456" {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 2.0, completion: nil)
             return
         }
         /*
@@ -198,13 +198,13 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
         AppAPIHelper.login().regist(phone: phoneTf.text!, password: (passTf.text?.md5_string())!, complete: { [weak self](result)  in
             if let response = result {
                 if response["result"] as! Int == 1 {
-                    SVProgressHUD.showSuccessMessage(SuccessMessage: "注册成功", ForDuration: 1.0, completion: {
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "注册成功", ForDuration: 2.0, completion: {
                           self?.resultBlock!(doStateClick.doLogin as AnyObject)
                     })
                 }
             }
         }) { (error) in
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 1.0, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
         }
     }
     
@@ -212,7 +212,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     func bindWeChat() {
         let string = "yd1742653sd" + self.timeStamp + self.codeTf.text! + self.phoneTf.text!
         if string.md5_string() != self.vToken{
-            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 2.0, completion: nil)
             return
         }
         AppAPIHelper.login().BindWeichat(phone: phoneTf.text!,
@@ -232,7 +232,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
 
         }) { (error )  in
             
-            SVProgressHUD.showErrorMessage(ErrorMessage:  error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage:  error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
         }
     }
        //MARK:-   去登录

@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         GeTuiSdk.runBackgroundEnable(true);
         
         // [ GTSdk ]：是否运行电子围栏Lbs功能和是否SDK主动请求用户定位
-        GeTuiSdk.lbsLocationEnable(true, andUserVerify: true);
+        // GeTuiSdk.lbsLocationEnable(true, andUserVerify: true);
         
         // [ GTSdk ]：自定义渠道
         GeTuiSdk.setChannelId("GT-Channel");
@@ -309,6 +309,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
+        // 此处接收到通知的userInfo
         print("didReceiveNotificationResponse: %@",response.notification.request.content.userInfo);
         
         // [ GTSdk ]：将收到的APNs信息传给个推统计
