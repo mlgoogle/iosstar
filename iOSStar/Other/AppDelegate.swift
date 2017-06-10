@@ -12,9 +12,9 @@ import Crashlytics
 import UserNotifications
 
 // 个推信息
-let kGtAppId:String = "STxLopLZK0AFPvAcnu7o67"
-let kGtAppKey:String = "SIbhyImzug9sjKteFtLrj8"
-let kGtAppSecret:String = "TgaFdlcYMX5QVhH1CkP1k2"
+// let kGtAppId:String = "STxLopLZK0AFPvAcnu7o67"
+// let kGtAppKey:String = "SIbhyImzug9sjKteFtLrj8"
+// let kGtAppSecret:String = "TgaFdlcYMX5QVhH1CkP1k2"
 
 
 import Alamofire
@@ -42,25 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         NIMCustomObject.registerCustomDecoder(NTESCustomAttachmentDecoder())
         WXApi.registerApp("wx9dc39aec13ee3158")
       
-        // MARK: -个推
-        // [ GTSdk ]：是否允许APP后台运行
-        GeTuiSdk.runBackgroundEnable(true);
+        // 个推
+        AppConfigHelper.shared().setupGeTuiSDK(sdkDelegate: self)
         
-        // [ GTSdk ]：是否运行电子围栏Lbs功能和是否SDK主动请求用户定位
-        // GeTuiSdk.lbsLocationEnable(true, andUserVerify: true);
-        
-        // [ GTSdk ]：自定义渠道
-        GeTuiSdk.setChannelId("GT-Channel");
-        
-        // [ GTSdk ]：使用APPID/APPKEY/APPSECRENT启动个推
-        GeTuiSdk.start(withAppId: kGtAppId, appKey: kGtAppKey, appSecret: kGtAppSecret, delegate: self);
-        
-        // 注册APNs - custom method - 开发者自定义的方法
-        self.registerRemoteNotification();
-        
-        
+        // 登录
         login()
-
         
        
 // /       [[NIMSDKConfig sharedConfig] setShouldSyncUnreadCount:YES];
@@ -206,53 +192,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.WechatKey.ErrorCode), object: nil, userInfo:nil)
          }
          }
-    
-    // MARK: - 注册用户通知(推送)
-    func registerRemoteNotification() {
-        /*
-         警告：Xcode8的需要手动开启“TARGETS -> Capabilities -> Push Notifications”
-         */
-        
-        /*
-         警告：该方法需要开发者自定义，以下代码根据APP支持的iOS系统不同，代码可以对应修改。
-         以下为演示代码，仅供参考，详细说明请参考苹果开发者文档，注意根据实际需要修改，注意测试支持的iOS系统都能获取到DeviceToken。
-         */
-        
-        let systemVer = (UIDevice.current.systemVersion as NSString).floatValue;
-        if systemVer >= 10.0 {
-            if #available(iOS 10.0, *) {
-                let center:UNUserNotificationCenter = UNUserNotificationCenter.current()
-                center.delegate = self;
-                center.requestAuthorization(options: [.alert,.badge,.sound], completionHandler: { (granted:Bool, error:Error?) -> Void in
-                    if (granted) {
-                        print("注册通知成功") //点击允许
-                    } else {
-                        print("注册通知失败") //点击不允许
-                    }
-                })
-                
-                UIApplication.shared.registerForRemoteNotifications()
-            } else {
-                if #available(iOS 8.0, *) {
-                    let userSettings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
-                    UIApplication.shared.registerUserNotificationSettings(userSettings)
-                    
-                    UIApplication.shared.registerForRemoteNotifications()
-                }
-            };
-        }else if systemVer >= 8.0 {
-            if #available(iOS 8.0, *) {
-                let userSettings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
-                UIApplication.shared.registerUserNotificationSettings(userSettings)
-                
-                UIApplication.shared.registerForRemoteNotifications()
-            }
-        }else {
-            if #available(iOS 7.0, *) {
-                UIApplication.shared.registerForRemoteNotifications(matching: [.alert, .sound, .badge])
-            }
-        }
-    }
     
     // MARK: - 远程通知(推送)回调
     /** 远程通知注册成功委托 */

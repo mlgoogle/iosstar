@@ -121,6 +121,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         startRequest(packet, complete: complete, error: error)
 
     }
+    //  MARK: -  获取用户信息
     func getauserinfo( complete: CompleteBlock?, error: ErrorBlock?) {
         
         let param: [String: Any] = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
@@ -132,6 +133,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         startRequest(packet, complete: complete, error: error)
         
     }
+    // MARK: -  tokenLogin token登录
     func tokenLogin( complete: CompleteBlock?, error: ErrorBlock?){
         
         let param: [String: Any] = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
