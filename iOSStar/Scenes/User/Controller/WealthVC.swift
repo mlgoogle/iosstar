@@ -15,11 +15,11 @@ class HeaderCell: UITableViewCell {
     @IBOutlet var market_cap: UILabel!
     // 可用余额
     @IBOutlet var total_amt: UILabel!
-    
+    // 昵称
     @IBOutlet weak var nicknameLabel: UILabel!
-    
+    // 已购明细数量
     @IBOutlet weak var buyStarLabel: UILabel!
-    
+    // Icon
     @IBOutlet weak var iconImageView: UIImageView!
 }
 class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {

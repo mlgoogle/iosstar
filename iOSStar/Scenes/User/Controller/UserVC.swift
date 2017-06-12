@@ -19,7 +19,6 @@ class UserVC: BaseCustomTableViewController  {
 
     // 资产总额
     var  account : UILabel?
-    
     // 昵称
     var  nickNameLabel : UILabel?
     // 名字数组
