@@ -16,12 +16,13 @@ class HeaderCell: UITableViewCell {
     // 可用余额
     @IBOutlet var total_amt: UILabel!
     // 昵称
-    @IBOutlet weak var nicknameLabel: UILabel!
+    @IBOutlet weak var nickNameLabel: UILabel!
     // 已购明细数量
     @IBOutlet weak var buyStarLabel: UILabel!
     // Icon
     @IBOutlet weak var iconImageView: UIImageView!
 }
+
 class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var needPwd : Int = 2
     var setPwd : Bool = true

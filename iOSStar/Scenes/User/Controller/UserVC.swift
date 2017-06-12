@@ -21,6 +21,9 @@ class UserVC: BaseCustomTableViewController  {
     var  account : UILabel?
     // 昵称
     var  nickNameLabel : UILabel?
+    
+    var iconImageView : UIImageView?
+    
     // 名字数组
     var titltArry = [""]
   
@@ -50,11 +53,10 @@ class UserVC: BaseCustomTableViewController  {
                 
                 let object = response as! [String : AnyObject]
                 self.account?.text =  String.init(format: "%.2f", object["balance"] as! Double)
-                self.nickNameLabel?.text = UserDefaults.standard.object(forKey: "phone") as? String
+                self.nickNameLabel?.text = object["nick_name"] as? String
+                self.iconImageView?.kf.setImage(with: URL(string: object["head_url"] as! String), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
             }
-            
         }
-        
     }
     
     // MARK: Table view data source
@@ -83,9 +85,9 @@ class UserVC: BaseCustomTableViewController  {
         
         let cell  = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
         if indexPath.section == 0{
-          
             account = cell.balance
-            nickNameLabel = cell.nicknameLabel
+            nickNameLabel = cell.nickNameLabel
+            iconImageView = cell.iconImageView
            return cell
         }else if indexPath.section == 2{
             
