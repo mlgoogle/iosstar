@@ -209,7 +209,7 @@ extension AlertViewController {
     // dismiss
     func dismissAlertVc() {
         
-        UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: { () -> Void in
+        UIView.animate(withDuration: 0, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: { () -> Void in
             self.view.alpha = 0.0
             self.contentView.transform = CGAffineTransform(translationX: 0, y: kSCREEN_H)
             
