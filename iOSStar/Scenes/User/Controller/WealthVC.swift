@@ -127,18 +127,14 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         if indexPath.section == 1 {
          
-            if indexPath.row == 0{
+            if indexPath.row == 0 {
                 
-//                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")
-//                self.navigationController?.pushViewController(vc, animated: true)
-//                return
-                
+                let alertVc = AlertViewController()
                 self.getUserrealmInfo { (result) in
                     if let model = result{
                         let object =  model as! [String : AnyObject]
                         
                         if object["realname"] as! String == ""{
-                            let alertVc = AlertViewController()
                             alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
                                                 titleLabelText: "您还没有身份验证",
 
@@ -161,23 +157,28 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")
                                 self.navigationController?.pushViewController(vc, animated: true)
                             }// 设置交易密码
-                            else{
+                            // else if ShareDataModel.share().isReturnBackClick == false {
+                            else if (UserDefaults.standard.bool(forKey: "isReturnBackClick") == false) {
                                 
-                                let alertVc = AlertViewController()
+//                                let alertVc = AlertViewController()
                                 alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-
+                                                    
                                                     titleLabelText: "开通支付",
                                                     subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购明星时间，转让明星时间，\n和明星在‘星聊’中聊天，并且还能约见明星。",
                                                     completeButtonTitle: "我 知 道 了") {[weak alertVc] (completeButton) in
                                                         alertVc?.dismissAlertVc()
-
-
+                                                        
+                                                        
                                                         let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
                                                         self.navigationController?.pushViewController(vc, animated: true )
                                                         return
                                 }
                                 
-
+                            }
+                            else {
+                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
+                                self.navigationController?.pushViewController(vc, animated: true )
+                              
                             }
                           }
                         }
