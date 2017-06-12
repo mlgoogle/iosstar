@@ -87,8 +87,10 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         //微信充值
         print(rechargeMoney)
         if rechargeMoney == 0.0 {
+
         SVProgressHUD.showErrorMessage(ErrorMessage: "请输入充值金额", ForDuration: 2.0, completion: {
            
+
         })
              return
         }
@@ -263,7 +265,7 @@ extension RechargeVC {
         let orderInfoEncoded = order.orderInfoEncoded(true)
         
         print("orderSpec = \(String(describing: orderInfo))")
-        print("orderSpec = \(orderInfo)")
+//        print("orderSpec = \(orderInfo)")
         
         // NOTE: 获取私钥并将商户信息签名，外部商户的加签过程请务必放在服务端，防止公私钥数据泄露；
         //       需要遵循RSA签名规范，并将签名字符串base64编码和UrlEncode
@@ -275,13 +277,13 @@ extension RechargeVC {
         let appScheme = "AliPayScheme"
         
         // NOTE: 将签名成功字符串格式化为订单字符串,请严格按照该格式
-        let orderString = "\(orderInfoEncoded)&sign=\"\(signedString)\"&sign_type=\"RSA\""
+        let orderString = "\(String(describing: orderInfoEncoded))&sign=\"\(String(describing: signedString))\"&sign_type=\"RSA\""
         
         print("orderString == \(orderString)")
         
         // NOTE: 调用支付结果开始支付
         AlipaySDK.defaultService().payOrder(orderString, fromScheme: appScheme, callback: { (resultDic) in
-            print("resultDic =\(resultDic)")
+//            print("resultDic =\(resultDic)")
         })
     }
     
