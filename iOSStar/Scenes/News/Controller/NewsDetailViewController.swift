@@ -29,14 +29,14 @@ class NewsDetailViewController: UIViewController {
 
 
     @IBAction func shareAction(_ sender: Any) {
-        UMSocialUIManager.showShareMenuViewInWindow { (platform, userInfo) in
-            let shareObject = UMShareWebpageObject()
-            shareObject.title = "星资讯"
-            shareObject.descr = self.newsModel!.subject_name
-            shareObject.thumbImage = self.shareImage
-            shareObject.webpageUrl = self.newsModel!.link_url
-            AppConfigHelper.shared().share(type: platform, shareObject: shareObject, viewControlller: self)
-        }
+        
+        let view : ShareView = Bundle.main.loadNibNamed("ShareView", owner: self, options: nil)?.last as! ShareView
+        view.title = "星享"
+        view.thumbImage = "QQ"
+        view.descr = "关于星享"
+        view.webpageUrl = "http://www.baidu.com"
+        view.shareViewController(viewController: self)
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
