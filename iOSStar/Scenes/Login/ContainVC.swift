@@ -34,7 +34,7 @@ class ContainVC: UIViewController {
     }
        //MARK:-  登录成功
     func loginSuccess(_ notice: NSNotification){
-
+        
         AppAPIHelper.login().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { [weak self](result)  in
             
             let response = result as? UserModel

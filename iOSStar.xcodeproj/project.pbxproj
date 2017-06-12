@@ -104,6 +104,7 @@
 		8DE79EA51EDE913600F1F24A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE79EA41EDE913600F1F24A /* CFNetwork.framework */; };
 		8DE849401EE7D0DF00D31B1C /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE8493F1EE7D0DF00D31B1C /* UserNotifications.framework */; };
 		8DE849421EE7D10500D31B1C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE849411EE7D10500D31B1C /* AdSupport.framework */; };
+		8DED0E581EEA907A00C10B3E /* CanCopyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DED0E571EEA907A00C10B3E /* CanCopyLabel.swift */; };
 		A001A9721EAD9F8D00752F1A /* ShareDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */; };
 		A0155E071EA8ABF20047B95B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0155E061EA8ABF20047B95B /* Images.xcassets */; };
 		A0155E101EA8C9760047B95B /* RegistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0155E0F1EA8C9760047B95B /* RegistVC.swift */; };
@@ -588,6 +589,7 @@
 		8DE8493F1EE7D0DF00D31B1C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8DE849411EE7D10500D31B1C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8DE849431EE7D20300D31B1C /* iOSStar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSStar.entitlements; sourceTree = "<group>"; };
+		8DED0E571EEA907A00C10B3E /* CanCopyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanCopyLabel.swift; sourceTree = "<group>"; };
 		8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareDataModel.swift; sourceTree = "<group>"; };
 		A0155E061EA8ABF20047B95B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -1566,6 +1568,7 @@
 			isa = PBXGroup;
 			children = (
 				6E7A1F6F1EE6DC22007BF6D8 /* NoDataCell.swift */,
+				8DED0E571EEA907A00C10B3E /* CanCopyLabel.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -3794,6 +3797,7 @@
 				A03D3F0F1EA86A6400F85308 /* NIMInputEmoticonButton.m in Sources */,
 				A03D3F381EA86A6400F85308 /* NIMSessionLocationContentView.m in Sources */,
 				A03D3F7E1EA86A6500F85308 /* NTESChatroomListCell.m in Sources */,
+				8DED0E581EEA907A00C10B3E /* CanCopyLabel.swift in Sources */,
 				A0EF3B111EB973F10023093A /* SocketRequest.swift in Sources */,
 				A04CF09D1ED6CB6800B93D28 /* UserInfoVC.swift in Sources */,
 				A03D3F7D1EA86A6500F85308 /* NTESLiveViewController.m in Sources */,

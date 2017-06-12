@@ -19,5 +19,6 @@ class ShareDataModel: NSObject {
     var phone : String =   ""
     var codeToeken : String =   ""
     dynamic var selectMonth : String = ""
+    var isReturnBackClick : Bool = false
   
 }

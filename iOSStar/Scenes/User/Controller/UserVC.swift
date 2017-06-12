@@ -47,7 +47,7 @@ class UserVC: BaseCustomTableViewController  {
             
             if let response = result{
                 
-                // print("-\(response)")
+                print("-\(response)")
                 
                 let object = response as! [String : AnyObject]
                 self.account?.text =  String.init(format: "%.2f", object["balance"] as! Double)

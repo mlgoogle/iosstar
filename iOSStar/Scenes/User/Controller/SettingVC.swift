@@ -42,6 +42,9 @@ class SettingVC: BaseTableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.tableView.deselectRow(at: indexPath, animated: false)
+        
         if indexPath.row == 5 {
             
             logout()
@@ -61,7 +64,7 @@ class SettingVC: BaseTableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         if indexPath.row == 2{
-          clearCache()
+          cleanCacheAlert()
           cache.text =  "\(fileSizeOfCache())" + "M"
 
         }
@@ -94,14 +97,33 @@ class SettingVC: BaseTableViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    // MARK: - 清除缓存
+    func cleanCacheAlert() {
+     
+        let alertController = UIAlertController(title: "提示", message: "确定要清除缓存吗？", preferredStyle:.alert)
+        // 设置2个UIAlertAction
+        let cancelAction = UIAlertAction(title: "取消", style:.cancel, handler: nil)
+        let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
+            // 退出
+            self.clearCache()
+            // self.cache.text =  "\(self.fileSizeOfCache())" + "M"
+            self.tableView.reloadData()
+        }
+        // 添加
+        alertController.addAction(cancelAction)
+        alertController.addAction(completeAction)
+        
+        // 弹出
+        self.present(alertController, animated: true, completion: nil)
+    }
     
+    // MARK: - 缓存相关
     func fileSizeOfCache()-> Int {
         
         // 取出cache文件夹目录 缓存文件都在这个目录下
         let cachePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first
         //缓存目录路径
-     
-        
+
         // 取出文件夹下所有文件数组
         let fileArr = FileManager.default.subpaths(atPath: cachePath!)
         
@@ -109,8 +131,6 @@ class SettingVC: BaseTableViewController {
         var size = 0
         for file in fileArr! {
             
-          
-           
             let path = cachePath?.appending("/\(file)")
             // 取出文件属性
             let floder = try! FileManager.default.attributesOfItem(atPath: path!)
@@ -122,11 +142,10 @@ class SettingVC: BaseTableViewController {
                 }
             }
         }
-        
         let mm = size / 1024 / 1024
-        
         return mm
     }
+    
     func clearCache() {
         
         // 取出cache文件夹目录 缓存文件都在这个目录下
