@@ -68,7 +68,6 @@
 		6E7A1F761EE96C7E007BF6D8 /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F751EE96C7E007BF6D8 /* DealModel.swift */; };
 		6E7A1F781EE96C8B007BF6D8 /* DealRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F771EE96C8B007BF6D8 /* DealRequestModel.swift */; };
 		6E7A1F7A1EE96DE1007BF6D8 /* DealSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F791EE96DE1007BF6D8 /* DealSocketAPI.swift */; };
-		6E7A1F7C1EEA42E7007BF6D8 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F7B1EEA42E7007BF6D8 /* UIViewController+Extension.swift */; };
 		6E88DA581ED4520A00EAA905 /* DetailCommenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88DA571ED4520A00EAA905 /* DetailCommenViewController.swift */; };
 		6E88DA981ED554B100EAA905 /* GradualColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88DA971ED554B100EAA905 /* GradualColorView.swift */; };
 		6E9F31EF1ED85B04008B12A5 /* AppConfigHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9F31EE1ED85B04008B12A5 /* AppConfigHelper.swift */; };
@@ -398,6 +397,7 @@
 		A04CF0A61ED6CB6800B93D28 /* SelectPayTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A04CF0901ED6CB6800B93D28 /* SelectPayTypeCell.xib */; };
 		A04CF0A81ED6CBB900B93D28 /* VaildNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0A71ED6CBB900B93D28 /* VaildNameVC.swift */; };
 		A0504F831EC4476B008F4182 /* StarListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0504F821EC4476B008F4182 /* StarListModel.swift */; };
+		A05A3D4A1EEA464800476481 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05A3D491EEA464800476481 /* UIViewController+Extension.swift */; };
 		A05E5F3A1EB1949F0008888A /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F391EB1949F0008888A /* close.png */; };
 		A05E5F3D1EB19D100008888A /* wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F3B1EB19D100008888A /* wechat@2x.png */; };
 		A05E5F3E1EB19D100008888A /* wechat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A05E5F3C1EB19D100008888A /* wechat@3x.png */; };
@@ -550,7 +550,6 @@
 		6E7A1F751EE96C7E007BF6D8 /* DealModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealModel.swift; sourceTree = "<group>"; };
 		6E7A1F771EE96C8B007BF6D8 /* DealRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealRequestModel.swift; sourceTree = "<group>"; };
 		6E7A1F791EE96DE1007BF6D8 /* DealSocketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealSocketAPI.swift; sourceTree = "<group>"; };
-		6E7A1F7B1EEA42E7007BF6D8 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		6E88DA571ED4520A00EAA905 /* DetailCommenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCommenViewController.swift; sourceTree = "<group>"; };
 		6E88DA971ED554B100EAA905 /* GradualColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GradualColorView.swift; path = ../../Deal/CustomView/GradualColorView.swift; sourceTree = "<group>"; };
 		6E9F31EE1ED85B04008B12A5 /* AppConfigHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfigHelper.swift; sourceTree = "<group>"; };
@@ -1139,6 +1138,7 @@
 		A04CF0901ED6CB6800B93D28 /* SelectPayTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectPayTypeCell.xib; sourceTree = "<group>"; };
 		A04CF0A71ED6CBB900B93D28 /* VaildNameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaildNameVC.swift; sourceTree = "<group>"; };
 		A0504F821EC4476B008F4182 /* StarListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarListModel.swift; sourceTree = "<group>"; };
+		A05A3D491EEA464800476481 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extension.swift"; path = "iOSSTar/General/Extension/UIViewController+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		A05E5F391EB1949F0008888A /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		A05E5F3B1EB19D100008888A /* wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@2x.png"; sourceTree = "<group>"; };
 		A05E5F3C1EB19D100008888A /* wechat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@3x.png"; sourceTree = "<group>"; };
@@ -3152,7 +3152,7 @@
 		A07238881EA76AA300E755DB /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				6E7A1F7B1EEA42E7007BF6D8 /* UIViewController+Extension.swift */,
+				A05A3D491EEA464800476481 /* UIViewController+Extension.swift */,
 				A0856A101EB0B5C3004F349B /* UIBarExtension.swift */,
 				A0F4FA201ECD70A200D13302 /* NSDateExt.swift */,
 				A07238891EA76AA300E755DB /* String+Extension.swift */,
@@ -3764,7 +3764,6 @@
 				A0F4FA211ECD70A200D13302 /* NSDateExt.swift in Sources */,
 				A03D3F031EA86A6400F85308 /* NIMContactDataCell.m in Sources */,
 				6E192DEE1EC2B9AB00915D08 /* SearchResultCell.swift in Sources */,
-				6E7A1F7C1EEA42E7007BF6D8 /* UIViewController+Extension.swift in Sources */,
 				A03D3F551EA86A6500F85308 /* NIMKitDevice.m in Sources */,
 				A03D3F861EA86A6500F85308 /* NTESContactDataMember.m in Sources */,
 				A04CF0991ED6CB6800B93D28 /* MoneyDetailList.swift in Sources */,
@@ -3950,6 +3949,7 @@
 				6ECAA1AD1ECD75DB000FBED7 /* MaketBannerCell.swift in Sources */,
 				A03D3F041EA86A6400F85308 /* NIMGroupedDataCollection.m in Sources */,
 				A03D3F201EA86A6400F85308 /* NIMImageContentConfig.m in Sources */,
+				A05A3D4A1EEA464800476481 /* UIViewController+Extension.swift in Sources */,
 				6E88DA981ED554B100EAA905 /* GradualColorView.swift in Sources */,
 				A03D3F571EA86A6500F85308 /* NIMKitTimerHolder.m in Sources */,
 				A03D3FAA1EA86A6500F85308 /* NTESSessionSnapchatContentView.m in Sources */,

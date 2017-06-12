@@ -22,6 +22,7 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
         print(unreadCount)
         
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -46,14 +47,20 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
         
 
     }
+    func didRemove(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
+         self.tabBar.hideBadgeOnItemIndex(index: 2)
+    }
+    func allMessagesDeleted() {
+          self.tabBar.hideBadgeOnItemIndex(index: 2)
+    }
     func didAdd(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
         
-        print("添加消息什么时候调用这个方法呢?")
+       self.tabBar.showshowBadgeOnItemIndex(index: 2)
         
     }
     func didUpdate(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
         
-        
+         self.tabBar.showshowBadgeOnItemIndex(index: 2)
         print("=====什么时候调用这个方法呢? \(totalUnreadCount)")
     }
     func LoginSuccess(_ LoginSuccess : NSNotification){
@@ -61,11 +68,11 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
         NIMSDK.shared().systemNotificationManager.add(self)
         NIMSDK.shared().conversationManager.add(self)
         
-        //if NIMSDK.shared().conversationManager.allUnreadCount() != 0 {
+        if NIMSDK.shared().conversationManager.allUnreadCount() != 0 {
             self.tabBar.showshowBadgeOnItemIndex(index: 2)
-       // } else {
-        //  self.tabBar.hideBadgeOnItemIndex(index: 2)
-       // }
+        } else {
+          self.tabBar.hideBadgeOnItemIndex(index: 2)
+        }
         print("这里打印的是未读消息条数?-------------\(NIMSDK.shared().conversationManager.allUnreadCount())")
         
     }

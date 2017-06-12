@@ -27,4 +27,6 @@ protocol LoginApi {
     func SendCode(phone: String, complete: CompleteBlock?, error: ErrorBlock?)
     //重置密码
     func ResetPassWd(phone: String,pwd: String, complete: CompleteBlock?, error: ErrorBlock?)
+    // 校验是否注册
+    func checkRegist(phone:String,complete: CompleteBlock?, error: ErrorBlock?)
 }
