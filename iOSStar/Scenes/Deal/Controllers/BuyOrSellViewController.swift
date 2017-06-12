@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 class BuyOrSellViewController: UIViewController {
-    var identifiers = ["DealStarInfoCell","DealMarketCell","DealOrderInfoCell","DealHintCell"]
+    var identifiers = ["DealStarInfoCell","DealMarketCell","DealOrderInfoCell"]
     var rowHeights = [137, 188,133,82]
     var dealType:AppConst.DealType = AppConst.DealType.sell {
         didSet {
@@ -17,6 +17,8 @@ class BuyOrSellViewController: UIViewController {
         }
     }
     
+
+    var starListModel:MarketListStarModel?
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var orderPriceLabel: UILabel!
@@ -53,7 +55,7 @@ class BuyOrSellViewController: UIViewController {
     
     @IBAction func buyOrSellAction(_ sender: Any) {
         let model = BuyOrSellRequestModel()
-        model.buySell = 2
+        model.buySell = dealType.rawValue
         model.symbol = "1001"
         AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: { (response) in
             SVProgressHUD.showSuccess(withStatus: "委托成功")
@@ -77,6 +79,16 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifiers[indexPath.row], for: indexPath)
+        
+        switch indexPath.row {
+        case 0:
+            if let infoCell = cell as? DealStarInfoCell{
+                infoCell.setupData(model:starListModel)
+            }
+            
+        default:
+            break
+        }
         return cell
     }
 }

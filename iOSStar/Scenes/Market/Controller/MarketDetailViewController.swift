@@ -17,7 +17,6 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
     var datas:[TimeLineModel]?
     @IBOutlet weak var headerView: MarketDetailHeaderView!
 
-    var bannerDetailModel:BannerDetaiStarModel?
     
     
     @IBOutlet weak var menuView: MarketDetailMenuView!
@@ -26,8 +25,6 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
 
     var subViews = [UIView]()
     var starModel:MarketListStarModel?
-    var starCode:String?
-    var starName:String?
     var currentY:CGFloat = 0
     
 
@@ -37,7 +34,6 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setCustomTitle(title: "\(starName!)（\(starCode!)）")
         automaticallyAdjustsScrollViewInsets = false
 
         requestRealTime()
@@ -45,14 +41,15 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         setupSubView()
         setupCustomUI()
         setIcon()
+        setCustomTitle(title: "\(starModel!.name)（\(starModel!.symbol)）")
     }
     
     func setIcon() {
         var string = ""
         if starModel != nil {
             string = starModel!.pic
-        } else if bannerDetailModel != nil {
-            string  = bannerDetailModel!.head_url
+        } else {
+            return
         }
         let url = URL(string: string)
         iconImageView.kf.setImage(with: url)
@@ -70,7 +67,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
 
             let vc = storyboard.instantiateViewController(withIdentifier: type) as! MarketBaseViewController
             addChildViewController(vc)
-            vc.starCode = starCode
+            vc.starCode = starModel!.symbol
             vc.delegate = self
             vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 50 - 64)
             subViews.append(vc.view)
@@ -91,13 +88,10 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        print("--------marketTimeLine---------结束----------------")
         YD_CountDownHelper.shared.marketTimeLineRefresh = nil
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("--------marketTimeLine---------开始----------------")
-
         YD_CountDownHelper.shared.marketTimeLineRefresh = { [weak self] (result)in
             self?.requestLineData()
             self?.requestRealTime()
@@ -112,8 +106,8 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         let requestModel = TimeLineRequestModel()
         if starModel != nil {
             requestModel.symbol = starModel!.wid
-        } else if bannerDetailModel != nil {
-            requestModel.symbol = bannerDetailModel!.weibo_index_id
+        } else {
+            return
         }
         AppAPIHelper.marketAPI().requestTimeLine(requestModel: requestModel, complete: { (response) in
             if let models = response as? [TimeLineModel] {
@@ -127,13 +121,12 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         let syModel = SymbolInfo()
         if starModel != nil {
             syModel.symbol = starModel!.wid
-        } else if bannerDetailModel != nil {
-            syModel.symbol = bannerDetailModel!.weibo_index_id
+        } else  {
+            return
         }
         requestModel.symbolInfos.append(syModel)
         AppAPIHelper.marketAPI().requestRealTime(requestModel: requestModel, complete: { (response) in
             if let model = response as? [RealTimeModel] {
-
                 self.setRealTimeData(realTimeModel: model.first!)
             }
         }) { (error) in
@@ -191,6 +184,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
     }
     
     func setRealTimeData(realTimeModel:RealTimeModel) {
+        realTimeModel.cacheSelf()
         let percent = (realTimeModel.change / realTimeModel.currentPrice) * 100
         priceLabel.text = "\(realTimeModel.currentPrice)"
         var colorString = AppConst.Color.up
@@ -256,7 +250,10 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
     }
 
     func addOptinal() {
-        AppAPIHelper.marketAPI().addOptinal(starcode: starCode!, complete: { (response) in
+        guard starModel != nil else {
+            return
+        }
+        AppAPIHelper.marketAPI().addOptinal(starcode: starModel!.symbol, complete: { (response) in
             
         }, error: errorBlockFunc())
     }
@@ -284,14 +281,12 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
         if scrollView != bottomScrollView.scrollView {
             let distance = scrollView.contentOffset.y - currentY
             if scrollView.contentOffset.y > 0 {
-                print(headerTopMargin.constant)
                 if headerTopMargin.constant > -400  || distance < 0{
                     headerTopMargin.constant -= distance
                     currentY = scrollView.contentOffset.y
                 } else if headerTopMargin.constant < -400{
                     headerTopMargin.constant = -400
                     currentY = 400
-                    
                 }
             } else {
                 headerTopMargin.constant = 0
@@ -306,7 +301,6 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
         if scrollView != bottomScrollView.scrollView {
             
             if scrollView.contentOffset.y > 0 {
-//                topMargin.constant -= (scrollView.contentOffset.y - currentY)
                 headerTopMargin.constant -= (scrollView.contentOffset.y - currentY)
                 currentY = headerTopMargin.constant
 
@@ -319,29 +313,13 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
               contentOffset =   CGPoint(x: contentOffset!.x, y: 400)
             }
             vc?.scrollView?.contentOffset = contentOffset!
-            
             currentVC = vc
             headerView.currentSubView = currentVC?.scrollView
-            
             menuView.menuView.selected(index: index)
 
         }
         
-    /*
-        if scrollView == bottomScrollView {
-            let index = Int(scrollView.contentOffset.x / kScreenWidth)
-            let scrollEnbled = currentVC?.scrollView?.isScrollEnabled
-            currentVC = childViewControllers[index] as? MarketBaseViewController
-            currentVC?.scrollViewScrollEnabled(scroll: scrollEnbled!)
-            currentVC?.scrollView?.contentOffset = CGPoint(x: 0, y: 0)
-            menuView?.selected(index: index)
-        } else if scrollView == tableView {
-            if scrollView.contentOffset.y > 400 {
-                tableView.isScrollEnabled = false
-                currentVC?.scrollViewScrollEnabled(scroll: true)
-            }
-        }
- */
+
     }
 
     

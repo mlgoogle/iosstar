@@ -89,6 +89,15 @@ class RealTimeModel: PirceBaseModel {
     override static func primaryKey() -> String?{
         return "symbol"
     }
+    
+    func cacheSelf() {
+        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(self, update: true)
+        }
+ 
+    }
 }
 
 

@@ -60,6 +60,7 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
 
     //MARK: 界面消失删除通知
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
     override func viewDidLoad() {

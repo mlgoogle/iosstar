@@ -67,7 +67,7 @@ class AppConst {
     class Network {
         #if true //是否测试环境
         static let TcpServerIP:String = "139.224.34.22";
-        static let TcpServerPort:UInt16 = 16005
+        static let TcpServerPort:UInt16 = 16006
         static let TttpHostUrl:String = "139.224.34.22";
         #else
         static let TcpServerIP:String = "139.224.34.22";
@@ -128,7 +128,7 @@ class AppConst {
         case newsToDeatail = "newsToDeatail"
         case showPubPage = "showPubPage"
     }
-    enum DealType:UInt16 {
+    enum DealType:Int {
         case buy = 1
         case sell = 2
     }
