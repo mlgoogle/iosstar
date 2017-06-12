@@ -21,7 +21,6 @@ class SelectPayTypeCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-//        selectImg.image = UIImage.init(named: "timg.png")
         // Configure the view for the selected state
     }
 

@@ -25,7 +25,7 @@ class DealStarInfoCell: UITableViewCell {
         }
         iconImageView.kf.setImage(with: URL(string: model!.pic))
         nameLabel.text = model?.name
-        
+
 
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

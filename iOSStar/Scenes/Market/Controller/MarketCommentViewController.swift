@@ -223,9 +223,7 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
         
         if dataSource?.count ?? 0 == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: NoDataCell.className(), for: indexPath) as! NoDataCell
-            cell.infoImageView.image = UIImage(named: "timg")
             return cell
-            
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketCommentCell", for: indexPath) as! MarketCommentCell
         cell.setData(model: dataSource![indexPath.row])
@@ -238,6 +236,7 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
     func pushToDetail() {
         
         if !isDetail {
+            tableView.contentOffset = tableView.contentOffset
             if checkLogin() {
                 textField.becomeFirstResponder()
             }

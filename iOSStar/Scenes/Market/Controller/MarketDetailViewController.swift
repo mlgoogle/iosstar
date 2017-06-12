@@ -244,9 +244,14 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
         }
     }
     func pushToDealPage() {
-       let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController")
-        navigationController?.pushViewController(vc, animated: true)
+        
+        if checkLogin() {
+            let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as! DealViewController
+            vc.starListModel = starModel
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 
     func addOptinal() {
@@ -297,33 +302,24 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
 
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
         if scrollView != bottomScrollView.scrollView {
-            
             if scrollView.contentOffset.y > 0 {
                 headerTopMargin.constant -= (scrollView.contentOffset.y - currentY)
                 currentY = headerTopMargin.constant
-
             }
         } else {
             let index = Int(scrollView.contentOffset.x / kScreenWidth)
             let vc = childViewControllers[index] as? MarketBaseViewController
             var contentOffset = currentVC?.scrollView?.contentOffset
             if contentOffset!.y > 400{
-              contentOffset =   CGPoint(x: contentOffset!.x, y: 400)
+                contentOffset =   CGPoint(x: contentOffset!.x, y: 400)
             }
             vc?.scrollView?.contentOffset = contentOffset!
             currentVC = vc
             headerView.currentSubView = currentVC?.scrollView
             menuView.menuView.selected(index: index)
-
         }
-        
-
     }
-
-    
-    
     
 }
 class WPMarkerLineView: UIView {

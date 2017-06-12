@@ -8,7 +8,7 @@
 
 import UIKit
 import SVProgressHUD
-class BuyOrSellViewController: UIViewController {
+class BuyOrSellViewController: DealBaseViewController {
     var identifiers = ["DealStarInfoCell","DealMarketCell","DealOrderInfoCell"]
     var rowHeights = [137, 188,133,82]
     var dealType:AppConst.DealType = AppConst.DealType.sell {
@@ -18,7 +18,6 @@ class BuyOrSellViewController: UIViewController {
     }
     
 
-    var starListModel:MarketListStarModel?
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var orderPriceLabel: UILabel!

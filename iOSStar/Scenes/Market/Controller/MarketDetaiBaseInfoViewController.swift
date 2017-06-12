@@ -116,6 +116,9 @@ extension MarketDetaiBaseInfoViewController:UITableViewDataSource, UITableViewDe
             return 150
         case 2:
             return 40
+        case 3:
+            return 40
+            
         default:
             return 0.0
         }
