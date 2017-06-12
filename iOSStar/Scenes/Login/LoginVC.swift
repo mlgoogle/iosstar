@@ -40,13 +40,10 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
 //        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
 //        view.addGestureRecognizer(tap)
 //        contentView.addGestureRecognizer(tap)
-        
-        if UserDefaults.standard.object(forKey: "phone") != nil {
-            self.phone.text = UserDefaults.standard.object(forKey: "phone") as? String
-        } else {
-            self.phone.text = ""
-        }
-        
+
+//         UserDefaults.standard.set((UserDefaults.standard.object(forKey: "phone") as? String)!, forKey: "lastLogin")
+       
+
         let backViewTap = UITapGestureRecognizer.init(target: self, action: #selector(backViewTapClick))
         backView.addGestureRecognizer(backViewTap)
         backViewTap.delegate = self
@@ -85,6 +82,9 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         let navaitem = UIBarButtonItem.init(customView: btn)
         self.navigationItem.leftBarButtonItem = navaitem
         btn.addTarget(self, action: #selector(didClose), for: .touchUpInside)
+        if  (UserDefaults.standard.object(forKey: "lastLogin")) !=  nil {
+          phone.text = UserDefaults.standard.object(forKey: "lastLogin") as? String
+        }
     }
     //MARK:   界面消失
     func didClose(){
