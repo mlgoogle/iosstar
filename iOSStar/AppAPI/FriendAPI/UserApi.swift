@@ -38,4 +38,7 @@ protocol UserApi {
     // tokenLogin token登录
      func tokenLogin( complete: CompleteBlock?, error: ErrorBlock?)
     
+    // 修改nickname 
+    func modifyNickName(nickname:String, complete: CompleteBlock?, error: ErrorBlock?)
+    
 }

@@ -50,6 +50,7 @@ class UserVC: BaseCustomTableViewController  {
             
             if let response = result{
                 print("----\(response)")
+                
                 let model =   response as! UserInfoModel
                 
                 self.responseData = model

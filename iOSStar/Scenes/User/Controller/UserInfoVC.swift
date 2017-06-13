@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SVProgressHUD
 
-class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavigationControllerDelegate {
+class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavigationControllerDelegate{
     // 手机号
     @IBOutlet weak var phone: UILabel!
     // 昵称
@@ -71,10 +72,34 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         // self.nickName.text = phonetext
     }
     
-    // 保存
+    // 保存名称
     func rightItmeClick() {
-        print("保存按钮点击")
+        // 修改昵称
+        if self.nickName.text?.length() == 0 || (self.nickName.text?.length())! >= 15 {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "昵称不合法", ForDuration: 2.0, completion: nil)
+            return
+        }
+        AppAPIHelper.user().modifyNickName(nickname: self.nickName.text!, complete: { (result) in
+            // result = 1 成功  result = 0 失败
+            if let responseData = result {
+                if responseData["result"] as! Int == 1 {
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "保存成功!", ForDuration: 2.0, completion: { 
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                } else {
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "修改失败,请稍后再试!", ForDuration: 2.0, completion:nil)
+                }
+            }
+        }) { (error) in
+            
+            print(error)
+            
+             SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+        }
     }
+    
+    
+    
     
 
    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

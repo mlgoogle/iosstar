@@ -129,8 +129,6 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         let param: [String: Any] = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
                                     SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
         
-        // print("=====================\(param)")
-        
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .userinfo, dict: param as [String : AnyObject])
         startModelRequest(packet, modelClass: UserInfoModel.self, complete: complete, error: error)
         
@@ -146,5 +144,17 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
     }
     
-
+    // MARK: - 修改昵称
+    func modifyNickName(nickname:String, complete: CompleteBlock?, error: ErrorBlock?) {
+        
+//        print("=====\(UserModel.share().getCurrentUser()?.userinfo?.id)")
+        
+        let param = [SocketConst.Key.id : UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
+                     SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),
+                     SocketConst.Key.nickname: nickname,] as [String : Any]
+        
+        let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .modifyNickname, dict: param  as [String : AnyObject])
+        
+        startRequest(packet, complete: complete, error: error)
+    }
 }
