@@ -71,4 +71,5 @@ class SelectPayType: UIView,UITableViewDataSource,UITableViewDelegate {
     }
     
     
+    
 }
