@@ -46,7 +46,7 @@ class UserVC: BaseCustomTableViewController  {
         self.getUserInfo { (result) in
             
             if let response = result{
-                
+                print(response)
                 let model =   response as! UserInfoModel
                 
                 self.account?.text =  String.init(format: "%.2f", model.balance)
