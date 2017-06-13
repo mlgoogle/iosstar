@@ -47,10 +47,9 @@ class UserVC: BaseCustomTableViewController  {
             
             if let response = result{
                 
-                print("-\(response)")
+                let model =   response as! UserInfoModel
                 
-                let object = response as! [String : AnyObject]
-                self.account?.text =  String.init(format: "%.2f", object["balance"] as! Double)
+                self.account?.text =  String.init(format: "%.2f", model.balance)
                 self.nickNameLabel?.text = UserDefaults.standard.object(forKey: "phone") as? String
             }
             

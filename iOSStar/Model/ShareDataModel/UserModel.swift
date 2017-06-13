@@ -71,7 +71,4 @@ class UserModel: Object {
     }
 
 }
-class UserInfoModel: Object{
 
-
-}

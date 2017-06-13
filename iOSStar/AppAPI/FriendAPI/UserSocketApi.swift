@@ -131,7 +131,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         // print("=====================\(param)")
         
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .userinfo, dict: param as [String : AnyObject])
-        startRequest(packet, complete: complete, error: error)
+        startModelRequest(packet, modelClass: UserInfoModel.self, complete: complete, error: error)
         
     }
     // MARK: -  tokenLogin token登录
