@@ -48,13 +48,14 @@ class UserVC: BaseCustomTableViewController  {
         self.getUserInfo { (result) in
             
             if let response = result{
+                print(response)
+                let model =   response as! UserInfoModel
                 
-                print("-\(response)")
-                
-                let object = response as! [String : AnyObject]
-                self.account?.text =  String.init(format: "%.2f", object["balance"] as! Double)
-                self.nickNameLabel?.text = object["nick_name"] as? String
-                self.iconImageView?.kf.setImage(with: URL(string: object["head_url"] as! String), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
+
+                self.account?.text =  String.init(format: "%.2f", model.balance)
+                self.nickNameLabel?.text = model.nick_name
+                self.iconImageView?.kf.setImage(with: URL(string: model.head_url), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
+
             }
         }
     }

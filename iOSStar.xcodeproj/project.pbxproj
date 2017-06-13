@@ -109,6 +109,7 @@
 		A0155E071EA8ABF20047B95B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0155E061EA8ABF20047B95B /* Images.xcassets */; };
 		A0155E101EA8C9760047B95B /* RegistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0155E0F1EA8C9760047B95B /* RegistVC.swift */; };
 		A0189C121ED2EE2D0025B7FD /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A0189C111ED2EE2D0025B7FD /* bg.png */; };
+		A03A46C71EEF71F800EAB8B1 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A46C61EEF71F800EAB8B1 /* UserInfoModel.swift */; };
 		A03D314E1EA8465000F85308 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D314D1EA8465000F85308 /* MobileCoreServices.framework */; };
 		A03D31501EA8466500F85308 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D314F1EA8466500F85308 /* AVFoundation.framework */; };
 		A03D31521EA8469900F85308 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31511EA8469900F85308 /* CoreMedia.framework */; };
@@ -421,6 +422,7 @@
 		A07238B71EA76F4D00E755DB /* Deal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B61EA76F4D00E755DB /* Deal.storyboard */; };
 		A07D34701EEE416A00136733 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07D346F1EEE416A00136733 /* ShareView.swift */; };
 		A07D34741EEE417900136733 /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07D34731EEE417900136733 /* ShareView.xib */; };
+		A07D34761EEE834200136733 /* BaseWebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07D34751EEE834200136733 /* BaseWebVC.xib */; };
 		A07DF7C61EC0132F00C2254E /* Novisible@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07DF7C21EC0132E00C2254E /* Novisible@2x.png */; };
 		A07DF7C71EC0132F00C2254E /* Novisible@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07DF7C31EC0132E00C2254E /* Novisible@3x.png */; };
 		A07DF7C81EC0132F00C2254E /* visible@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A07DF7C41EC0132E00C2254E /* visible@2x.png */; };
@@ -597,6 +599,7 @@
 		A0155E061EA8ABF20047B95B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A0155E0F1EA8C9760047B95B /* RegistVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistVC.swift; sourceTree = "<group>"; };
 		A0189C111ED2EE2D0025B7FD /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		A03A46C61EEF71F800EAB8B1 /* UserInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		A03D314D1EA8465000F85308 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A03D314F1EA8466500F85308 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A03D31511EA8469900F85308 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -1169,6 +1172,7 @@
 		A07238B61EA76F4D00E755DB /* Deal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Deal.storyboard; sourceTree = "<group>"; };
 		A07D346F1EEE416A00136733 /* ShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		A07D34731EEE417900136733 /* ShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareView.xib; sourceTree = "<group>"; };
+		A07D34751EEE834200136733 /* BaseWebVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseWebVC.xib; sourceTree = "<group>"; };
 		A07DF7C21EC0132E00C2254E /* Novisible@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Novisible@2x.png"; sourceTree = "<group>"; };
 		A07DF7C31EC0132E00C2254E /* Novisible@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Novisible@3x.png"; sourceTree = "<group>"; };
 		A07DF7C41EC0132E00C2254E /* visible@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visible@2x.png"; sourceTree = "<group>"; };
@@ -1645,6 +1649,7 @@
 				A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */,
 				A0EF3B1C1EB9C5860023093A /* UserModel.swift */,
 				8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */,
+				A03A46C61EEF71F800EAB8B1 /* UserInfoModel.swift */,
 			);
 			path = ShareDataModel;
 			sourceTree = "<group>";
@@ -3150,6 +3155,7 @@
 				A084BB4C1ED5790E00DFC868 /* BaseCustomTableViewController.swift */,
 				6E9F31F01ED91258008B12A5 /* RedBackItemViewController.swift */,
 				A086FE151EDFF3F500AD04AD /* BaseWebVC.swift */,
+				A07D34751EEE834200136733 /* BaseWebVC.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -3494,6 +3500,7 @@
 				A07DF7C61EC0132F00C2254E /* Novisible@2x.png in Resources */,
 				A03D3F901EA86A6500F85308 /* NTESContactViewController.xib in Resources */,
 				A07DF7C91EC0132F00C2254E /* visible@3x.png in Resources */,
+				A07D34761EEE834200136733 /* BaseWebVC.xib in Resources */,
 				A0189C121ED2EE2D0025B7FD /* bg.png in Resources */,
 				A0C9D6761EAE102300FC438D /* video_chat_tip_sender.aac in Resources */,
 				A03D3FB21EA86A6500F85308 /* NTESFileTransSelectViewController.xib in Resources */,
@@ -3807,6 +3814,7 @@
 				A03D3FF21EA86A6500F85308 /* NTESNotificationCenter.m in Sources */,
 				A0EF3B131EB973F10023093A /* SocketResponse.swift in Sources */,
 				A03D3F421EA86A6400F85308 /* NIMSessionListViewController.m in Sources */,
+				A03A46C71EEF71F800EAB8B1 /* UserInfoModel.swift in Sources */,
 				A03D3F401EA86A6400F85308 /* NIMSessionViewController.m in Sources */,
 				A04CF0911ED6CB6800B93D28 /* BankCardVC.swift in Sources */,
 				A03D3F0F1EA86A6400F85308 /* NIMInputEmoticonButton.m in Sources */,
