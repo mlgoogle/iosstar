@@ -60,12 +60,13 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         startRequest(packet, complete: complete, error: error)
     }
     //资金明细列表
-    func creditlist(status: Int32, pos: Int32, count: Int32, complete: CompleteBlock?, error: ErrorBlock?){
+    func creditlist(status: Int32, pos: Int32, count: Int32,time:String, complete: CompleteBlock?, error: ErrorBlock?){
         let param = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
                      SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),
                      SocketConst.Key.status: status,
                      SocketConst.Key.pos: pos,
-                     SocketConst.Key.countNuber: count] as [String : Any]
+                     SocketConst.Key.countNuber: count ,
+                     SocketConst.Key.time : time] as [String : Any]
         
         
          let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .creditlist, dict: param  as [String : AnyObject])

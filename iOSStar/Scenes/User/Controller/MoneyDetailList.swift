@@ -18,7 +18,7 @@ class MoneyDetailListCell: OEZTableViewCell {
     @IBOutlet weak var minuteLb: UILabel!          // 分秒
     @IBOutlet weak var bankLogo: UIImageView!      // 银行卡图片
     @IBOutlet weak var withDrawto: UILabel!        // 提现至
-    
+
     override func update(_ data: Any!) {
         
         let model = data as! Model
@@ -36,13 +36,16 @@ class MoneyDetailListCell: OEZTableViewCell {
 
 }
 
-class MoneyDetailList: BaseCustomPageListTableViewController {
+class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDelegate {
     
     var contentoffset = CGFloat()
     var navLeft : UIButton?
     
     // 存储模型数据传入下一个界面
     var reponseData : Any!
+    
+    // 记录传入的月份
+    var indexString : String?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -65,25 +68,40 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
     
     override func didRequest(_ pageIndex : Int) {
 
-        
-        AppAPIHelper.user().creditlist(status: 0, pos: Int32((pageIndex - 1) * 10), count: 10, complete: { (result) in
-            
-//            print(result)
-            self.reponseData = result
-            
-            if let object = result {
-              let model : RechargeListModel = object as! RechargeListModel
-              self.didRequestComplete(model.depositsinfo as AnyObject)
-            }
+        if indexString != nil {
+            AppAPIHelper.user().creditlist(status: 0, pos: Int32(pageIndex - 1) * 10, count: 10, time: indexString!, complete: { (result) in
+                
+                self.reponseData = result
+                
+                if let object = result {
+                    let model : RechargeListModel = object as! RechargeListModel
+                    self.didRequestComplete(model.depositsinfo as AnyObject)
+                    self.tableView.reloadData()
+                }
+            }, error: { (error) in
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+                self.didRequestComplete(nil)
+                self.tableView.reloadData()
+            })
+        } else {
           
-        }) { (error ) in
-            
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-              self.didRequestComplete(nil)
+            AppAPIHelper.user().creditlist(status: 0, pos: Int32((pageIndex - 1) * 10), count: 10, time: "", complete: { (result) in
+                
+                self.reponseData = result
+                
+                if let object = result {
+                    let model : RechargeListModel = object as! RechargeListModel
+                    self.didRequestComplete(model.depositsinfo as AnyObject)
+                }
+                
+            }) { (error ) in
+                
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+                self.didRequestComplete(nil)
+                self.tableView.reloadData()
+            }
         }
-       
-
-    }
+ }
     //MARK-
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
@@ -118,10 +136,17 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
         
         navLeft?.isEnabled = false
         let customer : CustomeAlertView = CustomeAlertView.init(frame: CGRect.init(x: 0, y: -35, width: self.view.frame.size.width, height: self.view.frame.size.height + 40))
+        customer.delegate = self
         tableView.isScrollEnabled = false
         self.view.addSubview(customer)
     }
     
-    
-    
-}
+    // 代理
+    func didSelectMonth(index: Int) {
+        
+        let indexStr = String.init(format:"%d",index)
+        
+        indexString = indexStr
+        
+        didRequest(0)
+    }}

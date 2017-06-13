@@ -19,6 +19,10 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
     @IBOutlet weak var realCard: UILabel!
     // 真实姓名
     @IBOutlet weak var realname: UILabel!
+    
+    
+    var userInfoData : UserInfoModel?
+    
     var uploadAlertController:UIAlertController!
     var imagePickerController:UIImagePickerController!
     override func viewDidLoad() {
@@ -31,7 +35,11 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         title = "个人信息"
         initAlertController()
         initImagePickerController()
-      
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "保存", style: .done, target: self, action: #selector(rightItmeClick))
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(hexString: AppConst.Color.main)
+
+        
         self.getUserrealmInfo { (result) in
             if let model = result{
 
@@ -56,10 +64,18 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         let index1 = phonetext.index(phonetext.endIndex, offsetBy: -4)
         self.phone.text =  (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
         
+        
+        self.nickName.text = self.userInfoData?.nick_name
+        self.headerImg.kf.setImage(with: URL(string: (self.userInfoData?.head_url)!), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
 //        self.nickName.text = (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
-        self.nickName.text = phonetext
+        // self.nickName.text = phonetext
     }
- 
+    
+    // 保存
+    func rightItmeClick() {
+        print("保存按钮点击")
+    }
+    
 
    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
@@ -74,12 +90,9 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0{
             if indexPath.row == 0{
-//               
-                   present(self.uploadAlertController, animated:true, completion: nil)
+//                   present(self.uploadAlertController, animated:true, completion: nil)
             }
-            
         }
-       
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

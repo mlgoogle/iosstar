@@ -167,5 +167,6 @@ class SocketConst: NSObject {
         static let realname = "realname"
         static let id_card = "id_card"
         static let checkRegist = "checkRegist"
+        static let time = "time"
     }
 }

@@ -122,7 +122,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
                 SVProgressHUD.dismiss()
                   let datadic = result as? UserModel
                 
-                // print("=====\(datadic)")
+                 print("=====\(datadic)")
                 
                 SVProgressHUD.showSuccessMessage(SuccessMessage:"登录成功", ForDuration: 2.0, completion: {
                     btn.isUserInteractionEnabled = true

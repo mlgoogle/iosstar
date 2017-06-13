@@ -21,12 +21,13 @@ class UserVC: BaseCustomTableViewController  {
     var  account : UILabel?
     // 昵称
     var  nickNameLabel : UILabel?
-    
+    // icon
     var iconImageView : UIImageView?
     
     // 名字数组
     var titltArry = [""]
-  
+    
+    var responseData: UserInfoModel?
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,13 +49,15 @@ class UserVC: BaseCustomTableViewController  {
         self.getUserInfo { (result) in
             
             if let response = result{
-                print(response)
+                print("----\(response)")
                 let model =   response as! UserInfoModel
                 
-
+                self.responseData = model
+                
                 self.account?.text =  String.init(format: "%.2f", model.balance)
                 self.nickNameLabel?.text = model.nick_name
                 self.iconImageView?.kf.setImage(with: URL(string: model.head_url), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
+                self.tableView.reloadData()
 
             }
         }
@@ -116,7 +119,10 @@ class UserVC: BaseCustomTableViewController  {
             //进入个人中心
             if indexPath.row == 0{
               let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "UserInfoVC")
-              self.navigationController?.pushViewController(vc, animated: true)
+              // (UserInfoVC as! vc).us = self.responseData
+              let userInfoVc = vc as! UserInfoVC
+              userInfoVc.userInfoData = self.responseData
+              self.navigationController?.pushViewController(userInfoVc, animated: true)
             }
             
         }
