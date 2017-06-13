@@ -20,5 +20,16 @@ class ShareDataModel: NSObject {
     var codeToeken : String =   ""
     dynamic var selectMonth : String = ""
     var isReturnBackClick : Bool = false
+    var orderInfo : OrderInformation?
   
+}
+class OrderInformation: NSObject {
+    
+     var orderAllPrice : String =   ""
+     var orderAccount : String =   ""
+     var orderPrice : String =   ""
+     var orderStatus : String =   ""
+     var orderInfomation : String =   ""
+    
+    
 }

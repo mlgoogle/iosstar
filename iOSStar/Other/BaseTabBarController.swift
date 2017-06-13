@@ -62,6 +62,7 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
         
          self.tabBar.showshowBadgeOnItemIndex(index: 2)
         print("=====什么时候调用这个方法呢? \(totalUnreadCount)")
+        
     }
     func LoginSuccess(_ LoginSuccess : NSNotification){
         

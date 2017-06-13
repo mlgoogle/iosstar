@@ -11,4 +11,5 @@ import Foundation
 protocol DealAPI {
     func buyOrSell(requestModel:BuyOrSellRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
     func setReceiveMatching(complete:@escaping CompleteBlock)
+    func checkPayPass( paypwd: String, complete: CompleteBlock?, error: ErrorBlock?)
 }
