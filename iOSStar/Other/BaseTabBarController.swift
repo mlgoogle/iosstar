@@ -55,8 +55,6 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
     }
     func didAdd(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
         
-        print("添加消息什么时候调用这个方法呢?")
-
        self.tabBar.showshowBadgeOnItemIndex(index: 2)
         
     }

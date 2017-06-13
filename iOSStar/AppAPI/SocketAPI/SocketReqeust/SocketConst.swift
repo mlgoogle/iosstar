@@ -35,6 +35,8 @@ class SocketConst: NSObject {
         case WchatLogin = 3013
         case verifycode = 3011
         case getRealm = 3027
+        // 校验用户
+        case checkRegist = 3029
         //网易云
         case registWY = 9005
         case userinfo = 3007
@@ -164,5 +166,6 @@ class SocketConst: NSObject {
         static let token = "token"
         static let realname = "realname"
         static let id_card = "id_card"
+        static let checkRegist = "checkRegist"
     }
 }
