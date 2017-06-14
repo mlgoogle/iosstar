@@ -87,6 +87,11 @@ class SocketConst: NSObject {
         
         case newsStarInfo = 10001
         
+        // 明星服务类型
+        case starServiceType = 10019
+        // 订购明星服务
+        case buyStarService = 10021
+        
         //实时报价
         case realTime = 4001
         //分时图

@@ -84,7 +84,11 @@ extension UIViewController {
     }
     //退出登录
     func userLogout() {
-        UserDefaults.standard.set((UserDefaults.standard.object(forKey: "phone") as? String)!, forKey: "lastLogin")
+        
+        if (UserDefaults.standard.set((UserDefaults.standard.object(forKey: "phone") as? String)!, forKey: "lastLogin")) != nil {
+            
+            UserDefaults.standard.set((UserDefaults.standard.object(forKey: "phone") as? String)!, forKey: "lastLogin")
+        }
         UserDefaults.standard.removeObject(forKey:"phone")
         UserDefaults.standard.removeObject(forKey: "token")
         tabBarController?.selectedIndex = 0

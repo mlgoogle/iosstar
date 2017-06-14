@@ -33,6 +33,7 @@ class AppConst {
     static let bundleId = "com.newxfin.goods"
     static let loginSuccess = "loginSuccess"
     static let loginSuccessNotice = "loginSuccessNotice"
+    static let chooseServiceTypeSuccess = "chooseServiceTypeSuccess" 
     
     enum KVOKey: String {
         case selectProduct = "selectProduct"
@@ -67,7 +68,7 @@ class AppConst {
     class Network {
         #if true //是否测试环境
         static let TcpServerIP:String = "139.224.34.22";
-        static let TcpServerPort:UInt16 = 16008
+        static let TcpServerPort:UInt16 = 16006
 
         static let TttpHostUrl:String = "139.224.34.22";
         #else

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+
 class OrderType : UITableViewCell{
     
     // 具体时间
@@ -22,6 +24,13 @@ class OrderType : UITableViewCell{
 // MRAK: - viewDidLoad
 class OrderStarViewController: UIViewController {
     
+    
+    var serviceTypeModel : ServiceTypeModel!
+    // 确定约见按钮
+    @IBOutlet weak var completeButton: UIButton!
+    // 秒数价格
+    @IBOutlet weak var priceLabel: UILabel!
+
     @IBOutlet weak var tableView: UITableView!
     
     // @IBOutlet weak var pageControl: UIPageControl!
@@ -60,20 +69,35 @@ class OrderStarViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         
         setupNav()
-        
+        // 城市
         initCity()
         initCityPickerView()
-        
+        // 时间
         initDatePickerView()
+        
+        completeButton.isEnabled = false
+        completeButton.alpha = 0.5
+        completeButton.addTarget(self, action: #selector(completeClick(_:)), for: .touchUpInside)
      
     // 通知
     NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    
+    // 接收约见类型发出通知
+    NotificationCenter.default.addObserver(self, selector: #selector(chooseServiceType(_:)), name:
+            Notification.Name(rawValue:AppConst.chooseServiceTypeSuccess), object: nil)
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    }
+    
+    // 移除通知
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue:AppConst.chooseServiceTypeSuccess), object: nil)
     }
     
     // 键盘显示的通知
@@ -81,9 +105,49 @@ class OrderStarViewController: UIViewController {
         tableView.scrollToRow(at: NSIndexPath.init(row: 4, section: 0) as IndexPath, at: .bottom, animated: true)
     }
     
-
-
-  
+    
+    func chooseServiceType(_ notification :Notification ) {
+        self.completeButton.isEnabled = true
+        completeButton.alpha = 1
+        if notification.object != nil {
+            
+            let serviceType = notification.object as! ServiceTypeModel
+            serviceTypeModel = serviceType
+            self.priceLabel.text = String.init(format:"%@秒",serviceType.price)
+        }
+    }
+    
+    // 确定约见
+    func completeClick(_ sender : UIButton) {
+        if orderTime.text?.length() == 0 {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请选择时间", ForDuration: 2.0, completion: nil)
+            return
+        }
+        if orderPalace.text?.length() == 0 {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请选择城市", ForDuration: 2.0, completion: nil)
+            return
+        }
+        let requestModel = ServiceTypeRequestModel()
+        requestModel.uid = (UserModel.share().getCurrentUser()?.userinfo?.id)!
+        requestModel.starcode = "1001"
+        requestModel.mid = serviceTypeModel.mid
+        requestModel.city_name = orderPalace.text!
+        requestModel.appoint_time = orderTime.text!
+        requestModel.meet_type = 1
+        requestModel.comment = feedBack.text
+        
+        print("======\(requestModel)")
+        
+        AppAPIHelper.marketAPI().requestBuyStarService(requestModel: requestModel, complete: { (result) in
+            
+            print("result =====\(String(describing: result))")
+            
+        }) { (error) in
+            
+            print("error -----\(error)")
+            
+        }
+    }
 }
 // MARK: - date相关
 extension OrderStarViewController {
