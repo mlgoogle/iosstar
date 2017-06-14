@@ -139,13 +139,17 @@ class OrderStarViewController: UIViewController {
         print("======\(requestModel)")
         
         AppAPIHelper.marketAPI().requestBuyStarService(requestModel: requestModel, complete: { (result) in
-            
-            print("result =====\(String(describing: result))")
+            // print("result =====\(String(describing: result))")
+            if let response = result {
+                if response["result"] as! Int == 1 {
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "约见成功!", ForDuration: 2.0, completion: nil)
+                    
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
             
         }) { (error) in
-            
             print("error -----\(error)")
-            
         }
     }
 }

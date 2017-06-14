@@ -52,6 +52,8 @@ class Model: BaseModel {
     var status: Int8 = 0           // 1-处理中，2-成功，3-失败
     var money : String?            //  金额
     var amount: Double = 0        // jine
+    // 交易类型 0-充值记录 1-约见记录 2-聊天记录
+    var recharge_type  : Int8 = 0
     // json 返回数组 来接收对象 调用  RechargeListModel 返回来的model
     //    class func depositsinfoModelClass() ->AnyClass {
     //        return  RechargeListModel.classForCoder()    }

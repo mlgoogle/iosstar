@@ -89,6 +89,7 @@ extension UIViewController {
             
             UserDefaults.standard.set((UserDefaults.standard.object(forKey: "phone") as? String)!, forKey: "lastLogin")
         }
+        
         UserDefaults.standard.removeObject(forKey:"phone")
         UserDefaults.standard.removeObject(forKey: "token")
         tabBarController?.selectedIndex = 0
