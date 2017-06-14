@@ -95,9 +95,21 @@ class SocketConst: NSObject {
         case commentList = 12003
         //发起委托
         case buyOrSell = 5001
-        
         //收到匹配成功
-        case receiveMatching = 5030
+        case receiveMatching = 5101
+        //获取拍卖时间
+        case auctionStatus = 5005
+        
+        //确认订单
+        case sureOrder = 5007
+        
+        //取消订单
+        case cancelOrder = 5009
+        
+        //双方确认后结果推送
+        case orderResult = 7102
+        
+        
     }
     enum type:UInt8 {
         case error  = 0
@@ -107,6 +119,7 @@ class SocketConst: NSObject {
         case time   = 4
         case deal   = 5
         case operate = 6
+        case order = 7
         case getlist = 9
         case news = 10
         case market = 11
@@ -122,8 +135,6 @@ class SocketConst: NSObject {
     }
     
     class Key {
-       
-    
         static let name = "name"
         static let phone = "phone"
         static let pwd = "pwd"

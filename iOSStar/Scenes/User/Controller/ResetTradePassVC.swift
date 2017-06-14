@@ -60,6 +60,7 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
 
     //MARK: 界面消失删除通知
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
     override func viewDidLoad() {
@@ -171,7 +172,7 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
                     SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功",
                                                      ForDuration: 2.0,
                                                      completion: {
-                                                self.navigationController?.popViewController(animated: true)
+                                                _ = self.navigationController?.popViewController(animated: true)
                                             })
                                         }
             }

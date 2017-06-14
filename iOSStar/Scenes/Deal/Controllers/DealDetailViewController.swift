@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DealDetailViewController: UIViewController ,DealScrollViewScrollDelegate,MenuViewDelegate{
+class DealDetailViewController: DealBaseViewController ,DealScrollViewScrollDelegate,MenuViewDelegate{
     lazy var backView: DealScrollView = {
         let view = DealScrollView(frame: CGRect(x: 0, y: 40, width: kScreenWidth, height: kScreenHeight - 40))
         return view

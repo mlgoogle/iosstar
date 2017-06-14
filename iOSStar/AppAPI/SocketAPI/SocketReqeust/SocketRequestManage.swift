@@ -19,10 +19,10 @@ class SocketRequestManage: NSObject {
     fileprivate var _reqeustId:UInt32 = 10000
     fileprivate var _socketHelper:SocketHelper?
     fileprivate var _sessionId:UInt64 = 0
-
-    var receiveMatching:CompleteBlock?
-
+    
     fileprivate var timelineRequest: SocketRequest?
+    var receiveMatching:CompleteBlock?
+    var receiveOrderResult:CompleteBlock?
 
     var operate_code = 0
     func start() {
@@ -70,8 +70,10 @@ class SocketRequestManage: NSObject {
         }else if packet.operate_code == SocketConst.OPCode.receiveMatching.rawValue {
             let response:SocketJsonResponse = SocketJsonResponse(packet:packet)           
             self.receiveMatching!(response)
-            
-        }else{
+        }else if packet.operate_code == SocketConst.OPCode.orderResult.rawValue{
+            let response:SocketJsonResponse = SocketJsonResponse(packet:packet)
+            self.receiveOrderResult!(response)
+        } else {
             socketRequests.removeValue(forKey: packet.session_id)
         }
         objc_sync_exit(self)

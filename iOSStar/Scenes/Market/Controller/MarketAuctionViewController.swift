@@ -13,6 +13,8 @@ class MarketAuctionViewController: MarketBaseViewController {
     var count = 540
     var timeLabel:UILabel?
     var headerCell:AuctionHeaderCell?
+    
+    var statusModel:AuctionStatusModel?
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,19 +22,36 @@ class MarketAuctionViewController: MarketBaseViewController {
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 450))
 
         tableView.register(FansListHeaderView.self, forHeaderFooterViewReuseIdentifier: "FansListHeaderView")
+        headerCell?.setTimeText(text: "拍卖未开始")
+        YD_CountDownHelper.shared.marketBuyOrSellListRefresh = { [weak self] (result)in
+        }
+        requestAuctionSattus()
+    }
+
+    func refreshSatus() {
+        if statusModel!.status {
+            count = Int(statusModel!.remainingTime)
+        }
         YD_CountDownHelper.shared.countDownRefresh = { [weak self] (result)in
             self?.count -= 1
             if self?.count != 0 {
-                self?.headerCell?.setTimeText(text:YD_CountDownHelper.shared.getTextWithTimeCount(timeCount:(self?.count)!))
+                self?.headerCell?.setTimeText(text:YD_CountDownHelper.shared.getTextWithTimeCount(timeCount:Int((self?.statusModel?.remainingTime)!)))
             } else {
                 self?.headerCell?.setTimeText(text: "拍卖未开始")
             }
-
-        }
-        YD_CountDownHelper.shared.marketBuyOrSellListRefresh = { [weak self] (result)in
-            
             
         }
+    }
+    func requestAuctionSattus() {
+        
+        let model = AuctionStatusRequestModel()
+        //model.symbol = starCode
+        AppAPIHelper.marketAPI().requestAuctionStatus(requestModel: model, complete: { (response) in
+            if let model = response as? AuctionStatusModel {
+                self.statusModel = model
+                self.refreshSatus()
+            }
+        }, error: errorBlockFunc())
     }
 
     override func viewWillAppear(_ animated: Bool) {

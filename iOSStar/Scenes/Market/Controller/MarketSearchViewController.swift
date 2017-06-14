@@ -100,9 +100,8 @@ extension MarketSearchViewController:UITableViewDelegate, UITableViewDataSource 
         starListModel.wid = model.wid
         starListModel.pic = model.pic
         starListModel.symbol = model.symbol
+        starListModel.name = model.name
         vc?.starModel = starListModel
-        vc?.starCode = model.symbol
-        vc?.starName = model.name
         navigationController?.pushViewController(vc!, animated: true)
     }
 }

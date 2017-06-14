@@ -23,10 +23,7 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
 
-    }
     override func awakeFromNib() {
         
     }

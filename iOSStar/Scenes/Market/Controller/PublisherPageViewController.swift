@@ -56,11 +56,19 @@ class PublisherPageViewController: UIViewController {
     }
 
     @IBAction func buyButtonAction(_ sender: Any) {
+        
+        guard bannerDetailModel != nil else {
+            return
+        }
         let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Markt.rawValue, bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail") as? MarketDetailViewController
-        vc?.starName = bannerModel?.name
-        vc?.starCode = bannerModel?.code
-        vc?.bannerDetailModel = bannerDetailModel
+
+        let starListModel = MarketListStarModel()
+        starListModel.name = bannerModel!.name
+        starListModel.symbol = bannerModel!.code
+        starListModel.pic = bannerDetailModel!.head_url
+        starListModel.wid = bannerDetailModel!.weibo_index_id
+        vc?.starModel = starListModel
         navigationController?.pushViewController(vc!, animated: true)
     }
     func requestInfos() {
@@ -156,8 +164,8 @@ extension PublisherPageViewController:UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section != 0 {
-            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as! PubInfoHeaderView
-            header.setTitle(title:titles[section])
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as? PubInfoHeaderView
+            header?.setTitle(title:titles[section])
             return header
         } else {
             return nil

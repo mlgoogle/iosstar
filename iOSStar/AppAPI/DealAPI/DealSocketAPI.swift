@@ -10,10 +10,36 @@
 import Foundation
 class DealSocketAPI: BaseSocketAPI, DealAPI{
     
+    //发起委托
     func buyOrSell(requestModel:BuyOrSellRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .buyOrSell, model: requestModel)
         startModelRequest(packet, modelClass: EntrustSuccessModel.self, complete: complete, error: error)
     }
+
+    
+    //确认订单
+    func sureOrderRequest(requestModel:SureOrderRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .sureOrder, model: requestModel)
+        startResultIntRequest(packet, complete: complete, error: error)
+    }
+    
+    //取消订单
+    func cancelOrderRequest(requestModel:CancelOrderRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .cancelOrder, model: requestModel)
+        startResultIntRequest(packet, complete: complete, error: error)
+    }
+    //收到订单结果
+    func setReceiveOrderResult(complete:@escaping CompleteBlock) {
+        SocketRequestManage.shared.receiveMatching = { (response) in
+            let jsonResponse = response as! SocketJsonResponse
+            let model = jsonResponse.responseModel(ReceiveMacthingModel.self) as? OrderResultModel
+            if  model != nil {
+                complete(model)
+            }
+        }
+    }
+    //收到匹配成功
+
     func setReceiveMatching(complete:@escaping CompleteBlock) {
         SocketRequestManage.shared.receiveMatching = { (response) in
             let jsonResponse = response as! SocketJsonResponse
@@ -21,10 +47,9 @@ class DealSocketAPI: BaseSocketAPI, DealAPI{
             if  model != nil {
                 complete(model)
             }
-            
-            
         }
     }
+
     func checkPayPass( paypwd: String, complete: CompleteBlock?, error: ErrorBlock?){
         let param: [String: Any] = [SocketConst.Key.id: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
                                     SocketConst.Key.paypwd :paypwd, SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
@@ -33,5 +58,7 @@ class DealSocketAPI: BaseSocketAPI, DealAPI{
          startRequest(packet, complete: complete, error: error)
     
     }
+
+
     
 }

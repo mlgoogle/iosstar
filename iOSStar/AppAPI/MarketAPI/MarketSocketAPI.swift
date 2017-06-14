@@ -86,10 +86,14 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         
     }
     //获取评论列表
-
     func requestCommentList(requestModel:CommentListRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .commentList, model: requestModel)
         startRequest(packet, complete: complete, error: error)
-
+    }
+    
+    //获取拍卖时间
+    func requestAuctionStatus(requestModel:AuctionStatusRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .auctionStatus, model: requestModel)
+        startModelRequest(packet, modelClass: AuctionStatusModel.self, complete: complete, error: error)
     }
 }

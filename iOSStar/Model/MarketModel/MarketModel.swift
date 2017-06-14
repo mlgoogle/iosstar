@@ -89,6 +89,20 @@ class RealTimeModel: PirceBaseModel {
     override static func primaryKey() -> String?{
         return "symbol"
     }
+    
+    //检查系统时间差
+    func checkTimeDistance() {
+        let timeCount = Int64(Date().timeIntervalSince1970)
+        YD_CountDownHelper.shared.timeDistance = sysTime - timeCount
+    }
+    func cacheSelf() {
+        let realm = try! Realm()
+        checkTimeDistance()
+        try! realm.write {
+            realm.add(self, update: true)
+        }
+ 
+    }
 }
 
 
@@ -101,3 +115,10 @@ class SearchResultModel: BaseModel {
 }
 
 
+
+
+class AuctionStatusModel: BaseModel {
+    dynamic var remainingTime:Int64 = 0
+    dynamic var status = false
+    dynamic var symbol = "1001"
+}

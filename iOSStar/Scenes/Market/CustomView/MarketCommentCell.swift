@@ -15,6 +15,7 @@ class MarketCommentCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     
+    @IBOutlet weak var backView: UIView!
     func setData(model:CommentModel) {
     
     
@@ -29,7 +30,7 @@ class MarketCommentCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        backView.layer.cornerRadius = 3
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
