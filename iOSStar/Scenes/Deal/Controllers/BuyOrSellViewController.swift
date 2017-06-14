@@ -52,16 +52,20 @@ class BuyOrSellViewController: UIViewController {
     }
     
     @IBAction func buyOrSellAction(_ sender: Any) {
-                let model = BuyOrSellRequestModel()
-                model.buySell = 2
-                model.symbol = "1001"
-                AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: { (response) in
-                    SVProgressHUD.showSuccess(withStatus: "委托成功")
-                }) { (error) in
         
-                    
-                }
-      
+        if checkLogin(){
+        
+        }
+//                let model = BuyOrSellRequestModel()
+//                model.buySell = 2
+//                model.symbol = "1001"
+//                AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: { (response) in
+//                    SVProgressHUD.showSuccess(withStatus: "委托成功")
+//                }) { (error) in
+//        
+//                    
+//                }
+//      
         }
 }
 //        let model = BuyOrSellRequestModel()
