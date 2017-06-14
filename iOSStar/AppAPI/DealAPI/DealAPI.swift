@@ -11,4 +11,7 @@ import Foundation
 protocol DealAPI {
     func buyOrSell(requestModel:BuyOrSellRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
     func setReceiveMatching(complete:@escaping CompleteBlock)
+    func setReceiveOrderResult(complete:@escaping CompleteBlock)
+    func sureOrderRequest(requestModel:SureOrderRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
+    func cancelOrderRequest(requestModel:CancelOrderRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
 }

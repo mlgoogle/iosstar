@@ -26,8 +26,6 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
     var subViews = [UIView]()
     var starModel:MarketListStarModel?
     var currentY:CGFloat = 0
-    
-
     var realTimeModel:RealTimeModel?
     var currentVC:MarketBaseViewController?
     @IBOutlet weak var handleMenuView: ImageMenuView!
@@ -89,6 +87,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         YD_CountDownHelper.shared.marketTimeLineRefresh = nil
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -128,9 +127,9 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         AppAPIHelper.marketAPI().requestRealTime(requestModel: requestModel, complete: { (response) in
             if let model = response as? [RealTimeModel] {
                 self.setRealTimeData(realTimeModel: model.first!)
-            }
+            } 
         }) { (error) in
-            
+
         }
     }
     
@@ -185,6 +184,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
     
     func setRealTimeData(realTimeModel:RealTimeModel) {
         realTimeModel.cacheSelf()
+        self.realTimeModel = realTimeModel
         let percent = (realTimeModel.change / realTimeModel.currentPrice) * 100
         priceLabel.text = "\(realTimeModel.currentPrice)"
         var colorString = AppConst.Color.up
@@ -245,12 +245,12 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
     }
     func pushToDealPage() {
         
+        let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as! DealViewController
+        vc.starListModel = starModel
+        vc.realTimeData = realTimeModel
+        navigationController?.pushViewController(vc, animated: true)
         if checkLogin() {
-            let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as! DealViewController
-            vc.starListModel = starModel
-            
-            navigationController?.pushViewController(vc, animated: true)
         }
     }
 
@@ -297,11 +297,15 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
                 headerTopMargin.constant = 0
             }
         }
+        print("\(headerTopMargin.constant), \(scrollView.contentOffset.y)")
      }
 
 
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        view.endEditing(true)
+
         if scrollView != bottomScrollView.scrollView {
             if scrollView.contentOffset.y > 0 {
                 headerTopMargin.constant -= (scrollView.contentOffset.y - currentY)

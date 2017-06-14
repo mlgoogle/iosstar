@@ -23,12 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     var window: UIWindow?
     var sdkConfigDelegate: NTESSDKConfigDelegate?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-         let config = BugoutConfig.default()
-         config?.enabledShakeFeedback = true
-         Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
-        
+        let config = BugoutConfig.default()
+        config?.enabledShakeFeedback = true
+        Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
         sdkConfigDelegate = NTESSDKConfigDelegate.init()
-
         NIMSDKConfig.shared().delegate = sdkConfigDelegate
         NIMSDKConfig.shared().shouldSyncUnreadCount = true
         AppConfigHelper.shared().setupNIMSDK(sdkConfigDelegate:sdkConfigDelegate)
@@ -36,14 +34,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
         NIMCustomObject.registerCustomDecoder(NTESCustomAttachmentDecoder())
         WXApi.registerApp("wx9dc39aec13ee3158")
-      
+        
         // 个推
         AppConfigHelper.shared().setupGeTuiSDK(sdkDelegate: self)
         
         // 登录
         login()
         
-       
+        
 // /       [[NIMSDKConfig sharedConfig] setShouldSyncUnreadCount:YES];
         UIApplication.shared.statusBarStyle = .default
 

@@ -50,7 +50,6 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     func initUI(){
         
         codeTf.keyboardType =  .numberPad
-//        inputMoney.keyboardType = .decimalPad
         
         let h  = UIScreen.main.bounds.size.height <= 568 ? 70.0 : 90
         self.top.constant = UIScreen.main.bounds.size.height/568.0 * CGFloat.init(h)
@@ -117,28 +116,39 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
         
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
             vaildCodeBtn.isEnabled = false
-            SVProgressHUD.showProgressMessage(ProgressMessage: "")
-            AppAPIHelper.login().SendCode(phone: phoneTf.text!, complete: { [weak self](result)  in
-                SVProgressHUD.dismiss()
-                self?.vaildCodeBtn.isEnabled = true
-                if let response = result  {
-                    
-                    if response["result"] as! Int == 1 {
-                        self?.timer = Timer.scheduledTimer(timeInterval: 1, target:
-                        self!, selector: #selector(self?.updatecodeBtnTitle), userInfo: nil, repeats: true)
-                        
-                        self?.timeStamp = String.init(format: "%ld", response["timeStamp"] as!  Int)
-                        self?.vToken = String.init(format: "%@", response["vToken"] as! String)
-                        
+            // 校验用户是否注册  // 1 表示已注册, // 0 表示未注册
+            AppAPIHelper.login().checkRegist(phone: phoneTf.text!, complete: { [weak self] (checkRegistResult) in
+                if let checkRegistResponse = checkRegistResult {
+                    if checkRegistResponse["result"] as! Int == 1 {
+                        SVProgressHUD.showErrorMessage(ErrorMessage: "该用户已注册!!!", ForDuration: 2.0, completion: nil)
+                        self?.vaildCodeBtn.isEnabled = true
+                        return
+                    } else {
+                        SVProgressHUD.showProgressMessage(ProgressMessage: "")
+                        // 用户未注册,发送验证码
+                        AppAPIHelper.login().SendCode(phone: (self?.phoneTf.text!)!, complete: {[weak self] (result) in
+                            SVProgressHUD.dismiss()
+                            self?.vaildCodeBtn.isEnabled = true
+                            if let response = result {
+                                if response["result"] as! Int == 1 {
+                                    self?.timer = Timer.scheduledTimer(timeInterval: 1,target:self!,selector: #selector(self?.updatecodeBtnTitle),userInfo: nil,repeats: true)
+                                    self?.timeStamp = String.init(format: "%ld", response["timeStamp"] as!  Int)
+                                    self?.vToken = String.init(format: "%@", response["vToken"] as! String)
+                                    
+                                }
+                            }
+                        }, error: { (error) in
+                            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+                            self?.vaildCodeBtn.isEnabled = true
+                        })
                     }
                 }
-     
-                }, error: { (error)  in
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "短信发送失败,请稍后再试", ForDuration: 2.0, completion: nil)
-                    print("----\(error.description)")
-                    self.vaildCodeBtn.isEnabled = true
+            }, error: { (error) in
+                // print("====\(error.code)")
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+                self.vaildCodeBtn.isEnabled = true
             })
-        }
+         }
     }
     //MARK:-   更新秒数
     func updatecodeBtnTitle() {

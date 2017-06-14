@@ -10,6 +10,7 @@ import UIKit
 
 class DealBaseViewController: UIViewController {
     var starListModel:MarketListStarModel?
+    var realTimeData:RealTimeModel?
     override func viewDidLoad() {
         super.viewDidLoad()
 

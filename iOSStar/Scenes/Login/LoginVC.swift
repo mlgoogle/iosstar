@@ -40,8 +40,10 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
 //        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
 //        view.addGestureRecognizer(tap)
 //        contentView.addGestureRecognizer(tap)
+
 //         UserDefaults.standard.set((UserDefaults.standard.object(forKey: "phone") as? String)!, forKey: "lastLogin")
        
+
         let backViewTap = UITapGestureRecognizer.init(target: self, action: #selector(backViewTapClick))
         backView.addGestureRecognizer(backViewTap)
         backViewTap.delegate = self
@@ -119,6 +121,9 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
             AppAPIHelper.login().login(phone: phone.text!, password: (passPwd.text?.md5_string())!, complete: { [weak self](result)  in
                 SVProgressHUD.dismiss()
                   let datadic = result as? UserModel
+                
+                // print("=====\(datadic)")
+                
                 SVProgressHUD.showSuccessMessage(SuccessMessage:"登录成功", ForDuration: 2.0, completion: {
                     btn.isUserInteractionEnabled = true
                     if let _ = datadic {

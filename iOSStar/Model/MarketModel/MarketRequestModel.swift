@@ -11,7 +11,7 @@ import Foundation
 
 class MarketBaseModel: BaseModel {
     
-    var id:Int64 = 145
+    var id:Int64 = 142
     var token = "6902464177061903496"
 }
 
@@ -54,5 +54,10 @@ class CommentListRequestModel: BaseModel {
 
 class MarketSearhModel: MarketBaseModel {
     var message = ""
+}
+
+class AuctionStatusRequestModel: MarketBaseModel {
+    var symbol = "1001"
+    
 }
 

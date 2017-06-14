@@ -164,8 +164,8 @@ extension PublisherPageViewController:UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section != 0 {
-            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as! PubInfoHeaderView
-            header.setTitle(title:titles[section])
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as? PubInfoHeaderView
+            header?.setTitle(title:titles[section])
             return header
         } else {
             return nil

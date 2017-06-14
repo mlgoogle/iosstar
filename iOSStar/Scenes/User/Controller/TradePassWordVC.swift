@@ -52,14 +52,14 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
             print("设置交易密码")
 //            ShareDataModel.share().isReturnBackClick = true;
             UserDefaults.standard.set(true, forKey: "isReturnBackClick")
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
             
         } else {
              print("点击了请确认交易密码")
             for controller in (self.navigationController?.viewControllers)!{
                 if controller.isKind(of: WealthVC.self){
 //                self.navigationController?.popToRootViewController(animated: true)
-                self.navigationController?.popToViewController(controller, animated: true)
+               _ = self.navigationController?.popToViewController(controller, animated: true)
                 }
             }
         }

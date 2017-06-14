@@ -194,8 +194,9 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
         }
         
         return UITableViewAutomaticDimension
-
     }
+    
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if dataSource?.count ?? 0  == 0 {
@@ -223,6 +224,8 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
         
         if dataSource?.count ?? 0 == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: NoDataCell.className(), for: indexPath) as! NoDataCell
+            
+            cell.setImageAndTitle(image: UIImage(named: "nodata_comment"), title: "当前没有相关评论")
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketCommentCell", for: indexPath) as! MarketCommentCell
@@ -236,7 +239,6 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
     func pushToDetail() {
         
         if !isDetail {
-            tableView.contentOffset = tableView.contentOffset
             if checkLogin() {
                 textField.becomeFirstResponder()
             }

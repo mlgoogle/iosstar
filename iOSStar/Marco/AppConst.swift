@@ -65,13 +65,14 @@ class AppConst {
     };
     
     class Network {
-        #if true //是否测试环境
+        #if fa //是否测试环境
         static let TcpServerIP:String = "139.224.34.22";
         static let TcpServerPort:UInt16 = 16006
+
         static let TttpHostUrl:String = "139.224.34.22";
         #else
         static let TcpServerIP:String = "139.224.34.22";
-        static let TcpServerPort:UInt16 = 16106;
+        static let TcpServerPort:UInt16 = 16105;
         static let HttpHostUrl:String = "139.224.34.22";
 
         #endif
@@ -130,7 +131,7 @@ class AppConst {
     }
     enum DealType:Int {
         case buy = 1
-        case sell = 2
+        case sell = -1
     }
     
     enum SortType:Int {

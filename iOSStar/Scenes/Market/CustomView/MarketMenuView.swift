@@ -166,7 +166,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }
     func requestDataWithIndexPath() {
         let cell = subViewCollectionView?.cellForItem(at: selectIndexPath) as? MenuSubViewCell
-        cell?.requestStarList(type: 1, sortType:sortType)
+        cell?.requestStarList(type: selectIndexPath.row, sortType:sortType)
     }
 
     func menuViewDidSelect(indexPath: IndexPath) {

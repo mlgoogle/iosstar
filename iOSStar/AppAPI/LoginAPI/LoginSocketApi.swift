@@ -78,6 +78,8 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
         
         startRequest(packet, complete: complete, error: error)
     }
+    
+    // 微信登陆
     func WeichatLogin(openid: String, deviceId: String, complete: CompleteBlock?, error: ErrorBlock?){
         let param: [String: Any] = [SocketConst.Key.openid: openid,
                                     SocketConst.Key.deviceId:  deviceId,
@@ -89,6 +91,8 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
         startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
     
     }
+    
+    // 发送验证码
     func SendCode(phone: String, complete: CompleteBlock?, error: ErrorBlock?){
         
         let param: [String: Any] = [SocketConst.Key.phone: phone,
@@ -98,5 +102,17 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
         startRequest(packet, complete: complete, error: error)
     
     }
+    
+    // 校验用户是否注册
+    func checkRegist(phone: String, complete: CompleteBlock?, error: ErrorBlock?) {
+        
+        let param : [String : Any] = [SocketConst.Key.phone : phone]
+        
+        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .checkRegist,dict : param as [String : AnyObject])
+        
+        startRequest(packet, complete: complete, error: error)
+        
+    }
+    
    
 }
