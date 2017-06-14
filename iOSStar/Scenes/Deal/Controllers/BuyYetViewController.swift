@@ -9,7 +9,7 @@
 
 import UIKit
 
-class BuyYetViewController: UIViewController {
+class BuyYetViewController: DealBaseViewController {
     @IBOutlet weak var tableView: UITableView!
     var identifiers = ["DealPropertyCell","DealTitleMenuCell", "DealDoubleRowCell"]
     var titles = ["名称/市值（元）","持有/可转（秒）","现价/成本（秒）","盈亏（元）"]

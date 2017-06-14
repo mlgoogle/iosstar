@@ -30,6 +30,17 @@ class DealDoubleRowCell: UITableViewCell {
         // Initialization code
     }
 
+    
+    func setColor(color:UIColor) {
+        nameLabel.textColor = color
+        underNameLabel.textColor = color
+        secondLabel1.textColor = color
+        secondLabel2.textColor = color
+        thirdLabel1.textColor = color
+        thirdLabel2.textColor = color
+        lastLabel1.textColor = color
+        lastLabel2.textColor = color        
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

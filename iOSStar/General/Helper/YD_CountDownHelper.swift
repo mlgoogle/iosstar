@@ -13,7 +13,11 @@ class YD_CountDownHelper: NSObject {
 
     
     static let shared = YD_CountDownHelper()
+    
     private override init() {}
+    
+    
+    var timeDistance:Int64 = 0
     var timer:CADisplayLink?
     var isCountDown = false
     

@@ -286,7 +286,21 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     @IBAction func didMiss(_ sender: Any) {
         let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
         let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
-        tabar.selectedIndex = 0
+        if tabar.selectedIndex == 1{
+            //          let current : UINavigationController = tabar.selectedViewController as! UINavigationController
+            //          if current.viewControllers.count>1{
+            //
+            //           let vc = current.viewControllers[current.viewControllers.count - 1]
+            //
+            //           vc.navigationController?.popToViewController(current.viewControllers[0], animated: true)
+            //        }
+        }
+        else{
+            tabar.selectedIndex = 0
+        }
+        
+        
+        
         self.dismissController()
     }
     

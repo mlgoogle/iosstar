@@ -22,6 +22,7 @@ class MenuSubViewCell: UICollectionViewCell {
     }()
     
 
+    var type = 0
     var sortType = AppConst.SortType.down.rawValue
     var isLoadMore = true
     var dataSource:[MarketListStarModel]?
@@ -51,12 +52,14 @@ class MenuSubViewCell: UICollectionViewCell {
             YD_CountDownHelper.shared.marketIdentifier = 0
         })
         tableView.mj_header = header
+        tableView.register(NoDataCell.self, forCellReuseIdentifier: NoDataCell.className())
 
     }
 
     
     func requestStarList(type:Int, sortType:AppConst.SortType) {
         self.sortType = sortType.rawValue
+        self.type = type
         if type == 0 {
             requestOptional()
         } else {
@@ -98,23 +101,40 @@ class MenuSubViewCell: UICollectionViewCell {
 extension MenuSubViewCell:UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
         return 0.001
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.001
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if dataSource?.count ?? 0 == 0 {
+            return 500
+        }
         return 60
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource == nil ? 0 : dataSource!.count
+        return dataSource?.count ?? 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if dataSource?.count ?? 0 == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: NoDataCell.className(), for: indexPath) as! NoDataCell
+            
+            var string = "添加明星，就可以实时跟踪您关心的行情。"
+            if type != 0 {
+                string = "行情信息加载中"
+            }
+            cell.setImageAndTitle(image: UIImage(named: "nodata_comment"), title: string)
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "SubViewItemCell", for: indexPath) as! SubViewItemCell
         cell.setupData(model: dataSource![indexPath.row])
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard dataSource != nil else {
+            return
+        }
         delegate?.selectItem(starModel: dataSource![indexPath.row])
     }
 }

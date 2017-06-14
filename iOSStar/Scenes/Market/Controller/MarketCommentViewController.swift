@@ -28,14 +28,7 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
     
     var refreshDelegate:RefreshListDelegate?
     
-    var noDataButton:UIButton = {
-       let button = UIButton(type: .custom)
-        button.setTitle("暂无评论", for: .normal)
-        button.setTitleColor(UIColor(hexString:AppConst.Color.main), for: .normal)
-        button.frame = CGRect(x: 0, y: 0, width: 200, height: 100)
-        button.addTarget(self, action: #selector(pushToDetail), for: .touchUpInside)
-        return button
-    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = tableView
@@ -55,8 +48,7 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
         tableView.estimatedRowHeight = 100
         requestCommentList()
         setupRefresh()
-        self.noDataButton.center = self.tableView.center
-        self.tableView.addSubview(self.noDataButton)
+
 
         
     }
@@ -122,7 +114,6 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
 
             self.endRefresh()
             if let dict = response as? [String : Any] {
-                self.noDataButton.isHidden = true
                 let array:[Any]? = dict["commentsinfo"] as? [Any]
                 if let totalCount = dict["total_count"] as? Int {
                     self.totalCount = totalCount
@@ -153,8 +144,7 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
     }
     func addNodataButton() {
         endRefresh()
-        noDataButton.center = self.tableView.center
-        tableView.addSubview(self.noDataButton)
+
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return checkLogin()
@@ -195,9 +185,6 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
     func refreshList(dataSource: [CommentModel]?, totalCount:Int) {
         self.dataSource = dataSource
         self.totalCount = totalCount
-        if totalCount > 0 {
-            noDataButton.isHidden = true
-        }
         tableView.reloadData()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -207,8 +194,9 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
         }
         
         return UITableViewAutomaticDimension
-
     }
+    
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         if dataSource?.count ?? 0  == 0 {
@@ -236,9 +224,9 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
         
         if dataSource?.count ?? 0 == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: NoDataCell.className(), for: indexPath) as! NoDataCell
-            cell.infoImageView.image = UIImage(named: "timg")
-            return cell
             
+            cell.setImageAndTitle(image: UIImage(named: "nodata_comment"), title: "当前没有相关评论")
+            return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "MarketCommentCell", for: indexPath) as! MarketCommentCell
         cell.setData(model: dataSource![indexPath.row])

@@ -90,7 +90,15 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
     func didClose(){
         let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
         let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
+         if tabar.selectedIndex == 1{
+
+        }
+       else{
         tabar.selectedIndex = 0
+        }
+        
+    
+       
         self.dismissController()
     }
     //MARK:   注册

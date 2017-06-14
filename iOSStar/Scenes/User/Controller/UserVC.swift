@@ -51,8 +51,7 @@ class UserVC: BaseCustomTableViewController  {
             if let response = result{
                 print("----\(response)")
                 
-                let model =   response as! UserInfoModel
-                
+                let model =   response as! UserInfoModel                
                 self.responseData = model
                 
                 self.account?.text =  String.init(format: "%.2f", model.balance)
@@ -63,7 +62,6 @@ class UserVC: BaseCustomTableViewController  {
             }
         }
     }
-    
     // MARK: Table view data source
      override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

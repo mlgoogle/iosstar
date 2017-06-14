@@ -25,7 +25,7 @@ class AppConfigHelper: NSObject {
      // MARK: - 网易云信
     func setupNIMSDK(sdkConfigDelegate:NTESSDKConfigDelegate?) {
         // //在注册 NIMSDK appKey 之前先进行配置信息的注册，如是否使用新路径,是否要忽略某些通知，是否需要多端同步未读数
-        
+        setupReceiveOrderResult()
         setupReceiveMatching()
         NIMSDKConfig.shared().delegate = sdkConfigDelegate
         NIMSDKConfig.shared().shouldSyncUnreadCount = true//0d0f4b452de9695f91b0e4dc949d54cc
@@ -133,9 +133,24 @@ class AppConfigHelper: NSObject {
     }
     
     func setupReceiveMatching() {
+        
         AppAPIHelper.dealAPI().setReceiveMatching { (response) in
-            SVProgressHUD.showSuccess(withStatus: "收到通知")
-        }
+            
+            if let model = response as? ReceiveMacthingModel{
+                
 
+                SVProgressHUD.showSuccess(withStatus: "匹配成功")
+            }
+            
+        }
+    }
+    
+    func setupReceiveOrderResult() {
+        AppAPIHelper.dealAPI().setReceiveOrderResult { (response) in
+            if let model = response as? OrderResultModel {
+                SVProgressHUD.showSuccess(withStatus: "订单结果\(model.result)")
+            }
+        }
+        
     }
 }

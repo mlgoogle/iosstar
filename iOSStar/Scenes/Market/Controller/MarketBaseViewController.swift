@@ -28,13 +28,24 @@ class MarketBaseViewController: UIViewController, UIScrollViewDelegate{
         super.didReceiveMemoryWarning()
     }
 
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        scrollView.isUserInteractionEnabled = false
+    }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        view.endEditing(true)
+    }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-     delegate?.scrollStop()
+        scrollView.isUserInteractionEnabled = true
+        delegate?.scrollStop()
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        view.endEditing(true)
         if isSubView {
             delegate?.subScrollViewDidScroll(scrollView: scrollView)
 

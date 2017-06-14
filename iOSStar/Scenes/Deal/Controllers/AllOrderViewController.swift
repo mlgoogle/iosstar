@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AllOrderViewController: UIViewController {
+class AllOrderViewController: DealBaseViewController {
     
     var identifiers = ["DealTitleMenuCell", "DealSingleRowCell"]
     @IBOutlet weak var tableView: UITableView!

@@ -44,8 +44,6 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-        
         setupBannerView()
         setupNavigation()
         requestNewsList()
@@ -75,6 +73,9 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     func setupBannerView() {
         bannerScrollView = SDCycleScrollView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 200), imageNamesGroup: [""])
         bannerScrollView?.delegate = self
+        bannerScrollView?.placeholderImage = UIImage(named: "nodata_banner")
+        bannerScrollView?.pageDotImage = UIImage(named: "page_yuan")
+        bannerScrollView?.currentPageDotImage = UIImage(named: "page_tuoyuan")
         bannerScrollView?.bannerImageViewContentMode = .scaleAspectFill
         bannerScrollView?.autoScrollTimeInterval = 3.0
         automaticallyAdjustsScrollViewInsets = false
@@ -83,12 +84,27 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         backView.backgroundColor = UIColor(hexString: "EFF3F6")
         tableView.tableHeaderView = backView
         tableView.separatorStyle = .none
+        tableView.register(NoDataCell.self, forCellReuseIdentifier: NoDataCell.className())
+
     }
     
     func requestBannerList() {
+
+        let requestModel = SureOrderRequestModel()
+        requestModel.orderId = 6016027681078596229
+        requestModel.id = 152
+        requestModel.positionId = 4620287027450204474
+        AppAPIHelper.dealAPI().sureOrderRequest(requestModel: requestModel, complete: { (response) in
+            
+            
+        }, error: { (error) in
+            
+        })
+        
+        return
+
         AppAPIHelper.newsApi().requestBannerList(complete: { (response)  in
             if let models = response as? [BannerModel] {
-                
                 self.bannerModels = models
                 var bannersUrl:[String] = []
                 for model in models {
@@ -141,6 +157,11 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
 
     func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
 
+        
+        if (bannerModels?.count ?? 0) == 0 {
+            return
+        }
+
         performSegue(withIdentifier: "showPubPage", sender: index)
     }
 
@@ -179,21 +200,30 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
 
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsData == nil ? 0 : newsData!.count
+        return newsData?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if newsData?.count ?? 0 == 0 {
+            return 500
+        }
         return 100
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if newsData?.count ?? 0 == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: NoDataCell.className(), for: indexPath) as! NoDataCell
+            
+            cell.setImageAndTitle(image: UIImage(named: "nodata_news"), title: nil)
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsListCell", for: indexPath) as! NewsListCell
-        
         cell.setData(data:newsData![indexPath.row])
-        
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if newsData?.count ?? 0 == 0 {
+            return
+        }
         performSegue(withIdentifier: "newsToDeatail", sender: indexPath)
     }
     
@@ -206,8 +236,6 @@ extension NewsViewController: UIScrollViewDelegate, UINavigationControllerDelega
             vc.shareImage = cell.newsImageView?.image
             vc.newsModel = model
         } else if segue.identifier == "showPubPage" {
-            
-            
             let index = sender as! Int
             guard bannerModels != nil else {
                 return

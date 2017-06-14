@@ -166,7 +166,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }
     func requestDataWithIndexPath() {
         let cell = subViewCollectionView?.cellForItem(at: selectIndexPath) as? MenuSubViewCell
-        cell?.requestStarList(type: 1, sortType:sortType)
+        cell?.requestStarList(type: selectIndexPath.row, sortType:sortType)
     }
 
     func menuViewDidSelect(indexPath: IndexPath) {
@@ -187,8 +187,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         let storyBoard = UIStoryboard(name: "Market", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail") as! MarketDetailViewController
         vc.starModel = starModel
-        vc.starCode = starModel.symbol
-        vc.starName = starModel.name
+
         navigationController?.pushViewController(vc, animated: true)
     }
 

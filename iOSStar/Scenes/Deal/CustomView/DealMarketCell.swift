@@ -18,6 +18,17 @@ class DealMarketCell: UITableViewCell {
         // Initialization code
     }
 
+    
+    func setRealTimeData(model:RealTimeModel?) {
+        guard model != nil else {
+            return
+        }
+        changePriceLabel.text = String(format: "%.2f", model!.change)
+        priceLabel.text = String(format: "%.2f", model!.currentPrice)
+        
+        
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

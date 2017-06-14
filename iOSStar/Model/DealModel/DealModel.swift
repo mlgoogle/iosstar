@@ -28,4 +28,30 @@ class ReceiveMacthingModel: Object {
     dynamic var orderId:Int64 = 2371231398736937636
     dynamic var symbol = "1001"
     dynamic var amount = 0
+    override static func primaryKey() -> String?{
+        return "orderId"
+    }
+    func cacheSelf() {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(self, update: true)
+        }
+    }
+    
+    class func getData() -> ReceiveMacthingModel? {
+        let realm = try! Realm()
+        let results = realm.objects(ReceiveMacthingModel.self)
+        return results.first
+    }
+    
 }
+
+class SureOrderResultModel: Object {
+    dynamic var orderId:Int64 = 0
+    dynamic var status:Int32 = 0
+}
+class OrderResultModel: Object {
+    dynamic var orderId:Int64 = 0
+    dynamic var result:Int32 = 0
+}
+
