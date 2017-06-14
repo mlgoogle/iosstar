@@ -15,6 +15,9 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
         return view
     }()
     var menuView:YD_VMenuView?
+    var starListModel:MarketListStarModel?
+    
+    var realTimeData:RealTimeModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +53,9 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
         let stroyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
         var views = [UIView]()
         for (index,identifier) in identifiers.enumerated() {
-            let vc = stroyBoard.instantiateViewController(withIdentifier: identifier)
+            let vc = stroyBoard.instantiateViewController(withIdentifier: identifier) as! DealBaseViewController
+            vc.starListModel = starListModel
+            vc.realTimeData = realTimeData
             views.append(vc.view)
             vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 64, width: kScreenWidth, height: backView.frame.size.height - 64)
             addChildViewController(vc)

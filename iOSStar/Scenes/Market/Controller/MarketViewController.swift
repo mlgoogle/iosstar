@@ -56,7 +56,6 @@ class MarketViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        
         print("--------marketLsit---------结束----------------")
         YD_CountDownHelper.shared.marketListRefresh = nil
     }

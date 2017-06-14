@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol OrderInfoChangeDelegate {
+    
+    func priceDidChange(price:Double)
+}
+
 class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
+    
     @IBOutlet weak var countReduceButton: UIButton!
     
     @IBOutlet weak var countPlusButton: UIButton!
@@ -22,6 +28,8 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
  
     @IBOutlet weak var coutTextField: UITextField!
     
+    var isCount = false
+    var delegate:OrderInfoChangeDelegate?
     lazy var predicate:NSPredicate = {
        let predicate = NSPredicate(format: "SELF MATCHES %@", AppConst.Text.numberReg)
         
@@ -33,19 +41,51 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
         super.awakeFromNib()
         coutTextField.delegate = self
         priceTextField.delegate = self
+        
+        priceTextField.addTarget(self, action: #selector(textDidChange(textField:)), for: UIControlEvents.editingChanged)
+        coutTextField.addTarget(self, action: #selector(textDidChange(textField:)), for: UIControlEvents.editingChanged)
+
     }
 
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text!.hasSuffix(".") {
+            textField.text =  textField.text!.substring(to: textField.text!.characters.index(before:textField.text!.endIndex))
+        }
+    }
+    func textDidChange(textField:UITextField) {
+        delegate?.priceDidChange(price: getCurrentPrice())
+    }
+
+    func setPriceAndCount(price:Double, count:Int) {
+        coutTextField.text = "\(count)"
+        priceTextField.text = String(format: "%.2f", price)
+    }
+    
+    
+    
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
-        
-        //如果删除成 "" 字符 允许通过
-        if range.location == 0 && string == "" {
-            return true
+        if textField == coutTextField {
+  
+            isCount = true
+            if string == "." {
+                return false
+            } else {
+                return true
+            }
         }
+        isCount = false
         let ran = textField.text!.index((textField.text!.startIndex), offsetBy: range.location)..<textField.text!.index((textField.text!.startIndex), offsetBy: range.location + range.length)
-
         let str = textField.text?.replacingCharacters(in: ran, with: string)
 
+        //如果删除成 "" 字符 允许通过
+        if range.location == 0 && string == "" {
+
+            return true
+        }
+        
         //正则判断替换为后字符串是否为符合要求的字符
         if predicate.evaluate(with: str) {
             //如果为00不允许通过
@@ -58,7 +98,6 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
             if str == "." {
                 return false
             }
-
             let array = str?.components(separatedBy: ".")
             if array == nil {
                 return true
@@ -71,8 +110,10 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
         return false
     }
     
+    
     func setPrice() {
         priceTextField.text = "\(price)"
+        delegate?.priceDidChange(price: getCurrentPrice())
     }
     @IBAction func priceReduce(_ sender: Any) {
         
@@ -87,23 +128,20 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
    
     @IBAction func pricePlus(_ sender: Any) {
         
-        if price < 100 {
+ 
             if price == 0 {
                 replaceImage(sender: priceReducButton, imageName: "market_reduce")
             }
             price += 0.01
             
-        }
         setPrice()
     }
 
     @IBAction func countPlus(_ sender: Any) {
-        if count < 100 {
-            if count == 0 {
-                replaceImage(sender: countReduceButton, imageName: "market_reduce")
-            }
-            count += 1
+        if count == 0 {
+            replaceImage(sender: countReduceButton, imageName: "market_reduce")
         }
+        count += 1
         setCount()
     }
     @IBAction func countReduce(_ sender: Any) {
@@ -117,6 +155,24 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
     }
     func setCount() {
         coutTextField.text = "\(count)"
+        delegate?.priceDidChange(price: getCurrentPrice())
+    }
+    
+    func getCurrentPrice()-> Double{
+
+        if priceTextField.text == "" || priceTextField.text == nil {
+            price = 0.00
+        } else {
+            price = Double(priceTextField.text!) ?? 0
+        }
+        if coutTextField.text == "" || coutTextField.text == nil {
+            count = 0
+        } else {
+            count = Int(coutTextField.text!) ?? 0
+        }
+        
+        return Double(count) * price
+        
     }
     func replaceImage(sender:UIButton, imageName:String) {
         sender.setImage(UIImage(named:imageName), for: .normal)

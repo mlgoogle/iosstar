@@ -18,6 +18,16 @@ class DealStarInfoCell: UITableViewCell {
         // Initialization code
     }
 
+    
+    func setupData(model:MarketListStarModel?) {
+        guard  model != nil else {
+            return
+        }
+        iconImageView.kf.setImage(with: URL(string: model!.pic))
+        nameLabel.text = model?.name
+
+
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

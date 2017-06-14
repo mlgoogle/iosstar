@@ -21,4 +21,5 @@ protocol MarketAPI {
     func sendComment(requestModel:SendCommentModel,complete: CompleteBlock?, error: ErrorBlock?)
     func requestCommentList(requestModel:CommentListRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
 
+    func requestAuctionStatus(requestModel:AuctionStatusRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
 }

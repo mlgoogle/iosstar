@@ -149,7 +149,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
                 if response["result"] as! Int == 1{
                     //重置成功
                     SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功", ForDuration: 2.0, completion: { 
-                        self.navigationController?.popViewController(animated: true)
+                      _ =  self.navigationController?.popViewController(animated: true)
                     })
                 }
             }
