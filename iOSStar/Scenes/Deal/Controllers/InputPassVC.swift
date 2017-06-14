@@ -168,6 +168,10 @@ class  InputPassVC: UIViewController ,UITextFieldDelegate{
         resultBlock?(doStateClick.close as AnyObject)
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        textField.becomeFirstResponder()
+//        view.endEditing(false)
+    }
     
     
 }

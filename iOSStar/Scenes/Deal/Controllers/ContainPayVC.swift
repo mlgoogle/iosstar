@@ -48,7 +48,6 @@ import UIKit
                 //忘记密码
                     switch result as! doStateClick {
                     case .close:
-                        
                         self?.dismissController()
                         break
                     default:
