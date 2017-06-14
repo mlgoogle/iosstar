@@ -40,7 +40,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
     
     var contentoffset = CGFloat()
     var navLeft : UIButton?
-    
+    var nodata : Bool = true
     // 存储模型数据传入下一个界面
     var reponseData : Any!
     
@@ -54,7 +54,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
         title = "资金明细"
        
         navLeft = UIButton.init(type: .custom)
-        
+        tableView.register(NoDataCell.self, forCellReuseIdentifier: "NoDataCell")
         navLeft?.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20)
         let right = UIBarButtonItem.init(customView: navLeft!)
         
@@ -74,6 +74,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
             
             if let object = result {
               let model : RechargeListModel = object as! RechargeListModel
+            
               self.didRequestComplete(model.depositsinfo as AnyObject)
             }
           
@@ -104,6 +105,17 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
         ShareDataModel.share().removeObserver(self, forKeyPath: "selectMonth", context: nil)
     }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NoDataCell")
+        
+        if self.dataSource?.count != 0 {
+         let cell = tableView.dequeueReusableCell(withIdentifier: "MoneyDetailListCell") as! MoneyDetailListCell
+            
+         cell.update(dataSource?[indexPath.row])
+        }
+        return cell!
+    }
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -113,6 +125,14 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
         let moder = self.reponseData as! RechargeListModel
         (ResultVC as! ResultVC).responseData = moder.depositsinfo?[indexPath.row]
         self.navigationController?.pushViewController(ResultVC, animated: true)
+    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if dataSource?.count == 0{
+            
+            return  500
+        }else{
+        return  70
+        }
     }
     
     func selectDate(){
