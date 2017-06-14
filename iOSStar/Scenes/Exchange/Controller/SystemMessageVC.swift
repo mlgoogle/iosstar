@@ -15,8 +15,7 @@ class SystemMessageVC: BasePageListTableViewController {
 
         title = "系统消息"
         tableView.separatorStyle = .none
-       
-    }
+            }
 
 
     override func didRequest(_ pageIndex: Int) {
@@ -28,6 +27,30 @@ class SystemMessageVC: BasePageListTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 5
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //定义一个model
+        let model = OrderInformation()
+        model.orderAllPrice = "100"
+        model.orderAccount = "100"
+        model.orderPrice = "100"
+        model.orderStatus = "100"
+        model.orderInfomation = "100"
+        //将值传给 sharedatemodel
+        ShareDataModel.share().orderInfo = model
+        let storyboard = UIStoryboard.init(name: "Order", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController() as! UINavigationController
+        
+        let rootvc = controller.viewControllers[0] as! ContainPayVC
+        print(controller.viewControllers.count)
+        rootvc.resultBlock = { (result) in
+            controller.dismissController()
+            
+        }
+        controller.modalPresentationStyle = .custom
+        controller.modalTransitionStyle = .crossDissolve
+        present(controller, animated: true, completion: nil)
+
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

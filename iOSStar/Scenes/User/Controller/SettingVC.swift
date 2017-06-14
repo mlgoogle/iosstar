@@ -57,6 +57,7 @@ class SettingVC: BaseTableViewController {
             let vc = story.instantiateViewController(withIdentifier: "ForgotPwdVC")
             self.navigationController?.pushViewController(vc, animated: true)
         }
+       
         if indexPath.row == 0{
             let vc = BaseWebVC()
             vc.loadRequest = "http://www.baidu.com"
