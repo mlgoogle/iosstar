@@ -7,7 +7,9 @@
 //
 
 import UIKit
-class UserInfoModel: NSObject {
+import RealmSwift
+
+class UserInfoModel: Object {
     dynamic var nick_name : String = " "
     dynamic var market_cap : Int = 0
     dynamic var is_setpwd : Int = 0

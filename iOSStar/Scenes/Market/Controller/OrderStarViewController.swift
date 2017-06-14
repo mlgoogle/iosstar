@@ -328,7 +328,7 @@ extension OrderStarViewController {
     
     fileprivate func setupNav() {
         setCustomTitle(title: "约见名人")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "record_selected"), style: .done, target: self, action: #selector(rightButtonItemClick(_ :)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "share"), style: .done, target: self, action: #selector(rightButtonItemClick(_ :)))
     }
 }
 
