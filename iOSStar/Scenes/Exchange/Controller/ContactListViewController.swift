@@ -49,8 +49,10 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
         //StarInfoModel
         let model = dataSource?[indexPath.row] as! StarInfoModel
         let session = NIMSession(model.faccid, type: .P2P)
-        let vc = NTESSessionViewController(session: session)
+        let vc = YDSSessionViewController(session: session)
+        vc?.starcode = model.starcode
         self.navigationController?.pushViewController(vc!, animated: true)
+
     }
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!) {
         
@@ -58,7 +60,8 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
             // print((data as AnyObject).description)
             let starInfoModel = data as! StarInfoModel
             let session = NIMSession(starInfoModel.faccid, type: .P2P)
-            let vc = NTESSessionViewController(session: session)
+            let vc = YDSSessionViewController(session: session)
+            vc?.starcode = starInfoModel.starcode
             self.navigationController?.pushViewController(vc!, animated: true)
         }
     }

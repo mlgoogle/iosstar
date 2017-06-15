@@ -18,9 +18,9 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }
     var types:[MarketClassifyModel]? {
         didSet {
-            let indexPath = IndexPath(item: 1, section: 0)
+            let indexPath = IndexPath(item: 0, section: 0)
             menuViewDidSelect(indexPath: indexPath)
-            menuView?.selected(index: 1)
+            menuView?.selected(index: 0)
         }
     }
     var subViews:[UIView]?

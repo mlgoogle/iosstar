@@ -52,6 +52,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
         super.viewDidLoad()
         
         title = "资金明细"
+       
         navLeft = UIButton.init(type: .custom)
         
         navLeft?.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20)

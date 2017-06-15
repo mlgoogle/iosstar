@@ -24,10 +24,22 @@ class DetailCommenViewController: DealBaseViewController {
             identifiers.removeFirst()
             sectionHeights.removeFirst()
         }
+        if type == AppConst.DealDetailType.todayEntrust {
+            requestTodayEntrustList()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    func requestTodayEntrustList() {
+        let requestModel = TodayEntrustRequestModel()
+        AppAPIHelper.dealAPI().requestTodayEntrust(requestModel: requestModel, complete: { (response) in
+            
+            
+            
+            
+        }, error: errorBlockFunc())
     }
     
     func showDatePicker() {
@@ -59,16 +71,30 @@ extension DetailCommenViewController :UITableViewDelegate, UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {        
         let cell = tableView.dequeueReusableCell(withIdentifier: identifiers[indexPath.section], for: indexPath)
-        if type.rawValue > AppConst.DealDetailType.todayEntrust.rawValue{
-           
+//        if type.rawValue > AppConst.DealDetailType.todayEntrust.rawValue{
+//           
+//            switch indexPath.section {
+//            case 0:
+//                if let dateCell = cell as? DealSelectDateCell {
+//                    dateCell.delegate = self
+//                }
+//            case 1:
+//                if let menuCell = cell as? DealTitleMenuCell {
+//                    if type.rawValue == AppConst.DealDetailType.allEntrust.rawValue {
+//                        menuCell.setTitles(titles: entrustTitles)
+//                    } else {
+//                        menuCell.setTitles(titles: dealTitles)
+//                    }
+//                }
+//            default:
+//                break
+//            }
+//
+//        } else {
             switch indexPath.section {
             case 0:
-                if let dateCell = cell as? DealSelectDateCell {
-                    dateCell.delegate = self
-                }
-            case 1:
                 if let menuCell = cell as? DealTitleMenuCell {
-                    if type.rawValue == AppConst.DealDetailType.allEntrust.rawValue {
+                    if type.rawValue == AppConst.DealDetailType.todayEntrust.rawValue {
                         menuCell.setTitles(titles: entrustTitles)
                     } else {
                         menuCell.setTitles(titles: dealTitles)
@@ -77,21 +103,7 @@ extension DetailCommenViewController :UITableViewDelegate, UITableViewDataSource
             default:
                 break
             }
-
-        } else {
-            switch indexPath.section {
-            case 0:
-                if let menuCell = cell as? DealTitleMenuCell {
-                    if type.rawValue == AppConst.DealDetailType.todayEntrust.rawValue {
-                        
-                        menuCell.setTitles(titles: entrustTitles)
-                    } else {
-                        menuCell.setTitles(titles: dealTitles)
-                    }                }
-            default:
-                break
-            }
-        }
+//        }
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

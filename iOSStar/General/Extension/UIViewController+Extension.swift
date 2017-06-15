@@ -27,11 +27,11 @@ extension UIViewController {
     
     
     func didRequestError(_ error:NSError) {
-        self.showErrorWithStatus(error.localizedDescription)
+        SVProgressHUD.showErrorMessage(ErrorMessage: error.localizedDescription, ForDuration: 1.5, completion: nil)
     }
     
     func showErrorWithStatus(_ status: String!) {
-        SVProgressHUD.showError(withStatus: status)
+        SVProgressHUD.showErrorMessage(ErrorMessage: status, ForDuration: 1.5, completion: nil)
     }
     
     func showWithStatus(_ status: String!) {
@@ -41,7 +41,6 @@ extension UIViewController {
     func checkLogin() -> Bool {
         
         if UserDefaults.standard.object(forKey: "phone") as? String == nil {
-            
             let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
             let controller = storyboard.instantiateInitialViewController()
             controller?.modalPresentationStyle = .custom
@@ -60,12 +59,9 @@ extension UIViewController {
             AppAPIHelper.login().registWYIM(phone: (UserDefaults.standard.object(forKey: "phone") as? String)!, token:(UserDefaults.standard.object(forKey: "phone") as? String)!, complete: { (result) in
                 
                 let datadic = result as? Dictionary<String,String>
-                
                 if let _ = datadic {
-                    
                     NIMSDK.shared().loginManager.login((UserDefaults.standard.object(forKey: "phone") as? String)!, token: (datadic?["token_value"])!, completion: { (error) in
                         if (error != nil){
-                            
                         }
                         complete?(true as AnyObject)
                         
@@ -84,6 +80,7 @@ extension UIViewController {
     }
     //退出登录
     func userLogout() {
+        
         UserDefaults.standard.set((UserDefaults.standard.object(forKey: "phone") as? String)!, forKey: "lastLogin")
         UserDefaults.standard.removeObject(forKey:"phone")
         UserDefaults.standard.removeObject(forKey: "token")

@@ -36,33 +36,6 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         view.backgroundColor = UIColor.clear
         title = "我的资产"
         self.tableView.tableFooterView = view
-        //        self.getUserInfo { (result) in
-        //
-        //        }
-        //        self.getUserrealmInfo { (result) in
-        //            if let model = result{
-        //                let object =  model as! [String : AnyObject]
-        //
-        //                if object["realname"] as! String == ""{
-        //                self.setPwd = true
-        //                }
-        //            }
-        //
-        //        }
-        //
-        
-        //        self.getUserInfo { (result) in
-        //
-        //            if let response = result{
-        //                let object = response as! [String : AnyObject]
-        //                self.balance?.text =  String.init(format: "%.2f", object["balance"] as! CVarArg)
-        //                self.market_cap?.text = String.init(format: "%.2f", object["total_amt"] as! CVarArg)
-        //                self.total_amt?.text = String.init(format: "%.2f", object["total_amt"] as! CVarArg)
-        //                self.setPwd = object["is_setpwd"] as Int
-        //
-        //            }
-        //
-        //        }
     }
     func requestData() {
         AppAPIHelper.user().accountMoney(complete: { (result) in
@@ -75,16 +48,13 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.getUserInfo { (result) in
-            
             if let response = result{
-                let object = response as! [String : AnyObject]
-                self.balance?.text =  String.init(format: "%.2f", object["balance"] as! Double)
-                self.market_cap?.text = String.init(format: "%.2f", object["total_amt"] as! Double)
-                self.total_amt?.text = String.init(format: "%.2f", object["total_amt"] as! Double)
-                self.needPwd = object["is_setpwd"] as! Int
-                
+                let object = response as! UserInfoModel
+                self.balance?.text =  String.init(format: "%.2f", object.balance)
+                self.market_cap?.text = String.init(format: "%.2f", object.market_cap)
+                self.total_amt?.text = String.init(format: "%.2f", object.total_amt)
+                self.needPwd = object.is_setpwd
             }
-            
         }
     }
     @IBAction func doBack(_ sender: Any) {

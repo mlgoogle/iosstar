@@ -15,11 +15,12 @@ class DealSocketAPI: BaseSocketAPI, DealAPI{
         let packet = SocketDataPacket(opcode: .buyOrSell, model: requestModel)
         startModelRequest(packet, modelClass: EntrustSuccessModel.self, complete: complete, error: error)
     }
+
     
     //确认订单
     func sureOrderRequest(requestModel:SureOrderRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .sureOrder, model: requestModel)
-        startResultIntRequest(packet, complete: complete, error: error)
+        startModelRequest(packet, modelClass: SureOrderResultModel.self, complete: complete, error: error)
     }
     
     //取消订单
@@ -37,6 +38,7 @@ class DealSocketAPI: BaseSocketAPI, DealAPI{
             }
         }
     }
+    
     //收到匹配成功
     func setReceiveMatching(complete:@escaping CompleteBlock) {
         SocketRequestManage.shared.receiveMatching = { (response) in
@@ -46,6 +48,20 @@ class DealSocketAPI: BaseSocketAPI, DealAPI{
                 complete(model)
             }
         }
+    }
+
+    //验证交易密码
+    func checkPayPass( paypwd: String, complete: CompleteBlock?, error: ErrorBlock?){
+        let param: [String: Any] = [SocketConst.Key.id: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
+                                    SocketConst.Key.paypwd :paypwd, SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
+        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .paypwd, dict: param as [String : AnyObject])
+         startRequest(packet, complete: complete, error: error)
+    
+    }
+    //请求当日委托
+    func requestTodayEntrust(requestModel:TodayEntrustRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .todayEntrust, model: requestModel)
+        startModelsRequest(packet, listName: "positionsList", modelClass: EntrustListModel.self, complete: complete, error: error)
     }
 
     

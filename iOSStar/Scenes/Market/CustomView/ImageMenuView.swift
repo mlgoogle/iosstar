@@ -70,14 +70,14 @@ class ImageMenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
         var flowLayout:UICollectionViewFlowLayout?
         flowLayout = UICollectionViewFlowLayout()
         flowLayout!.scrollDirection = .horizontal
-        flowLayout!.sectionInset = UIEdgeInsetsMake(0, 10, 10, 10)
+        flowLayout!.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10)
 
 
-        flowLayout?.itemSize = CGSize(width: 40, height: 30)
+        flowLayout?.itemSize = CGSize(width: kScreenWidth /  3, height: 40)
         
         
-        flowLayout!.minimumLineSpacing = (kScreenWidth - 20 - 160) / 3
-        flowLayout!.minimumInteritemSpacing =  (kScreenWidth - 20 - 160) / 3
+        flowLayout!.minimumLineSpacing = 0
+        flowLayout!.minimumInteritemSpacing = 0
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 50), collectionViewLayout: flowLayout!)
         addSubview(collectionView!)
         collectionView?.showsHorizontalScrollIndicator = false

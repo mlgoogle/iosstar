@@ -13,6 +13,8 @@ enum doStateClick{
     case doRegist    //  注册
     case doLogin     //  登录
     case doResetPwd  //  忘记密码
+    case donext //  下一步
+    case close //  下一步
  
 }
 class ContainVC: UIViewController {

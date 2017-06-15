@@ -55,3 +55,21 @@ class OrderResultModel: Object {
     dynamic var result:Int32 = 0
 }
 
+class EntrustListModel: Object {
+    
+    dynamic var amount:Int64 = 0
+    dynamic var buySell = AppConst.DealType.buy.rawValue
+    dynamic var handle:Int32 = AppConst.OrderStatus.pending.rawValue
+    dynamic var id:Int64 = 142
+    dynamic var openCharge:Double = 0.0
+    dynamic var openPrice:Double = 0.0
+    dynamic var positionId:Int64 = 0
+    dynamic var positionTime:Int64 = 0
+    dynamic var symbol = ""
+}
+
+class AllOrderModel: Object {
+
+    
+}
+

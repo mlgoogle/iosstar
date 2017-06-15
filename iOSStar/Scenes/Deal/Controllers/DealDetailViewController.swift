@@ -55,10 +55,9 @@ class DealDetailViewController: DealBaseViewController ,DealScrollViewScrollDele
         for (index,identifier) in identifiers.enumerated() {
             let vc = stroyBoard.instantiateViewController(withIdentifier: identifier) as! DetailCommenViewController
             vc.type = AppConst.DealDetailType(rawValue: UInt16(index))!
-            views.append(vc.view)
-  
-            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: backView.frame.size.height - 64)
             
+            views.append(vc.view)
+            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: backView.frame.size.height - 64)
             addChildViewController(vc)
             
         }

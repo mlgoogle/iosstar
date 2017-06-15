@@ -47,16 +47,15 @@ class ShareView: UIView {
           self.exit()
         UMSocialManager.default().share(to: typeArr[btn.tag  - 100], messageObject: messageObject, currentViewController: nil) {
             (data , error) in
-            
-            
-          
         }
-            
-            
     }
     func exit(){
-        
-      shareView.removeFromSuperview()
+        UIView.animate(withDuration: 0.3, animations: { 
+            self.frame = CGRect.init(x: 0, y: self.shareView.bounds.size.height, width: UIScreen.main.bounds.size.width, height: self.frame.size.height)
+        }) { (date) in
+              self.shareView.removeFromSuperview()
+        }
+   
       
     }
     

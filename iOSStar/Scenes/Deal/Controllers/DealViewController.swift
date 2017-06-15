@@ -54,6 +54,9 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
         var views = [UIView]()
         for (index,identifier) in identifiers.enumerated() {
             let vc = stroyBoard.instantiateViewController(withIdentifier: identifier) as! DealBaseViewController
+            if index == 0 {
+                vc.dealType = AppConst.DealType.buy
+            }
             vc.starListModel = starListModel
             vc.realTimeData = realTimeData
             views.append(vc.view)
