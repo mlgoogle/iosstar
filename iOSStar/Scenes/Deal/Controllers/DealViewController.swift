@@ -18,7 +18,7 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
     var starListModel:MarketListStarModel?
     
     var realTimeData:RealTimeModel?
-    
+    var index = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMenuView()
@@ -45,7 +45,8 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
     }
     
     func refreshSelect() {
-        menuView?.selected(index: 0)
+        menuView?.selected(index: index)
+        backView.moveToIndex(index: index)
     }
     func addSubViews() {
         let identifiers = ["BuyOrSellViewController","BuyOrSellViewController","BuyYetViewController","AllOrderViewController","DealDetailViewController"]

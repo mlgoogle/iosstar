@@ -80,8 +80,11 @@ extension UIViewController {
     }
     //退出登录
     func userLogout() {
-        
-        UserDefaults.standard.set((UserDefaults.standard.object(forKey: "phone") as? String)!, forKey: "lastLogin")
+
+
+        if let phoneString = UserDefaults.standard.object(forKey: "phone") as? String {
+            UserDefaults.standard.set(phoneString, forKey: "lastLogin")
+        }
         UserDefaults.standard.removeObject(forKey:"phone")
         UserDefaults.standard.removeObject(forKey: "token")
         tabBarController?.selectedIndex = 0
@@ -92,7 +95,6 @@ extension UIViewController {
         for  textField in array {
             if  textField.text == ""  {
                 SVProgressHUD.showErrorMessage(ErrorMessage: textField.placeholder!, ForDuration: 2.0, completion: {
-                    
                 });
                 return false
             }

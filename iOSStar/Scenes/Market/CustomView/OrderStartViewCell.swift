@@ -7,20 +7,128 @@
 //
 
 import UIKit
+import SVProgressHUD
+
+// MARK: - 自定义按钮
+class OrderItemButton : UIButton {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.imageView?.contentMode = .center
+        self.titleLabel?.textAlignment = .center
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // 调整图片的位置
+        self.imageView?.centerX = self.width * 0.5
+        self.imageView?.y = 0 ;
+        
+        // 调整文字的位置
+        self.titleLabel?.x = 0;
+        self.titleLabel?.width = self.width;
+        self.titleLabel?.y = (self.imageView?.height)!;
+        self.titleLabel?.height = self.height - (self.imageView?.height)!;
+    }
+}
+
+// MARK: - 自定义布局
+class CustomLayout: UICollectionViewFlowLayout {
+    
+    weak var dataSource: CustomLayoutDataSource?
+    
+    fileprivate lazy var rols: Int? = {
+        return self.dataSource?.numberOfRols(self)
+    }()
+    
+    fileprivate lazy var cols: Int? = {
+        return self.dataSource?.numberOfCols(self)
+    }()
+    
+    fileprivate lazy var attrsArray: [UICollectionViewLayoutAttributes] = [UICollectionViewLayoutAttributes]()
+    
+    override func prepare() {
+        super.prepare()
+        
+    }
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
+    }
+    
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+        //        let page = indexPath.item%(rols*cols) == 0 ? indexPath.item/(rols*cols) : (indexPath.item/(cols*rols) + 1)
+        guard let rols = dataSource?.numberOfRols(self), let cols = dataSource?.numberOfCols(self) else {
+            fatalError("请实现对应的数据源方法(行数和列数)")
+        }
+        let page = indexPath.item / (cols * rols)//页数
+        let cellW = (collectionView!.bounds.width - sectionInset.left - sectionInset.right - (CGFloat(cols - 1) * minimumInteritemSpacing)) / CGFloat(cols)
+        let itemRow = CGFloat((indexPath.item - page*(cols*rols)) / cols)//行数
+        let itemCol = CGFloat((indexPath.item - page*(cols*rols)) % cols)//列数
+        let cellX = CGFloat(page) * collectionView!.bounds.width + CGFloat(itemCol) * (cellW + 10) + sectionInset.left
+        let cellH: CGFloat = (collectionView!.bounds.height - sectionInset.top - sectionInset.bottom - (CGFloat(rols - 1)) * minimumLineSpacing) / CGFloat(rols)
+        let cellY = itemRow * (cellH + sectionInset.top) + sectionInset.top
+        attribute.frame = CGRect(x: cellX, y: cellY, width: cellW, height: cellH)
+        return attribute
+    }
+    
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let itemCount = collectionView!.numberOfItems(inSection: 0)
+        for i in 0..<itemCount {
+            let attr = layoutAttributesForItem(at: IndexPath(item: i, section: 0))
+            attrsArray.append(attr!)
+        }
+        return attrsArray
+    }
+    
+    override var collectionViewContentSize: CGSize {
+        let itemCount = collectionView!.numberOfItems(inSection: 0)
+        guard let rols = dataSource?.numberOfRols(self), let cols = dataSource?.numberOfCols(self) else {
+            fatalError("请实现对应的数据源方法(行数和列数)")
+        }
+        let page = itemCount%(cols*rols) == 0 ? itemCount/(cols*rols) : itemCount/(cols*rols) + 1
+        
+        return CGSize(width: CGFloat(page) * collectionView!.bounds.width, height: 0)
+    }
+}
+// 自定义布局数据源方法
+protocol CustomLayoutDataSource: class {
+    func numberOfCols(_ customLayout: CustomLayout) -> Int
+    func numberOfRols(_ customLayout: CustomLayout) -> Int
+}
+
 
 // MARK: - UICollectionViewCell
 class OrderStarItem: UICollectionViewCell {
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    // 服务类型button
+    @IBOutlet weak var serviceTypeButton: OrderItemButton!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        serviceTypeButton.isUserInteractionEnabled = false
     }
     
-    func update(object: AnyObject, hiddle: Bool) {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    func setServiceType(_ serviceTypeModel : ServiceTypeModel) {
         
+        serviceTypeButton.setTitle(serviceTypeModel.name, for: .normal)
+        serviceTypeButton.setImage(UIImage(named: "kefu_QQ"), for: .normal)
+        serviceTypeButton.setTitle(serviceTypeModel.name, for: .selected)
+        serviceTypeButton.setImage(UIImage(named: "kefu_weixin"), for: .selected)
     }
 }
+private let KOrderStarItemID = "OrderStarItemID"
 
-class OrderStartViewCell: UITableViewCell{
+// MARK : - UITableViewCell
+class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionViewDataSource,CustomLayoutDataSource{
 
     // 分页控件
     @IBOutlet weak var pageControl: UIPageControl!
@@ -28,71 +136,100 @@ class OrderStartViewCell: UITableViewCell{
     // collectionView
     @IBOutlet weak var orderStartCollectionView: UICollectionView!
     
+    // 模型数组
+    var serviceTypeModel : [ServiceTypeModel]?
+    
+    var ordercell : OrderStarItem?
+    
+    var serviceButtonClick :((_ selectIndex : Int) -> ())?
+    
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()
         
         setupInit();
+        
+        AppAPIHelper.marketAPI().requestStarServiceType(starcode: "1001", complete: { (response) in
+            
+            if let models = response as? [ServiceTypeModel] {
+                
+                self.serviceTypeModel = models
+                
+            }
+            self.orderStartCollectionView.reloadData()
+            
+        }) { (error) in
+            SVProgressHUD.showErrorMessage(ErrorMessage: "网络不佳,稍后再试", ForDuration: 2.0, completion: nil)
+        }
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
     }
-
-}
-
-// MRAK: -布局UI
-extension OrderStartViewCell {
-    
+    // MRAK: -布局UI
     func setupInit() {
         
         orderStartCollectionView.delegate = self
-        self.orderStartCollectionView.dataSource = self
+        orderStartCollectionView.dataSource = self
         
-        let flowLayout =   UICollectionViewFlowLayout.init()
-        flowLayout.itemSize = CGSize.init(width: ( UIScreen.main.bounds.size.width - 22 - 34 - 18)/4.0, height: 60)
-        flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        flowLayout.minimumLineSpacing = 5
-        flowLayout.minimumInteritemSpacing = 5
-        self.orderStartCollectionView.collectionViewLayout = flowLayout
-        flowLayout.scrollDirection = .horizontal
+        // 自定义布局
+        let layout = CustomLayout()
+        layout.dataSource = self
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        self.orderStartCollectionView.collectionViewLayout = layout
+        layout.scrollDirection = .horizontal
         
         self.orderStartCollectionView.showsVerticalScrollIndicator = false
         self.orderStartCollectionView.showsHorizontalScrollIndicator = false
-        
         self.orderStartCollectionView.isPagingEnabled = true
+        
     }
     
-}
-
-// MRAK: -UICollectionView  DataSource AND Delegate
-extension OrderStartViewCell : UICollectionViewDelegate,UICollectionViewDataSource {
-    
+    // MRAK: -UICollectionView  DataSource AND Delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        let pageNum = (30 - 1) / 8 + 1
-        pageControl.numberOfPages = pageNum
+        let serviceTypeModelCount = serviceTypeModel?.count ?? 1
         
-        return 30
+        // 分页
+        let pageNum = (serviceTypeModelCount - 1) / 8 + 1
+        pageControl.numberOfPages = pageNum
+
+        return serviceTypeModelCount
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrderStarItem", for: indexPath)
         
-        // 随机颜色测试
-//        let red = CGFloat(arc4random_uniform(255))/CGFloat(255.0)
-//        let green = CGFloat( arc4random_uniform(255))/CGFloat(255.0)
-//        let blue = CGFloat(arc4random_uniform(255))/CGFloat(255.0)
-//        let colorRun = UIColor.init(red:red, green:green, blue:blue , alpha: 1)
-//        
-//        cell.backgroundColor = colorRun
-        
+        if serviceTypeModel?.count ?? 0 == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KOrderStarItemID, for: indexPath) as! OrderStarItem
+            return cell
+        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KOrderStarItemID, for: indexPath) as! OrderStarItem
+        cell.setServiceType(serviceTypeModel![indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell =  collectionView.cellForItem(at: indexPath) as! OrderStarItem
+        // 记录
+        self.ordercell?.serviceTypeButton.isSelected = false
+        
+        cell.serviceTypeButton.isSelected = true
+        
+        self.ordercell = cell
+        
+        let serviceTypeModel = self.serviceTypeModel![indexPath.row]
+        
+         NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.chooseServiceTypeSuccess), object: serviceTypeModel, userInfo: nil)
+        
+//        if serviceButtonClick != nil {
+//            serviceButtonClick!(Int(serviceTypeModel.mid))
+//        }
         
         print("点击了\(indexPath.row)");
     }
@@ -100,4 +237,19 @@ extension OrderStartViewCell : UICollectionViewDelegate,UICollectionViewDataSour
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
     }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    
+    }
+
+    // MRAK: -自定义layout的代理方法
+    func numberOfCols(_ customLayout: CustomLayout) -> Int {
+        return 4
+    }
+    func numberOfRols(_ customLayout: CustomLayout) -> Int {
+        return 2
+    }
+    
 }
+

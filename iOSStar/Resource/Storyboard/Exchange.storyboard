@@ -122,6 +122,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="Kez-9e-jzu">
+                            <rect key="frame" x="0.0" y="143.5" width="375" height="384"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nodata_record" translatesAutoresizingMaskIntoConstraints="NO" id="FVv-10-bpv">
+                                    <rect key="frame" x="87" y="54" width="200" height="186"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无记录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RtS-sF-hhv">
+                                    <rect key="frame" x="61" y="274" width="251" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="6Lu-DC-T1X"/>
+                                        <constraint firstAttribute="width" constant="251" id="7sI-7w-pLF"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="RtS-sF-hhv" firstAttribute="centerX" secondItem="Kez-9e-jzu" secondAttribute="centerX" constant="-1" id="3iJ-PZ-6HO"/>
+                                <constraint firstItem="RtS-sF-hhv" firstAttribute="top" secondItem="FVv-10-bpv" secondAttribute="bottom" constant="34" id="6Vt-jz-NbN"/>
+                                <constraint firstItem="FVv-10-bpv" firstAttribute="centerX" secondItem="Kez-9e-jzu" secondAttribute="centerX" id="9Hc-W3-iuM"/>
+                                <constraint firstItem="FVv-10-bpv" firstAttribute="centerY" secondItem="Kez-9e-jzu" secondAttribute="centerY" constant="-45" id="ztD-an-Nkw"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="70" id="chd-dK-cb7">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="70"/>
@@ -211,6 +237,32 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DVL-Vw-lNd">
                                 <rect key="frame" x="0.0" y="68" width="375" height="599"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="oFg-J2-1KF">
+                                    <rect key="frame" x="0.0" y="88" width="375" height="384"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nodata_record" translatesAutoresizingMaskIntoConstraints="NO" id="Dol-uK-45s">
+                                            <rect key="frame" x="87" y="54" width="200" height="186"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无记录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4i-ui-eU9">
+                                            <rect key="frame" x="61" y="274" width="251" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="hea-wE-MOJ"/>
+                                                <constraint firstAttribute="width" constant="251" id="r41-4O-tGR"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="Dol-uK-45s" firstAttribute="centerY" secondItem="oFg-J2-1KF" secondAttribute="centerY" constant="-45" id="ckH-Zj-vpd"/>
+                                        <constraint firstItem="G4i-ui-eU9" firstAttribute="centerX" secondItem="oFg-J2-1KF" secondAttribute="centerX" constant="-1" id="laU-8V-Z83"/>
+                                        <constraint firstItem="Dol-uK-45s" firstAttribute="centerX" secondItem="oFg-J2-1KF" secondAttribute="centerX" id="liS-4x-GIS"/>
+                                        <constraint firstItem="G4i-ui-eU9" firstAttribute="top" secondItem="Dol-uK-45s" secondAttribute="bottom" constant="34" id="ood-wS-QJk"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContactListCell" rowHeight="60" id="muT-dB-dre" customClass="ContactListCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
@@ -305,6 +357,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iQM-nc-x8V"/>
+                    <connections>
+                        <outlet property="nodaView" destination="oFg-J2-1KF" id="wK2-5P-udZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VLm-rZ-0Wq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -313,7 +368,7 @@
         <!--Base Navigation Controller-->
         <scene sceneID="erg-Nj-ICR">
             <objects>
-                <navigationController storyboardIdentifier="Exchange" automaticallyAdjustsScrollViewInsets="NO" id="IUx-14-n82" customClass="BaseNavigationController" customModule="iOSStar" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IUx-14-n82" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rqe-GR-WuM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -336,5 +391,6 @@
         <image name="8" width="55" height="55"/>
         <image name="exchange_contact" width="159" height="116"/>
         <image name="exchange_system" width="174" height="112"/>
+        <image name="nodata_record" width="200" height="186"/>
     </resources>
 </document>

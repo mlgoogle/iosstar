@@ -58,11 +58,14 @@ class DealSocketAPI: BaseSocketAPI, DealAPI{
          startRequest(packet, complete: complete, error: error)
     
     }
-    //请求当日委托
-    func requestTodayEntrust(requestModel:TodayEntrustRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
-        let packet = SocketDataPacket(opcode: .todayEntrust, model: requestModel)
+    //请求委托列表
+    func requestEntrustList(requestModel:DealRecordRequestModel,OPCode:SocketConst.OPCode,complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode:OPCode, model: requestModel)
         startModelsRequest(packet, listName: "positionsList", modelClass: EntrustListModel.self, complete: complete, error: error)
     }
-
     
+    func requestOrderList(requestModel:DealRecordRequestModel,OPCode:SocketConst.OPCode,complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: OPCode, model: requestModel)
+        startModelsRequest(packet, listName: "ordersList", modelClass: OrderListModel.self, complete: complete, error: error)
+    }
 }

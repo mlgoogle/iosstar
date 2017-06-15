@@ -94,6 +94,8 @@
 		6EFE79E21ECC49570096470D /* MarketFansListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E11ECC49570096470D /* MarketFansListViewController.swift */; };
 		6EFE79E41ECC49710096470D /* MarketAuctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E31ECC49710096470D /* MarketAuctionViewController.swift */; };
 		6EFE79E61ECC49810096470D /* MarketCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */; };
+		8D1660631EF157D50077C377 /* ServiceTypeRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1660621EF157D50077C377 /* ServiceTypeRequestModel.swift */; };
+		8D2C3DBB1EF0CEF100FA996A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2C3DBA1EF0CEF100FA996A /* UIView.swift */; };
 		8D5C28521ED6FB520005B2BE /* OrderStartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5C28511ED6FB520005B2BE /* OrderStartViewCell.swift */; };
 		8D5D21521EE8F92B00DE25A9 /* UITabBar+badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D21511EE8F92B00DE25A9 /* UITabBar+badge.swift */; };
 		8DAC7E291EE1419D001AD3EF /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAC7E281EE1419D001AD3EF /* User.storyboard */; };
@@ -105,6 +107,7 @@
 		8DE79EA51EDE913600F1F24A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE79EA41EDE913600F1F24A /* CFNetwork.framework */; };
 		8DE849401EE7D0DF00D31B1C /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE8493F1EE7D0DF00D31B1C /* UserNotifications.framework */; };
 		8DE849421EE7D10500D31B1C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE849411EE7D10500D31B1C /* AdSupport.framework */; };
+		8DE8F1F31EF0EADC0044A70F /* ServiceTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8F1F21EF0EADC0044A70F /* ServiceTypeModel.swift */; };
 		8DED0E581EEA907A00C10B3E /* CanCopyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DED0E571EEA907A00C10B3E /* CanCopyLabel.swift */; };
 		A001A9721EAD9F8D00752F1A /* ShareDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */; };
 		A0155E071EA8ABF20047B95B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0155E061EA8ABF20047B95B /* Images.xcassets */; };
@@ -586,6 +589,8 @@
 		6EFE79E31ECC49710096470D /* MarketAuctionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketAuctionViewController.swift; sourceTree = "<group>"; };
 		6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketCommentViewController.swift; sourceTree = "<group>"; };
 		8408122B704986AA5A9C486E /* Pods-iOSStar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.debug.xcconfig"; sourceTree = "<group>"; };
+		8D1660621EF157D50077C377 /* ServiceTypeRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTypeRequestModel.swift; sourceTree = "<group>"; };
+		8D2C3DBA1EF0CEF100FA996A /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		8D5C28511ED6FB520005B2BE /* OrderStartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderStartViewCell.swift; sourceTree = "<group>"; };
 		8D5D21511EE8F92B00DE25A9 /* UITabBar+badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITabBar+badge.swift"; sourceTree = "<group>"; };
 		8DAC7E281EE1419D001AD3EF /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
@@ -598,6 +603,7 @@
 		8DE8493F1EE7D0DF00D31B1C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8DE849411EE7D10500D31B1C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		8DE849431EE7D20300D31B1C /* iOSStar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSStar.entitlements; sourceTree = "<group>"; };
+		8DE8F1F21EF0EADC0044A70F /* ServiceTypeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTypeModel.swift; sourceTree = "<group>"; };
 		8DED0E571EEA907A00C10B3E /* CanCopyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanCopyLabel.swift; sourceTree = "<group>"; };
 		8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareDataModel.swift; sourceTree = "<group>"; };
@@ -1636,6 +1642,8 @@
 			children = (
 				6EDA46941EC5AEAA0004F942 /* MarketModel.swift */,
 				6E2D43B01EDEE9DD00DC9643 /* MarketRequestModel.swift */,
+				8DE8F1F21EF0EADC0044A70F /* ServiceTypeModel.swift */,
+				8D1660621EF157D50077C377 /* ServiceTypeRequestModel.swift */,
 			);
 			name = MarketModel;
 			path = iOSStar/Model/MarketModel;
@@ -3174,6 +3182,7 @@
 		A07238881EA76AA300E755DB /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				8D2C3DBA1EF0CEF100FA996A /* UIView.swift */,
 				A05A3D491EEA464800476481 /* UIViewController+Extension.swift */,
 				A0856A101EB0B5C3004F349B /* UIBarExtension.swift */,
 				A0F4FA201ECD70A200D13302 /* NSDateExt.swift */,
@@ -3652,6 +3661,7 @@
 				6E1B56FF1ED296F100A014AE /* MarketAuctionCell.swift in Sources */,
 				A03D3FCB1EA86A6500F85308 /* NTESTextHeaderView.m in Sources */,
 				A03D3F811EA86A6500F85308 /* NTESLiveActionView.m in Sources */,
+				8D2C3DBB1EF0CEF100FA996A /* UIView.swift in Sources */,
 				A03D3F051EA86A6400F85308 /* NIMGroupedUsrInfo.m in Sources */,
 				A03D3F6A1EA86A6500F85308 /* NTESSessionCustomContentConfig.m in Sources */,
 				A07DF7CE1EC072D200C2254E /* UserSocketApi.swift in Sources */,
@@ -3879,6 +3889,7 @@
 				A03D3F651EA86A6500F85308 /* NTESFPSLabel.m in Sources */,
 				A03D3FD01EA86A6500F85308 /* NTESLogViewController.m in Sources */,
 				A08A9BB51EA99547009E6B2B /* ForgotPwdVC.swift in Sources */,
+				8D1660631EF157D50077C377 /* ServiceTypeRequestModel.swift in Sources */,
 				A03D3F631EA86A6500F85308 /* NTESAvatarImageView.m in Sources */,
 				A04CF09F1ED6CB6800B93D28 /* WealthVC.swift in Sources */,
 				A03D3FE71EA86A6500F85308 /* NTESSettingPortraitCell.m in Sources */,
@@ -3918,6 +3929,7 @@
 				A03D3FCF1EA86A6500F85308 /* NTESLogUploader.m in Sources */,
 				6ECAA1AF1ECD761A000FBED7 /* MarketFansCell.swift in Sources */,
 				A03D3F1F1EA86A6400F85308 /* NIMFileContentConfig.m in Sources */,
+				8DE8F1F31EF0EADC0044A70F /* ServiceTypeModel.swift in Sources */,
 				A03D3FA41EA86A6500F85308 /* NTESSnapchatAttachment.m in Sources */,
 				A0EF3B191EB975B10023093A /* SocketConst.swift in Sources */,
 				A03D3F1D1EA86A6400F85308 /* NIMAudioContentConfig.m in Sources */,

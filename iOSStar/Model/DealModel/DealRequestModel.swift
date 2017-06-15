@@ -24,7 +24,7 @@ class CancelOrderRequestModel: MarketBaseModel {
     var orderId:Int64 = 0
 }
 
-class TodayEntrustRequestModel: MarketBaseModel {
+class DealRecordRequestModel: MarketBaseModel {
     var start:Int32 = 0
     var count:Int64 = 10
 }

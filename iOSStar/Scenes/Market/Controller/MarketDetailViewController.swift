@@ -230,10 +230,10 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
     func itemDidSelectAtIndex(index:Int) {
         switch index {
         case 0:
-            pushToDealPage()
+            pushToDealPage(index:index)
 
         case 1:
-            pushToDealPage()
+            pushToDealPage(index:index)
         case 2:
             performSegue(withIdentifier: "meetFans", sender: nil)
         case 3:
@@ -242,12 +242,13 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
             break
         }
     }
-    func pushToDealPage() {
+    func pushToDealPage(index:Int) {
         
         let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as! DealViewController
         vc.starListModel = starModel
         vc.realTimeData = realTimeModel
+        vc.index = index
         navigationController?.pushViewController(vc, animated: true)
         if checkLogin() {
         }

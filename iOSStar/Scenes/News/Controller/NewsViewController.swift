@@ -90,12 +90,8 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
 
     func requestBannerList() {
 
-        let requestModel1 = TodayEntrustRequestModel()
-        AppAPIHelper.dealAPI().requestTodayEntrust(requestModel: requestModel1, complete: { (response) in
-            
-            
-            
-        }, error: errorBlockFunc())
+        let requestModel1 = DealRecordRequestModel()
+    
         return
         let requestModel = SureOrderRequestModel()
         requestModel.orderId = 688831356901432809

@@ -40,7 +40,11 @@ class SocketConst: NSObject {
         //网易云
         case registWY = 9005
         case userinfo = 3007
+        // 修改昵称
+        case modifyNickname = 3031
+
         case paypwd = 7011
+
         case getorderstars = 10012
         case  tokenLogin  = 3009
         //明星个人信息
@@ -83,6 +87,12 @@ class SocketConst: NSObject {
         
         case newsStarInfo = 10001
         
+        // 明星服务类型
+        case starServiceType = 10019
+        // 订购明星服务
+        case buyStarService = 10021
+        // 获取已购明星数量
+        case buyStarCount = 10023
         //实时报价
         case realTime = 4001
         //分时图
@@ -113,7 +123,11 @@ class SocketConst: NSObject {
         case todayEntrust = 6001
         
         //历史委托
-        //case historyEntrust = 6003
+        case historyEntrust = 6005
+        //当天成交
+        case todayOrder = 6007
+        //历史交易
+        case historyOrder = 6009
         
         
     }
@@ -184,7 +198,8 @@ class SocketConst: NSObject {
         static let realname = "realname"
         static let id_card = "id_card"
         static let checkRegist = "checkRegist"
+        static let time = "time"
+        static let id = "uid"
         static let paypwd = "paypwd"
-        static let id  = "uid"
     }
 }

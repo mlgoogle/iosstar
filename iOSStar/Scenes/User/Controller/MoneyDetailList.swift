@@ -18,7 +18,7 @@ class MoneyDetailListCell: OEZTableViewCell {
     @IBOutlet weak var minuteLb: UILabel!          // 分秒
     @IBOutlet weak var bankLogo: UIImageView!      // 银行卡图片
     @IBOutlet weak var withDrawto: UILabel!        // 提现至
-    
+
     override func update(_ data: Any!) {
         
         let model = data as! Model
@@ -36,7 +36,7 @@ class MoneyDetailListCell: OEZTableViewCell {
 
 }
 
-class MoneyDetailList: BaseCustomPageListTableViewController {
+class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDelegate {
     
     var contentoffset = CGFloat()
     var navLeft : UIButton?
@@ -44,6 +44,10 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
     // 存储模型数据传入下一个界面
     var reponseData : Any!
     
+    // 记录传入的月份
+    var indexString : String?
+    
+    @IBOutlet var nodataView: UIView!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -57,7 +61,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
         
         navLeft?.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20)
         let right = UIBarButtonItem.init(customView: navLeft!)
-        
+         nodataView.isHidden = true
         navLeft?.addTarget(self , action: #selector(selectDate), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = right
         navLeft?.setImage(UIImage.init(named: "calendar@2x"), for: .normal)
@@ -66,39 +70,59 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
     
     override func didRequest(_ pageIndex : Int) {
 
-        
-        AppAPIHelper.user().creditlist(status: 0, pos: Int32((pageIndex - 1) * 10), count: 10, complete: { (result) in
-            
-//            print(result)
-            self.reponseData = result
-            
-            if let object = result {
-              let model : RechargeListModel = object as! RechargeListModel
-              self.didRequestComplete(model.depositsinfo as AnyObject)
-            }
-          
-        }) { (error ) in
-            
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-              self.didRequestComplete(nil)
-        }
-       
-
-    }
-    //MARK-
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-        if keyPath == "selectMonth" {
-            
-            if let selectMonth = change? [NSKeyValueChangeKey.newKey] as? String {
-                navLeft?.isEnabled = true
-                self.tableView.isScrollEnabled = true
-                if selectMonth != "1000000" {
-                    //                    monthLb.text = "2017年" + " " + "\(selectMonth)" + "月"
+        if indexString != nil {
+            AppAPIHelper.user().creditlist(status: 0, pos: Int32(pageIndex - 1) * 10, count: 10, time: indexString!, complete: { (result) in
+                
+                self.reponseData = result
+                self.nodataView.isHidden = false
+                if let object = result {
+                    let model : RechargeListModel = object as! RechargeListModel
+                
+                   
+                    self.didRequestComplete(model.depositsinfo as AnyObject)
+                    if self.dataSource?.count == 0 {
+                        self.nodataView.isHidden = false
+                    }else{
+                        self.nodataView.isHidden = true
+                    }
+                    self.tableView.reloadData()
+                
                 }
+            }, error: { (error) in
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+                self.didRequestComplete(nil)
+                self.nodataView.isHidden = false
+                    
+                self.tableView.reloadData()
+            })
+        } else {
+          
+            AppAPIHelper.user().creditlist(status: 0, pos: Int32((pageIndex - 1) * 10), count: 10, time: "", complete: { (result) in
+                
+                print("=====\(String(describing: result))")
+                
+                self.reponseData = result
+                
+                if let object = result {
+                    let model : RechargeListModel = object as! RechargeListModel
+                    self.didRequestComplete(model.depositsinfo as AnyObject)
+                }
+                if self.dataSource?.count == 0 {
+                    self.nodataView.isHidden = false
+                }else{
+                    self.nodataView.isHidden = true
+                }
+                
+            }) { (error ) in
+                self.nodataView.isHidden = true
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+                self.didRequestComplete(nil)
+                self.nodataView.isHidden = false
+                self.tableView.reloadData()
             }
         }
-    }
+ }
+   
     
     deinit {
         ShareDataModel.share().removeObserver(self, forKeyPath: "selectMonth", context: nil)
@@ -119,10 +143,33 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
         
         navLeft?.isEnabled = false
         let customer : CustomeAlertView = CustomeAlertView.init(frame: CGRect.init(x: 0, y: -35, width: self.view.frame.size.width, height: self.view.frame.size.height + 40))
+        customer.delegate = self
         tableView.isScrollEnabled = false
         self.view.addSubview(customer)
     }
     
-    
-    
+    // 代理
+    func didSelectMonth(index: Int) {
+        
+        let indexStr = String.init(format:"%d",index)
+        
+        indexString = indexStr
+        
+        didRequest(0)
+    }
+    //MARK-
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        if keyPath == "selectMonth" {
+            
+            if let selectMonth = change? [NSKeyValueChangeKey.newKey] as? String {
+                navLeft?.isEnabled = true
+                self.tableView.isScrollEnabled = true
+                if selectMonth != "1000000" {
+                    //                    monthLb.text = "2017年" + " " + "\(selectMonth)" + "月"
+                }
+            }
+        }
+    }
+
 }

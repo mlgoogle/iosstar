@@ -13,6 +13,8 @@ class DetailCommenViewController: DealBaseViewController {
     var dealTitles = ["名称/代码","成交时间","成交价/成交量","状态/成交额"]
     var entrustTitles = ["名称/代码","委托价/时间","委托量/成交量","状态"]
 
+    
+    var entrustData:[EntrustListModel]?
     var type:AppConst.DealDetailType = .allEntrust
     var identifiers = ["DealSelectDateCell","DealTitleMenuCell","DealDoubleRowCell"]
     var sectionHeights:[CGFloat] = [80.0, 36.0, 80.0]
@@ -20,23 +22,28 @@ class DetailCommenViewController: DealBaseViewController {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
 
-        if type.hashValue < 2 {
+//        if type.hashValue < 2 {
             identifiers.removeFirst()
             sectionHeights.removeFirst()
-        }
+//        }
         if type == AppConst.DealDetailType.todayEntrust {
-            requestTodayEntrustList()
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    func requestTodayEntrustList() {
-        let requestModel = TodayEntrustRequestModel()
-        AppAPIHelper.dealAPI().requestTodayEntrust(requestModel: requestModel, complete: { (response) in
-            
-            
+    func requestEntrustList() {
+        let requestModel = DealRecordRequestModel()
+        let opcode = SocketConst.OPCode(rawValue: type.rawValue)
+        guard opcode != nil else {
+            return
+        }
+        AppAPIHelper.dealAPI().requestEntrustList(requestModel: requestModel, OPCode: opcode!, complete: { (response) in
+            if let models = response as? [EntrustListModel]{
+                
+                self.entrustData = models
+            }
             
             
         }, error: errorBlockFunc())

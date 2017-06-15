@@ -68,8 +68,21 @@ class EntrustListModel: Object {
     dynamic var symbol = ""
 }
 
-class AllOrderModel: Object {
+class OrderListModel: Object {
 
+    dynamic var amount:Int64 = 0
+    dynamic var buyUid:Int64 = 0
+    dynamic var sellUid:Int64 = 0
+    dynamic var closeTime:Int64 = 0
+    dynamic var grossProfit:Double = 0.0
+    dynamic var openCharge:Double = 0.0
+    dynamic var openTime:Int64 = 0
+    dynamic var orderId:Int64 = 0
+    dynamic var positionId:Int64 = 0
+    dynamic var result = false
+    dynamic var symbol = ""
+    dynamic var handle:Int32 = 0
     
+
 }
 
