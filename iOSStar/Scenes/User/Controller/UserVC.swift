@@ -52,11 +52,11 @@ class UserVC: BaseCustomTableViewController  {
             
             if let model = result {
                 
-                print("-----\(model)")
+                // print("-----\(model)")
                 
                 let objectModle = model as! [String : Int]
                 
-                print("=====\(objectModle)")
+                // print("=====\(objectModle)")
                 
                 if objectModle["amount"] != 0{
                     self.buyStarCountLabel?.text = String.init(format:"%d",objectModle["amount"]!)
@@ -73,7 +73,7 @@ class UserVC: BaseCustomTableViewController  {
         self.getUserInfo { (result) in
             
             if let response = result{
-                print("----\(response)")
+                // print("----\(response)")
                 
                 let model =   response as! UserInfoModel                
                 self.responseData = model

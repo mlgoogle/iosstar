@@ -85,7 +85,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     //MARK:去充值
     @IBAction func doRecharge(_ sender: Any) {
         //微信充值
-        print(rechargeMoney)
+        // print(rechargeMoney)
         if rechargeMoney == 0.0 {
 
         SVProgressHUD.showErrorMessage(ErrorMessage: "请输入充值金额", ForDuration: 2.0, completion: {
@@ -292,7 +292,7 @@ extension RechargeVC {
     
         SVProgressHUD.show(withStatus: "加载中")
         AppAPIHelper.user().weixinpay(title: "余额充值",
-                                      price: 0.01,
+                                      price: rechargeMoney,
                                       complete: { (result) in
                                             SVProgressHUD.dismiss()
                                                 if let object = result {

@@ -85,9 +85,9 @@ extension UIViewController {
     //退出登录
     func userLogout() {
         
-        if (UserDefaults.standard.set((UserDefaults.standard.object(forKey: "phone") as? String)!, forKey: "lastLogin")) != nil {
-            
-            UserDefaults.standard.set((UserDefaults.standard.object(forKey: "phone") as? String)!, forKey: "lastLogin")
+        if let phoneString = UserDefaults.standard.object(forKey: "phone") as? String {
+        
+            UserDefaults.standard.set(phoneString, forKey: "lastLogin")
         }
         
         UserDefaults.standard.removeObject(forKey:"phone")
