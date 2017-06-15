@@ -129,6 +129,9 @@ class SocketConst: NSObject {
         //历史交易
         case historyOrder = 6009
         
+        //粉丝榜
+        case fansList = 6011
+        
         
     }
     enum type:UInt8 {

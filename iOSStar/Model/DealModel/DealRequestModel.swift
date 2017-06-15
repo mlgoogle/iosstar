@@ -28,3 +28,7 @@ class DealRecordRequestModel: MarketBaseModel {
     var start:Int32 = 0
     var count:Int64 = 10
 }
+
+class OrderRecordRequestModel: DealRecordRequestModel {
+    var status:Int32 = 1
+}

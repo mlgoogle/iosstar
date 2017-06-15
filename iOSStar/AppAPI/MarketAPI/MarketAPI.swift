@@ -28,5 +28,5 @@ protocol MarketAPI {
     
     // 订购明星服务
     func requestBuyStarService(requestModel:ServiceTypeRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
-    
+    func requestFansList(requestModel:FanListRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
 }

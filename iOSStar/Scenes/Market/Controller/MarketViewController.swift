@@ -26,8 +26,16 @@ class MarketViewController: UIViewController {
         view.addSubview(menuView!)
         
         perform(#selector(setTypes), with: nil, afterDelay: 0.5)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "test", style: .plain, target: self, action: #selector(test))
     }
+    
+    func test() {
+        let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as! DealViewController
 
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func setTypes() {
         menuView?.types = [MarketClassifyModel]()
     }

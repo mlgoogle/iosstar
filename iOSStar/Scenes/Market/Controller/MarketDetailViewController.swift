@@ -207,7 +207,6 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
             entrys.append(entry)
         }
         self.datas = datas.sorted(by: { (model1, model2) -> Bool in
-            
             return model1.priceTime < model2.priceTime
         })
         let set = LineChartDataSet(values: entrys, label: "分时图")
@@ -245,15 +244,15 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
         }
     }
     func pushToDealPage(index:Int) {
-        
+        //if checkLogin() {
+        //}
         let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as! DealViewController
         vc.starListModel = starModel
         vc.realTimeData = realTimeModel
         vc.index = index
         navigationController?.pushViewController(vc, animated: true)
-        if checkLogin() {
-        }
+
     }
 
     func addOptinal() {

@@ -114,7 +114,11 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         let packet = SocketDataPacket(opcode: .buyStarService, model: requestModel)
 
         startRequest(packet, complete: complete, error: error)
-        
     }
-    
+
+    //粉丝榜
+    func requestFansList(requestModel:FanListRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .fansList, model: requestModel)
+        startRequest(packet, complete: complete, error: error)
+    }
 }

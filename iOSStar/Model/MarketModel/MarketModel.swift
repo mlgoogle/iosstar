@@ -106,7 +106,7 @@ class RealTimeModel: PirceBaseModel {
 }
 
 
-class SearchResultModel: BaseModel {
+class SearchResultModel: Object {
     dynamic var gender = 1
     dynamic var name = ""
     dynamic var pic = ""
@@ -117,8 +117,32 @@ class SearchResultModel: BaseModel {
 
 
 
-class AuctionStatusModel: BaseModel {
+class AuctionStatusModel: Object {
     dynamic var remainingTime:Int64 = 0
     dynamic var status = false
     dynamic var symbol = "1001"
+}
+class FansListModel: Object {
+    
+    dynamic var trades = FansTradesModel()
+    dynamic var user = FansInfoModel()
+}
+
+class FansTradesModel: Object {
+    dynamic var amount = 0
+    dynamic var buySell = 1
+    dynamic var handle = 0
+    dynamic var id = 0
+    dynamic var openCharge = 0.0
+    dynamic var openPrice = 0.0
+    dynamic var positionId:Int64 = 0
+    dynamic var positionTime:Int64 = 0
+    dynamic var symbol = ""
+}
+
+class FansInfoModel: Object {
+    dynamic var gender = 0
+    dynamic var headUrl = ""
+    dynamic var nickname = ""
+    dynamic var uid = 0
 }

@@ -90,7 +90,6 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
 
     func requestBannerList() {
 
-        let requestModel1 = DealRecordRequestModel()
     
         return
         let requestModel = SureOrderRequestModel()
