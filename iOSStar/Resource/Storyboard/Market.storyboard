@@ -1124,7 +1124,7 @@
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                             <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OrderStarItem" id="yud-c1-m4X" customClass="OrderStarItem" customModule="iOSStar" customModuleProvider="target">
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OrderStarItemID" id="yud-c1-m4X" customClass="OrderStarItem" customModule="iOSStar" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="26" width="91" height="80"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1146,6 +1146,9 @@
                                                                         <constraint firstAttribute="bottom" secondItem="SWk-qH-yAf" secondAttribute="bottom" id="ebp-5u-Qob"/>
                                                                         <constraint firstItem="SWk-qH-yAf" firstAttribute="top" secondItem="yud-c1-m4X" secondAttribute="top" id="j2e-4w-IPt"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <outlet property="serviceTypeButton" destination="SWk-qH-yAf" id="mIa-wH-0mc"/>
+                                                                    </connections>
                                                                 </collectionViewCell>
                                                             </cells>
                                                         </collectionView>
@@ -1210,7 +1213,7 @@
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="约见时间" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hji-CD-vPc">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hji-CD-vPc">
                                                     <rect key="frame" x="176" y="12" width="156" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1239,7 +1242,7 @@
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="上海" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2s-qQ-DOa">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2s-qQ-DOa">
                                                     <rect key="frame" x="176" y="12" width="156" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1399,8 +1402,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="completeButton" destination="Avo-Il-8wh" id="luN-gw-KUf"/>
                         <outlet property="inputCityTextField" destination="BQU-Gp-rbz" id="Poa-sJ-0R5"/>
                         <outlet property="inputDateTextField" destination="8WL-dZ-Ns1" id="Q6M-Hz-0k0"/>
+                        <outlet property="priceLabel" destination="SXo-zk-Nro" id="LTG-vN-0qF"/>
                         <outlet property="tableView" destination="jao-zU-N6A" id="jbU-ay-zxH"/>
                     </connections>
                 </viewController>

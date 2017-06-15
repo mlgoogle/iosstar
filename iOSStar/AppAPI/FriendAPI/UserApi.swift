@@ -41,4 +41,7 @@ protocol UserApi {
     // 修改nickname 
     func modifyNickName(nickname:String, complete: CompleteBlock?, error: ErrorBlock?)
     
+    // 获取已购明星数量
+    func requestBuyStarCount(complete: CompleteBlock?, error: ErrorBlock?)
+    
 }
