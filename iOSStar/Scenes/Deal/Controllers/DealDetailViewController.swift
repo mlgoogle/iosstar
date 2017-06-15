@@ -50,15 +50,14 @@ class DealDetailViewController: DealBaseViewController ,DealScrollViewScrollDele
     func addSubViews() {
         let identifiers = ["DetailCommenViewController","DetailCommenViewController","DetailCommenViewController","DetailCommenViewController"]
         
+        let types:[UInt16] = [6007, 6001, 6005, 6009]
         let stroyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
         var views = [UIView]()
         for (index,identifier) in identifiers.enumerated() {
             let vc = stroyBoard.instantiateViewController(withIdentifier: identifier) as! DetailCommenViewController
-            vc.type = AppConst.DealDetailType(rawValue: UInt16(index))!
+            vc.type = AppConst.DealDetailType(rawValue: types[index])!
             views.append(vc.view)
-  
             vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: backView.frame.size.height - 64)
-            
             addChildViewController(vc)
             
         }

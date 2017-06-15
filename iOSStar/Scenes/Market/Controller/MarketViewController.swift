@@ -21,7 +21,8 @@ class MarketViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         menuView = MarketMenuView(frame: CGRect(x: 0, y: 64, width: kScreenWidth, height: kScreenHeight))
         menuView?.navigationController = navigationController
-        menuView?.items = ["自选","明星"]
+        menuView?.items = ["明星"]
+        menuView?.menuView?.isScreenWidth = true
         view.addSubview(menuView!)
         
         perform(#selector(setTypes), with: nil, afterDelay: 0.5)
@@ -35,9 +36,9 @@ class MarketViewController: UIViewController {
         AppAPIHelper.marketAPI().requestTypeList(complete: { (response) in
             if var models = response as? [MarketClassifyModel] {
                 var titles = [String]()
-                let customModel = MarketClassifyModel()
-                customModel.name = "自选"
-                models.insert(customModel, at: 0)
+              //  let customModel = MarketClassifyModel()
+                //customModel.name = "自选"
+                //models.insert(customModel, at: 0)
                 for model in models {
                     titles.append(model.name)
                 }

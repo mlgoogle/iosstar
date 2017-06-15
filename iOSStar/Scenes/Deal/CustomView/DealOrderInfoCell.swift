@@ -10,7 +10,7 @@ import UIKit
 
 protocol OrderInfoChangeDelegate {
     
-    func priceDidChange(price:Double)
+    func priceDidChange(totalPrice:Double,count:Int,price:Double)
 }
 
 class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
@@ -54,10 +54,11 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
         }
     }
     func textDidChange(textField:UITextField) {
-        delegate?.priceDidChange(price: getCurrentPrice())
+        delegate?.priceDidChange(totalPrice: getCurrentPrice(), count: count, price: price)
     }
 
     func setPriceAndCount(price:Double, count:Int) {
+        
         coutTextField.text = "\(count)"
         priceTextField.text = String(format: "%.2f", price)
     }
@@ -113,7 +114,7 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
     
     func setPrice() {
         priceTextField.text = "\(price)"
-        delegate?.priceDidChange(price: getCurrentPrice())
+        delegate?.priceDidChange(totalPrice: getCurrentPrice(), count: count, price: price)
     }
     @IBAction func priceReduce(_ sender: Any) {
         
@@ -155,7 +156,7 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
     }
     func setCount() {
         coutTextField.text = "\(count)"
-        delegate?.priceDidChange(price: getCurrentPrice())
+        delegate?.priceDidChange(totalPrice: getCurrentPrice(), count: count, price: price)
     }
     
     func getCurrentPrice()-> Double{

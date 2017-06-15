@@ -11,14 +11,10 @@ import SVProgressHUD
 class BuyOrSellViewController: DealBaseViewController {
     var identifiers = ["DealStarInfoCell","DealMarketCell","DealOrderInfoCell"]
     var rowHeights = [137, 188,133,82]
-    var dealType:AppConst.DealType = AppConst.DealType.sell {
-        didSet {
-            buyOrSellButton.setTitle("确认求购", for: .normal)
-            buyOrSellButton.backgroundColor = UIColor.init(hexString: AppConst.Color.main)
-        }
-    }
-    
 
+
+    var count = 600
+    var price = 0.0
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var orderPriceLabel: UILabel!
@@ -30,8 +26,14 @@ class BuyOrSellViewController: DealBaseViewController {
         super.viewDidLoad()
         registerNotification()
         
+        if dealType == AppConst.DealType.buy {
+            buyOrSellButton.setTitle("确认求购", for: .normal)
+        } else {
+            buyOrSellButton.setTitle("确认转让", for: .normal)
+        }
+
         if realTimeData != nil {
-            priceDidChange(price: realTimeData!.currentPrice * Double(600))
+            priceDidChange(totalPrice: realTimeData!.currentPrice * Double(600), count: 600, price: realTimeData!.currentPrice)
         }
         
     }
@@ -60,23 +62,13 @@ class BuyOrSellViewController: DealBaseViewController {
     }
     
     @IBAction func buyOrSellAction(_ sender: Any) {
-
-//                let model = BuyOrSellRequestModel()
-//                model.buySell = 2
-//                model.symbol = "1001"
-//                AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: { (response) in
-//                    SVProgressHUD.showSuccess(withStatus: "委托成功")
-//                }) { (error) in
-//        
-//                    
-//                }
-//      
-
         let model = BuyOrSellRequestModel()
-        model.buySell = -1
+        model.buySell = dealType.rawValue
         model.symbol = "1001"
+        model.price = price
+        model.amount = count
         AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: { (response) in
-            SVProgressHUD.showSuccess(withStatus: "委托成功")
+            SVProgressHUD.showSuccessMessage(SuccessMessage: "委托成功", ForDuration: 1.5, completion: nil)
         }) { (error) in
             
         }
@@ -111,22 +103,18 @@ class BuyOrSellViewController: DealBaseViewController {
         }
     }
 }
-//        let model = BuyOrSellRequestModel()
-//        model.buySell = 2
-//        model.symbol = "1001"
-//        AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: { (response) in
-//            SVProgressHUD.showSuccess(withStatus: "委托成功")
-//        }) { (error) in
-//            
-//            
-//        }
 
 extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, OrderInfoChangeDelegate{ 
     
-    func priceDidChange(price:Double) {
-        let priceString = String(format: "%.2f", price)
-        orderPriceLabel.setAttributeText(text: "总价：\(priceString)", firstFont: 18, secondFont: 18, firstColor: UIColor(hexString: "999999"), secondColor: UIColor(hexString: AppConst.Color.orange), range: NSRange(location: 3, length: priceString.length()))
+    
+    func priceDidChange(totalPrice: Double, count: Int, price: Double) {
+        let priceString = String(format: "%.2f", totalPrice)
+        orderPriceLabel.setAttributeText(text: "总价：\(priceString)", firstFont: 18, secondFont: 18, firstColor: UIColor(hexString: "999999"), secondColor: UIColor(hexString: "FB9938"), range: NSRange(location: 3, length: priceString.length()))
+        self.count = count
+        self.price = price
+
     }
+
     func scrollViewDidScroll(_ scrollView: UIScrollView){
         tableView.endEditing(true)
     }
@@ -152,7 +140,6 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
         case 2:
             if let orderCell = cell as? DealOrderInfoCell {
                 orderCell.count = 600
-                
                 orderCell.delegate = self
                 guard realTimeData != nil else {
                     return orderCell

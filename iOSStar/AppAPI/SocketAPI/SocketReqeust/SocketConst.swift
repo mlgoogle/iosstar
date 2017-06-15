@@ -119,6 +119,16 @@ class SocketConst: NSObject {
         //双方确认后结果推送
         case orderResult = 7102
         
+        //当天委托
+        case todayEntrust = 6001
+        
+        //历史委托
+        case historyEntrust = 6005
+        //当天成交
+        case todayOrder = 6007
+        //历史交易
+        case historyOrder = 6009
+        
         
     }
     enum type:UInt8 {

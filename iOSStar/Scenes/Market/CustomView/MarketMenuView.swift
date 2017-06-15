@@ -18,9 +18,9 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }
     var types:[MarketClassifyModel]? {
         didSet {
-            let indexPath = IndexPath(item: 1, section: 0)
+            let indexPath = IndexPath(item: 0, section: 0)
             menuViewDidSelect(indexPath: indexPath)
-            menuView?.selected(index: 1)
+            menuView?.selected(index: 0)
         }
     }
     var subViews:[UIView]?
@@ -81,7 +81,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         setupUI()
     }
     func setupUI() {
-        setMenuCollectionView()
+//        setMenuCollectionView()
         setupInfoView()
         setSubCollectionView()
 
@@ -97,7 +97,12 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         subViewLayout.scrollDirection = .horizontal
         subViewLayout.minimumInteritemSpacing = 0
         subViewLayout.minimumLineSpacing = 0
-        subViewCollectionView = UICollectionView(frame: CGRect(x: 0, y: menuView!.sd_height + infoView.sd_height, width: kScreenWidth, height: kScreenHeight - 90 - 64), collectionViewLayout: subViewLayout)
+//        subViewCollectionView = UICollectionView(frame: CGRect(x: 0, y: menuView!.sd_height + infoView.sd_height, width: kScreenWidth, height: kScreenHeight - 90 - 64), collectionViewLayout: subViewLayout)
+        
+        subViewCollectionView = UICollectionView(frame: CGRect(x: 0, y: infoView.sd_height, width: kScreenWidth, height: kScreenHeight - 90 - 64), collectionViewLayout: subViewLayout)
+
+        subViewCollectionView = UICollectionView(frame: CGRect(x: 0, y: infoView.sd_height, width: kScreenWidth, height: kScreenHeight - 90 - 64), collectionViewLayout: subViewLayout)
+
         subViewCollectionView?.delegate = self
         subViewCollectionView?.isPagingEnabled = true
         subViewCollectionView?.dataSource = self
@@ -111,7 +116,9 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
 
     func setupInfoView() {
         addSubview(infoView)
-        infoView.frame = CGRect(x: 0, y: menuView!.sd_height, width: kScreenWidth, height: 50)
+//        infoView.frame = CGRect(x: 0, y: menuView!.sd_height, width: kScreenWidth, height: 50)
+        infoView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 50)
+
         infoView.addSubview(allLabel)
         infoView.addSubview(priceTypeButton)
         infoView.addSubview(priceChangeButton)
@@ -166,7 +173,8 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }
     func requestDataWithIndexPath() {
         let cell = subViewCollectionView?.cellForItem(at: selectIndexPath) as? MenuSubViewCell
-        cell?.requestStarList(type: selectIndexPath.row, sortType:sortType)
+//        cell?.requestStarList(type: selectIndexPath.row, sortType:sortType)
+        cell?.requestStarList(type: 1, sortType:sortType)
     }
 
     func menuViewDidSelect(indexPath: IndexPath) {
