@@ -64,7 +64,8 @@ class DealSocketAPI: BaseSocketAPI, DealAPI{
         startModelsRequest(packet, listName: "positionsList", modelClass: EntrustListModel.self, complete: complete, error: error)
     }
     
-    func requestOrderList(requestModel:DealRecordRequestModel,OPCode:SocketConst.OPCode,complete: CompleteBlock?, error: ErrorBlock?) {
+    //订单列表
+    func requestOrderList(requestModel:OrderRecordRequestModel,OPCode:SocketConst.OPCode,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: OPCode, model: requestModel)
         startModelsRequest(packet, listName: "ordersList", modelClass: OrderListModel.self, complete: complete, error: error)
     }
