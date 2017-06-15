@@ -23,6 +23,8 @@ class UserVC: BaseCustomTableViewController  {
     var  nickNameLabel : UILabel?
     // icon
     var iconImageView : UIImageView?
+    // 已购明星数量
+    var buyStarCountLabel : UILabel?
     
     // 名字数组
     var titltArry = [""]
@@ -46,6 +48,28 @@ class UserVC: BaseCustomTableViewController  {
     
     func LoginSuccessNotice() {
         
+        AppAPIHelper.user().requestBuyStarCount(complete: { (result) in
+            
+            if let model = result {
+                
+                print("-----\(model)")
+                
+                let objectModle = model as! [String : Int]
+                
+                print("=====\(objectModle)")
+                
+                if objectModle["amount"] != 0{
+                    self.buyStarCountLabel?.text = String.init(format:"%d",objectModle["amount"]!)
+                } else {
+                    self.buyStarCountLabel?.text = "0"
+                }
+                // self.tableView.reloadData()
+            }
+            
+        }) { (error) in
+            
+        }
+        
         self.getUserInfo { (result) in
             
             if let response = result{
@@ -61,7 +85,10 @@ class UserVC: BaseCustomTableViewController  {
 
             }
         }
+        
     }
+        
+
     // MARK: Table view data source
      override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -91,6 +118,7 @@ class UserVC: BaseCustomTableViewController  {
             account = cell.balance
             nickNameLabel = cell.nickNameLabel
             iconImageView = cell.iconImageView
+            buyStarCountLabel = cell.buyStarLabel
            return cell
         }else if indexPath.section == 2{
             

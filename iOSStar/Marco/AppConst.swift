@@ -33,6 +33,7 @@ class AppConst {
     static let bundleId = "com.newxfin.goods"
     static let loginSuccess = "loginSuccess"
     static let loginSuccessNotice = "loginSuccessNotice"
+    static let chooseServiceTypeSuccess = "chooseServiceTypeSuccess" 
     
     enum KVOKey: String {
         case selectProduct = "selectProduct"

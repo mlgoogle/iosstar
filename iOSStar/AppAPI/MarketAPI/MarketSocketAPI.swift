@@ -8,6 +8,8 @@
 
 import Foundation
 class MarketSocketAPI: BaseSocketAPI,MarketAPI {
+
+
     
     //请求行情分类
     func requestTypeList(complete: CompleteBlock?, error: ErrorBlock?) {
@@ -96,4 +98,23 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         let packet = SocketDataPacket(opcode: .auctionStatus, model: requestModel)
         startModelRequest(packet, modelClass: AuctionStatusModel.self, complete: complete, error: error)
     }
+    
+    // 获取明星服务类型
+    func requestStarServiceType(starcode: String, complete: CompleteBlock?, error: ErrorBlock?) {
+        
+        let parameters:[String:Any] = [SocketConst.Key.starcode : starcode]
+        
+        let packet = SocketDataPacket(opcode: .starServiceType, parameters: parameters)
+        
+        startModelsRequest(packet, listName: "list", modelClass: ServiceTypeModel.self, complete: complete, error: error)
+    }
+    // 订购明星服务
+    func requestBuyStarService(requestModel: ServiceTypeRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
+        
+        let packet = SocketDataPacket(opcode: .buyStarService, model: requestModel)
+
+        startRequest(packet, complete: complete, error: error)
+        
+    }
+    
 }

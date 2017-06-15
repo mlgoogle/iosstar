@@ -22,4 +22,11 @@ protocol MarketAPI {
     func requestCommentList(requestModel:CommentListRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
 
     func requestAuctionStatus(requestModel:AuctionStatusRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
+    
+    // 获取明星服务类型
+    func requestStarServiceType(starcode:String,complete: CompleteBlock?, error: ErrorBlock?)
+    
+    // 订购明星服务
+    func requestBuyStarService(requestModel:ServiceTypeRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
+    
 }

@@ -88,6 +88,8 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
           
             AppAPIHelper.user().creditlist(status: 0, pos: Int32((pageIndex - 1) * 10), count: 10, time: "", complete: { (result) in
                 
+                print("=====\(String(describing: result))")
+                
                 self.reponseData = result
                 
                 if let object = result {

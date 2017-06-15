@@ -52,10 +52,10 @@
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketCommentCell" rowHeight="132" id="SZB-KZ-8X9" customClass="MarketCommentCell" customModule="iOSStar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="600" height="132"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="132"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SZB-KZ-8X9" id="72K-sv-dlm">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="132"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQY-du-nZy">
@@ -361,7 +361,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="199.99元/秒" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGb-uW-wv9">
-                                                    <rect key="frame" x="510" y="44" width="78" height="14"/>
+                                                    <rect key="frame" x="285" y="44" width="78" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="14" id="WZd-uL-b20"/>
                                                     </constraints>
@@ -396,7 +396,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05-11 11:11:11" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKR-wM-QaW">
-                                                    <rect key="frame" x="511" y="26" width="76" height="9"/>
+                                                    <rect key="frame" x="286" y="26" width="76" height="9"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="9" id="4dG-bR-DGl"/>
                                                     </constraints>
@@ -405,7 +405,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uRd-Td-2Ak">
-                                                    <rect key="frame" x="97" y="79" width="491" height="1"/>
+                                                    <rect key="frame" x="97" y="79" width="266" height="1"/>
                                                     <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="zpc-ED-Rxe"/>
@@ -470,12 +470,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketSBFansCell" rowHeight="90" id="sMY-br-Ejh" customClass="MarketSBFansCell" customModule="iOSStar" customModuleProvider="target">
-
-                                        <rect key="frame" x="0.0" y="56" width="600" height="90"/>
-
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sMY-br-Ejh" id="ERE-0j-JNk">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fansList_first" translatesAutoresizingMaskIntoConstraints="NO" id="1aD-l6-MpY">
@@ -551,12 +549,10 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketFansCell" id="l7r-ub-FBS" customClass="MarketFansCell" customModule="iOSStar" customModuleProvider="target">
-
-                                        <rect key="frame" x="0.0" y="146" width="600" height="90"/>
-
+                                        <rect key="frame" x="0.0" y="145.5" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l7r-ub-FBS" id="4og-1t-h9I">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="199.99元/秒" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tA6-4W-VKM">
@@ -669,12 +665,10 @@
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MaketBannerCell" rowHeight="177" id="E4S-bR-64I" customClass="MaketBannerCell" customModule="iOSStar" customModuleProvider="target">
-
-                                        <rect key="frame" x="0.0" y="56" width="600" height="177"/>
-
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="177"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E4S-bR-64I" id="Dka-bq-lhJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="177"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="177"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2r7-Du-Ufr" customClass="SDCycleScrollView">
@@ -694,12 +688,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketInfoCell" rowHeight="154" id="qIg-eq-9jR" customClass="MarketInfoCell" customModule="iOSStar" customModuleProvider="target">
-
-                                        <rect key="frame" x="0.0" y="233" width="600" height="154"/>
-
+                                        <rect key="frame" x="0.0" y="232.5" width="375" height="154"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qIg-eq-9jR" id="s1R-Au-nlB">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="154"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IGf-9m-Tct">
@@ -838,10 +830,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketExperienceCell" rowHeight="38" id="4Zj-8E-HbA" customClass="MarketExperienceCell" customModule="iOSStar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="387" width="600" height="38"/>
+                                        <rect key="frame" x="0.0" y="386.5" width="375" height="38"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Zj-8E-HbA" id="It2-q0-OOH">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="38"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017年，主演" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vvi-ZZ-OM8">
@@ -1020,11 +1012,10 @@
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BannerCell" rowHeight="181" id="oHc-iM-7qG">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="181"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="181"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oHc-iM-7qG" id="BVA-ph-s7M">
-
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="180.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="liuyan.png" translatesAutoresizingMaskIntoConstraints="NO" id="Wsp-IA-odM">
@@ -1073,12 +1064,10 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderCell" rowHeight="197" id="PJu-KZ-w46" customClass="OrderStartViewCell" customModule="iOSStar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="209" width="600" height="197"/>
+                                        <rect key="frame" x="0.0" y="209" width="375" height="197"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PJu-KZ-w46" id="glF-nM-weM">
-
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="196"/>
-
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="196.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htb-jj-9Wu">
@@ -1126,7 +1115,7 @@
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                             <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OrderStarItem" id="yud-c1-m4X" customClass="OrderStarItem" customModule="iOSStar" customModuleProvider="target">
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OrderStarItemID" id="yud-c1-m4X" customClass="OrderStarItem" customModule="iOSStar" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="26" width="91" height="80"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1148,6 +1137,9 @@
                                                                         <constraint firstAttribute="bottom" secondItem="SWk-qH-yAf" secondAttribute="bottom" id="ebp-5u-Qob"/>
                                                                         <constraint firstItem="SWk-qH-yAf" firstAttribute="top" secondItem="yud-c1-m4X" secondAttribute="top" id="j2e-4w-IPt"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <outlet property="serviceTypeButton" destination="SWk-qH-yAf" id="mIa-wH-0mc"/>
+                                                                    </connections>
                                                                 </collectionViewCell>
                                                             </cells>
                                                         </collectionView>
@@ -1199,12 +1191,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="OrderTime" rowHeight="45" id="8U3-ZO-brQ" customClass="OrderType" customModule="iOSStar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="406" width="600" height="45"/>
+                                        <rect key="frame" x="0.0" y="406" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8U3-ZO-brQ" id="BeI-OO-1hE">
-
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
-
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="约见时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szY-OZ-3Rr">
@@ -1214,7 +1204,7 @@
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="约见时间" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hji-CD-vPc">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hji-CD-vPc">
                                                     <rect key="frame" x="176" y="12" width="156" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1230,11 +1220,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="OrderCity" rowHeight="45" id="yXw-bB-pSL" customClass="OrderType" customModule="iOSStar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="451" width="600" height="45"/>
+                                        <rect key="frame" x="0.0" y="451" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yXw-bB-pSL" id="RVv-wb-7BP">
-
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="约见城市" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3FH-Nf-TKj">
@@ -1244,7 +1233,7 @@
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="上海" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2s-qQ-DOa">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2s-qQ-DOa">
                                                     <rect key="frame" x="176" y="12" width="156" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1260,19 +1249,17 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedbackCell" rowHeight="200" id="eFL-1H-MTD" customClass="OrderType" customModule="iOSStar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="496" width="600" height="200"/>
+                                        <rect key="frame" x="0.0" y="496" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eFL-1H-MTD" id="kWu-OC-3Qc">
-
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
-
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXs-W1-y9Y">
-                                                    <rect key="frame" x="23" y="8" width="554" height="100"/>
+                                                    <rect key="frame" x="23" y="8" width="329" height="100"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="请输入您对此次约见的其他要求200字以内... " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lxT-jn-6xV">
-                                                            <rect key="frame" x="0.0" y="3" width="548" height="91"/>
+                                                            <rect key="frame" x="0.0" y="3" width="323" height="91"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1295,7 +1282,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2y-8e-SC8">
-                                                    <rect key="frame" x="14" y="113" width="575" height="50"/>
+                                                    <rect key="frame" x="14" y="113" width="350" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="OIA-dn-JBL"/>
                                                     </constraints>
@@ -1406,8 +1393,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="completeButton" destination="Avo-Il-8wh" id="luN-gw-KUf"/>
                         <outlet property="inputCityTextField" destination="BQU-Gp-rbz" id="Poa-sJ-0R5"/>
                         <outlet property="inputDateTextField" destination="8WL-dZ-Ns1" id="Q6M-Hz-0k0"/>
+                        <outlet property="priceLabel" destination="SXo-zk-Nro" id="LTG-vN-0qF"/>
                         <outlet property="tableView" destination="jao-zU-N6A" id="jbU-ay-zxH"/>
                     </connections>
                 </viewController>
@@ -1463,10 +1452,10 @@
                                 <color key="backgroundColor" red="1" green="0.28876109182098764" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" id="gjh-jf-XZW" customClass="SearchResultCell" customModule="iOSStar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="576" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="351" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gjh-jf-XZW" id="A49-KS-bt4">
-                                            <rect key="frame" x="0.0" y="0.0" width="576" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="351" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="柳岩（8888888）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0l-jP-H3S">

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 
 // MARK: - 自定义按钮
 class OrderItemButton : UIButton {
@@ -18,8 +18,7 @@ class OrderItemButton : UIButton {
         self.imageView?.contentMode = .center
         self.titleLabel?.textAlignment = .center
     }
-    
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -33,12 +32,6 @@ class OrderItemButton : UIButton {
         self.titleLabel?.y = (self.imageView?.height)!;
         self.titleLabel?.height = self.height - (self.imageView?.height)!;
     }
-}
-
-
-protocol CustomLayoutDataSource: class {
-    func numberOfCols(_ customLayout: CustomLayout) -> Int
-    func numberOfRols(_ customLayout: CustomLayout) -> Int
 }
 
 // MARK: - 自定义布局
@@ -101,21 +94,41 @@ class CustomLayout: UICollectionViewFlowLayout {
         return CGSize(width: CGFloat(page) * collectionView!.bounds.width, height: 0)
     }
 }
+// 自定义布局数据源方法
+protocol CustomLayoutDataSource: class {
+    func numberOfCols(_ customLayout: CustomLayout) -> Int
+    func numberOfRols(_ customLayout: CustomLayout) -> Int
+}
 
 
 // MARK: - UICollectionViewCell
 class OrderStarItem: UICollectionViewCell {
     
+    // 服务类型button
+    @IBOutlet weak var serviceTypeButton: OrderItemButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        serviceTypeButton.isUserInteractionEnabled = false
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    func setServiceType(_ serviceTypeModel : ServiceTypeModel) {
+        
+        serviceTypeButton.setTitle(serviceTypeModel.name, for: .normal)
+        serviceTypeButton.setImage(UIImage(named: "kefu_QQ"), for: .normal)
+        serviceTypeButton.setTitle(serviceTypeModel.name, for: .selected)
+        serviceTypeButton.setImage(UIImage(named: "kefu_weixin"), for: .selected)
     }
 }
-
-
+private let KOrderStarItemID = "OrderStarItemID"
 
 // MARK : - UITableViewCell
-class OrderStartViewCell: UITableViewCell{
+class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionViewDataSource,CustomLayoutDataSource{
 
     // 分页控件
     @IBOutlet weak var pageControl: UIPageControl!
@@ -123,83 +136,100 @@ class OrderStartViewCell: UITableViewCell{
     // collectionView
     @IBOutlet weak var orderStartCollectionView: UICollectionView!
     
+    // 模型数组
+    var serviceTypeModel : [ServiceTypeModel]?
+    
+    var ordercell : OrderStarItem?
+    
+    var serviceButtonClick :((_ selectIndex : Int) -> ())?
+    
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()
         
         setupInit();
+        
+        AppAPIHelper.marketAPI().requestStarServiceType(starcode: "1001", complete: { (response) in
+            
+            if let models = response as? [ServiceTypeModel] {
+                
+                self.serviceTypeModel = models
+                
+            }
+            self.orderStartCollectionView.reloadData()
+            
+        }) { (error) in
+            SVProgressHUD.showErrorMessage(ErrorMessage: "网络不佳,稍后再试", ForDuration: 2.0, completion: nil)
+        }
+        
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    
-    }
-
-}
-
-// MRAK: -布局UI
-extension OrderStartViewCell {
-    
+    // MRAK: -布局UI
     func setupInit() {
         
         orderStartCollectionView.delegate = self
-        self.orderStartCollectionView.dataSource = self
+        orderStartCollectionView.dataSource = self
         
+        // 自定义布局
         let layout = CustomLayout()
         layout.dataSource = self
         layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        
-        // let flowLayout =   UICollectionViewFlowLayout.init()
-        // flowLayout.itemSize = CGSize.init(width: ( UIScreen.main.bounds.size.width - 22 - 34 - 18)/4.0, height: 60)
-        // flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        // flowLayout.minimumLineSpacing = 5
-        // flowLayout.minimumInteritemSpacing = 5
         self.orderStartCollectionView.collectionViewLayout = layout
         layout.scrollDirection = .horizontal
         
         self.orderStartCollectionView.showsVerticalScrollIndicator = false
         self.orderStartCollectionView.showsHorizontalScrollIndicator = false
-        
         self.orderStartCollectionView.isPagingEnabled = true
         
-        // self.pageControl.setValue(UIImage(named: "page_yuan"), forKey: "pageImage")
-        // self.pageControl.setValue(UIImage(named: "page_tuoyuan"), forKey: "currentPageImage")
     }
     
-}
-
-// MRAK: -UICollectionView  DataSource AND Delegate
-extension OrderStartViewCell : UICollectionViewDelegate,UICollectionViewDataSource {
-    
+    // MRAK: -UICollectionView  DataSource AND Delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        let pageNum = (30 - 1) / 8 + 1
-        pageControl.numberOfPages = pageNum
+        let serviceTypeModelCount = serviceTypeModel?.count ?? 1
         
-        return 30
+        // 分页
+        let pageNum = (serviceTypeModelCount - 1) / 8 + 1
+        pageControl.numberOfPages = pageNum
+
+        return serviceTypeModelCount
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrderStarItem", for: indexPath)
         
-        // 随机颜色测试
-//        let red = CGFloat(arc4random_uniform(255))/CGFloat(255.0)
-//        let green = CGFloat( arc4random_uniform(255))/CGFloat(255.0)
-//        let blue = CGFloat(arc4random_uniform(255))/CGFloat(255.0)
-//        let colorRun = UIColor.init(red:red, green:green, blue:blue , alpha: 1)
-        
-//        cell.backgroundColor = colorRun
-        
+        if serviceTypeModel?.count ?? 0 == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KOrderStarItemID, for: indexPath) as! OrderStarItem
+            return cell
+        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KOrderStarItemID, for: indexPath) as! OrderStarItem
+        cell.setServiceType(serviceTypeModel![indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell =  collectionView.cellForItem(at: indexPath) as! OrderStarItem
+        // 记录
+        self.ordercell?.serviceTypeButton.isSelected = false
+        
+        cell.serviceTypeButton.isSelected = true
+        
+        self.ordercell = cell
+        
+        let serviceTypeModel = self.serviceTypeModel![indexPath.row]
+        
+         NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.chooseServiceTypeSuccess), object: serviceTypeModel, userInfo: nil)
+        
+//        if serviceButtonClick != nil {
+//            serviceButtonClick!(Int(serviceTypeModel.mid))
+//        }
         
         print("点击了\(indexPath.row)");
     }
@@ -207,14 +237,19 @@ extension OrderStartViewCell : UICollectionViewDelegate,UICollectionViewDataSour
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
     }
-}
-
-extension OrderStartViewCell : CustomLayoutDataSource {
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    
+    }
+
+    // MRAK: -自定义layout的代理方法
     func numberOfCols(_ customLayout: CustomLayout) -> Int {
         return 4
     }
     func numberOfRols(_ customLayout: CustomLayout) -> Int {
         return 2
     }
+    
 }
+
