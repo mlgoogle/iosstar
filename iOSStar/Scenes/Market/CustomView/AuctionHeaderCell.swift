@@ -40,6 +40,7 @@ class AuctionHeaderCell: UITableViewCell {
         sellProgressView.setCornoerRadius(byRoundingCorners: [.bottomRight, .topRight], cornerRadii: CGSize(width: 8.0, height: 8.0))
         buyProgressView.setCornoerRadius(byRoundingCorners: [.bottomLeft, .topLeft], cornerRadii: CGSize(width: 8.0, height: 8.0))
         backView.layer.cornerRadius = 3
+        backView.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
     }
     func setTimeText(text:String) {
         

@@ -10,8 +10,10 @@ import UIKit
 
 class MarketSBFansCell: UITableViewCell {
 
+    @IBOutlet var price: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        price.textColor = UIColor.init(hexString: AppConst.Color.orange)
         
     }
 

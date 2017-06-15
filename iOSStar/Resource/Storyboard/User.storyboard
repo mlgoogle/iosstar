@@ -207,6 +207,7 @@
                                         <inset key="separatorInset" minX="10000" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="balance" destination="RdM-hs-Yk1" id="uCv-Gv-4jM"/>
+                                            <outlet property="bgView" destination="T82-np-AnJ" id="zMZ-Kq-hvo"/>
                                             <outlet property="market_cap" destination="06I-on-680" id="O6D-Qo-UPp"/>
                                             <outlet property="total_amt" destination="3Ao-0t-HcC" id="kmh-tN-8Qm"/>
                                         </connections>
@@ -583,6 +584,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="nDD-rN-TBm"/>
                     <connections>
+                        <outlet property="dobuy" destination="np4-wR-ZO8" id="eMq-fR-voC"/>
                         <outlet property="inputMoney" destination="No1-GF-xcM" id="xgZ-HQ-Di8"/>
                         <outlet property="payTypeImg" destination="bNl-NU-OaV" id="m7v-pH-oOp"/>
                         <outlet property="payTypeName" destination="msY-11-Cdy" id="04Z-EN-Y1L"/>
