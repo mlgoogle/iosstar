@@ -15,6 +15,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     
     @IBOutlet var left: NSLayoutConstraint!
     
+    @IBOutlet var hava_account: UIButton!
     
     @IBOutlet weak var registeredButton: UIButton!
     //时间戳
@@ -50,7 +51,8 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     func initUI(){
         
         codeTf.keyboardType =  .numberPad
-        
+        registeredButton.backgroundColor = UIColor.init(hexString: AppConst.Color.main)
+        hava_account.titleLabel?.setAttributeText(text: "已有账户 现在注册", firstFont: 14, secondFont: 14, firstColor: UIColor.init(hexString: "999999"), secondColor: UIColor.init(hexString: AppConst.Color.main), range: NSRange(location: 5, length: 4))
         let h  = UIScreen.main.bounds.size.height <= 568 ? 70.0 : 90
         self.top.constant = UIScreen.main.bounds.size.height/568.0 * CGFloat.init(h)
         print(self.top.constant)

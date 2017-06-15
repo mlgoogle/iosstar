@@ -42,7 +42,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
         if phoneTf.text != "" && codeTf.text != "" && first_input.text != "" && second_input.text != "" {
             
             self.doRset.isEnabled = true
-            self.doRset.backgroundColor = UIColor.init(hexString: "BCE0DA")
+            self.doRset.backgroundColor = UIColor.init(hexString: AppConst.Color.main)
         }else{
             self.doRset.isEnabled = false
             self.doRset.backgroundColor = UIColor.init(hexString: "B8B8B8")
