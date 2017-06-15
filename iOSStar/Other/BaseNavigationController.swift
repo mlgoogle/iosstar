@@ -20,6 +20,7 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
         navigationBar.isTranslucent = false
         
     }
+    
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
