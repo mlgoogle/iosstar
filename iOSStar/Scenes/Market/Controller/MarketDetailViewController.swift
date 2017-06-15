@@ -138,7 +138,9 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
     func setupCustomUI() {
         changeLabel.layer.cornerRadius = 3
         changeLabel.clipsToBounds = true
+        changeLabel.backgroundColor = UIColor.init(hexString: AppConst.Color.main)
         timeLineView.legend.setCustom(entries: [])
+        priceLabel.textColor = UIColor.init(hexString: AppConst.Color.orange)
         timeLineView.noDataText = "暂无数据"
         timeLineView.xAxis.labelPosition = .bottom
         timeLineView.xAxis.drawGridLinesEnabled = false

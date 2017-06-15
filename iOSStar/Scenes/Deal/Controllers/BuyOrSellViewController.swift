@@ -12,6 +12,7 @@ class BuyOrSellViewController: DealBaseViewController {
     var identifiers = ["DealStarInfoCell","DealMarketCell","DealOrderInfoCell"]
     var rowHeights = [137, 188,133,82]
 
+
     var count = 600
     var price = 0.0
     @IBOutlet weak var tableView: UITableView!
@@ -30,6 +31,7 @@ class BuyOrSellViewController: DealBaseViewController {
         } else {
             buyOrSellButton.setTitle("确认转让", for: .normal)
         }
+
         if realTimeData != nil {
             priceDidChange(totalPrice: realTimeData!.currentPrice * Double(600), count: 600, price: realTimeData!.currentPrice)
         }
@@ -110,6 +112,7 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
         orderPriceLabel.setAttributeText(text: "总价：\(priceString)", firstFont: 18, secondFont: 18, firstColor: UIColor(hexString: "999999"), secondColor: UIColor(hexString: "FB9938"), range: NSRange(location: 3, length: priceString.length()))
         self.count = count
         self.price = price
+
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView){
@@ -137,7 +140,6 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
         case 2:
             if let orderCell = cell as? DealOrderInfoCell {
                 orderCell.count = 600
-                
                 orderCell.delegate = self
                 guard realTimeData != nil else {
                     return orderCell

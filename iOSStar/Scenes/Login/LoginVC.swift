@@ -24,6 +24,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
     @IBOutlet var top: NSLayoutConstraint!
     @IBOutlet weak var width: NSLayoutConstraint!
    
+    @IBOutlet var loginBtn: UIButton!
     //手机号
     @IBOutlet weak var passPwd: UITextField!
     // 登录密码
@@ -43,7 +44,10 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
 
 //         UserDefaults.standard.set((UserDefaults.standard.object(forKey: "phone") as? String)!, forKey: "lastLogin")
        
-
+    
+    
+       loginBtn.titleLabel?.setAttributeText(text: "还没有账户 现在注册", firstFont: 14, secondFont: 14, firstColor: UIColor.init(hexString: "999999"), secondColor: UIColor.init(hexString: AppConst.Color.main), range: NSRange(location: 6, length: 4))
+        
         let backViewTap = UITapGestureRecognizer.init(target: self, action: #selector(backViewTapClick))
         backView.addGestureRecognizer(backViewTap)
         backViewTap.delegate = self
@@ -56,6 +60,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         print(self.top.constant)
         self.left.constant = UIScreen.main.bounds.size.width/320.0 * 30
         self.right.constant = UIScreen.main.bounds.size.width/320.0 * 30
+        
         
     }
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {

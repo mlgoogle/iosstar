@@ -11,6 +11,7 @@ import SVProgressHUD
 class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     
     
+    @IBOutlet var dobuy: UIButton!
     var selectTypeHeight = CGFloat.init(140)
     //选中支付方式银行卡号
     @IBOutlet weak var payTypeNumber: UILabel!
@@ -33,6 +34,8 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(paysuccess(_:)), name: Notification.Name(rawValue:AppConst.WechatPay.WechatKeyErrorCode), object: nil)
         title = "充值"
+       
+        dobuy.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
         inputMoney.delegate = self
         inputMoney.keyboardType = .decimalPad
         
@@ -40,6 +43,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         loadview()
         
     }
+    
     //MARK:微信充值成功回调充值
     func paysuccess(_ notice: NSNotification) {
         if let errorCode: Int = notice.object as? Int{
@@ -62,7 +66,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         if selectBtn == true {
             let vi :UIButton =  self.view.viewWithTag(Int.init(rechargeMoney)) as! UIButton
             vi.backgroundColor = UIColor.white
-            vi.setTitleColor(UIColor.init(hexString: "FB9938"), for: .normal)
+            vi.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
             selectBtn = false
              rechargeMoney = 0.0
         }else{
@@ -144,13 +148,13 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         if rechargeMoney != 0.0{
             let vi :UIButton =  self.view.viewWithTag(Int.init(rechargeMoney)) as! UIButton
             vi.backgroundColor = UIColor.white
-            vi.setTitleColor(UIColor.init(hexString: "FB9938"), for: .normal)
+            vi.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
             rechargeMoney = Double.init(btn.tag)
-            btn.backgroundColor = UIColor.init(hexString: "FB9938")
+            btn.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
             btn.setTitleColor(UIColor.white, for: .normal)
             rechargeMoney = Double.init(btn.tag)
         }else{
-            btn.backgroundColor = UIColor.init(hexString: "FB9938")
+            btn.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
             btn.setTitleColor(UIColor.white, for: .normal)
             rechargeMoney = Double.init(btn.tag)
             

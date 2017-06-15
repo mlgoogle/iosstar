@@ -53,14 +53,14 @@ class SystemMessageVC: BasePageListTableViewController {
         
         let nav : UINavigationController = UINavigationController.storyboardInit(identifier: "Input", storyboardName: "Order") as! UINavigationController
          let rootvc = nav.viewControllers[0] as! InputPassVC
-         rootvc.textField.becomeFirstResponder()
+        
          rootvc.resultBlock = { (result) in
                         nav.dismissController()
             
                     }
         nav.modalPresentationStyle = .custom
         nav.modalTransitionStyle = .crossDissolve
-        
+//         rootvc.textField.becomeFirstResponder()
         present(nav, animated: true, completion: nil)
     }
 

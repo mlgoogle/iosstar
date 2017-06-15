@@ -10,7 +10,9 @@ import UIKit
 
 class MarketAuctionCell: UITableViewCell {
 
+    @IBOutlet var price_label: UILabel!
     override func awakeFromNib() {
+        price_label.textColor = UIColor.init(hexString: AppConst.Color.orange)
         super.awakeFromNib()
         
     }
