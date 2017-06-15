@@ -9,6 +9,7 @@
 import UIKit
 class HeaderCell: UITableViewCell {
     
+    @IBOutlet var bgView: UIView!
     // 星享币
     @IBOutlet weak var balance: UILabel!
     // 持有市值
@@ -74,9 +75,11 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let cell  = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as! HeaderCell
         if indexPath.section == 0{
             market_cap = cell.market_cap
+            market_cap?.textColor = UIColor.init(hexString: AppConst.Color.orange)
+            total_amt?.textColor = UIColor.init(hexString: AppConst.Color.orange)
             total_amt = cell.total_amt
             balance = cell.balance
-            
+            cell.bgView.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
             return cell
         }
         if indexPath.section == 1{

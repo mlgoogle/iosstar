@@ -52,6 +52,7 @@ class ContactListCell: OEZTableViewCell {
             } else {
                 statusBtn.setTitle("已拒绝", for: .normal)
             }
+            statusBtn.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
         
         }
        

@@ -14,6 +14,7 @@ class BuyOrSellViewController: DealBaseViewController {
     var dealType:AppConst.DealType = AppConst.DealType.sell {
         didSet {
             buyOrSellButton.setTitle("确认求购", for: .normal)
+            buyOrSellButton.backgroundColor = UIColor.init(hexString: AppConst.Color.main)
         }
     }
     
@@ -28,6 +29,7 @@ class BuyOrSellViewController: DealBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerNotification()
+        
         if realTimeData != nil {
             priceDidChange(price: realTimeData!.currentPrice * Double(600))
         }
@@ -123,7 +125,7 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
     
     func priceDidChange(price:Double) {
         let priceString = String(format: "%.2f", price)
-        orderPriceLabel.setAttributeText(text: "总价：\(priceString)", firstFont: 18, secondFont: 18, firstColor: UIColor(hexString: "999999"), secondColor: UIColor(hexString: "FB9938"), range: NSRange(location: 3, length: priceString.length()))
+        orderPriceLabel.setAttributeText(text: "总价：\(priceString)", firstFont: 18, secondFont: 18, firstColor: UIColor(hexString: "999999"), secondColor: UIColor(hexString: AppConst.Color.orange), range: NSRange(location: 3, length: priceString.length()))
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView){
         tableView.endEditing(true)
