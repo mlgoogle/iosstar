@@ -161,8 +161,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
     // 已购明星接口
     func requestBuyStarCount(complete: CompleteBlock?, error: ErrorBlock?) {
         
-        let param: [String: Any] = [SocketConst.Key.id: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
-                                    SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
+        let param: [String: Any] = [SocketConst.Key.id: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,]
         
         let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .buyStarCount, dict: param  as [String : AnyObject])
         
