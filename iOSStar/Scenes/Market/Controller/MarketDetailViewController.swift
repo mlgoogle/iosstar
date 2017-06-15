@@ -77,7 +77,9 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         headerView.timeLineView = timeLineView
         bottomScrollView.setSubViews(views: subViews)
         handleMenuView.images = images
-        handleMenuView.titles = ["求购", "转让", "粉丝见面会", "自选"]
+//        handleMenuView.titles = ["求购", "转让", "粉丝见面会", "自选"]
+        handleMenuView.titles = ["求购", "转让", "粉丝见面会"]
+
         handleMenuView.delegate = self
         currentVC = childViewControllers.first as? MarketBaseViewController
         menuView.menuView.delegate = self
@@ -133,9 +135,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         }
     }
     
-    
     func setupCustomUI() {
-        
         changeLabel.layer.cornerRadius = 3
         changeLabel.clipsToBounds = true
         changeLabel.backgroundColor = UIColor.init(hexString: AppConst.Color.main)
@@ -198,7 +198,6 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         }
         priceLabel.textColor = UIColor(hexString: colorString)
         changeLabel.backgroundColor = UIColor(hexString: colorString)
-
     }
     
     func setData(datas:[TimeLineModel]) {
@@ -208,7 +207,6 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
             entrys.append(entry)
         }
         self.datas = datas.sorted(by: { (model1, model2) -> Bool in
-            
             return model1.priceTime < model2.priceTime
         })
         let set = LineChartDataSet(values: entrys, label: "分时图")
@@ -233,10 +231,10 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
     func itemDidSelectAtIndex(index:Int) {
         switch index {
         case 0:
-            pushToDealPage()
+            pushToDealPage(index:index)
 
         case 1:
-            pushToDealPage()
+            pushToDealPage(index:index)
         case 2:
             performSegue(withIdentifier: "meetFans", sender: nil)
         case 3:
@@ -245,15 +243,16 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
             break
         }
     }
-    func pushToDealPage() {
-        
+    func pushToDealPage(index:Int) {
+        //if checkLogin() {
+        //}
         let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as! DealViewController
         vc.starListModel = starModel
         vc.realTimeData = realTimeModel
+        vc.index = index
         navigationController?.pushViewController(vc, animated: true)
-        if checkLogin() {
-        }
+
     }
 
     func addOptinal() {
@@ -271,8 +270,11 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
             self.bottomScrollView.scrollView.contentOffset = CGPoint(x: kScreenWidth * CGFloat(indexPath.row), y: 0)
         }
     }
-
+    func scrollBegin() {
+        bottomScrollView.scrollView.isScrollEnabled = false
+    }
     func scrollStop() {
+        bottomScrollView.scrollView.isScrollEnabled = true
         var contentOffset = currentVC?.scrollView?.contentOffset
         if contentOffset!.y > 400{
             contentOffset =   CGPoint(x: contentOffset!.x, y: 424)
@@ -299,15 +301,25 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
                 headerTopMargin.constant = 0
             }
         }
-        print("\(headerTopMargin.constant), \(scrollView.contentOffset.y)")
      }
 
 
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        view.endEditing(true)
 
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == bottomScrollView.scrollView {
+            currentVC?.scrollView?.isScrollEnabled = true
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == bottomScrollView.scrollView {
+            currentVC?.scrollView?.isScrollEnabled = true
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
         if scrollView != bottomScrollView.scrollView {
             if scrollView.contentOffset.y > 0 {
                 headerTopMargin.constant -= (scrollView.contentOffset.y - currentY)

@@ -74,8 +74,7 @@ class YD_CountDownHelper: NSObject {
 
     
     func getResidueCount(closeTime:Int) -> Int {
-        let diffTime = 0
-        return  closeTime - Int(NSDate().timeIntervalSince1970) - diffTime
+        return  closeTime - Int(NSDate().timeIntervalSince1970) - Int(timeDistance)
     }
     
     func getTextWithStartTime(closeTime:Int) -> String{
