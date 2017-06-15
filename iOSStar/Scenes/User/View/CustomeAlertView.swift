@@ -8,11 +8,18 @@
 
 import UIKit
 
+protocol CustomeAlertViewDelegate {
+    
+    func didSelectMonth(index:Int)
+}
+
+
 class CustomeAlertView : UIView,UITableViewDelegate,UITableViewDataSource {
     
+    // 代理属性
+    var delegate :CustomeAlertViewDelegate?
     
     //大背景view
-    
     var bgView = UIView()
     
     var tableView = UITableView()
@@ -101,6 +108,12 @@ class CustomeAlertView : UIView,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
         ShareDataModel.share().selectMonth = "\(indexPath.row + 1)"
+        
+        // 代理
+        if self.delegate != nil {
+            delegate?.didSelectMonth(index: (indexPath.row + 1))
+        }
+        
         UIView.animate(withDuration: 0.1) {
             self.removeFromSuperview()
         }

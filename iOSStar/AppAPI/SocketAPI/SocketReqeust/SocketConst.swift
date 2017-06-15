@@ -40,7 +40,11 @@ class SocketConst: NSObject {
         //网易云
         case registWY = 9005
         case userinfo = 3007
+        // 修改昵称
+        case modifyNickname = 3031
+
         case paypwd = 7011
+
         case getorderstars = 10012
         case  tokenLogin  = 3009
         //明星个人信息
@@ -178,7 +182,8 @@ class SocketConst: NSObject {
         static let realname = "realname"
         static let id_card = "id_card"
         static let checkRegist = "checkRegist"
+        static let time = "time"
+        static let id = "uid"
         static let paypwd = "paypwd"
-        static let id  = "uid"
     }
 }

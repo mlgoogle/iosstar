@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SVProgressHUD
 
-class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavigationControllerDelegate {
+class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavigationControllerDelegate{
     // 手机号
     @IBOutlet weak var phone: UILabel!
     // 昵称
@@ -19,6 +20,10 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
     @IBOutlet weak var realCard: UILabel!
     // 真实姓名
     @IBOutlet weak var realname: UILabel!
+    
+    
+    var userInfoData : UserInfoModel?
+    
     var uploadAlertController:UIAlertController!
     var imagePickerController:UIImagePickerController!
     override func viewDidLoad() {
@@ -31,7 +36,11 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         title = "个人信息"
         initAlertController()
         initImagePickerController()
-      
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "保存", style: .done, target: self, action: #selector(rightItmeClick))
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(hexString: AppConst.Color.main)
+
+        
         self.getUserrealmInfo { (result) in
             if let model = result{
 
@@ -56,10 +65,42 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         let index1 = phonetext.index(phonetext.endIndex, offsetBy: -4)
         self.phone.text =  (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
         
+        
+        self.nickName.text = self.userInfoData?.nick_name
+        self.headerImg.kf.setImage(with: URL(string: (self.userInfoData?.head_url)!), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
 //        self.nickName.text = (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
-        self.nickName.text = phonetext
+        // self.nickName.text = phonetext
     }
- 
+    
+    // 保存名称
+    func rightItmeClick() {
+        // 修改昵称
+        if self.nickName.text?.length() == 0 || (self.nickName.text?.length())! >= 15 {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "昵称不合法", ForDuration: 2.0, completion: nil)
+            return
+        }
+        AppAPIHelper.user().modifyNickName(nickname: self.nickName.text!, complete: { (result) in
+            // result = 1 成功  result = 0 失败
+            if let responseData = result {
+                if responseData["result"] as! Int == 1 {
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "保存成功!", ForDuration: 2.0, completion: { 
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                } else {
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "修改失败,请稍后再试!", ForDuration: 2.0, completion:nil)
+                }
+            }
+        }) { (error) in
+            
+            print(error)
+            
+             SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+        }
+    }
+    
+    
+    
+    
 
    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
@@ -74,12 +115,9 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0{
             if indexPath.row == 0{
-//               
-                   present(self.uploadAlertController, animated:true, completion: nil)
+//                   present(self.uploadAlertController, animated:true, completion: nil)
             }
-            
         }
-       
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

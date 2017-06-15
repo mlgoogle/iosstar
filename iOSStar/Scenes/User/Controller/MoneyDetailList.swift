@@ -18,7 +18,7 @@ class MoneyDetailListCell: OEZTableViewCell {
     @IBOutlet weak var minuteLb: UILabel!          // 分秒
     @IBOutlet weak var bankLogo: UIImageView!      // 银行卡图片
     @IBOutlet weak var withDrawto: UILabel!        // 提现至
-    
+
     override func update(_ data: Any!) {
         
         let model = data as! Model
@@ -36,14 +36,18 @@ class MoneyDetailListCell: OEZTableViewCell {
 
 }
 
-class MoneyDetailList: BaseCustomPageListTableViewController {
+class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDelegate {
     
     var contentoffset = CGFloat()
     var navLeft : UIButton?
-    var nodata : Bool = true
+    
     // 存储模型数据传入下一个界面
     var reponseData : Any!
     
+    // 记录传入的月份
+    var indexString : String?
+    
+    @IBOutlet var nodataView: UIView!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -54,10 +58,10 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
         title = "资金明细"
        
         navLeft = UIButton.init(type: .custom)
-        tableView.register(NoDataCell.self, forCellReuseIdentifier: "NoDataCell")
+        
         navLeft?.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20)
         let right = UIBarButtonItem.init(customView: navLeft!)
-        
+         nodataView.isHidden = true
         navLeft?.addTarget(self , action: #selector(selectDate), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = right
         navLeft?.setImage(UIImage.init(named: "calendar@2x"), for: .normal)
@@ -66,25 +70,90 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
     
     override func didRequest(_ pageIndex : Int) {
 
-        
-        AppAPIHelper.user().creditlist(status: 0, pos: Int32((pageIndex - 1) * 10), count: 10, complete: { (result) in
-            
-//            print(result)
-            self.reponseData = result
-            
-            if let object = result {
-              let model : RechargeListModel = object as! RechargeListModel
-            
-              self.didRequestComplete(model.depositsinfo as AnyObject)
-            }
+        if indexString != nil {
+            AppAPIHelper.user().creditlist(status: 0, pos: Int32(pageIndex - 1) * 10, count: 10, time: indexString!, complete: { (result) in
+                
+                self.reponseData = result
+                self.nodataView.isHidden = false
+                if let object = result {
+                    let model : RechargeListModel = object as! RechargeListModel
+                
+                   
+                    self.didRequestComplete(model.depositsinfo as AnyObject)
+                    if self.dataSource?.count == 0 {
+                        self.nodataView.isHidden = false
+                    }else{
+                        self.nodataView.isHidden = true
+                    }
+                    self.tableView.reloadData()
+                
+                }
+            }, error: { (error) in
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+                self.didRequestComplete(nil)
+                self.nodataView.isHidden = false
+                    
+                self.tableView.reloadData()
+            })
+        } else {
           
-        }) { (error ) in
-            
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-              self.didRequestComplete(nil)
+            AppAPIHelper.user().creditlist(status: 0, pos: Int32((pageIndex - 1) * 10), count: 10, time: "", complete: { (result) in
+                
+                self.reponseData = result
+                
+                if let object = result {
+                    let model : RechargeListModel = object as! RechargeListModel
+                    self.didRequestComplete(model.depositsinfo as AnyObject)
+                }
+                if self.dataSource?.count == 0 {
+                    self.nodataView.isHidden = false
+                }else{
+                    self.nodataView.isHidden = true
+                }
+                
+            }) { (error ) in
+                self.nodataView.isHidden = true
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+                self.didRequestComplete(nil)
+                self.nodataView.isHidden = false
+                self.tableView.reloadData()
+            }
         }
-       
+ }
+   
+    
+    deinit {
+        ShareDataModel.share().removeObserver(self, forKeyPath: "selectMonth", context: nil)
+    }
+    
+    // MARK: - Table view data source
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+        
+        let ResultVC = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResultVC")
+        let moder = self.reponseData as! RechargeListModel
+        (ResultVC as! ResultVC).responseData = moder.depositsinfo?[indexPath.row]
+        self.navigationController?.pushViewController(ResultVC, animated: true)
+    }
+    
+    func selectDate(){
+        
+        navLeft?.isEnabled = false
+        let customer : CustomeAlertView = CustomeAlertView.init(frame: CGRect.init(x: 0, y: -35, width: self.view.frame.size.width, height: self.view.frame.size.height + 40))
+        customer.delegate = self
+        tableView.isScrollEnabled = false
+        self.view.addSubview(customer)
+    }
+    
+    // 代理
+    func didSelectMonth(index: Int) {
+        
+        let indexStr = String.init(format:"%d",index)
+        
+        indexString = indexStr
+        
+        didRequest(0)
     }
     //MARK-
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -100,49 +169,5 @@ class MoneyDetailList: BaseCustomPageListTableViewController {
             }
         }
     }
-    
-    deinit {
-        ShareDataModel.share().removeObserver(self, forKeyPath: "selectMonth", context: nil)
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NoDataCell")
-        
-        if self.dataSource?.count != 0 {
-         let cell = tableView.dequeueReusableCell(withIdentifier: "MoneyDetailListCell") as! MoneyDetailListCell
-            
-         cell.update(dataSource?[indexPath.row])
-        }
-        return cell!
-    }
-    // MARK: - Table view data source
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        
-        let ResultVC = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResultVC")
-        let moder = self.reponseData as! RechargeListModel
-        (ResultVC as! ResultVC).responseData = moder.depositsinfo?[indexPath.row]
-        self.navigationController?.pushViewController(ResultVC, animated: true)
-    }
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if dataSource?.count == 0{
-            
-            return  500
-        }else{
-        return  70
-        }
-    }
-    
-    func selectDate(){
-        
-        navLeft?.isEnabled = false
-        let customer : CustomeAlertView = CustomeAlertView.init(frame: CGRect.init(x: 0, y: -35, width: self.view.frame.size.width, height: self.view.frame.size.height + 40))
-        tableView.isScrollEnabled = false
-        self.view.addSubview(customer)
-    }
-    
-    
-    
 }

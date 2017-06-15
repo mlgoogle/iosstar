@@ -118,6 +118,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
             vaildCodeBtn.isEnabled = false
             // 校验用户是否注册  // 1 表示已注册, // 0 表示未注册
             AppAPIHelper.login().checkRegist(phone: phoneTf.text!, complete: { [weak self] (checkRegistResult) in
+                // print("---\(checkRegistResult)")
                 if let checkRegistResponse = checkRegistResult {
                     if checkRegistResponse["result"] as! Int == 1 {
                         SVProgressHUD.showErrorMessage(ErrorMessage: "该用户已注册!!!", ForDuration: 2.0, completion: nil)

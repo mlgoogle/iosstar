@@ -35,6 +35,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         title = "充值"
         inputMoney.delegate = self
         inputMoney.keyboardType = .decimalPad
+        
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange(_:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
         loadview()
         
@@ -44,8 +45,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         if let errorCode: Int = notice.object as? Int{
             if errorCode == 0 {
                 SVProgressHUD.showSuccess(withStatus: "充值成功")
-                return
-                
+                return  
             }
             else if errorCode == -4{
                 SVProgressHUD.showError(withStatus: "支付失败")
