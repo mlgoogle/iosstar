@@ -204,5 +204,6 @@ class SocketConst: NSObject {
         static let time = "time"
         static let id = "uid"
         static let paypwd = "paypwd"
+    
     }
 }
