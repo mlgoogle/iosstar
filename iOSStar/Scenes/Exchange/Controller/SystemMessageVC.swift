@@ -91,8 +91,14 @@ class SystemMessageVC: BasePageListTableViewController {
                 
 
             }
+            else if (data.sellHandle != -1 || data.buyHandle != -1){
+                
+                
+                
+                
+            }
           //
-        }else if (data.sellHandle != -1 || data.buyHandle != -1){
+        }else{
             let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易？", preferredStyle:.alert)
             // 设置2个UIAlertAction
             let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
@@ -107,9 +113,6 @@ class SystemMessageVC: BasePageListTableViewController {
             alertController.addAction(completeAction)
             // 弹出
             self.present(alertController, animated: true, completion: nil)
-            
-
-        
         }
 //        let nav : UINavigationController = UINavigationController.storyboardInit(identifier: "Input", storyboardName: "Order") as! UINavigationController
 //         let rootvc = nav.viewControllers[0] as! InputPassVC
@@ -158,7 +161,7 @@ class SystemMessageVC: BasePageListTableViewController {
             AppAPIHelper.dealAPI().cancelOrderRequest(requestModel: sure, complete: { (result) in
                 if let object = result  {
                     
-                    if object["result"] as! Int == 0{
+                    if object["status"] as! Int == 0{
                         SVProgressHUD.showSuccess(withStatus: "确认成功")
                     }
                 }
@@ -173,7 +176,7 @@ class SystemMessageVC: BasePageListTableViewController {
                
                 if let object = result  {
                 
-                    if object["result"] as! Int == 0{
+                    if object["status"] as! Int == 0{
                       SVProgressHUD.showSuccess(withStatus: "确认成功")
                     }
                 }
