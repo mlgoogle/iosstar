@@ -69,7 +69,7 @@ class NoDataCell: UITableViewCell {
     }
     func remakeConstranints() {
         infoImageView.snp.remakeConstraints { (make) in
-            make.top.equalTo(0)
+            make.top.equalTo(30)
             make.width.equalTo(kScreenWidth)
             make.right.equalTo(0)
             make.left.equalTo(0)

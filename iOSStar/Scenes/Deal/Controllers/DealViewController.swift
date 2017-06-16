@@ -37,7 +37,7 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
         menuView = YD_VMenuView(frame: CGRect(x: 0, y: 0, width: kScreenWidth - 44, height: 40), layout: layout)
         menuView?.backgroundColor = UIColor.clear
         menuView?.isScreenWidth = true
-        menuView?.items = ["求购","转让","已购","订单","明细"]
+        menuView?.items = ["求购","转让","持有","订单","明细"]
         menuView?.reloadData()
         menuView?.delegate = self
         navigationItem.titleView = menuView

@@ -65,7 +65,7 @@ class BuyOrSellViewController: DealBaseViewController {
         let model = BuyOrSellRequestModel()
         model.buySell = dealType.rawValue
         model.symbol = "1001"
-        model.price = price
+        model.price = 12.01
         model.amount = count
         AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: { (response) in
             SVProgressHUD.showSuccessMessage(SuccessMessage: "委托成功", ForDuration: 1.5, completion: nil)

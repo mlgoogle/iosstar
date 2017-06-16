@@ -15,8 +15,9 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         
         let param: [String: Any] = [SocketConst.Key.status: status,
                                     SocketConst.Key.pos :  pos,
-                                    SocketConst.Key.countNuber :  count,SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
-                                    SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
+                                    SocketConst.Key.countNuber :  count,
+                                    SocketConst.Key.uid : "142",
+                                    SocketConst.Key.token : "123",]
 
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .getlist, dict: param as [String : AnyObject], type: .getlist)
 //        startRequest(packet, complete: complete, error: error)

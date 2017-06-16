@@ -96,6 +96,21 @@ class FansListHeaderView: UITableViewHeaderFooterView {
         buyButton.setTitle(titles.first, for: .normal)
         sellButton.setTitle(titles.last, for: .normal)
     }
+    func selectIndex(index:Int) {
+
+        currentSelectIndex = index
+        var x:CGFloat = 0.0
+        if index == 0 {
+            x = kScreenWidth * 0.25
+        } else {
+            x = kScreenWidth * 0.75
+        }
+        self.backView.center = CGPoint(x: x, y: self.backView.center.y)
+
+
+        
+    }
+    
     func selectAtIndex(sender:UIButton) {
         let index = sender.tag - 2222
         

@@ -15,6 +15,8 @@ class MarketAuctionViewController: MarketBaseViewController {
     var timeLabel:UILabel?
     var headerCell:AuctionHeaderCell?
     
+    var buySell:Int32 = 1
+    var fansList:[FansListModel]?
     var statusModel:AuctionStatusModel?
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -23,8 +25,10 @@ class MarketAuctionViewController: MarketBaseViewController {
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 450))
 
         tableView.register(FansListHeaderView.self, forHeaderFooterViewReuseIdentifier: "FansListHeaderView")
+        tableView.register(NoDataCell.self, forCellReuseIdentifier: NoDataCell.className())
 
         requestAuctionSattus()
+        requestFansList()
     }
 
     func initCountDownBlock() {
@@ -33,12 +37,12 @@ class MarketAuctionViewController: MarketBaseViewController {
             return
         }
         YD_CountDownHelper.shared.marketBuyOrSellListRefresh = { [weak self] (result)in
+           self?.requestFansList()
         }
         
         YD_CountDownHelper.shared.countDownRefresh = { [weak self] (result)in
             guard self != nil  else {
                 return
-                
             }
             self?.count -= 1
             if self?.count != 0 {
@@ -51,7 +55,6 @@ class MarketAuctionViewController: MarketBaseViewController {
         }
     }
     func refreshSatus() {
-        
         guard  statusModel != nil else {
             return
         }
@@ -74,6 +77,20 @@ class MarketAuctionViewController: MarketBaseViewController {
         }, error: errorBlockFunc())
     }
 
+    func requestFansList() {
+        let requestModel = FanListRequestModel()
+        requestModel.buySell = buySell
+        AppAPIHelper.marketAPI().requestEntrustFansList(requestModel: requestModel, complete: { (response) in
+            if let models = response  as? [FansListModel] {
+                self.fansList = models
+                self.tableView.reloadData()
+            }
+            
+            
+        }) { (error) in
+            
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("--------countDownRefresh---------开始----------------")
@@ -96,6 +113,13 @@ class MarketAuctionViewController: MarketBaseViewController {
 extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate, SelectFansDelegate{
     
     func selectAtIndex(index: Int) {
+        if index == 0 {
+            buySell = 1
+        } else {
+        
+            buySell = -1
+        }
+        self.tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -113,7 +137,7 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
         if section == 0 {
             return 1
         }
-        return 10
+        return  fansList?.count ?? 1
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
@@ -128,18 +152,28 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
         if indexPath.section == 0 {
             return 580.5
         }
+        if fansList?.count ?? 0 == 0 {
+            return 500
+        }
         return 90
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         if indexPath.section == 1 {
+            if fansList?.count ?? 0 == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: NoDataCell.className(), for: indexPath) as! NoDataCell
+                cell.setImageAndTitle(image: UIImage(named: "nodata_fanslist"), title: nil)
+                return cell
+            }
             let cell = tableView.dequeueReusableCell(withIdentifier: "MarketAuctionCell", for: indexPath) as! MarketAuctionCell
+            cell.setFans(model:fansList![indexPath.row])
             return cell            
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "AuctionHeaderCell", for: indexPath) as! AuctionHeaderCell
+        
         self.headerCell = cell
 
         return cell
