@@ -107,7 +107,7 @@ class ContainVC: UIViewController {
         let rvc = UIStoryboard.init(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "RegistVC") as! RegistVC
         self.scrollView?.addSubview(rvc.view)
         rvc.view.frame = CGRect.init(x:  vc.view.frame.size.width, y: -10, width: vc.view.frame.size.width, height: ((self.scrollView?.frame.size.height)!+10))
-        rvc.resultBlock = { [weak self](result) in
+          rvc.resultBlock = { [weak self](result) in
             switch result as! doStateClick {
             case .doResetPwd:
                 
