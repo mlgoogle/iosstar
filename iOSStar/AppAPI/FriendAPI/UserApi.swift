@@ -13,7 +13,7 @@ protocol UserApi {
       //获取好友列表
        func starmaillist(status: Int32, pos: Int32, count: Int32, complete: CompleteBlock?, error: ErrorBlock?)
       //发送时间少一秒
-      func reducetime(phone: String, starcode: String, complete: CompleteBlock?, error: ErrorBlock?)
+    func reducetime(phone: String, starcode: String,deduct_amount:Int64, complete: CompleteBlock?, error: ErrorBlock?)
       //预约的明细
       func getorderstars(phone: String, starcode: String, complete: CompleteBlock?, error: ErrorBlock?)
      // 微信支付

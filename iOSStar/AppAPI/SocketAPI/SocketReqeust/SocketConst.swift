@@ -186,6 +186,7 @@ class SocketConst: NSObject {
         static let accid = "accid"
         static let createtime = "createtime"
         static let starcode = "starcode"
+        static let deduct_amount = "deduct_amount"
         static let startnum = "startnum"
         static let endnum = "endnum"
         static let all = "all"

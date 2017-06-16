@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Z4I-1Z-TvG" customClass="TradingAlertView" customModule="iOSStar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smh-hN-U1W" userLabel="topView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tradingAlert" translatesAutoresizingMaskIntoConstraints="NO" id="eP3-j1-QdP">
+                            <rect key="frame" x="24" y="9" width="18" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="18" id="95C-HV-Ysq"/>
+                                <constraint firstAttribute="height" constant="18" id="S4w-TD-QiO"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交易" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTp-bV-HI9">
+                            <rect key="frame" x="50" y="9" width="29" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KP5-PW-HJT">
+                            <rect key="frame" x="317" y="9" width="34" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="KP5-PW-HJT" secondAttribute="trailing" constant="24" id="6mg-4b-cAT"/>
+                        <constraint firstAttribute="height" constant="35" id="G3g-0V-hOb"/>
+                        <constraint firstItem="KP5-PW-HJT" firstAttribute="centerY" secondItem="Smh-hN-U1W" secondAttribute="centerY" id="Ovu-3K-lIx"/>
+                        <constraint firstItem="OTp-bV-HI9" firstAttribute="centerY" secondItem="Smh-hN-U1W" secondAttribute="centerY" id="UE1-uo-mgx"/>
+                        <constraint firstItem="eP3-j1-QdP" firstAttribute="leading" secondItem="Smh-hN-U1W" secondAttribute="leading" constant="24" id="gVv-i8-0c1"/>
+                        <constraint firstItem="OTp-bV-HI9" firstAttribute="leading" secondItem="eP3-j1-QdP" secondAttribute="trailing" constant="8" id="rq7-b1-KbO"/>
+                        <constraint firstItem="eP3-j1-QdP" firstAttribute="centerY" secondItem="Smh-hN-U1W" secondAttribute="centerY" id="uyD-zy-DvT"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="撮合成功提醒：范冰冰（808080）转让成功，请到系统消息中查看撮合成功提醒：范冰冰（808080）转让成功，请到系统消息中查看，点击查看。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSd-EO-qsw">
+                    <rect key="frame" x="25" y="53" width="325" height="39"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Smh-hN-U1W" secondAttribute="trailing" id="0QH-0n-juo"/>
+                <constraint firstAttribute="bottom" secondItem="cSd-EO-qsw" secondAttribute="bottom" constant="18" id="2Qi-Qb-U1b"/>
+                <constraint firstItem="Smh-hN-U1W" firstAttribute="top" secondItem="Z4I-1Z-TvG" secondAttribute="top" id="3vY-H1-CD3"/>
+                <constraint firstItem="cSd-EO-qsw" firstAttribute="top" secondItem="Smh-hN-U1W" secondAttribute="bottom" constant="18" id="HWG-hQ-vOx"/>
+                <constraint firstItem="Smh-hN-U1W" firstAttribute="leading" secondItem="Z4I-1Z-TvG" secondAttribute="leading" id="HZL-jr-1nt"/>
+                <constraint firstAttribute="trailing" secondItem="cSd-EO-qsw" secondAttribute="trailing" constant="25" id="MCG-hb-3OP"/>
+                <constraint firstItem="cSd-EO-qsw" firstAttribute="leading" secondItem="Z4I-1Z-TvG" secondAttribute="leading" constant="25" id="Mv7-Id-yaI"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="detailLabel" destination="cSd-EO-qsw" id="JZw-Ha-H33"/>
+                <outlet property="iconImageView" destination="eP3-j1-QdP" id="5cB-eg-o4o"/>
+                <outlet property="timeLabel" destination="KP5-PW-HJT" id="kfO-hh-Ltg"/>
+                <outlet property="titileLabel" destination="OTp-bV-HI9" id="cTi-PD-5Ly"/>
+            </connections>
+            <point key="canvasLocation" x="-321" y="316"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tradingAlert" width="18" height="18"/>
+    </resources>
+</document>

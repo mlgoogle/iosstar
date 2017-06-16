@@ -17,6 +17,8 @@ class YDSSessionViewController: NTESSessionViewController {
         tableView.backgroundColor = UIColor.init(hexString: "FAFAFA")
         
         
+        print("=====starcode是\(self.starcode)")
+        
         // Do any additional setup after loading the view.
     }
 
@@ -25,17 +27,23 @@ class YDSSessionViewController: NTESSessionViewController {
         // Dispose of any resources that can be recreated.
     }
     //- (void)sendMessage:(NIMMessage *)message
+    
     override func send(_ message: NIMMessage!) {
         
+        // 消息类型 message.messageType
+        // self.starcode
+        let phone = UserDefaults.standard.object(forKey: "phone") as! String
         
-        AppAPIHelper.user().reducetime(phone: "", starcode: "reducetime", complete: { (result)  in
+        AppAPIHelper.user().reducetime(phone: phone, starcode: self.starcode, deduct_amount: 1, complete: { (result) in
+            
+            print("======\(result)")
             
         }) { (error) in
-        }
-        if isbool == false{
-         super.send(message)
-        }else{
             
+        }
+        if isbool == false {
+            super.send(message)
+        } else {
             super.send(message)
         }
        

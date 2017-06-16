@@ -13,7 +13,6 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "我预约的明星"
-    
        
     }
     override func didRequest(_ pageIndex: Int) {
@@ -35,9 +34,9 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
         
         //StarInfoModel
         let model = dataSource?[indexPath.row] as! StarInfoModel
-        
         let session = NIMSession(model.faccid, type: .P2P)
         let vc = NTESSessionViewController(session: session)
+        vc?.starcode = model.starcode
         self.navigationController?.pushViewController(vc!, animated: true)
     }
   
@@ -48,6 +47,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
             let starInfoModel = data as! StarInfoModel
             let session = NIMSession(starInfoModel.faccid, type: .P2P)
             let vc = NTESSessionViewController(session: session)
+            vc?.starcode = starInfoModel.starcode
             self.navigationController?.pushViewController(vc!, animated: true)
 //            print("点击了聊一聊按钮?")
         }
