@@ -137,9 +137,14 @@ class AppConfigHelper: NSObject {
         AppAPIHelper.dealAPI().setReceiveMatching { (response) in
             
             if let model = response as? ReceiveMacthingModel{
-                
+                let alertView = Bundle.main.loadNibNamed("TradingAlertView", owner: nil, options: nil)?.first as! TradingAlertView
+        
+                alertView.str = "撮合成功提醒：范冰冰（808080）转让成功，请到系统消息中查看，点击查看。"
+                alertView.showAlertView()
+                alertView.messageAction = {
+                    print("收到了吗")
+                }
 
-                SVProgressHUD.showSuccess(withStatus: "匹配成功")
             }
             
         }
