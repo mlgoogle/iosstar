@@ -90,8 +90,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
 
     func requestBannerList() {
 
-    
-        return
+
         let requestModel = SureOrderRequestModel()
         requestModel.orderId = 688831356901432809
         requestModel.id = 142

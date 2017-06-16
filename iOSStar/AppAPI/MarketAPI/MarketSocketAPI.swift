@@ -116,9 +116,14 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         startRequest(packet, complete: complete, error: error)
     }
 
-    //粉丝榜
-    func requestFansList(requestModel:FanListRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
+    //委托粉丝榜
+    func requestEntrustFansList(requestModel:FanListRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .fansList, model: requestModel)
-        startRequest(packet, complete: complete, error: error)
+        startModelsRequest(packet, listName: "positionsList", modelClass: FansListModel.self, complete: complete, error: error)
+    }
+    //订单粉丝榜
+    func requestOrderFansList(requestModel:FanListRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .orderFansList, model: requestModel)
+        startModelsRequest(packet, listName: "ordersList", modelClass: OrderFansListModel.self, complete: complete, error: error)
     }
 }

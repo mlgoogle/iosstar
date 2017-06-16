@@ -9,6 +9,7 @@
 import UIKit
 
 class DealSingleRowCell: UITableViewCell {
+    var dealType:[Int:String] = [-1:"委托转让",1:"委托求购"]
 
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -25,6 +26,16 @@ class DealSingleRowCell: UITableViewCell {
         // Initialization code
     }
 
+    
+    func setData(model:EntrustListModel) {
+        
+        codeLabel.text = model.symbol
+        secondLabel.text = "\(model.amount)"
+        thirdLabel.text = "\(model.openPrice)"
+        lastLabel.text = dealType[model.buySell]
+        lastLabel.textColor = UIColor(hexString: "666666")
+        
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

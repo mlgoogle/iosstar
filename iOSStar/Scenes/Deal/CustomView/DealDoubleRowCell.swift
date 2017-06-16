@@ -43,13 +43,20 @@ class DealDoubleRowCell: UITableViewCell {
         thirdLabel2.text = "\(model.amount)"
         lastLabel1.text = dealType[model.buySell]
         lastLabel2.text = dealStatus[model.handle]
+        
+        if model.handle == 0 {
+            setColor(color: UIColor(hexString: "666666"))
+        } else {
+            setColor(color: UIColor(hexString: "cccccc"))
+
+        }
     }
     
     func setOrderModel(model:OrderListModel) {
         underNameLabel.text = model.symbol
-        secondLabel1.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.closeTime), format: "YYYY-MM-DD")
-        secondLabel2.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.closeTime), format: "HH:MM:SS")
-//        thirdLabel1.text = "\(model.price)"
+        secondLabel1.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.openTime), format: "YYYY-MM-dd")
+        secondLabel2.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.openTime), format: "HH:mm:SS")
+        thirdLabel1.text = "\(model.openPrice)"
         thirdLabel2.text = "\(model.amount)"
   //      lastLabel1.text = dealType[model.buySell]
         lastLabel2.text = dealStatus[model.handle]

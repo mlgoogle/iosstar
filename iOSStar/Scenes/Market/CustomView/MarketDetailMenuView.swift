@@ -21,7 +21,6 @@ class MarketDetailMenuView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         addSubview(menuView)
     }
     required init?(coder aDecoder: NSCoder) {

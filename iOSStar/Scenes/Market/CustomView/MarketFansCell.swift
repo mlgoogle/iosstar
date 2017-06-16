@@ -10,13 +10,33 @@ import UIKit
 
 class MarketFansCell: UITableViewCell {
 
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var iconImaageView: UIImageView!
+    @IBOutlet weak var topLabel: UILabel!
     @IBOutlet var price_lb: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         price_lb.textColor = UIColor.init(hexString: AppConst.Color.orange)
         // Initialization code
     }
-
+    func setOrderFans(model:OrderFansListModel,isBuy:Bool,index:Int) {
+        var headerUrl = ""
+        var name = ""
+        if isBuy {
+            headerUrl = (model.buy_user!.headUrl)
+            name = model.buy_user!.nickname
+        } else {
+            headerUrl = model.sell_user!.headUrl
+            name = model.sell_user!.nickname
+        }
+        dateLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(model.trades!.closeTime, format: "MM-DD HH:MM:SS")
+        iconImaageView.kf.setImage(with: URL(string: headerUrl))
+        nameLabel.text = name
+        topLabel.text = "\(index)"
+        price_lb.text = "\(model.trades!.openPrice)元/秒"
+        
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
