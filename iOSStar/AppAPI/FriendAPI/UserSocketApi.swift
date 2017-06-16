@@ -167,6 +167,15 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         startRequest(packet, complete: complete, error: error)
 
     }
+    func addstarinfo(complete: CompleteBlock?, error: ErrorBlock?){
+        let param = [SocketConst.Key.phone :" ",
+                     SocketConst.Key.code : " ",
+                     SocketConst.Key.all: 12,] as [String : Any]
+        
+        let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .newsStarInfo, dict: param  as [String : AnyObject])
+        
+        startModelsRequest(packet, listName: "list", modelClass: StartModel.self, complete: complete, error: error)
+    }
 
     
 }

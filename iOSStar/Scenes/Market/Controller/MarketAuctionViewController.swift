@@ -11,6 +11,7 @@ import UIKit
 class MarketAuctionViewController: MarketBaseViewController {
 
     var count = 540
+    var endTime:Int64 = 0
     var timeLabel:UILabel?
     var headerCell:AuctionHeaderCell?
     
@@ -22,30 +23,49 @@ class MarketAuctionViewController: MarketBaseViewController {
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 450))
 
         tableView.register(FansListHeaderView.self, forHeaderFooterViewReuseIdentifier: "FansListHeaderView")
-        headerCell?.setTimeText(text: "拍卖未开始")
-        YD_CountDownHelper.shared.marketBuyOrSellListRefresh = { [weak self] (result)in
-        }
+
         requestAuctionSattus()
     }
 
-    func refreshSatus() {
-        if statusModel!.status {
-            count = Int(statusModel!.remainingTime)
+    func initCountDownBlock() {
+        
+        guard headerCell != nil else {
+            return
         }
+        YD_CountDownHelper.shared.marketBuyOrSellListRefresh = { [weak self] (result)in
+        }
+        
         YD_CountDownHelper.shared.countDownRefresh = { [weak self] (result)in
+            guard self != nil  else {
+                return
+                
+            }
             self?.count -= 1
             if self?.count != 0 {
-                self?.headerCell?.setTimeText(text:YD_CountDownHelper.shared.getTextWithTimeCount(timeCount:Int((self?.statusModel?.remainingTime)!)))
+                
+                self?.headerCell?.setTimeText(text:YD_CountDownHelper.shared.getTextWithStartTime(closeTime: Int(self!.endTime)))
             } else {
                 self?.headerCell?.setTimeText(text: "拍卖未开始")
             }
             
         }
     }
-    func requestAuctionSattus() {
+    func refreshSatus() {
         
+        guard  statusModel != nil else {
+            return
+        }
+        if statusModel!.status {
+            endTime = Int64(Date().timeIntervalSince1970) + statusModel!.remainingTime + YD_CountDownHelper.shared.timeDistance
+            initCountDownBlock()
+        } else {
+           headerCell?.setTimeText(text: "拍卖未开始")
+        }
+
+    }
+    func requestAuctionSattus() {
         let model = AuctionStatusRequestModel()
-        //model.symbol = starCode
+        model.symbol = starCode!
         AppAPIHelper.marketAPI().requestAuctionStatus(requestModel: model, complete: { (response) in
             if let model = response as? AuctionStatusModel {
                 self.statusModel = model
@@ -57,15 +77,7 @@ class MarketAuctionViewController: MarketBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("--------countDownRefresh---------开始----------------")
-
-        YD_CountDownHelper.shared.countDownRefresh = { [weak self] (result)in
-            
-            
-        }
-        YD_CountDownHelper.shared.marketBuyOrSellListRefresh = { [weak self] (result)in
-            
-            
-        }
+        refreshSatus()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -78,7 +90,6 @@ class MarketAuctionViewController: MarketBaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
 }
 
@@ -125,13 +136,12 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 1 {
-          
             let cell = tableView.dequeueReusableCell(withIdentifier: "MarketAuctionCell", for: indexPath) as! MarketAuctionCell
-            return cell
-            
+            return cell            
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "AuctionHeaderCell", for: indexPath) as! AuctionHeaderCell
         self.headerCell = cell
+
         return cell
     }
 }

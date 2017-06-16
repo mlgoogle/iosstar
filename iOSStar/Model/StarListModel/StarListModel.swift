@@ -27,6 +27,21 @@ class StarListModel: BaseModel {
     }
 
 }
+class StartModel: NSObject {
+    
+    var accid : String = ""
+    var brief : Int64 = 0
+    var code : Int64 = 0
+    var gender : Int64 = 0
+    var name : String = ""
+    var phone : String = ""
+    var price : Int64 = 0
+    var pic_url : Int64 = 0
+    
+    
+    
+}
+
 class StarInfoModel: NSObject {
     
     var faccid : String = ""

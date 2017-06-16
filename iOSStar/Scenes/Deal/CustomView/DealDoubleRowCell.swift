@@ -9,6 +9,10 @@
 import UIKit
 
 class DealDoubleRowCell: UITableViewCell {
+    
+
+    var dealType:[Int:String] = [-1:"转让",1:"求购"]
+    var dealStatus:[Int32:String] = [0:"进行中", 1:"匹配中", 2:"挂单完成"]
     @IBOutlet weak var nameLabel: UILabel!
 
     @IBOutlet weak var underNameLabel: UILabel!
@@ -30,6 +34,26 @@ class DealDoubleRowCell: UITableViewCell {
         // Initialization code
     }
 
+    func setEntruset(model:EntrustListModel) {
+        
+        underNameLabel.text = model.symbol
+        secondLabel1.text = String(format: "%.2f", model.openPrice)
+        secondLabel2.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.positionTime), format: "HH:MM:SS")
+        thirdLabel1.text = "\(model.amount)"
+        thirdLabel2.text = "\(model.amount)"
+        lastLabel1.text = dealType[model.buySell]
+        lastLabel2.text = dealStatus[model.handle]
+    }
+    
+    func setOrderModel(model:OrderListModel) {
+        underNameLabel.text = model.symbol
+        secondLabel1.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.closeTime), format: "YYYY-MM-DD")
+        secondLabel2.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.closeTime), format: "HH:MM:SS")
+//        thirdLabel1.text = "\(model.price)"
+        thirdLabel2.text = "\(model.amount)"
+  //      lastLabel1.text = dealType[model.buySell]
+        lastLabel2.text = dealStatus[model.handle]
+    }
     
     func setColor(color:UIColor) {
         nameLabel.textColor = color

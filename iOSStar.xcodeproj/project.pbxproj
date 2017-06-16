@@ -120,6 +120,7 @@
 		A03A46CB1EEF996500EAB8B1 /* ContainPayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A46CA1EEF996500EAB8B1 /* ContainPayVC.swift */; };
 		A03A46CD1EEF997B00EAB8B1 /* InputPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A46CC1EEF997B00EAB8B1 /* InputPassVC.swift */; };
 		A03A46CF1EEFD5BA00EAB8B1 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A03A46CE1EEFD5BA00EAB8B1 /* Order.storyboard */; };
+		A03B41F01EF266FC00BDC68C /* RechargeCollectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03B41EF1EF266FC00BDC68C /* RechargeCollectView.swift */; };
 		A03D314E1EA8465000F85308 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D314D1EA8465000F85308 /* MobileCoreServices.framework */; };
 		A03D31501EA8466500F85308 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D314F1EA8466500F85308 /* AVFoundation.framework */; };
 		A03D31521EA8469900F85308 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31511EA8469900F85308 /* CoreMedia.framework */; };
@@ -619,6 +620,7 @@
 		A03A46CA1EEF996500EAB8B1 /* ContainPayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainPayVC.swift; sourceTree = "<group>"; };
 		A03A46CC1EEF997B00EAB8B1 /* InputPassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPassVC.swift; sourceTree = "<group>"; };
 		A03A46CE1EEFD5BA00EAB8B1 /* Order.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Order.storyboard; path = iOSSTar/Resource/Storyboard/Order.storyboard; sourceTree = SOURCE_ROOT; };
+		A03B41EF1EF266FC00BDC68C /* RechargeCollectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeCollectView.swift; sourceTree = "<group>"; };
 		A03D314D1EA8465000F85308 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A03D314F1EA8466500F85308 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A03D31511EA8469900F85308 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -3005,6 +3007,7 @@
 			children = (
 				A04CF0891ED6CB6800B93D28 /* RechargeVC.swift */,
 				A04CF08A1ED6CB6800B93D28 /* WithdrawalVC.swift */,
+				A03B41EF1EF266FC00BDC68C /* RechargeCollectView.swift */,
 			);
 			path = recharge;
 			sourceTree = "<group>";
@@ -3810,6 +3813,7 @@
 				A0EF98771EBCC498009B1D8A /* ContainVC.swift in Sources */,
 				A03D3FF01EA86A6500F85308 /* NTESDevice.m in Sources */,
 				A03D3F311EA86A6400F85308 /* NIMSessionMsgDatasource.m in Sources */,
+				A03B41F01EF266FC00BDC68C /* RechargeCollectView.swift in Sources */,
 				A0A996C81EBC4D67000048DC /* LoginApi.swift in Sources */,
 				A084BC8B1ED59CF800DFC868 /* RSADataSigner.m in Sources */,
 				6E1B57191ED40F7800A014AE /* DealMarketCell.swift in Sources */,

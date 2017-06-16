@@ -17,6 +17,9 @@ class PublisherPageViewController: UIViewController {
     var titles = ["1","个人简介", "主要经历", "主要成就"]
     var expericences:[ExperienceModel]?
     var achives:[AchiveModel]?
+    
+    @IBOutlet var doBuy: UIButton!
+    @IBOutlet var shareActionTitle: UIBarButtonItem!
     var bannerDetailModel:BannerDetaiStarModel?
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -26,6 +29,8 @@ class PublisherPageViewController: UIViewController {
         guard bannerModel != nil else {
             return
         }
+        shareActionTitle.tintColor = UIColor.init(hexString: AppConst.Color.main)
+        doBuy.backgroundColor = UIColor.init(hexString: AppConst.Color.main)
         setCustomTitle(title:"\(bannerModel!.name)（\(bannerModel!.code)）")
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: "PubInfoHeaderView")
         automaticallyAdjustsScrollViewInsets = false

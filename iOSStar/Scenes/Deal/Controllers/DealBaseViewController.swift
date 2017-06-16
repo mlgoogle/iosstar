@@ -11,6 +11,7 @@ import UIKit
 class DealBaseViewController: UIViewController {
     var starListModel:MarketListStarModel?
     var realTimeData:RealTimeModel?
+    var dealType:AppConst.DealType = AppConst.DealType.sell
     override func viewDidLoad() {
         super.viewDidLoad()
 

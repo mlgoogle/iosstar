@@ -31,6 +31,7 @@ class  InputPassVC: UIViewController ,UITextFieldDelegate{
     @IBOutlet var contentView: UIView!
     var resultBlock: CompleteBlock?
     var passString : String = ""
+    var showKeyBoard : Bool = false
     fileprivate var pwdCircleArr = [UILabel]()
      var textField:UITextField!
     override func viewDidLoad() {
@@ -52,8 +53,12 @@ class  InputPassVC: UIViewController ,UITextFieldDelegate{
         textField.keyboardType = UIKeyboardType.phonePad
         view.addSubview(textField!)
         textField.backgroundColor = UIColor.red
-//        textField.becomeFirstResponder()
-        
+        switch showKeyBoard {
+        case true:
+            textField.becomeFirstResponder()
+        default:
+            textField.resignFirstResponder()
+        }
         for i in 0  ..< 6 {
             
             
@@ -81,7 +86,7 @@ class  InputPassVC: UIViewController ,UITextFieldDelegate{
         btn.setTitle("忘记密码", for: .normal)
         btn.titleLabel?.font  = UIFont.systemFont(ofSize: 15)
         contentView.addSubview(btn)
-        btn.setTitleColor(UIColor.init(hexString: "FB9938"), for: .normal)
+        btn.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
         btn.addTarget(self, action: #selector(forgotPass), for: .touchUpInside)
         
 

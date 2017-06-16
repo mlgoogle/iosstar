@@ -20,7 +20,7 @@ class DealSocketAPI: BaseSocketAPI, DealAPI{
     //确认订单
     func sureOrderRequest(requestModel:SureOrderRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .sureOrder, model: requestModel)
-        startResultIntRequest(packet, complete: complete, error: error)
+        startModelRequest(packet, modelClass: SureOrderResultModel.self, complete: complete, error: error)
     }
     
     //取消订单
@@ -38,8 +38,8 @@ class DealSocketAPI: BaseSocketAPI, DealAPI{
             }
         }
     }
+    
     //收到匹配成功
-
     func setReceiveMatching(complete:@escaping CompleteBlock) {
         SocketRequestManage.shared.receiveMatching = { (response) in
             let jsonResponse = response as! SocketJsonResponse
@@ -50,15 +50,23 @@ class DealSocketAPI: BaseSocketAPI, DealAPI{
         }
     }
 
+    //验证交易密码
     func checkPayPass( paypwd: String, complete: CompleteBlock?, error: ErrorBlock?){
         let param: [String: Any] = [SocketConst.Key.id: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
                                     SocketConst.Key.paypwd :paypwd, SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
-         print(param)
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .paypwd, dict: param as [String : AnyObject])
          startRequest(packet, complete: complete, error: error)
     
     }
-
-
+    //请求委托列表
+    func requestEntrustList(requestModel:DealRecordRequestModel,OPCode:SocketConst.OPCode,complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode:OPCode, model: requestModel)
+        startModelsRequest(packet, listName: "positionsList", modelClass: EntrustListModel.self, complete: complete, error: error)
+    }
     
+    //订单列表
+    func requestOrderList(requestModel:OrderRecordRequestModel,OPCode:SocketConst.OPCode,complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: OPCode, model: requestModel)
+        startModelsRequest(packet, listName: "ordersList", modelClass: OrderListModel.self, complete: complete, error: error)
+    }
 }
