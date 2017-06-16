@@ -228,8 +228,8 @@ extension RechargeVC {
         let order = Order()
         
         // 需要APPID and privateKey
-        let appID = "APPID"
-        let privateKey = ""
+        let appID = "2017060807450365"
+        let privateKey = "MIICXAIBAAKBgQDi4becNJoefmUGSOS2C+WUCCrcUZLK0J2y1L6HvMu+WKJ1PStbTtD67AeskTN4g17nfKw/nsK1pKEVBv8E/jSsOyqB6zF+J6DbyCLJMK4P4qoxAROQB9oyvuJgEVBUNNN9u4p409MKm3l7nKvFLeDBe8yG+aAvxi1BYl79cWzz7QIDAQABAoGATd8nRCgR1fGP/y45wfonXD3JaEFfXtlnpx+6HaDBVZ3adN7/6KEOvXER2TslLXH5uv5hqJx3PB07ZJo4IaCWtvkkhGRk+OJuxY539heTQu5LI1f8TT9J6gvsc46SW9rI08Q/YhrT4DnCkjCC319l+6uoaxs/QHWJITVvehMiRUECQQD8HH3GF98/p3mmQ/d3IjdOEUZiS0eJvbZ4vqGYxn55pljO88vtoPNGVGiOdl5acD5jKwD6i/o0siXA1UDWxdT5AkEA5mGaKAsnDNoWElRmP+peiaXwtSNoHPllA3FA1noCvZqk5ostP+ZCm0l+XT9lNO9T5IdQ64uevaSjsY3uMdq3lQJBALG1k6Ky6RcBgmqEtkcvwzQwUSCwV7jsFVd/aIE8SaKOc0NN7o2OSm1kyl7BaTjurctRYNs7GB9VA++tYosB4GECQHWkfY3ZNBWx//dYNeaJjcEIhcRZ0j6Jc/WwDYX4RBICOBaqF2876+NUQjzntIy1cceO+dluMJ9yxUxTx8CZiYkCQEH8wNqGse6YEVL7gcBmsJQ0SpBAuVRewdNUs3ZTcF28V3kJD+TzF7nSRjUmh6FVONjieeZY2d0i9KyveDggScA="
         
         // NOTE: app_id设置
         order.app_id = appID;
@@ -286,10 +286,11 @@ extension RechargeVC {
         // NOTE: 将签名成功字符串格式化为订单字符串,请严格按照该格式
         let orderString = "\(String(describing: orderInfoEncoded))&sign=\"\(String(describing: signedString))\"&sign_type=\"RSA\""
         
+        let str = "app_id=2017060807450365&biz_content={\"out_trade_no\":\"20170525191212\",\"product_code\":\"QUICK_MSECURITY_PAY\",\"total_amount\":1000,\"subject\":\"a goods\"}&charset=utf-8&method=alipay.trade.app.pay&notify_url=http://139.224.34.22/cgi-bin/flight/router/v1/get_server.fcgi&sign=yjDnNp+QrpGHYfVrcfzLMDd4QjpRfq6miWyCjRAKF9Gx8H90o6m2m10bpMn1RJnEj9AC0sclZ0uGdeAh/Z6mXPVwD8j1UUdQ6F2g7CuTGw27AyhHtxNIJLlc3bj5fpjEBV8nx/IFbUXENgPbgP4HNkALmFdXgXqxa6HZrapR0OY=&sign_type=RSA&timestamp=2017-06-16"
         print("orderString == \(orderString)")
         
         // NOTE: 调用支付结果开始支付
-        AlipaySDK.defaultService().payOrder(orderString, fromScheme: appScheme, callback: { (resultDic) in
+        AlipaySDK.defaultService().payOrder(str, fromScheme: appScheme, callback: { (resultDic) in
 //            print("resultDic =\(resultDic)")
         })
     }

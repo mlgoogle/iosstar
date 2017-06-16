@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 //import XCGLogger
 import SVProgressHUD
 extension UIViewController {
@@ -230,6 +231,20 @@ extension UIViewController {
                
             }
         }
+    }
+    //获取明星姓名
+    func getStartName(startCode:String,complete: CompleteBlock?){
+        
+        let realm = try! Realm()
+        let filterStr = "code = \(startCode)"
+        let user = realm.objects(StartModel.self).filter(filterStr).first
+        if user != nil{
+             complete?(user as AnyObject)
+        }else{
+            complete?(nil)
+        }
+
+    
     }
  
 }

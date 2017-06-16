@@ -169,9 +169,9 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
 
     }
     func addstarinfo(complete: CompleteBlock?, error: ErrorBlock?){
-        let param = [SocketConst.Key.phone :" ",
-                     SocketConst.Key.code : " ",
-                     SocketConst.Key.all: 12,] as [String : Any]
+        let param = [SocketConst.Key.phone :"1123",
+                     SocketConst.Key.starCode : " 123",
+                     SocketConst.Key.all: 1,] as [String : Any]
         
         let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .newsStarInfo, dict: param  as [String : AnyObject])
         
