@@ -98,16 +98,20 @@ class TradingAlertView: UIView {
     func showAlertView() {
         
         UIApplication.shared.keyWindow?.addSubview(self)
+        UIApplication.shared.setStatusBarHidden(true, with: .fade)
         UIView.animate(withDuration: 0.25) {
             self.frame = CGRect(x: 0,
-                                y: 20,
+                                y: 0,
                                 width: UIScreen.main.bounds.size.width,
                                 height: self.defaultHeight)
         }
+        
     }
     
     // hide
     func disMissAlertView() {
+        UIApplication.shared.setStatusBarHidden(false, with: .fade)
+
         UIView.animate(withDuration: 0.25, animations: {
             self.frame = CGRect(x: 0,
                                 y: -self.defaultHeight,
