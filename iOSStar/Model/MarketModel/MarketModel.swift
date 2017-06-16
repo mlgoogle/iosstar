@@ -124,8 +124,8 @@ class AuctionStatusModel: Object {
 }
 class FansListModel: Object {
     
-    dynamic var trades = FansTradesModel()
-    dynamic var user = FansInfoModel()
+    dynamic var trades:FansTradesModel?
+    dynamic var user:FansInfoModel?
 }
 
 class FansTradesModel: Object {
@@ -145,4 +145,31 @@ class FansInfoModel: Object {
     dynamic var headUrl = ""
     dynamic var nickname = ""
     dynamic var uid = 0
+}
+
+class OrderFansListModel: Object {
+    dynamic var buy_user:BuyOrSellFansModel?
+    dynamic var sell_user:BuyOrSellFansModel?
+    dynamic var trades:OrderTradesModel?
+    
+}
+class BuyOrSellFansModel: Object {
+    dynamic var gender = 0
+    dynamic var headUrl = ""
+    dynamic var nickname = ""
+    dynamic var uid = 0
+}
+
+class OrderTradesModel: Object {
+    dynamic var amount = 21
+    dynamic var buyUid = 152
+    dynamic var closeTime = 0
+    dynamic var grossProfit = 0
+    dynamic var handle = 0
+    dynamic var openCharge = 0
+    dynamic var openTime = 0
+    dynamic var orderId = 0
+    dynamic var sellUid = 0
+    dynamic var symbol = ""
+    dynamic var openPrice = 0.0
 }

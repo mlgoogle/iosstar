@@ -82,7 +82,7 @@ class OrderListModel: Object {
     dynamic var result = false
     dynamic var symbol = ""
     dynamic var handle:Int32 = 0
-    
+    dynamic var openPrice = 0.0
 
 }
 

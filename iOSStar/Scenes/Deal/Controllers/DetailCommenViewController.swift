@@ -70,7 +70,12 @@ class DetailCommenViewController: DealBaseViewController {
         } else {
             let requestModel = OrderRecordRequestModel()
             requestModel.start = Int32(count)
-            requestModel.status = 0
+            if type == .todayComplete   {
+                requestModel.status = 2
+            } else {
+                requestModel.status = 3
+
+            }
             requestOrderData(isRefresh: isRefresh, requestModel: requestModel,opcode:opcode!)
         }
     }

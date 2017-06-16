@@ -7,29 +7,56 @@
 //
 
 import UIKit
+import MJRefresh
 
 class AllOrderViewController: DealBaseViewController {
     
     var identifiers = ["DealTitleMenuCell", NoDataCell.className()]
     @IBOutlet weak var tableView: UITableView!
     var titles = ["名称/代码","委托价/成交","价格","状态"]
-    var orderData:[OrderListModel]?
+    var orderData:[EntrustListModel]?
 
+    var header:MJRefreshNormalHeader?
+    var footer:MJRefreshAutoFooter?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(NoDataCell.self, forCellReuseIdentifier: NoDataCell.className())
-
+        
+        header = MJRefreshNormalHeader(refreshingBlock: {
+            
+            self.requestOrder(isRefresh: true)
+        })
+        
+        footer = MJRefreshAutoFooter(refreshingBlock: {
+            self.requestOrder(isRefresh: false)
+        })
+        tableView.mj_header = header
+        tableView.mj_footer = footer
+        requestOrder(isRefresh: true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    func endRefresh() {
+        if header?.state == .refreshing {
+            header?.endRefreshing()
+        }
+        if footer?.state == .refreshing {
+            footer?.endRefreshing()
+        }
+    }
+    func requestOrder(isRefresh:Bool) {
+        let requestModel = DealRecordRequestModel()
+        AppAPIHelper.dealAPI().requestEntrustList(requestModel: requestModel, OPCode: .historyEntrust, complete: { (response) in
+            self.endRefresh()
 
-    func requestOrder() {
-        let requestModel = OrderRecordRequestModel()
-        AppAPIHelper.dealAPI().requestOrderList(requestModel: requestModel, OPCode: .historyOrder, complete: { (response) in
-            if let models = response as? [OrderListModel] {
-                self.orderData = models
+            if let models = response as? [EntrustListModel] {
+                if isRefresh {
+                    self.orderData = models
+                } else {
+                    self.orderData?.append(contentsOf: models)
+                }
                 if models.count > 0 {
                     self.identifiers.removeLast()
                     self.identifiers.append("DealSingleRowCell")
@@ -38,7 +65,10 @@ class AllOrderViewController: DealBaseViewController {
             }
         }) { (error) in
             self.didRequestError(error)
+            self.endRefresh()
+
         }
+
     }
 }
 
@@ -54,6 +84,10 @@ extension AllOrderViewController:UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             let menuCell = cell as! DealTitleMenuCell
             menuCell.setTitles(titles: titles)
+        } else {
+            if let orderCell = cell as? DealSingleRowCell {
+                orderCell.setData(model: orderData![indexPath.row - 1])
+            }
         }
         return cell
     }
