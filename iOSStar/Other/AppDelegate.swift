@@ -52,12 +52,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         AppAPIHelper.user().addstarinfo(complete: { (result) in
             
             print(NSHomeDirectory())
-            if let model = result as? StartModel{
-                let realm = try! Realm()
-                try! realm.write {
-                    
-                    realm.add(model, update: true)
+            
+            if let model = result as? [StartModel]{
+                
+                for news in model{
+                    let realm = try! Realm()
+                    try! realm.write {
+                        
+                        realm.add(news, update: true)
+                    }
                 }
+               
             }
 
         }) { (error) in

@@ -92,7 +92,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     //MARK:去充值
     @IBAction func doRecharge(_ sender: Any) {
         //微信充值
-        print(rechargeMoney)
+        // print(rechargeMoney)
         if rechargeMoney == 0.0 {
 
         SVProgressHUD.showErrorMessage(ErrorMessage: "请输入充值金额", ForDuration: 2.0, completion: {
@@ -286,10 +286,11 @@ extension RechargeVC {
         // NOTE: 将签名成功字符串格式化为订单字符串,请严格按照该格式
         let orderString = "\(String(describing: orderInfoEncoded))&sign=\"\(String(describing: signedString))\"&sign_type=\"RSA\""
         
+        let str = "app_id=2017060807450365&biz_content={\"out_trade_no\":\"20170525191212\",\"product_code\":\"QUICK_MSECURITY_PAY\",\"total_amount\":1000,\"subject\":\"a goods\"}&charset=utf-8&method=alipay.trade.app.pay&notify_url=http://139.224.34.22/cgi-bin/flight/router/v1/get_server.fcgi&sign=yjDnNp+QrpGHYfVrcfzLMDd4QjpRfq6miWyCjRAKF9Gx8H90o6m2m10bpMn1RJnEj9AC0sclZ0uGdeAh/Z6mXPVwD8j1UUdQ6F2g7CuTGw27AyhHtxNIJLlc3bj5fpjEBV8nx/IFbUXENgPbgP4HNkALmFdXgXqxa6HZrapR0OY=&sign_type=RSA&timestamp=2017-06-16"
         print("orderString == \(orderString)")
         
         // NOTE: 调用支付结果开始支付
-        AlipaySDK.defaultService().payOrder(orderString, fromScheme: appScheme, callback: { (resultDic) in
+        AlipaySDK.defaultService().payOrder(str, fromScheme: appScheme, callback: { (resultDic) in
 //            print("resultDic =\(resultDic)")
         })
     }
@@ -299,7 +300,7 @@ extension RechargeVC {
     
         SVProgressHUD.show(withStatus: "加载中")
         AppAPIHelper.user().weixinpay(title: "余额充值",
-                                      price: 0.01,
+                                      price: rechargeMoney,
                                       complete: { (result) in
                                             SVProgressHUD.dismiss()
                                                 if let object = result {

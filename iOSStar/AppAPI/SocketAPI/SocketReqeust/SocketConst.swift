@@ -42,9 +42,7 @@ class SocketConst: NSObject {
         case userinfo = 3007
         // 修改昵称
         case modifyNickname = 3031
-
         case paypwd = 7011
-
         case getorderstars = 10012
         case  tokenLogin  = 3009
         //明星个人信息
@@ -129,10 +127,10 @@ class SocketConst: NSObject {
         //历史交易
         case historyOrder = 6009
         
-        //粉丝榜
+        //委托粉丝榜粉丝榜
         case fansList = 6011
-        
-        
+        //订单粉丝榜
+        case orderFansList = 6015
     }
     enum type:UInt8 {
         case error  = 0
@@ -188,6 +186,7 @@ class SocketConst: NSObject {
         static let accid = "accid"
         static let createtime = "createtime"
         static let starcode = "starcode"
+        static let deduct_amount = "deduct_amount"
         static let startnum = "startnum"
         static let endnum = "endnum"
         static let all = "all"

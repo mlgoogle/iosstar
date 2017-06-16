@@ -62,7 +62,7 @@ class AuctionStatusRequestModel: MarketBaseModel {
 }
 
 class FanListRequestModel: MarketBaseModel {
-    var symbol = ""
+    var symbol = "1001"
     var buySell:Int32 = 1
     var start:Int32 = 0
     var count:Int64 = 10

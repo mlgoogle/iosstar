@@ -10,13 +10,28 @@ import UIKit
 
 class ExchangeViewController: UIViewController ,UITabBarControllerDelegate,NIMSystemNotificationManagerDelegate,NIMConversationManagerDelegate{
 
+    
+    lazy var tradingAlertView : TradingAlertView = {
+        
+        let alertView = Bundle.main.loadNibNamed("TradingAlertView", owner: nil, options: nil)?.first as! TradingAlertView
+        
+        return alertView
+        
+    }()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         title = "分答"
         // 测试弹窗
-        // navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "record_selected"), style: .done, 
-
+        // self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "添加", style: .done, target: self, action: #selector(rightItemClick))
+        
+        tradingAlertView.str = "撮合成功提醒：范冰冰（808080）转让成功，请到系统消息中查看，点击查看。"
+        tradingAlertView.showAlertView()
+        tradingAlertView.messageAction = {
+            print("收到了吗")
+        }
+        
     }
 
     

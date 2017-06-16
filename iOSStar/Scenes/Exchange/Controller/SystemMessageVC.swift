@@ -16,14 +16,21 @@ class MessageCell:  OEZTableViewCell{
     override func update(_ data: Any!) {
         let model = data as! OrderListModel
        
+         StartModel.getStartName(startCode: model.symbol) { (result) in
+            let data = result as! StartModel
+            let str = model.sellUid == 1 ? "转让":"求购"
+             self.content.text = "\(data.name)" + "(" + "\(data.code)" + ")" + str
+        }
+        
         time_lb.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.openTime), format: "YY-MM-dd HH:mm:ss")
-        content.text = "(求购时间)"
+       
         if model.handle == 0{
             dosee.setTitle("未确认", for: .normal)
         }else{
         
         dosee.setTitle( ((model.buyHandle == 0) && (model.sellHandle == 0)) ? "未确认" : (((model.buyHandle == -1) || (model.sellHandle == -1)) ? "已取消" : ((((model.buyHandle == 0) && (model.sellHandle == 1)) || ((model.buyHandle == 1) && (model.sellHandle == 0))) ? "未确认" : "交易成功")), for: .normal)
     }
+        
     }
     
 }
@@ -53,7 +60,6 @@ class SystemMessageVC: BasePageListTableViewController {
              self.nodata.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
             }
         }
-        print(result)
     }) { (error ) in
          self.didRequestComplete(nil)
          self.nodata.isHidden = false

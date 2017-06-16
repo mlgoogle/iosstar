@@ -38,7 +38,23 @@ class StartModel: Object {
    dynamic  var phone : String = ""
    dynamic var price : Int64 = 0
    dynamic var pic_url : Int64 = 0
+   override static func primaryKey() -> String?{
+        return "code"
+    }
     
+   static func getStartName(startCode:String,complete: CompleteBlock?){
+        
+        let realm = try! Realm()
+        let filterStr = "code = '\(startCode)'"
+        let user = realm.objects(StartModel.self).filter(filterStr).first
+        if user != nil{
+            complete?(user as AnyObject)
+        }else{
+            complete?(nil)
+        }
+        
+        
+    }
     
     
 }
