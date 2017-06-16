@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         // let config = BugoutConfig.default()
         // config?.enabledShakeFeedback = true
         // Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
+        
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        
         sdkConfigDelegate = NTESSDKConfigDelegate.init()
         NIMSDKConfig.shared().delegate = sdkConfigDelegate
         NIMSDKConfig.shared().shouldSyncUnreadCount = true
