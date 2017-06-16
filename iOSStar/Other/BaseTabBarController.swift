@@ -81,9 +81,9 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
         
         if tabBarController.selectedIndex == 2  || tabBarController.selectedIndex == 3{
 
-//            if  checkLogin(){
-//            
-//            }
+            if  checkLogin(){
+            
+            }
         }
     }
 }

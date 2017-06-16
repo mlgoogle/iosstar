@@ -148,7 +148,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
             }) { (error) in
                     btn.isUserInteractionEnabled = true
                     print(error.code)
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "账号不存在或密码错误", ForDuration: 2.0, completion: nil)
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "手机号或密码错误", ForDuration: 2.0, completion: nil)
             }
         } else {
             

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 // 弹窗
 class TradingAlertView: UIView {
@@ -18,6 +19,8 @@ class TradingAlertView: UIView {
     @IBOutlet weak var timeLabel: UILabel!
     
     @IBOutlet weak var detailLabel :UILabel!
+    
+    var isShow : Bool = false
     
     var messageAction : (() -> Void)? = nil
     
@@ -73,7 +76,7 @@ class TradingAlertView: UIView {
         
         // 清扫点击
         let swipe = UIScreenEdgePanGestureRecognizer(target:self, action:#selector(topSwipe(_:)))
-        swipe.edges = UIRectEdge.top //从左边缘开始滑动
+        swipe.edges = UIRectEdge.top
         self.addGestureRecognizer(swipe)
     }
     
@@ -99,11 +102,21 @@ class TradingAlertView: UIView {
         
         UIApplication.shared.keyWindow?.addSubview(self)
         UIApplication.shared.setStatusBarHidden(true, with: .fade)
-        UIView.animate(withDuration: 0.25) {
+        isShow = true
+        UIView.animate(withDuration: 0.25, animations: { 
             self.frame = CGRect(x: 0,
                                 y: 0,
                                 width: UIScreen.main.bounds.size.width,
                                 height: self.defaultHeight)
+        }) { (Bool) in
+         
+//            self.delay(2, task: {
+//                
+//                self.disMissAlertView()
+//            })
+            self.delay(2) {
+                self.disMissAlertView()
+            }
         }
         
     }
@@ -111,7 +124,7 @@ class TradingAlertView: UIView {
     // hide
     func disMissAlertView() {
         UIApplication.shared.setStatusBarHidden(false, with: .fade)
-
+        isShow = false
         UIView.animate(withDuration: 0.25, animations: {
             self.frame = CGRect(x: 0,
                                 y: -self.defaultHeight,
@@ -121,5 +134,54 @@ class TradingAlertView: UIView {
             self.removeFromSuperview()
         }
     }
+    
+    // 是否显示在窗口
+    func isShowingOnKeyWindow () -> Bool{
+        
+        let keyWindow = UIApplication.shared.keyWindow
+        
+        let newFrames = keyWindow?.convert(self.frame, to: self.superview)
+        let winBounds = keyWindow?.bounds
+        // 主窗口的bounds 是否有重叠
+        let intersects = newFrames?.intersects(winBounds!)
+        
+        return !self.isHidden && self.alpha > 0.01 && self.window! == keyWindow && intersects!
+        
+    }
+    
+    
+    // 延迟加载
+    typealias Task = (_ cancel : Bool) -> Void
+    func delay(_ time: TimeInterval, task: @escaping ()->()) ->  Task? {
+        
+        func dispatch_later(block: @escaping ()->()) {
+            let t = DispatchTime.now() + time
+            DispatchQueue.main.asyncAfter(deadline: t, execute: block)
+        }
+        var closure: (()->Void)? = task
+        var result: Task?
+        
+        let delayedClosure: Task = {
+            cancel in
+            if let internalClosure = closure {
+                if (cancel == false) {
+                    DispatchQueue.main.async(execute: internalClosure)
+                }
+            }
+            closure = nil
+            result = nil
+        }
+        
+        result = delayedClosure
+        
+        dispatch_later {
+            if let delayedClosure = result {
+                delayedClosure(false)
+            }
+        }
+        return result
+    }
 }
+
+
 
