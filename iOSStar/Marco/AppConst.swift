@@ -49,6 +49,7 @@ class AppConst {
     class Color {
 
         static let main = "921224"
+        static let orange = "FB9938"
         static let up = "CB4232"
         static let down = "18B03F"
         static let titleColor = "8C0808"
@@ -66,9 +67,10 @@ class AppConst {
     };
     
     class Network {
-        #if true //是否测试环境
+        #if false  //是否测试环境
         static let TcpServerIP:String = "139.224.34.22";
         static let TcpServerPort:UInt16 = 16006
+
 
         static let TttpHostUrl:String = "139.224.34.22";
         #else
@@ -135,19 +137,25 @@ class AppConst {
         case sell = -1
     }
     
+    enum OrderStatus:Int32 {
+        case pending = 0
+        case matching = 1
+        case complete = 2
+    }
+    
     enum SortType:Int {
         case down = 0
         case up = 1
     }
     enum DealDetailType:UInt16 {
         //当日成交
-        case todayComplete = 0
+        case todayComplete = 6007
         //当日委托
-        case todayEntrust = 1
+        case todayEntrust = 6001
         //历史委托
-        case allEntrust = 2
+        case allEntrust = 6005
         //历史交易
-        case allDeal = 3
+        case allDeal = 6009
     }
     
     class WechatKey {

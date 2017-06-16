@@ -11,6 +11,15 @@ import SVProgressHUD
 class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     
     
+    
+    
+    @IBOutlet var collectView: RechargeCollectView!
+
+    
+    
+    
+    
+    @IBOutlet var dobuy: UIButton!
     var selectTypeHeight = CGFloat.init(140)
     //选中支付方式银行卡号
     @IBOutlet weak var payTypeNumber: UILabel!
@@ -33,6 +42,14 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(paysuccess(_:)), name: Notification.Name(rawValue:AppConst.WechatPay.WechatKeyErrorCode), object: nil)
         title = "充值"
+       
+        collectView.resultBlock =  { [weak self](result) in
+        
+            self?.inputMoney.text = result as? String
+            self?.rechargeMoney = Double.init((result as? String)!)!
+        }
+      
+        dobuy.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
         inputMoney.delegate = self
         inputMoney.keyboardType = .decimalPad
         
@@ -57,26 +74,16 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
             }
         }
     }
-    //MARK:键盘编辑
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if selectBtn == true {
-            let vi :UIButton =  self.view.viewWithTag(Int.init(rechargeMoney)) as! UIButton
-            vi.backgroundColor = UIColor.white
-            vi.setTitleColor(UIColor.init(hexString: "FB9938"), for: .normal)
-            selectBtn = false
-             rechargeMoney = 0.0
-        }else{
-            
-        }
-    }
     func textFieldDidChange(_ textFile : NSNotification) {
         
         if inputMoney.text != "" {
             if Double.init(inputMoney.text!)! > 50000 {
                 SVProgressHUD.showError(withStatus: "金额不能大于50000")
                 inputMoney.text = ""
+                collectView.setSelect = "true"
                 return
             }
+            collectView.setSelect = "true"
            rechargeMoney = Double.init(inputMoney.text!)!
         }
      
@@ -142,15 +149,15 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         inputMoney.resignFirstResponder()
         let btn = sender as! UIButton
         if rechargeMoney != 0.0{
-            let vi :UIButton =  self.view.viewWithTag(Int.init(rechargeMoney)) as! UIButton
-            vi.backgroundColor = UIColor.white
-            vi.setTitleColor(UIColor.init(hexString: "FB9938"), for: .normal)
-            rechargeMoney = Double.init(btn.tag)
-            btn.backgroundColor = UIColor.init(hexString: "FB9938")
-            btn.setTitleColor(UIColor.white, for: .normal)
-            rechargeMoney = Double.init(btn.tag)
+//            let vi :UIButton =  self.view.viewWithTag(Int.init(rechargeMoney)) as! UIButton
+//            vi.backgroundColor = UIColor.white
+//            vi.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
+//            rechargeMoney = Double.init(btn.tag)
+//            btn.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
+//            btn.setTitleColor(UIColor.white, for: .normal)
+//            rechargeMoney = Double.init(btn.tag)
         }else{
-            btn.backgroundColor = UIColor.init(hexString: "FB9938")
+            btn.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
             btn.setTitleColor(UIColor.white, for: .normal)
             rechargeMoney = Double.init(btn.tag)
             

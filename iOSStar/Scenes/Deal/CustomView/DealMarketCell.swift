@@ -15,6 +15,10 @@ class DealMarketCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        priceLabel.textColor = UIColor.init(hexString: AppConst.Color.orange)
+        changePriceLabel.textColor = UIColor.init(hexString: AppConst.Color.main)
+        changePercentLabel.textColor = UIColor.init(hexString: AppConst.Color.main)
+        
         // Initialization code
     }
 
@@ -23,7 +27,23 @@ class DealMarketCell: UITableViewCell {
         guard model != nil else {
             return
         }
-        changePriceLabel.text = String(format: "%.2f", model!.change)
+        var colorString = AppConst.Color.up
+        let percent = model!.pchg
+
+        if model!.change < 0 {
+            changePercentLabel.text = String(format: "%.2f%%", -percent)
+
+            changePriceLabel.text = String(format: "%.2f", model!.change)
+            colorString = AppConst.Color.down
+        }else{
+            changePercentLabel.text = String(format: "+%.2f%%",percent)
+
+            changePriceLabel.text = String(format: "%.2f",model!.change)
+        }
+        changePriceLabel.textColor = UIColor(hexString: colorString)
+        changePercentLabel.textColor = UIColor(hexString: colorString)
+
+
         priceLabel.text = String(format: "%.2f", model!.currentPrice)
         
         

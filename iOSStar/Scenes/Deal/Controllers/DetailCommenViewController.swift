@@ -7,37 +7,138 @@
 //
 
 import UIKit
-
+import MJRefresh
 class DetailCommenViewController: DealBaseViewController {
     @IBOutlet weak var tableView: UITableView!
     var dealTitles = ["名称/代码","成交时间","成交价/成交量","状态/成交额"]
     var entrustTitles = ["名称/代码","委托价/时间","委托量/成交量","状态"]
-
+    var header:MJRefreshNormalHeader?
+    var footer:MJRefreshAutoFooter?
+    var count = 0
+    var orderData:[OrderListModel]?
+    var entrustData:[EntrustListModel]?
     var type:AppConst.DealDetailType = .allEntrust
-    var identifiers = ["DealSelectDateCell","DealTitleMenuCell","DealDoubleRowCell"]
-    var sectionHeights:[CGFloat] = [80.0, 36.0, 80.0]
+    var identifiers = ["DealSelectDateCell","DealTitleMenuCell",NoDataCell.className()]
+    var sectionHeights:[CGFloat] = [80.0, 36.0, 500]
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
 
-        if type.hashValue < 2 {
+//        if type.hashValue < 2 {
             identifiers.removeFirst()
             sectionHeights.removeFirst()
-        }
+//        }
+
+        tableView.register(NoDataCell.self, forCellReuseIdentifier: NoDataCell.className())
+        
+        header = MJRefreshNormalHeader(refreshingBlock: { 
+            
+            self.count = 0
+            self.requestData(isRefresh: true)
+        })
+        
+        footer = MJRefreshAutoFooter(refreshingBlock: { 
+            self.requestData(isRefresh: false)
+        })
+        tableView.mj_header = header
+        tableView.mj_footer = footer
+        requestData(isRefresh: true)
     }
 
+    
+    func endRefresh() {
+        if header?.state == .refreshing {
+            header?.endRefreshing()
+        }
+        if footer?.state == .refreshing {
+            footer?.endRefreshing()
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    func requestData(isRefresh:Bool) {
+
+        let opcode = SocketConst.OPCode(rawValue: type.rawValue)
+        guard opcode != nil else {
+            return
+        }
+        if checkIfEntrust() {
+            let requestModel = DealRecordRequestModel()
+            requestModel.start = Int32(count)
+            requestEntrustList(isRefresh: isRefresh,requestModel:requestModel,opcode:opcode!)
+        } else {
+            let requestModel = OrderRecordRequestModel()
+            requestModel.start = Int32(count)
+            requestModel.status = 0
+            requestOrderData(isRefresh: isRefresh, requestModel: requestModel,opcode:opcode!)
+        }
+    }
+    
+    
+    func requestOrderData(isRefresh:Bool, requestModel:OrderRecordRequestModel, opcode:SocketConst.OPCode) {
+
+        AppAPIHelper.dealAPI().requestOrderList(requestModel: requestModel, OPCode: opcode, complete: { (response) in
+            if let models = response as? [OrderListModel]{
+                if isRefresh {
+                    self.orderData = models
+                } else {
+                    self.orderData?.append(contentsOf: models)
+                }
+                self.checkCount(count: models.count)
+            }
+        }) { (error) in
+            self.didRequestError(error)
+            self.endRefresh()
+        }
+    }
+    
+    
+    func requestEntrustList(isRefresh:Bool, requestModel:DealRecordRequestModel, opcode:SocketConst.OPCode) {
+        
+        AppAPIHelper.dealAPI().requestEntrustList(requestModel: requestModel, OPCode: opcode, complete: { (response) in
+            if let models = response as? [EntrustListModel]{
+                if isRefresh {
+                    self.entrustData = models
+                } else {
+                    self.entrustData?.append(contentsOf: models)
+                }
+                self.checkCount(count:models.count)
+            }
+        }) { (error) in
+            self.didRequestError(error)
+            self.endRefresh()
+        }
+    }
+    
     
     func showDatePicker() {
         let vc = YD_DatePickerViewController()
         vc.modalPresentationStyle = .custom
         vc.modalTransitionStyle = .crossDissolve
         present(vc, animated: true, completion: nil)
-        
+    }
+    func checkCount(count:Int) {
+        if count < 10 {
+            footer?.isHidden = true
+        }
+        self.count += count
+        identifiers.removeLast()
+        sectionHeights.removeLast()
+        if count == 0 {
+            sectionHeights.append(500)
+            identifiers.append(NoDataCell.className())
+        } else {
+            sectionHeights.append(80.0)
+            identifiers.append("DealDoubleRowCell")
+        }
+        endRefresh()
+        tableView.reloadData()
     }
 
+    func checkIfEntrust() -> Bool {
+        return type == AppConst.DealDetailType.todayEntrust || type == AppConst.DealDetailType.allEntrust
+    }
 }
 
 extension DetailCommenViewController :UITableViewDelegate, UITableViewDataSource, SelectDateDelegate{
@@ -46,55 +147,64 @@ extension DetailCommenViewController :UITableViewDelegate, UITableViewDataSource
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        
         return identifiers.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      
         if section == identifiers.count - 1 {
-            
+            return count == 0 ? 1 : count
         }
         return 1
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {        
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifiers[indexPath.section], for: indexPath)
-        if type.rawValue > AppConst.DealDetailType.todayEntrust.rawValue{
-           
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifiers[indexPath.section]!, for: indexPath)
+//        if type.rawValue > AppConst.DealDetailType.todayEntrust.rawValue{
+//           
+//            switch indexPath.section {
+//            case 0:
+//                if let dateCell = cell as? DealSelectDateCell {
+//                    dateCell.delegate = self
+//                }
+//            case 1:
+//                if let menuCell = cell as? DealTitleMenuCell {
+//                    if type.rawValue == AppConst.DealDetailType.allEntrust.rawValue {
+//                        menuCell.setTitles(titles: entrustTitles)
+//                    } else {
+//                        menuCell.setTitles(titles: dealTitles)
+//                    }
+//                }
+//            default:
+//                break
+//            }
+//
+//        } else {
             switch indexPath.section {
             case 0:
-                if let dateCell = cell as? DealSelectDateCell {
-                    dateCell.delegate = self
-                }
-            case 1:
                 if let menuCell = cell as? DealTitleMenuCell {
-                    if type.rawValue == AppConst.DealDetailType.allEntrust.rawValue {
+                    if checkIfEntrust() {
                         menuCell.setTitles(titles: entrustTitles)
                     } else {
                         menuCell.setTitles(titles: dealTitles)
                     }
                 }
-            default:
-                break
-            }
-
-        } else {
-            switch indexPath.section {
-            case 0:
-                if let menuCell = cell as? DealTitleMenuCell {
-                    if type.rawValue == AppConst.DealDetailType.todayEntrust.rawValue {
-                        
-                        menuCell.setTitles(titles: entrustTitles)
+            case identifiers.count - 1:
+                if let listCell = cell as? DealDoubleRowCell {
+                    if  checkIfEntrust() {
+                        listCell.setEntruset(model:entrustData![indexPath.row])
                     } else {
-                        menuCell.setTitles(titles: dealTitles)
-                    }                }
+                        listCell.setOrderModel(model:orderData![indexPath.row])
+                    }
+                } else if let nodataCell = cell as? NoDataCell {
+                    nodataCell.setImageAndTitle(image: UIImage(named: "nodata_record"), title: "当前还没有相关记录")
+                }
             default:
                 break
             }
-        }
+//        }
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
         return sectionHeights[indexPath.section]
     }
 }

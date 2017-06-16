@@ -207,6 +207,7 @@
                                         <inset key="separatorInset" minX="10000" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="balance" destination="RdM-hs-Yk1" id="uCv-Gv-4jM"/>
+                                            <outlet property="bgView" destination="T82-np-AnJ" id="ah9-nA-XqS"/>
                                             <outlet property="market_cap" destination="06I-on-680" id="O6D-Qo-UPp"/>
                                             <outlet property="total_amt" destination="3Ao-0t-HcC" id="kmh-tN-8Qm"/>
                                         </connections>
@@ -411,164 +412,63 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 </textField>
-                                                <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anZ-Or-cHJ">
-                                                    <rect key="frame" x="143.5" y="90" width="88.5" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" title="10元">
-                                                        <color key="titleColor" red="0.98431372549999996" green="0.59999999999999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                            <integer key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
-                                                            <color key="value" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="chooseRechargeMoney:" destination="oWR-z7-wWN" eventType="touchUpInside" id="Egl-b3-F0A"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bwz-2A-CFf">
-                                                    <rect key="frame" x="25" y="130" width="88.5" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" title="1000元">
-                                                        <color key="titleColor" red="0.98431372549999996" green="0.59999999999999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                            <integer key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
-                                                            <color key="value" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="chooseRechargeMoney:" destination="oWR-z7-wWN" eventType="touchUpInside" id="oCm-46-MHz"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" tag="10000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Lr-vS-p5J">
-                                                    <rect key="frame" x="143" y="130" width="89" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" title="10000元">
-                                                        <color key="titleColor" red="0.98431372549999996" green="0.59999999999999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                            <integer key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
-                                                            <color key="value" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="chooseRechargeMoney:" destination="oWR-z7-wWN" eventType="touchUpInside" id="Lry-gl-cZp"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" tag="50000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xot-CT-BPD">
-                                                    <rect key="frame" x="261.5" y="130" width="88.5" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" title="50000元">
-                                                        <color key="titleColor" red="0.98431372549999996" green="0.59999999999999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                            <integer key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
-                                                            <color key="value" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="chooseRechargeMoney:" destination="oWR-z7-wWN" eventType="touchUpInside" id="gFP-BA-pWn"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFC-Mk-OVb">
-                                                    <rect key="frame" x="25" y="90" width="88.5" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" title="1元">
-                                                        <color key="titleColor" red="0.98431372549999996" green="0.59999999999999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                            <integer key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
-                                                            <color key="value" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="chooseRechargeMoney:" destination="oWR-z7-wWN" eventType="touchUpInside" id="vFp-km-iO5"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cfk-mj-oDd">
-                                                    <rect key="frame" x="261.5" y="90" width="88.5" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" title="100元">
-                                                        <color key="titleColor" red="0.98431372549999996" green="0.59999999999999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                            <integer key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
-                                                            <color key="value" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="chooseRechargeMoney:" destination="oWR-z7-wWN" eventType="touchUpInside" id="IC0-CQ-umA"/>
-                                                    </connections>
-                                                </button>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pLo-5u-Irb" customClass="RechargeCollectView" customModule="iOSStar" customModuleProvider="target">
+                                                    <rect key="frame" x="14" y="91" width="347" height="79.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Yfe-sm-FzI">
+                                                        <size key="itemSize" width="125" height="50"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="RechargeCollectViewCell" reuseIdentifier="RechargeCollectViewCell" id="Z4M-U8-a8F" customClass="RechargeCollectViewCell" customModule="iOSStar" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="125" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="125" height="50"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pB-vl-FZn">
+                                                                        <rect key="frame" x="0.0" y="5.5" width="125" height="40"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="40" id="jt8-xu-hc8"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <color key="textColor" red="1" green="1" blue="0.0098741319439999992" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </view>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstItem="0pB-vl-FZn" firstAttribute="leading" secondItem="Z4M-U8-a8F" secondAttribute="leading" id="6Jc-Nl-Z7Q"/>
+                                                                <constraint firstAttribute="trailing" secondItem="0pB-vl-FZn" secondAttribute="trailing" id="JjM-OW-gVn"/>
+                                                                <constraint firstItem="0pB-vl-FZn" firstAttribute="centerY" secondItem="Z4M-U8-a8F" secondAttribute="centerY" id="dmI-Wx-V7I"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="title" destination="0pB-vl-FZn" id="OqA-SY-7t9"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="6Lr-vS-p5J" firstAttribute="width" secondItem="Bwz-2A-CFf" secondAttribute="width" id="0HE-F8-EET"/>
-                                                <constraint firstItem="Cfk-mj-oDd" firstAttribute="width" secondItem="bFC-Mk-OVb" secondAttribute="width" id="2HK-he-F7b"/>
                                                 <constraint firstItem="Oca-Bs-skg" firstAttribute="leading" secondItem="yXx-gc-rNl" secondAttribute="leading" constant="11" id="2ye-tj-UdX"/>
-                                                <constraint firstItem="Cfk-mj-oDd" firstAttribute="height" secondItem="bFC-Mk-OVb" secondAttribute="height" id="53W-7O-pQr"/>
-                                                <constraint firstItem="anZ-Or-cHJ" firstAttribute="centerY" secondItem="bFC-Mk-OVb" secondAttribute="centerY" id="CqC-xE-Mn4"/>
                                                 <constraint firstItem="OGa-23-TS0" firstAttribute="top" secondItem="No1-GF-xcM" secondAttribute="bottom" constant="15" id="FJB-pG-iRD"/>
-                                                <constraint firstAttribute="trailing" secondItem="xot-CT-BPD" secondAttribute="trailing" constant="25" id="Gq5-Ww-d7L"/>
-                                                <constraint firstItem="6Lr-vS-p5J" firstAttribute="leading" secondItem="Bwz-2A-CFf" secondAttribute="trailing" constant="30" id="Hdx-vs-K14"/>
-                                                <constraint firstItem="6Lr-vS-p5J" firstAttribute="centerY" secondItem="Bwz-2A-CFf" secondAttribute="centerY" id="I0a-DS-sPR"/>
-                                                <constraint firstItem="anZ-Or-cHJ" firstAttribute="width" secondItem="bFC-Mk-OVb" secondAttribute="width" id="LU5-lz-y01"/>
-                                                <constraint firstItem="anZ-Or-cHJ" firstAttribute="leading" secondItem="bFC-Mk-OVb" secondAttribute="trailing" constant="30" id="PUw-A1-DAm"/>
-                                                <constraint firstItem="Bwz-2A-CFf" firstAttribute="leading" secondItem="yXx-gc-rNl" secondAttribute="leading" constant="25" id="PlE-Ln-VKb"/>
+                                                <constraint firstAttribute="trailing" secondItem="pLo-5u-Irb" secondAttribute="trailing" constant="14" id="QcZ-5g-tez"/>
                                                 <constraint firstAttribute="trailing" secondItem="No1-GF-xcM" secondAttribute="trailing" constant="10" id="R8j-v8-Ri9"/>
-                                                <constraint firstItem="Bwz-2A-CFf" firstAttribute="top" secondItem="bFC-Mk-OVb" secondAttribute="bottom" constant="13" id="RnA-vv-Ka7"/>
-                                                <constraint firstAttribute="trailing" secondItem="Cfk-mj-oDd" secondAttribute="trailing" constant="25" id="TaZ-UI-9Sx"/>
-                                                <constraint firstItem="anZ-Or-cHJ" firstAttribute="height" secondItem="bFC-Mk-OVb" secondAttribute="height" id="VTr-uC-LMx"/>
                                                 <constraint firstItem="OGa-23-TS0" firstAttribute="leading" secondItem="yXx-gc-rNl" secondAttribute="leading" id="Z3M-mK-R9n"/>
                                                 <constraint firstItem="e9T-8C-HFh" firstAttribute="leading" secondItem="yXx-gc-rNl" secondAttribute="leading" constant="14" id="aEy-68-ps6"/>
                                                 <constraint firstAttribute="trailing" secondItem="OGa-23-TS0" secondAttribute="trailing" id="bw2-aO-GLk"/>
-                                                <constraint firstItem="bFC-Mk-OVb" firstAttribute="leading" secondItem="yXx-gc-rNl" secondAttribute="leading" constant="25" id="cjb-Xw-9Tm"/>
                                                 <constraint firstItem="e9T-8C-HFh" firstAttribute="top" secondItem="OGa-23-TS0" secondAttribute="bottom" constant="8.5" id="dTW-XJ-eVZ"/>
-                                                <constraint firstItem="xot-CT-BPD" firstAttribute="centerY" secondItem="Bwz-2A-CFf" secondAttribute="centerY" id="dUb-Ow-YBi"/>
                                                 <constraint firstItem="No1-GF-xcM" firstAttribute="centerY" secondItem="Oca-Bs-skg" secondAttribute="centerY" id="eXq-rY-Efy"/>
-                                                <constraint firstItem="xot-CT-BPD" firstAttribute="leading" secondItem="6Lr-vS-p5J" secondAttribute="trailing" constant="30" id="q27-4t-giB"/>
-                                                <constraint firstItem="Cfk-mj-oDd" firstAttribute="centerY" secondItem="bFC-Mk-OVb" secondAttribute="centerY" id="qfR-Ji-KSc"/>
-                                                <constraint firstItem="bFC-Mk-OVb" firstAttribute="top" secondItem="e9T-8C-HFh" secondAttribute="bottom" constant="14.5" id="u8f-xe-qdn"/>
-                                                <constraint firstItem="xot-CT-BPD" firstAttribute="width" secondItem="Bwz-2A-CFf" secondAttribute="width" id="vh4-y8-nUn"/>
+                                                <constraint firstItem="pLo-5u-Irb" firstAttribute="top" secondItem="e9T-8C-HFh" secondAttribute="bottom" constant="15.5" id="eoe-q5-DPe"/>
+                                                <constraint firstItem="pLo-5u-Irb" firstAttribute="leading" secondItem="yXx-gc-rNl" secondAttribute="leading" constant="14" id="lgF-88-yOx"/>
+                                                <constraint firstAttribute="bottom" secondItem="pLo-5u-Irb" secondAttribute="bottom" constant="12" id="xcT-Ub-9a9"/>
                                                 <constraint firstItem="No1-GF-xcM" firstAttribute="top" secondItem="yXx-gc-rNl" secondAttribute="top" constant="15" id="zUI-wW-7DF"/>
-                                                <constraint firstItem="Cfk-mj-oDd" firstAttribute="leading" secondItem="anZ-Or-cHJ" secondAttribute="trailing" constant="30" id="zwa-jb-c4U"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="500" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -583,6 +483,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="nDD-rN-TBm"/>
                     <connections>
+                        <outlet property="collectView" destination="pLo-5u-Irb" id="qTd-LL-1CN"/>
+                        <outlet property="dobuy" destination="np4-wR-ZO8" id="GAi-ei-DIA"/>
                         <outlet property="inputMoney" destination="No1-GF-xcM" id="xgZ-HQ-Di8"/>
                         <outlet property="payTypeImg" destination="bNl-NU-OaV" id="m7v-pH-oOp"/>
                         <outlet property="payTypeName" destination="msY-11-Cdy" id="04Z-EN-Y1L"/>

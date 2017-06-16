@@ -87,13 +87,26 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         tableView.register(NoDataCell.self, forCellReuseIdentifier: NoDataCell.className())
 
     }
-    
+
     func requestBannerList() {
 
+    
+        return
         let requestModel = SureOrderRequestModel()
-        requestModel.orderId = 6016027681078596229
-        requestModel.id = 152
-        requestModel.positionId = 4620287027450204474
+        requestModel.orderId = 688831356901432809
+        requestModel.id = 142
+        requestModel.positionId = 4615549125357788634
+        
+        let cancelModel = CancelOrderRequestModel()
+        cancelModel.orderId = 688831356901432809
+        cancelModel.id = 142
+        AppAPIHelper.dealAPI().cancelOrderRequest(requestModel: cancelModel, complete: { (response) in
+            
+            
+            
+        }) { (error) in
+            
+        }
         AppAPIHelper.dealAPI().sureOrderRequest(requestModel: requestModel, complete: { (response) in
             
             
@@ -101,7 +114,6 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
             
         })
         
-        return
 
         AppAPIHelper.newsApi().requestBannerList(complete: { (response)  in
             if let models = response as? [BannerModel] {

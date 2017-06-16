@@ -10,6 +10,7 @@ import UIKit
 
 class SurePayOrderVC: UIViewController {
 
+    @IBOutlet var sure: UIButton!
     //订单总价
     @IBOutlet var orderAllPrice: UILabel!
     //订单总量
@@ -23,6 +24,7 @@ class SurePayOrderVC: UIViewController {
     var resultBlock: CompleteBlock?
     override func viewDidLoad() {
         super.viewDidLoad()
+    sure.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
      orderAllPrice.text = ShareDataModel.share().orderInfo?.orderAllPrice
      orderAccount.text = ShareDataModel.share().orderInfo?.orderAccount
      orderPrice.text = ShareDataModel.share().orderInfo?.orderPrice

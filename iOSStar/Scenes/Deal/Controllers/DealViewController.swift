@@ -18,7 +18,7 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
     var starListModel:MarketListStarModel?
     
     var realTimeData:RealTimeModel?
-    
+    var index = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMenuView()
@@ -45,7 +45,8 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
     }
     
     func refreshSelect() {
-        menuView?.selected(index: 0)
+        menuView?.selected(index: index)
+        backView.moveToIndex(index: index)
     }
     func addSubViews() {
         let identifiers = ["BuyOrSellViewController","BuyOrSellViewController","BuyYetViewController","AllOrderViewController","DealDetailViewController"]
@@ -54,6 +55,9 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
         var views = [UIView]()
         for (index,identifier) in identifiers.enumerated() {
             let vc = stroyBoard.instantiateViewController(withIdentifier: identifier) as! DealBaseViewController
+            if index == 0 {
+                vc.dealType = AppConst.DealType.buy
+            }
             vc.starListModel = starListModel
             vc.realTimeData = realTimeData
             views.append(vc.view)

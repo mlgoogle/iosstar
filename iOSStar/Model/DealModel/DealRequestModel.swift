@@ -13,7 +13,7 @@ class BuyOrSellRequestModel: MarketBaseModel {
     var symbol = ""
     var buySell = 2
     var amount = 100
-    var price:Double = 52.12
+    var price:Double = 0.01
 }
 
 class SureOrderRequestModel: MarketBaseModel {
@@ -22,4 +22,13 @@ class SureOrderRequestModel: MarketBaseModel {
 }
 class CancelOrderRequestModel: MarketBaseModel {
     var orderId:Int64 = 0
+}
+
+class DealRecordRequestModel: MarketBaseModel {
+    var start:Int32 = 0
+    var count:Int64 = 10
+}
+
+class OrderRecordRequestModel: DealRecordRequestModel {
+    var status:Int32 = 1
 }

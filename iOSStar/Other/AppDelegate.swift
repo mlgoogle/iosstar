@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         
         // 个推
         AppConfigHelper.shared().setupGeTuiSDK(sdkDelegate: self)
-        
+        getstart()
         // 登录
         login()
         
@@ -50,7 +50,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
 
         return true
     }
-        
+    func getstart(){
+    
+        AppAPIHelper.user().addstarinfo(complete: { (result) in
+            
+        }) { (error) in
+            
+        }
+    
+    }
     func login(){
         
         if  UserDefaults.standard.object(forKey: "phone") as? String == nil {
