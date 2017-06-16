@@ -26,7 +26,7 @@ class RechargeCollectViewCell: UICollectionViewCell {
 }
 class RechargeCollectView: UICollectionView ,UICollectionViewDelegate,UICollectionViewDataSource,CustomLayoutDataSource{
      var selectPath : IndexPath? = nil
-     var titleArr = ["1","10","100","1000","10000","500000"]
+     var titleArr = ["1","10","100","1000","10000","50000"]
     var setSelect  = "" {
         didSet {
             if selectPath != nil{

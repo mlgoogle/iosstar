@@ -15,10 +15,6 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     
     @IBOutlet var collectView: RechargeCollectView!
 
-    
-    
-    
-    
     @IBOutlet var dobuy: UIButton!
     var selectTypeHeight = CGFloat.init(140)
     //选中支付方式银行卡号
@@ -78,7 +74,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         
         if inputMoney.text != "" {
             if Double.init(inputMoney.text!)! > 50000 {
-                SVProgressHUD.showError(withStatus: "金额不能大于50000")
+                SVProgressHUD.showErrorMessage(ErrorMessage: "金额不能大于50000", ForDuration: 2.0, completion: nil)
                 inputMoney.text = ""
                 collectView.setSelect = "true"
                 return

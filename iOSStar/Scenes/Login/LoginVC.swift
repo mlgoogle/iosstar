@@ -129,14 +129,10 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
             return
         }
         SVProgressHUD.showProgressMessage(ProgressMessage: "登录中······")
-        // SVProgressHUD.showProgressMessage(ProgressMessage: "")
-        if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]){
+        if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]) {
             AppAPIHelper.login().login(phone: phone.text!, password: (passPwd.text?.md5_string())!, complete: { [weak self](result)  in
                 SVProgressHUD.dismiss()
-                  let datadic = result as? UserModel
-                
-                 // print("=====\(datadic)")
-                
+                let datadic = result as? UserModel
                 SVProgressHUD.showSuccessMessage(SuccessMessage:"登录成功", ForDuration: 2.0, completion: {
                     btn.isUserInteractionEnabled = true
                     if let _ = datadic {
@@ -150,12 +146,13 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
                     }
                 })
             }) { (error) in
-                 btn.isUserInteractionEnabled = true
-                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: {
-                })
+                    btn.isUserInteractionEnabled = true
+                    print(error.code)
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "手机号或密码错误", ForDuration: 2.0, completion: nil)
             }
-        }else{
-        btn.isUserInteractionEnabled = true
+        } else {
+            
+            btn.isUserInteractionEnabled = true
         }
     }
     
