@@ -126,4 +126,15 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         let packet = SocketDataPacket(opcode: .orderFansList, model: requestModel)
         startModelsRequest(packet, listName: "ordersList", modelClass: OrderFansListModel.self, complete: complete, error: error)
     }
+    //持有某个明星时间数量
+    func requestPositionCount(requestModel:PositionCountRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .positionCount, model: requestModel)
+        
+        startModelRequest(packet, modelClass: PositionCountModel.self, complete: complete, error: error)
+    }
+    //买卖占比
+    func requstBuySellPercent(requestModel:BuySellPercentRequest,complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .buySellPercent, model: requestModel)
+        startModelRequest(packet, modelClass: BuySellCountModel.self, complete: complete, error: error)
+    }
 }

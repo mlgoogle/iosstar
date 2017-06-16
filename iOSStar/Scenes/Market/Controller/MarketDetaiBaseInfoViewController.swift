@@ -7,10 +7,13 @@
 //
 
 import UIKit
-
+protocol RefreshImageDelegate {
+    func refreshImage(imageUrl:String)
+}
 class MarketDetaiBaseInfoViewController: MarketBaseViewController {
     
     var achives:[AchiveModel]?
+    var refreshImageDelegate:RefreshImageDelegate?
 
     var bannerDetailModel:BannerDetaiStarModel?
     var titles = ["1","个人简介", "主要经历", "主要成就"]
@@ -41,6 +44,7 @@ class MarketDetaiBaseInfoViewController: MarketBaseViewController {
         AppAPIHelper.newsApi().requestStarInfo(code: starCode!, complete: { (response) in
             if let model = response as? BannerDetaiStarModel {
                 self.bannerDetailModel = model
+                self.refreshImageDelegate?.refreshImage(imageUrl: model.pic_url)
                 self.tableView.reloadData()
             }
         }, error: errorBlockFunc())

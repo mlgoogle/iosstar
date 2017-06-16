@@ -138,7 +138,6 @@ class AppConfigHelper: NSObject {
             
             if let model = response as? ReceiveMacthingModel{
                 let alertView = Bundle.main.loadNibNamed("TradingAlertView", owner: nil, options: nil)?.first as! TradingAlertView
-        
                 alertView.str = "撮合成功提醒：范冰冰（808080）转让成功，请到系统消息中查看，点击查看。"
                 alertView.showAlertView()
                 alertView.messageAction = {
