@@ -43,5 +43,6 @@ protocol UserApi {
     
     // 获取已购明星数量
     func requestBuyStarCount(complete: CompleteBlock?, error: ErrorBlock?)
+    func addstarinfo(complete: CompleteBlock?, error: ErrorBlock?)
     
 }

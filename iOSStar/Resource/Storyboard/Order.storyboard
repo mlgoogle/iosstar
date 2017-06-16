@@ -256,6 +256,7 @@
                         <outlet property="orderInfoMation" destination="Pe8-FY-nwO" id="g8i-q0-KML"/>
                         <outlet property="orderPrice" destination="iFp-Y0-RLp" id="5Wa-xQ-Rt0"/>
                         <outlet property="orderStatus" destination="Plc-mR-qIv" id="TIi-aG-rlz"/>
+                        <outlet property="sure" destination="TNq-Fn-HWz" id="nwh-7p-yag"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EyL-ev-B6v" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -337,6 +338,9 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="y73-gs-u4c"/>
                                         </constraints>
                                         <state key="normal" image="close.png"/>
+                                        <connections>
+                                            <action selector="back:" destination="ENA-Jj-f8z" eventType="touchUpInside" id="QfY-Nq-TCH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
