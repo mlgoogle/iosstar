@@ -23,13 +23,22 @@ class MessageCell:  OEZTableViewCell{
         }
         
         time_lb.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.openTime), format: "YY-MM-dd HH:mm:ss")
-       
+      dosee.setTitle("", for: .normal)
         if model.handle == 0{
-            dosee.setTitle("未确认", for: .normal)
-        }else{
-        
-        dosee.setTitle( ((model.buyHandle == 0) && (model.sellHandle == 0)) ? "未确认" : (((model.buyHandle == -1) || (model.sellHandle == -1)) ? "已取消" : ((((model.buyHandle == 0) && (model.sellHandle == 1)) || ((model.buyHandle == 1) && (model.sellHandle == 0))) ? "未确认" : "交易成功")), for: .normal)
-    }
+           dosee.setTitle("未确认", for: .normal)
+        }else if model.handle == 1{
+            
+            if ((model.buyUid == 142 && model.sellHandle == 1) || (model.sellUid == 142 && model.sellHandle == 1)){
+            dosee.setTitle("对方未确认", for: .normal)
+            }else{
+             dosee.setTitle( ((model.buyHandle == 0) && (model.sellHandle == 0)) ? "未确认" : (((model.buyHandle == -1) || (model.sellHandle == -1)) ? "已取消" : ((((model.buyHandle == 0) && (model.sellHandle == 1)) || ((model.buyHandle == 1) && (model.sellHandle == 0))) ? "未确认" : "交易成功")), for: .normal)
+            }
+         
+        }
+        else{
+          dosee.setTitle("交易成功", for: .normal)
+      
+        }
         
     }
     
@@ -65,22 +74,25 @@ class SystemMessageVC: BasePageListTableViewController {
          self.nodata.isHidden = false
         }
     }
-
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        //                //定义一个model
         
         let  data = self.dataSource?[indexPath.section] as! OrderListModel
         
     
         if (data.handle == 1) {
-            if ((data.buyUid == 1 && data.sellHandle == 0) && (data.sellUid == 1 && data.sellHandle == 0)){
+            if ((data.buyUid == 142 && data.sellHandle == 0) && (data.sellUid == 142 && data.sellHandle == 0)){
                 let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易", preferredStyle:.alert)
                 // 设置2个UIAlertAction
                 let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
-                    self.doorder(data, true)
+                     self.showView(data, true)
                 }
                 let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
-                    self.doorder(data, false)
+                    self.showView(data, false)
                 }
                 
                 // 添加
@@ -91,21 +103,25 @@ class SystemMessageVC: BasePageListTableViewController {
                 
 
             }
-            else if (data.sellHandle != -1 || data.buyHandle != -1){
+            else if (data.sellHandle == -1 || data.buyHandle == -1){
                 
                 
                 
                 
             }
           //
-        }else{
+        }
+        else if (data.handle == 2){
+        
+        }
+        else{
             let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易？", preferredStyle:.alert)
             // 设置2个UIAlertAction
             let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
-                self.doorder(data, true)
+                self.showView(data, true)
             }
             let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
-                self.doorder(data, false)
+               self.showView(data, false)
             }
             
             // 添加
@@ -128,11 +144,11 @@ class SystemMessageVC: BasePageListTableViewController {
 ////         rootvc.textField.becomeFirstResponder()
 //        present(nav, animated: true, completion: nil)
     }
-   
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell") as! MessageCell
         print(indexPath.section)
-        cell.update(dataSource?[indexPath.section])
+        cell.update(dataSource?[indexPath.row])
         cell.selectionStyle = .none
         return cell
     }
@@ -140,12 +156,7 @@ class SystemMessageVC: BasePageListTableViewController {
         return 80
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.dataSource != nil ? (self.dataSource?.count)! : 0
-    }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
+   
      override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 0 ? 3 : 0.001
     }
@@ -184,49 +195,40 @@ class SystemMessageVC: BasePageListTableViewController {
                 print(error)
             })
         }
+
+    }
+    func showView(_ order : OrderListModel,_ canel : Bool){
+        let model = OrderInformation()
+        model.orderAllPrice = "\(order.openPrice)"
+        model.orderAccount = "\(order.amount)"
+        model.orderPrice = "\(order.openPrice)"
+        model.orderStatus  = order.sellUid == 1 ? "转让":"求购"
+        StartModel.getStartName(startCode: order.symbol) { (result) in
+            
+            let data = result as! StartModel
+            model.orderInfomation = "\(data.name)" + "(" + "\(data.code)" + ")"
+        }
         
-        //                //定义一个model
-        //                let model = OrderInformation()
-        //                model.orderAllPrice = "100"
-        //                model.orderAccount = "100"
-        //                model.orderPrice = "100"
-        //                model.orderStatus = "100"
-        //                model.orderInfomation = "100"
-        //                //将值传给 sharedatemodel
-        //                ShareDataModel.share().orderInfo = model
-        //                let storyboard = UIStoryboard.init(name: "Order", bundle: nil)
-        //                let controller = storyboard.instantiateInitialViewController() as!  UINavigationController
-        //
-        //
-        //                let rootvc = controller.viewControllers[0] as! ContainPayVC
-        //                print(controller.viewControllers.count)
-        //
-        //                rootvc.resultBlock = { (result) in
-        //                    if canel{
-        //                        let sure = CancelOrderRequestModel()
-        //                        sure.orderId = order.orderId
-        //
-        //                        AppAPIHelper.dealAPI().cancelOrderRequest(requestModel: sure, complete: { (result) in
-        //
-        //                        }, error: { (error ) in
-        //
-        //                        })
-        //                    }else{
-        //                        let sure = SureOrderRequestModel()
-        //                        sure.orderId = order.orderId
-        //                        sure.positionId = order.positionId
-        //                        AppAPIHelper.dealAPI().sureOrderRequest(requestModel: sure, complete: { (result) in
-        //                            print(result)
-        //                        }, error: { (error) in
-        //
-        //                        })
-        //                    }
-        //                    controller.dismissController()
-        //        
-        //                }
-        //                controller.modalPresentationStyle = .custom
-        //                controller.modalTransitionStyle = .crossDissolve
-        //                present(controller, animated: true, completion: nil)
+        //将值传给 sharedatemodel
+        ShareDataModel.share().orderInfo = model
+        let storyboard = UIStoryboard.init(name: "Order", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController() as!  UINavigationController
         
+        
+        let rootvc = controller.viewControllers[0] as! ContainPayVC
+        print(controller.viewControllers.count)
+        
+        rootvc.resultBlock = { (result) in
+            if canel {
+                self.doorder(order, true)
+            }else{
+                self.doorder(order, false)
+            }
+            controller.dismissController()
+            
+        }
+        controller.modalPresentationStyle = .custom
+        controller.modalTransitionStyle = .crossDissolve
+        present(controller, animated: true, completion: nil)
     }
 }
