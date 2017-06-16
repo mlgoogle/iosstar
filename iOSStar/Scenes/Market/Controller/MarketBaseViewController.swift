@@ -16,8 +16,11 @@ protocol ScrollStopDelegate {
     func scrollBegin()
 }
 
+
 class MarketBaseViewController: UIViewController, UIScrollViewDelegate{
     var starCode:String?
+    var starName:String?
+    var starPic:String?
     var delegate:ScrollStopDelegate?
     var scrollView:UIScrollView?
     var isSubView = true
@@ -33,7 +36,6 @@ class MarketBaseViewController: UIViewController, UIScrollViewDelegate{
     
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         if !isSubView {
-            
             scrollView.isUserInteractionEnabled = true
         }
         

@@ -14,7 +14,7 @@ class MarketAuctionViewController: MarketBaseViewController {
     var endTime:Int64 = 0
     var timeLabel:UILabel?
     var headerCell:AuctionHeaderCell?
-    
+    var countModel:PositionCountModel?
     var buySell:Int32 = 1
     var fansList:[FansListModel]?
     var statusModel:AuctionStatusModel?
@@ -66,6 +66,26 @@ class MarketAuctionViewController: MarketBaseViewController {
         }
 
     }
+    
+    func requestPositionCount() {
+        guard starCode != nil else {
+            return
+        }
+        let r = PositionCountRequestModel()
+        r.starcode = starCode!
+        AppAPIHelper.marketAPI().requestPositionCount(requestModel: r, complete: { (response) in
+            if let model = response as? PositionCountModel {
+                self.countModel = model
+                self.tableView.reloadData()
+            }
+        }) { (error) in
+            
+        }
+
+    }
+    
+    
+    
     func requestAuctionSattus() {
         let model = AuctionStatusRequestModel()
         model.symbol = starCode!
@@ -110,7 +130,11 @@ class MarketAuctionViewController: MarketBaseViewController {
 
 }
 
-extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate, SelectFansDelegate{
+extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate, SelectFansDelegate,RefreshImageDelegate{
+    func refreshImage(imageUrl: String) {
+        
+        headerCell?.setImageUrl(url: imageUrl)
+    }
     
     func selectAtIndex(index: Int) {
         if index == 0 {
@@ -174,6 +198,7 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "AuctionHeaderCell", for: indexPath) as! AuctionHeaderCell
         
+        cell.setPositionCountModel(model: countModel, starCode: starCode, starName: starName)
         self.headerCell = cell
 
         return cell
