@@ -63,7 +63,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     //MARK: tableViewdelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1: 2
+        return section == 0 ? 1: 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -87,11 +87,11 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RechareCell")
                 return cell!
             }
-            if indexPath.row == 1{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "WithDrawCell")
-                return cell!
-            }
-            return cell
+//            if indexPath.row == 1{
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "WithDrawCell")
+//                return cell!
+//            }
+//            return cell
             
         }
         return cell
@@ -158,10 +158,10 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                         }
                     }
             }
-            if indexPath.row == 1 {
-                
-                print("此处提现操作")
-            }
+//            if indexPath.row == 1 {
+//                
+//                print("此处提现操作")
+//            }
         }
     }
     

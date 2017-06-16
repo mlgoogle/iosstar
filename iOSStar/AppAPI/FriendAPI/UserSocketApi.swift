@@ -24,10 +24,11 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
           startModelRequest(packet, modelClass: StarListModel.self, complete: complete, error: error)
     }
     //聊天减时间
-    func reducetime(phone: String, starcode: String, complete: CompleteBlock?, error: ErrorBlock?){
+    func reducetime(phone: String, starcode: String,deduct_amount:Int64,complete: CompleteBlock?, error: ErrorBlock?){
         
         let param: [String: Any] = [SocketConst.Key.phone: phone,
-                                    SocketConst.Key.starcode:  starcode,]
+                                    SocketConst.Key.starcode:  starcode,
+                                    SocketConst.Key.deduct_amount : deduct_amount,]
         print(param)
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .reducetime, dict: param as [String : AnyObject], type: .getlist)
         startRequest(packet, complete: complete, error: error)
@@ -146,8 +147,6 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
     
     // MARK: - 修改昵称
     func modifyNickName(nickname:String, complete: CompleteBlock?, error: ErrorBlock?) {
-        
-//        print("=====\(UserModel.share().getCurrentUser()?.userinfo?.id)")
         
         let param = [SocketConst.Key.id : UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
                      SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),
