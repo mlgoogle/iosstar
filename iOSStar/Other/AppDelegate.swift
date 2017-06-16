@@ -10,7 +10,7 @@ import UIKit
 import Fabric
 import Crashlytics
 import UserNotifications
-
+import RealmSwift
 // 个推信息
 // let kGtAppId:String = "STxLopLZK0AFPvAcnu7o67"
 // let kGtAppKey:String = "SIbhyImzug9sjKteFtLrj8"
@@ -51,6 +51,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     
         AppAPIHelper.user().addstarinfo(complete: { (result) in
             
+            print(NSHomeDirectory())
+            if let model = result as? StartModel{
+                let realm = try! Realm()
+                try! realm.write {
+                    
+                    realm.add(model, update: true)
+                }
+            }
+
         }) { (error) in
             
         }

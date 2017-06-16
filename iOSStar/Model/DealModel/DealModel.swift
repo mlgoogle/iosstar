@@ -82,6 +82,8 @@ class OrderListModel: Object {
     dynamic var result = false
     dynamic var symbol = ""
     dynamic var handle:Int32 = 0
+    dynamic var buyHandle:Int32 = 0
+    dynamic var sellHandle:Int32 = 0
     
 
 }

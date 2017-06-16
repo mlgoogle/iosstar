@@ -228,8 +228,8 @@ extension RechargeVC {
         let order = Order()
         
         // 需要APPID and privateKey
-        let appID = "APPID"
-        let privateKey = ""
+        let appID = "2017060807450365"
+        let privateKey = "MIICXAIBAAKBgQDi4becNJoefmUGSOS2C+WUCCrcUZLK0J2y1L6HvMu+WKJ1PStbTtD67AeskTN4g17nfKw/nsK1pKEVBv8E/jSsOyqB6zF+J6DbyCLJMK4P4qoxAROQB9oyvuJgEVBUNNN9u4p409MKm3l7nKvFLeDBe8yG+aAvxi1BYl79cWzz7QIDAQABAoGATd8nRCgR1fGP/y45wfonXD3JaEFfXtlnpx+6HaDBVZ3adN7/6KEOvXER2TslLXH5uv5hqJx3PB07ZJo4IaCWtvkkhGRk+OJuxY539heTQu5LI1f8TT9J6gvsc46SW9rI08Q/YhrT4DnCkjCC319l+6uoaxs/QHWJITVvehMiRUECQQD8HH3GF98/p3mmQ/d3IjdOEUZiS0eJvbZ4vqGYxn55pljO88vtoPNGVGiOdl5acD5jKwD6i/o0siXA1UDWxdT5AkEA5mGaKAsnDNoWElRmP+peiaXwtSNoHPllA3FA1noCvZqk5ostP+ZCm0l+XT9lNO9T5IdQ64uevaSjsY3uMdq3lQJBALG1k6Ky6RcBgmqEtkcvwzQwUSCwV7jsFVd/aIE8SaKOc0NN7o2OSm1kyl7BaTjurctRYNs7GB9VA++tYosB4GECQHWkfY3ZNBWx//dYNeaJjcEIhcRZ0j6Jc/WwDYX4RBICOBaqF2876+NUQjzntIy1cceO+dluMJ9yxUxTx8CZiYkCQEH8wNqGse6YEVL7gcBmsJQ0SpBAuVRewdNUs3ZTcF28V3kJD+TzF7nSRjUmh6FVONjieeZY2d0i9KyveDggScA="
         
         // NOTE: app_id设置
         order.app_id = appID;
