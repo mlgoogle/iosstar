@@ -51,7 +51,21 @@ class AuctionHeaderCell: UITableViewCell {
         }
         
     }
+    func setImageUrl(url:String)  {
     
+        showImageView.kf.setImage(with: URL(string: url))
+    }
+    
+    func setPositionCountModel(model:PositionCountModel?, starCode:String?, starName:String?) {
+        
+
+        if model != nil {
+            positionCount.text = "\(model!.star_time)秒"
+        }
+        if  starCode != nil && starName != nil {
+            starCodeLabel.text = "已持有\(starName!)(\(starCode!))"
+        }
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

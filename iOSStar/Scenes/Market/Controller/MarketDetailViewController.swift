@@ -62,14 +62,19 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         for (index, type) in types.enumerated() {
             let image = UIImage(named: imageStrings[index])
             images.append(image!)
-
             let vc = storyboard.instantiateViewController(withIdentifier: type) as! MarketBaseViewController
             addChildViewController(vc)
             vc.starCode = starModel!.symbol
+            vc.starName = starModel!.name
             vc.delegate = self
             vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 50 - 64)
             subViews.append(vc.view)
         }
+        
+        let baseInfoVC = childViewControllers.first as! MarketDetaiBaseInfoViewController
+        let auctionVC =  childViewControllers[2] as! MarketAuctionViewController
+        baseInfoVC.refreshImageDelegate = auctionVC
+        
         bottomScrollView.scrollView.delegate = self
         currentVC = childViewControllers.first as? MarketBaseViewController
         headerView.currentSubView = currentVC?.scrollView
