@@ -13,7 +13,7 @@ class DetailCommenViewController: DealBaseViewController {
     var dealTitles = ["名称/代码","成交时间","成交价/成交量","状态/成交额"]
     var entrustTitles = ["名称/代码","委托价/时间","委托量/成交量","状态"]
     var header:MJRefreshNormalHeader?
-    var footer:MJRefreshAutoFooter?
+    var footer:MJRefreshAutoStateFooter?
     var count = 0
     var orderData:[OrderListModel]?
     var entrustData:[EntrustListModel]?
@@ -34,24 +34,40 @@ class DetailCommenViewController: DealBaseViewController {
         header = MJRefreshNormalHeader(refreshingBlock: { 
             
             self.count = 0
+            self.footer?.endRefreshing()
             self.requestData(isRefresh: true)
         })
         
-        footer = MJRefreshAutoFooter(refreshingBlock: { 
+        footer = MJRefreshAutoStateFooter(refreshingBlock: {
+            self.header?.endRefreshing()
             self.requestData(isRefresh: false)
         })
         tableView.mj_header = header
         tableView.mj_footer = footer
+        footer?.isHidden = true
+
         requestData(isRefresh: true)
     }
 
     
-    func endRefresh() {
+    func endRefresh(count:Int) {
         if header?.state == .refreshing {
             header?.endRefreshing()
         }
         if footer?.state == .refreshing {
             footer?.endRefreshing()
+        }
+        if count < 10 {
+            var titile = ""
+            if checkHistory() {
+                titile = "只展示最近7天历史数据"
+            } else {
+                titile = "没有更多数据"
+            }
+            if count != 0 {
+                footer?.setTitle(title, for: .noMoreData)
+                footer?.state = .noMoreData
+            }
         }
     }
     override func didReceiveMemoryWarning() {
@@ -94,7 +110,7 @@ class DetailCommenViewController: DealBaseViewController {
             }
         }) { (error) in
             self.didRequestError(error)
-            self.endRefresh()
+            self.endRefresh(count:1)
         }
     }
     
@@ -112,7 +128,7 @@ class DetailCommenViewController: DealBaseViewController {
             }
         }) { (error) in
             self.didRequestError(error)
-            self.endRefresh()
+            self.endRefresh(count:1)
         }
     }
     
@@ -124,8 +140,10 @@ class DetailCommenViewController: DealBaseViewController {
         present(vc, animated: true, completion: nil)
     }
     func checkCount(count:Int) {
-        if count < 10 {
+        if count < 10 && !checkHistory() {
             footer?.isHidden = true
+        } else {
+            footer?.isHidden = false
         }
         self.count += count
         identifiers.removeLast()
@@ -137,10 +155,14 @@ class DetailCommenViewController: DealBaseViewController {
             sectionHeights.append(80.0)
             identifiers.append("DealDoubleRowCell")
         }
-        endRefresh()
+        endRefresh(count:count)
+        
         tableView.reloadData()
     }
-
+    func checkHistory() -> Bool {
+        return type == AppConst.DealDetailType.allEntrust || type == AppConst.DealDetailType.allDeal
+    }
+    
     func checkIfEntrust() -> Bool {
         return type == AppConst.DealDetailType.todayEntrust || type == AppConst.DealDetailType.allEntrust
     }

@@ -87,6 +87,8 @@ extension AllOrderViewController:UITableViewDelegate, UITableViewDataSource {
         } else {
             if let orderCell = cell as? DealSingleRowCell {
                 orderCell.setData(model: orderData![indexPath.row - 1])
+            } else if let nodataCell = cell as? NoDataCell {
+                 nodataCell.setImageAndTitle(image: UIImage(named: "nodata_record"), title: "当前还没有相关记录")
             }
         }
         return cell
