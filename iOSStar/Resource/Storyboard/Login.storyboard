@@ -1212,7 +1212,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wtf-ov-Q4t">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wtf-ov-Q4t">
                                                 <rect key="frame" x="76" y="506" width="168" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="RSj-4C-v5F"/>
@@ -1276,6 +1276,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Lgo-gm-Xdl"/>
                     <connections>
+                        <outlet property="ThreeLoginLabel" destination="K9S-nd-Ta7" id="U5i-68-saJ"/>
                         <outlet property="codeTf" destination="vf7-WB-c6c" id="oqC-j2-AcU"/>
                         <outlet property="hava_account" destination="uZj-bu-dIG" id="SPU-fx-CkF"/>
                         <outlet property="height" destination="YVB-Oe-p5O" id="z7V-dF-R7a"/>
@@ -1288,6 +1289,8 @@
                         <outlet property="right" destination="HQU-al-8Sb" id="AeV-zp-NC2"/>
                         <outlet property="top" destination="Q7P-1y-qbQ" id="Gik-VR-vRI"/>
                         <outlet property="vaildCodeBtn" destination="bnh-93-zmc" id="lJd-pA-aSN"/>
+                        <outlet property="wechatLoginLabel" destination="gNO-hc-lay" id="dr6-gJ-Xjj"/>
+                        <outlet property="wechatLogoImageView" destination="2rW-Lz-2GL" id="7wA-rf-WfJ"/>
                         <outlet property="width" destination="nlr-qn-BDu" id="UAF-gG-mU4"/>
                     </connections>
                 </viewController>
