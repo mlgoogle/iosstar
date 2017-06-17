@@ -35,5 +35,4 @@ protocol MarketAPI {
     
     func requstBuySellPercent(requestModel:BuySellPercentRequest,complete: CompleteBlock?, error: ErrorBlock?)
     func requestTotalCount(starCode:String,complete: CompleteBlock?, error: ErrorBlock?)
-    func requestEntrustCount(requestModel:EntrustCountRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
 }

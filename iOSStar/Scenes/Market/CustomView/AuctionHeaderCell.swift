@@ -27,8 +27,11 @@ class AuctionHeaderCell: UITableViewCell {
     @IBOutlet var sellProgressView: GradualColorView!
     @IBOutlet weak var countProgressView: GradualColorView!
     @IBOutlet var buyProgressView: GradualColorView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        showImageView.layer.masksToBounds = true
         countProgressView.percent = 0.5
         countProgressView.addGradualColorLayer(isRound:true)
         countProgressView.layer.cornerRadius = 8
@@ -46,13 +49,29 @@ class AuctionHeaderCell: UITableViewCell {
         backView.layer.cornerRadius = 3
         backView.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
     }
-    func setPercent(model:BuySellCountModel?) {
+    func setPercent(model:BuySellCountModel?,totalCount:Int) {
         guard model != nil else {
             return
         }
         
         buyCountLabel.text = "买入：\(model!.buyCount)人"
         sellCountLabel.text = "卖出：\(model!.sellCount)人"
+
+        let percent = CGFloat(model!.buyCount) / CGFloat(model!.buyCount + model!.sellCount)
+        
+        buyWidth.constant = (kScreenWidth - 50) * percent
+        sellProgressView.setCornoerRadius(byRoundingCorners: [.bottomRight, .topRight], cornerRadii: CGSize(width: 8.0, height: 8.0))
+        buyProgressView.setCornoerRadius(byRoundingCorners: [.bottomLeft, .topLeft], cornerRadii: CGSize(width: 8.0, height: 8.0))
+        buyProgressView.animation(percent: 1)
+        sellProgressView.animation(percent: 1)
+        var timePercent:CGFloat = 0.5
+        if model!.sellTime > totalCount {
+            timePercent =  CGFloat(totalCount) / CGFloat(model!.sellTime)
+        } else {
+            timePercent = CGFloat(model!.sellTime) / CGFloat(totalCount)
+        }
+        countProgressView.animation(percent: timePercent)
+        totalCountLabel.text = "总计：\(totalCount)秒"
         
     }
     

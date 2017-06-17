@@ -8,8 +8,11 @@
 
 import UIKit
 
+
+
 class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate, MenuViewDelegate,SubViewItemSelectDelegate{
-    
+
+    var delegate:SubViewItemSelectDelegate?
     var items:[String]? {
         didSet{
             menuView?.items = items
@@ -71,7 +74,6 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     var sortType = AppConst.SortType.down
     var menuView:YD_VMenuView?
     var subViewCollectionView:UICollectionView?
-    var navigationController:UINavigationController?
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -192,11 +194,8 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     func selectItem(starModel:MarketListStarModel) {
-        let storyBoard = UIStoryboard(name: "Market", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail") as! MarketDetailViewController
-        vc.starModel = starModel
-
-        navigationController?.pushViewController(vc, animated: true)
+        
+        delegate?.selectItem(starModel: starModel)
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

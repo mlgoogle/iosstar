@@ -61,20 +61,22 @@ class PublisherPageViewController: UIViewController {
     }
 
     @IBAction func buyButtonAction(_ sender: Any) {
-        
-        guard bannerDetailModel != nil else {
-            return
+        if checkLogin() {
+            guard bannerDetailModel != nil else {
+                requestInfos()
+                return
+            }
+            let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Markt.rawValue, bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail") as? MarketDetailViewController
+            
+            let starListModel = MarketListStarModel()
+            starListModel.name = bannerModel!.name
+            starListModel.symbol = bannerModel!.code
+            starListModel.pic = bannerDetailModel!.head_url
+            starListModel.wid = bannerDetailModel!.weibo_index_id
+            vc?.starModel = starListModel
+            navigationController?.pushViewController(vc!, animated: true)
         }
-        let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Markt.rawValue, bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail") as? MarketDetailViewController
-
-        let starListModel = MarketListStarModel()
-        starListModel.name = bannerModel!.name
-        starListModel.symbol = bannerModel!.code
-        starListModel.pic = bannerDetailModel!.head_url
-        starListModel.wid = bannerDetailModel!.weibo_index_id
-        vc?.starModel = starListModel
-        navigationController?.pushViewController(vc!, animated: true)
     }
     func requestInfos() {
         AppAPIHelper.newsApi().requestStarInfo(code: bannerModel!.code, complete: { (response) in

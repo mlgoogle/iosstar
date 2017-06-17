@@ -19,6 +19,7 @@ class MarketAuctionViewController: MarketBaseViewController {
     var fansList:[FansListModel]?
     var statusModel:AuctionStatusModel?
     var buySellModel:BuySellCountModel?
+    var totalCount:Int = 1 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,9 @@ class MarketAuctionViewController: MarketBaseViewController {
 
         requestAuctionSattus()
         requestFansList()
+        requetTotalCount()
+        requestPositionCount()
+        requestPercent()
     }
 
     func initCountDownBlock() {
@@ -38,7 +42,9 @@ class MarketAuctionViewController: MarketBaseViewController {
             return
         }
         YD_CountDownHelper.shared.marketBuyOrSellListRefresh = { [weak self] (result)in
-           self?.requestFansList()
+            self?.requestFansList()
+            self?.requestPositionCount()
+            self?.requestPercent()
         }
         
         YD_CountDownHelper.shared.countDownRefresh = { [weak self] (result)in
@@ -69,11 +75,11 @@ class MarketAuctionViewController: MarketBaseViewController {
     }
     
     func requestPositionCount() {
-        guard starCode != nil else {
-            return
-        }
+//        guard starCode != nil else {
+//            return
+//        }
         let r = PositionCountRequestModel()
-        r.starcode = starCode!
+        r.starcode = "1002"
         AppAPIHelper.marketAPI().requestPositionCount(requestModel: r, complete: { (response) in
             if let model = response as? PositionCountModel {
                 self.countModel = model
@@ -96,11 +102,15 @@ class MarketAuctionViewController: MarketBaseViewController {
             }
             
         }) { (error) in
-            
-            
+            let model = BuySellCountModel()
+            model.buyCount = 20
+            model.sellCount = 20
+            self.buySellModel = model
+            self.tableView.rectForRow(at: IndexPath(row: 0, section: 0))
         }
 
     }
+
     
     
     
@@ -129,6 +139,21 @@ class MarketAuctionViewController: MarketBaseViewController {
             
         }
     }
+    
+    func requetTotalCount() {
+        AppAPIHelper.marketAPI().requestTotalCount(starCode: "143", complete: { (response) in
+            
+            if let model = response as? StarTotalCountModel {
+                self.totalCount = Int(model.star_time)
+                self.tableView.rectForRow(at: IndexPath(row: 0, section: 0))
+
+            }
+            
+        }) { (error) in
+            
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("--------countDownRefresh---------开始----------------")
@@ -218,7 +243,7 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
         
         cell.setPositionCountModel(model: countModel, starCode: starCode, starName: starName)
         self.headerCell = cell
-        headerCell?.setPercent(model:buySellModel)
+        headerCell?.setPercent(model:buySellModel,totalCount:totalCount)
 
         return cell
     }

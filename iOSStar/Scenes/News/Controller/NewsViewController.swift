@@ -153,6 +153,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         if (bannerModels?.count ?? 0) == 0 {
             return
         }
+        
 
         performSegue(withIdentifier: "showPubPage", sender: index)
     }
