@@ -128,6 +128,16 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
     }
     //MARK: 重置密码
     @IBAction func doreset(_ sender: Any) {
+        
+        if !isPassWord(pwd: first_input.text!) {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入6位字符以上密码", ForDuration: 2.0, completion: nil)
+            return
+        }
+        if !isPassWord(pwd: second_input.text!) {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入6位字符以上密码", ForDuration: 2.0, completion: nil)
+            return
+        }
+        
         if first_input.text != second_input.text {
             SVProgressHUD.showErrorMessage(ErrorMessage: "两次密码不一致", ForDuration: 2.0, completion: nil)
             return

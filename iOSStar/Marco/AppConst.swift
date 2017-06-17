@@ -22,6 +22,11 @@ func isTelNumber(num: String)->Bool
     let predicate:NSPredicate = NSPredicate(format: "SELF MATCHES %@", "^1[3|4|5|7|8][0-9]\\d{8}$")
     return predicate.evaluate(with: num)
 }
+// 密码校验
+func isPassWord(pwd: String) ->Bool {
+    let predicate:NSPredicate = NSPredicate(format: "SELF MATCHES %@", "(^[A-Za-z0-9]{6,20}$)")
+    return predicate.evaluate(with: pwd)
+}
 
 
 class AppConst {
@@ -69,7 +74,7 @@ class AppConst {
     class Network {
         #if true  //是否测试环境
         static let TcpServerIP:String = "139.224.34.22";
-        static let TcpServerPort:UInt16 = 16008
+        static let TcpServerPort:UInt16 = 16006
 
         static let TttpHostUrl:String = "139.224.34.22";
         #else
