@@ -60,6 +60,8 @@ class AppConfigHelper: NSObject {
             let datadic = result as? UserModel
             if let _ = datadic {
                 
+//                self.showAlert()
+                
                 UserModel.share().upateUserInfo(userObject: result!)
                 UserDefaults.standard.synchronize()
                 self.LoginYunxin()
@@ -218,7 +220,9 @@ class AppConfigHelper: NSObject {
     func showAlert(){
         alertView.showAlertView()
         alertView.messageAction = {
-            
+            let vc = UIStoryboard.init(name: "Exchange", bundle: nil).instantiateViewController(withIdentifier: "SystemMessageVC")
+            let nav = UINavigationController.init(rootViewController: vc)
+            UIApplication.shared.keyWindow?.rootViewController?.present(nav, animated: true, completion: nil)
         }
 
     }
