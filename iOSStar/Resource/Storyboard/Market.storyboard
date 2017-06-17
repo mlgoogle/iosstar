@@ -243,7 +243,7 @@
                                                                 <constraint firstItem="VNW-kB-6yj" firstAttribute="top" secondItem="Mlx-sL-6jZ" secondAttribute="bottom" constant="22" id="gl6-F1-VFc"/>
                                                             </constraints>
                                                         </view>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="liuyan.png" translatesAutoresizingMaskIntoConstraints="NO" id="exO-zc-VMk">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="liuyan.png" translatesAutoresizingMaskIntoConstraints="NO" id="exO-zc-VMk">
                                                             <rect key="frame" x="12" y="15" width="351" height="230"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="230" id="Ba6-qH-9UW"/>
@@ -344,13 +344,17 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="backView" destination="a37-Bd-isu" id="Oo3-bO-Tmm"/>
+                                            <outlet property="buyCountLabel" destination="lhn-O1-DFH" id="AW9-CI-wLV"/>
                                             <outlet property="buyProgressView" destination="1Tu-LF-LFw" id="KHe-2Q-wOT"/>
+                                            <outlet property="buyWidth" destination="2xU-bf-2vL" id="pwp-Zg-zAG"/>
                                             <outlet property="countProgressView" destination="WIm-gw-tSk" id="JhE-rH-JeC"/>
                                             <outlet property="positionCount" destination="VNW-kB-6yj" id="Ltl-F6-QAe"/>
+                                            <outlet property="sellCountLabel" destination="NFS-7F-bN6" id="OAt-zn-k2M"/>
                                             <outlet property="sellProgressView" destination="p82-Ta-oUM" id="q1c-G5-850"/>
                                             <outlet property="showImageView" destination="exO-zc-VMk" id="ua7-FQ-cEl"/>
                                             <outlet property="starCodeLabel" destination="Mlx-sL-6jZ" id="PlN-QH-tFE"/>
                                             <outlet property="timeLabel" destination="l4d-xa-7KV" id="BbA-t8-NBh"/>
+                                            <outlet property="totalCountLabel" destination="Uem-F4-Tv3" id="nVj-JL-7g7"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketAuctionCell" rowHeight="80" id="t94-Ik-j7r" customClass="MarketAuctionCell" customModule="iOSStar" customModuleProvider="target">

@@ -185,3 +185,13 @@ class BuySellCountModel: Object {
     dynamic var sellCount = 0
     dynamic var symbol = "1001"
 }
+
+
+class StarTotalCountModel:Object {
+    dynamic var result:Int64 = 1
+    dynamic var star_time:Int64 = 0
+}
+
+class EntrustCountModel:Object {
+    
+}

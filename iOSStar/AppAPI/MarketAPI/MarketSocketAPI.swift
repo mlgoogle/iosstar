@@ -137,4 +137,15 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         let packet = SocketDataPacket(opcode: .buySellPercent, model: requestModel)
         startModelRequest(packet, modelClass: BuySellCountModel.self, complete: complete, error: error)
     }
+
+    
+    func requestTotalCount(starCode:String,complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode:.starTotalTime, parameters: ["starcode":starCode])
+        startModelRequest(packet, modelClass: StarTotalCountModel.self, complete: complete, error: error)
+
+    }
+    func requestEntrustCount(requestModel:EntrustCountRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
+      
+    }
+
 }

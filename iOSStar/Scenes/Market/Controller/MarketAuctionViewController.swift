@@ -18,6 +18,7 @@ class MarketAuctionViewController: MarketBaseViewController {
     var buySell:Int32 = 1
     var fansList:[FansListModel]?
     var statusModel:AuctionStatusModel?
+    var buySellModel:BuySellCountModel?
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +80,23 @@ class MarketAuctionViewController: MarketBaseViewController {
                 self.tableView.reloadData()
             }
         }) { (error) in
+            
+        }
+    }
+    
+    func requestPercent() {
+        
+        let requestModel = BuySellPercentRequest()
+        
+        AppAPIHelper.marketAPI().requstBuySellPercent(requestModel: requestModel, complete: { (response) in
+            
+            if let model = response as? BuySellCountModel{
+                self.buySellModel = model                
+                self.tableView.rectForRow(at: IndexPath(row: 0, section: 0))
+            }
+            
+        }) { (error) in
+            
             
         }
 
@@ -200,6 +218,7 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
         
         cell.setPositionCountModel(model: countModel, starCode: starCode, starName: starName)
         self.headerCell = cell
+        headerCell?.setPercent(model:buySellModel)
 
         return cell
     }

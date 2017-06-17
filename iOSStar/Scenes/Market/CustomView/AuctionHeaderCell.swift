@@ -16,7 +16,11 @@ class AuctionHeaderCell: UITableViewCell {
     @IBOutlet weak var positionCount: UILabel!
     //明星名称以及代码
     @IBOutlet weak var starCodeLabel: UILabel!
+    @IBOutlet weak var buyCountLabel: UILabel!
     
+    @IBOutlet weak var sellCountLabel: UILabel!
+    @IBOutlet weak var totalCountLabel: UILabel!
+    @IBOutlet weak var buyWidth: NSLayoutConstraint!
     //拍卖倒计时剩余时间
     @IBOutlet weak var timeLabel: UILabel!
     //转让委托总数据量占比
@@ -42,6 +46,16 @@ class AuctionHeaderCell: UITableViewCell {
         backView.layer.cornerRadius = 3
         backView.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
     }
+    func setPercent(model:BuySellCountModel?) {
+        guard model != nil else {
+            return
+        }
+        
+        buyCountLabel.text = "买入：\(model!.buyCount)人"
+        sellCountLabel.text = "卖出：\(model!.sellCount)人"
+        
+    }
+    
     func setTimeText(text:String) {
         
         if text == "拍卖未开始" {
@@ -49,7 +63,6 @@ class AuctionHeaderCell: UITableViewCell {
         } else {
             timeLabel.setAttributeText(text: "剩余拍卖时间: \(text)", firstFont: 16, secondFont: 16, firstColor: UIColor(hexString: "333333"), secondColor: UIColor(hexString: "FB9938"), range: NSRange(location: 8, length: text.length()))
         }
-        
     }
     func setImageUrl(url:String)  {
     
