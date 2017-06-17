@@ -43,7 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         AppConfigHelper.shared().getstart()
         // 登录
        AppConfigHelper.shared().login()
-        
     
         UIApplication.shared.statusBarStyle = .default
 
