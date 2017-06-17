@@ -182,6 +182,11 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
             return
         }
         if !isTelNumber(num: phoneTf.text!){
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入正确的手机号码", ForDuration: 2.0, completion: nil)
+            return
+        }
+        if !isPassWord(pwd: passTf.text!) {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入6位字符以上密码", ForDuration: 2.0, completion: nil)
             return
         }
         if ShareDataModel.share().isweichaLogin == true && ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid] != "" {

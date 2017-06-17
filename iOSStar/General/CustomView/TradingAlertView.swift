@@ -24,6 +24,9 @@ class TradingAlertView: UIView {
     
     var messageAction : (() -> Void)? = nil
     
+    // 记录次数
+    // var recordNum : Int = 0
+    
     // 默认高度
     var defaultHeight :CGFloat = 110
     
@@ -99,10 +102,12 @@ class TradingAlertView: UIView {
     
     // 显示
     func showAlertView() {
-        
+        self.removeFromSuperview()
         UIApplication.shared.keyWindow?.addSubview(self)
         UIApplication.shared.setStatusBarHidden(true, with: .fade)
         isShow = true
+        // recordNum += 1
+        ShareDataModel.share().isShowInWindows = true
         UIView.animate(withDuration: 0.25, animations: { 
             self.frame = CGRect(x: 0,
                                 y: 0,
@@ -115,8 +120,8 @@ class TradingAlertView: UIView {
 //                self.disMissAlertView()
 //            })
             self.delay(2) {
-                self.disMissAlertView()
-            }
+                 self.disMissAlertView()
+             }
         }
         
     }
@@ -125,6 +130,8 @@ class TradingAlertView: UIView {
     func disMissAlertView() {
         UIApplication.shared.setStatusBarHidden(false, with: .fade)
         isShow = false
+        // recordNum -= 1
+        ShareDataModel.share().isShowInWindows = false
         UIView.animate(withDuration: 0.25, animations: {
             self.frame = CGRect(x: 0,
                                 y: -self.defaultHeight,

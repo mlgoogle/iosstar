@@ -33,6 +33,12 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
 
         scrollViewDidScroll(tableView)
         titleView.setTime()
+        
+        if ShareDataModel.share().isShowInWindows == true {
+            UIApplication.shared.setStatusBarHidden(true, with: .none)
+        }else {
+            UIApplication.shared.setStatusBarHidden(false, with: .none)
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {

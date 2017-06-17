@@ -31,7 +31,6 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
         //StarInfoModel
         let model = dataSource?[indexPath.row] as! StarInfoModel
         let session = NIMSession(model.faccid, type: .P2P)
