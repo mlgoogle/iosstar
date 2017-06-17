@@ -76,10 +76,17 @@ class UserVC: BaseCustomTableViewController  {
                 // print("----\(response)")
                 
                 let model =   response as! UserInfoModel                
-                self.responseData = model
                 
+                self.responseData = model
                 self.account?.text =  String.init(format: "%.2f", model.balance)
-                self.nickNameLabel?.text = model.nick_name
+                if model.nick_name == "" {
+                    let  phonetext  = (UserDefaults.standard.object(forKey: "phone") as! String)
+                    let index = phonetext.index(phonetext.endIndex, offsetBy: -6)
+                    self.nickNameLabel?.text = "星享用户" + (phonetext.substring(from: index))
+                } else  {
+                    self.nickNameLabel?.text = model.nick_name
+                }
+                
                 self.iconImageView?.kf.setImage(with: URL(string: model.head_url), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
                 self.tableView.reloadData()
 
