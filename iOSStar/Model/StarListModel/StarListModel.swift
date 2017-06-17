@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 class BaseModel: OEZModel {
     override class func jsonKeyPostfix(_ name: String!) -> String! {
         return "";
@@ -27,17 +28,33 @@ class StarListModel: BaseModel {
     }
 
 }
-class StartModel: NSObject {
+class StartModel: Object {
     
-    var accid : String = ""
-    var brief : Int64 = 0
-    var code : Int64 = 0
-    var gender : Int64 = 0
-    var name : String = ""
-    var phone : String = ""
-    var price : Int64 = 0
-    var pic_url : Int64 = 0
+   dynamic var accid : String = ""
+   dynamic var brief : Int64 = 0
+   dynamic var code : String = " "
+   dynamic var gender : Int64 = 0
+   dynamic var name : String = ""
+   dynamic  var phone : String = ""
+   dynamic var price : Int64 = 0
+   dynamic var pic_url : Int64 = 0
+   override static func primaryKey() -> String?{
+        return "code"
+    }
     
+   static func getStartName(startCode:String,complete: CompleteBlock?){
+        
+        let realm = try! Realm()
+        let filterStr = "code = '\(startCode)'"
+        let user = realm.objects(StartModel.self).filter(filterStr).first
+        if user != nil{
+            complete?(user as AnyObject)
+        }else{
+            complete?(nil)
+        }
+        
+        
+    }
     
     
 }

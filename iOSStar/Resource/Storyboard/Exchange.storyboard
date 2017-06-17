@@ -156,27 +156,23 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="84.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="border.png" translatesAutoresizingMaskIntoConstraints="NO" id="jDF-FO-XEX">
+                                            <rect key="frame" x="25" y="5" width="325" height="74.5"/>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNp-3f-I7b">
                                             <rect key="frame" x="25" y="5" width="325" height="74.5"/>
-                                            <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rjk-wx-AHU">
-                                            <rect key="frame" x="109" y="87" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjc-8c-LML">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjc-8c-LML">
                                             <rect key="frame" x="211.5" y="45.5" width="45" height="26"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="45" id="lXD-Fd-Bej"/>
                                                 <constraint firstAttribute="height" constant="26" id="y36-aA-0mt"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <state key="normal" title="点此查看">
                                                 <color key="titleColor" red="0.98431372549999996" green="0.59999999999999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
@@ -204,9 +200,13 @@
                                         <constraint firstItem="fRs-rV-BO0" firstAttribute="leading" secondItem="dNp-3f-I7b" secondAttribute="leading" constant="19" id="Gpn-kX-0My"/>
                                         <constraint firstItem="dNp-3f-I7b" firstAttribute="top" secondItem="2cv-Nb-J3K" secondAttribute="top" constant="5" id="IB0-Gy-Xmq"/>
                                         <constraint firstItem="vbI-8a-JzM" firstAttribute="top" secondItem="fRs-rV-BO0" secondAttribute="bottom" constant="10" id="J2J-Lg-K9Q"/>
+                                        <constraint firstItem="dNp-3f-I7b" firstAttribute="top" secondItem="jDF-FO-XEX" secondAttribute="top" id="KT4-z5-kM7"/>
+                                        <constraint firstItem="dNp-3f-I7b" firstAttribute="trailing" secondItem="jDF-FO-XEX" secondAttribute="trailing" id="g7L-xG-5oA"/>
                                         <constraint firstItem="bjc-8c-LML" firstAttribute="leading" secondItem="vbI-8a-JzM" secondAttribute="trailing" constant="10" id="giF-PQ-j7q"/>
                                         <constraint firstAttribute="trailing" secondItem="dNp-3f-I7b" secondAttribute="trailing" constant="25" id="kJN-4a-xbl"/>
                                         <constraint firstItem="dNp-3f-I7b" firstAttribute="leading" secondItem="2cv-Nb-J3K" secondAttribute="leading" constant="25" id="lPm-xo-aeD"/>
+                                        <constraint firstItem="dNp-3f-I7b" firstAttribute="bottom" secondItem="jDF-FO-XEX" secondAttribute="bottom" id="qdu-P9-ItT"/>
+                                        <constraint firstItem="dNp-3f-I7b" firstAttribute="leading" secondItem="jDF-FO-XEX" secondAttribute="leading" id="sdT-bA-Yg3"/>
                                         <constraint firstItem="bjc-8c-LML" firstAttribute="centerY" secondItem="vbI-8a-JzM" secondAttribute="centerY" id="tS1-HP-nBX"/>
                                         <constraint firstAttribute="bottom" secondItem="dNp-3f-I7b" secondAttribute="bottom" constant="5" id="xap-tG-uKP"/>
                                     </constraints>
@@ -397,6 +397,7 @@
     </scenes>
     <resources>
         <image name="8" width="55" height="55"/>
+        <image name="border.png" width="235" height="80"/>
         <image name="exchange_contact" width="159" height="116"/>
         <image name="exchange_system" width="174" height="112"/>
         <image name="nodata_record" width="200" height="186"/>

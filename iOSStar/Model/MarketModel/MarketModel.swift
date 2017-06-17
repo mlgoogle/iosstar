@@ -173,3 +173,15 @@ class OrderTradesModel: Object {
     dynamic var symbol = ""
     dynamic var openPrice = 0.0
 }
+class PositionCountModel: Object {
+    
+    dynamic var star_time:Int64 = 0
+    dynamic var result:Int64 = 0
+}
+
+class BuySellCountModel: Object {
+    
+    dynamic var buyCount = 0
+    dynamic var sellCount = 0
+    dynamic var symbol = "1001"
+}

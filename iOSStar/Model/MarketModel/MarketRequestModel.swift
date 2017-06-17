@@ -68,3 +68,15 @@ class FanListRequestModel: MarketBaseModel {
     var count:Int64 = 10
 }
 
+class PositionCountRequestModel: BaseModel {
+
+     var uid:Int64 = 142
+    
+     var starcode = "1001"
+    
+}
+
+class BuySellPercentRequest: MarketBaseModel {
+    
+     var symbol = "1001"
+}

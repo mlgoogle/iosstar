@@ -16,8 +16,8 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         let param: [String: Any] = [SocketConst.Key.status: status,
                                     SocketConst.Key.pos :  pos,
                                     SocketConst.Key.countNuber :  count,
-                                    SocketConst.Key.uid : "142",
-                                    SocketConst.Key.token : "123",]
+                                    SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
+                                    SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
 
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .getlist, dict: param as [String : AnyObject], type: .getlist)
 //        startRequest(packet, complete: complete, error: error)
@@ -169,9 +169,9 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
 
     }
     func addstarinfo(complete: CompleteBlock?, error: ErrorBlock?){
-        let param = [SocketConst.Key.phone :" ",
-                     SocketConst.Key.code : " ",
-                     SocketConst.Key.all: 12,] as [String : Any]
+        let param = [SocketConst.Key.phone :"1123",
+                     SocketConst.Key.starCode : " 123",
+                     SocketConst.Key.all: 1,] as [String : Any]
         
         let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .newsStarInfo, dict: param  as [String : AnyObject])
         
