@@ -147,18 +147,20 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
         case 1:
             if let marketCell = cell as? DealMarketCell {
                 marketCell.setRealTimeData(model: realTimeData)
+                
             }
             
         case 2:
             if let orderCell = cell as? DealOrderInfoCell {
                 orderCell.count = 600
                 orderCell.delegate = self
+                orderCell.setTitles(titles: infos)
                 guard realTimeData != nil else {
                     return orderCell
                 }
-                orderCell.price = realTimeData!.currentPrice
+                orderCell.price = price
                 
-                orderCell.setPriceAndCount(price:realTimeData!.currentPrice, count:600)
+                orderCell.setPriceAndCount(price:price, count:count)
             }
         default:
             break

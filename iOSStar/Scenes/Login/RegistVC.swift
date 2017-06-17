@@ -202,17 +202,18 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     func login() {
 
 //        FIXME: - 此处先给"123456"的验证码
+        /*
         if codeTf.text != "123456" {
             SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 2.0, completion: nil)
             return
         }
-        /*
+        */
         let string = "yd1742653sd" + self.timeStamp + self.codeTf.text! + self.phoneTf.text!
         if string.md5_string() != self.vToken{
             SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)
             return
         }
-        */
+        
         AppAPIHelper.login().regist(phone: phoneTf.text!, password: (passTf.text?.md5_string())!, complete: { [weak self](result)  in
             if let response = result {
                 if response["result"] as! Int == 1 {
