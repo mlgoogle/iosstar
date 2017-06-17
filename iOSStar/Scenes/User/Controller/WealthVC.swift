@@ -37,9 +37,13 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         view.backgroundColor = UIColor.clear
         title = "我的资产"
         self.tableView.tableFooterView = view
+        
+        requestData()
     }
     func requestData() {
         AppAPIHelper.user().accountMoney(complete: { (result) in
+            
+            print("=====\(result)")
             
         }) { (error ) in
             

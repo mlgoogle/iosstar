@@ -22,6 +22,11 @@ func isTelNumber(num: String)->Bool
     let predicate:NSPredicate = NSPredicate(format: "SELF MATCHES %@", "^1[3|4|5|7|8][0-9]\\d{8}$")
     return predicate.evaluate(with: num)
 }
+// 密码校验
+func isPassWord(pwd: String) ->Bool {
+    let predicate:NSPredicate = NSPredicate(format: "SELF MATCHES %@", "(^[A-Za-z0-9]{6,20}$)")
+    return predicate.evaluate(with: pwd)
+}
 
 
 class AppConst {
