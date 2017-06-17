@@ -65,8 +65,12 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         let index1 = phonetext.index(phonetext.endIndex, offsetBy: -4)
         self.phone.text =  (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
         
-        
-        self.nickName.text = self.userInfoData?.nick_name
+        if userInfoData?.nick_name == "" {
+            let lastIndex = phonetext.index(phonetext.endIndex, offsetBy: -6)
+            self.nickName.text = "星享用户" + phonetext.substring(from: lastIndex)
+        } else {
+            self.nickName.text = self.userInfoData?.nick_name
+        }
         self.headerImg.kf.setImage(with: URL(string: (self.userInfoData?.head_url)!), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
 //        self.nickName.text = (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
         // self.nickName.text = phonetext

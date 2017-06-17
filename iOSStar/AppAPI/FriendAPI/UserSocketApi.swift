@@ -95,7 +95,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
          startRequest(packet, complete: complete, error: error)
     
     }
-    
+     // MARK: 重置密码
     func ResetPayPwd(requestModel: ResetPayPwdRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
         
         let packet = SocketDataPacket(opcode: .restPwd, model: requestModel)
@@ -158,7 +158,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         startRequest(packet, complete: complete, error: error)
     }
     
-    // 已购明星接口
+    // MARK: 已购明星接口
     func requestBuyStarCount(complete: CompleteBlock?, error: ErrorBlock?) {
         
         let param: [String: Any] = [SocketConst.Key.id: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,]
@@ -168,6 +168,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         startRequest(packet, complete: complete, error: error)
 
     }
+    // MARK: 获取明星名称
     func addstarinfo(complete: CompleteBlock?, error: ErrorBlock?){
         let param = [SocketConst.Key.phone :"1123",
                      SocketConst.Key.starCode : " 123",
@@ -176,6 +177,16 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .newsStarInfo, dict: param  as [String : AnyObject])
         
         startModelsRequest(packet, listName: "list", modelClass: StartModel.self, complete: complete, error: error)
+    }
+     // MARK: 支付宝支付
+    func alipay(title:String,  price:Double, complete: CompleteBlock?, error: ErrorBlock?){
+        let param: [String : Any] = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
+                                     
+                                     SocketConst.Key.title: title,SocketConst.Key.price: price]
+        
+        let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .alipay, dict: param  as [String : AnyObject])
+        print(param)
+        startRequest(packet, complete: complete, error: error)
     }
 
     

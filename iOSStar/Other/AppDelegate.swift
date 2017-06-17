@@ -40,75 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         
         // 个推
         AppConfigHelper.shared().setupGeTuiSDK(sdkDelegate: self)
-        getstart()
+        AppConfigHelper.shared().getstart()
         // 登录
-        login()
+       AppConfigHelper.shared().login()
         
-        
-// /       [[NIMSDKConfig sharedConfig] setShouldSyncUnreadCount:YES];
+    
         UIApplication.shared.statusBarStyle = .default
 
         return true
     }
-    func getstart(){
-    
-        AppAPIHelper.user().addstarinfo(complete: { (result) in
-            
-            print(NSHomeDirectory())
-            
-            if let model = result as? [StartModel]{
-                
-                for news in model{
-                    let realm = try! Realm()
-                    try! realm.write {
-                        
-                        realm.add(news, update: true)
-                    }
-                }
-               
-            }
-
-        }) { (error) in
-            
-        }
-    
-    }
-    func login(){
-        
-        if  UserDefaults.standard.object(forKey: "phone") as? String == nil {
-            return
-        }
-        AppAPIHelper.user().tokenLogin(complete: { (result) in
-            let datadic = result as? UserModel
-            if let _ = datadic {
-           
-                UserModel.share().upateUserInfo(userObject: result!)
-                UserDefaults.standard.synchronize()
-                self.LoginYunxin()
-            }
-        }) { (error ) in
-            
-        }
-        
-    }
-    func LoginYunxin(){
-        
-        AppAPIHelper.login().registWYIM(phone: UserDefaults.standard.object(forKey: "phone") as! String, token: UserDefaults.standard.object(forKey: "phone")! as! String, complete: { (result) in
-                let datadic = result as? Dictionary<String,String>
-                if let _ = datadic {
-                   
-                    NIMSDK.shared().loginManager.login(UserDefaults.standard.object(forKey: "phone") as! String, token: (datadic?["token_value"]!)!, completion: { (error) in
-                        if (error == nil){
-                            
-                              NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
-                        }
-                
-                        print(error)
-                    })
-            }
-        }) { (error)  in
-        }
-    }
+   
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -119,7 +60,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
-    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+       
+        
+        if (url.host == "safepay"){
+            AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (result) in
+                if let dataDic = result as? [String : AnyObject]{
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.aliPay.aliPayCode), object:(Int.init((dataDic["resultStatus"] as! String))), userInfo:nil)
+                    
+                }
+            })
+
+           
+        }else{
+              WXApi.handleOpen(url, delegate: self)
+        }
+
+         return true
+    }
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
         WXApi.handleOpen(url, delegate: self)
         return true
@@ -127,7 +85,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
        
-            WXApi.handleOpen(url, delegate: self)
+        if (url.host == "safepay"){
+            
+            AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (result) in
+               
+                if let dataDic = result as? [String : AnyObject]{
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.aliPay.aliPayCode), object:(Int.init((dataDic["resultStatus"] as! String))), userInfo:nil)
+               
+                }
+             
+              
+            })
+      
+        }
+        else{
+          WXApi.handleOpen(url, delegate: self)
+        }
+        
         
         return true
     }
@@ -236,6 +210,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         GeTuiSdk.resume()
         completionHandler(UIBackgroundFetchResult.newData)
     }
+    
     
     // MARK: - APP运行中接收到通知(推送)处理 - iOS 10 以下
     

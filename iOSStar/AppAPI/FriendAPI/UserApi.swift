@@ -45,4 +45,7 @@ protocol UserApi {
     func requestBuyStarCount(complete: CompleteBlock?, error: ErrorBlock?)
     func addstarinfo(complete: CompleteBlock?, error: ErrorBlock?)
     
+    // 支付宝支付
+    func alipay(title:String,  price:Double, complete: CompleteBlock?, error: ErrorBlock?)
+    
 }

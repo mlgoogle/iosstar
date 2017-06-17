@@ -21,6 +21,7 @@ class ShareDataModel: NSObject {
     dynamic var selectMonth : String = ""
     var isReturnBackClick : Bool = false
     var orderInfo : OrderInformation?
+    var isShowInWindows : Bool = false
   
 }
 class OrderInformation: NSObject {
