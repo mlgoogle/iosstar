@@ -9,7 +9,7 @@
 import UIKit
 import UserNotifications
 import SVProgressHUD
-
+import RealmSwift
 // 个推信息
 let kGtAppId:String = "STxLopLZK0AFPvAcnu7o67"
 let kGtAppKey:String = "SIbhyImzug9sjKteFtLrj8"
@@ -22,6 +22,65 @@ class AppConfigHelper: NSObject {
         return helper
     }
     
+    func getstart(){
+        
+        AppAPIHelper.user().addstarinfo(complete: { (result) in
+            
+            print(NSHomeDirectory())
+            
+            if let model = result as? [StartModel]{
+                
+                for news in model{
+                    let realm = try! Realm()
+                    try! realm.write {
+                        
+                        realm.add(news, update: true)
+                    }
+                }
+                
+            }
+            
+        }) { (error) in
+            
+        }
+        
+    }
+    func login(){
+        
+        if  UserDefaults.standard.object(forKey: "phone") as? String == nil {
+            return
+        }
+        AppAPIHelper.user().tokenLogin(complete: { (result) in
+            let datadic = result as? UserModel
+            if let _ = datadic {
+                
+                UserModel.share().upateUserInfo(userObject: result!)
+                UserDefaults.standard.synchronize()
+                self.LoginYunxin()
+            }
+        }) { (error ) in
+            
+        }
+        
+    }
+    func LoginYunxin(){
+        
+        AppAPIHelper.login().registWYIM(phone: UserDefaults.standard.object(forKey: "phone") as! String, token: UserDefaults.standard.object(forKey: "phone")! as! String, complete: { (result) in
+            let datadic = result as? Dictionary<String,String>
+            if let _ = datadic {
+                
+                NIMSDK.shared().loginManager.login(UserDefaults.standard.object(forKey: "phone") as! String, token: (datadic?["token_value"]!)!, completion: { (error) in
+                    if (error == nil){
+                        
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
+                    }
+                    
+                    print(error)
+                })
+            }
+        }) { (error)  in
+        }
+    }
      // MARK: - 网易云信
     func setupNIMSDK(sdkConfigDelegate:NTESSDKConfigDelegate?) {
         // //在注册 NIMSDK appKey 之前先进行配置信息的注册，如是否使用新路径,是否要忽略某些通知，是否需要多端同步未读数

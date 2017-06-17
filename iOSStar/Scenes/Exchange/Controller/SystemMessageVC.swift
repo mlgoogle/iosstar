@@ -18,7 +18,7 @@ class MessageCell:  OEZTableViewCell{
        
          StartModel.getStartName(startCode: model.symbol) { (result) in
             let data = result as! StartModel
-            let str = model.sellUid == 1 ? "转让":"求购"
+            let str = model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id ? "转让":"求购"
              self.content.text = "\(data.name)" + "(" + "\(data.code)" + ")" + str
         }
         
@@ -28,7 +28,7 @@ class MessageCell:  OEZTableViewCell{
            dosee.setTitle("未确认", for: .normal)
         }else if model.handle == 1{
             
-            if ((model.buyUid == 142 && model.sellHandle == 1) || (model.sellUid == 142 && model.sellHandle == 1)){
+            if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 1) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 1)){
             dosee.setTitle("对方未确认", for: .normal)
             }else{
              dosee.setTitle( ((model.buyHandle == 0) && (model.sellHandle == 0)) ? "未确认" : (((model.buyHandle == -1) || (model.sellHandle == -1)) ? "已取消" : ((((model.buyHandle == 0) && (model.sellHandle == 1)) || ((model.buyHandle == 1) && (model.sellHandle == 0))) ? "未确认" : "交易成功")), for: .normal)
@@ -85,7 +85,7 @@ class SystemMessageVC: BasePageListTableViewController {
         
     
         if (data.handle == 1) {
-            if ((data.buyUid == 142 && data.sellHandle == 0) && (data.sellUid == 142 && data.sellHandle == 0)){
+            if ((data.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0) && (data.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0)){
                 let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易", preferredStyle:.alert)
                 // 设置2个UIAlertAction
                 let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
@@ -202,7 +202,7 @@ class SystemMessageVC: BasePageListTableViewController {
         model.orderAllPrice = "\(order.openPrice)"
         model.orderAccount = "\(order.amount)"
         model.orderPrice = "\(order.openPrice)"
-        model.orderStatus  = order.sellUid == 1 ? "转让":"求购"
+        model.orderStatus  = order.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id ? "转让":"求购"
         StartModel.getStartName(startCode: order.symbol) { (result) in
             
             let data = result as! StartModel
