@@ -32,7 +32,7 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
      
         
         let storyboardNames = ["News","Market","Exchange","User"]
-        let titles = ["首页","行情","分答","个人中心"]
+        let titles = ["首页","行情","星聊","个人中心"]
         for (index, name) in storyboardNames.enumerated() {
             let storyboard = UIStoryboard.init(name: name, bundle: nil)
             let controller = storyboard.instantiateInitialViewController()

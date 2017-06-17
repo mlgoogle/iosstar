@@ -136,6 +136,9 @@ class SocketConst: NSObject {
         case positionCount = 10025
         //拍卖买卖占比
         case buySellPercent = 6017
+        //获取明星总时间
+        case starTotalTime = 10027
+        
     }
     enum type:UInt8 {
         case error  = 0
