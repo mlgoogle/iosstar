@@ -185,7 +185,7 @@ class AppConfigHelper: NSObject {
     
     func setupUMSDK() {
         UMSocialManager.default().openLog(true)
-        UMSocialManager.default().umSocialAppkey = "592fbfb09f06fd64b0001fdb"
+        UMSocialManager.default().umSocialAppkey = "5944e976c62dca4b80001e50"
 //        UMSocialManager.default().umSocialAppSecret = ""
         UMSocialManager.default().setPlaform(UMSocialPlatformType.wechatSession, appKey: "wx9dc39aec13ee3158", appSecret: "a12a88f2c4596b2726dd4ba7623bc27e", redirectURL: "www.baidu.com")
         UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "3921700954", appSecret: "04b48b094faeb16683c32669824ebdad", redirectURL: "www.baidu.com")
@@ -202,20 +202,25 @@ class AppConfigHelper: NSObject {
         AppAPIHelper.dealAPI().setReceiveMatching { (response) in
             
             if let model = response as? ReceiveMacthingModel{
-
+                
                 StartModel.getStartName(startCode: model.symbol, complete: { (star) in
                     if let starModel = star as? StartModel {
                         self.alertView.str = "匹配成功提醒：\(starModel.name)（\(starModel.code)）匹配成功，请到系统消息中查看，点击查看。"
-                        self.alertView.showAlertView()
-                        self.alertView.messageAction = {
-                            
-                        }
+                        
+                        self.performSelector(onMainThread: #selector(self.showAlert), with: nil, waitUntilDone: false)
                     }
                 })
-
+                
             }
             
         }
+    }
+    func showAlert(){
+        alertView.showAlertView()
+        alertView.messageAction = {
+            
+        }
+
     }
     
     func setupReceiveOrderResult() {
