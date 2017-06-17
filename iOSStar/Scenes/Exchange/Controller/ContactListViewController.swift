@@ -43,12 +43,15 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
             }
             
         }) { (error ) in
-            if self.dataSource?.count == 0{
+             self.didRequestComplete(nil)
+            if self.dataSource?.count == nil{
                self.nodaView.isHidden = false
             }else{
                 self.nodaView.isHidden = true
             }
-           self.didRequestComplete(nil)
+            
+          
+            
 
         }
 

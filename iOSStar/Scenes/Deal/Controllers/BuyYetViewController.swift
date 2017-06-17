@@ -8,8 +8,13 @@
 //
 
 import UIKit
-
+import MJRefresh
+import SVProgressHUD
 class BuyYetViewController: DealBaseViewController {
+    var isRefresh = true
+    var header:MJRefreshNormalHeader?
+    var footer:MJRefreshAutoNormalFooter?
+    var page : Int = 0
     @IBOutlet weak var tableView: UITableView!
     var identifiers = ["DealTitleMenuCell", NoDataCell.className()]
 //    var titles = ["名称/市值（元）","持有/可转（秒）","现价/成本（秒）","盈亏（元）"]
@@ -20,7 +25,22 @@ class BuyYetViewController: DealBaseViewController {
     var orderData:[StarInfoModel]?
     override func viewDidLoad() {
         super.viewDidLoad()
+        header = MJRefreshNormalHeader(refreshingBlock: {
+            self.page = 1
+            self.requestOrder()
+           
+        })
         
+        tableView.mj_header = header
+        footer?.endRefreshing()
+      
+        footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+             self.page += 1
+            self.isRefresh = false
+            self.requestOrder()
+        })
+          footer?.isHidden = true
+        tableView.mj_footer = footer
         tableView.register(NoDataCell.self, forCellReuseIdentifier: NoDataCell.className())
         requestOrder()
     }
@@ -28,20 +48,32 @@ class BuyYetViewController: DealBaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    func endRefresh() {
+        if header?.state == .refreshing {
+            header?.endRefreshing()
+        }
+        if footer?.state == .refreshing {
+            footer?.endRefreshing()
+        }
+    }
     
     func requestOrder() {
         
-        AppAPIHelper.user().starmaillist(status: 1, pos: Int32((pageIndex - 1) * 10), count: 10, complete: { (result) in
+        AppAPIHelper.user().starmaillist(status: 1, pos: Int32((page - 1) * 10), count: 10, complete: { (result) in
             if let Model : StarListModel = result as? StarListModel {
                 self.orderData = Model.depositsinfo
                 self.tableView.reloadData()
                 self.identifiers.removeLast()
                 self.identifiers.append(PositionStarCell.className())
+            
             }
+         self.endRefresh()
+        }) { (error) in
 
-        }) { (error ) in
-
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
+                self.endRefresh()
+            })
+            
         }
 
     }

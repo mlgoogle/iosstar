@@ -15,10 +15,6 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     
     @IBOutlet var collectView: RechargeCollectView!
 
-    
-    
-    
-    
     @IBOutlet var dobuy: UIButton!
     var selectTypeHeight = CGFloat.init(140)
     //选中支付方式银行卡号
@@ -78,7 +74,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         
         if inputMoney.text != "" {
             if Double.init(inputMoney.text!)! > 50000 {
-                SVProgressHUD.showError(withStatus: "金额不能大于50000")
+                SVProgressHUD.showErrorMessage(ErrorMessage: "金额不能大于50000", ForDuration: 2.0, completion: nil)
                 inputMoney.text = ""
                 collectView.setSelect = "true"
                 return
@@ -286,7 +282,7 @@ extension RechargeVC {
         // NOTE: 将签名成功字符串格式化为订单字符串,请严格按照该格式
         let orderString = "\(String(describing: orderInfoEncoded))&sign=\"\(String(describing: signedString))\"&sign_type=\"RSA\""
         
-        let str = "app_id=2017060807450365&biz_content={\"out_trade_no\":\"20170525191212\",\"product_code\":\"QUICK_MSECURITY_PAY\",\"total_amount\":1000,\"subject\":\"a goods\"}&charset=utf-8&method=alipay.trade.app.pay&notify_url=http://139.224.34.22/cgi-bin/flight/router/v1/get_server.fcgi&sign=yjDnNp+QrpGHYfVrcfzLMDd4QjpRfq6miWyCjRAKF9Gx8H90o6m2m10bpMn1RJnEj9AC0sclZ0uGdeAh/Z6mXPVwD8j1UUdQ6F2g7CuTGw27AyhHtxNIJLlc3bj5fpjEBV8nx/IFbUXENgPbgP4HNkALmFdXgXqxa6HZrapR0OY=&sign_type=RSA&timestamp=2017-06-16"
+        let str = "app_id=2017060807450365&biz_content=%7B%22out_trade_no%22%3A%2220170525191212%22%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22total_amount%22%3A%220.01%22%2C%22subject%22%3A%22a%20goods%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign=ssYQ3c3jOlaROhOnKPoFS%2FbV%2BU25lyKLchzwRw%2F%2Fj%2FMpdh5UFMI3QBPJOLKBaGjYaucaJid9Z%2BpPQelo2ZwNl4n1YOSPmGn4gSzO7%2FhU3R46mxA58phIdbbrkTjYiXrMBqWwsxATOr8zRPQaNeBPJUv06XAEmkz91rl5hHKCa0k%3D&sign_type=RSA&timestamp=2017-06-16%2015%3A14%3A41&version=1.0"
         print("orderString == \(orderString)")
         
         // NOTE: 调用支付结果开始支付

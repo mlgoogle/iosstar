@@ -27,6 +27,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         return view
         
     }()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -40,9 +41,11 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         
         titleView.isHidden = true
     }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         setupBannerView()
         setupNavigation()
