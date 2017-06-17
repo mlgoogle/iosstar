@@ -1,4 +1,4 @@
-//
+
 //  UserSocketApi.swift
 //  iOSStar
 //
@@ -76,7 +76,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         startModelRequest(packet, modelClass: RechargeListModel.self, complete: complete, error: error)
     }
     
-    // MARK: - 重置支付密码
+    // MARK: - 设置支付密码
     func ResetPassWd(timestamp : Int64,vCode : String,vToken : String,pwd: String,type : Int, phone :String, complete: CompleteBlock?, error: ErrorBlock?)
      {
         
@@ -88,14 +88,12 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
                      SocketConst.Key.pwd: pwd,
                      SocketConst.Key.phone: phone] as [String : Any]
         
-        
-        
         let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .restPwd, dict: param  as [String : AnyObject])
         
          startRequest(packet, complete: complete, error: error)
     
     }
-     // MARK: 重置密码
+     // MARK: 重置支付密码
     func ResetPayPwd(requestModel: ResetPayPwdRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
         
         let packet = SocketDataPacket(opcode: .restPwd, model: requestModel)

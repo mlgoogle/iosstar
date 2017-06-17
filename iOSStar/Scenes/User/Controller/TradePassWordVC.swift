@@ -123,6 +123,8 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
     // MARK:  点击下一步
     @IBAction func doSetPass(_ sender: Any) {
         
+        let phoneNum = (UserDefaults.standard.object(forKey: "phone") as! String)
+        
         //  来判断是否请求接口设置交易密码
         if setPass == true{
             if passString.length() == 6{
@@ -133,7 +135,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
                 }
             
             }
-            AppAPIHelper.user().ResetPassWd(timestamp: 1, vCode: " ", vToken: " ", pwd: passString.md5_string()  , type: 0, phone: " ", complete: { (result) in
+            AppAPIHelper.user().ResetPassWd(timestamp: 1, vCode: " ", vToken: " ", pwd: passString.md5_string()  , type: 0, phone: phoneNum, complete: { (result) in
               
                 if let model = result {
                     

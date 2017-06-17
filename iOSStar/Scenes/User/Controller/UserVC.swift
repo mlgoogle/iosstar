@@ -73,7 +73,7 @@ class UserVC: BaseCustomTableViewController  {
         self.getUserInfo { (result) in
             
             if let response = result{
-                // print("----\(response)")
+                 print("----\(response)")
                 
                 let model =   response as! UserInfoModel                
                 

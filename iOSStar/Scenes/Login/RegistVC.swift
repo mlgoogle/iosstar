@@ -258,6 +258,9 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
                                          vCode: "123", complete: { [weak self](result)  in
             
             self?.LoginYunxin()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
+            print("=================\(String(describing: result))")
+                                            
 
         }) { (error )  in
             
