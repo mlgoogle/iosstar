@@ -51,7 +51,6 @@ class CustomLayout: UICollectionViewFlowLayout {
     
     override func prepare() {
         super.prepare()
-        
     }
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
@@ -141,7 +140,7 @@ class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionV
     
     var ordercell : OrderStarItem?
     
-    var serviceButtonClick :((_ selectIndex : Int) -> ())?
+    // var serviceButtonClick :((_ selectIndex : Int) -> ())?
     
     
     override func awakeFromNib() {
@@ -191,18 +190,20 @@ class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionV
     // MRAK: -UICollectionView  DataSource AND Delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        let serviceTypeModelCount = serviceTypeModel?.count ?? 1
+        let serviceTypeModelCount = serviceTypeModel?.count ?? 0
         
         // 分页
         let pageNum = (serviceTypeModelCount - 1) / 8 + 1
-        pageControl.numberOfPages = pageNum
-
-        return serviceTypeModelCount
+        if serviceTypeModelCount == 0 {
+            pageControl.numberOfPages = 0
+        } else {
+            pageControl.numberOfPages = pageNum
+        }
         
+        return serviceTypeModelCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         
         if serviceTypeModel?.count ?? 0 == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KOrderStarItemID, for: indexPath) as! OrderStarItem
@@ -223,15 +224,16 @@ class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionV
         
         self.ordercell = cell
         
+        
+        if self.serviceTypeModel?.count ?? 0 == 0 {
+            return
+        }
+       
         let serviceTypeModel = self.serviceTypeModel![indexPath.row]
         
-         NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.chooseServiceTypeSuccess), object: serviceTypeModel, userInfo: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.chooseServiceTypeSuccess), object: serviceTypeModel, userInfo: nil)
         
-//        if serviceButtonClick != nil {
-//            serviceButtonClick!(Int(serviceTypeModel.mid))
-//        }
-        
-        print("点击了\(indexPath.row)");
+        print("点击了\(indexPath.row) + 服务名称\(serviceTypeModel.name)");
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

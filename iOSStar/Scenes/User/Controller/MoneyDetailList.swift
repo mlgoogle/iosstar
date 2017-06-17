@@ -77,15 +77,14 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
                 self.nodataView.isHidden = false
                 if let object = result {
                     let model : RechargeListModel = object as! RechargeListModel
-                
-                   
                     self.didRequestComplete(model.depositsinfo as AnyObject)
+                    self.tableView.reloadData()
                     if self.dataSource?.count == 0 {
                         self.nodataView.isHidden = false
                     }else{
                         self.nodataView.isHidden = true
                     }
-                    self.tableView.reloadData()
+                   
                 
                 }
             }, error: { (error) in
@@ -155,7 +154,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
         
         indexString = indexStr
         
-        didRequest(0)
+        didRequest(1)
     }
     //MARK-
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
