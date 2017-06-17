@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MarketViewController: UIViewController {
+class MarketViewController: UIViewController, SubViewItemSelectDelegate{
 
     var menuView:MarketMenuView?
     override func viewDidLoad() {
@@ -20,16 +20,25 @@ class MarketViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(color.imageWithColor(), for: .default)
         automaticallyAdjustsScrollViewInsets = false
         menuView = MarketMenuView(frame: CGRect(x: 0, y: 64, width: kScreenWidth, height: kScreenHeight))
-        menuView?.navigationController = navigationController
         menuView?.items = ["明星"]
         menuView?.menuView?.isScreenWidth = true
+        menuView?.delegate = self
         view.addSubview(menuView!)
-        
         perform(#selector(setTypes), with: nil, afterDelay: 0.5)
 
     }
     
 
+    func selectItem(starModel: MarketListStarModel) {
+        
+        if checkLogin() {
+            let storyBoard = UIStoryboard(name: "Market", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail") as! MarketDetailViewController
+            vc.starModel = starModel
+            navigationController?.pushViewController(vc, animated: true)
+        }
+
+    }
     func setTypes() {
         menuView?.types = [MarketClassifyModel]()
     }

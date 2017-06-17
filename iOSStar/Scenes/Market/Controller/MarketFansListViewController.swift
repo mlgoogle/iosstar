@@ -29,6 +29,14 @@ class MarketFansListViewController: MarketBaseViewController {
             self.requestFansList()
             
         })
+        tableView.mj_footer = footer
+    }
+    
+    func endRefres(count:Int) {
+        footer?.endRefreshing()
+        if count < 10 {
+         footer?.isHidden = true
+        }
     }
     
     func requestFansList() {
@@ -45,11 +53,14 @@ class MarketFansListViewController: MarketBaseViewController {
                     
                     self.fansList = models
                 }
+                self.endRefres(count:self.fansList!.count)
+
                 self.tableView.reloadData()
             }
-            
+            self.endRefres(count:1)
         }) { (error) in
             self.didRequestError(error)
+            self.endRefres(count:1)
         }
     }
     override func didReceiveMemoryWarning() {

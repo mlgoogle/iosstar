@@ -9,19 +9,84 @@
 import UIKit
 import UserNotifications
 import SVProgressHUD
-
+import RealmSwift
 // 个推信息
 let kGtAppId:String = "STxLopLZK0AFPvAcnu7o67"
 let kGtAppKey:String = "SIbhyImzug9sjKteFtLrj8"
 let kGtAppSecret:String = "TgaFdlcYMX5QVhH1CkP1k2"
 
 class AppConfigHelper: NSObject {
+    
+    lazy var alertView: TradingAlertView = {
+        let alertView = Bundle.main.loadNibNamed("TradingAlertView", owner: nil, options: nil)?.first as! TradingAlertView
+        alertView.str = "匹配成功提醒：范冰冰（808080）匹配成功，请到系统消息中查看，点击查看。"
+        return alertView
+    }()
     private static var helper = AppConfigHelper()
     class func shared() -> AppConfigHelper {
         
         return helper
     }
     
+    func getstart(){
+        
+        AppAPIHelper.user().addstarinfo(complete: { (result) in
+            
+            print(NSHomeDirectory())
+            
+            if let model = result as? [StartModel]{
+                
+                for news in model{
+                    let realm = try! Realm()
+                    try! realm.write {
+                        
+                        realm.add(news, update: true)
+                    }
+                }
+                
+            }
+            
+        }) { (error) in
+            
+        }
+        
+    }
+    func login(){
+        
+        if  UserDefaults.standard.object(forKey: "phone") as? String == nil {
+            return
+        }
+        AppAPIHelper.user().tokenLogin(complete: { (result) in
+            let datadic = result as? UserModel
+            if let _ = datadic {
+                
+                UserModel.share().upateUserInfo(userObject: result!)
+                UserDefaults.standard.synchronize()
+                self.LoginYunxin()
+            }
+        }) { (error ) in
+            
+        }
+        
+    }
+    func LoginYunxin(){
+        
+        AppAPIHelper.login().registWYIM(phone: UserDefaults.standard.object(forKey: "phone") as! String, token: UserDefaults.standard.object(forKey: "phone")! as! String, complete: { (result) in
+            let datadic = result as? Dictionary<String,String>
+            if let _ = datadic {
+                
+                NIMSDK.shared().loginManager.login(UserDefaults.standard.object(forKey: "phone") as! String, token: (datadic?["token_value"]!)!, completion: { (error) in
+                    if (error == nil){
+                        
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
+                    }
+                    
+                    print(error)
+                })
+            }
+        }) { (error)  in
+        }
+    }
      // MARK: - 网易云信
     func setupNIMSDK(sdkConfigDelegate:NTESSDKConfigDelegate?) {
         // //在注册 NIMSDK appKey 之前先进行配置信息的注册，如是否使用新路径,是否要忽略某些通知，是否需要多端同步未读数
@@ -120,7 +185,7 @@ class AppConfigHelper: NSObject {
     
     func setupUMSDK() {
         UMSocialManager.default().openLog(true)
-        UMSocialManager.default().umSocialAppkey = "592fbfb09f06fd64b0001fdb"
+        UMSocialManager.default().umSocialAppkey = "5944e976c62dca4b80001e50"
 //        UMSocialManager.default().umSocialAppSecret = ""
         UMSocialManager.default().setPlaform(UMSocialPlatformType.wechatSession, appKey: "wx9dc39aec13ee3158", appSecret: "a12a88f2c4596b2726dd4ba7623bc27e", redirectURL: "www.baidu.com")
         UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "3921700954", appSecret: "04b48b094faeb16683c32669824ebdad", redirectURL: "www.baidu.com")
@@ -137,16 +202,25 @@ class AppConfigHelper: NSObject {
         AppAPIHelper.dealAPI().setReceiveMatching { (response) in
             
             if let model = response as? ReceiveMacthingModel{
-                let alertView = Bundle.main.loadNibNamed("TradingAlertView", owner: nil, options: nil)?.first as! TradingAlertView
-                alertView.str = "撮合成功提醒：范冰冰（808080）转让成功，请到系统消息中查看，点击查看。"
-                alertView.showAlertView()
-                alertView.messageAction = {
-                    print("收到了吗")
-                }
-
+                
+                StartModel.getStartName(startCode: model.symbol, complete: { (star) in
+                    if let starModel = star as? StartModel {
+                        self.alertView.str = "匹配成功提醒：\(starModel.name)（\(starModel.code)）匹配成功，请到系统消息中查看，点击查看。"
+                        
+                        self.performSelector(onMainThread: #selector(self.showAlert), with: nil, waitUntilDone: false)
+                    }
+                })
+                
             }
             
         }
+    }
+    func showAlert(){
+        alertView.showAlertView()
+        alertView.messageAction = {
+            
+        }
+
     }
     
     func setupReceiveOrderResult() {

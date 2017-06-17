@@ -60,6 +60,7 @@ class SocketConst: NSObject {
 
         //搜索
         case weixinpay = 7033
+        case alipay = 7049
         //我的资产
         case accountMoney = 1004
         case detailList = 1005
@@ -135,6 +136,9 @@ class SocketConst: NSObject {
         case positionCount = 10025
         //拍卖买卖占比
         case buySellPercent = 6017
+        //获取明星总时间
+        case starTotalTime = 10027
+        
     }
     enum type:UInt8 {
         case error  = 0

@@ -72,14 +72,18 @@ class AppConst {
     };
     
     class Network {
-        #if true  //是否测试环境
+        #if false  //是否测试环境
         static let TcpServerIP:String = "139.224.34.22";
+
+      
+
         static let TcpServerPort:UInt16 = 16006
+
 
         static let TttpHostUrl:String = "139.224.34.22";
         #else
         static let TcpServerIP:String = "139.224.34.22";
-        static let TcpServerPort:UInt16 = 16105;
+        static let TcpServerPort:UInt16 = 16104;
         static let HttpHostUrl:String = "139.224.34.22";
 
         #endif
@@ -171,7 +175,10 @@ class AppConst {
         static let ErrorCode = "ErrorCode"
         static let wechetUserInfo = "https://api.weixin.qq.com/sns/userinfo"
     }
-    
+    class aliPay {
+        static let aliPayCode = "aliPayCode"
+    }
+
     class WechatPay {
         static let WechatKeyErrorCode = "WechatKeyErrorCode"
     }

@@ -35,7 +35,14 @@ class DealDoubleRowCell: UITableViewCell {
     }
 
     func setEntruset(model:EntrustListModel) {
-        
+        StartModel.getStartName(startCode: model.symbol) { (response) in
+            
+            if let star = response as? StartModel {
+                self.nameLabel.text = star.name
+            } else {
+                self.nameLabel.text = ""
+            }
+        }
         underNameLabel.text = model.symbol
         secondLabel1.text = String(format: "%.2f", model.openPrice)
         secondLabel2.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.positionTime), format: "HH:MM:SS")
@@ -53,12 +60,24 @@ class DealDoubleRowCell: UITableViewCell {
     }
     
     func setOrderModel(model:OrderListModel) {
+        StartModel.getStartName(startCode: model.symbol) { (response) in
+            
+            if let star = response as? StartModel {
+                self.nameLabel.text = star.name
+            } else {
+                self.nameLabel.text = ""
+            }
+        }
         underNameLabel.text = model.symbol
         secondLabel1.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.openTime), format: "YYYY-MM-dd")
         secondLabel2.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.openTime), format: "HH:mm:SS")
         thirdLabel1.text = "\(model.openPrice)"
         thirdLabel2.text = "\(model.amount)"
-  //      lastLabel1.text = dealType[model.buySell]
+        var type = -1
+        if model.sellUid == UserModel.share().getCurrentUser()!.id {
+           type = 1
+        }
+        lastLabel1.text = dealType[type]
         lastLabel2.text = dealStatus[model.handle]
     }
     
