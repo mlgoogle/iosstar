@@ -36,7 +36,17 @@ class ContactListCell: OEZTableViewCell {
     }
     
     override func update(_ data: Any!) {
+        
+        guard data != nil else{return}
         let model = data as! StarInfoModel
+        StartModel.getStartName(startCode: model.starcode) { (response) in
+            if let star = response as? StartModel {
+                self.iconImageView.kf.setImage(with: URL(string: star.pic_url))
+            }
+            
+        }
+        
+        
         cellModel = model
         nameLabel.text = model.starname
         jobLabel.text = model.faccid

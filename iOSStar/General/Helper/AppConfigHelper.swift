@@ -59,8 +59,8 @@ class AppConfigHelper: NSObject {
         AppAPIHelper.user().tokenLogin(complete: { (result) in
             let datadic = result as? UserModel
             if let _ = datadic {
-                
-                UserModel.share().upateUserInfo(userObject: result!)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
+
                 UserDefaults.standard.synchronize()
                 self.LoginYunxin()
             }

@@ -49,7 +49,7 @@ class ContainVC: UIViewController {
                 }else{
                     
                     
-                    UserModel.share().upateUserInfo(userObject: result!)
+                    UserModel.share().upateUserInfo(userObject: response!)
                     let phone  : String = (response?.userinfo?.phone)!
                     
                     UserDefaults.standard.set(phone, forKey: "phone")
