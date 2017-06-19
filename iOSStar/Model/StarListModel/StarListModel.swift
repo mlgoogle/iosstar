@@ -68,6 +68,7 @@ class StarInfoModel: NSObject {
     var starcode : String = ""
     var starname : String = ""
     var uid : Int64 = 0
+    var accid : String = ""
 
     
     
