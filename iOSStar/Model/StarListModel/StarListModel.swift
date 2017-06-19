@@ -37,7 +37,7 @@ class StartModel: Object {
    dynamic var name : String = ""
    dynamic  var phone : String = ""
    dynamic var price : Int64 = 0
-   dynamic var pic_url : Int64 = 0
+   dynamic var pic_url = ""
    override static func primaryKey() -> String?{
         return "code"
     }

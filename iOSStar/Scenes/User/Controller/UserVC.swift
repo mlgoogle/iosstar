@@ -51,31 +51,25 @@ class UserVC: BaseCustomTableViewController  {
         AppAPIHelper.user().requestBuyStarCount(complete: { (result) in
             
             if let model = result {
-                
-                // print("-----\(model)")
-                
                 let objectModle = model as! [String : Int]
-                
-                // print("=====\(objectModle)")
-                
                 if objectModle["amount"] != 0{
                     self.buyStarCountLabel?.text = String.init(format:"%d",objectModle["amount"]!)
                 } else {
                     self.buyStarCountLabel?.text = "0"
                 }
-                // self.tableView.reloadData()
             }
             
         }) { (error) in
             
         }
-        
-        self.getUserInfo { (result) in
-            
+        updateUserInfo()
+    }
+    
+    func updateUserInfo() {
+       getUserInfo { (result) in
             if let response = result{
-                 print("----\(response)")
-                
-                let model =   response as! UserInfoModel                
+
+                let model =   response as! UserInfoModel
                 
                 self.responseData = model
                 self.account?.text =  String.init(format: "%.2f", model.balance)
@@ -89,10 +83,9 @@ class UserVC: BaseCustomTableViewController  {
                 
                 self.iconImageView?.kf.setImage(with: URL(string: model.head_url), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
                 self.tableView.reloadData()
-
+                
             }
         }
-        
     }
         
 

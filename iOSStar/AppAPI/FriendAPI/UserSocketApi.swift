@@ -16,8 +16,8 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         let param: [String: Any] = [SocketConst.Key.status: status,
                                     SocketConst.Key.pos :  pos,
                                     SocketConst.Key.countNuber :  count,
-                                    SocketConst.Key.uid: 142,
-                                    SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
+                                    SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
+                                    SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token) ?? ""),]
 
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .getlist, dict: param as [String : AnyObject], type: .getlist)
 //        startRequest(packet, complete: complete, error: error)
@@ -64,7 +64,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
     //资金明细列表
     func creditlist(status: Int32, pos: Int32, count: Int32,time:String, complete: CompleteBlock?, error: ErrorBlock?){
         let param = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
-                     SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),
+                     SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token) ?? ""),
                      SocketConst.Key.status: status,
                      SocketConst.Key.pos: pos,
                      SocketConst.Key.countNuber: count ,
@@ -127,7 +127,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
     func getauserinfo( complete: CompleteBlock?, error: ErrorBlock?) {
         
         let param: [String: Any] = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
-                                    SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
+                                    SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token) ?? ""),]
         
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .userinfo, dict: param as [String : AnyObject])
         startModelRequest(packet, modelClass: UserInfoModel.self, complete: complete, error: error)
@@ -137,7 +137,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
     func tokenLogin( complete: CompleteBlock?, error: ErrorBlock?){
         
         let param: [String: Any] = [SocketConst.Key.uid: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
-                                    SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
+                                    SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token) ?? ""),]
         print(param)
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .tokenLogin, dict: param as [String : AnyObject])
         //startRequest(packet, complete: complete, error: error)

@@ -48,6 +48,10 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
     }
 
     
+    func setTitles(titles:[String]) {
+        priceInfoLabel.text = titles.first
+        coutTextField.text = titles.last
+    }
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.text!.hasSuffix(".") {
             textField.text =  textField.text!.substring(to: textField.text!.characters.index(before:textField.text!.endIndex))

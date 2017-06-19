@@ -257,11 +257,9 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
                                          deviceId: "1123",
                                          vCode: "123", complete: { [weak self](result)  in
             
-            self?.LoginYunxin()
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
-            print("=================\(String(describing: result))")
-                                            
-
+                                        self?.LoginYunxin()
+                                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
+                                  
         }) { (error )  in
             
             SVProgressHUD.showErrorMessage(ErrorMessage:  error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)

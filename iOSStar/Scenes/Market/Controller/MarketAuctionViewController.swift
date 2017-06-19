@@ -9,7 +9,7 @@
 import UIKit
 
 class MarketAuctionViewController: MarketBaseViewController {
-
+    var index = 0
     var count = 540
     var endTime:Int64 = 0
     var timeLabel:UILabel?
@@ -52,8 +52,7 @@ class MarketAuctionViewController: MarketBaseViewController {
                 return
             }
             self?.count -= 1
-            if self?.count != 0 {
-                
+            if (self?.count)! > 0 {
                 self?.headerCell?.setTimeText(text:YD_CountDownHelper.shared.getTextWithStartTime(closeTime: Int(self!.endTime)))
             } else {
                 self?.headerCell?.setTimeText(text: "拍卖未开始")
@@ -65,7 +64,8 @@ class MarketAuctionViewController: MarketBaseViewController {
         guard  statusModel != nil else {
             return
         }
-        if statusModel!.status {
+        if statusModel!.status && statusModel!.remainingTime > 0 {
+            
             endTime = Int64(Date().timeIntervalSince1970) + statusModel!.remainingTime + YD_CountDownHelper.shared.timeDistance
             initCountDownBlock()
         } else {
@@ -75,11 +75,11 @@ class MarketAuctionViewController: MarketBaseViewController {
     }
     
     func requestPositionCount() {
-//        guard starCode != nil else {
-//            return
-//        }
+        guard starCode != nil else {
+            return
+        }
         let r = PositionCountRequestModel()
-        r.starcode = "1002"
+        r.starcode = starCode!
         AppAPIHelper.marketAPI().requestPositionCount(requestModel: r, complete: { (response) in
             if let model = response as? PositionCountModel {
                 self.countModel = model
@@ -91,9 +91,11 @@ class MarketAuctionViewController: MarketBaseViewController {
     }
     
     func requestPercent() {
-        
+        guard starCode != nil else {
+            return
+        }
         let requestModel = BuySellPercentRequest()
-        
+        requestModel.symbol = starCode!
         AppAPIHelper.marketAPI().requstBuySellPercent(requestModel: requestModel, complete: { (response) in
             
             if let model = response as? BuySellCountModel{
@@ -115,6 +117,9 @@ class MarketAuctionViewController: MarketBaseViewController {
     
     
     func requestAuctionSattus() {
+        guard starCode != nil else {
+            return
+        }
         let model = AuctionStatusRequestModel()
         model.symbol = starCode!
         AppAPIHelper.marketAPI().requestAuctionStatus(requestModel: model, complete: { (response) in
@@ -126,8 +131,12 @@ class MarketAuctionViewController: MarketBaseViewController {
     }
 
     func requestFansList() {
+        guard starCode != nil else {
+            return
+        }
         let requestModel = FanListRequestModel()
         requestModel.buySell = buySell
+        requestModel.symbol = starCode!
         AppAPIHelper.marketAPI().requestEntrustFansList(requestModel: requestModel, complete: { (response) in
             if let models = response  as? [FansListModel] {
                 self.fansList = models
@@ -141,6 +150,9 @@ class MarketAuctionViewController: MarketBaseViewController {
     }
     
     func requetTotalCount() {
+        guard starCode != nil else {
+            return
+        }
         AppAPIHelper.marketAPI().requestTotalCount(starCode: "143", complete: { (response) in
             
             if let model = response as? StarTotalCountModel {
@@ -186,7 +198,8 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
         
             buySell = -1
         }
-        self.tableView.reloadData()
+        self.index = index
+        requestFansList()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -196,6 +209,7 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "FansListHeaderView") as! FansListHeaderView
         headerView.delegate = self
         headerView.settitles(titles: ["买入","卖出"])
+        headerView.selectIndex(index: index)
         headerView.isShowImage = false
         return headerView
     }
@@ -244,7 +258,6 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
         cell.setPositionCountModel(model: countModel, starCode: starCode, starName: starName)
         self.headerCell = cell
         headerCell?.setPercent(model:buySellModel,totalCount:totalCount)
-
         return cell
     }
 }
