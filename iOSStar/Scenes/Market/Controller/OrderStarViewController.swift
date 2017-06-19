@@ -453,6 +453,14 @@ extension OrderStarViewController {
     @objc fileprivate func rightButtonItemClick(_ sender : Any) {
         
         print("点击了右边按钮");
+        
+        let view : ShareView = Bundle.main.loadNibNamed("ShareView", owner: self, options: nil)?.last as! ShareView
+        view.title = "星享"
+        view.thumbImage = "QQ"
+        view.descr = "关于星享"
+        view.webpageUrl = "http://www.baidu.com"
+        view.shareViewController(viewController: self)
+
     }
 }
 
