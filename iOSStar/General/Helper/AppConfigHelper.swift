@@ -24,18 +24,13 @@ class AppConfigHelper: NSObject {
     }()
     private static var helper = AppConfigHelper()
     class func shared() -> AppConfigHelper {
-        
         return helper
     }
     
     func getstart(){
-        
         AppAPIHelper.user().addstarinfo(complete: { (result) in
-            
             print(NSHomeDirectory())
-            
             if let model = result as? [StartModel]{
-                
                 for news in model{
                     let realm = try! Realm()
                     try! realm.write {
@@ -43,9 +38,7 @@ class AppConfigHelper: NSObject {
                         realm.add(news, update: true)
                     }
                 }
-                
             }
-            
         }) { (error) in
             
         }
@@ -59,10 +52,8 @@ class AppConfigHelper: NSObject {
         AppAPIHelper.user().tokenLogin(complete: { (result) in
             let datadic = result as? UserModel
             if let _ = datadic {
-                
-//                self.showAlert()
-                
-                UserModel.share().upateUserInfo(userObject: result!)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
+
                 UserDefaults.standard.synchronize()
                 self.LoginYunxin()
             }

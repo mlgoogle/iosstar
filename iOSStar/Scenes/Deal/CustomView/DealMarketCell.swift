@@ -22,6 +22,7 @@ class DealMarketCell: UITableViewCell {
         // Initialization code
     }
 
+
     
     func setRealTimeData(model:RealTimeModel?) {
         guard model != nil else {

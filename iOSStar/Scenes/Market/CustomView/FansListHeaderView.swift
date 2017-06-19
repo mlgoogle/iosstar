@@ -96,6 +96,7 @@ class FansListHeaderView: UITableViewHeaderFooterView {
         buyButton.setTitle(titles.first, for: .normal)
         sellButton.setTitle(titles.last, for: .normal)
     }
+    
     func selectIndex(index:Int) {
 
         currentSelectIndex = index
@@ -105,10 +106,15 @@ class FansListHeaderView: UITableViewHeaderFooterView {
         } else {
             x = kScreenWidth * 0.75
         }
-        self.backView.center = CGPoint(x: x, y: self.backView.center.y)
+        backView.snp.remakeConstraints { (make) in
+            make.centerX.equalTo(x)
+            make.centerY.equalTo(buyButton.snp.centerY)
+            make.width.equalTo(80)
+            make.height.equalTo(23)
+        }
+        self.backView.setNeedsDisplay()
+        self.backView.setNeedsLayout()
 
-
-        
     }
     
     func selectAtIndex(sender:UIButton) {
@@ -118,18 +124,15 @@ class FansListHeaderView: UITableViewHeaderFooterView {
             return
         }
         currentSelectIndex = index
+
         var x:CGFloat = 0.0
         if index == 0 {
             x = kScreenWidth * 0.25
         } else {
             x = kScreenWidth * 0.75
         }
-        
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.5) { 
             self.backView.center = CGPoint(x: x, y: self.backView.center.y)
-            
-        }) { (finished) in
-            print(finished)
         }
         delegate?.selectAtIndex(index: index)
     }

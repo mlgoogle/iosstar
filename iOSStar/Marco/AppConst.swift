@@ -74,18 +74,13 @@ class AppConst {
     class Network {
         #if false  //是否测试环境
         static let TcpServerIP:String = "139.224.34.22";
-
-      
-
-        static let TcpServerPort:UInt16 = 16006
-
-
+        static let TcpServerPort:UInt16 = 16008
         static let TttpHostUrl:String = "139.224.34.22";
         #else
         static let TcpServerIP:String = "139.224.34.22";
-        static let TcpServerPort:UInt16 = 16105;
+        static let TcpServerPort:UInt16 = 16104;
         static let HttpHostUrl:String = "139.224.34.22";
-
+        
         #endif
         static let TimeoutSec:UInt16 = 10
         static let qiniuHost = "http://ofr5nvpm7.bkt.clouddn.com/"
@@ -96,7 +91,7 @@ class AppConst {
         static let SMSVerifyCodeErr  = "获取验证码失败"
         static let PasswordTwoErr = "两次密码不一致"
         static let ReSMSVerifyCode = "重新获取"
-        static let ErrorDomain = "com.newxfin.goods"
+        static let ErrorDomain = "com.redsky.starshare"
         static let PhoneFormat = "^1[3|4|5|7|8][0-9]\\d{8}$"
         static let RegisterPhoneError = "输入的手机号已注册"
         static let numberReg = "^(?!0(\\d|\\.0+$|$))\\d+(\\.\\d{1,2})?$"

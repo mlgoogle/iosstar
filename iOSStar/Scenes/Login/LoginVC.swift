@@ -140,12 +140,11 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
                 SVProgressHUD.showSuccessMessage(SuccessMessage:"登录成功", ForDuration: 2.0, completion: {
                     btn.isUserInteractionEnabled = true
                     if let _ = datadic {
-                        UserModel.share().upateUserInfo(userObject: result!)
                         UserDefaults.standard.set(self?.phone.text, forKey: "phone")
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
                         UserDefaults.standard.synchronize()
                         self?.LoginYunxin()
-                        
+                        UserModel.share().upateUserInfo(userObject: datadic!)
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
                     }
                 })

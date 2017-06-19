@@ -36,7 +36,7 @@ class  InputPassVC: UIViewController ,UITextFieldDelegate{
      var textField:UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "请输入交易密码"
         initUI()
         
         
@@ -60,8 +60,6 @@ class  InputPassVC: UIViewController ,UITextFieldDelegate{
             textField.resignFirstResponder()
         }
         for i in 0  ..< 6 {
-            
-            
             let line:UIView = UIView(frame: CGRect(x: 40 + CGFloat(i) * 10 + (( kScreenWidth - 120) / 6.0) * CGFloat(i),y: 60, width: ((kScreenWidth - 120) / 6.0) ,height:  ((kScreenWidth - 120) / 6.0)))
             line.backgroundColor = UIColor.clear
             line.alpha = 1

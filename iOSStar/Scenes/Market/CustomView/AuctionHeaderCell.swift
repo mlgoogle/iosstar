@@ -57,9 +57,12 @@ class AuctionHeaderCell: UITableViewCell {
         buyCountLabel.text = "买入：\(model!.buyCount)人"
         sellCountLabel.text = "卖出：\(model!.sellCount)人"
 
-        let percent = CGFloat(model!.buyCount) / CGFloat(model!.buyCount + model!.sellCount)
+        let all = CGFloat(model!.buyCount + model!.sellCount)
+        if all != 0 {
+            let percent = CGFloat(model!.buyCount) / CGFloat(model!.buyCount + model!.sellCount)
+            buyWidth.constant = (kScreenWidth - 50) * percent
+        }
         
-        buyWidth.constant = (kScreenWidth - 50) * percent
         sellProgressView.setCornoerRadius(byRoundingCorners: [.bottomRight, .topRight], cornerRadii: CGSize(width: 8.0, height: 8.0))
         buyProgressView.setCornoerRadius(byRoundingCorners: [.bottomLeft, .topLeft], cornerRadii: CGSize(width: 8.0, height: 8.0))
         buyProgressView.animation(percent: 1)

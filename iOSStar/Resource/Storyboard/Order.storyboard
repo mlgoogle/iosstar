@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GMK-AT-XFo">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GMK-AT-XFo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -350,12 +350,25 @@
                                     <constraint firstItem="P7c-dc-ekh" firstAttribute="leading" secondItem="Kcr-dB-uDG" secondAttribute="leading" constant="16" id="mvo-DW-HfJ"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入交易密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnj-n6-mO9">
+                                <rect key="frame" x="0.0" y="217" width="375" height="50"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="KPT-CF-9bI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.50313937883435578" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cnj-n6-mO9" firstAttribute="leading" secondItem="vdN-F9-FVk" secondAttribute="leading" id="82h-Fd-iYQ"/>
                             <constraint firstItem="Kcr-dB-uDG" firstAttribute="leading" secondItem="vdN-F9-FVk" secondAttribute="leading" id="MwC-ys-HDt"/>
+                            <constraint firstItem="Kcr-dB-uDG" firstAttribute="top" secondItem="cnj-n6-mO9" secondAttribute="bottom" id="aPJ-9F-kib"/>
                             <constraint firstItem="cn8-rH-mM7" firstAttribute="top" secondItem="Kcr-dB-uDG" secondAttribute="bottom" id="cRR-WE-LYH"/>
                             <constraint firstAttribute="trailing" secondItem="Kcr-dB-uDG" secondAttribute="trailing" id="jr9-FB-ShN"/>
+                            <constraint firstAttribute="trailing" secondItem="cnj-n6-mO9" secondAttribute="trailing" id="t9U-Nx-d5z"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GM4-pI-kyD"/>
