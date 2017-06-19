@@ -85,8 +85,6 @@ class MarketAuctionViewController: MarketBaseViewController {
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
             }
         }) { (error) in
-
-            self.didRequestError(error)
             self.countModel = PositionCountModel()
             self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
 
@@ -107,10 +105,9 @@ class MarketAuctionViewController: MarketBaseViewController {
             }
             
         }) { (error) in
-            self.didRequestError(error)
             let model = BuySellCountModel()
-            model.buyCount = 20
-            model.sellCount = 20
+            model.buyCount = 0
+            model.sellCount = 0
             self.buySellModel = model
             self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
         }
@@ -135,7 +132,6 @@ class MarketAuctionViewController: MarketBaseViewController {
         }) { (error) in
          
             self.refreshSatus()
-            self.didRequestError(error)
         }
     }
 

@@ -110,6 +110,8 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
                 return true
             } else if array!.last! == "" || array!.last! == "0" || array!.last! == "00" {
                 return true
+            } else if array!.last!.length() > 2 {
+                return false
             }
         }
         return false

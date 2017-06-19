@@ -42,7 +42,7 @@ class DetailCommenViewController: DealBaseViewController {
             self.header?.endRefreshing()
             self.requestData(isRefresh: false)
         })
-        footer?.stateLabel.text = "只展示最近7天历史数据"
+        footer?.setTitle("只展示最近7天历史数据", for: .noMoreData)
         tableView.mj_header = header
         tableView.mj_footer = footer
         footer?.isHidden = true
@@ -59,14 +59,7 @@ class DetailCommenViewController: DealBaseViewController {
             footer?.endRefreshing()
         }
         if count < 10 {
-            var titile = ""
-            if checkHistory() {
-                titile = "只展示最近7天历史数据"
-            } else {
-                titile = "没有更多数据"
-            }
             if count != 0 {
-                footer?.setTitle(title, for: .noMoreData)
                 footer?.state = .noMoreData
             }
         }

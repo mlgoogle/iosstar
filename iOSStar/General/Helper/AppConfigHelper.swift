@@ -189,6 +189,24 @@ class AppConfigHelper: NSObject {
     }
     
     func setupRealmConfig() {
+        var config = Realm.Configuration()
+        config.fileURL =  config.fileURL!.deletingLastPathComponent()
+            .appendingPathComponent("\("starShare").realm")
+        
+        
+        //数据库迁移操作
+        config.migrationBlock = { migration, oldSchemaVersion in
+            
+            if oldSchemaVersion < 2 {
+                
+             //   migration.enumerateObjects(ofType: "tableName", { (oldObject, newObject) in
+                    
+               // })
+            }
+        }
+        Realm.Configuration.defaultConfiguration = config
+        
+        _ = try! Realm()
         
     }
     
@@ -291,4 +309,6 @@ class AppConfigHelper: NSObject {
         return false
     }
 
+    
+    
 }

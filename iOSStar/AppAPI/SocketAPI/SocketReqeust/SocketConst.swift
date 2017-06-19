@@ -116,7 +116,7 @@ class SocketConst: NSObject {
         case cancelOrder = 5009
         
         //双方确认后结果推送
-        case orderResult = 7102
+        case orderResult = 5102
         
         //当天委托
         case todayEntrust = 6001

@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         NIMCustomObject.registerCustomDecoder(NTESCustomAttachmentDecoder())
         WXApi.registerApp("wx9dc39aec13ee3158")
         
+        AppConfigHelper.shared().setupRealmConfig()
         AppConfigHelper.shared().updateUpdateInfo()
         // 个推
         AppConfigHelper.shared().setupGeTuiSDK(sdkDelegate: self)
