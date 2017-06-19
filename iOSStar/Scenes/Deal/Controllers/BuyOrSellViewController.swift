@@ -12,7 +12,7 @@ class BuyOrSellViewController: DealBaseViewController {
     var identifiers = ["DealStarInfoCell","DealMarketCell","DealOrderInfoCell"]
     var rowHeights = [137, 188,133,82]
 
-
+    var infos:[String] = ["转让价格","转让数量"]
     var count = 600
     var price = 0.0
     @IBOutlet weak var tableView: UITableView!
@@ -27,8 +27,10 @@ class BuyOrSellViewController: DealBaseViewController {
         registerNotification()
         
         if dealType == AppConst.DealType.buy {
+            infos  = ["求购价格","求购数量"]
             buyOrSellButton.setTitle("确认求购", for: .normal)
         } else {
+            infos = ["转让价格","转让数量"]
             buyOrSellButton.setTitle("确认转让", for: .normal)
         }
 
@@ -62,15 +64,25 @@ class BuyOrSellViewController: DealBaseViewController {
     }
     
     @IBAction func buyOrSellAction(_ sender: Any) {
+        
+        guard starListModel != nil else {
+            return
+        }
+        SVProgressHUD.show()
         let model = BuyOrSellRequestModel()
         model.buySell = dealType.rawValue
-        model.symbol = "1001"
-        model.price = 12.01
+        model.symbol = starListModel!.symbol
+        model.price = price
         model.amount = count
+        
+        
+        
         AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: { (response) in
+            SVProgressHUD.dismiss()
             SVProgressHUD.showSuccessMessage(SuccessMessage: "委托成功", ForDuration: 1.5, completion: nil)
+        
         }) { (error) in
-            
+        SVProgressHUD.dismiss()
         }
     }
     
@@ -135,18 +147,20 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
         case 1:
             if let marketCell = cell as? DealMarketCell {
                 marketCell.setRealTimeData(model: realTimeData)
+                
             }
             
         case 2:
             if let orderCell = cell as? DealOrderInfoCell {
                 orderCell.count = 600
                 orderCell.delegate = self
+                orderCell.setTitles(titles: infos)
                 guard realTimeData != nil else {
                     return orderCell
                 }
-                orderCell.price = realTimeData!.currentPrice
+                orderCell.price = price
                 
-                orderCell.setPriceAndCount(price:realTimeData!.currentPrice, count:600)
+                orderCell.setPriceAndCount(price:price, count:count)
             }
         default:
             break
