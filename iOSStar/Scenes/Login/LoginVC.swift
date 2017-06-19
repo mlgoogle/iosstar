@@ -128,10 +128,10 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
             SVProgressHUD.showErrorMessage(ErrorMessage: "手机号码格式错误", ForDuration: 2.0, completion: nil)
             return
         }
-        if !isPassWord(pwd: passPwd.text!) {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入6位字符以上密码", ForDuration: 2.0, completion: nil)
-            return
-        }
+//        if !isPassWord(pwd: passPwd.text!) {
+//            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入6位字符以上密码", ForDuration: 2.0, completion: nil)
+//            return
+//        }
         SVProgressHUD.showProgressMessage(ProgressMessage: "登录中······")
         if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]) {
             AppAPIHelper.login().login(phone: phone.text!, password: (passPwd.text?.md5_string())!, complete: { [weak self](result)  in
