@@ -202,7 +202,7 @@ extension UIViewController {
 //            }
 //        }
     }
-    func getUserrealmInfo(complete: CompleteBlock?){
+    func getUserRealmInfo(complete: CompleteBlock?){
     
         AppAPIHelper.user().getauthentication(complete: { (result) in
             complete?(result as AnyObject)

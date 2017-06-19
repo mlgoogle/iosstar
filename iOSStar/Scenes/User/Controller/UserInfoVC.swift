@@ -41,7 +41,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor(hexString: AppConst.Color.main)
 
         
-        self.getUserrealmInfo { (result) in
+        self.getUserRealmInfo { (result) in
             if let model = result{
 
                 let object =  model as! [String : String]

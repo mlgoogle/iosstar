@@ -38,16 +38,6 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         title = "我的资产"
         self.tableView.tableFooterView = view
         
-        requestData()
-    }
-    func requestData() {
-        AppAPIHelper.user().accountMoney(complete: { (result) in
-            
-            print("=====\(result)")
-            
-        }) { (error ) in
-            
-        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -108,7 +98,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             if indexPath.row == 0 {
                 
                 let alertVc = AlertViewController()
-                self.getUserrealmInfo { (result) in
+                self.getUserRealmInfo { (result) in
                     if let model = result{
                         let object =  model as! [String : AnyObject]
                         
