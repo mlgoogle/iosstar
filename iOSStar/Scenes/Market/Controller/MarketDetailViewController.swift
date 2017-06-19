@@ -241,6 +241,7 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
         case 1:
             pushToDealPage(index:index)
         case 2:
+
             performSegue(withIdentifier: "meetFans", sender: nil)
         case 3:
             addOptinal()
@@ -248,6 +249,19 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
             break
         }
     }
+    
+    // Segue传值
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier ==  "meetFans"{
+            if let vc = segue.destination as? OrderStarViewController{
+                vc.starModelInfo = starModel
+                // 存储明星代码数据
+                UserDefaults.standard.set(starModel?.symbol, forKey: "starCode")
+                UserDefaults.standard.synchronize()
+            }
+        }
+    }
+    
     func pushToDealPage(index:Int) {
         //if checkLogin() {
         //}
