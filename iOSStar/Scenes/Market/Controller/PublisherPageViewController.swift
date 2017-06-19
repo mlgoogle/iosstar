@@ -49,15 +49,22 @@ class PublisherPageViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     @IBAction func shareAction(_ sender: Any) {
-        UMSocialUIManager.showShareMenuViewInWindow { (platform, userInfo) in
-            let shareObject = UMShareWebpageObject()
-            shareObject.title = self.bannerModel!.name
-            shareObject.descr = self.bannerDetailModel?.introduction
-            let cell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? BannerDetailImageCell
-            shareObject.thumbImage = cell?.iconImageView.image
-            shareObject.webpageUrl = "www.baidu.com"
-            AppConfigHelper.shared().share(type: platform, shareObject: shareObject, viewControlller: self)
-        }
+        
+        let view : ShareView = Bundle.main.loadNibNamed("ShareView", owner: self, options: nil)?.last as! ShareView
+        view.title = "星享"
+        view.thumbImage = "QQ"
+        view.descr = "关于星享"
+        view.webpageUrl = "http://www.baidu.com"
+        view.shareViewController(viewController: self)
+//        UMSocialUIManager.showShareMenuViewInWindow { (platform, userInfo) in
+//            let shareObject = UMShareWebpageObject()
+//            shareObject.title = self.bannerModel!.name
+//            shareObject.descr = self.bannerDetailModel?.introduction
+//            let cell = self.tableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? BannerDetailImageCell
+//            shareObject.thumbImage = cell?.iconImageView.image
+//            shareObject.webpageUrl = "www.baidu.com"
+//            AppConfigHelper.shared().share(type: platform, shareObject: shareObject, viewControlller: self)
+//        }
     }
 
     @IBAction func buyButtonAction(_ sender: Any) {
