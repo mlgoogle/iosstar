@@ -138,7 +138,8 @@ class SocketConst: NSObject {
         case buySellPercent = 6017
         //获取明星总时间
         case starTotalTime = 10027
-        
+        //获取版本更新信息
+        case update = 3033
     }
     enum type:UInt8 {
         case error  = 0

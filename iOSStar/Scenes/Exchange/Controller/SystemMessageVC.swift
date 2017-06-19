@@ -236,11 +236,9 @@ class SystemMessageVC: BasePageListTableViewController {
         model.orderPrice = "\(order.openPrice)"
         model.orderStatus  = order.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id ? "转让":"求购"
         StartModel.getStartName(startCode: order.symbol) { (result) in
-            
             let data = result as! StartModel
             model.orderInfomation = "\(data.name)" + "(" + "\(data.code)" + ")"
-        }
-        
+        }    
         //将值传给 sharedatemodel
         ShareDataModel.share().orderInfo = model
         let storyboard = UIStoryboard.init(name: "Order", bundle: nil)

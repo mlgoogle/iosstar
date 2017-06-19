@@ -12,14 +12,13 @@ class MarketAuctionViewController: MarketBaseViewController {
     var index = 0
     var count = 540
     var endTime:Int64 = 0
-    var timeLabel:UILabel?
     var headerCell:AuctionHeaderCell?
     var countModel:PositionCountModel?
     var buySell:Int32 = 1
     var fansList:[FansListModel]?
     var statusModel:AuctionStatusModel?
     var buySellModel:BuySellCountModel?
-    var totalCount:Int = 1 
+    var totalCount:Int = 0
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +64,6 @@ class MarketAuctionViewController: MarketBaseViewController {
             return
         }
         if statusModel!.status && statusModel!.remainingTime > 0 {
-            
             endTime = Int64(Date().timeIntervalSince1970) + statusModel!.remainingTime + YD_CountDownHelper.shared.timeDistance
             initCountDownBlock()
         } else {
@@ -83,10 +81,13 @@ class MarketAuctionViewController: MarketBaseViewController {
         AppAPIHelper.marketAPI().requestPositionCount(requestModel: r, complete: { (response) in
             if let model = response as? PositionCountModel {
                 self.countModel = model
-                self.tableView.reloadData()
+                self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
             }
         }) { (error) in
-            
+
+            self.countModel = PositionCountModel()
+            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+
         }
     }
     
@@ -100,7 +101,7 @@ class MarketAuctionViewController: MarketBaseViewController {
             
             if let model = response as? BuySellCountModel{
                 self.buySellModel = model                
-                self.tableView.rectForRow(at: IndexPath(row: 0, section: 0))
+                self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
             }
             
         }) { (error) in
@@ -108,7 +109,7 @@ class MarketAuctionViewController: MarketBaseViewController {
             model.buyCount = 20
             model.sellCount = 20
             self.buySellModel = model
-            self.tableView.rectForRow(at: IndexPath(row: 0, section: 0))
+            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
         }
 
     }
@@ -142,10 +143,9 @@ class MarketAuctionViewController: MarketBaseViewController {
                 self.fansList = models
                 self.tableView.reloadData()
             }
-            
-            
         }) { (error) in
-            
+            self.fansList?.removeAll()
+            self.tableView.reloadData()
         }
     }
     
@@ -154,11 +154,9 @@ class MarketAuctionViewController: MarketBaseViewController {
             return
         }
         AppAPIHelper.marketAPI().requestTotalCount(starCode: "143", complete: { (response) in
-            
             if let model = response as? StarTotalCountModel {
                 self.totalCount = Int(model.star_time)
-                self.tableView.rectForRow(at: IndexPath(row: 0, section: 0))
-
+                self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
             }
             
         }) { (error) in
@@ -168,19 +166,16 @@ class MarketAuctionViewController: MarketBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("--------countDownRefresh---------开始----------------")
         refreshSatus()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         YD_CountDownHelper.shared.countDownRefresh = nil
         YD_CountDownHelper.shared.marketBuyOrSellListRefresh = nil
-        print("--------countDownRefresh---------结束----------------")
 
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
@@ -195,7 +190,6 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
         if index == 0 {
             buySell = 1
         } else {
-        
             buySell = -1
         }
         self.index = index
@@ -256,8 +250,8 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: "AuctionHeaderCell", for: indexPath) as! AuctionHeaderCell
         
         cell.setPositionCountModel(model: countModel, starCode: starCode, starName: starName)
+        cell.setPercent(model:buySellModel,totalCount:totalCount)
         self.headerCell = cell
-        headerCell?.setPercent(model:buySellModel,totalCount:totalCount)
         return cell
     }
 }

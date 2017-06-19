@@ -57,6 +57,7 @@
 		6E2D43B31EDEEED400DC9643 /* YD_CountDownHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B21EDEEED400DC9643 /* YD_CountDownHelper.swift */; };
 		6E2D43B51EDFB5E100DC9643 /* BannerDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B41EDFB5E100DC9643 /* BannerDetailImageCell.swift */; };
 		6E2D43B71EDFB61100DC9643 /* BannerDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B61EDFB61100DC9643 /* BannerDetailInfoCell.swift */; };
+		6E3170751EF7A12700BA637F /* UpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3170741EF7A12700BA637F /* UpdateVC.swift */; };
 		6E3994A21EDEA87400EE3CE0 /* MarketSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3994A11EDEA87400EE3CE0 /* MarketSubViewController.swift */; };
 		6E54EE0F1ED566F100E14EC3 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54EE0E1ED566F100E14EC3 /* UIView+Extension.swift */; };
 		6E54EE131ED5A13B00E14EC3 /* YD_DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54EE121ED5A13B00E14EC3 /* YD_DatePickerViewController.swift */; };
@@ -556,6 +557,7 @@
 		6E2D43B21EDEEED400DC9643 /* YD_CountDownHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YD_CountDownHelper.swift; sourceTree = "<group>"; };
 		6E2D43B41EDFB5E100DC9643 /* BannerDetailImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerDetailImageCell.swift; sourceTree = "<group>"; };
 		6E2D43B61EDFB61100DC9643 /* BannerDetailInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerDetailInfoCell.swift; sourceTree = "<group>"; };
+		6E3170741EF7A12700BA637F /* UpdateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateVC.swift; sourceTree = "<group>"; };
 		6E3994A11EDEA87400EE3CE0 /* MarketSubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketSubViewController.swift; sourceTree = "<group>"; };
 		6E54EE0E1ED566F100E14EC3 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		6E54EE121ED5A13B00E14EC3 /* YD_DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YD_DatePickerViewController.swift; sourceTree = "<group>"; };
@@ -3133,6 +3135,7 @@
 		A07238761EA76AA300E755DB /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				6E3170741EF7A12700BA637F /* UpdateVC.swift */,
 				A07238771EA76AA300E755DB /* AppDelegate.swift */,
 				A072387A1EA76AA300E755DB /* ViewController.swift */,
 				6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */,
@@ -4015,6 +4018,7 @@
 				A084BB461ED52AD500DFC868 /* SystemMessageVC.swift in Sources */,
 				A03D3FA91EA86A6500F85308 /* NTESSessionJankenponContentView.m in Sources */,
 				A03D3F411EA86A6400F85308 /* NIMSessionListDefaultConfig.m in Sources */,
+				6E3170751EF7A12700BA637F /* UpdateVC.swift in Sources */,
 				A03D3FBC1EA86A6500F85308 /* NTESVideoViewController.m in Sources */,
 				6E2D43B51EDFB5E100DC9643 /* BannerDetailImageCell.swift in Sources */,
 				A03D3EE31EA86A6400F85308 /* NSDictionary+NTESJson.m in Sources */,
@@ -4178,8 +4182,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iOSStar/iOSStar.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhijun Hu (72333MKM33)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhijun Hu (72333MKM33)";
 				DEVELOPMENT_TEAM = GED83X9MRE;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4217,7 +4221,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.redsky.starshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f9433bd5-9f31-499d-b7f3-c8214ca1cdeb";
+				PROVISIONING_PROFILE = "6ef0398e-8519-47a9-8364-6150cc15a1c5";
 				PROVISIONING_PROFILE_SPECIFIER = com.starShare.Develop;
 				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -4233,8 +4237,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iOSStar/iOSStar.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhijun Hu (72333MKM33)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhijun Hu (72333MKM33)";
 				DEVELOPMENT_TEAM = GED83X9MRE;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4272,7 +4276,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.redsky.starshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f9433bd5-9f31-499d-b7f3-c8214ca1cdeb";
+				PROVISIONING_PROFILE = "6ef0398e-8519-47a9-8364-6150cc15a1c5";
 				PROVISIONING_PROFILE_SPECIFIER = com.starShare.Develop;
 				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

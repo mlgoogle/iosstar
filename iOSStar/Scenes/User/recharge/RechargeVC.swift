@@ -290,23 +290,23 @@ extension RechargeVC {
         AppAPIHelper.user().weixinpay(title: "余额充值",
                                       price: rechargeMoney,
                                       complete: { (result) in
-                                            SVProgressHUD.dismiss()
-                                                if let object = result {
-                                                    let request : PayReq = PayReq()
-                                                    let str : String = object["timestamp"] as! String!
-                                                    //                            ShareModel.share().shareData["rid"] =  object["rid"] as! String!
-                                                    request.timeStamp = UInt32(str)!
-                                                    request.sign = object["sign"] as! String!
-                                                    request.package = object["package"] as! String!
-                                                    request.nonceStr = object["noncestr"] as! String!
-                                                    request.partnerId = object["partnerid"] as! String!
-                                                    request.prepayId = object["prepayid"] as! String!
-                                                    WXApi.send(request)
-                                            }
-    
-    }) { (error ) in
-        
-        print(error)
-       }
+                                        SVProgressHUD.dismiss()
+                                        if let object = result {
+                                            let request : PayReq = PayReq()
+                                            let str : String = object["timestamp"] as! String!
+                                            //                            ShareModel.share().shareData["rid"] =  object["rid"] as! String!
+                                            request.timeStamp = UInt32(str)!
+                                            request.sign = object["sign"] as! String!
+                                            request.package = object["package"] as! String!
+                                            request.nonceStr = object["noncestr"] as! String!
+                                            request.partnerId = object["partnerid"] as! String!
+                                            request.prepayId = object["prepayid"] as! String!
+                                            WXApi.send(request)
+                                        }
+                                        
+        }) { (error ) in
+            
+            print(error)
+        }
     }
 }

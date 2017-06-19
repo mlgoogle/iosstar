@@ -70,7 +70,7 @@ class FanListRequestModel: MarketBaseModel {
 
 class PositionCountRequestModel: BaseModel {
 
-     var uid:Int64 = 142
+     var uid:Int64 = UserModel.share().getCurrentUser()?.userinfo?.id ?? 0
     
      var starcode = "1001"
     

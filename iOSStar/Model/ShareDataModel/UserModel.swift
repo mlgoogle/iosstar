@@ -71,4 +71,15 @@ class UserModel: Object {
     }
 
 }
+class UpdateParam: BaseModel{
+    var appName = ""
+    var newAppSize = 0
+    var newAppVersionCode: Double = 0
+    var newAppVersionName = ""
+    var newAppUpdateDesc = ""
+    var newAppReleaseTime = ""
+    var newAppUrl = ""
+    var isForceUpdate = 0
+    var haveUpate = false
+}
 

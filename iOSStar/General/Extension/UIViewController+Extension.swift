@@ -38,6 +38,16 @@ extension UIViewController {
     func showWithStatus(_ status: String!) {
         SVProgressHUD.show(withStatus: status)
     }
+    
+    func showUpdateInfo() {
+        let homeStoryboard = UIStoryboard.init(name: "User", bundle: nil)
+        let controller = homeStoryboard.instantiateViewController(withIdentifier: UpdateVC.className()) as! UpdateVC
+        controller.modalPresentationStyle = .custom
+        controller.modalTransitionStyle = .crossDissolve
+        present(controller, animated: true, completion: {
+        })
+        
+    }
     //检查是否已登录
     func checkLogin() -> Bool {
         

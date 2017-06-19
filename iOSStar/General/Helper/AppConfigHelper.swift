@@ -17,6 +17,8 @@ let kGtAppSecret:String = "TgaFdlcYMX5QVhH1CkP1k2"
 
 class AppConfigHelper: NSObject {
     
+    
+    var updateModel:UpdateParam?
     lazy var alertView: TradingAlertView = {
         let alertView = Bundle.main.loadNibNamed("TradingAlertView", owner: nil, options: nil)?.first as! TradingAlertView
         alertView.str = "匹配成功提醒：范冰冰（808080）匹配成功，请到系统消息中查看，点击查看。"
@@ -45,7 +47,6 @@ class AppConfigHelper: NSObject {
         
     }
     func login(){
-        
         if  UserDefaults.standard.object(forKey: "phone") as? String == nil {
             return
         }
@@ -63,7 +64,6 @@ class AppConfigHelper: NSObject {
         
     }
     func LoginYunxin(){
-        
         AppAPIHelper.login().registWYIM(phone: UserDefaults.standard.object(forKey: "phone") as! String, token: UserDefaults.standard.object(forKey: "phone")! as! String, complete: { (result) in
             let datadic = result as? Dictionary<String,String>
             if let _ = datadic {
@@ -74,7 +74,6 @@ class AppConfigHelper: NSObject {
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
                     }
                     
-                    print(error)
                 })
             }
         }) { (error)  in
@@ -179,10 +178,9 @@ class AppConfigHelper: NSObject {
     func setupUMSDK() {
         UMSocialManager.default().openLog(true)
         UMSocialManager.default().umSocialAppkey = "5944e976c62dca4b80001e50"
-//        UMSocialManager.default().umSocialAppSecret = ""
         UMSocialManager.default().setPlaform(UMSocialPlatformType.wechatSession, appKey: "wx9dc39aec13ee3158", appSecret: "a12a88f2c4596b2726dd4ba7623bc27e", redirectURL: "www.baidu.com")
         UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "3921700954", appSecret: "04b48b094faeb16683c32669824ebdad", redirectURL: "www.baidu.com")
-        UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1105821097", appSecret: nil, redirectURL: "www.baidu.com")
+        UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1106199654", appSecret: nil, redirectURL: "www.baidu.com")
 
     }
     
@@ -226,4 +224,30 @@ class AppConfigHelper: NSObject {
         }
         
     }
+    
+    //查询是否有新版本更新
+    func updateUpdateInfo() {
+        AppAPIHelper.user().update(type: 1, complete: { (response) in
+            if let model = response as? UpdateParam {
+                self.updateModel = model
+            }
+            
+        }) { (error) in
+            
+        }
+    }
+    
+    func checkUpdate() -> Bool {
+        let versionCode = Bundle.main.infoDictionary![AppConst.BundleInfo.CFBundleVersion.rawValue] as! String
+        if updateModel == nil {
+            return false
+        }
+        if  Double(versionCode) != nil {
+            if updateModel!.newAppVersionCode >  Double(versionCode)! {
+                return true
+            }
+        }
+        return false
+    }
+    
 }

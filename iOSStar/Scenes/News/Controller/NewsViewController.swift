@@ -15,6 +15,7 @@ private let alphaMargin:CGFloat = 136.0
 class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     @IBOutlet weak var tableView: UITableView!
 
+    var hasCheck = false
     var isRefresh = true
     var header:MJRefreshNormalHeader?
     var footer:MJRefreshAutoNormalFooter?
@@ -30,7 +31,14 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        if !hasCheck {
+            if AppConfigHelper.shared().updateModel != nil {
+                hasCheck = true
+                if AppConfigHelper.shared().checkUpdate() {
+                    showUpdateInfo()
+                }
+            }
+        }
         scrollViewDidScroll(tableView)
         titleView.setTime()
 
