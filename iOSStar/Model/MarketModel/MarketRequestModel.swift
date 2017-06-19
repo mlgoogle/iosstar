@@ -80,3 +80,6 @@ class BuySellPercentRequest: MarketBaseModel {
     
      var symbol = "1001"
 }
+class EntrustCountRequestModel: MarketBaseModel {
+    var symbol = "1001"
+}

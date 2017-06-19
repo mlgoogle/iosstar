@@ -52,7 +52,35 @@ class SystemMessageVC: BasePageListTableViewController {
         title = "系统消息"
         tableView.separatorStyle = .none
         self.nodata.isHidden = false
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backClick"), style: .done, target: self, action: #selector(leftButtonItemClick(_ :)))
+        
     }
+    
+    
+    
+    // 判断是被push还是被modal出来的;
+    func leftButtonItemClick(_ sender : Any) {
+        
+        // print("点击了返回");
+        let vcs = self.navigationController?.viewControllers
+        
+        guard vcs != nil else { return }
+        
+        if vcs!.count > 1{
+            // push过来的
+            if vcs?[vcs!.count - 1] == self {
+                self.navigationController?.popViewController(animated: true)
+            }
+        } else {
+            // modal
+                self.navigationController?.dismiss(animated: true, completion: nil)
+        }
+        
+    }
+    
+    
+    
     override func didRequest(_ pageIndex: Int) {
         
         let model = OrderRecordRequestModel()

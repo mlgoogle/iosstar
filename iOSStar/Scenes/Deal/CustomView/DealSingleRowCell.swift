@@ -26,9 +26,17 @@ class DealSingleRowCell: UITableViewCell {
         // Initialization code
     }
 
-    
+
     func setData(model:EntrustListModel) {
         
+        StartModel.getStartName(startCode: model.symbol) { (response) in
+            
+            if let star = response as? StartModel {
+                self.nameLabel.text = star.name
+            } else {
+                self.nameLabel.text = ""
+            }
+        }
         codeLabel.text = model.symbol
         secondLabel.text = "\(model.amount)"
         thirdLabel.text = "\(model.openPrice)"

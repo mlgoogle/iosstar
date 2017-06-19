@@ -101,11 +101,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     
     
     func requestBannerList() {
-    
 
-
-        
-        return
         AppAPIHelper.newsApi().requestBannerList(complete: { (response)  in
             if let models = response as? [BannerModel] {
                 self.bannerModels = models
@@ -114,7 +110,6 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
                     bannersUrl.append(model.pic_url)
                 }
             self.bannerScrollView?.imageURLStringsGroup = bannersUrl
-            // print("=======\(Thread.current)")
             }
             
         }, error: errorBlockFunc())
@@ -164,6 +159,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         if (bannerModels?.count ?? 0) == 0 {
             return
         }
+        
 
         performSegue(withIdentifier: "showPubPage", sender: index)
     }
