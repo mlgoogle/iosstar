@@ -262,7 +262,7 @@ class SystemMessageVC: BasePageListTableViewController {
         
         
         let rootvc = controller.viewControllers[0] as! ContainPayVC
-        print(controller.viewControllers.count)
+       
         
         rootvc.resultBlock = { (result) in
             if canel {
