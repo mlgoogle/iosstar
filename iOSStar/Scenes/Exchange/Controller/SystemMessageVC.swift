@@ -99,7 +99,12 @@ class SystemMessageVC: BasePageListTableViewController {
         }
     }) { (error ) in
          self.didRequestComplete(nil)
-         self.nodata.isHidden = false
+        if self.dataSource?.count == 0 || self.dataSource == nil{
+            self.nodata.isHidden = false
+        }else{
+            self.nodata.isHidden = true
+            self.nodata.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+        }
         }
     }
     
