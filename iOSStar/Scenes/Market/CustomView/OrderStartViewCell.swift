@@ -142,14 +142,17 @@ class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionV
     
     // var serviceButtonClick :((_ selectIndex : Int) -> ())?
     
-    
     override func awakeFromNib() {
         
         super.awakeFromNib()
         
         setupInit();
         
-        AppAPIHelper.marketAPI().requestStarServiceType(starcode: "1001", complete: { (response) in
+        // 直接取吧
+        let starCode = UserDefaults.standard.object(forKey: "starCode") as! String
+        // print("====\(starCode)")
+        
+        AppAPIHelper.marketAPI().requestStarServiceType(starcode: starCode, complete: { (response) in
             
             if let models = response as? [ServiceTypeModel] {
                 
@@ -233,7 +236,7 @@ class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionV
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.chooseServiceTypeSuccess), object: serviceTypeModel, userInfo: nil)
         
-        print("点击了\(indexPath.row) + 服务名称\(serviceTypeModel.name)");
+        // print("点击了\(indexPath.row) + 服务名称\(serviceTypeModel.name)");
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -252,6 +255,8 @@ class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionV
     func numberOfRols(_ customLayout: CustomLayout) -> Int {
         return 2
     }
+    
+    
     
 }
 

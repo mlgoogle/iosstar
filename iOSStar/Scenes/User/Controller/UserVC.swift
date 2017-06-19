@@ -68,7 +68,9 @@ class UserVC: BaseCustomTableViewController  {
     func updateUserInfo() {
        getUserInfo { (result) in
             if let response = result{
+
                 let model =   response as! UserInfoModel
+                
                 self.responseData = model
                 self.account?.text =  String.init(format: "%.2f", model.balance)
                 if model.nick_name == "" {

@@ -17,13 +17,44 @@ class OrderType : UITableViewCell{
     @IBOutlet weak var orderType: UILabel!
     // 意见反馈
     @IBOutlet weak var feedBack: UITextView!
-
-    
 }
+
+class StarDataCell: UITableViewCell {
+    
+    // 背景图片
+    @IBOutlet weak var bkImageView: UIImageView!
+    // 中间内容View
+    @IBOutlet weak var centerContentView: UIView!
+    // 头像View
+    @IBOutlet weak var iconImageView: UIImageView!
+    // 名字
+    @IBOutlet weak var nameLabel: UILabel!
+    // 描述
+    @IBOutlet weak var describeLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        bkImageView.contentMode = .scaleAspectFit
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    func setStarData(model:MarketListStarModel) {
+        
+        nameLabel.text = String.init(format: "%@ (%@)", model.name,model.symbol)
+        bkImageView.kf.setImage(with: URL(string: model.pic))
+        iconImageView.kf.setImage(with: URL(string: model.pic))
+    }
+}
+
+
 
 // MRAK: - viewDidLoad
 class OrderStarViewController: UIViewController {
     
+    var starModelInfo:MarketListStarModel?
     
     var serviceTypeModel : ServiceTypeModel!
     // 确定约见按钮
@@ -32,7 +63,7 @@ class OrderStarViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
 
     @IBOutlet weak var tableView: UITableView!
-    
+
     // @IBOutlet weak var pageControl: UIPageControl!
     // 意见反馈
     var feedBack : UITextView!
@@ -61,10 +92,16 @@ class OrderStarViewController: UIViewController {
     // cityPickerView选择的Componentow (市)
     var selectComponent = 0
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+    
         tableView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0)
         tableView.showsVerticalScrollIndicator = false
         
@@ -158,7 +195,7 @@ class OrderStarViewController: UIViewController {
 //                    print(result)
                         if ((result as? String) != nil){
                             nav.dismissController()
-                           self.domeet()
+                            self.domeet()
                         }else{
                           nav.dismissController()
                         }
@@ -500,12 +537,14 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BannerCell")
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell")
         if indexPath.row == 0 {
-            cell?.selectionStyle = .none
-            return cell!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BannerCell") as! StarDataCell
+            // cell?.selectionStyle = .none
+            if starModelInfo != nil {
+                cell.setStarData(model: starModelInfo!)
+            }
+            return cell
         }
         if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell")
@@ -531,6 +570,7 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate {
             cell.selectionStyle = .none
             return cell
         }
+        
         return cell!
         
     }
