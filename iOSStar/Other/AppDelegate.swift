@@ -42,7 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         AppConfigHelper.shared().setupGeTuiSDK(sdkDelegate: self)
         AppConfigHelper.shared().getstart()
         // 登录
-       AppConfigHelper.shared().login()
+
+        AppConfigHelper.shared().login()
+        
     
         UIApplication.shared.statusBarStyle = .default
 

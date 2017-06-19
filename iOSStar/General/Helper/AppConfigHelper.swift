@@ -59,6 +59,11 @@ class AppConfigHelper: NSObject {
             }
         }) { (error ) in
             
+            if let phoneString = UserDefaults.standard.object(forKey: "phone") as? String {
+                UserDefaults.standard.set(phoneString, forKey: "lastLogin")
+            }
+            UserDefaults.standard.removeObject(forKey:"phone")
+            UserDefaults.standard.removeObject(forKey: "token")
         }
         
     }
