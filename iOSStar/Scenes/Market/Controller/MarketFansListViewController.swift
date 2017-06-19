@@ -25,6 +25,7 @@ class MarketFansListViewController: MarketBaseViewController {
         tableView.register(FansListHeaderView.self, forHeaderFooterViewReuseIdentifier: "FansListHeaderView")
         automaticallyAdjustsScrollViewInsets = false
         requestFansList()
+        self.automaticallyAdjustsScrollViewInsets = false
         footer = MJRefreshAutoStateFooter(refreshingBlock: {
             self.requestFansList()
             

@@ -135,8 +135,8 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         priceChangeButton.snp.makeConstraints { (make) in
             make.right.equalTo(changeImageView.snp.left)
             make.centerY.equalTo(changeImageView)
-            make.width.equalTo(60)
-            make.height.equalTo(15)
+            make.width.equalTo(100)
+            make.height.equalTo(20)
         }
         priceImageView.snp.makeConstraints { (make) in
             make.right.equalTo(priceChangeButton.snp.left).offset(-42)
