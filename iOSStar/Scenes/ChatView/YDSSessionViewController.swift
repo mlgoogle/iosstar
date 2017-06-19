@@ -35,17 +35,15 @@ class YDSSessionViewController: NTESSessionViewController {
         let phone = UserDefaults.standard.object(forKey: "phone") as! String
         
         AppAPIHelper.user().reducetime(phone: phone, starcode: self.starcode, deduct_amount: 1, complete: { (result) in
-            
+            super.send(message)
+
             print("======\(result)")
             
         }) { (error) in
-            
-        }
-        if isbool == false {
             super.send(message)
-        } else {
-            super.send(message)
+
         }
+
        
     }
     

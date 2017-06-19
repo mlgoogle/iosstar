@@ -198,10 +198,12 @@ class SystemMessageVC: BasePageListTableViewController {
             sure.orderId = order.orderId
             
             AppAPIHelper.dealAPI().cancelOrderRequest(requestModel: sure, complete: { (result) in
-                if let object = result  {
+                if let object = result as? [String : Any]  {
                     
-                    if object["status"] as! Int == 0{
-                        SVProgressHUD.showSuccess(withStatus: "确认成功")
+                    if let status = object["status"] as? Int{
+                        if status == 0{
+                            SVProgressHUD.showSuccess(withStatus: "取消成功")
+                        }
                     }
                 }
             }, error: { (error ) in
@@ -213,10 +215,12 @@ class SystemMessageVC: BasePageListTableViewController {
             sure.positionId = order.positionId
             AppAPIHelper.dealAPI().sureOrderRequest(requestModel: sure, complete: { (result) in
                
-                if let object = result  {
+                if let object = result as? [String : Any]  {
                 
-                    if object["status"] as! Int == 0{
-                      SVProgressHUD.showSuccess(withStatus: "确认成功")
+                    if let status = object["status"] as? Int{
+                        if status == 0{
+                            SVProgressHUD.showSuccess(withStatus: "确认成功")
+                        }
                     }
                 }
             }, error: { (error) in
