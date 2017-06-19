@@ -218,13 +218,15 @@ class SystemMessageVC: BasePageListTableViewController {
 
                     if let status = object["status"] as? Int{
                         if status == 0{
+                               self.didRequest(1)
                             SVProgressHUD.showSuccess(withStatus: "取消成功")
+                            
 
                        }
                     }
                 }
             }, error: { (error ) in
-               
+               SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"]  as! String, ForDuration: 0.5, completion: nil )
             })
         }else{
             let sure = SureOrderRequestModel()
@@ -236,12 +238,13 @@ class SystemMessageVC: BasePageListTableViewController {
                 
                     if let status = object["status"] as? Int{
                         if status == 0{
+                               self.didRequest(1)
                             SVProgressHUD.showSuccess(withStatus: "确认成功")
                         }
                     }
                 }
             }, error: { (error) in
-                print(error)
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: nil )
             })
         }
 
@@ -252,7 +255,14 @@ class SystemMessageVC: BasePageListTableViewController {
         let float = "\(aa)"
         model.orderAllPrice = "\(float)"
         model.orderAccount = "\(order.amount)"
-        model.orderPrice = "\(order.openPrice)"
+        if order.openPrice < 0{
+         model.orderPrice = "\(-order.openPrice)"
+            
+            let aa = order.openPrice * Double.init(order.amount)
+            let float = "\(-aa)"
+            model.orderAllPrice = "\(float)"
+        }
+       
         model.orderStatus  = order.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id ? "转让":"求购"
         StartModel.getStartName(startCode: order.symbol) { (result) in
             

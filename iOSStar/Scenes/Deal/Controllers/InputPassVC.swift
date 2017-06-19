@@ -137,7 +137,7 @@ class  InputPassVC: UIViewController ,UITextFieldDelegate{
                     
 //                        textField.becomeFirstResponder()
                         SVProgressHUD.showErrorMessage(ErrorMessage: "密码输入错误", ForDuration: 1, completion: {
-                            
+                             textField.becomeFirstResponder()
                             textField.text = ""
                             self.passString = ""
                             self.setCircleShow(0)
