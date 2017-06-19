@@ -61,6 +61,7 @@ class AuctionHeaderCell: UITableViewCell {
         if all != 0 {
             let percent = CGFloat(model!.buyCount) / CGFloat(model!.buyCount + model!.sellCount)
             buyWidth.constant = (kScreenWidth - 50) * percent
+
             if model!.buyCount == 0 {
                 sellProgressView.setCornoerRadius(byRoundingCorners: [.allCorners], cornerRadii: CGSize(width: 8.0, height: 8.0))
             } else {
@@ -72,10 +73,15 @@ class AuctionHeaderCell: UITableViewCell {
                 buyProgressView.setCornoerRadius(byRoundingCorners: [.bottomLeft, .topLeft], cornerRadii: CGSize(width: 8.0, height: 8.0))
             }
             
+
+ 
         } else {
+            sellProgressView.setCornoerRadius(byRoundingCorners: [.bottomRight, .topRight], cornerRadii: CGSize(width: 8.0, height: 8.0))
+
+            buyProgressView.setCornoerRadius(byRoundingCorners: [.bottomLeft, .topLeft], cornerRadii: CGSize(width: 8.0, height: 8.0))
+
             buyWidth.constant = (kScreenWidth - 50) * 0.5
         }
-        
 
 
         buyProgressView.animation(percent: 1)

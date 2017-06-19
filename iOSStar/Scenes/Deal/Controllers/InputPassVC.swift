@@ -92,7 +92,13 @@ class  InputPassVC: UIViewController ,UITextFieldDelegate{
     }
   
     func forgotPass(){
-     resultBlock?(doStateClick.doResetPwd as AnyObject)
+        if showKeyBoard{
+            let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResetTradePassVC")
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+         resultBlock?(doStateClick.doResetPwd as AnyObject)
+        }
+    
         
     }
   

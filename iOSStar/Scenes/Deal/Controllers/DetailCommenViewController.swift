@@ -42,6 +42,7 @@ class DetailCommenViewController: DealBaseViewController {
             self.header?.endRefreshing()
             self.requestData(isRefresh: false)
         })
+        footer?.stateLabel.text = "只展示最近7天历史数据"
         tableView.mj_header = header
         tableView.mj_footer = footer
         footer?.isHidden = true

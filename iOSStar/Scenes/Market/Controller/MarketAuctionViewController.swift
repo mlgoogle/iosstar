@@ -18,6 +18,7 @@ class MarketAuctionViewController: MarketBaseViewController {
     var fansList:[FansListModel]?
     var statusModel:AuctionStatusModel?
     var buySellModel:BuySellCountModel?
+    var imageUrl = ""
     var totalCount:Int = 0
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -85,6 +86,7 @@ class MarketAuctionViewController: MarketBaseViewController {
             }
         }) { (error) in
 
+            self.didRequestError(error)
             self.countModel = PositionCountModel()
             self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
 
@@ -105,6 +107,7 @@ class MarketAuctionViewController: MarketBaseViewController {
             }
             
         }) { (error) in
+            self.didRequestError(error)
             let model = BuySellCountModel()
             model.buyCount = 20
             model.sellCount = 20
@@ -123,12 +126,17 @@ class MarketAuctionViewController: MarketBaseViewController {
         }
         let model = AuctionStatusRequestModel()
         model.symbol = starCode!
+        
         AppAPIHelper.marketAPI().requestAuctionStatus(requestModel: model, complete: { (response) in
             if let model = response as? AuctionStatusModel {
                 self.statusModel = model
                 self.refreshSatus()
             }
-        }, error: errorBlockFunc())
+        }) { (error) in
+         
+            self.refreshSatus()
+            self.didRequestError(error)
+        }
     }
 
     func requestFansList() {
@@ -184,6 +192,7 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
     func refreshImage(imageUrl: String) {
         
         headerCell?.setImageUrl(url: imageUrl)
+        self.imageUrl = imageUrl
     }
     
     func selectAtIndex(index: Int) {
@@ -249,6 +258,7 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "AuctionHeaderCell", for: indexPath) as! AuctionHeaderCell
         
+        cell.setImageUrl(url: imageUrl)
         cell.setPositionCountModel(model: countModel, starCode: starCode, starName: starName)
         cell.setPercent(model:buySellModel,totalCount:totalCount)
         self.headerCell = cell

@@ -43,7 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         AppConfigHelper.shared().setupGeTuiSDK(sdkDelegate: self)
         AppConfigHelper.shared().getstart()
         // 登录
-       AppConfigHelper.shared().login()
+
+        AppConfigHelper.shared().login()
+        
     
         UIApplication.shared.statusBarStyle = .default
 
@@ -57,6 +59,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
+        
+        // 模拟程序进入后台的本地通知推送
+        // print("进入后台")
+        // AppConfigHelper.shared().AlertlocalNotify()
+        
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }

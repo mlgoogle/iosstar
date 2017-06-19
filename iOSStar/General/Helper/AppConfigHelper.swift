@@ -17,7 +17,7 @@ let kGtAppSecret:String = "TgaFdlcYMX5QVhH1CkP1k2"
 
 class AppConfigHelper: NSObject {
     
-    
+    var dealResult:[String : String] = ["-1" : "订单取消", "0" : "扣费成功", "1" : "转让方持有时间不足", "2" : "求购方金币不足"]
     var updateModel:UpdateParam?
     lazy var alertView: TradingAlertView = {
         let alertView = Bundle.main.loadNibNamed("TradingAlertView", owner: nil, options: nil)?.first as! TradingAlertView
@@ -60,6 +60,11 @@ class AppConfigHelper: NSObject {
             }
         }) { (error ) in
             
+            if let phoneString = UserDefaults.standard.object(forKey: "phone") as? String {
+                UserDefaults.standard.set(phoneString, forKey: "lastLogin")
+            }
+            UserDefaults.standard.removeObject(forKey:"phone")
+            UserDefaults.standard.removeObject(forKey: "token")
         }
         
     }
@@ -137,7 +142,6 @@ class AppConfigHelper: NSObject {
                         print("注册通知失败") //点击不允许
                     }
                 })
-                
                 UIApplication.shared.registerForRemoteNotifications()
             } else {
                 if #available(iOS 8.0, *) {
@@ -195,15 +199,20 @@ class AppConfigHelper: NSObject {
             if let model = response as? ReceiveMacthingModel{
                 
                 StartModel.getStartName(startCode: model.symbol, complete: { (star) in
+                    
                     if let starModel = star as? StartModel {
-                        self.alertView.str = "匹配成功提醒：\(starModel.name)（\(starModel.code)）匹配成功，请到系统消息中查看，点击查看。"
-                        
-                        self.performSelector(onMainThread: #selector(self.showAlert), with: nil, waitUntilDone: false)
+                        let body = "匹配成功提醒：\(starModel.name)（\(starModel.code)）匹配成功，请到系统消息中查看。"
+
+                        // 处在后台
+                        if UIApplication.shared.applicationState == .background {
+                            self.localNotify(body: body, userInfo: nil)
+                        } else {
+                            self.alertView.str = body
+                            self.performSelector(onMainThread: #selector(self.showAlert), with: nil, waitUntilDone: false)
+                        }
                     }
                 })
-                
             }
-            
         }
     }
     func showAlert(){
@@ -219,12 +228,44 @@ class AppConfigHelper: NSObject {
     func setupReceiveOrderResult() {
         AppAPIHelper.dealAPI().setReceiveOrderResult { (response) in
             if let model = response as? OrderResultModel {
-                SVProgressHUD.showSuccess(withStatus: "订单结果\(model.result)")
+                let body = "订单结果:\(self.dealResult["\(model.result)"]),请查看"
+
+                if UIApplication.shared.applicationState == .background {
+                    self.localNotify(body: body, userInfo: nil)
+                } else {
+                    self.alertView.str = body
+                    self.performSelector(onMainThread: #selector(self.showAlert), with: nil, waitUntilDone: false)
+                }
             }
         }
-        
     }
     
+    
+    // 模拟本地推送通知的方法
+    func AlertlocalNotify() {
+        if UIApplication.shared.applicationState == .background {
+            self.localNotify(body: "可以看见吗", userInfo: nil)
+        }
+    }
+    
+    
+    
+    func localNotify(body: String?, userInfo: [NSObject: AnyObject]?) {
+        let localNotify = UILocalNotification()
+        localNotify.fireDate = Date().addingTimeInterval(0.1)
+        localNotify.timeZone = NSTimeZone.default
+        localNotify.soundName = UILocalNotificationDefaultSoundName
+        if #available(iOS 8.2, *) {
+            localNotify.alertTitle = "星享"
+        } else {
+            // Fallback on earlier versions
+        }
+        localNotify.alertBody = body!
+        localNotify.userInfo = userInfo
+        UIApplication.shared.scheduleLocalNotification(localNotify)
+        
+    }
+
     //查询是否有新版本更新
     func updateUpdateInfo() {
         AppAPIHelper.user().update(type: 1, complete: { (response) in
@@ -249,5 +290,5 @@ class AppConfigHelper: NSObject {
         }
         return false
     }
-    
+
 }

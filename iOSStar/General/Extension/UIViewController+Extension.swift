@@ -19,6 +19,9 @@ extension UIViewController {
     func errorBlockFunc()->ErrorBlock {
         return { [weak self] (error) in
             //            XCGLogger.error("\(error) \(self)")
+            if error.code == -11011 {
+                return
+            }
             self?.didRequestError(error)
         }
     }
@@ -212,7 +215,7 @@ extension UIViewController {
 //            }
 //        }
     }
-    func getUserrealmInfo(complete: CompleteBlock?){
+    func getUserRealmInfo(complete: CompleteBlock?){
     
         AppAPIHelper.user().getauthentication(complete: { (result) in
             complete?(result as AnyObject)
