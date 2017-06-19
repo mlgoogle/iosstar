@@ -215,7 +215,7 @@ class SystemMessageVC: BasePageListTableViewController {
                         if status == 0{
                             SVProgressHUD.showSuccess(withStatus: "取消成功")
 
-                    }
+                       }
                     }
                 }
             }, error: { (error ) in

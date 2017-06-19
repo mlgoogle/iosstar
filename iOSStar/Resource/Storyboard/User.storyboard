@@ -1860,6 +1860,32 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="acZ-1D-tnJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="tQq-j8-GQk">
+                                    <rect key="frame" x="0.0" y="88" width="375" height="384"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nodata_record" translatesAutoresizingMaskIntoConstraints="NO" id="hTN-MC-bzV">
+                                            <rect key="frame" x="87" y="54" width="200" height="186"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无记录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7N5-2A-JIa">
+                                            <rect key="frame" x="61" y="274" width="251" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="251" id="67l-nB-88v"/>
+                                                <constraint firstAttribute="height" constant="21" id="Taf-7u-rwV"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="hTN-MC-bzV" firstAttribute="centerX" secondItem="tQq-j8-GQk" secondAttribute="centerX" id="CS3-lL-dOg"/>
+                                        <constraint firstItem="7N5-2A-JIa" firstAttribute="centerX" secondItem="tQq-j8-GQk" secondAttribute="centerX" constant="-1" id="E4v-YN-gLf"/>
+                                        <constraint firstItem="7N5-2A-JIa" firstAttribute="top" secondItem="hTN-MC-bzV" secondAttribute="bottom" constant="34" id="Jab-hS-OZ5"/>
+                                        <constraint firstItem="hTN-MC-bzV" firstAttribute="centerY" secondItem="tQq-j8-GQk" secondAttribute="centerY" constant="-45" id="Tc4-Dn-ViG"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GetOrderStarsVCCell" rowHeight="60" id="fhk-4s-zqc" customClass="ContactListCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
@@ -1969,6 +1995,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QGf-PE-c1G"/>
+                    <connections>
+                        <outlet property="nodaView" destination="tQq-j8-GQk" id="fvV-sq-Kk6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQQ-hv-LfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
