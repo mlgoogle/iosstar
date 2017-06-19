@@ -17,8 +17,8 @@ class YDSSessionViewController: NTESSessionViewController {
         tableView.backgroundColor = UIColor.init(hexString: "FAFAFA")
         
         
-       // print("=====starcode是\(self.starcode)")
-        
+     print("=====starcode是\(self.starcode)")
+//        title == self.
         // Do any additional setup after loading the view.
     }
 
