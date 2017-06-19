@@ -10,6 +10,10 @@ import UIKit
 import SVProgressHUD
 class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     
+    @IBOutlet weak var ThreeLoginLabel: UILabel!
+    @IBOutlet weak var wechatLogoImageView: UIImageView!
+    @IBOutlet weak var wechatLoginLabel: UILabel!
+    
     @IBOutlet weak var rbackView: UIView!
     @IBOutlet weak var rcontentView: UIView!
     
@@ -77,8 +81,14 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
                 if Ischange == false {
 //            if (change? [NSKeyValueChangeKey.newKey] as? Bool) == false {
                 self.registeredButton.setTitle("注册", for: .normal)
+                    self.ThreeLoginLabel.isHidden = false
+                    self.wechatLogoImageView.isHidden = false
+                    self.wechatLoginLabel.isHidden = false
             } else {
                self.registeredButton.setTitle("微信绑定", for: .normal)
+                    self.ThreeLoginLabel.isHidden = true
+                    self.wechatLogoImageView.isHidden = true
+                    self.wechatLoginLabel.isHidden = true
             }
         }
     }

@@ -24,18 +24,13 @@ class AppConfigHelper: NSObject {
     }()
     private static var helper = AppConfigHelper()
     class func shared() -> AppConfigHelper {
-        
         return helper
     }
     
     func getstart(){
-        
         AppAPIHelper.user().addstarinfo(complete: { (result) in
-            
             print(NSHomeDirectory())
-            
             if let model = result as? [StartModel]{
-                
                 for news in model{
                     let realm = try! Realm()
                     try! realm.write {
@@ -43,9 +38,7 @@ class AppConfigHelper: NSObject {
                         realm.add(news, update: true)
                     }
                 }
-                
             }
-            
         }) { (error) in
             
         }
@@ -218,7 +211,9 @@ class AppConfigHelper: NSObject {
     func showAlert(){
         alertView.showAlertView()
         alertView.messageAction = {
-            
+            let vc = UIStoryboard.init(name: "Exchange", bundle: nil).instantiateViewController(withIdentifier: "SystemMessageVC")
+            let nav = UINavigationController.init(rootViewController: vc)
+            UIApplication.shared.keyWindow?.rootViewController?.present(nav, animated: true, completion: nil)
         }
 
     }
