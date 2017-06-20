@@ -25,11 +25,12 @@
                                 <rect key="frame" x="0.0" y="267" width="375" height="400"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ET9-fG-If7">
-                                        <rect key="frame" x="19" y="17.5" width="20" height="20"/>
+                                        <rect key="frame" x="19" y="7.5" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="3Rl-gS-8rR"/>
-                                            <constraint firstAttribute="width" constant="20" id="W3R-Nn-rBJ"/>
+                                            <constraint firstAttribute="height" constant="40" id="3Rl-gS-8rR"/>
+                                            <constraint firstAttribute="width" constant="40" id="W3R-Nn-rBJ"/>
                                         </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" image="close.png"/>
                                         <connections>
                                             <action selector="close:" destination="b2Q-8V-dFg" eventType="touchUpInside" id="fVe-fi-aPk"/>
@@ -330,7 +331,7 @@
                                 <rect key="frame" x="0.0" y="267" width="375" height="400"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7c-dc-ekh">
-                                        <rect key="frame" x="16" y="15" width="40" height="40"/>
+                                        <rect key="frame" x="16" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="O3A-kI-oW7"/>
                                             <constraint firstAttribute="height" constant="40" id="ZBV-8u-bhG"/>
@@ -346,7 +347,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="P7c-dc-ekh" firstAttribute="top" secondItem="Kcr-dB-uDG" secondAttribute="top" constant="15" id="89q-zk-42C"/>
+                                    <constraint firstItem="P7c-dc-ekh" firstAttribute="top" secondItem="Kcr-dB-uDG" secondAttribute="top" id="89q-zk-42C"/>
                                     <constraint firstAttribute="height" constant="400" id="JzP-cg-C3S"/>
                                     <constraint firstItem="P7c-dc-ekh" firstAttribute="leading" secondItem="Kcr-dB-uDG" secondAttribute="leading" constant="16" id="mvo-DW-HfJ"/>
                                 </constraints>
