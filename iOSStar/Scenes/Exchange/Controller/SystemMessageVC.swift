@@ -21,36 +21,59 @@ class MessageCell:  OEZTableViewCell{
             let str = model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id ? "转让":"求购"
             self.content.text = "\(data.name)" + "(" + "\(data.code)" + ")" + str
         }
-        print(model)
         time_lb.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.openTime), format: "YY-MM-dd HH:mm:ss")
          dosee.setTitle("", for: .normal)
-        if model.handle == 0{
-            dosee.setTitle("匹配中", for: .normal)
-        }else if model.handle == 1{
-            
-            if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 1) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 1)){
-               dosee.setTitle("对方未确认", for: .normal)
+        if model.handle == 0
+        {
+            if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.buyHandle == 0 && model.sellHandle == 1) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 1)){
+                dosee.setTitle("未确认", for: .normal)
+                dosee.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
             }
-            else if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0)){
-                dosee.setTitle("对方未确认", for: .normal)
+//            else  if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 0) || (model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.buyHandle == 0 && model.buyHandle == 0)){
+//                dosee.setTitle("匹配中", for: .normal)
+//                dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
+//            }
+                
+            else{
+          
+            dosee.setTitle("匹配中", for: .normal)
+            dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
+            }
+        }
+        else if model.handle == 1{
+            
+            if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.buyUid == 1) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 1)){
+               dosee.setTitle("对方未确认", for: .normal)
+                
+                dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
+            }
+           else if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.buyHandle == 0 && model.sellHandle == 1) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 1)){
+                dosee.setTitle("未确认", for: .normal)
+                dosee.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
             }
             
             else{
-             dosee.setTitle( ((model.buyHandle == 0) && (model.sellHandle == 0)) ? "未确认" : (((model.buyHandle == -1) || (model.sellHandle == -1)) ? "已取消" : ((((model.buyHandle == 0) && (model.sellHandle == 1)) || ((model.buyHandle == 1) && (model.sellHandle == 0))) ? "未确认" : "交易成功")), for: .normal)
+            dosee.setTitle("交易完成", for: .normal)
+            dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
+
             }
          
         }
         else if model.handle == -1{
-          dosee.setTitle("取消订单", for: .normal)
+          dosee.setTitle("订单取消", for: .normal)
+          dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
         }
         else if model.handle == -2{
           dosee.setTitle("非正常订单", for: .normal)
+             dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
         }
         else if model.handle == 2{
              dosee.setTitle("订单完成", for: .normal)
+             dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
         }
         else{
           dosee.setTitle("交易成功", for: .normal)
+             dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
       
         }
         
@@ -92,9 +115,7 @@ class SystemMessageVC: BasePageListTableViewController {
         }
         
     }
-    
-    
-    
+
     override func didRequest(_ pageIndex: Int) {
         if self.dataSource?.count != nil && (self.dataSource?.count)! >= 0 {
             self.nodata.isHidden = true
@@ -131,34 +152,10 @@ class SystemMessageVC: BasePageListTableViewController {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-//        self.getUserRealmInfo { (result) in
-//            if let model = result{
-//                let object =  model as! [String : AnyObject]
-//                  let alertVc = AlertViewController()
-//                if object["realname"] as! String == ""{
-//                    
-//                    alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-//                                        titleLabelText: "您还没有身份验证",
-//                                        
-//                                        subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
-//                                     
-//                                        completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
-//                                            alertVc?.dismissAlertVc()
-//                                            
-//                                            let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
-//                                            self.navigationController?.pushViewController(vc, animated: true )
-//                                            return
-//                    }
-//                    
-//                }else{
-//                   
-//            }
-//        }
-        let  data = self.dataSource?[indexPath.section] as! OrderListModel
-        
-        
-        if (data.handle == 1) {
-            if ((data.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0) && (data.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0)){
+
+        let  data = self.dataSource?[indexPath.row] as! OrderListModel
+        if (data.handle == 0) {
+            if ((data.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.buyHandle == 0) || (data.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0)  && (data.handle != 1)){
                 let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易", preferredStyle:.alert)
                 // 设置2个UIAlertAction
                 let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
@@ -177,9 +174,24 @@ class SystemMessageVC: BasePageListTableViewController {
                 
                 
             }
-            else if (data.sellHandle == -1 || data.buyHandle == -1){
-                
-                
+            //
+        }
+         else if (data.handle == 1) {
+            if ((data.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0) || (data.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0)){
+                let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易", preferredStyle:.alert)
+                // 设置2个UIAlertAction
+                let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
+                    self.doorder(data, true)
+                }
+                let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
+                    self.showView(data, false)
+                    
+                }
+                        // 添加
+                alertController.addAction(cancelAction)
+                alertController.addAction(completeAction)
+                // 弹出
+                self.present(alertController, animated: true, completion: nil)
                 
                 
             }
@@ -189,20 +201,7 @@ class SystemMessageVC: BasePageListTableViewController {
             
         }
         else{
-            let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易？", preferredStyle:.alert)
-            // 设置2个UIAlertAction
-            let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
-                self.doorder(data, true)
-            }
-            let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
-                self.showView(data, false)
-            }
-            
-            // 添加
-            alertController.addAction(cancelAction)
-            alertController.addAction(completeAction)
-            // 弹出
-            self.present(alertController, animated: true, completion: nil)
+
         }
     }
 
@@ -233,15 +232,12 @@ class SystemMessageVC: BasePageListTableViewController {
             
             AppAPIHelper.dealAPI().cancelOrderRequest(requestModel: sure, complete: { (result) in
                 if let object = result as? [String : Any]  {
-                    
-
-                      self.didRequest(1)
+                    self.didRequest(1)
                     if let status = object["status"] as? Int{
                         if status == 0{
                                self.didRequest(1)
                             SVProgressHUD.showSuccess(withStatus: "取消成功")
-                            
-
+    
                        }
                     }
                 }
