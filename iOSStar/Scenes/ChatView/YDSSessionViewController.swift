@@ -16,8 +16,7 @@ class YDSSessionViewController: NTESSessionViewController {
     
         tableView.backgroundColor = UIColor.init(hexString: "FAFAFA")
         
-        
-        
+
         // Do any additional setup after loading the view.
     }
 

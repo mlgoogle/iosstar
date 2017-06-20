@@ -63,6 +63,10 @@
 		6E54EE131ED5A13B00E14EC3 /* YD_DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54EE121ED5A13B00E14EC3 /* YD_DatePickerViewController.swift */; };
 		6E54EE171ED70DDE00E14EC3 /* MarketDetailCommentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54EE161ED70DDE00E14EC3 /* MarketDetailCommentHeaderView.swift */; };
 		6E6027841EC9916C001FBAA6 /* MarketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */; };
+		6E62C7BB1EF8B2AB0053FE1E /* AuctionImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62C7BA1EF8B2AB0053FE1E /* AuctionImageViewCell.swift */; };
+		6E62C7BD1EF8B2BE0053FE1E /* AuctionTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62C7BC1EF8B2BE0053FE1E /* AuctionTimeCell.swift */; };
+		6E62C7BF1EF8B3060053FE1E /* AuctionPositionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62C7BE1EF8B3060053FE1E /* AuctionPositionInfoCell.swift */; };
+		6E62C7C11EF8B3370053FE1E /* AuctionProgreseeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62C7C01EF8B3370053FE1E /* AuctionProgreseeCell.swift */; };
 		6E7A1F6B1EE579E9007BF6D8 /* YD_MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F6A1EE579E9007BF6D8 /* YD_MenuView.swift */; };
 		6E7A1F6D1EE652E4007BF6D8 /* MarketDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F6C1EE652E4007BF6D8 /* MarketDetailHeaderView.swift */; };
 		6E7A1F701EE6DC22007BF6D8 /* NoDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F6F1EE6DC22007BF6D8 /* NoDataCell.swift */; };
@@ -563,6 +567,10 @@
 		6E54EE121ED5A13B00E14EC3 /* YD_DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YD_DatePickerViewController.swift; sourceTree = "<group>"; };
 		6E54EE161ED70DDE00E14EC3 /* MarketDetailCommentHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailCommentHeaderView.swift; sourceTree = "<group>"; };
 		6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailViewController.swift; sourceTree = "<group>"; };
+		6E62C7BA1EF8B2AB0053FE1E /* AuctionImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuctionImageViewCell.swift; sourceTree = "<group>"; };
+		6E62C7BC1EF8B2BE0053FE1E /* AuctionTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuctionTimeCell.swift; sourceTree = "<group>"; };
+		6E62C7BE1EF8B3060053FE1E /* AuctionPositionInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuctionPositionInfoCell.swift; sourceTree = "<group>"; };
+		6E62C7C01EF8B3370053FE1E /* AuctionProgreseeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuctionProgreseeCell.swift; sourceTree = "<group>"; };
 		6E7A1F6A1EE579E9007BF6D8 /* YD_MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YD_MenuView.swift; sourceTree = "<group>"; };
 		6E7A1F6C1EE652E4007BF6D8 /* MarketDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailHeaderView.swift; sourceTree = "<group>"; };
 		6E7A1F6F1EE6DC22007BF6D8 /* NoDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataCell.swift; sourceTree = "<group>"; };
@@ -1563,6 +1571,10 @@
 				6E1B56FA1ED2745400A014AE /* YD_SwipHeaderView.swift */,
 				6E88DA971ED554B100EAA905 /* GradualColorView.swift */,
 				6E54EE161ED70DDE00E14EC3 /* MarketDetailCommentHeaderView.swift */,
+				6E62C7BA1EF8B2AB0053FE1E /* AuctionImageViewCell.swift */,
+				6E62C7BC1EF8B2BE0053FE1E /* AuctionTimeCell.swift */,
+				6E62C7BE1EF8B3060053FE1E /* AuctionPositionInfoCell.swift */,
+				6E62C7C01EF8B3370053FE1E /* AuctionProgreseeCell.swift */,
 			);
 			name = CustomView;
 			path = iOSStar/Scenes/Market/CustomView;
@@ -3733,6 +3745,7 @@
 				A03D3FE01EA86A6500F85308 /* NTESMobileSettingViewController.m in Sources */,
 				A04CF0A01ED6CB6800B93D28 /* RechargeVC.swift in Sources */,
 				A03A46CB1EEF996500EAB8B1 /* ContainPayVC.swift in Sources */,
+				6E62C7C11EF8B3370053FE1E /* AuctionProgreseeCell.swift in Sources */,
 				A04CF0931ED6CB6800B93D28 /* TipBindVC.swift in Sources */,
 				A03D3F171EA86A6400F85308 /* NIMKitEvent.m in Sources */,
 				A03D3FDD1EA86A6500F85308 /* NTESBirthSettingViewController.m in Sources */,
@@ -3745,6 +3758,7 @@
 				A084BB4F1ED5793500DFC868 /* TableViewHelper.swift in Sources */,
 				6EBF590C1EC6EB75003F67B4 /* MarketSocketAPI.swift in Sources */,
 				A0856A111EB0B5C3004F349B /* UIBarExtension.swift in Sources */,
+				6E62C7BB1EF8B2AB0053FE1E /* AuctionImageViewCell.swift in Sources */,
 				A07238A01EA76AA300E755DB /* String+Extension.swift in Sources */,
 				A03D3FE51EA86A6500F85308 /* NTESBirthPickerView.m in Sources */,
 				6ECAA1B11ECD762E000FBED7 /* MarketSBFansCell.swift in Sources */,
@@ -3926,6 +3940,7 @@
 				A03D3FE31EA86A6500F85308 /* NTESUserInfoSettingViewController.m in Sources */,
 				6ECAA1A71ECD7527000FBED7 /* MarketCommentCell.swift in Sources */,
 				6E1B57171ED40F5300A014AE /* DealStarInfoCell.swift in Sources */,
+				6E62C7BF1EF8B3060053FE1E /* AuctionPositionInfoCell.swift in Sources */,
 				A03D3FC11EA86A6500F85308 /* NTESNetChatViewController.m in Sources */,
 				A03D3F101EA86A6400F85308 /* NIMInputEmoticonContainerView.m in Sources */,
 				A04CF0A31ED6CB6800B93D28 /* SelectPayType.swift in Sources */,
@@ -4017,6 +4032,7 @@
 				A03D3F5F1EA86A6500F85308 /* UIViewController+Swizzling.m in Sources */,
 				A084BB461ED52AD500DFC868 /* SystemMessageVC.swift in Sources */,
 				A03D3FA91EA86A6500F85308 /* NTESSessionJankenponContentView.m in Sources */,
+				6E62C7BD1EF8B2BE0053FE1E /* AuctionTimeCell.swift in Sources */,
 				A03D3F411EA86A6400F85308 /* NIMSessionListDefaultConfig.m in Sources */,
 				6E3170751EF7A12700BA637F /* UpdateVC.swift in Sources */,
 				A03D3FBC1EA86A6500F85308 /* NTESVideoViewController.m in Sources */,

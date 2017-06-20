@@ -85,15 +85,15 @@ class AuctionHeaderCell: UITableViewCell {
 
         
 
-        buyProgressView.animation(percent: 1)
-        sellProgressView.animation(percent: 1)
+        //buyProgressView.animation(percent: 1)
+        //sellProgressView.animation(percent: 1)
         var timePercent:CGFloat = 0.5
         if model!.sellTime > totalCount {
             timePercent =  CGFloat(totalCount == 0 ? 1 : totalCount) / CGFloat(model!.sellTime)
         } else {
             timePercent = CGFloat(model!.sellTime) / CGFloat(totalCount == 0 ? 1 : totalCount)
         }
-        countProgressView.animation(percent: timePercent)
+        //countProgressView.animation(percent: timePercent)
         totalCountLabel.text = "总计：\(totalCount)秒"
         
     }

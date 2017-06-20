@@ -79,7 +79,7 @@ class AppConst {
         static let TttpHostUrl:String = "139.224.34.22";
         #else
         static let TcpServerIP:String = "139.224.34.22";
-        static let TcpServerPort:UInt16 = 16006;
+        static let TcpServerPort:UInt16 = 16104;
         static let HttpHostUrl:String = "139.224.34.22";
         
         #endif

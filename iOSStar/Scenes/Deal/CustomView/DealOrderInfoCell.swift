@@ -50,7 +50,7 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
     
     func setTitles(titles:[String]) {
         priceInfoLabel.text = titles.first
-        coutTextField.text = titles.last
+        countInfoLabel.text = titles.last
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.text!.hasSuffix(".") {

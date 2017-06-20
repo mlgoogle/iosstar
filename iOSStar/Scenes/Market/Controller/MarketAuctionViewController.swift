@@ -20,6 +20,8 @@ class MarketAuctionViewController: MarketBaseViewController {
     var buySellModel:BuySellCountModel?
     var imageUrl = ""
     var totalCount:Int = 0
+    var sectionHeighs = [224,35,140,155,80]
+    var identifiers:[String] = [AuctionImageViewCell.className(),AuctionTimeCell.className(),AuctionPositionInfoCell.className(),AuctionProgreseeCell.className(),MarketAuctionCell.className()]
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,15 +39,13 @@ class MarketAuctionViewController: MarketBaseViewController {
     }
 
     func initCountDownBlock() {
-        
-        guard headerCell != nil else {
-            return
-        }
+
         YD_CountDownHelper.shared.marketBuyOrSellListRefresh = { [weak self] (result)in
             self?.requestFansList()
             self?.requestPositionCount()
             self?.requestPercent()
         }
+        
         
         YD_CountDownHelper.shared.countDownRefresh = { [weak self] (result)in
             guard self != nil  else {
@@ -53,9 +53,9 @@ class MarketAuctionViewController: MarketBaseViewController {
             }
             self?.count -= 1
             if (self?.count)! > 0 {
-                self?.headerCell?.setTimeText(text:YD_CountDownHelper.shared.getTextWithStartTime(closeTime: Int(self!.endTime)))
+                self?.tableView.reloadSections(IndexSet(integer: 1), with: .none)
             } else {
-                self?.headerCell?.setTimeText(text: "拍卖未开始")
+                self?.tableView.reloadSections(IndexSet(integer: 1), with: .none)
             }
             
         }
@@ -68,7 +68,7 @@ class MarketAuctionViewController: MarketBaseViewController {
             endTime = Int64(Date().timeIntervalSince1970) + statusModel!.remainingTime + YD_CountDownHelper.shared.timeDistance
             initCountDownBlock()
         } else {
-           headerCell?.setTimeText(text: "拍卖未开始")
+            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
         }
 
     }
@@ -82,12 +82,11 @@ class MarketAuctionViewController: MarketBaseViewController {
         AppAPIHelper.marketAPI().requestPositionCount(requestModel: r, complete: { (response) in
             if let model = response as? PositionCountModel {
                 self.countModel = model
-                self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+            self.tableView.reloadSections(IndexSet(integer: 2), with: .none)
             }
         }) { (error) in
             self.countModel = PositionCountModel()
-            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
-
+            self.tableView.reloadSections(IndexSet(integer: 2), with: .none)
         }
     }
     
@@ -98,18 +97,13 @@ class MarketAuctionViewController: MarketBaseViewController {
         let requestModel = BuySellPercentRequest()
         requestModel.symbol = starCode!
         AppAPIHelper.marketAPI().requstBuySellPercent(requestModel: requestModel, complete: { (response) in
-            
             if let model = response as? BuySellCountModel{
                 self.buySellModel = model                
-                self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+                self.tableView.reloadSections(IndexSet(integer: 3), with: .none)
+
             }
             
         }) { (error) in
-            let model = BuySellCountModel()
-            model.buyCount = 0
-            model.sellCount = 0
-            self.buySellModel = model
-            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
         }
 
     }
@@ -123,14 +117,13 @@ class MarketAuctionViewController: MarketBaseViewController {
         }
         let model = AuctionStatusRequestModel()
         model.symbol = starCode!
-        
         AppAPIHelper.marketAPI().requestAuctionStatus(requestModel: model, complete: { (response) in
             if let model = response as? AuctionStatusModel {
                 self.statusModel = model
                 self.refreshSatus()
+            
             }
         }) { (error) in
-         
             self.refreshSatus()
         }
     }
@@ -145,11 +138,19 @@ class MarketAuctionViewController: MarketBaseViewController {
         AppAPIHelper.marketAPI().requestEntrustFansList(requestModel: requestModel, complete: { (response) in
             if let models = response  as? [FansListModel] {
                 self.fansList = models
-                self.tableView.reloadData()
+                self.sectionHeighs.removeLast()
+                self.sectionHeighs.append(80)
+                self.identifiers.removeLast()
+                self.identifiers.append(MarketAuctionCell.className())
+                self.tableView.reloadSections(IndexSet(integer: 4), with: .none)
             }
         }) { (error) in
+            self.sectionHeighs.removeLast()
+            self.sectionHeighs.append(500)
             self.fansList?.removeAll()
-            self.tableView.reloadData()
+            self.identifiers.removeLast()
+            self.identifiers.append(NoDataCell.className())
+            self.tableView.reloadSections(IndexSet(integer: 4), with: .none)
         }
     }
     
@@ -157,14 +158,12 @@ class MarketAuctionViewController: MarketBaseViewController {
         guard starCode != nil else {
             return
         }
-        AppAPIHelper.marketAPI().requestTotalCount(starCode: "143", complete: { (response) in
+        AppAPIHelper.marketAPI().requestTotalCount(starCode: starCode!, complete: { (response) in
             if let model = response as? StarTotalCountModel {
                 self.totalCount = Int(model.star_time)
-                self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
             }
             
         }) { (error) in
-            
         }
     }
     
@@ -186,9 +185,8 @@ class MarketAuctionViewController: MarketBaseViewController {
 
 extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate, SelectFansDelegate,RefreshImageDelegate{
     func refreshImage(imageUrl: String) {
-        
-        headerCell?.setImageUrl(url: imageUrl)
         self.imageUrl = imageUrl
+        self.tableView.reloadSections(IndexSet(integer: 0), with: .none)
     }
     
     func selectAtIndex(index: Int) {
@@ -202,62 +200,74 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            return nil
+        if section == 4 {
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "FansListHeaderView") as! FansListHeaderView
+            headerView.delegate = self
+            headerView.settitles(titles: ["买入","卖出"])
+            headerView.selectIndex(index: index)
+            headerView.isShowImage = false
+            return headerView
         }
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "FansListHeaderView") as! FansListHeaderView
-        headerView.delegate = self
-        headerView.settitles(titles: ["买入","卖出"])
-        headerView.selectIndex(index: index)
-        headerView.isShowImage = false
-        return headerView
+        
+        return nil
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
+        if section == 4 {
+            return fansList?.count ?? 1
         }
-        return  fansList?.count ?? 1
+        return  1
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 0.001
+        if section == 4 {
+            return 45
         }
-        return 40
+        return 0.001
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.001
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 580.5
-        }
-        if fansList?.count ?? 0 == 0 {
-            return 500
-        }
-        return 90
+        
+        return CGFloat(sectionHeighs[indexPath.section])
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return identifiers.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        if indexPath.section == 1 {
-            if fansList?.count ?? 0 == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: NoDataCell.className(), for: indexPath) as! NoDataCell
-                cell.setImageAndTitle(image: UIImage(named: "nodata_fanslist"), title: nil)
-                return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifiers[indexPath.section], for: indexPath)
+        switch indexPath.section {
+        case 0:
+            if let imageCell =  cell as? AuctionImageViewCell {
+                
+                imageCell.setImageUrl(url: imageUrl)
             }
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MarketAuctionCell", for: indexPath) as! MarketAuctionCell
-            cell.setFans(model:fansList![indexPath.row])
-            return cell            
+        case 1:
+            if let timeCell = cell as? AuctionTimeCell {
+                timeCell.setTimeText(text: YD_CountDownHelper.shared.getTextWithStartTime(closeTime: Int(self.endTime)))
+            }
+        case 2:
+            if let positionCell = cell as? AuctionPositionInfoCell {
+                positionCell.setPositionCountModel(model: countModel, starCode: starCode!, starName: starName)
+            }
+            
+        case 3:
+            if let progressCell = cell as? AuctionProgreseeCell {
+                progressCell.setPercent(model: buySellModel, totalCount: totalCount)
+            }
+        case 4:
+            if let nodataCell = cell as? NoDataCell {
+                nodataCell.setImageAndTitle(image: UIImage(named: "nodata_fanslist"), title: nil)
+            } else if let fansCell = cell as? MarketAuctionCell {
+                fansCell.setFans(model:fansList![indexPath.row])
+
+            }
+        default:
+            break
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AuctionHeaderCell", for: indexPath) as! AuctionHeaderCell
         
-        cell.setImageUrl(url: imageUrl)
-        cell.setPositionCountModel(model: countModel, starCode: starCode, starName: starName)
-        cell.setPercent(model:buySellModel,totalCount:totalCount)
-        self.headerCell = cell
+
         return cell
     }
 }
