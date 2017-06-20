@@ -43,13 +43,13 @@ class ContainVC: UIViewController {
           
                 if (response.result)  == -302{
                        ShareDataModel.share().isweichaLogin = true
+
                        self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.frame.size.width)!, y: 0), animated: true)
                 }else{
                     
                     
                     UserModel.share().upateUserInfo(userObject: response)
                     
-            
                     if let userinfo = response.userinfo{
                         let phone  : String = (userinfo.phone)
                         let token : String = (response.token)
