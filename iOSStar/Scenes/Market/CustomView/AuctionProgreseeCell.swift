@@ -57,7 +57,7 @@ class AuctionProgreseeCell: UITableViewCell {
 
         }
         
-        percentProgressView.animation(locations: [NSNumber(value:Double(percent)), NSNumber(value: Double(1 - percent))])
+        percentProgressView.animation(locations: [0,NSNumber(value:Double(percent)), NSNumber(value: Double(1 - percent)),1.0 ])
         countProgressView.animation(percent: timePercent,width:kScreenWidth - 50)
     }
 
