@@ -50,7 +50,7 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
     
     func setTitles(titles:[String]) {
         priceInfoLabel.text = titles.first
-        coutTextField.text = titles.last
+        countInfoLabel.text = titles.last
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.text!.hasSuffix(".") {
@@ -110,6 +110,8 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
                 return true
             } else if array!.last! == "" || array!.last! == "0" || array!.last! == "00" {
                 return true
+            } else if array!.last!.length() > 2 {
+                return false
             }
         }
         return false
@@ -117,7 +119,7 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
     
     
     func setPrice() {
-        priceTextField.text = "\(price)"
+        priceTextField.text = String(format: "%.2f", price)
         delegate?.priceDidChange(totalPrice: getCurrentPrice(), count: count, price: price)
     }
     @IBAction func priceReduce(_ sender: Any) {

@@ -29,8 +29,13 @@ class MessageCell:  OEZTableViewCell{
         }else if model.handle == 1{
             
             if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 1) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 1)){
-            dosee.setTitle("对方未确认", for: .normal)
-            }else{
+               dosee.setTitle("对方未确认", for: .normal)
+            }
+            else if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0)){
+                dosee.setTitle("对方未确认", for: .normal)
+            }
+            
+            else{
              dosee.setTitle( ((model.buyHandle == 0) && (model.sellHandle == 0)) ? "未确认" : (((model.buyHandle == -1) || (model.sellHandle == -1)) ? "已取消" : ((((model.buyHandle == 0) && (model.sellHandle == 1)) || ((model.buyHandle == 1) && (model.sellHandle == 0))) ? "未确认" : "交易成功")), for: .normal)
             }
          
@@ -55,13 +60,13 @@ class MessageCell:  OEZTableViewCell{
 class SystemMessageVC: BasePageListTableViewController {
 
     @IBOutlet var nodata: UIView!
+    var frame : CGRect? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "系统消息"
         tableView.separatorStyle = .none
         self.nodata.isHidden = false
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backClick"), style: .done, target: self, action: #selector(leftButtonItemClick(_ :)))
         
     }
@@ -91,7 +96,10 @@ class SystemMessageVC: BasePageListTableViewController {
     
     
     override func didRequest(_ pageIndex: Int) {
-        
+        if self.dataSource?.count != nil && (self.dataSource?.count)! >= 0 {
+            self.nodata.isHidden = true
+            self.nodata.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+        }
         let model = OrderRecordRequestModel()
         model.status = 3
         model.start = Int32((pageIndex - 1) * 10)
@@ -119,7 +127,7 @@ class SystemMessageVC: BasePageListTableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
 //        self.getUserRealmInfo { (result) in
 //            if let model = result{
 //                let object =  model as! [String : AnyObject]
@@ -155,6 +163,7 @@ class SystemMessageVC: BasePageListTableViewController {
                 }
                 let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
                     self.showView(data, false)
+
                 }
                 
                 // 添加
@@ -233,6 +242,7 @@ class SystemMessageVC: BasePageListTableViewController {
                     }
                 }
             }, error: { (error ) in
+                  self.didRequest(1)
                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"]  as! String, ForDuration: 0.5, completion: nil )
             })
         }else{
@@ -251,6 +261,7 @@ class SystemMessageVC: BasePageListTableViewController {
                     }
                 }
             }, error: { (error) in
+                  self.didRequest(1)
                 SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: nil )
             })
         }
@@ -272,11 +283,9 @@ class SystemMessageVC: BasePageListTableViewController {
        
         model.orderStatus  = order.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id ? "转让":"求购"
         StartModel.getStartName(startCode: order.symbol) { (result) in
-            
             let data = result as! StartModel
             model.orderInfomation = "\(data.name)" + "(" + "\(data.code)" + ")"
-        }
-        
+        }    
         //将值传给 sharedatemodel
         ShareDataModel.share().orderInfo = model
         let storyboard = UIStoryboard.init(name: "Order", bundle: nil)

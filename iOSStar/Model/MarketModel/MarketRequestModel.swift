@@ -39,9 +39,10 @@ class StarListRequestModel: MarketBaseModel {
 
 class SendCommentModel: BaseModel {
     var symbol = ""
-    var fans_id = UserModel.share().getCurrentUser()?.id ?? 0
+    var fans_id =  "\(UserModel.share().getCurrentUser()?.userinfo?.id ?? 0)"
     var nick_name = UserModel.share().getCurrentUser()?.userinfo?.nickname ?? "星享用户"
     var comments = ""
+    
     var head_url = UserModel.share().getCurrentUser()?.userinfo?.head_url ?? "http://tva1.sinaimg.cn/crop.0.0.512.512.180/686fe7e0jw8f114yfoiqkj20e80e8glw.jpg"
 }
 
@@ -70,7 +71,7 @@ class FanListRequestModel: MarketBaseModel {
 
 class PositionCountRequestModel: BaseModel {
 
-     var uid:Int64 = 142
+     var uid:Int64 = UserModel.share().getCurrentUser()?.userinfo?.id ?? 0
     
      var starcode = "1001"
     

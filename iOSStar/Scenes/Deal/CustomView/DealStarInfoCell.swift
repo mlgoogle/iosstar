@@ -28,6 +28,10 @@ class DealStarInfoCell: UITableViewCell {
 
 
     }
+    
+    func setCount(count:Int) {
+        positionLabel.text = "当前总持有\(count)秒"
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

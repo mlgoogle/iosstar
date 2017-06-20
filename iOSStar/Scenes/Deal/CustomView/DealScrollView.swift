@@ -51,10 +51,7 @@ class DealScrollView: UIView,UIScrollViewDelegate {
     }
     
     func moveToIndex(index:Int) {
-        UIView.animate(withDuration: 0.5) {
-            self.scrollView.contentOffset = CGPoint(x: CGFloat(index) * kScreenWidth, y: 0)
-        }
-        
+        self.scrollView.contentOffset = CGPoint(x: CGFloat(index) * kScreenWidth, y: 0)
     }
     
     
