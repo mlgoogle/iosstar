@@ -99,6 +99,7 @@ class SystemMessageVC: BasePageListTableViewController {
         if self.dataSource?.count != nil && (self.dataSource?.count)! >= 0 {
             self.nodata.isHidden = true
             self.nodata.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+            tableView.reloadData()
         }
         let model = OrderRecordRequestModel()
         model.status = 3
@@ -112,6 +113,7 @@ class SystemMessageVC: BasePageListTableViewController {
             }else{
              self.nodata.isHidden = true
              self.nodata.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+                self.tableView.reloadData()
             }
         }
     }) { (error ) in
@@ -121,6 +123,7 @@ class SystemMessageVC: BasePageListTableViewController {
         }else{
             self.nodata.isHidden = true
             self.nodata.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+               self.tableView.reloadData()
         }
         }
     }
@@ -232,6 +235,7 @@ class SystemMessageVC: BasePageListTableViewController {
                 if let object = result as? [String : Any]  {
                     
 
+                      self.didRequest(1)
                     if let status = object["status"] as? Int{
                         if status == 0{
                                self.didRequest(1)
@@ -253,6 +257,7 @@ class SystemMessageVC: BasePageListTableViewController {
                
                 if let object = result as? [String : Any]  {
                 
+                      self.didRequest(1)
                     if let status = object["status"] as? Int{
                         if status == 0{
                                self.didRequest(1)
