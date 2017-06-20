@@ -167,12 +167,12 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjc-8c-LML">
-                                            <rect key="frame" x="211.5" y="45.5" width="45" height="26"/>
+                                            <rect key="frame" x="211.5" y="45.5" width="80" height="26"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="45" id="lXD-Fd-Bej"/>
+                                                <constraint firstAttribute="width" constant="80" id="lXD-Fd-Bej"/>
                                                 <constraint firstAttribute="height" constant="26" id="y36-aA-0mt"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <state key="normal" title="点此查看">
                                                 <color key="titleColor" red="0.98431372549999996" green="0.59999999999999998" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
@@ -246,14 +246,14 @@
                                 <rect key="frame" x="0.0" y="68" width="375" height="599"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="oFg-J2-1KF">
-                                    <rect key="frame" x="0.0" y="88" width="375" height="384"/>
+                                    <rect key="frame" x="0.0" y="88" width="375" height="342"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nodata_record" translatesAutoresizingMaskIntoConstraints="NO" id="Dol-uK-45s">
-                                            <rect key="frame" x="87" y="54" width="200" height="186"/>
+                                            <rect key="frame" x="87" y="33" width="200" height="186"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无记录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4i-ui-eU9">
-                                            <rect key="frame" x="61" y="274" width="251" height="21"/>
+                                            <rect key="frame" x="61" y="253" width="251" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="hea-wE-MOJ"/>
                                                 <constraint firstAttribute="width" constant="251" id="r41-4O-tGR"/>
@@ -371,7 +371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VLm-rZ-0Wq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1862" y="163"/>
+            <point key="canvasLocation" x="1861.5999999999999" y="162.3688155922039"/>
         </scene>
         <!--Base Navigation Controller-->
         <scene sceneID="erg-Nj-ICR">

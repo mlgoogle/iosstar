@@ -21,19 +21,33 @@ class MessageCell:  OEZTableViewCell{
             let str = model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id ? "转让":"求购"
             self.content.text = "\(data.name)" + "(" + "\(data.code)" + ")" + str
         }
-        
+        print(model)
         time_lb.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.openTime), format: "YY-MM-dd HH:mm:ss")
          dosee.setTitle("", for: .normal)
         if model.handle == 0{
-           dosee.setTitle("未确认", for: .normal)
+            dosee.setTitle("匹配中", for: .normal)
         }else if model.handle == 1{
             
             if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 1) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 1)){
-            dosee.setTitle("对方未确认", for: .normal)
-            }else{
+               dosee.setTitle("对方未确认", for: .normal)
+            }
+            else if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0)){
+                dosee.setTitle("对方未确认", for: .normal)
+            }
+            
+            else{
              dosee.setTitle( ((model.buyHandle == 0) && (model.sellHandle == 0)) ? "未确认" : (((model.buyHandle == -1) || (model.sellHandle == -1)) ? "已取消" : ((((model.buyHandle == 0) && (model.sellHandle == 1)) || ((model.buyHandle == 1) && (model.sellHandle == 0))) ? "未确认" : "交易成功")), for: .normal)
             }
          
+        }
+        else if model.handle == -1{
+          dosee.setTitle("取消订单", for: .normal)
+        }
+        else if model.handle == -2{
+          dosee.setTitle("非正常订单", for: .normal)
+        }
+        else if model.handle == 2{
+             dosee.setTitle("订单完成", for: .normal)
         }
         else{
           dosee.setTitle("交易成功", for: .normal)
@@ -46,13 +60,13 @@ class MessageCell:  OEZTableViewCell{
 class SystemMessageVC: BasePageListTableViewController {
 
     @IBOutlet var nodata: UIView!
+    var frame : CGRect? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "系统消息"
         tableView.separatorStyle = .none
         self.nodata.isHidden = false
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backClick"), style: .done, target: self, action: #selector(leftButtonItemClick(_ :)))
         
     }
@@ -82,7 +96,11 @@ class SystemMessageVC: BasePageListTableViewController {
     
     
     override func didRequest(_ pageIndex: Int) {
-        
+        if self.dataSource?.count != nil && (self.dataSource?.count)! >= 0 {
+            self.nodata.isHidden = true
+            self.nodata.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+            tableView.reloadData()
+        }
         let model = OrderRecordRequestModel()
         model.status = 3
         model.start = Int32((pageIndex - 1) * 10)
@@ -95,6 +113,7 @@ class SystemMessageVC: BasePageListTableViewController {
             }else{
              self.nodata.isHidden = true
              self.nodata.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+                self.tableView.reloadData()
             }
         }
     }) { (error ) in
@@ -104,6 +123,7 @@ class SystemMessageVC: BasePageListTableViewController {
         }else{
             self.nodata.isHidden = true
             self.nodata.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+               self.tableView.reloadData()
         }
         }
     }
@@ -215,6 +235,7 @@ class SystemMessageVC: BasePageListTableViewController {
                 if let object = result as? [String : Any]  {
                     
 
+                      self.didRequest(1)
                     if let status = object["status"] as? Int{
                         if status == 0{
                                self.didRequest(1)
@@ -225,6 +246,7 @@ class SystemMessageVC: BasePageListTableViewController {
                     }
                 }
             }, error: { (error ) in
+                  self.didRequest(1)
                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"]  as! String, ForDuration: 0.5, completion: nil )
             })
         }else{
@@ -235,6 +257,7 @@ class SystemMessageVC: BasePageListTableViewController {
                
                 if let object = result as? [String : Any]  {
                 
+                      self.didRequest(1)
                     if let status = object["status"] as? Int{
                         if status == 0{
                                self.didRequest(1)
@@ -243,6 +266,7 @@ class SystemMessageVC: BasePageListTableViewController {
                     }
                 }
             }, error: { (error) in
+                  self.didRequest(1)
                 SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: nil )
             })
         }

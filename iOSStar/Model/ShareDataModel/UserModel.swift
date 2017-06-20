@@ -41,7 +41,7 @@ class UserModel: Object {
                 
                 realm.add(model, update: true)
                 //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
-                
+                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
             }
         }
     }
