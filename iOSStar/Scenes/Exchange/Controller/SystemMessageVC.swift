@@ -280,6 +280,8 @@ class SystemMessageVC: BasePageListTableViewController {
             let aa = order.openPrice * Double.init(order.amount)
             let float = "\(-aa)"
             model.orderAllPrice = "\(float)"
+        }else{
+          model.orderPrice = "\(order.openPrice)"
         }
        
         model.orderStatus  = order.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id ? "转让":"求购"
