@@ -29,10 +29,10 @@ class MessageCell:  OEZTableViewCell{
                 dosee.setTitle("未确认", for: .normal)
                 dosee.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
             }
-//            else  if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 0) || (model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.buyHandle == 0 && model.buyHandle == 0)){
-//                dosee.setTitle("匹配中", for: .normal)
-//                dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
-//            }
+            else  if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 0) || (model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.buyHandle == 0 && model.buyHandle == 0)){
+                dosee.setTitle("未确认", for: .normal)
+                dosee.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
+            }
                 
             else{
           
