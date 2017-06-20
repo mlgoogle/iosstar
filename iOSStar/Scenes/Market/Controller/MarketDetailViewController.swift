@@ -282,7 +282,7 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier ==  "meetFans"{
             if let vc = segue.destination as? OrderStarViewController{
-                vc.starModelInfo = starModel
+                vc.starInfo = starModel
                 // 存储明星代码数据
                 UserDefaults.standard.set(starModel?.symbol, forKey: "starCode")
                 UserDefaults.standard.synchronize()
