@@ -41,19 +41,18 @@ class StarDataCell: UITableViewCell {
         super.layoutSubviews()
     }
     
+    // 设置明星信息
     func setStarInfo(model:MarketListStarModel) {
         
         nameLabel.text = String.init(format: "%@ (%@)", model.name,model.symbol)
         iconImageView.kf.setImage(with: URL(string: model.pic))
     }
-    
+    // 设置明星信息
     func setStarModelInfo(model:BannerDetaiStarModel) {
         bkImageView.kf.setImage(with: URL(string: model.pic_url))
         describeLabel.text = model.introduction
     }
 }
-
-
 
 // MRAK: - viewDidLoad
 class OrderStarViewController: UIViewController {
@@ -62,7 +61,11 @@ class OrderStarViewController: UIViewController {
     
     var starModelInfo:BannerDetaiStarModel?
     
+    // CELL传输过来的类型
     var serviceTypeModel : ServiceTypeModel!
+    
+    var serviceModel : [ServiceTypeModel]?
+    
     // 确定约见按钮
     @IBOutlet weak var completeButton: UIButton!
     // 秒数价格
@@ -121,18 +124,46 @@ class OrderStarViewController: UIViewController {
         // 明星数据
         requestStarInfos()
         
-        completeButton.isEnabled = false
-        completeButton.alpha = 0.5
+        // 获取明星服务
+        requestStarServiceTypeInfo()
+        
+        // 确定约见事件
         completeButton.addTarget(self, action: #selector(completeClick(_:)), for: .touchUpInside)
      
     // 通知
     NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
     
-    // 接收约见类型发出通知
+    // 接收约见类型发出的通知
     NotificationCenter.default.addObserver(self, selector: #selector(chooseServiceType(_:)), name:
             Notification.Name(rawValue:AppConst.chooseServiceTypeSuccess), object: nil)
-        
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    }
+    // 移除通知
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue:AppConst.chooseServiceTypeSuccess), object: nil)
+    }
+    
+    // 键盘显示的通知
+    func keyBoardWillShow(_ notification: Notification){
+        tableView.scrollToRow(at: NSIndexPath.init(row: 4, section: 0) as IndexPath, at: .bottom, animated: true)
+    }
+    
+    func chooseServiceType(_ notification :Notification ) {
+
+        if notification.object != nil {
+            let serviceType = notification.object as! ServiceTypeModel
+            serviceTypeModel = serviceType
+            self.priceLabel.text = String.init(format:"%@秒",serviceType.price)
+        }
+    }
+    
+    
+    
     
     // MARK: - 获取明星信息
     func requestStarInfos() {
@@ -149,38 +180,31 @@ class OrderStarViewController: UIViewController {
         }, error: errorBlockFunc())
     }
     
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-    }
-    
-    // 移除通知
-    deinit {
-        
-        NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue:AppConst.chooseServiceTypeSuccess), object: nil)
-    }
-    
-    // 键盘显示的通知
-    func keyBoardWillShow(_ notification: Notification){
-        tableView.scrollToRow(at: NSIndexPath.init(row: 4, section: 0) as IndexPath, at: .bottom, animated: true)
-    }
-    
-    
-    func chooseServiceType(_ notification :Notification ) {
-        self.completeButton.isEnabled = true
-        completeButton.alpha = 1
-        if notification.object != nil {
+    // MARK: - 获取明星服务类型
+    func requestStarServiceTypeInfo() {
+        var starCode = ""
+        if starInfo != nil {
+            starCode = (starInfo?.symbol)!
+        }
+        AppAPIHelper.marketAPI().requestStarServiceType(starcode: starCode, complete: { (response) in
             
-            let serviceType = notification.object as! ServiceTypeModel
-            serviceTypeModel = serviceType
-            self.priceLabel.text = String.init(format:"%@秒",serviceType.price)
+            if let models = response as? [ServiceTypeModel] {
+                
+                self.serviceModel = models
+                self.tableView.reloadData()
+            }
+        }) { (error) in
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
         }
     }
     
-    // 确定约见
+    
+    // MARK: - 确定约见
     func completeClick(_ sender : UIButton) {
+        if serviceTypeModel == nil {
+                SVProgressHUD.showErrorMessage(ErrorMessage: "请选择约见类型", ForDuration: 2.0, completion: nil)
+                return;
+        }
         if orderTime.text?.length() == 0 {
             SVProgressHUD.showErrorMessage(ErrorMessage: "请选择时间", ForDuration: 2.0, completion: nil)
             return
@@ -190,48 +214,45 @@ class OrderStarViewController: UIViewController {
             return
         }
         
-
-                    let nav : BaseNavigationController = BaseNavigationController.storyboardInit(identifier: "Input", storyboardName: "Order") as! BaseNavigationController
-                    let inputvc : InputPassVC = nav.viewControllers[0] as! InputPassVC
-                    inputvc.showKeyBoard = true
-                    nav.modalPresentationStyle = .custom
-                    nav.modalTransitionStyle = .crossDissolve
-                    inputvc.resultBlock = { (result) in
-//                    print(result)
-                        if ((result as? String) != nil){
-                            nav.dismissController()
-                            self.domeet()
-                        }else{
-                          nav.dismissController()
-                        }
-                    }
-                  self.present(nav, animated: true, completion: nil)
-                    
-                }
- 
-
+        let nav : BaseNavigationController = BaseNavigationController.storyboardInit(identifier: "Input", storyboardName: "Order") as! BaseNavigationController
+        let inputvc : InputPassVC = nav.viewControllers[0] as! InputPassVC
+        inputvc.showKeyBoard = true
+        nav.modalPresentationStyle = .custom
+        nav.modalTransitionStyle = .crossDissolve
+        inputvc.resultBlock = { (result) in
+            if ((result as? String) != nil){
+                nav.dismissController()
+                self.domeet()
+            }else{
+              nav.dismissController()
+            }
+        }
+        self.present(nav, animated: true, completion: nil)
+    }
+    
+    // 约见
     func domeet(){
+    
+        var starCode = ""
+        if starInfo != nil {
+            starCode = (starInfo?.symbol)!
+        }
         let requestModel = ServiceTypeRequestModel()
         requestModel.uid = (UserModel.share().getCurrentUser()?.userinfo?.id)!
-        requestModel.starcode = "1001"
+        requestModel.starcode = starCode
         requestModel.mid = serviceTypeModel.mid
         requestModel.city_name = orderPalace.text!
         requestModel.appoint_time = orderTime.text!
         requestModel.meet_type = 1
         requestModel.comment = feedBack.text
-        
-        print("======\(requestModel)")
-        
+
         AppAPIHelper.marketAPI().requestBuyStarService(requestModel: requestModel, complete: { (result) in
-            // print("result =====\(String(describing: result))")
             if let response = result {
                 if response["result"] as! Int == 1 {
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "约见成功!", ForDuration: 2.0, completion: nil)
-                    
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "约见成功!", ForDuration: 2.0, completion: nil)
                     self.navigationController?.popViewController(animated: true)
                 }
             }
-            
         }) { (error) in
             print("error -----\(error)")
         }
@@ -552,9 +573,11 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate {
             return cell
         }
         if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell")
-            cell?.selectionStyle = .none
-            return cell!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OrderCell") as! OrderStartViewCell
+            if self.serviceModel != nil{
+                cell.setStarServiceType(serviceModel: serviceModel)
+            }
+            return cell
         }
         if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderTime") as! OrderType

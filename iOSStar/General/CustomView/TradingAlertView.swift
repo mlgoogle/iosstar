@@ -128,6 +128,7 @@ class TradingAlertView: UIView {
     
     // hide
     func disMissAlertView() {
+        defaultHeight = 110
         UIApplication.shared.setStatusBarHidden(false, with: .fade)
         isShow = false
         // recordNum -= 1
