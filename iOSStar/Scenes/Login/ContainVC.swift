@@ -39,36 +39,34 @@ class ContainVC: UIViewController {
         
         AppAPIHelper.login().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { [weak self](result)  in
             
-            let response = result as? UserModel
-            if let _ = response {
+            if let response = result as? UserModel{
           
-                if response?.result  == -302{
-                       ShareDataModel.share().isweichaLogin = true                     
+                if (response.result)  == -302{
+                       ShareDataModel.share().isweichaLogin = true
                        self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.frame.size.width)!, y: 0), animated: true)
                 }else{
                     
                     
-                    UserModel.share().upateUserInfo(userObject: response!)
+                    UserModel.share().upateUserInfo(userObject: response)
                     
             
-                    let phone  : String = (response?.userinfo?.phone)!
-                    let token : String = (response?.token)!
-                    AppAPIHelper.user().weichattokenLogin(id: (response?.userinfo?.id)!, token: token, complete: { (result) in
-                        UserDefaults.standard.set(phone, forKey: "phone")
-                        UserDefaults.standard.set(token, forKey: "token")
-                        UserDefaults.standard.synchronize()
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
-                        
-                        self?.doYunxin(complete: { (result) in
+                    if let userinfo = response.userinfo{
+                        let phone  : String = (userinfo.phone)
+                        let token : String = (response.token)
+                        AppAPIHelper.user().weichattokenLogin(id: (response.userinfo?.id)!, token: token, complete: { (result) in
+                            UserDefaults.standard.set(phone, forKey: "phone")
+                            UserDefaults.standard.set(token, forKey: "token")
+                            UserDefaults.standard.synchronize()
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
+                            
+                            self?.doYunxin(complete: { (result) in
+                                
+                            })
+                            self?.dismissController()
+                        }, error: { (error ) in
                             
                         })
-                        
-                        
-                        self?.dismissController()
-                    }, error: { (error ) in
-                        
-                    })
-                   
+                    }
                 }
             }
            
