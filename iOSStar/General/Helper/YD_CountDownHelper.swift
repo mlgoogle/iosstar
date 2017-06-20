@@ -81,6 +81,9 @@ class YD_CountDownHelper: NSObject {
         
         let count = getResidueCount(closeTime: closeTime)
         
+        if count < 0 {
+            return "拍卖未开始"
+        }
         return getTextWithTimeCount(timeCount: count)
     }
     

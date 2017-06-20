@@ -69,11 +69,9 @@ class BuyYetViewController: DealBaseViewController {
             }
          self.endRefresh()
         }) { (error) in
+            self.didRequestError(error)
+            self.endRefresh()
 
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: {
-                self.endRefresh()
-            })
-            
         }
 
     }

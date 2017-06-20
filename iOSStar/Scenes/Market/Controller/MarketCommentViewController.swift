@@ -170,8 +170,8 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
         requestModel.symbol = starCode!
         AppAPIHelper.marketAPI().sendComment(requestModel: requestModel, complete: { (response) in
             self.header?.beginRefreshing()
-
-        }, error: errorBlockFunc())
+        }) { (error) in
+        }
     }
     
     override func didReceiveMemoryWarning() {

@@ -110,7 +110,7 @@ class SystemMessageVC: BasePageListTableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
 //        self.getUserRealmInfo { (result) in
 //            if let model = result{
 //                let object =  model as! [String : AnyObject]
@@ -146,6 +146,7 @@ class SystemMessageVC: BasePageListTableViewController {
                 }
                 let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
                     self.showView(data, false)
+
                 }
                 
                 // 添加
@@ -263,11 +264,9 @@ class SystemMessageVC: BasePageListTableViewController {
        
         model.orderStatus  = order.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id ? "转让":"求购"
         StartModel.getStartName(startCode: order.symbol) { (result) in
-            
             let data = result as! StartModel
             model.orderInfomation = "\(data.name)" + "(" + "\(data.code)" + ")"
-        }
-        
+        }    
         //将值传给 sharedatemodel
         ShareDataModel.share().orderInfo = model
         let storyboard = UIStoryboard.init(name: "Order", bundle: nil)

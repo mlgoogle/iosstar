@@ -142,7 +142,6 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
     func requestTotalCount(starCode:String,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode:.starTotalTime, parameters: ["starcode":starCode])
         startModelRequest(packet, modelClass: StarTotalCountModel.self, complete: complete, error: error)
-
     }
 
 
