@@ -104,6 +104,8 @@ class MarketAuctionViewController: MarketBaseViewController {
             }
             
         }) { (error) in
+            
+            self.tableView.reloadSections(IndexSet(integer: 3), with: .none)
         }
 
     }
@@ -164,6 +166,9 @@ class MarketAuctionViewController: MarketBaseViewController {
             }
             
         }) { (error) in
+            
+            
+            
         }
     }
     

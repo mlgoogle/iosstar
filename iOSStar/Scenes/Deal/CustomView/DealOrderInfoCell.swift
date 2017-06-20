@@ -119,7 +119,7 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
     
     
     func setPrice() {
-        priceTextField.text = "\(price)"
+        priceTextField.text = String(format: "%.2f", price)
         delegate?.priceDidChange(totalPrice: getCurrentPrice(), count: count, price: price)
     }
     @IBAction func priceReduce(_ sender: Any) {

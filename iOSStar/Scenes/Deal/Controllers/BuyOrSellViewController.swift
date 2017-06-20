@@ -37,7 +37,7 @@ class BuyOrSellViewController: DealBaseViewController {
         if realTimeData != nil {
             priceDidChange(totalPrice: realTimeData!.currentPrice * Double(600), count: 600, price: realTimeData!.currentPrice)
         }
-        
+        requestPositionCount()
     }
     func registerNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -146,7 +146,8 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
 
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView){
+   
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         tableView.endEditing(true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

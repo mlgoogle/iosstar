@@ -110,85 +110,83 @@ class SystemMessageVC: BasePageListTableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        self.getUserRealmInfo { (result) in
-            if let model = result{
-                let object =  model as! [String : AnyObject]
-                  let alertVc = AlertViewController()
-                if object["realname"] as! String == ""{
-                    
-                    alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-                                        titleLabelText: "您还没有身份验证",
-                                        
-                                        subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
-                                     
-                                        completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
-                                            alertVc?.dismissAlertVc()
-                                            
-                                            let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
-                                            self.navigationController?.pushViewController(vc, animated: true )
-                                            return
-                    }
-                    
-                }else{
-                    let  data = self.dataSource?[indexPath.section] as! OrderListModel
-                    
-                    
-                    if (data.handle == 1) {
-                        if ((data.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0) && (data.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0)){
-                            let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易", preferredStyle:.alert)
-                            // 设置2个UIAlertAction
-                            let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
-                                self.doorder(data, true)
-                            }
-                            let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
-                                self.showView(data, false)
-                            }
-                            
-                            // 添加
-                            alertController.addAction(cancelAction)
-                            alertController.addAction(completeAction)
-                            // 弹出
-                            
-                            self.present(alertController, animated: true, completion: nil)
-                            
-                            
-                        }
-                        else if (data.sellHandle == -1 || data.buyHandle == -1){
-                            
-                            
-                            
-                            
-                        }
-                        //
-                    }
-                    else if (data.handle == 2){
-                        
-                    }
-                    else{
-                        let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易？", preferredStyle:.alert)
-                        // 设置2个UIAlertAction
-                        let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
-                            self.doorder(data, true)
-                        }
-                        let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
-                            self.showView(data, false)
-                        }
-                        
-                        // 添加
-                        alertController.addAction(cancelAction)
-                        alertController.addAction(completeAction)
-                        // 弹出
-                        self.present(alertController, animated: true, completion: nil)
-                    }
-                }
-            }
-        }
-        
-     
 
+//        self.getUserRealmInfo { (result) in
+//            if let model = result{
+//                let object =  model as! [String : AnyObject]
+//                  let alertVc = AlertViewController()
+//                if object["realname"] as! String == ""{
+//                    
+//                    alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
+//                                        titleLabelText: "您还没有身份验证",
+//                                        
+//                                        subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
+//                                     
+//                                        completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
+//                                            alertVc?.dismissAlertVc()
+//                                            
+//                                            let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
+//                                            self.navigationController?.pushViewController(vc, animated: true )
+//                                            return
+//                    }
+//                    
+//                }else{
+//                   
+//            }
+//        }
+        let  data = self.dataSource?[indexPath.section] as! OrderListModel
+        
+        
+        if (data.handle == 1) {
+            if ((data.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0) && (data.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0)){
+                let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易", preferredStyle:.alert)
+                // 设置2个UIAlertAction
+                let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
+                    self.doorder(data, true)
+                }
+                let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
+                    self.showView(data, false)
+
+                }
+                
+                // 添加
+                alertController.addAction(cancelAction)
+                alertController.addAction(completeAction)
+                // 弹出
+                self.present(alertController, animated: true, completion: nil)
+                
+                
+            }
+            else if (data.sellHandle == -1 || data.buyHandle == -1){
+                
+                
+                
+                
+            }
+            //
+        }
+        else if (data.handle == 2){
+            
+        }
+        else{
+            let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易？", preferredStyle:.alert)
+            // 设置2个UIAlertAction
+            let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
+                self.doorder(data, true)
+            }
+            let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
+                self.showView(data, false)
+            }
+            
+            // 添加
+            alertController.addAction(cancelAction)
+            alertController.addAction(completeAction)
+            // 弹出
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
-    
+
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell") as! MessageCell
         print(indexPath.section)
@@ -200,7 +198,7 @@ class SystemMessageVC: BasePageListTableViewController {
         return 80
     }
 
-   
+
      override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 0 ? 3 : 0.001
     }

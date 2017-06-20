@@ -299,30 +299,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="166"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tQG-Ii-mJI">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tQG-Ii-mJI" customClass="DoubleGradualView" customModule="iOSStar" customModuleProvider="target">
                                                     <rect key="frame" x="25" y="100" width="325" height="16"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8K-VU-R46" customClass="GradualColorView" customModule="iOSStar">
-                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="16"/>
-                                                            <color key="backgroundColor" red="1" green="1" blue="0.375295928" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="150" id="d9g-1D-BE5"/>
-                                                            </constraints>
-                                                        </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OsD-CL-tE9" customClass="GradualColorView" customModule="iOSStar">
-                                                            <rect key="frame" x="150" y="0.0" width="175" height="16"/>
-                                                            <color key="backgroundColor" red="0.50495975380000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </view>
-                                                    </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="OsD-CL-tE9" firstAttribute="leading" secondItem="N8K-VU-R46" secondAttribute="trailing" id="K2C-Na-D6X"/>
-                                                        <constraint firstAttribute="bottom" secondItem="N8K-VU-R46" secondAttribute="bottom" id="O2V-sy-jWU"/>
-                                                        <constraint firstAttribute="trailing" secondItem="OsD-CL-tE9" secondAttribute="trailing" id="bOd-Aj-spy"/>
-                                                        <constraint firstItem="N8K-VU-R46" firstAttribute="top" secondItem="tQG-Ii-mJI" secondAttribute="top" id="epf-3g-83G"/>
-                                                        <constraint firstAttribute="bottom" secondItem="OsD-CL-tE9" secondAttribute="bottom" id="mua-Aj-yDt"/>
-                                                        <constraint firstItem="N8K-VU-R46" firstAttribute="leading" secondItem="tQG-Ii-mJI" secondAttribute="leading" id="scb-3I-we7"/>
                                                         <constraint firstAttribute="height" constant="16" id="tgl-U2-4N0"/>
-                                                        <constraint firstItem="OsD-CL-tE9" firstAttribute="top" secondItem="tQG-Ii-mJI" secondAttribute="top" id="zlW-od-yCd"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yPR-xN-0cr" customClass="GradualColorView" customModule="iOSStar" customModuleProvider="target">
@@ -377,11 +357,9 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="buyCountLabel" destination="UpZ-43-elv" id="dA6-Ge-jeS"/>
-                                            <outlet property="buyProgressView" destination="N8K-VU-R46" id="YEH-fr-Ufq"/>
-                                            <outlet property="buyWidth" destination="d9g-1D-BE5" id="905-74-FSB"/>
                                             <outlet property="countProgressView" destination="yPR-xN-0cr" id="GD8-Gl-YNQ"/>
+                                            <outlet property="percentProgressView" destination="tQG-Ii-mJI" id="F5U-9e-7ad"/>
                                             <outlet property="sellCountLabel" destination="5NI-1e-Ii6" id="9Ah-4Q-RNN"/>
-                                            <outlet property="sellProgressView" destination="OsD-CL-tE9" id="dvC-Kd-din"/>
                                             <outlet property="totalCountLabel" destination="qeh-P3-kmp" id="EkD-Qg-hNu"/>
                                         </connections>
                                     </tableViewCell>

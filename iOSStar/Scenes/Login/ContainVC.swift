@@ -59,11 +59,11 @@ class ContainVC: UIViewController {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
                     
                   self?.doYunxin(complete: { (result) in
-                    
+                      self?.dismissController()
                   })
     
 
-                self?.dismissController()
+              
                 }
             }
            

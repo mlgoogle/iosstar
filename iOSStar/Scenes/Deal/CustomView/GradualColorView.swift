@@ -17,14 +17,14 @@ class GradualColorView: UIView {
     var realWidth: CGFloat = kScreenWidth - 50
     var percent:CGFloat = 0.0
     var completeColors:[UIColor] = []
-    private lazy var imageView:UIImageView = {
+    lazy var imageView:UIImageView = {
         let imageView = UIImageView(image:UIImage(named: "auction_button"))
         imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         return imageView
         
     }()
     var isRound = false
-    private var subLayer:CAGradientLayer?
+    var subLayer:CAGradientLayer?
     
      override init(frame: CGRect) {
         super.init(frame: frame)
@@ -74,6 +74,7 @@ class GradualColorView: UIView {
             layer.addSublayer(gradientLayer)
         }
         subLayer = gradientLayer
+
         if isRound {
             subLayer?.cornerRadius = 8
         }
@@ -82,14 +83,47 @@ class GradualColorView: UIView {
     func animation(percent:CGFloat, width:CGFloat) {
         self.percent = percent
         realWidth = width
-        addGradualColorLayer(isRound:isRound)
+        subLayer?.frame = CGRect(x: 0, y: 0, width: width * percent, height: frame.size.height)
         if isShowImage {
-            imageView.center = CGPoint(x: frame.size.width * CGFloat(percent), y: imageView.center.y)
+            imageView.center = CGPoint(x: frame.size.width * percent, y: imageView.center.y)
         }
-        self.setNeedsDisplay()
+    }
+    
+}
 
-        subLayer?.setNeedsLayout()
-        subLayer?.setNeedsDisplay()
+class DoubleGradualView: GradualColorView {
+    
+    override func addGradualColorLayer(isRound: Bool) {
+        self.isRound = isRound
+        subLayer?.removeFromSuperlayer()
+        var colors:[CGColor] = []
+        for color in completeColors {
+            colors.append(color.cgColor)
+        }
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = colors
+        gradientLayer.locations = [0.5, 0.5]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: realWidth * CGFloat(percent), height: frame.size.height)
+        if isShowImage {
+            imageView.center = CGPoint(x: realWidth * CGFloat(percent), y: imageView.center.y)
+            layer.insertSublayer(gradientLayer, below: imageView.layer)
+        } else {
+            layer.addSublayer(gradientLayer)
+        }
+        subLayer = gradientLayer
+        
+        if isRound {
+            subLayer?.cornerRadius = 8
+        }
+    }
+    
+    func animation(locations:[NSNumber]) {
+        subLayer?.locations = locations
+        if isShowImage {
+            imageView.center = CGPoint(x: frame.size.width * percent, y: imageView.center.y)
+        }
     }
     
 }
