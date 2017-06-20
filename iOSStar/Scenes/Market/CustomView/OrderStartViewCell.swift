@@ -162,7 +162,8 @@ class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionV
             self.orderStartCollectionView.reloadData()
             
         }) { (error) in
-            SVProgressHUD.showErrorMessage(ErrorMessage: "网络不佳,稍后再试", ForDuration: 2.0, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+            // SVProgressHUD.showErrorMessage(ErrorMessage: "网络不佳,稍后再试", ForDuration: 2.0, completion: nil)
         }
     }
     
