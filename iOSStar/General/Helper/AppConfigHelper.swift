@@ -11,9 +11,9 @@ import UserNotifications
 import SVProgressHUD
 import RealmSwift
 // 个推信息
-let kGtAppId:String = "STxLopLZK0AFPvAcnu7o67"
-let kGtAppKey:String = "SIbhyImzug9sjKteFtLrj8"
-let kGtAppSecret:String = "TgaFdlcYMX5QVhH1CkP1k2"
+let kGtAppId:String = "j6hP8vFv4Q8juUqTmnPPy6"
+let kGtAppKey:String = "5Tb2US9CEg8RsqqYlamnP1"
+let kGtAppSecret:String = "4DXXxrRirbAhqYJor3THd"
 
 class AppConfigHelper: NSObject {
     
@@ -173,8 +173,7 @@ class AppConfigHelper: NSObject {
         messageObject.shareObject = shareObject
 
         UMSocialManager.default().share(to: type, messageObject: messageObject, currentViewController: viewControlller) { (data, error) in
-            
-            
+
         }
         
     }
@@ -192,16 +191,16 @@ class AppConfigHelper: NSObject {
         var config = Realm.Configuration()
         config.fileURL =  config.fileURL!.deletingLastPathComponent()
             .appendingPathComponent("\("starShare").realm")
-        
+        config.schemaVersion = 2
         
         //数据库迁移操作
         config.migrationBlock = { migration, oldSchemaVersion in
             
             if oldSchemaVersion < 2 {
                 
-             //   migration.enumerateObjects(ofType: "tableName", { (oldObject, newObject) in
-                    
-               // })
+                migration.enumerateObjects(ofType: EntrustListModel.className(), { (oldObject, newObject) in
+                    newObject!["pchg"] = 0.0
+                })
             }
         }
         Realm.Configuration.defaultConfiguration = config

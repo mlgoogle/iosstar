@@ -29,7 +29,7 @@ class MarketViewController: UIViewController, SubViewItemSelectDelegate{
     }
     
 
-    func selectItem(starModel: MarketListStarModel) {
+    func selectItem(starModel: MarketListModel) {
         
         if checkLogin() {
             let storyBoard = UIStoryboard(name: "Market", bundle: nil)

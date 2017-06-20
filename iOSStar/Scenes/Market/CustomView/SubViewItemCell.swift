@@ -102,18 +102,18 @@ class SubViewItemCell: UITableViewCell {
         
     }
     
-    func setupData(model:MarketListStarModel) {
-        let percent = (model.change / model.currentPrice) * 100
+    func setupData(model:MarketListModel) {
+
         iconImageView.kf.setImage(with: URL(string: model.pic), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         nameLabel.text = model.name
         codeLabel.text = model.symbol
         priceLabel.text = String(format: "%.2f", model.currentPrice)
         var colorString = AppConst.Color.up
         if model.change < 0 {
-            changeLabel.text = String(format: "%.2f%%", percent)
+            changeLabel.text = String(format: "%.2f%%", model.pchg * 100)
             colorString = AppConst.Color.down
         } else {
-            changeLabel.text = String(format: "+%.2f%%", percent)
+            changeLabel.text = String(format: "+%.2f%%", model.pchg * 100)
         }
         priceLabel.textColor = UIColor(hexString: colorString)
         changeLabel.backgroundColor = UIColor(hexString: colorString)

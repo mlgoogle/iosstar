@@ -9,7 +9,7 @@
 import UIKit
 import MJRefresh
 protocol SubViewItemSelectDelegate {
-    func selectItem(starModel:MarketListStarModel)
+    func selectItem(starModel:MarketListModel)
 }
 class MenuSubViewCell: UICollectionViewCell {
     var header:MJRefreshNormalHeader?
@@ -25,7 +25,7 @@ class MenuSubViewCell: UICollectionViewCell {
     var type = 0
     var sortType = AppConst.SortType.down.rawValue
     var isLoadMore = true
-    var dataSource:[MarketListStarModel]?
+    var dataSource:[MarketListModel]?
     var delegate:SubViewItemSelectDelegate?
     
     override init(frame: CGRect) {
@@ -88,7 +88,7 @@ class MenuSubViewCell: UICollectionViewCell {
             header?.endRefreshing()
         }
 
-        if let models = response as? [MarketListStarModel] {
+        if let models = response as? [MarketListModel] {
             dataSource = models
         } else {
             dataSource?.removeAll()

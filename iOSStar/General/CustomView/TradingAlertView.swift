@@ -52,8 +52,9 @@ class TradingAlertView: UIView {
             let textHeight = detailLabel.attributedText?.boundingRect(with: CGSize(width:textWidth ,height:1000000),
                                                             options: .usesLineFragmentOrigin,
                                                             context: nil).size.height
-            let tempHeight = textHeight! - 30
-            self.defaultHeight += tempHeight
+//            let tempHeight = textHeight! - 30
+//            self.defaultHeight += tempHeight
+            self.defaultHeight = textHeight!
             self.frame = CGRect(x: 0,
                                 y: -self.defaultHeight,
                                 width: UIScreen.main.bounds.size.width,

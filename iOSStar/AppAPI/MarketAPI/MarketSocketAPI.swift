@@ -31,7 +31,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
 
         let packet = SocketDataPacket(opcode: .starList, model: requestModel)
 
-        startModelsRequest(packet, listName: "symbol_info", modelClass: MarketListStarModel.self, complete: complete, error: error)
+        startModelsRequest(packet, listName: "symbol_info", modelClass: MarketListModel.self, complete: complete, error: error)
     }
     //自选明星
     func requestOptionalStarList(startnum:Int, endnum:Int,complete: CompleteBlock?, error: ErrorBlock?) {
@@ -43,7 +43,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
                                       SocketConst.Key.endnum : endnum,
                                       SocketConst.Key.phone : UserDefaults.standard.string(forKey: SocketConst.Key.phone)!]
         let packet = SocketDataPacket(opcode: .marketStar, parameters: paramters)
-        startModelsRequest(packet, listName: "list", modelClass: MarketListStarModel.self, complete: complete, error: error)
+        startModelsRequest(packet, listName: "list", modelClass: MarketListModel.self, complete: complete, error: error)
     }
 
 

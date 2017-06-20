@@ -15,7 +15,7 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
         return view
     }()
     var menuView:YD_VMenuView?
-    var starListModel:MarketListStarModel?
+    var starListModel:MarketListModel?
     
     var realTimeData:RealTimeModel?
     var index = 0
