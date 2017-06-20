@@ -130,6 +130,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
                                     SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token) ?? ""),]
         
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .userinfo, dict: param as [String : AnyObject])
+        print(param)
         startModelRequest(packet, modelClass: UserInfoModel.self, complete: complete, error: error)
         
     }
@@ -143,6 +144,19 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         //startRequest(packet, complete: complete, error: error)
         startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
     }
+    
+    // MARK: -  tokenLogin token登录
+    func weichattokenLogin( id:Int64,token:String,complete: CompleteBlock?, error: ErrorBlock?){
+        
+        let param: [String: Any] = [SocketConst.Key.uid: id,
+                                    SocketConst.Key.token : token,]
+        print(param)
+        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .tokenLogin, dict: param as [String : AnyObject])
+        //startRequest(packet, complete: complete, error: error)
+        startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
+    }
+
+    
     
     // MARK: - 修改昵称
     func modifyNickName(nickname:String, complete: CompleteBlock?, error: ErrorBlock?) {
@@ -186,6 +200,10 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         print(param)
         startRequest(packet, complete: complete, error: error)
     }
-
+    //版本更新提醒
+    func update(type: Int, complete: CompleteBlock?, error: ErrorBlock?){
+        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .update, dict: ["ttype": type as AnyObject], type: .user)
+        startModelRequest(packet, modelClass: UpdateParam.self, complete: complete, error: error)
+    }
     
 }

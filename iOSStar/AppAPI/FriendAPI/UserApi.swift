@@ -37,7 +37,7 @@ protocol UserApi {
      func getauserinfo( complete: CompleteBlock?, error: ErrorBlock?)
     // tokenLogin token登录
      func tokenLogin( complete: CompleteBlock?, error: ErrorBlock?)
-    
+    func weichattokenLogin( id:Int64,token:String,complete: CompleteBlock?, error: ErrorBlock?)
     // 修改nickname 
     func modifyNickName(nickname:String, complete: CompleteBlock?, error: ErrorBlock?)
     
@@ -47,5 +47,9 @@ protocol UserApi {
     
     // 支付宝支付
     func alipay(title:String,  price:Double, complete: CompleteBlock?, error: ErrorBlock?)
+    
+    //获取版本更新信息
+    func update(type: Int, complete: CompleteBlock?, error: ErrorBlock?)
+
     
 }

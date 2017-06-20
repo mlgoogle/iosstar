@@ -37,7 +37,7 @@ class BuyOrSellViewController: DealBaseViewController {
         if realTimeData != nil {
             priceDidChange(totalPrice: realTimeData!.currentPrice * Double(600), count: 600, price: realTimeData!.currentPrice)
         }
-        
+        requestPositionCount()
     }
     func registerNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -79,6 +79,7 @@ class BuyOrSellViewController: DealBaseViewController {
         
         AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: { (response) in
             SVProgressHUD.dismiss()
+            _ = self.navigationController?.popViewController(animated: true)
             SVProgressHUD.showSuccessMessage(SuccessMessage: "委托成功", ForDuration: 1.5, completion: nil)
         
         }) { (error) in
@@ -111,7 +112,25 @@ class BuyOrSellViewController: DealBaseViewController {
                 self.tableView.reloadData()
             }
         }) { (error) in
-
+            self.didRequestError(error)
+        }
+    }
+    
+    func requestPositionCount() {
+        guard starListModel != nil else {
+            return
+        }
+        let r = PositionCountRequestModel()
+        r.starcode = starListModel!.symbol
+        AppAPIHelper.marketAPI().requestPositionCount(requestModel: r, complete: { (response) in
+            if let model = response as? PositionCountModel {
+                self.positionCount = Int(model.star_time)
+                self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+            }
+        }) { (error) in
+            
+            self.didRequestError(error)
+            
         }
     }
 }
@@ -127,7 +146,8 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
 
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView){
+   
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         tableView.endEditing(true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -143,6 +163,7 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
         case 0:
             if let infoCell = cell as? DealStarInfoCell{
                 infoCell.setupData(model:starListModel)
+                infoCell.setCount(count:positionCount)
             }
         case 1:
             if let marketCell = cell as? DealMarketCell {

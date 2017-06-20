@@ -111,7 +111,6 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
             requestModel.startPos = dataSource?.count ?? 0
         }
         AppAPIHelper.marketAPI().requestCommentList(requestModel: requestModel, complete: { (response) in
-
             self.endRefresh()
             if let dict = response as? [String : Any] {
                 let array:[Any]? = dict["commentsinfo"] as? [Any]
@@ -130,7 +129,6 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
                         self.footer?.isHidden = false
                     }
                     self.tableView.reloadData()
-                    
                 }
             }
             if self.dataSource?.count ?? 0 == 0 {
@@ -170,8 +168,8 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
         requestModel.symbol = starCode!
         AppAPIHelper.marketAPI().sendComment(requestModel: requestModel, complete: { (response) in
             self.header?.beginRefreshing()
-
-        }, error: errorBlockFunc())
+        }) { (error) in
+        }
     }
     
     override func didReceiveMemoryWarning() {

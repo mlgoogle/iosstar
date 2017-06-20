@@ -41,13 +41,18 @@ class MarketDetaiBaseInfoViewController: MarketBaseViewController {
     }
   
     func requestInfos() {
+        
+
         AppAPIHelper.newsApi().requestStarInfo(code: starCode!, complete: { (response) in
             if let model = response as? BannerDetaiStarModel {
                 self.bannerDetailModel = model
                 self.refreshImageDelegate?.refreshImage(imageUrl: model.pic_url)
                 self.tableView.reloadData()
             }
-        }, error: errorBlockFunc())
+        }) { (error) in
+            
+        }
+
     }
     func requestExperience() {
         

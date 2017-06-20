@@ -38,6 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         NIMCustomObject.registerCustomDecoder(NTESCustomAttachmentDecoder())
         WXApi.registerApp("wx9dc39aec13ee3158")
         
+        AppConfigHelper.shared().setupRealmConfig()
+        AppConfigHelper.shared().updateUpdateInfo()
+    
+        AppConfigHelper.shared().setupReceiveOrderResult()
         // 个推
         AppConfigHelper.shared().setupGeTuiSDK(sdkDelegate: self)
         AppConfigHelper.shared().getstart()
@@ -99,7 +103,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.aliPay.aliPayCode), object:(Int.init((dataDic["resultStatus"] as! String))), userInfo:nil)
                
                 }
-             
               
             })
       

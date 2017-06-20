@@ -116,7 +116,7 @@ class SocketConst: NSObject {
         case cancelOrder = 5009
         
         //双方确认后结果推送
-        case orderResult = 7102
+        case orderResult = 5102
         
         //当天委托
         case todayEntrust = 6001
@@ -138,7 +138,8 @@ class SocketConst: NSObject {
         case buySellPercent = 6017
         //获取明星总时间
         case starTotalTime = 10027
-        
+        //获取版本更新信息
+        case update = 3033
     }
     enum type:UInt8 {
         case error  = 0

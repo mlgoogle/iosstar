@@ -30,7 +30,7 @@ class DealSocketAPI: BaseSocketAPI, DealAPI{
     }
     //收到订单结果
     func setReceiveOrderResult(complete:@escaping CompleteBlock) {
-        SocketRequestManage.shared.receiveMatching = { (response) in
+        SocketRequestManage.shared.receiveOrderResult = { (response) in
             let jsonResponse = response as! SocketJsonResponse
             let model = jsonResponse.responseModel(ReceiveMacthingModel.self) as? OrderResultModel
             if  model != nil {

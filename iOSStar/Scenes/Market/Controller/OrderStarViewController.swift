@@ -190,27 +190,7 @@ class OrderStarViewController: UIViewController {
             return
         }
         
-        
-        self.getUserRealmInfo { (result) in
-            if let model = result{
-                let object =  model as! [String : AnyObject]
-                let alertVc = AlertViewController()
-                if object["realname"] as! String == ""{
-                    
-                    alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-                                        titleLabelText: "您还没有身份验证",
-                                        
-                                        subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
-                                        
-                                        completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
-                                            alertVc?.dismissAlertVc()
-                                            
-                                            let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
-                                            self.navigationController?.pushViewController(vc, animated: true )
-                                            return
-                    }
-                    
-                }else{
+
                     let nav : BaseNavigationController = BaseNavigationController.storyboardInit(identifier: "Input", storyboardName: "Order") as! BaseNavigationController
                     let inputvc : InputPassVC = nav.viewControllers[0] as! InputPassVC
                     inputvc.showKeyBoard = true
@@ -228,11 +208,8 @@ class OrderStarViewController: UIViewController {
                   self.present(nav, animated: true, completion: nil)
                     
                 }
-            }
-        
-        }
-        
-    }
+ 
+
     func domeet(){
         let requestModel = ServiceTypeRequestModel()
         requestModel.uid = (UserModel.share().getCurrentUser()?.userinfo?.id)!

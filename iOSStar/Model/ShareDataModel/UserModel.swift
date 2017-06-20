@@ -41,7 +41,7 @@ class UserModel: Object {
                 
                 realm.add(model, update: true)
                 //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
-                
+                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
             }
         }
     }
@@ -66,5 +66,16 @@ class UserModel: Object {
         }
     }
 
+}
+class UpdateParam: BaseModel{
+    var appName = ""
+    var newAppSize = 0
+    var newAppVersionCode: Double = 0
+    var newAppVersionName = ""
+    var newAppUpdateDesc = ""
+    var newAppReleaseTime = ""
+    var newAppUrl = ""
+    var isForceUpdate = 0
+    var haveUpate = false
 }
 

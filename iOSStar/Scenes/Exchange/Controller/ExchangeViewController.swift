@@ -22,7 +22,7 @@ class ExchangeViewController: UIViewController ,UITabBarControllerDelegate,NIMSy
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        title = "分答"
+        title = "星聊"
         // 测试弹窗
         // self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "添加", style: .done, target: self, action: #selector(rightItemClicks))
     

@@ -62,7 +62,7 @@ class FansListHeaderView: UITableViewHeaderFooterView {
     }
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor(hexString: "fafafa")
+     
         contentView.backgroundColor = UIColor(hexString: "fafafa")
         addSubview(buyButton)
         addSubview(sellButton)

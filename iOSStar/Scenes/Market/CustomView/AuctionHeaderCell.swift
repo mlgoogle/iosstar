@@ -59,21 +59,41 @@ class AuctionHeaderCell: UITableViewCell {
 
         let all = CGFloat(model!.buyCount + model!.sellCount)
         if all != 0 {
+
+
+            if model!.buyCount == 0 {
+                sellProgressView.setCornoerRadius(byRoundingCorners: [.allCorners], cornerRadii: CGSize(width: 8.0, height: 8.0))
+            } else {
+                sellProgressView.setCornoerRadius(byRoundingCorners: [.bottomRight, .topRight], cornerRadii: CGSize(width: 8.0, height: 8.0))
+            }
+            if model!.sellCount == 0 {
+                buyProgressView.setCornoerRadius(byRoundingCorners: [.allCorners], cornerRadii: CGSize(width: 8.0, height: 8.0))
+            } else{
+                buyProgressView.setCornoerRadius(byRoundingCorners: [.bottomLeft, .topLeft], cornerRadii: CGSize(width: 8.0, height: 8.0))
+            }
             let percent = CGFloat(model!.buyCount) / CGFloat(model!.buyCount + model!.sellCount)
             buyWidth.constant = (kScreenWidth - 50) * percent
+
+ 
+        } else {
+            sellProgressView.setCornoerRadius(byRoundingCorners: [.bottomRight, .topRight], cornerRadii: CGSize(width: 8.0, height: 8.0))
+
+            buyProgressView.setCornoerRadius(byRoundingCorners: [.bottomLeft, .topLeft], cornerRadii: CGSize(width: 8.0, height: 8.0))
+
+            buyWidth.constant = (kScreenWidth - 50) * 0.5
         }
+
         
-        sellProgressView.setCornoerRadius(byRoundingCorners: [.bottomRight, .topRight], cornerRadii: CGSize(width: 8.0, height: 8.0))
-        buyProgressView.setCornoerRadius(byRoundingCorners: [.bottomLeft, .topLeft], cornerRadii: CGSize(width: 8.0, height: 8.0))
-        buyProgressView.animation(percent: 1)
-        sellProgressView.animation(percent: 1)
+
+        //buyProgressView.animation(percent: 1)
+        //sellProgressView.animation(percent: 1)
         var timePercent:CGFloat = 0.5
         if model!.sellTime > totalCount {
-            timePercent =  CGFloat(totalCount) / CGFloat(model!.sellTime)
+            timePercent =  CGFloat(totalCount == 0 ? 1 : totalCount) / CGFloat(model!.sellTime)
         } else {
-            timePercent = CGFloat(model!.sellTime) / CGFloat(totalCount)
+            timePercent = CGFloat(model!.sellTime) / CGFloat(totalCount == 0 ? 1 : totalCount)
         }
-        countProgressView.animation(percent: timePercent)
+        //countProgressView.animation(percent: timePercent)
         totalCountLabel.text = "总计：\(totalCount)秒"
         
     }

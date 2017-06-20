@@ -49,20 +49,26 @@ class ContainVC: UIViewController {
                     
                     
                     UserModel.share().upateUserInfo(userObject: response!)
+                    
+            
                     let phone  : String = (response?.userinfo?.phone)!
                     let token : String = (response?.token)!
-                    
-                    UserDefaults.standard.set(phone, forKey: "phone")
-                    UserDefaults.standard.set(token, forKey: "token")
-                    UserDefaults.standard.synchronize()
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
-                    
-                  self?.doYunxin(complete: { (result) in
-                    
-                  })
-    
-
-                self?.dismissController()
+                    AppAPIHelper.user().weichattokenLogin(id: (response?.userinfo?.id)!, token: token, complete: { (result) in
+                        UserDefaults.standard.set(phone, forKey: "phone")
+                        UserDefaults.standard.set(token, forKey: "token")
+                        UserDefaults.standard.synchronize()
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
+                        
+                        self?.doYunxin(complete: { (result) in
+                            
+                        })
+                        
+                        
+                        self?.dismissController()
+                    }, error: { (error ) in
+                        
+                    })
+                   
                 }
             }
            
