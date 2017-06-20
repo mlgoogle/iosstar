@@ -164,7 +164,6 @@ class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionV
         }) { (error) in
             SVProgressHUD.showErrorMessage(ErrorMessage: "网络不佳,稍后再试", ForDuration: 2.0, completion: nil)
         }
-        
     }
     
     override func layoutSubviews() {

@@ -34,18 +34,22 @@ class StarDataCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        bkImageView.contentMode = .scaleAspectFit
+//        bkImageView.contentMode = .scaleAspectFit
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
     }
     
-    func setStarData(model:MarketListStarModel) {
+    func setStarInfo(model:MarketListStarModel) {
         
         nameLabel.text = String.init(format: "%@ (%@)", model.name,model.symbol)
-        bkImageView.kf.setImage(with: URL(string: model.pic))
         iconImageView.kf.setImage(with: URL(string: model.pic))
+    }
+    
+    func setStarModelInfo(model:BannerDetaiStarModel) {
+        bkImageView.kf.setImage(with: URL(string: model.pic_url))
+        describeLabel.text = model.introduction
     }
 }
 
@@ -54,7 +58,9 @@ class StarDataCell: UITableViewCell {
 // MRAK: - viewDidLoad
 class OrderStarViewController: UIViewController {
     
-    var starModelInfo:MarketListStarModel?
+    var starInfo:MarketListStarModel?
+    
+    var starModelInfo:BannerDetaiStarModel?
     
     var serviceTypeModel : ServiceTypeModel!
     // 确定约见按钮
@@ -112,6 +118,9 @@ class OrderStarViewController: UIViewController {
         // 时间
         initDatePickerView()
         
+        // 明星数据
+        requestStarInfos()
+        
         completeButton.isEnabled = false
         completeButton.alpha = 0.5
         completeButton.addTarget(self, action: #selector(completeClick(_:)), for: .touchUpInside)
@@ -124,6 +133,22 @@ class OrderStarViewController: UIViewController {
             Notification.Name(rawValue:AppConst.chooseServiceTypeSuccess), object: nil)
         
     }
+    
+    // MARK: - 获取明星信息
+    func requestStarInfos() {
+        
+        var starCode = ""
+        if starInfo != nil {
+            starCode = (starInfo?.symbol)!
+        }
+        AppAPIHelper.newsApi().requestStarInfo(code: starCode, complete: { (response) in
+            if let model = response as? BannerDetaiStarModel {
+                self.starModelInfo = model
+                self.tableView.reloadData()
+            }
+        }, error: errorBlockFunc())
+    }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -541,8 +566,11 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BannerCell") as! StarDataCell
             // cell?.selectionStyle = .none
+            if starInfo != nil {
+                cell.setStarInfo(model: starInfo!)
+            }
             if starModelInfo != nil {
-                cell.setStarData(model: starModelInfo!)
+                cell.setStarModelInfo (model:starModelInfo!)
             }
             return cell
         }

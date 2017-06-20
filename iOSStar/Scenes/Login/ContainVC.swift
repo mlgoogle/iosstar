@@ -43,8 +43,7 @@ class ContainVC: UIViewController {
             if let _ = response {
           
                 if response?.result  == -302{
-                       ShareDataModel.share().isweichaLogin = true
-                     // ShareDataModel.addObserver(self, forKeyPath: "isweichaLogin", options: .new, context: &myContext)
+                       ShareDataModel.share().isweichaLogin = true                     
                        self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.frame.size.width)!, y: 0), animated: true)
                 }else{
                     

@@ -103,7 +103,6 @@ class TradingAlertView: UIView {
     // 显示
     func showAlertView() {
         self.removeFromSuperview()
-        
         UIApplication.shared.keyWindow?.addSubview(self)
         UIApplication.shared.setStatusBarHidden(true, with: .fade)
         isShow = true
