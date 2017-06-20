@@ -940,21 +940,29 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFB-vl-dkE">
                                                         <rect key="frame" x="15" y="70" width="239" height="40"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="您 的 手 机 号" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Uml-Jq-dSm">
-                                                                <rect key="frame" x="0.0" y="0.0" width="239" height="40"/>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" 您 的 手 机 号" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Uml-Jq-dSm">
+                                                                <rect key="frame" x="35" y="0.0" width="204" height="40"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                             </textField>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ih-Jm-jSu">
+                                                                <rect key="frame" x="0.0" y="11.5" width="35" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.95675891639999999" green="0.95692259069999996" blue="0.95674854519999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstItem="Uml-Jq-dSm" firstAttribute="leading" secondItem="rFB-vl-dkE" secondAttribute="leading" id="7bm-iG-Nkj"/>
                                                             <constraint firstAttribute="height" constant="40" id="JNU-rr-CFb"/>
                                                             <constraint firstAttribute="bottom" secondItem="Uml-Jq-dSm" secondAttribute="bottom" id="Lzd-HH-5l4"/>
                                                             <constraint firstAttribute="trailing" secondItem="Uml-Jq-dSm" secondAttribute="trailing" id="N6j-HA-xLR"/>
+                                                            <constraint firstItem="6ih-Jm-jSu" firstAttribute="leading" secondItem="rFB-vl-dkE" secondAttribute="leading" id="NmE-pb-yLf"/>
+                                                            <constraint firstItem="Uml-Jq-dSm" firstAttribute="leading" secondItem="6ih-Jm-jSu" secondAttribute="trailing" id="Svi-oC-raP"/>
                                                             <constraint firstItem="Uml-Jq-dSm" firstAttribute="top" secondItem="rFB-vl-dkE" secondAttribute="top" id="Tsr-59-kUD"/>
+                                                            <constraint firstItem="6ih-Jm-jSu" firstAttribute="centerY" secondItem="rFB-vl-dkE" secondAttribute="centerY" id="a5w-gW-PhL"/>
                                                             <constraint firstAttribute="bottom" secondItem="Uml-Jq-dSm" secondAttribute="bottom" id="mKH-gt-KvY"/>
                                                             <constraint firstAttribute="trailing" secondItem="Uml-Jq-dSm" secondAttribute="trailing" id="vvd-kn-s9j"/>
                                                             <constraint firstItem="Uml-Jq-dSm" firstAttribute="top" secondItem="rFB-vl-dkE" secondAttribute="top" id="vzx-oS-gmT"/>
@@ -968,20 +976,28 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O7i-0s-Xod">
                                                         <rect key="frame" x="15" y="174" width="239" height="40"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PgT-lJ-k3U">
-                                                                <rect key="frame" x="0.0" y="0.0" width="239" height="40"/>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" 请 输 入 密 码" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PgT-lJ-k3U">
+                                                                <rect key="frame" x="35" y="0.0" width="204" height="40"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                             </textField>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjh-vC-LU5">
+                                                                <rect key="frame" x="0.0" y="11.5" width="35" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.92538958790000003" green="0.92554813619999998" blue="0.92537957429999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="PgT-lJ-k3U" firstAttribute="top" secondItem="O7i-0s-Xod" secondAttribute="top" id="07K-6I-6Gs"/>
                                                             <constraint firstAttribute="bottom" secondItem="PgT-lJ-k3U" secondAttribute="bottom" id="5g8-Rg-7wq"/>
-                                                            <constraint firstItem="PgT-lJ-k3U" firstAttribute="leading" secondItem="O7i-0s-Xod" secondAttribute="leading" id="aqM-eh-A3Q"/>
+                                                            <constraint firstItem="Cjh-vC-LU5" firstAttribute="centerY" secondItem="O7i-0s-Xod" secondAttribute="centerY" id="9zs-Yt-4jW"/>
+                                                            <constraint firstItem="Cjh-vC-LU5" firstAttribute="leading" secondItem="O7i-0s-Xod" secondAttribute="leading" id="Kcc-sp-C6z"/>
                                                             <constraint firstAttribute="trailing" secondItem="PgT-lJ-k3U" secondAttribute="trailing" id="ckb-ag-hhJ"/>
+                                                            <constraint firstItem="PgT-lJ-k3U" firstAttribute="leading" secondItem="Cjh-vC-LU5" secondAttribute="trailing" id="j3s-sC-8bQ"/>
                                                             <constraint firstAttribute="height" constant="40" id="msN-Dd-RRZ"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>

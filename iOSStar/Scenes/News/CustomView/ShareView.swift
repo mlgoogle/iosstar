@@ -19,7 +19,8 @@ class ShareView: UIView {
     var webpageUrl : String?
     //require:分享的图片
     var thumbImage : String?
-    var typeArr = [UMSocialPlatformType.wechatTimeLine,UMSocialPlatformType.qzone,UMSocialPlatformType.sina,UMSocialPlatformType.wechatSession,UMSocialPlatformType.QQ];
+    var typeArrM = [UMSocialPlatformType.sina,UMSocialPlatformType.wechatSession,UMSocialPlatformType.wechatTimeLine,UMSocialPlatformType.QQ,UMSocialPlatformType.qzone]
+    
     func shareViewController(viewController :UIViewController)  {
         shareView = UIView.init(frame: UIScreen.main.bounds)
         shareView.backgroundColor = UIColor.init(colorLiteralRed: 45.0/255, green: 45.0/255, blue: 45.0/255, alpha: 0.3)
@@ -45,7 +46,7 @@ class ShareView: UIView {
                     shareObject.webpageUrl = webpageUrl
           messageObject.shareObject = shareObject
           self.exit()
-        UMSocialManager.default().share(to: typeArr[btn.tag  - 100], messageObject: messageObject, currentViewController: nil) {
+        UMSocialManager.default().share(to: typeArrM[btn.tag  - 100], messageObject: messageObject, currentViewController: nil) {
             (data , error) in
         }
     }

@@ -39,7 +39,7 @@ class ContainVC: UIViewController {
         
         AppAPIHelper.login().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { [weak self](result)  in
             
-          
+
             if let response = result as? UserModel{
           
                 if (response.result)  == -302{
