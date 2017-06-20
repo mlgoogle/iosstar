@@ -68,7 +68,7 @@ class MessageCell:  OEZTableViewCell{
              dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
         }
         else if model.handle == 2{
-             dosee.setTitle("交易完成", for: .normal)
+             dosee.setTitle("交易成功", for: .normal)
              dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
         }
         else{
