@@ -40,6 +40,7 @@ class AppConst {
     static let loginSuccessNotice = "loginSuccessNotice"
     static let chooseServiceTypeSuccess = "chooseServiceTypeSuccess"
     static let valueStarCode = "valueStarCode"
+    static let getStarService = "getStarService"
     
     enum KVOKey: String {
         case selectProduct = "selectProduct"

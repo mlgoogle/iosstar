@@ -120,8 +120,18 @@ class OrderStarItem: UICollectionViewCell {
         
         serviceTypeButton.setTitle(serviceTypeModel.name, for: .normal)
         serviceTypeButton.setImage(UIImage(named: "kefu_QQ"), for: .normal)
-        serviceTypeButton.setTitle(serviceTypeModel.name, for: .selected)
         serviceTypeButton.setImage(UIImage(named: "kefu_weixin"), for: .selected)
+            
+//        if serviceTypeModel.url1.length() == 0 {
+//            serviceTypeButton.setImage(UIImage(named: "kefu_QQ"), for: .normal)
+//        } else {
+//            serviceTypeButton.kf.setImage(with: URL(string: serviceTypeModel.url1),for: .normal)
+//        }
+//        if serviceTypeModel.url2.length() == 0 {
+//            serviceTypeButton.setImage(UIImage(named: "kefu_weixin"), for: .selected)
+//        } else {
+//            serviceTypeButton.kf.setImage(with: URL(string: serviceTypeModel.url2),for: .selected)
+//        }
     }
 }
 private let KOrderStarItemID = "OrderStarItemID"
@@ -139,37 +149,21 @@ class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionV
     var serviceTypeModel : [ServiceTypeModel]?
     
     var ordercell : OrderStarItem?
-    
-    // var serviceButtonClick :((_ selectIndex : Int) -> ())?
-    
+
     override func awakeFromNib() {
         
         super.awakeFromNib()
         
         setupInit();
-        
-        // 直接取吧
-        let starCode = UserDefaults.standard.object(forKey: "starCode") as! String
-        // print("====\(starCode)")
-        
-        AppAPIHelper.marketAPI().requestStarServiceType(starcode: starCode, complete: { (response) in
-            
-            if let models = response as? [ServiceTypeModel] {
-                
-                self.serviceTypeModel = models
-                
-            }
-            self.orderStartCollectionView.reloadData()
-            
-        }) { (error) in
-            SVProgressHUD.showErrorMessage(ErrorMessage: "网络不佳,稍后再试", ForDuration: 2.0, completion: nil)
-        }
-        
+    }
+    
+    func setStarServiceType(serviceModel:[ServiceTypeModel]?) {
+        self.serviceTypeModel = serviceModel
+        self.orderStartCollectionView.reloadData()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
     }
     // MRAK: -布局UI
     func setupInit() {
