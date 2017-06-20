@@ -21,11 +21,11 @@ class MessageCell:  OEZTableViewCell{
             let str = model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id ? "转让":"求购"
             self.content.text = "\(data.name)" + "(" + "\(data.code)" + ")" + str
         }
-        
+        print(model)
         time_lb.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.openTime), format: "YY-MM-dd HH:mm:ss")
          dosee.setTitle("", for: .normal)
         if model.handle == 0{
-           dosee.setTitle("未确认", for: .normal)
+            dosee.setTitle("匹配中", for: .normal)
         }else if model.handle == 1{
             
             if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 1) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 1)){
@@ -34,6 +34,15 @@ class MessageCell:  OEZTableViewCell{
              dosee.setTitle( ((model.buyHandle == 0) && (model.sellHandle == 0)) ? "未确认" : (((model.buyHandle == -1) || (model.sellHandle == -1)) ? "已取消" : ((((model.buyHandle == 0) && (model.sellHandle == 1)) || ((model.buyHandle == 1) && (model.sellHandle == 0))) ? "未确认" : "交易成功")), for: .normal)
             }
          
+        }
+        else if model.handle == -1{
+          dosee.setTitle("取消订单", for: .normal)
+        }
+        else if model.handle == -2{
+          dosee.setTitle("非正常订单", for: .normal)
+        }
+        else if model.handle == 2{
+             dosee.setTitle("订单完成", for: .normal)
         }
         else{
           dosee.setTitle("交易成功", for: .normal)
