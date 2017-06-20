@@ -61,7 +61,10 @@ class MarketDetaiBaseInfoViewController: MarketBaseViewController {
                 self.expericences = models
                 self.tableView.reloadSections(IndexSet(integer: 2), with: .none)
             }
-        }, error: errorBlockFunc())
+        }) { (error) in
+            
+        }
+
     }
     func requestAchive() {
         AppAPIHelper.marketAPI().requestStarArachive(code:  starCode!, complete: { (response) in
@@ -69,7 +72,10 @@ class MarketDetaiBaseInfoViewController: MarketBaseViewController {
                 self.achives = models
                 self.tableView.reloadSections(IndexSet(integer: 3), with: .none)
             }
-        }, error: errorBlockFunc())
+        }) { (error) in
+            
+        }
+
     }
 
 }

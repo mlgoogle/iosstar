@@ -16,7 +16,7 @@ class MarketClassifyModel: Object {
 }
 
 
-class MarketListStarModel: Object {
+class MarketListModel: Object {
     dynamic var wid = ""
     dynamic var sysTime:Int64 = 0
     dynamic var symbol = ""
@@ -25,7 +25,7 @@ class MarketListStarModel: Object {
     dynamic var name = ""
     dynamic var currentPrice = 0.0
     dynamic var change = 0.0
-    
+    dynamic var pchg = 0.0
     
     
 }

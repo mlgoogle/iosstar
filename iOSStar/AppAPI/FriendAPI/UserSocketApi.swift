@@ -205,5 +205,9 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .update, dict: ["ttype": type as AnyObject], type: .user)
         startModelRequest(packet, modelClass: UpdateParam.self, complete: complete, error: error)
     }
-    
+    //更新devicetoken
+    func updateDeviceToken(requestModel:UpdateDeviceTokenModel, complete: CompleteBlock?, error: ErrorBlock?){
+        let packet = SocketDataPacket(opcode: .updateDeviceToken, model: requestModel)
+        startResultIntRequest(packet, complete: complete, error: error)
+    }
 }

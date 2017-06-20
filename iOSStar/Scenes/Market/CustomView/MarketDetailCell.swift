@@ -37,7 +37,7 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
         lineView.animate(xAxisDuration: 1)
     }
 
-    func setStarModel(starModel:MarketListStarModel) {
+    func setStarModel(starModel:MarketListModel) {
         iconImageView.kf.setImage(with: URL(string: starModel.pic))
     }
     

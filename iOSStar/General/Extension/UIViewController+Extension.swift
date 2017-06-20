@@ -19,9 +19,7 @@ extension UIViewController {
     func errorBlockFunc()->ErrorBlock {
         return { [weak self] (error) in
             //            XCGLogger.error("\(error) \(self)")
-            if error.code == -11011 {
-                return
-            }
+
             self?.didRequestError(error)
         }
     }
@@ -31,6 +29,9 @@ extension UIViewController {
     
     
     func didRequestError(_ error:NSError) {
+        if error.code == -11011 {
+            return
+        }
         SVProgressHUD.showErrorMessage(ErrorMessage: error.localizedDescription, ForDuration: 1.5, completion: nil)
     }
     

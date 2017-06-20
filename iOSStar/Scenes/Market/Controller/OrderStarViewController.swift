@@ -41,7 +41,7 @@ class StarDataCell: UITableViewCell {
         super.layoutSubviews()
     }
     
-    func setStarData(model:MarketListStarModel) {
+    func setStarData(model:MarketListModel) {
         
         nameLabel.text = String.init(format: "%@ (%@)", model.name,model.symbol)
         bkImageView.kf.setImage(with: URL(string: model.pic))
@@ -54,7 +54,7 @@ class StarDataCell: UITableViewCell {
 // MRAK: - viewDidLoad
 class OrderStarViewController: UIViewController {
     
-    var starModelInfo:MarketListStarModel?
+    var starModelInfo:MarketListModel?
     
     var serviceTypeModel : ServiceTypeModel!
     // 确定约见按钮

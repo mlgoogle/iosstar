@@ -94,7 +94,7 @@ extension MarketSearchViewController:UITableViewDelegate, UITableViewDataSource 
         let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Markt.rawValue, bundle: nil)
         
         let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail") as? MarketDetailViewController
-        let starListModel = MarketListStarModel()
+        let starListModel = MarketListModel()
         
         let model = dataArry[indexPath.row]
         starListModel.wid = model.wid

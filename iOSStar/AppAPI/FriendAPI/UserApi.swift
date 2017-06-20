@@ -51,5 +51,7 @@ protocol UserApi {
     //获取版本更新信息
     func update(type: Int, complete: CompleteBlock?, error: ErrorBlock?)
 
+    //更新devicetoken
+    func updateDeviceToken(requestModel:UpdateDeviceTokenModel, complete: CompleteBlock?, error: ErrorBlock?)
     
 }

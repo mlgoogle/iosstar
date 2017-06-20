@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MJRefresh
 class MarketAuctionViewController: MarketBaseViewController {
     var index = 0
     var count = 540
@@ -36,6 +36,13 @@ class MarketAuctionViewController: MarketBaseViewController {
         requetTotalCount()
         requestPositionCount()
         requestPercent()
+
+        
+        footer = MJRefreshAutoNormalFooter {
+            
+        self.requestFansList()
+        }
+        tableView.mj_footer = footer
     }
 
     func initCountDownBlock() {
@@ -137,6 +144,7 @@ class MarketAuctionViewController: MarketBaseViewController {
         let requestModel = FanListRequestModel()
         requestModel.buySell = buySell
         requestModel.symbol = starCode!
+        requestModel.start = Int32(fansList?.count ?? 0)
         AppAPIHelper.marketAPI().requestEntrustFansList(requestModel: requestModel, complete: { (response) in
             if let models = response  as? [FansListModel] {
                 self.fansList = models
@@ -201,6 +209,7 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
             buySell = -1
         }
         self.index = index
+        fansList?.removeAll()
         requestFansList()
     }
     

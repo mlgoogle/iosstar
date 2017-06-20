@@ -193,7 +193,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
         cell.delegate = self
         return cell
     }
-    func selectItem(starModel:MarketListStarModel) {
+    func selectItem(starModel:MarketListModel) {
         
         delegate?.selectItem(starModel: starModel)
     }

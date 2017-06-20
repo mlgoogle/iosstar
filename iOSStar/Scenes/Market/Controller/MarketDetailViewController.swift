@@ -24,7 +24,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
     @IBOutlet weak var headerTopMargin: NSLayoutConstraint!
 
     var subViews = [UIView]()
-    var starModel:MarketListStarModel?
+    var starModel:MarketListModel?
     var currentY:CGFloat = 0
     var realTimeModel:RealTimeModel?
     var currentVC:MarketBaseViewController?
@@ -192,8 +192,8 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
     func setRealTimeData(realTimeModel:RealTimeModel) {
         realTimeModel.cacheSelf()
         self.realTimeModel = realTimeModel
-        let percent = (realTimeModel.change / realTimeModel.currentPrice) * 100
-        priceLabel.text = "\(realTimeModel.currentPrice)"
+        let percent = realTimeModel.pchg * 100
+        priceLabel.text = String(format: "%.2f", realTimeModel.currentPrice)
         var colorString = AppConst.Color.up
         if realTimeModel.change < 0 {
             changeLabel.text = String(format: "%.2f/%.2f%%", realTimeModel.change, -percent)

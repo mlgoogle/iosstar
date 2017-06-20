@@ -57,6 +57,7 @@ class OrderResultModel: Object {
 
 class EntrustListModel: Object {
     
+    dynamic var rtAmount = 0
     dynamic var amount:Int64 = 0
     dynamic var buySell = AppConst.DealType.buy.rawValue
     dynamic var handle:Int32 = AppConst.OrderStatus.pending.rawValue
