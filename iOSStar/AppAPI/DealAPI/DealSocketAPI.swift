@@ -32,7 +32,7 @@ class DealSocketAPI: BaseSocketAPI, DealAPI{
     func setReceiveOrderResult(complete:@escaping CompleteBlock) {
         SocketRequestManage.shared.receiveOrderResult = { (response) in
             let jsonResponse = response as! SocketJsonResponse
-            let model = jsonResponse.responseModel(ReceiveMacthingModel.self) as? OrderResultModel
+            let model = jsonResponse.responseModel(OrderResultModel.self) as? OrderResultModel
             if  model != nil {
                 complete(model)
             }

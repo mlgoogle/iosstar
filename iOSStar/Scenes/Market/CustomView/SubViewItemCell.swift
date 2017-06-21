@@ -109,12 +109,16 @@ class SubViewItemCell: UITableViewCell {
         codeLabel.text = model.symbol
         priceLabel.text = String(format: "%.2f", model.currentPrice)
         var colorString = AppConst.Color.up
-        if model.change < 0 {
+        if model.pchg < 0 {
             changeLabel.text = String(format: "%.2f%%", model.pchg * 100)
             colorString = AppConst.Color.down
+        } else if model.pchg == 0{
+            colorString = "333333"
+            changeLabel.text = String(format: "%.2f%%", model.pchg * 100)
         } else {
             changeLabel.text = String(format: "+%.2f%%", model.pchg * 100)
         }
+ 
         priceLabel.textColor = UIColor(hexString: colorString)
         changeLabel.backgroundColor = UIColor(hexString: colorString)
     }

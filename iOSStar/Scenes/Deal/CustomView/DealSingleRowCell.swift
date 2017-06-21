@@ -10,7 +10,7 @@ import UIKit
 
 class DealSingleRowCell: UITableViewCell {
     var dealType:[Int:String] = [-1:"委托转让",1:"委托求购"]
-    var dealStatus:[Int:String] = [-2:"委托失败",0:"委托进行中", 1:"委托成功", 2:"委托成功"]
+    var dealStatus:[Int32:String] = [-2:"委托失败",0:"委托进行中", 1:"委托已匹配", 2:"委托成功"]
     @IBOutlet weak var nameLabel: UILabel!  
     
     @IBOutlet weak var codeLabel: UILabel!
@@ -23,7 +23,6 @@ class DealSingleRowCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
 
@@ -43,7 +42,7 @@ class DealSingleRowCell: UITableViewCell {
         if model.handle == 0 {
             lastLabel.text = dealType[model.buySell]
         } else {
-            lastLabel.text = dealStatus[model.buySell]
+            lastLabel.text = dealStatus[model.handle]
         }
         lastLabel.textColor = UIColor(hexString: "666666")
         

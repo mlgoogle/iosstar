@@ -195,10 +195,13 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         let percent = realTimeModel.pchg * 100
         priceLabel.text = String(format: "%.2f", realTimeModel.currentPrice)
         var colorString = AppConst.Color.up
-        if realTimeModel.change < 0 {
+        if realTimeModel.pchg < 0 {
             changeLabel.text = String(format: "%.2f/%.2f%%", realTimeModel.change, -percent)
             colorString = AppConst.Color.down
-        }else{
+        }  else if realTimeModel.pchg == 0{
+            changeLabel.text = String(format: "%.2f/%.2f%%", realTimeModel.change, -percent)
+            colorString = "333333"
+        } else {
             changeLabel.text = String(format: "%.2f/+%.2f%%",realTimeModel.change,percent)
         }
         priceLabel.textColor = UIColor(hexString: colorString)
