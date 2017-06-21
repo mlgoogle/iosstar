@@ -20,7 +20,6 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
     @IBOutlet weak var tableView: UITableView!
     var currentY:CGFloat = 0
     var dataSource:[CommentModel]?
-    var totalCount = 0
     var isDetail = true
     var isRefresh = true
     var header:MJRefreshNormalHeader?

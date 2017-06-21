@@ -23,9 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     var window: UIWindow?
     var sdkConfigDelegate: NTESSDKConfigDelegate?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // let config = BugoutConfig.default()
-        // config?.enabledShakeFeedback = true
-        // Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
+         let config = BugoutConfig.default()
+         config?.enabledShakeFeedback = true
+         config?.enabledMonitorException = false
+         Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
         
         UIApplication.shared.applicationIconBadgeNumber = 0
         

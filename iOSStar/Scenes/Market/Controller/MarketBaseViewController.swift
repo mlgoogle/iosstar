@@ -23,6 +23,7 @@ class MarketBaseViewController: UIViewController, UIScrollViewDelegate{
     var starPic:String?
     var footer:MJRefreshAutoNormalFooter?
     var delegate:ScrollStopDelegate?
+    var totalCount:Int = 0
     var scrollView:UIScrollView?
     var isSubView = true
     //正在滑动

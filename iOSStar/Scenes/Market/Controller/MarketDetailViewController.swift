@@ -195,10 +195,13 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         let percent = realTimeModel.pchg * 100
         priceLabel.text = String(format: "%.2f", realTimeModel.currentPrice)
         var colorString = AppConst.Color.up
-        if realTimeModel.change < 0 {
+        if realTimeModel.pchg < 0 {
             changeLabel.text = String(format: "%.2f/%.2f%%", realTimeModel.change, -percent)
             colorString = AppConst.Color.down
-        }else{
+        }  else if realTimeModel.pchg == 0{
+            changeLabel.text = String(format: "%.2f/%.2f%%", realTimeModel.change, -percent)
+            colorString = "333333"
+        } else {
             changeLabel.text = String(format: "%.2f/+%.2f%%",realTimeModel.change,percent)
         }
         priceLabel.textColor = UIColor(hexString: colorString)
@@ -207,13 +210,15 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
     
     func setData(datas:[TimeLineModel]) {
         var entrys: [ChartDataEntry] = []
-        for (index,model) in datas.enumerated() {
-            let entry = ChartDataEntry(x: Double(index), y: model.currentPrice)
-            entrys.append(entry)
-        }
+        
         self.datas = datas.sorted(by: { (model1, model2) -> Bool in
             return model1.priceTime < model2.priceTime
         })
+        for (index,model) in self.datas!.enumerated() {
+            let entry = ChartDataEntry(x: Double(index), y: model.currentPrice)
+            entrys.append(entry)
+        }
+
         let set = LineChartDataSet(values: entrys, label: "分时图")
         set.colors = [UIColor.red]
         set.circleRadius = 0

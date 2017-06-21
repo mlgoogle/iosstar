@@ -16,7 +16,11 @@ let kGtAppSecret:String = "4DXXxrRirbAhqYJor3THd"
 
 class AppConfigHelper: NSObject {
     
-    var dealResult:[String : String] = ["-1" : "订单取消", "0" : "扣费成功", "-2" : "转让方持有时间不足", "-3" : "求购方金币不足"]
+//<<<<<<< HEAD
+    var dealResult:[Int32 : String] = [-1 : "订单取消", 0 : "扣费成功", -2 : "转让方持有时间不足", -3 : "求购方金币不足"]
+//=======
+//    var dealResult:[Int32 : String] = [-1 : "订单取消", 0 : "扣费成功", 1 : "转让方持有时间不足", 2 : "求购方星享币不足"]
+//>>>>>>> iosstar/master
     var updateModel:UpdateParam?
     lazy var alertView: TradingAlertView = {
         let alertView = Bundle.main.loadNibNamed("TradingAlertView", owner: nil, options: nil)?.first as! TradingAlertView
@@ -244,8 +248,7 @@ class AppConfigHelper: NSObject {
     func setupReceiveOrderResult() {
         AppAPIHelper.dealAPI().setReceiveOrderResult { (response) in
             if let model = response as? OrderResultModel {
-                let body = "订单结果:\(self.dealResult["\(model.result)"]),请查看"
-
+                let body = "您有一条新的订单状态更新:\(self.dealResult[model.result]),请查看"
                 if UIApplication.shared.applicationState == .background {
                     self.localNotify(body: body, userInfo: nil)
                 } else {
@@ -253,7 +256,7 @@ class AppConfigHelper: NSObject {
                     self.performSelector(onMainThread: #selector(self.showAlert), with: nil, waitUntilDone: false)
                 }
             }
-        }
+        }   
     }
     
     

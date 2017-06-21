@@ -46,8 +46,6 @@ class UserModel: Object {
         }
     }
     class func userInfo(userId: Int) -> UserModel? {
-    
-        
         let realm = try! Realm()
         let filterStr = "id = \(userId)"
         let user = realm.objects(UserModel.self).filter(filterStr).first
