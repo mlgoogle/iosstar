@@ -271,6 +271,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
        //MARK:-   去登录
     @IBAction func doLogin(_ sender: Any) {
         view.endEditing(true)
+        self.phoneTf.text = ""
         self.resultBlock!(doStateClick.doLogin as AnyObject?)
     }
     // MARK - 微信登录

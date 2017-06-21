@@ -105,6 +105,7 @@
 		8D2C3DBB1EF0CEF100FA996A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2C3DBA1EF0CEF100FA996A /* UIView.swift */; };
 		8D5C28521ED6FB520005B2BE /* OrderStartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5C28511ED6FB520005B2BE /* OrderStartViewCell.swift */; };
 		8D5D21521EE8F92B00DE25A9 /* UITabBar+badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D21511EE8F92B00DE25A9 /* UITabBar+badge.swift */; };
+		8D61054D1EFA254800170760 /* UIBarButtonItem+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D61054C1EFA254800170760 /* UIBarButtonItem+Category.swift */; };
 		8D7308771EF2C14A0051E713 /* TradingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7308751EF2C14A0051E713 /* TradingAlertView.swift */; };
 		8D7308781EF2C14A0051E713 /* TradingAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D7308761EF2C14A0051E713 /* TradingAlertView.xib */; };
 		8DAC7E291EE1419D001AD3EF /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAC7E281EE1419D001AD3EF /* User.storyboard */; };
@@ -612,6 +613,7 @@
 		8D2C3DBA1EF0CEF100FA996A /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		8D5C28511ED6FB520005B2BE /* OrderStartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderStartViewCell.swift; sourceTree = "<group>"; };
 		8D5D21511EE8F92B00DE25A9 /* UITabBar+badge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITabBar+badge.swift"; sourceTree = "<group>"; };
+		8D61054C1EFA254800170760 /* UIBarButtonItem+Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Category.swift"; sourceTree = "<group>"; };
 		8D7308751EF2C14A0051E713 /* TradingAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradingAlertView.swift; sourceTree = "<group>"; };
 		8D7308761EF2C14A0051E713 /* TradingAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradingAlertView.xib; sourceTree = "<group>"; };
 		8DAC7E281EE1419D001AD3EF /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
@@ -3229,6 +3231,7 @@
 				6EBF590D1EC93BE9003F67B4 /* Label+Extension.swift */,
 				6E54EE0E1ED566F100E14EC3 /* UIView+Extension.swift */,
 				8D5D21511EE8F92B00DE25A9 /* UITabBar+badge.swift */,
+				8D61054C1EFA254800170760 /* UIBarButtonItem+Category.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -3983,6 +3986,7 @@
 				A03D3FF11EA86A6500F85308 /* NTESFileLocationHelper.m in Sources */,
 				A03D3EF71EA86A6400F85308 /* NIMKitSwitcherCell.m in Sources */,
 				A03D3F2C1EA86A6400F85308 /* NIMKitAudioCenter.m in Sources */,
+				8D61054D1EFA254800170760 /* UIBarButtonItem+Category.swift in Sources */,
 				6EDA46951EC5AEAA0004F942 /* MarketModel.swift in Sources */,
 				A0EF3B1B1EB9778F0023093A /* BaseSocketAPI.swift in Sources */,
 				6EFE79E21ECC49570096470D /* MarketFansListViewController.swift in Sources */,
@@ -4242,7 +4246,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.redsky.starshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6ef0398e-8519-47a9-8364-6150cc15a1c5";
+				PROVISIONING_PROFILE = "cd195ddb-4108-484e-831b-01ad9e86dada";
 				PROVISIONING_PROFILE_SPECIFIER = com.starShare.Develop;
 				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -4297,7 +4301,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.redsky.starshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6ef0398e-8519-47a9-8364-6150cc15a1c5";
+				PROVISIONING_PROFILE = "cd195ddb-4108-484e-831b-01ad9e86dada";
 				PROVISIONING_PROFILE_SPECIFIER = com.starShare.Develop;
 				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

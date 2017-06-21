@@ -109,6 +109,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
     //MARK:   注册
     @IBAction func doRegist(_ sender: Any) {
         view.endEditing(true)
+        self.phone.text = ""
         ShareDataModel.share().isweichaLogin = false
         self.resultBlock!(doStateClick.doRegist as AnyObject?)
         
