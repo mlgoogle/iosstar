@@ -70,6 +70,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
     
     override func didRequest(_ pageIndex : Int) {
 
+        // 代表选择了月份筛选
         if indexString != nil {
             AppAPIHelper.user().creditlist(status: 0, pos: Int32(pageIndex - 1) * 10, count: 10, time: indexString!, complete: { (result) in
                 
@@ -96,15 +97,17 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
             })
         } else {
           
+            // 获取全部的
             AppAPIHelper.user().creditlist(status: 0, pos: Int32((pageIndex - 1) * 10), count: 10, time: "", complete: { (result) in
                 
-                print("=====\(String(describing: result))")
+                // print("=====\(String(describing: result))")
                 
                 self.reponseData = result
                 
                 if let object = result {
                     let model : RechargeListModel = object as! RechargeListModel
                     self.didRequestComplete(model.depositsinfo as AnyObject)
+                    self.tableView.reloadData()
                 }
                 if self.dataSource?.count == 0 {
                     self.nodataView.isHidden = false
@@ -156,7 +159,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
         
         didRequest(1)
     }
-    //MARK-
+    //MARK -
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         if keyPath == "selectMonth" {
@@ -165,7 +168,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
                 navLeft?.isEnabled = true
                 self.tableView.isScrollEnabled = true
                 if selectMonth != "1000000" {
-                    //                    monthLb.text = "2017年" + " " + "\(selectMonth)" + "月"
+                   // monthLb.text = "2017年" + " " + "\(selectMonth)" + "月"
                 }
             }
         }
