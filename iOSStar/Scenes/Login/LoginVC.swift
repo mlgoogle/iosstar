@@ -116,9 +116,9 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
     //MARK:-  登录
     @IBAction func doLogin(_ sender: Any) {
         let btn = sender as! UIButton
-        // btn.isUserInteractionEnabled = false
         
-        if !checkTextFieldEmpty([phone]) {
+         btn.isUserInteractionEnabled = false
+         if !checkTextFieldEmpty([phone]) {
             return
         }
         if !checkTextFieldEmpty([passPwd]) {
@@ -132,6 +132,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
 //            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入6位字符以上密码", ForDuration: 2.0, completion: nil)
 //            return
 //        }
+        
         SVProgressHUD.showProgressMessage(ProgressMessage: "登录中······")
         if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]) {
             AppAPIHelper.login().login(phone: phone.text!, password: (passPwd.text?.md5_string())!, complete: { [weak self](result)  in
