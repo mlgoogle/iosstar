@@ -104,7 +104,6 @@ class DetailCommenViewController: DealBaseViewController {
                 self.checkCount(count: models.count)
             }
         }) { (error) in
-            self.didRequestError(error)
             self.endRefresh(count:1)
         }
     }
@@ -122,7 +121,6 @@ class DetailCommenViewController: DealBaseViewController {
                 self.checkCount(count:models.count)
             }
         }) { (error) in
-            self.didRequestError(error)
             self.endRefresh(count:1)
         }
     }

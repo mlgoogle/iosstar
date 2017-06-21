@@ -41,8 +41,9 @@ class StarDataCell: UITableViewCell {
         super.layoutSubviews()
     }
     
+
     // 设置明星信息
-    func setStarInfo(model:MarketListStarModel) {
+    func setStarInfo(model:MarketListModel) {
         
         nameLabel.text = String.init(format: "%@ (%@)", model.name,model.symbol)
         iconImageView.kf.setImage(with: URL(string: model.pic))
@@ -56,8 +57,8 @@ class StarDataCell: UITableViewCell {
 
 // MRAK: - viewDidLoad
 class OrderStarViewController: UIViewController {
-    
-    var starInfo:MarketListStarModel?
+
+    var starInfo:MarketListModel?
     
     var starModelInfo:BannerDetaiStarModel?
     

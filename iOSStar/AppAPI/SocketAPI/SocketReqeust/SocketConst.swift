@@ -140,6 +140,9 @@ class SocketConst: NSObject {
         case starTotalTime = 10027
         //获取版本更新信息
         case update = 3033
+        
+        //更新devicetoken
+        case updateDeviceToken = 1
     }
     enum type:UInt8 {
         case error  = 0

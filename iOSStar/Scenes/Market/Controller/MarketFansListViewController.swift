@@ -13,7 +13,6 @@ class MarketFansListViewController: MarketBaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var index:Int = 0
-    var footer:MJRefreshAutoStateFooter?
     var fansList:[OrderFansListModel]?
     var isBuy = true
     override func viewDidLoad() {
@@ -25,7 +24,7 @@ class MarketFansListViewController: MarketBaseViewController {
         tableView.register(FansListHeaderView.self, forHeaderFooterViewReuseIdentifier: "FansListHeaderView")
         automaticallyAdjustsScrollViewInsets = false
         requestFansList()
-        footer = MJRefreshAutoStateFooter(refreshingBlock: {
+        footer = MJRefreshAutoNormalFooter(refreshingBlock: {
             self.requestFansList()
             
         })
@@ -62,7 +61,6 @@ class MarketFansListViewController: MarketBaseViewController {
             }
             self.endRefres(count:1)
         }) { (error) in
-            self.didRequestError(error)
             self.endRefres(count:1)
         }
     }
