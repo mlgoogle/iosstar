@@ -66,8 +66,11 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         self.phone.text =  (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
         
         if userInfoData?.nick_name == "" {
-            let lastIndex = phonetext.index(phonetext.endIndex, offsetBy: -6)
-            nickName.text = "星享用户" + phonetext.substring(from: lastIndex)
+//            let lastIndex = phonetext.index(phonetext.endIndex, offsetBy: -6)
+//            nickName.text = "星享用户" + phonetext.substring(from: lastIndex)
+            let nameUid = UserModel.share().getCurrentUser()?.userinfo?.id
+            let stringUid = String.init(format: "%d", nameUid!)
+            nickName.text = "星享用户" + stringUid
         } else {
             nickName.text = userInfoData?.nick_name
         }

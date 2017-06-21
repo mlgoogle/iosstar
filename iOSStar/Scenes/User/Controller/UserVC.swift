@@ -74,9 +74,12 @@ class UserVC: BaseCustomTableViewController  {
                 self.responseData = model
                 self.account?.text =  String.init(format: "%.2f", model.balance)
                 if model.nick_name == "" {
-                    let  phonetext  = (UserDefaults.standard.object(forKey: "phone") as! String)
-                    let index = phonetext.index(phonetext.endIndex, offsetBy: -6)
-                    self.nickNameLabel?.text = "星享用户" + (phonetext.substring(from: index))
+                    // let  phonetext  = (UserDefaults.standard.object(forKey: "phone") as! String)
+                    // let index = phonetext.index(phonetext.endIndex, offsetBy: -6)
+                    // self.nickNameLabel?.text = "星享用户" + (phonetext.substring(from: index))
+                    let nameUid = UserModel.share().getCurrentUser()?.userinfo?.id
+                    let stringUid = String.init(format: "%d", nameUid!)
+                    self.nickNameLabel?.text = "星享用户" + stringUid
                 } else  {
                     self.nickNameLabel?.text = model.nick_name
                 }
