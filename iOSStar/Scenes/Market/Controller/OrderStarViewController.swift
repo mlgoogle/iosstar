@@ -34,14 +34,14 @@ class StarDataCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        bkImageView.contentMode = .scaleAspectFit
+        //        bkImageView.contentMode = .scaleAspectFit
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
     }
     
-
+    
     // 设置明星信息
     func setStarInfo(model:MarketListModel) {
         
@@ -57,7 +57,7 @@ class StarDataCell: UITableViewCell {
 
 // MRAK: - viewDidLoad
 class OrderStarViewController: UIViewController {
-
+    
     var starInfo:MarketListModel?
     
     var starModelInfo:BannerDetaiStarModel?
@@ -71,9 +71,9 @@ class OrderStarViewController: UIViewController {
     @IBOutlet weak var completeButton: UIButton!
     // 秒数价格
     @IBOutlet weak var priceLabel: UILabel!
-
+    
     @IBOutlet weak var tableView: UITableView!
-
+    
     // @IBOutlet weak var pageControl: UIPageControl!
     // 意见反馈
     var feedBack : UITextView!
@@ -111,7 +111,7 @@ class OrderStarViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-    
+        
         tableView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0)
         tableView.showsVerticalScrollIndicator = false
         
@@ -130,12 +130,12 @@ class OrderStarViewController: UIViewController {
         
         // 确定约见事件
         completeButton.addTarget(self, action: #selector(completeClick(_:)), for: .touchUpInside)
-     
-    // 通知
-    NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-    
-    // 接收约见类型发出的通知
-    NotificationCenter.default.addObserver(self, selector: #selector(chooseServiceType(_:)), name:
+        
+        // 通知
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        // 接收约见类型发出的通知
+        NotificationCenter.default.addObserver(self, selector: #selector(chooseServiceType(_:)), name:
             Notification.Name(rawValue:AppConst.chooseServiceTypeSuccess), object: nil)
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -155,7 +155,7 @@ class OrderStarViewController: UIViewController {
     }
     
     func chooseServiceType(_ notification :Notification ) {
-
+        
         if notification.object != nil {
             let serviceType = notification.object as! ServiceTypeModel
             serviceTypeModel = serviceType
@@ -203,8 +203,8 @@ class OrderStarViewController: UIViewController {
     // MARK: - 确定约见
     func completeClick(_ sender : UIButton) {
         if serviceTypeModel == nil {
-                SVProgressHUD.showErrorMessage(ErrorMessage: "请选择约见类型", ForDuration: 2.0, completion: nil)
-                return;
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请选择约见类型", ForDuration: 2.0, completion: nil)
+            return;
         }
         if orderTime.text?.length() == 0 {
             SVProgressHUD.showErrorMessage(ErrorMessage: "请选择时间", ForDuration: 2.0, completion: nil)
@@ -214,26 +214,60 @@ class OrderStarViewController: UIViewController {
             SVProgressHUD.showErrorMessage(ErrorMessage: "请选择城市", ForDuration: 2.0, completion: nil)
             return
         }
-        
-        let nav : BaseNavigationController = BaseNavigationController.storyboardInit(identifier: "Input", storyboardName: "Order") as! BaseNavigationController
-        let inputvc : InputPassVC = nav.viewControllers[0] as! InputPassVC
-        inputvc.showKeyBoard = true
-        nav.modalPresentationStyle = .custom
-        nav.modalTransitionStyle = .crossDissolve
-        inputvc.resultBlock = { (result) in
-            if ((result as? String) != nil){
-                nav.dismissController()
-                self.domeet()
-            }else{
-              nav.dismissController()
+        //判断是否实名认证
+        self.getUserInfo { (result) in
+            if let response = result{
+                if let object = response as? UserInfoModel{
+                    
+                    if object.is_setpwd == 1{
+                        let alertVc = AlertViewController()
+                        alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
+                                            
+                                            titleLabelText: "开通支付",
+                                            subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购明星时间，转让明星时间，\n和明星在‘星聊’中聊天，并且还能约见明星。",
+                                            completeButtonTitle: "我 知 道 了") {[weak alertVc] (completeButton) in
+                                                alertVc?.dismissAlertVc()
+                                                
+                                                
+                                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
+                                                self.navigationController?.pushViewController(vc, animated: true )
+                                                return
+                        }
+                    }
+                    else{
+                        let model = OrderInformation()
+                        model.orderStatus = "1213.00"
+                        model.orderPrice = "12311.00"
+                        model.orderInfomation = "12311"
+                        //将值传给 sharedatemodel
+                        ShareDataModel.share().orderInfo = model
+                        let storyboard = UIStoryboard.init(name: "Order", bundle: nil)
+                        let controller = storyboard.instantiateInitialViewController() as!  UINavigationController
+                        
+                        
+                        let rootvc = controller.viewControllers[0] as! ContainPayVC
+                        
+                        rootvc.showAll = false
+                        
+                        rootvc.resultBlock = { (result) in
+                            self.domeet()
+                            controller.dismissController()
+                            
+                        }
+                        controller.modalPresentationStyle = .custom
+                        controller.modalTransitionStyle = .crossDissolve
+                        self.present(controller, animated: true, completion: nil)
+                        
+                    }
+                }
             }
         }
-        self.present(nav, animated: true, completion: nil)
+        
     }
     
     // 约见
     func domeet(){
-    
+        
         var starCode = ""
         if starInfo != nil {
             starCode = (starInfo?.symbol)!
@@ -246,7 +280,7 @@ class OrderStarViewController: UIViewController {
         requestModel.appoint_time = orderTime.text!
         requestModel.meet_type = 1
         requestModel.comment = feedBack.text
-
+        
         AppAPIHelper.marketAPI().requestBuyStarService(requestModel: requestModel, complete: { (result) in
             if let response = result {
                 if response["result"] as! Int == 1 {
@@ -257,12 +291,12 @@ class OrderStarViewController: UIViewController {
         }) { (error) in
             print("error -----\(error)")
         }
-
+        
     }
 }
 // MARK: - date相关
 extension OrderStarViewController {
- 
+    
     func initDatePickerView(){
         
         datePickerView =  UIDatePicker.init(frame: CGRect.init(x: 0,
@@ -337,7 +371,7 @@ extension OrderStarViewController {
             
         } else {
             orderTime.text = time
-
+            
             inputDateTextField.resignFirstResponder()
         }
     }
@@ -357,9 +391,9 @@ extension OrderStarViewController {
         let address : String =  Bundle.main.path(forResource: "City", ofType: "plist")!
         
         let dic =  NSDictionary.init(contentsOfFile: address) as! [String : Array<Any>]
-
+        
         dataCity = dic["city"]! as! Array<Dictionary<String, AnyObject>> as Array<Dictionary<String, AnyObject>>
-    
+        
         // print(dataCity)
     }
     
@@ -373,9 +407,9 @@ extension OrderStarViewController {
         cityPickerView.dataSource = self
         
         cityToolBar = UIToolbar.init(frame:  CGRect.init(x: 0,
-                                                       y: self.view.frame.size.height - self.cityToolBar.frame.size.height - 44.0,
-                                                       width: self.view.frame.size.width,
-                                                       height: 44))
+                                                         y: self.view.frame.size.height - self.cityToolBar.frame.size.height - 44.0,
+                                                         width: self.view.frame.size.width,
+                                                         height: 44))
         
         inputCityTextField.inputView = cityPickerView
         inputCityTextField.inputAccessoryView = cityToolBar
@@ -521,7 +555,7 @@ extension OrderStarViewController {
         view.descr = "关于星享"
         view.webpageUrl = "http://www.baidu.com"
         view.shareViewController(viewController: self)
-
+        
     }
 }
 

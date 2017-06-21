@@ -31,6 +31,7 @@ class OrderInformation: NSObject {
      var orderPrice : String =   ""
      var orderStatus : String =   ""
      var orderInfomation : String =   ""
+     var ordertitlename : String =   "订单详情"
     
     
 }
