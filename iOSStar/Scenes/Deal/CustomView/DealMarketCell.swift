@@ -29,7 +29,7 @@ class DealMarketCell: UITableViewCell {
             return
         }
         var colorString = AppConst.Color.up
-        let percent = model!.pchg
+        let percent = model!.pchg * 100
 
         if model!.change < 0 {
             changePercentLabel.text = String(format: "%.2f%%", -percent)

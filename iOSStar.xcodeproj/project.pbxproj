@@ -53,6 +53,7 @@
 		6E1B571D1ED40FE100A014AE /* DealHintCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B571C1ED40FE100A014AE /* DealHintCell.swift */; };
 		6E1B571F1ED410C900A014AE /* DealSingleRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B571E1ED410C900A014AE /* DealSingleRowCell.swift */; };
 		6E1B57211ED41BDA00A014AE /* DealScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57201ED41BDA00A014AE /* DealScrollView.swift */; };
+		6E22721D1EF941B300AF9579 /* CommenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E22721C1EF941B300AF9579 /* CommenModel.swift */; };
 		6E2D43B11EDEE9DD00DC9643 /* MarketRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B01EDEE9DD00DC9643 /* MarketRequestModel.swift */; };
 		6E2D43B31EDEEED400DC9643 /* YD_CountDownHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B21EDEEED400DC9643 /* YD_CountDownHelper.swift */; };
 		6E2D43B51EDFB5E100DC9643 /* BannerDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B41EDFB5E100DC9643 /* BannerDetailImageCell.swift */; };
@@ -557,6 +558,7 @@
 		6E1B571C1ED40FE100A014AE /* DealHintCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealHintCell.swift; sourceTree = "<group>"; };
 		6E1B571E1ED410C900A014AE /* DealSingleRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealSingleRowCell.swift; sourceTree = "<group>"; };
 		6E1B57201ED41BDA00A014AE /* DealScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealScrollView.swift; sourceTree = "<group>"; };
+		6E22721C1EF941B300AF9579 /* CommenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommenModel.swift; path = iOSStar/Model/ShareDataModel/CommenModel.swift; sourceTree = SOURCE_ROOT; };
 		6E2D43B01EDEE9DD00DC9643 /* MarketRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketRequestModel.swift; sourceTree = "<group>"; };
 		6E2D43B21EDEEED400DC9643 /* YD_CountDownHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YD_CountDownHelper.swift; sourceTree = "<group>"; };
 		6E2D43B41EDFB5E100DC9643 /* BannerDetailImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerDetailImageCell.swift; sourceTree = "<group>"; };
@@ -1699,6 +1701,7 @@
 				A0EF3B1C1EB9C5860023093A /* UserModel.swift */,
 				8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */,
 				A03A46C61EEF71F800EAB8B1 /* UserInfoModel.swift */,
+				6E22721C1EF941B300AF9579 /* CommenModel.swift */,
 			);
 			path = ShareDataModel;
 			sourceTree = "<group>";
@@ -3687,6 +3690,7 @@
 				A08569FA1EB08FCA004F349B /* BaseNavigationController.swift in Sources */,
 				A03D3F671EA86A6500F85308 /* NTESPageView.m in Sources */,
 				A03D3F091EA86A6400F85308 /* NIMContactSelectTabView.m in Sources */,
+				6E22721D1EF941B300AF9579 /* CommenModel.swift in Sources */,
 				A07238A11EA76AA300E755DB /* SVProgressHUDExt.swift in Sources */,
 				A03D3EEA1EA86A6400F85308 /* UIScrollView+NTESDirection.m in Sources */,
 				A03D3F701EA86A6500F85308 /* NTESSearchTeamViewController.m in Sources */,
@@ -4200,6 +4204,7 @@
 				CODE_SIGN_ENTITLEMENTS = iOSStar/iOSStar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Zhijun Hu (72333MKM33)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhijun Hu (72333MKM33)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = GED83X9MRE;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

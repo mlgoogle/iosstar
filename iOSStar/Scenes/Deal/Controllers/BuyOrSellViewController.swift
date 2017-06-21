@@ -81,9 +81,9 @@ class BuyOrSellViewController: DealBaseViewController {
             SVProgressHUD.dismiss()
             _ = self.navigationController?.popViewController(animated: true)
             SVProgressHUD.showSuccessMessage(SuccessMessage: "委托成功", ForDuration: 1.5, completion: nil)
-        
+            
         }) { (error) in
-        SVProgressHUD.dismiss()
+            SVProgressHUD.dismiss()
         }
     }
     
@@ -112,7 +112,6 @@ class BuyOrSellViewController: DealBaseViewController {
                 self.tableView.reloadData()
             }
         }) { (error) in
-            self.didRequestError(error)
         }
     }
     
@@ -129,7 +128,6 @@ class BuyOrSellViewController: DealBaseViewController {
             }
         }) { (error) in
             
-            self.didRequestError(error)
             
         }
     }

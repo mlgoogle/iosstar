@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MJRefresh
 
 protocol ScrollStopDelegate {
     
@@ -21,6 +21,7 @@ class MarketBaseViewController: UIViewController, UIScrollViewDelegate{
     var starCode:String?
     var starName:String?
     var starPic:String?
+    var footer:MJRefreshAutoNormalFooter?
     var delegate:ScrollStopDelegate?
     var scrollView:UIScrollView?
     var isSubView = true

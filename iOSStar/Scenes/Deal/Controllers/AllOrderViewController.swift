@@ -64,7 +64,6 @@ class AllOrderViewController: DealBaseViewController {
                 self.tableView.reloadData()
             }
         }) { (error) in
-            self.didRequestError(error)
             self.endRefresh()
 
         }

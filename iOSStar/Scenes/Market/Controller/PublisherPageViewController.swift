@@ -76,7 +76,7 @@ class PublisherPageViewController: UIViewController {
             let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Markt.rawValue, bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier: "MarketDetail") as? MarketDetailViewController
             
-            let starListModel = MarketListStarModel()
+            let starListModel = MarketListModel()
             starListModel.name = bannerModel!.name
             starListModel.symbol = bannerModel!.code
             starListModel.pic = bannerDetailModel!.head_url
@@ -93,7 +93,9 @@ class PublisherPageViewController: UIViewController {
                 let string = " \(model.owntimes) 秒"
                 self.totalLabel.setAttributeText(text: "总时长\(string)", firstFont: 18, secondFont: 18, firstColor: UIColor(hexString: "999999"), secondColor: UIColor(hexString: "FB9938"), range: NSRange(location: 3, length: string.length()))
             }
-        }, error: errorBlockFunc())
+        }) { (error) in
+            
+        }
     }
     func requestExperience() {
         AppAPIHelper.marketAPI().requestStarExperience(code: bannerModel!.code, complete: { (response) in
@@ -101,7 +103,9 @@ class PublisherPageViewController: UIViewController {
                 self.expericences = models
                 self.tableView.reloadSections(IndexSet(integer: 2), with: .none)
             }
-        }, error: errorBlockFunc())
+        }) { (error) in
+            
+        }
     }
     func requestAchive() {
         AppAPIHelper.marketAPI().requestStarArachive(code:  bannerModel!.code, complete: { (response) in
@@ -109,7 +113,9 @@ class PublisherPageViewController: UIViewController {
                 self.achives = models
                 self.tableView.reloadSections(IndexSet(integer: 3), with: .none)
             }
-        }, error: errorBlockFunc())
+        }) { (error) in
+            
+        }
     }
     
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class DealBaseViewController: UIViewController {
-    var starListModel:MarketListStarModel?
+    var starListModel:MarketListModel?
     var realTimeData:RealTimeModel?
     var positionCount = 0
     var dealType:AppConst.DealType = AppConst.DealType.sell

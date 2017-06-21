@@ -69,7 +69,6 @@ class BuyYetViewController: DealBaseViewController {
             }
          self.endRefresh()
         }) { (error) in
-            self.didRequestError(error)
             self.endRefresh()
 
         }

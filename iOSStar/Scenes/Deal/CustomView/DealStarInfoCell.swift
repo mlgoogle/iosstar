@@ -19,7 +19,7 @@ class DealStarInfoCell: UITableViewCell {
     }
 
     
-    func setupData(model:MarketListStarModel?) {
+    func setupData(model:MarketListModel?) {
         guard  model != nil else {
             return
         }

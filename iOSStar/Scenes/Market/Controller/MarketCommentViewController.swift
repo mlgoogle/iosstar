@@ -24,7 +24,6 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
     var isDetail = true
     var isRefresh = true
     var header:MJRefreshNormalHeader?
-    var footer:MJRefreshAutoNormalFooter?
     
     var refreshDelegate:RefreshListDelegate?
     
