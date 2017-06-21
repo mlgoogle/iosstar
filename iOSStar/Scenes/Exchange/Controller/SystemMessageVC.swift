@@ -36,7 +36,7 @@ class MessageCell:  OEZTableViewCell{
                 
             else{
           
-            dosee.setTitle("匹配中", for: .normal)
+            dosee.setTitle("订单生成", for: .normal)
             dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
             }
         }
@@ -56,7 +56,7 @@ class MessageCell:  OEZTableViewCell{
                 dosee.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
             }
             else{
-             dosee.setTitle("匹配中", for: .normal)
+             dosee.setTitle("订单生成", for: .normal)
             dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
 
             }
@@ -67,8 +67,12 @@ class MessageCell:  OEZTableViewCell{
           dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
         }
         else if model.handle == -2{
-          dosee.setTitle("非正常订单", for: .normal)
+          dosee.setTitle("转让时间不足", for: .normal)
              dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
+        }
+        else if model.handle == -3{
+            dosee.setTitle("求购金币不足", for: .normal)
+            dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
         }
         else if model.handle == 2{
              dosee.setTitle("交易成功", for: .normal)
