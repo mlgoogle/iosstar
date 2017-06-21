@@ -29,7 +29,7 @@ class MessageCell:  OEZTableViewCell{
                 dosee.setTitle("未确认", for: .normal)
                 dosee.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
             }
-            else  if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 0) || (model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.buyHandle == 0 && model.buyHandle == 0)){
+            else  if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 0) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 0)){
                 dosee.setTitle("未确认", for: .normal)
                 dosee.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
             }
@@ -51,7 +51,10 @@ class MessageCell:  OEZTableViewCell{
                 dosee.setTitle("未确认", for: .normal)
                 dosee.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
             }
-            
+            else  if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 0) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 0)){
+                dosee.setTitle("已确认", for: .normal)
+                dosee.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
+            }
             else{
              dosee.setTitle("匹配中", for: .normal)
             dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
@@ -155,7 +158,7 @@ class SystemMessageVC: BasePageListTableViewController {
 
         let  data = self.dataSource?[indexPath.row] as! OrderListModel
         if (data.handle == 0) {
-            if ((data.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.buyHandle == 0) || (data.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0)  && (data.handle != 1)){
+            if ((data.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.buyHandle == 0) || (data.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0) ){
                 let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易", preferredStyle:.alert)
                 // 设置2个UIAlertAction
                 let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
@@ -177,7 +180,11 @@ class SystemMessageVC: BasePageListTableViewController {
             //
         }
          else if (data.handle == 1) {
-            if ((data.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0) || (data.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0)){
+            
+            if ((data.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.buyHandle == 1  && data.sellHandle == 0) || (data.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 1 && data.buyHandle == 0)){
+            
+            }
+          else  if ((data.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0) || (data.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0)){
                 let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易", preferredStyle:.alert)
                 // 设置2个UIAlertAction
                 let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
@@ -243,7 +250,7 @@ class SystemMessageVC: BasePageListTableViewController {
                 }
             }, error: { (error ) in
                   self.didRequest(1)
-               SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"]  as! String, ForDuration: 0.5, completion: nil )
+               SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"]  as! String, ForDuration: 2, completion: nil )
             })
         }else{
             let sure = SureOrderRequestModel()
@@ -263,7 +270,7 @@ class SystemMessageVC: BasePageListTableViewController {
                 }
             }, error: { (error) in
                   self.didRequest(1)
-                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 0.5, completion: nil )
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2, completion: nil )
             })
         }
 
