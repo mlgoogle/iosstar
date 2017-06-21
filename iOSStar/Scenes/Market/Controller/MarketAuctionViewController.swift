@@ -65,7 +65,7 @@ class MarketAuctionViewController: MarketBaseViewController {
             self?.count -= 1
     
             if self!.isFirst {
-                self!.reloadSections(section: 4)
+                self!.tableView.reloadData()
             }
             self!.reloadSections(section: 1)
 
@@ -80,7 +80,7 @@ class MarketAuctionViewController: MarketBaseViewController {
             initCountDownBlock()
         } else {
             if self.isFirst {
-                self.reloadSections(section: 4)
+                self.tableView.reloadData()
             }
             self.reloadSections(section: 1)
         }
@@ -97,7 +97,7 @@ class MarketAuctionViewController: MarketBaseViewController {
             if let model = response as? PositionCountModel {
                 self.countModel = model
                 if self.isFirst {
-                    self.reloadSections(section: 4)
+                    self.tableView.reloadData()
                 }
                 self.reloadSections(section: 2)
             }
@@ -115,7 +115,7 @@ class MarketAuctionViewController: MarketBaseViewController {
             if let model = response as? BuySellCountModel{
                 self.buySellModel = model
                 if self.isFirst {
-                self.reloadSections(section: 4)
+                self.tableView.reloadData()
                 }
                 self.reloadSections(section: 3)
             }
@@ -160,9 +160,6 @@ class MarketAuctionViewController: MarketBaseViewController {
             fansList?.removeAll()
             identifiers.removeLast()
             identifiers.append(NoDataCell.className())
-            if self.isFirst {
-                self.reloadSections(section: 4)
-            }
             self.reloadSections(section: 4)
         } else {
             sectionHeighs.removeLast()
