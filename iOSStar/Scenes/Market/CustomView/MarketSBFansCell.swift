@@ -33,9 +33,9 @@ class MarketSBFansCell: UITableViewCell {
         }
         dateLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(model.trades!.closeTime, format: "MM-DD HH:MM:SS")
 
-       iconImageView.kf.setImage(with: URL(string: headerUrl))
+        iconImageView.kf.setImage(with: URL(string: headerUrl))
         nameLabel.text = name
-        price.text = "\(model.trades!.openPrice)元/秒"
+        price.text = String(format: "%.2f元/秒", model.trades!.openPrice)
         
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

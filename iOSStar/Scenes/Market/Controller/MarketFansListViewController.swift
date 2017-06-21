@@ -15,6 +15,8 @@ class MarketFansListViewController: MarketBaseViewController {
     var index:Int = 0
     var fansList:[OrderFansListModel]?
     var isBuy = true
+    
+    var isRefresh = true
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView = tableView
@@ -25,6 +27,7 @@ class MarketFansListViewController: MarketBaseViewController {
         automaticallyAdjustsScrollViewInsets = false
         requestFansList()
         footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+            self.isRefresh = false
             self.requestFansList()
             
         })
@@ -48,18 +51,15 @@ class MarketFansListViewController: MarketBaseViewController {
         requestModel.start = Int32(fansList?.count ?? 0)
         AppAPIHelper.marketAPI().requestOrderFansList(requestModel: requestModel, complete: { (response) in
             if let models = response as? [OrderFansListModel]{
-                if  self.fansList?.count ?? 0 != 0 {
-                    
-                    self.fansList?.append(contentsOf: models)
-                } else{
-                    
+                
+                if self.isRefresh {
                     self.fansList = models
+                } else {
+                    self.fansList?.append(contentsOf: models)
                 }
                 self.endRefres(count:self.fansList!.count)
-
                 self.tableView.reloadData()
             }
-            self.endRefres(count:1)
         }) { (error) in
             self.endRefres(count:1)
         }
@@ -78,8 +78,10 @@ extension MarketFansListViewController:UITableViewDelegate, UITableViewDataSourc
         } else {
             isBuy = false
         }
-        tableView.reloadData()
-        //doSomething
+
+        isRefresh = true
+        requestFansList()
+         //doSomething
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

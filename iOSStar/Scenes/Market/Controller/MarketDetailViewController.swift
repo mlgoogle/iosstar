@@ -207,13 +207,15 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
     
     func setData(datas:[TimeLineModel]) {
         var entrys: [ChartDataEntry] = []
-        for (index,model) in datas.enumerated() {
-            let entry = ChartDataEntry(x: Double(index), y: model.currentPrice)
-            entrys.append(entry)
-        }
+        
         self.datas = datas.sorted(by: { (model1, model2) -> Bool in
             return model1.priceTime < model2.priceTime
         })
+        for (index,model) in self.datas!.enumerated() {
+            let entry = ChartDataEntry(x: Double(index), y: model.currentPrice)
+            entrys.append(entry)
+        }
+
         let set = LineChartDataSet(values: entrys, label: "分时图")
         set.colors = [UIColor.red]
         set.circleRadius = 0

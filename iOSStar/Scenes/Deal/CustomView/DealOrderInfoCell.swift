@@ -83,38 +83,38 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
                 return true
             }
         }
-//        isCount = false
-//        let ran = textField.text!.index((textField.text!.startIndex), offsetBy: range.location)..<textField.text!.index((textField.text!.startIndex), offsetBy: range.location + range.length)
-//        let str = textField.text?.replacingCharacters(in: ran, with: string)
-//
-//        //如果删除成 "" 字符 允许通过
-//        if range.location == 0 && string == "" {
-//            return true
-//        }
-//        //正则判断替换为后字符串是否为符合要求的字符
-//        if predicate.evaluate(with: str) {
-//            //如果为00不允许通过
-//            if str! == "00" {
-//                return false
-//            }
-//            return true
-//        } else {
-//            //如果为单纯的 . 字符，不允许通过
-//            if str == "." {
-//                return false
-//            }
-//            let array = str?.components(separatedBy: ".")
-//            if array == nil {
-//                return true
-//            } else if array!.count == 1 {
-//                return true
-//            } else if array!.last! == "" || array!.last! == "0" || array!.last! == "00" {
-//                return true
-//            } else if array!.last!.length() > 2 {
-//                return false
-//            }
-//        }
-        return true
+        isCount = false
+        let ran = textField.text!.index((textField.text!.startIndex), offsetBy: range.location)..<textField.text!.index((textField.text!.startIndex), offsetBy: range.location + range.length)
+        let str = textField.text?.replacingCharacters(in: ran, with: string)
+
+        //如果删除成 "" 字符 允许通过
+        if range.location == 0 && string == "" {
+            return true
+        }
+        //正则判断替换为后字符串是否为符合要求的字符
+        if predicate.evaluate(with: str) {
+            //如果为00不允许通过
+            if str! == "00" {
+                return false
+            }
+            return true
+        } else {
+            //如果为单纯的 . 字符，不允许通过
+            if str == "." {
+                return false
+            }
+            let array = str?.components(separatedBy: ".")
+            if array == nil {
+                return true
+            } else if array!.count == 1 {
+                return true
+            } else if array!.last! == "" || array!.last! == "0" || array!.last! == "00" {
+                return true
+            } else if array!.last!.length() > 2 {
+                return false
+            }
+        }
+        return false
     }
     
     
