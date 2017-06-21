@@ -35,7 +35,8 @@ class BuyOrSellViewController: DealBaseViewController {
         }
 
         if realTimeData != nil {
-            priceDidChange(totalPrice: realTimeData!.currentPrice * Double(600), count: 600, price: realTimeData!.currentPrice)
+            let price = String(format: "%.2f", realTimeData!.currentPrice)
+            priceDidChange(totalPrice: Double(price)! * Double(600), count: 600, price: Double(price)!)
         }
         requestPositionCount()
     }
@@ -75,8 +76,6 @@ class BuyOrSellViewController: DealBaseViewController {
         model.price = price
         model.amount = count
         
-        
-        
         AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: { (response) in
             SVProgressHUD.dismiss()
             _ = self.navigationController?.popViewController(animated: true)
@@ -109,7 +108,7 @@ class BuyOrSellViewController: DealBaseViewController {
         AppAPIHelper.marketAPI().requestRealTime(requestModel: requestModel, complete: { (response) in
             if let model = response as? [RealTimeModel] {
                 self.realTimeData = model.first
-                self.tableView.reloadData()
+                self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
             }
         }) { (error) in
         }
@@ -137,11 +136,19 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
     
     
     func priceDidChange(totalPrice: Double, count: Int, price: Double) {
+        
+
         let priceString = String(format: "%.2f", totalPrice)
         orderPriceLabel.setAttributeText(text: "总价：\(priceString)", firstFont: 18, secondFont: 18, firstColor: UIColor(hexString: "999999"), secondColor: UIColor(hexString: "FB9938"), range: NSRange(location: 3, length: priceString.length()))
         self.count = count
         self.price = price
-
+        if totalPrice == 0 {
+            buyOrSellButton.isUserInteractionEnabled = false
+            buyOrSellButton.backgroundColor = UIColor(hexString: "CCCCCC")
+        } else {
+            buyOrSellButton.isUserInteractionEnabled = true
+            buyOrSellButton.backgroundColor = UIColor(hexString: AppConst.Color.main)
+        }
     }
 
    
@@ -166,9 +173,7 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
         case 1:
             if let marketCell = cell as? DealMarketCell {
                 marketCell.setRealTimeData(model: realTimeData)
-                
             }
-            
         case 2:
             if let orderCell = cell as? DealOrderInfoCell {
                 orderCell.count = 600
@@ -178,11 +183,10 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
                     return orderCell
                 }
                 orderCell.price = price
-                
                 orderCell.setPriceAndCount(price:price, count:count)
             }
         default:
-            break
+            break   
         }
         return cell
     }

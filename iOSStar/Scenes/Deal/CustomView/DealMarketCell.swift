@@ -31,12 +31,16 @@ class DealMarketCell: UITableViewCell {
         var colorString = AppConst.Color.up
         let percent = model!.pchg * 100
 
-        if model!.change < 0 {
+        if model!.pchg < 0 {
             changePercentLabel.text = String(format: "%.2f%%", -percent)
-
             changePriceLabel.text = String(format: "%.2f", model!.change)
             colorString = AppConst.Color.down
-        }else{
+        } else if model!.pchg == 0{
+            changePercentLabel.text = String(format: "%.2f%%", -percent)
+            
+            changePriceLabel.text = String(format: "%.2f", model!.change)
+            colorString = "333333"
+        } else {
             changePercentLabel.text = String(format: "+%.2f%%",percent)
 
             changePriceLabel.text = String(format: "%.2f",model!.change)

@@ -34,7 +34,7 @@ class MarketFansCell: UITableViewCell {
         iconImaageView.kf.setImage(with: URL(string: headerUrl))
         nameLabel.text = name
         topLabel.text = String.init(format: "%.2d", index + 1)
-        price_lb.text = "\(model.trades!.openPrice)元/秒"
+        price_lb.text = String(format: "%.2f元/秒", model.trades!.openPrice)
         
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
