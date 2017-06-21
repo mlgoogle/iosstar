@@ -25,6 +25,9 @@ extension UIViewController {
     }
     func LoginSuccess(){
         
+        self.doYunxin { (result) in
+            
+        }
     }
     
     

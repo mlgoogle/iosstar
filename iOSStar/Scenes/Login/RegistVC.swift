@@ -132,7 +132,6 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
             AppAPIHelper.login().checkRegist(phone: phoneTf.text!, complete: { [weak self] (checkRegistResult) in
                 // print("---\(checkRegistResult)")
                 if let checkRegistResponse = checkRegistResult {
-
                     if let result =  checkRegistResponse["result"] as? Int{
                         if result == 1 {
                             SVProgressHUD.showErrorMessage(ErrorMessage: "该用户已注册!!!", ForDuration: 2.0, completion: nil)
@@ -272,6 +271,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
        //MARK:-   去登录
     @IBAction func doLogin(_ sender: Any) {
         view.endEditing(true)
+        self.phoneTf.text = ""
         self.resultBlock!(doStateClick.doLogin as AnyObject?)
     }
     // MARK - 微信登录

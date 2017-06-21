@@ -17,21 +17,30 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         title = "名人通讯录"
         nodaView.isHidden = true
         onlogin()
-      
-        
     }
     
     func onlogin(){
         
        self.doYunxin { (resut) in
         
+        if NIMSDK.shared().conversationManager.allUnreadCount() != 0 {
+            if NIMSDK.shared().conversationManager.allUnreadCount() >= 99 {
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem.creatBarButtonItem(title: "99+", target: self, action: #selector(self.unReadCountClick))
+            } else {
+                let strCount = String.init(format: "%d", NIMSDK.shared().conversationManager.allUnreadCount())
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem.creatBarButtonItem(title: strCount, target: nil, action: #selector(self.unReadCountClick))
+                }
+            }
         }
+    }
+    
+    func unReadCountClick () {
         
     }
+    
     override func didRequest(_ pageIndex: Int) {
         
         AppAPIHelper.user().starmaillist(status: 1, pos: Int32((pageIndex - 1) * 10), count: 10, complete: { (result) in
@@ -51,17 +60,13 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
             }else{
                 self.nodaView.isHidden = true
             }
-            
-          
-            
-
         }
 
     }
     override func   LoginSuccess(){
-     
-
+    
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
         if setRealm == false{
