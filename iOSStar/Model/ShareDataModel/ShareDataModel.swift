@@ -22,6 +22,8 @@ class ShareDataModel: NSObject {
     var isReturnBackClick : Bool = false
     var orderInfo : OrderInformation?
     var isShowInWindows : Bool = false
+    var registerModel: RegisterRequestModel = RegisterRequestModel()
+    var wxregisterModel: WXRegisterRequestModel = WXRegisterRequestModel()
   
 }
 class OrderInformation: NSObject {

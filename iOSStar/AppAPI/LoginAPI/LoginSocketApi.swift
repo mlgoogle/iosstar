@@ -34,6 +34,12 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
        startRequest(packet, complete: complete, error: error)
     }
     
+    //注册（模型）
+    func regist(model: RegisterRequestModel, complete: CompleteBlock?, error: ErrorBlock?){
+        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .register, model: model)
+        startRequest(packet, complete: complete, error: error)
+    }
+    
     func registWYIM(phone: String, token: String, complete: CompleteBlock?, error: ErrorBlock?){
         let param: [String: Any] = [SocketConst.Key.name_value: phone,
                                     SocketConst.Key.phone: phone,
@@ -76,6 +82,12 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
         print(param)
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .bindWchat, dict: param as [String : AnyObject])
         
+        startRequest(packet, complete: complete, error: error)
+    }
+    
+    //微信绑定(模型)
+    func BindWeichat(model: WXRegisterRequestModel, complete: CompleteBlock?, error: ErrorBlock?){
+        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .bindWchat, model: model)
         startRequest(packet, complete: complete, error: error)
     }
     
