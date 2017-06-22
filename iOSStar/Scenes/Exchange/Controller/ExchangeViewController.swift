@@ -62,9 +62,6 @@ class ExchangeViewController: UIViewController ,UITabBarControllerDelegate,NIMSy
                 }
             }
         }
-        
-        
-        
     }
     override func viewDidLoad() {
         
