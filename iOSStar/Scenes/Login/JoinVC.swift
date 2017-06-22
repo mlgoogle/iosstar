@@ -25,7 +25,7 @@ class JoinVC: UIViewController, UITextViewDelegate ,UIGestureRecognizerDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        bgHeight.constant = 120 + UIScreen.main.bounds.size.height
+        bgHeight.constant = 150 + UIScreen.main.bounds.size.height
     }
 
     @IBAction func joinXingXiang(_ sender: UIButton) {
@@ -83,11 +83,4 @@ class JoinVC: UIViewController, UITextViewDelegate ,UIGestureRecognizerDelegate{
     }
     
     
-    // 拦截中间contentView的点击事件
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if (touch.view?.isDescendant(of: joinView))! {
-            return false;
-        }
-        return true;
-    }
 }
