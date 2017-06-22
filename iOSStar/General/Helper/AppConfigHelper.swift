@@ -17,7 +17,7 @@ let kGtAppSecret:String = "4DXXxrRirbAhqYJor3THd"
 class AppConfigHelper: NSObject {
     
 //<<<<<<< HEAD
-    var dealResult:[Int32 : String] = [-1 : "订单取消", 0 : "扣费成功", -2 : "转让方持有时间不足", -3 : "求购方金币不足"]
+    var dealResult:[Int32 : String] = [-1 : "订单取消", 0 : "扣费成功", -2 : "转让方持有时间不足", -3 : "求购方金币不足", 2 : "交易成功"]
 //=======
 //    var dealResult:[Int32 : String] = [-1 : "订单取消", 0 : "扣费成功", 1 : "转让方持有时间不足", 2 : "求购方星享币不足"]
 //>>>>>>> iosstar/master

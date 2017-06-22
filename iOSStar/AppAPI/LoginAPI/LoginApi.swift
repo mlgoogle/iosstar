@@ -13,6 +13,8 @@ protocol LoginApi {
      
     //注册
     func regist(phone: String, password: String, complete: CompleteBlock?, error: ErrorBlock?)
+    //注册（模型）
+    func regist(model: RegisterRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
     //注册网易云
     func registWYIM(phone: String, token: String, complete: CompleteBlock?, error: ErrorBlock?)
     //登录
@@ -20,6 +22,8 @@ protocol LoginApi {
     
     //微信绑定
     func BindWeichat(phone: String, timeStamp: Int,vToken: String,pwd: String,openid: String,nickname: String,headerUrl: String,memberId: Int,agentId: String,recommend: String,deviceId: String,vCode: String, complete: CompleteBlock?, error: ErrorBlock?)
+    //微信绑定(模型)
+    func BindWeichat(model: WXRegisterRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
     
     //微信登录
     func WeichatLogin(openid: String, deviceId: String, complete: CompleteBlock?, error: ErrorBlock?)

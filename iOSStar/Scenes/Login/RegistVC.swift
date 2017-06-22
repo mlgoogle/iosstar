@@ -226,18 +226,9 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
             SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)
             return
         }
-        
-        AppAPIHelper.login().regist(phone: phoneTf.text!, password: (passTf.text?.md5_string())!, complete: { [weak self](result)  in
-            if let response = result {
-                if response["result"] as! Int == 1 {
-                    SVProgressHUD.showSuccessMessage(SuccessMessage: "注册成功", ForDuration: 2.0, completion: {
-                          self?.resultBlock!(doStateClick.doLogin as AnyObject)
-                    })
-                }
-            }
-        }) { (error) in
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-        }
+        ShareDataModel.share().registerModel.phone = phoneTf.text!
+        ShareDataModel.share().registerModel.pwd = passTf.text!.md5_string()
+        resultBlock!(doStateClick.doJoin as AnyObject?)
     }
     
     // MARK: - 微信绑定注册
@@ -247,26 +238,13 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
             SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 2.0, completion: nil)
             return
         }
-        AppAPIHelper.login().BindWeichat(phone: phoneTf.text!,
-                                         timeStamp: 123,
-                                         vToken: "1233",
-                                         pwd: (passTf.text?.md5_string())!,
-                                         openid:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!,
-                                         nickname:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.nickname]!,
-                                         headerUrl:  ShareDataModel.share().wechatUserInfo[SocketConst.Key.headimgurl]!,
-                                         memberId: 123,
-                                         agentId: "123",
-                                         recommend: "123",
-                                         deviceId: "1123",
-                                         vCode: "123", complete: { [weak self](result)  in
-            
-                                        self?.LoginYunxin()
-                                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
-                                  
-        }) { (error )  in
-            
-            SVProgressHUD.showErrorMessage(ErrorMessage:  error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-        }
+        
+        ShareDataModel.share().wxregisterModel.openid = ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!
+        ShareDataModel.share().wxregisterModel.nickname = ShareDataModel.share().wechatUserInfo[SocketConst.Key.nickname]!
+        ShareDataModel.share().wxregisterModel.headerUrl = ShareDataModel.share().wechatUserInfo[SocketConst.Key.headimgurl]!
+        ShareDataModel.share().wxregisterModel.phone = phoneTf.text!
+        ShareDataModel.share().wxregisterModel.pwd = passTf.text!.md5_string()
+        resultBlock!(doStateClick.doJoin as AnyObject?)
     }
        //MARK:-   去登录
     @IBAction func doLogin(_ sender: Any) {
