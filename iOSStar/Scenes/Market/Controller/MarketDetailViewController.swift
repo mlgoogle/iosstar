@@ -155,7 +155,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         timeLineView.scaleYEnabled = false
         timeLineView.xAxis.axisMinimum = 0
         timeLineView.xAxis.axisMaximum = 30
-        timeLineView.leftAxis.axisMinimum = 0
+//        timeLineView.leftAxis.axisMinimum = 0
         timeLineView.xAxis.labelFont = UIFont.systemFont(ofSize: 0)
         timeLineView.leftAxis.labelFont = UIFont.systemFont(ofSize: 10)
         timeLineView.leftAxis.gridColor = UIColor.init(rgbHex: 0xf2f2f2)
@@ -229,6 +229,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         set.drawFilledEnabled = true
         set.fillColor = UIColor(red: 203.0 / 255, green: 66.0 / 255, blue: 50.0 / 255, alpha: 0.5)
         let data: LineChartData  = LineChartData.init(dataSets: [set])
+        timeLineView.xAxis.axisMaximum = Double(entrys.count > 30 ? entrys.count+5 : 30)
         timeLineView.data = data
         timeLineView.data?.notifyDataChanged()
         timeLineView.setNeedsDisplay()
