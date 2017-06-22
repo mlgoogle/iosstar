@@ -9,15 +9,45 @@
 import UIKit
 import SVProgressHUD
 
-class OrderType : UITableViewCell{
+class OrderType : UITableViewCell,UITextViewDelegate{
     
     // 具体时间
     @IBOutlet weak var orderAccount: UILabel!
     // 约见时间
     @IBOutlet weak var orderType: UILabel!
+}
+
+
+//  反馈Cell
+class FeedbackCell: UITableViewCell , UITextViewDelegate{
+ 
     // 意见反馈
     @IBOutlet weak var feedBack: UITextView!
+    
+    // placeholder
+    @IBOutlet weak var placeHolderLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        feedBack.delegate = self
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        feedBack.text = textView.text
+        if textView.text == nil {
+            placeHolderLabel.text = "请输入您对此次约见的其他要求200字以内... "
+            placeHolderLabel.isHidden = false
+        } else {
+            placeHolderLabel.text = ""
+            placeHolderLabel.isHidden = true
+            
+        }
+    }
+    
 }
+
+
+
 
 class StarDataCell: UITableViewCell {
     
@@ -57,14 +87,16 @@ class StarDataCell: UITableViewCell {
 
 // MRAK: - viewDidLoad
 class OrderStarViewController: UIViewController {
-    
+
+    // MarketDetailViewController 传过来的模型
     var starInfo:MarketListModel?
-    
+
     var starModelInfo:BannerDetaiStarModel?
     
-    // CELL传输过来的类型
+    // OrderStartViewCell 传过来的模型
     var serviceTypeModel : ServiceTypeModel!
     
+    // 获取明星服务类型的数组
     var serviceModel : [ServiceTypeModel]?
     
     // 确定约见按钮
@@ -159,6 +191,7 @@ class OrderStarViewController: UIViewController {
         if notification.object != nil {
             let serviceType = notification.object as! ServiceTypeModel
             serviceTypeModel = serviceType
+            // print("===\(serviceTypeModel)")
             self.priceLabel.text = String.init(format:"%@秒",serviceType.price)
         }
     }
@@ -236,9 +269,15 @@ class OrderStarViewController: UIViewController {
                     }
                     else{
                         let model = OrderInformation()
-                        model.orderStatus = "1213.00"
-                        model.orderPrice = "12311.00"
-                        model.orderInfomation = "12311"
+//                        model.orderStatus = "1213.00"
+//                        model.orderInfomation = "12311"
+//                        model.orderPrice = "12311.00"
+                        model.orderStatus = self.serviceTypeModel.name
+                        if self.starInfo != nil {
+                            model.orderInfomation = String.init(format: "%@ (%@)", (self.starInfo?.name)! ,(self.starInfo?.symbol)!)
+                        }
+                        model.orderPrice = "\(self.serviceTypeModel.price)秒"
+                        
                         //将值传给 sharedatemodel
                         ShareDataModel.share().orderInfo = model
                         let storyboard = UIStoryboard.init(name: "Order", bundle: nil)
@@ -628,7 +667,7 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate {
         }
         if indexPath.row == 4 {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FeedbackCell") as! OrderType
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FeedbackCell") as! FeedbackCell
             feedBack = cell.feedBack
             cell.selectionStyle = .none
             return cell
