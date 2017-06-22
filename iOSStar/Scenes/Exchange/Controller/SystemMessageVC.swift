@@ -14,6 +14,7 @@ class MessageCell:  OEZTableViewCell{
     @IBOutlet var content: UILabel!
     @IBOutlet var dosee: UIButton!
     override func update(_ data: Any!) {
+        
         let model = data as! OrderListModel
        
          StartModel.getStartName(startCode: model.symbol) { (result) in
@@ -91,11 +92,11 @@ class SystemMessageVC: BasePageListTableViewController {
 
     @IBOutlet var nodata: UIView!
     var frame : CGRect? = nil
-    var needPwd :Int = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-            title = "系统消息"
+        title = "系统消息"
         tableView.separatorStyle = .none
         self.nodata.isHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backClick"), style: .done, target: self, action: #selector(leftButtonItemClick(_ :)))
@@ -104,29 +105,6 @@ class SystemMessageVC: BasePageListTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.getUserInfo { (result) in
-            if let response = result{
-                let object = response as! UserInfoModel
-                
-                self.needPwd = object.is_setpwd
-                
-                if self.needPwd == 1{
-                    let alertVc = AlertViewController()
-                    alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-                                        
-                                        titleLabelText: "开通支付",
-                                        subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购明星时间，转让明星时间，\n和明星在‘星聊’中聊天，并且还能约见明星。",
-                                        completeButtonTitle: "我 知 道 了") {[weak alertVc] (completeButton) in
-                                            alertVc?.dismissAlertVc()
-                                            
-                                            
-                                            let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
-                                            self.navigationController?.pushViewController(vc, animated: true )
-                                            return
-                    }
-                }
-            }
-        }
 
     }
     
@@ -162,6 +140,9 @@ class SystemMessageVC: BasePageListTableViewController {
         model.count = 10
       AppAPIHelper.dealAPI().requestOrderList(requestModel: model, OPCode: .historyOrder, complete: { (result) in
          if  let object = result {
+            
+            print("====\(object)")
+            
             self.didRequestComplete(object)
             if self.dataSource?.count == 0{
             self.nodata.isHidden = false
