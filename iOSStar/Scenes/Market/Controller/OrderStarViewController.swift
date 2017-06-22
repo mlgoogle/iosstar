@@ -17,7 +17,6 @@ class OrderType : UITableViewCell,UITextViewDelegate{
     @IBOutlet weak var orderType: UILabel!
 }
 
-
 //  反馈Cell
 class FeedbackCell: UITableViewCell , UITextViewDelegate{
  
@@ -46,9 +45,7 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate{
     
 }
 
-
-
-
+// 明星资料Cell
 class StarDataCell: UITableViewCell {
     
     // 背景图片
@@ -301,7 +298,6 @@ class OrderStarViewController: UIViewController {
                 }
             }
         }
-        
     }
     
     // 约见

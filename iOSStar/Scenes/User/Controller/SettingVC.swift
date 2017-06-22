@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class SettingVC: BaseTableViewController {
 
+    var needPwd : Int = 2
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -18,6 +21,12 @@ class SettingVC: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
   
+        self.getUserInfo { (result) in
+            if let response = result{
+                let object = response as! UserInfoModel
+                self.needPwd = object.is_setpwd
+            }
+        }
         title = "设置"
         self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         self.tableView.backgroundColor = UIColor.colorFromRGB(0xFAFAFA)
@@ -76,7 +85,20 @@ class SettingVC: BaseTableViewController {
             vc.navtitle = "关于我们"
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        if indexPath.row == 4 {
+            // 未设置交易密码
+            if self.needPwd == 1 {
+                SVProgressHUD.showErrorMessage(ErrorMessage: "您未设置交易密码，请设置", ForDuration: 5.0, completion: {
+                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
+                    self.navigationController?.pushViewController(vc, animated: true )
+                })
+            } else {
+                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResetTradePassVC")
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
+    
     
     // MARK: - 注销账号
     func logout() {
