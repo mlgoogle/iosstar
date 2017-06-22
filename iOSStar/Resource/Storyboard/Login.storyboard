@@ -1350,7 +1350,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加入星享" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0BX-g8-GgR">
-                                                        <rect key="frame" x="98" y="35" width="73.5" height="21"/>
+                                                        <rect key="frame" x="97.5" y="35" width="73.5" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1398,7 +1398,7 @@
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIPS：请从您的经纪人或者推荐人那里获 取相对应的ID，请至少填写一个以上的ID 信息" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibp-wZ-6OI">
-                                                        <rect key="frame" x="20" y="293" width="228" height="17"/>
+                                                        <rect key="frame" x="20" y="293" width="228" height="50.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1451,15 +1451,15 @@
                                             <constraint firstItem="YLg-8G-SlY" firstAttribute="top" secondItem="Bdu-jl-0jB" secondAttribute="top" constant="84" id="4JD-ef-A76"/>
                                             <constraint firstItem="YLg-8G-SlY" firstAttribute="leading" secondItem="Bdu-jl-0jB" secondAttribute="leading" constant="26" id="CDS-Kr-PW0"/>
                                             <constraint firstAttribute="trailing" secondItem="YLg-8G-SlY" secondAttribute="trailing" constant="26" id="gJE-eA-l2N"/>
+                                            <constraint firstAttribute="height" constant="568" id="iPv-HC-u3P"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Bdu-jl-0jB" firstAttribute="height" secondItem="gLL-Gi-z4J" secondAttribute="height" id="HTh-gi-PCB"/>
+                                    <constraint firstItem="Bdu-jl-0jB" firstAttribute="width" secondItem="gLL-Gi-z4J" secondAttribute="width" id="Lr1-aI-W9c"/>
                                     <constraint firstAttribute="bottom" secondItem="Bdu-jl-0jB" secondAttribute="bottom" id="Pj5-tf-r9Z"/>
                                     <constraint firstItem="Bdu-jl-0jB" firstAttribute="top" secondItem="gLL-Gi-z4J" secondAttribute="top" id="WEb-cy-dOE"/>
                                     <constraint firstItem="Bdu-jl-0jB" firstAttribute="leading" secondItem="gLL-Gi-z4J" secondAttribute="leading" id="XlC-Bs-Bni"/>
-                                    <constraint firstItem="Bdu-jl-0jB" firstAttribute="width" secondItem="gLL-Gi-z4J" secondAttribute="width" id="d19-WG-fAA"/>
                                     <constraint firstAttribute="trailing" secondItem="Bdu-jl-0jB" secondAttribute="trailing" id="lZU-Me-rbG"/>
                                 </constraints>
                             </scrollView>
@@ -1474,6 +1474,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="z73-ZX-8BQ"/>
                     <connections>
+                        <outlet property="bgHeight" destination="iPv-HC-u3P" id="Gew-4N-I4g"/>
                         <outlet property="closeBtn" destination="S7u-dc-d3x" id="aj6-Xh-evC"/>
                         <outlet property="joinBgView" destination="Bdu-jl-0jB" id="RNb-ae-q7b"/>
                         <outlet property="joinBtn" destination="2IX-GY-2ql" id="QRJ-TI-Li7"/>

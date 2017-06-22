@@ -19,13 +19,13 @@ class JoinVC: UIViewController, UITextViewDelegate ,UIGestureRecognizerDelegate{
     @IBOutlet weak var joinScrollView: UIScrollView!
     @IBOutlet weak var joinView: UIView!
     @IBOutlet weak var joinBgView: UIView!
+    @IBOutlet weak var bgHeight: NSLayoutConstraint!
     //定义block来判断选择哪个试图
     var resultBlock: CompleteBlock?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        joinBgView.isUserInteractionEnabled = false
-        joinScrollView.contentSize = CGSize.init(width: kScreenWidth, height: kScreenHeight+200)
+        bgHeight.constant = 120 + UIScreen.main.bounds.size.height
     }
 
     @IBAction func joinXingXiang(_ sender: UIButton) {

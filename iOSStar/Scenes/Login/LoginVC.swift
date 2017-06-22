@@ -53,7 +53,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         backViewTap.delegate = self
     
         self.automaticallyAdjustsScrollViewInsets = false
-        height.constant = 100 + UIScreen.main.bounds.size.height
+        height.constant = 120 + UIScreen.main.bounds.size.height
         width.constant = UIScreen.main.bounds.size.width
         let h  = UIScreen.main.bounds.size.height <= 568 ? 60.0 : 80
         self.top.constant = UIScreen.main.bounds.size.height/568.0 * CGFloat.init(h)
