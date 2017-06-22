@@ -67,7 +67,6 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         if (touch.view?.isDescendant(of: contentView))! {
             return false;
         }
-        
         return true;
     }
     
