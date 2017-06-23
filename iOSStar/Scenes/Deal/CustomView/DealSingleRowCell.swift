@@ -37,7 +37,8 @@ class DealSingleRowCell: UITableViewCell {
             }
         }
         codeLabel.text = model.symbol
-        secondLabel.text = "\(model.amount)/\(model.rtAmount)"
+//        secondLabel.text = "\(model.amount)/\(model.rtAmount)"
+        secondLabel.text = "\(model.amount)"
         thirdLabel.text = String(format: "%.2f", model.openPrice)
 //        if model.handle == 0 {
 //            lastLabel.text = dealType[model.buySell]

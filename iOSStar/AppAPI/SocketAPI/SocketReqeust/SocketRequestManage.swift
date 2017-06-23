@@ -73,7 +73,9 @@ class SocketRequestManage: NSObject {
         }else if packet.operate_code == SocketConst.OPCode.orderResult.rawValue{
             let response:SocketJsonResponse = SocketJsonResponse(packet:packet)
             self.receiveOrderResult!(response)
-        } else {
+        }else if packet.operate_code == SocketConst.OPCode.onlyLogin.rawValue{
+            AppConfigHelper.shared().showOnlyLogin()
+        }else{
             socketRequests.removeValue(forKey: packet.session_id)
         }
         objc_sync_exit(self)
