@@ -17,6 +17,9 @@ class MessageCell:  OEZTableViewCell{
         
         let model = data as! OrderListModel
        
+        print("===\(model)")
+        
+        
          StartModel.getStartName(startCode: model.symbol) { (result) in
             let data = result as! StartModel
             let str = model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id ? "转让":"求购"
@@ -58,7 +61,7 @@ class MessageCell:  OEZTableViewCell{
             }
             else{
              dosee.setTitle("订单生成", for: .normal)
-            dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
+             dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
 
             }
          
@@ -111,7 +114,6 @@ class SystemMessageVC: BasePageListTableViewController {
     // 判断是被push还是被modal出来的;
     func leftButtonItemClick(_ sender : Any) {
         
-        // print("点击了返回");
         let vcs = self.navigationController?.viewControllers
         
         guard vcs != nil else { return }
@@ -141,8 +143,6 @@ class SystemMessageVC: BasePageListTableViewController {
       AppAPIHelper.dealAPI().requestOrderList(requestModel: model, OPCode: .historyOrder, complete: { (result) in
          if  let object = result {
             
-            print("====\(object)")
-            
             self.didRequestComplete(object)
             if self.dataSource?.count == 0{
             self.nodata.isHidden = false
@@ -167,7 +167,6 @@ class SystemMessageVC: BasePageListTableViewController {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-
         let  data = self.dataSource?[indexPath.row] as! OrderListModel
         if (data.handle == 0) {
             if ((data.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.buyHandle == 0) || (data.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && data.sellHandle == 0) ){
@@ -178,16 +177,12 @@ class SystemMessageVC: BasePageListTableViewController {
                 }
                 let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
                     self.showView(data, false)
-
                 }
-                
                 // 添加
                 alertController.addAction(cancelAction)
                 alertController.addAction(completeAction)
                 // 弹出
                 self.present(alertController, animated: true, completion: nil)
-                
-                
             }
             //
         }
@@ -313,9 +308,7 @@ class SystemMessageVC: BasePageListTableViewController {
         let storyboard = UIStoryboard.init(name: "Order", bundle: nil)
         let controller = storyboard.instantiateInitialViewController() as!  UINavigationController
         
-        
         let rootvc = controller.viewControllers[0] as! ContainPayVC
-       
         
         rootvc.resultBlock = { (result) in
             if canel {
