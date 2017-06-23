@@ -95,7 +95,7 @@ class AlertViewController: UIViewController {
     fileprivate func setupSubTitleTextView() {
         subTitleTextView.text = ""
         // subTitleTextView.textAlignment = .center
-        // subTitleTextView.font = UIFont.systemFont(ofSize: 14.0)
+         subTitleTextView.font = UIFont.systemFont(ofSize: 14.0)
         // subTitleTextView.textColor = UIColor.colorFromRGB(0x999999)
         subTitleTextView.isEditable = false
         subTitleTextView.isScrollEnabled = false
@@ -204,8 +204,8 @@ extension AlertViewController {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 10
         paragraphStyle.alignment = .center
-        let attributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 14.0),
-                          NSParagraphStyleAttributeName: paragraphStyle,
+        
+        let attributes = [NSParagraphStyleAttributeName: paragraphStyle,
                           NSForegroundColorAttributeName:UIColor.colorFromRGB(0x999999)]
         self.subTitleTextView.attributedText = NSAttributedString(string: subTitleText, attributes: attributes)
         
