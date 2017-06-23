@@ -144,11 +144,14 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
                     let dic = model as! [String : AnyObject]
                     if dic["status"] as! Int  == 0 {
                       SVProgressHUD.showSuccessMessage(SuccessMessage: "设置成功", ForDuration: 2.0, completion: {
-//                        for controller  in (self.navigationController?.viewControllers)!{
-//                            if controller.isKind(of: UserVC.self){
-                                _ = self.navigationController?.popToRootViewController(animated: true)
-//                            }
-//                        }
+                        for controller  in (self.navigationController?.viewControllers)!{
+                            if controller.isKind(of: OrderStarViewController.self) {
+                                let orderVc = OrderStarViewController()
+                                self.navigationController?.popToViewController(controller, animated: true)
+                            } else {
+                                self.navigationController?.popToRootViewController(animated: true)
+                            }
+                        }
                       })
                     }else{
                         SVProgressHUD.showErrorMessage(ErrorMessage: "设置失败", ForDuration: 2.0, completion: nil)

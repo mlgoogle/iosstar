@@ -36,6 +36,7 @@ class DealSingleRowCell: UITableViewCell {
                 self.nameLabel.text = ""
             }
         }
+        
         codeLabel.text = model.symbol
 //        secondLabel.text = "\(model.amount)/\(model.rtAmount)"
         secondLabel.text = "\(model.amount)"
