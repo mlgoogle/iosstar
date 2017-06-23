@@ -116,7 +116,7 @@ class ContainVC: UIViewController {
         let rvc = UIStoryboard.init(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "RegistVC") as! RegistVC
         self.scrollView?.addSubview(rvc.view)
         rvc.view.frame = CGRect.init(x:  vc.view.frame.size.width, y: -10, width: vc.view.frame.size.width, height: ((self.scrollView?.frame.size.height)!+10))
-          rvc.resultBlock = { [weak self](result) in
+        rvc.resultBlock = { [weak self](result) in
             switch result as! doStateClick {
                 case .doResetPwd:
                     
@@ -139,6 +139,7 @@ class ContainVC: UIViewController {
         jvc.view.frame = CGRect.init(x:  vc.view.frame.size.width*2, y: -10, width: vc.view.frame.size.width, height: ((self.scrollView?.frame.size.height)!+10))
         jvc.resultBlock = { [weak self](result) in
             self?.scrollView?.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
+            rvc.LoginYunxin()
         }
         self.addChildViewController(jvc)
         
