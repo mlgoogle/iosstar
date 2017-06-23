@@ -131,7 +131,6 @@ class OrderStarViewController: UIViewController {
     // cityPickerView选择的Componentow (市)
     var selectComponent = 0
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -260,6 +259,7 @@ class OrderStarViewController: UIViewController {
                                                 
                                                 
                                                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
+                                                let tradePassWordVC = vc as! TradePassWordVC
                                                 self.navigationController?.pushViewController(vc, animated: true )
                                                 return
                         }

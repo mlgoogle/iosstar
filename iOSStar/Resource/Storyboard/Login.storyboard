@@ -68,7 +68,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ele-vB-QK5">
                                                         <rect key="frame" x="15" y="80" width="239" height="44"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的手机号" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jxw-gG-HVh">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的手机号" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jxw-gG-HVh">
                                                                 <rect key="frame" x="0.0" y="0.0" width="239" height="44"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
@@ -940,8 +940,8 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFB-vl-dkE">
                                                         <rect key="frame" x="15" y="70" width="239" height="40"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的手机号" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Uml-Jq-dSm">
-                                                                <rect key="frame" x="16" y="0.0" width="223" height="40"/>
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的手机号" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Uml-Jq-dSm">
+                                                                <rect key="frame" x="46" y="0.0" width="193" height="40"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -953,19 +953,27 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7R-r2-WRl">
+                                                                <rect key="frame" x="0.0" y="11.5" width="46" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
+                                                            <constraint firstItem="h7R-r2-WRl" firstAttribute="centerY" secondItem="rFB-vl-dkE" secondAttribute="centerY" id="Apo-yd-t8d"/>
+                                                            <constraint firstItem="Uml-Jq-dSm" firstAttribute="leading" secondItem="h7R-r2-WRl" secondAttribute="trailing" id="GIV-xn-dxh"/>
                                                             <constraint firstAttribute="height" constant="40" id="JNU-rr-CFb"/>
                                                             <constraint firstAttribute="bottom" secondItem="Uml-Jq-dSm" secondAttribute="bottom" id="Lzd-HH-5l4"/>
                                                             <constraint firstAttribute="trailing" secondItem="Uml-Jq-dSm" secondAttribute="trailing" id="N6j-HA-xLR"/>
                                                             <constraint firstItem="6ih-Jm-jSu" firstAttribute="leading" secondItem="rFB-vl-dkE" secondAttribute="leading" id="NmE-pb-yLf"/>
-                                                            <constraint firstItem="Uml-Jq-dSm" firstAttribute="leading" secondItem="6ih-Jm-jSu" secondAttribute="trailing" id="Svi-oC-raP"/>
                                                             <constraint firstItem="Uml-Jq-dSm" firstAttribute="top" secondItem="rFB-vl-dkE" secondAttribute="top" id="Tsr-59-kUD"/>
                                                             <constraint firstItem="6ih-Jm-jSu" firstAttribute="centerY" secondItem="rFB-vl-dkE" secondAttribute="centerY" id="a5w-gW-PhL"/>
                                                             <constraint firstAttribute="bottom" secondItem="Uml-Jq-dSm" secondAttribute="bottom" id="mKH-gt-KvY"/>
                                                             <constraint firstAttribute="trailing" secondItem="Uml-Jq-dSm" secondAttribute="trailing" id="vvd-kn-s9j"/>
                                                             <constraint firstItem="Uml-Jq-dSm" firstAttribute="top" secondItem="rFB-vl-dkE" secondAttribute="top" id="vzx-oS-gmT"/>
+                                                            <constraint firstItem="h7R-r2-WRl" firstAttribute="leading" secondItem="rFB-vl-dkE" secondAttribute="leading" id="xQL-GZ-hvn"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -977,7 +985,7 @@
                                                         <rect key="frame" x="15" y="174" width="239" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的密码" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PgT-lJ-k3U">
-                                                                <rect key="frame" x="16" y="0.0" width="223" height="40"/>
+                                                                <rect key="frame" x="49" y="0.0" width="190" height="40"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -989,16 +997,24 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1f-X3-P85">
+                                                                <rect key="frame" x="0.0" y="10.5" width="49" height="19.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="PgT-lJ-k3U" firstAttribute="top" secondItem="O7i-0s-Xod" secondAttribute="top" id="07K-6I-6Gs"/>
                                                             <constraint firstAttribute="bottom" secondItem="PgT-lJ-k3U" secondAttribute="bottom" id="5g8-Rg-7wq"/>
+                                                            <constraint firstItem="PgT-lJ-k3U" firstAttribute="leading" secondItem="Z1f-X3-P85" secondAttribute="trailing" id="9Uu-vV-EXZ"/>
                                                             <constraint firstItem="Cjh-vC-LU5" firstAttribute="centerY" secondItem="O7i-0s-Xod" secondAttribute="centerY" id="9zs-Yt-4jW"/>
                                                             <constraint firstItem="Cjh-vC-LU5" firstAttribute="leading" secondItem="O7i-0s-Xod" secondAttribute="leading" id="Kcc-sp-C6z"/>
+                                                            <constraint firstItem="Z1f-X3-P85" firstAttribute="leading" secondItem="O7i-0s-Xod" secondAttribute="leading" id="brc-BC-kjO"/>
                                                             <constraint firstAttribute="trailing" secondItem="PgT-lJ-k3U" secondAttribute="trailing" id="ckb-ag-hhJ"/>
-                                                            <constraint firstItem="PgT-lJ-k3U" firstAttribute="leading" secondItem="Cjh-vC-LU5" secondAttribute="trailing" id="j3s-sC-8bQ"/>
                                                             <constraint firstAttribute="height" constant="40" id="msN-Dd-RRZ"/>
+                                                            <constraint firstItem="Z1f-X3-P85" firstAttribute="centerY" secondItem="O7i-0s-Xod" secondAttribute="centerY" id="toi-ZW-NKq"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1103,7 +1119,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYO-Aq-OHu">
                                                         <rect key="frame" x="15" y="122" width="149" height="40"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    请输入系统验证码" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vf7-WB-c6c">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    请输入系统验证码" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vf7-WB-c6c">
                                                                 <rect key="frame" x="0.0" y="0.0" width="149" height="40"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="textColor"/>
