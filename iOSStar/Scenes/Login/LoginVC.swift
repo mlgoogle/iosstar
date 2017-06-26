@@ -36,6 +36,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         initUI()
         
     }
+    
     func initUI(){
         
 //        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
@@ -44,8 +45,6 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
 
 //         UserDefaults.standard.set((UserDefaults.standard.object(forKey: "phone") as? String)!, forKey: "lastLogin")
        
-    
-    
        loginBtn.titleLabel?.setAttributeText(text: "还没有账户 现在注册", firstFont: 14, secondFont: 14, firstColor: UIColor.init(hexString: "999999"), secondColor: UIColor.init(hexString: AppConst.Color.main), range: NSRange(location: 6, length: 4))
         
         let backViewTap = UITapGestureRecognizer.init(target: self, action: #selector(backViewTapClick))
@@ -184,10 +183,10 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         registerWYIMRequestModel.phone = phone.text!
         registerWYIMRequestModel.accid_value = phone.text!
         AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: {[weak self] (result) in
-            let datadic = result as? Dictionary<String,String>
-            if let _ = datadic {
+            if let datadic = result as? Dictionary<String,String> {
+//            if let _ = datadic {
                 UserDefaults.standard.set(self?.phone.text, forKey: "phone")
-                UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
+                UserDefaults.standard.set((datadic["token_value"])!, forKey: "tokenvalue")
                 UserDefaults.standard.synchronize()
                 NIMSDK.shared().loginManager.login((self?.phone.text!)!, token: (self?.phone.text!)!, completion: { (error) in
                     if(error != nil) {

@@ -95,18 +95,19 @@ class AppConfigHelper: NSObject {
         print( "====  \(registerWYIMRequestModel)" )
         
         AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { (result) in
-            let datadic = result as? Dictionary<String,String>
-            if let _ = datadic {
-                if let _ = datadic {
-                    let phone = UserDefaults.standard.object(forKey: "phone") as! String
-                    let token = (datadic?["token_value"]!)!
-                    NIMSDK.shared().loginManager.login(phone, token: token, completion: { (error) in
-                        if (error == nil) {
-                           NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
-                        }
-                    })
-                }
-            }
+            if let datadic = result as? Dictionary<String,String> {
+                
+                print("datadic====   \(datadic)")
+                
+                let phone = UserDefaults.standard.object(forKey: "phone") as! String
+                let token = (datadic["token_value"]!)
+
+                NIMSDK.shared().loginManager.login(phone, token: token, completion: { (error) in
+                    if (error == nil) {
+                       NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
+                    }
+            })
+          }
         }) { (error) in
             
         }
