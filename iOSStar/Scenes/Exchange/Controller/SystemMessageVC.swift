@@ -47,7 +47,7 @@ class MessageCell:  OEZTableViewCell{
         else if model.handle == 1{
             
             if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.buyHandle == 1  && model.sellHandle == 0) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 1 && model.buyHandle == 0)){
-               dosee.setTitle("对方未确认", for: .normal)
+               dosee.setTitle("已确认", for: .normal)
                 
                 dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
             }

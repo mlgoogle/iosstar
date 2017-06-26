@@ -143,6 +143,9 @@ class SocketConst: NSObject {
         
         //更新devicetoken
         case updateDeviceToken = 1
+        
+        //单点登录
+        case onlyLogin = 3040
     }
     enum type:UInt8 {
         case error  = 0

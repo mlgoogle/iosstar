@@ -96,7 +96,7 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
     
     func markerLineText(model: TimeLineModel) -> String {
         let time = Date.yt_convertDateToStr(Date.init(timeIntervalSince1970: TimeInterval(model.priceTime)), format: "MM-dd HH:mm")
-        let price = String.init(format: "%.4f", model.currentPrice)
+        let price = String.init(format: "%.2f", model.currentPrice)
         return "\(time)\n最新价\(price)"
     }
     func imageFromUIView(_ view: UIView) -> UIImage {
