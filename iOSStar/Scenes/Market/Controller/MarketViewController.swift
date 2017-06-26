@@ -45,7 +45,7 @@ class MarketViewController: UIViewController, SubViewItemSelectDelegate{
     
     func requestTypeList() {
         AppAPIHelper.marketAPI().requestTypeList(complete: { (response) in
-            if var models = response as? [MarketClassifyModel] {
+            if let models = response as? [MarketClassifyModel] {
                 var titles = [String]()
               //  let customModel = MarketClassifyModel()
                 //customModel.name = "自选"

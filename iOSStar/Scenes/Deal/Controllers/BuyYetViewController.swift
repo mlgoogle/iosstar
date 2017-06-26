@@ -59,20 +59,20 @@ class BuyYetViewController: DealBaseViewController {
     
     func requestOrder() {
         
-        AppAPIHelper.user().starmaillist(status: 1, pos: Int32((page - 1) * 10), count: 10, complete: { (result) in
-            if let Model : StarListModel = result as? StarListModel {
+        let requestModel = StarMailListRequestModel()
+        requestModel.status = 1
+        requestModel.startPos = (page - 1) * 10
+        AppAPIHelper.user().requestStarMailList(requestModel: requestModel, complete: { (result) in
+            if let Model = result as? StarListModel {
                 self.orderData = Model.depositsinfo
                 self.tableView.reloadData()
                 self.identifiers.removeLast()
                 self.identifiers.append(PositionStarCell.className())
-            
+                
             }
-         self.endRefresh()
         }) { (error) in
             self.endRefresh()
-
         }
-
     }
     
 }

@@ -138,8 +138,10 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
    
     func weixinpay(){
         SVProgressHUD.show(withStatus: "加载中")
-        AppAPIHelper.user().weixinpay(title: "余额充值", price: rechargeMoney, complete: { (result) in
-            
+        let requestModel = WeChatPayModel()
+        requestModel.title = "余额充值"
+        requestModel.price = rechargeMoney
+        AppAPIHelper.user().wechatPay(requestModel: requestModel, complete: { (result) in
             SVProgressHUD.dismiss()
             if let object = result {
                 let request : PayReq = PayReq()
@@ -154,9 +156,10 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
                 WXApi.send(request)
             }
             
-        }) { (error ) in
+        }) { (error) in
             print(error)
         }
+       
     }
     
     //MARK:选择充值金额
@@ -263,20 +266,20 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
 extension RechargeVC {
     
     fileprivate func doAliPay() {
-         SVProgressHUD.show(withStatus: "加载中")
-      AppAPIHelper.user().alipay(title: "余额充值", price: rechargeMoney, complete: { (result) in
-        
-        if let object = result  as? [String : AnyObject]{
-        AlipaySDK.defaultService().payOrder(object["orderinfo"] as! String, fromScheme: "iOSStar", callback: { (result) in
     
+        SVProgressHUD.show(withStatus: "加载中")
+      let requestModel = AliPayRequestModel()
+        requestModel.title = "余额充值"
+        requestModel.price = rechargeMoney
+        AppAPIHelper.user().alipay(requestModel: requestModel, complete: { (result) in
             SVProgressHUD.dismiss()
             if let dataDic = result as? [String : AnyObject]{
                 if (Int.init((dataDic["resultStatus"] as! String))==6001){
-                  SVProgressHUD.showErrorMessage(ErrorMessage: "支付取消", ForDuration: 2, completion: {
-                    
-                  })
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "支付取消", ForDuration: 2, completion: {
+                        
+                    })
                 }
-               else  if (Int.init((dataDic["resultStatus"] as! String))==9000){
+                else  if (Int.init((dataDic["resultStatus"] as! String))==9000){
                     SVProgressHUD.showErrorMessage(ErrorMessage: "支付成功", ForDuration: 2, completion: {
                         
                     })
@@ -284,11 +287,34 @@ extension RechargeVC {
                     SVProgressHUD.showErrorMessage(ErrorMessage: "支付失败", ForDuration: 2, completion: {})
                 }
             }
-        })
+        }) { (error) in
+            
         }
-      }) { (error) in
-        
-        }
+//        AppAPIHelper.user().alipay(title: "余额充值", price: rechargeMoney, complete: { (result) in
+//        
+//        if let object = result  as? [String : AnyObject]{
+//        AlipaySDK.defaultService().payOrder(object["orderinfo"] as! String, fromScheme: "iOSStar", callback: { (result) in
+//    
+//            SVProgressHUD.dismiss()
+//            if let dataDic = result as? [String : AnyObject]{
+//                if (Int.init((dataDic["resultStatus"] as! String))==6001){
+//                  SVProgressHUD.showErrorMessage(ErrorMessage: "支付取消", ForDuration: 2, completion: {
+//                    
+//                  })
+//                }
+//               else  if (Int.init((dataDic["resultStatus"] as! String))==9000){
+//                    SVProgressHUD.showErrorMessage(ErrorMessage: "支付成功", ForDuration: 2, completion: {
+//                        
+//                    })
+//                }else{
+//                    SVProgressHUD.showErrorMessage(ErrorMessage: "支付失败", ForDuration: 2, completion: {})
+//                }
+//            }
+//        })
+//        }
+//      }) { (error) in
+//        
+//        }
         // NOTE: 调用支付结果开始支付
      
     }
@@ -297,25 +323,25 @@ extension RechargeVC {
     fileprivate func doWeiXinPay() {
     
         SVProgressHUD.show(withStatus: "加载中")
-        AppAPIHelper.user().weixinpay(title: "余额充值",
-                                      price: rechargeMoney,
-                                      complete: { (result) in
-                                        SVProgressHUD.dismiss()
-                                        if let object = result {
-                                            let request : PayReq = PayReq()
-                                            let str : String = object["timestamp"] as! String!
-                                            //                            ShareModel.share().shareData["rid"] =  object["rid"] as! String!
-                                            request.timeStamp = UInt32(str)!
-                                            request.sign = object["sign"] as! String!
-                                            request.package = object["package"] as! String!
-                                            request.nonceStr = object["noncestr"] as! String!
-                                            request.partnerId = object["partnerid"] as! String!
-                                            request.prepayId = object["prepayid"] as! String!
-                                            WXApi.send(request)
-                                        }
-                                        
-        }) { (error ) in
+        let requestModel = WeChatPayModel()
+        requestModel.title = "余额充值"
+        requestModel.price = rechargeMoney
+        AppAPIHelper.user().wechatPay(requestModel: requestModel, complete: { (result) in
+            SVProgressHUD.dismiss()
+            if let object = result {
+                let request : PayReq = PayReq()
+                let str : String = object["timestamp"] as! String!
+                //                            ShareModel.share().shareData["rid"] =  object["rid"] as! String!
+                request.timeStamp = UInt32(str)!
+                request.sign = object["sign"] as! String!
+                request.package = object["package"] as! String!
+                request.nonceStr = object["noncestr"] as! String!
+                request.partnerId = object["partnerid"] as! String!
+                request.prepayId = object["prepayid"] as! String!
+                WXApi.send(request)
+            }
             
+        }) { (error) in
             print(error)
         }
     }

@@ -13,10 +13,8 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
     
     //请求行情分类
     func requestTypeList(complete: CompleteBlock?, error: ErrorBlock?) {
-        
         let paramters:[String:Any] = [SocketConst.Key.phone : "123"]
         let packet = SocketDataPacket(opcode: .marketType, parameters: paramters)
-        
         startModelsRequest(packet, listName: "list", modelClass: MarketClassifyModel.self, complete: complete, error: error)
     }
     //搜索

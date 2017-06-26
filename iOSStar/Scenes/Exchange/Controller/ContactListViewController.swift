@@ -42,8 +42,11 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
     }
     
     override func didRequest(_ pageIndex: Int) {
+        let requestModel = StarMailListRequestModel()
+        requestModel.status = 1
+        requestModel.startPos = (pageIndex - 1) * 10
         
-        AppAPIHelper.user().starmaillist(status: 1, pos: Int32((pageIndex - 1) * 10), count: 10, complete: { (result) in
+        AppAPIHelper.user().requestStarMailList(requestModel: requestModel, complete: { (result) in
             if  let Model  = result as? StarListModel{
                 self.didRequestComplete( Model.depositsinfo as AnyObject)
                 if self.dataSource?.count == 0{
@@ -52,15 +55,15 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
                     self.nodaView.isHidden = true
                 }
             }
-            
-        }) { (error ) in
-             self.didRequestComplete(nil)
+        }) { (error) in
+            self.didRequestComplete(nil)
             if self.dataSource?.count == nil{
-               self.nodaView.isHidden = false
+                self.nodaView.isHidden = false
             }else{
                 self.nodaView.isHidden = true
             }
         }
+
 
     }
     override func   LoginSuccess(){

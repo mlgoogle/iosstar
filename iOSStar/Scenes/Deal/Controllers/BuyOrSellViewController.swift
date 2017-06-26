@@ -136,8 +136,6 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
     
     
     func priceDidChange(totalPrice: Double, count: Int, price: Double) {
-        
-
         let priceString = String(format: "%.2f", totalPrice)
         orderPriceLabel.setAttributeText(text: "总价：\(priceString)", firstFont: 18, secondFont: 18, firstColor: UIColor(hexString: "999999"), secondColor: UIColor(hexString: "FB9938"), range: NSRange(location: 3, length: priceString.length()))
         self.count = count
@@ -182,6 +180,7 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
                 guard realTimeData != nil else {
                     return orderCell
                 }
+                orderCell.maxCount = totalCount
                 orderCell.price = price
                 orderCell.setPriceAndCount(price:price, count:count)
             }

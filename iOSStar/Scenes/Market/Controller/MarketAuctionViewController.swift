@@ -36,7 +36,7 @@ class MarketAuctionViewController: MarketBaseViewController {
 
 
         requestAuctionSattus()
-        requestFansList()
+       // requestFansList()
         requetTotalCount()
         requestPositionCount()
         requestPercent()
@@ -106,12 +106,10 @@ class MarketAuctionViewController: MarketBaseViewController {
         AppAPIHelper.marketAPI().requstBuySellPercent(requestModel: requestModel, complete: { (response) in
             if let model = response as? BuySellCountModel{
                 self.buySellModel = model
-
                 self.reloadSections(section: 3)
             }
             
         }) { (error) in
-            
                 self.reloadSections(section: 3)
         }
 
@@ -226,7 +224,6 @@ class MarketAuctionViewController: MarketBaseViewController {
         }) { (error) in
             
             
-            
         }
     }
     
@@ -274,7 +271,6 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
             headerView.isShowImage = false
             return headerView
         }
-        
         return nil
     }
     
@@ -326,6 +322,9 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
             if let nodataCell = cell as? NoDataCell {
                 nodataCell.setImageAndTitle(image: UIImage(named: "nodata_fanslist"), title: nil)
             } else if let fansCell = cell as? MarketAuctionCell {
+                guard fansList != nil else {
+                    return fansCell
+                }
                 fansCell.setFans(model:fansList![indexPath.row])
 
             }

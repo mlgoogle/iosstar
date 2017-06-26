@@ -28,6 +28,8 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
  
     @IBOutlet weak var coutTextField: UITextField!
     
+    var maxCount = 600
+    
     var isCount = false
     var delegate:OrderInfoChangeDelegate?
     lazy var predicate:NSPredicate = {
@@ -63,7 +65,10 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
     }
 
     func setPriceAndCount(price:Double, count:Int) {
-        coutTextField.text = "\(count)"
+        if count > maxCount {
+            self.count = maxCount
+        }
+        coutTextField.text = "\(maxCount)"
         priceTextField.text = String(format: "%.2f", price)
         self.price = Double(priceTextField.text!)!
         delegate?.priceDidChange(totalPrice: getCurrentPrice(), count: count, price: price)
@@ -73,15 +78,21 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
+        
         if textField == coutTextField {
-  
+            
             isCount = true
             if string == "." {
                 return false
             } else {
+                if textField.text != nil {
+                    if Int(coutTextField.text!)! > maxCount {
+                        return false
+                    }
+                }
                 return true
             }
+            
         }
         isCount = false
         let ran = textField.text!.index((textField.text!.startIndex), offsetBy: range.location)..<textField.text!.index((textField.text!.startIndex), offsetBy: range.location + range.length)

@@ -65,4 +65,15 @@ class UserModel: Object {
     }
 
 }
+class WeChatPayResultModel: Object {
+    
+    dynamic var appid = ""
+    dynamic var partnerid = ""
+    dynamic var prepayid = ""
+    dynamic var package = ""
+    dynamic var noncestr = ""
+    dynamic var timestamp = ""
+    dynamic var sign = ""
+//    dynamic var rid = ""
+}
 
