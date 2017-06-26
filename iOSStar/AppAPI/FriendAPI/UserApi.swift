@@ -37,8 +37,14 @@ protocol UserApi {
      func getauserinfo( complete: CompleteBlock?, error: ErrorBlock?)
     // tokenLogin token登录
      func tokenLogin( complete: CompleteBlock?, error: ErrorBlock?)
-    func weichattokenLogin( id:Int64,token:String,complete: CompleteBlock?, error: ErrorBlock?)
-    // 修改nickname 
+    
+    
+    // 微信token登录
+    func weichattokenLogin(id:Int64,token:String,complete: CompleteBlock?, error: ErrorBlock?)
+    // 微信token登录(模型)
+    func weChatTokenLogin(model:WeChatTokenRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
+    
+    // 修改nickname
     func modifyNickName(nickname:String, complete: CompleteBlock?, error: ErrorBlock?)
     
     // 获取已购明星数量

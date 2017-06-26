@@ -71,20 +71,45 @@ class AppConfigHelper: NSObject {
         }
         
     }
+    
     func LoginYunxin(){
-        AppAPIHelper.login().registWYIM(phone: UserDefaults.standard.object(forKey: "phone") as! String, token: UserDefaults.standard.object(forKey: "phone")! as! String, complete: { (result) in
-            let datadic = result as? Dictionary<String,String>
-            if let _ = datadic {
+//        AppAPIHelper.login().registWYIM(phone: UserDefaults.standard.object(forKey: "phone") as! String, token: UserDefaults.standard.object(forKey: "phone")! as! String, complete: { (result) in
+//            let datadic = result as? Dictionary<String,String>
+//            if let _ = datadic {
+//                
+//                NIMSDK.shared().loginManager.login(UserDefaults.standard.object(forKey: "phone") as! String, token: (datadic?["token_value"]!)!, completion: { (error) in
+//                    if (error == nil){
+//                        
+//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
+//                    }
+//                })
+//            }
+//        }) { (error)  in
+//            SVProgressHUD.showErrorMessage(ErrorMessage: "失败", ForDuration: 2.0, completion: nil)
+//      }
+        let registerWYIMRequestModel = RegisterWYIMRequestModel()
+        registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as! String
+        registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as! String
+        registerWYIMRequestModel.accid_value = UserDefaults.standard.object(forKey: "phone") as! String
+        
+        print( "====  \(registerWYIMRequestModel)" )
+        
+        AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { (result) in
+            if let datadic = result as? Dictionary<String,String> {
                 
-                NIMSDK.shared().loginManager.login(UserDefaults.standard.object(forKey: "phone") as! String, token: (datadic?["token_value"]!)!, completion: { (error) in
-                    if (error == nil){
-                        
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
+                print("datadic====   \(datadic)")
+                
+                let phone = UserDefaults.standard.object(forKey: "phone") as! String
+                let token = (datadic["token_value"]!)
+
+                NIMSDK.shared().loginManager.login(phone, token: token, completion: { (error) in
+                    if (error == nil) {
+                       NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
                     }
-                    
-                })
-            }
-        }) { (error)  in
+            })
+          }
+        }) { (error) in
+            
         }
     }
      // MARK: - 网易云信
