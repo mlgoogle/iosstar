@@ -16,10 +16,11 @@ class LoginRequestModel: BaseModel {
 class RegisterRequestModel: BaseModel{
     var phone = ""
     var pwd = ""
-    var memberId = 0
+    var memberId = ""
     var agentId = ""
     var recommend = ""
     var timestamp = ""
+    var sub_agentId = ""
 }
 
 class WXRegisterRequestModel: BaseModel{
@@ -30,9 +31,10 @@ class WXRegisterRequestModel: BaseModel{
     var openid = ""
     var nickname = ""
     var headerUrl = ""
-    var memberId = 0
+    var memberId = ""
     var agentId = ""
     var recommend = ""
+    var sub_agentId = ""
     var deviceId = ""
     var vCode = ""
 }
