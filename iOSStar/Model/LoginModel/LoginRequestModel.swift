@@ -9,11 +9,12 @@
 import UIKit
 
 class LoginRequestModel: BaseModel {
-
+    var phone = ""
+    var pwd = ""
+    var deviceId = ""
 }
 
-
-class RegisterRequestModel: BaseModel{
+class RegisterRequestModel: BaseModel {
     var phone = ""
     var pwd = ""
     var memberId = 0
@@ -22,7 +23,7 @@ class RegisterRequestModel: BaseModel{
     var timestamp = ""
 }
 
-class WXRegisterRequestModel: BaseModel{
+class WXRegisterRequestModel: BaseModel {
     var phone = ""
     var timeStamp = 0
     var vToken = ""
@@ -36,3 +37,33 @@ class WXRegisterRequestModel: BaseModel{
     var deviceId = ""
     var vCode = ""
 }
+
+class WeChatLoginRequestModel: BaseModel {
+    var openid = ""
+    var deviceId = ""
+}
+
+class CheckRegisterRequestModel: BaseModel {
+    var phone = ""
+}
+
+class SendVerificationCodeRequestModel: BaseModel {
+    var phone = ""
+}
+
+class ResetPassWdRequestModel: BaseModel {
+    var phone = ""
+    var pwd = ""
+}
+
+class RegisterWYIMRequestModel : BaseModel {
+    var name_value = ""
+    var accid_value = ""
+    var phone = ""
+    var memberId = 1001
+    var agentId = "186681261"
+    var recommend = "3tewe"
+    var timeStamp = 100088888
+}
+
+

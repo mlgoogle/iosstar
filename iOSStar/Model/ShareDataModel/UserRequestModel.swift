@@ -23,3 +23,9 @@ class ResetPayPwdRequestModel: UserBaseModel {
     var pwd = ""
     var phone = ""
 }
+
+class WeChatTokenRequestModel: BaseModel {
+    
+    var id : Int64 = 0
+    var token : String = ""
+}
