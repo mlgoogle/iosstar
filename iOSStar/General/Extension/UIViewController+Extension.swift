@@ -73,25 +73,46 @@ extension UIViewController {
       //登录网易云信
     func doYunxin(complete: CompleteBlock?){
         
+//        if UserDefaults.standard.object(forKey: "phone") as? String != nil {
+//            
+//            let phoneNum = (UserDefaults.standard.object(forKey: "phone") as? String)!
+//            
+//            AppAPIHelper.login().registWYIM(phone : phoneNum, token : phoneNum, complete : { (result) in
+//                let datatic = result as? Dictionary<String,String>
+//                if let response = datatic {
+//                    NIMSDK.shared().loginManager.login( phoneNum, token: (response["token_value"])!, completion: { (error) in
+//                        if (error != nil){
+//                        }
+//                        complete?(true as AnyObject)
+//                        
+//                    })
+//                    UserDefaults.standard.set((response["token_value"])!, forKey: "tokenvalue")
+//                    UserDefaults.standard.synchronize()
+//                }
+//            }) { (error) in
+//               
+//            }
+//        }
         if UserDefaults.standard.object(forKey: "phone") as? String != nil {
-            
             let phoneNum = (UserDefaults.standard.object(forKey: "phone") as? String)!
-            
-            AppAPIHelper.login().registWYIM(phone : phoneNum, token : phoneNum, complete : { (result) in
+            let registerWYIMRequestModel = RegisterWYIMRequestModel()
+            registerWYIMRequestModel.name_value = phoneNum
+            registerWYIMRequestModel.phone = phoneNum
+            registerWYIMRequestModel.accid_value = phoneNum
+            AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { (result) in
                 let datatic = result as? Dictionary<String,String>
                 if let response = datatic {
-                    NIMSDK.shared().loginManager.login( phoneNum, token: (response["token_value"])!, completion: { (error) in
+                    NIMSDK.shared().loginManager.login(phoneNum, token: (response["token_value"])!, completion: { (error) in
                         if (error != nil){
                         }
                         complete?(true as AnyObject)
-                        
                     })
                     UserDefaults.standard.set((response["token_value"])!, forKey: "tokenvalue")
                     UserDefaults.standard.synchronize()
                 }
-            }) { (error) in
-               
-            }
+            }, error: { (error) in
+                
+            })
         }
     }
     //退出登录

@@ -80,8 +80,8 @@ class ModifyNicknameModel: MarketBaseModel {
 
 class GetAllStarInfoModel: BaseModel {
     
-    var phone = ""
-    var starcode = ""
+    var phone = "1123"
+    var code = "123"
     var all = 1
 }
 class AliPayRequestModel: WeChatPayModel {
@@ -95,4 +95,10 @@ class ResetPayPwdRequestModel: UserBaseModel {
     var type = 1
     var pwd = ""
     var phone = ""
+}
+
+class WeChatTokenRequestModel: BaseModel {
+    
+    var id : Int64 = 0
+    var token : String = ""
 }

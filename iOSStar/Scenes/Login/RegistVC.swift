@@ -117,30 +117,68 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title =  "注册"
         initUI()
-        // Do any additional setup after loading the view.
+        
     }
+    
     //17682310986
     //MARK:-   发送验证码
     @IBAction func sendVaildCode(_ sender: Any) {
         
+//        if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
+//            vaildCodeBtn.isEnabled = false
+//            // 校验用户是否注册  // 1 表示已注册, // 0 表示未注册
+//            AppAPIHelper.login().checkRegist(phone: phoneTf.text!, complete: { [weak self] (checkRegistResult) in
+//                // print("---\(checkRegistResult)")
+//                if let checkRegistResponse = checkRegistResult {
+//                    if let result =  checkRegistResponse["result"] as? Int{
+//                        if result == 1 {
+//                            SVProgressHUD.showErrorMessage(ErrorMessage: "该用户已注册!!!", ForDuration: 2.0, completion: nil)
+//                            self?.vaildCodeBtn.isEnabled = true
+//                            return
+//                        } else {
+//                            SVProgressHUD.showProgressMessage(ProgressMessage: "")
+//                            // 用户未注册,发送验证码
+//                            AppAPIHelper.login().SendCode(phone: (self?.phoneTf.text!)!, complete: {[weak self] (result) in
+//                                SVProgressHUD.dismiss()
+//                                self?.vaildCodeBtn.isEnabled = true
+//                                if let response = result {
+//                                    if response["result"] as! Int == 1 {
+//                                        self?.timer = Timer.scheduledTimer(timeInterval: 1,target:self!,selector: #selector(self?.updatecodeBtnTitle),userInfo: nil,repeats: true)
+//                                        self?.timeStamp = String.init(format: "%ld", response["timeStamp"] as!  Int)
+//                                        self?.vToken = String.init(format: "%@", response["vToken"] as! String)
+//                                        
+//                                    }
+//                                }
+//                                }, error: { (error) in
+//                                    SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+//                                    self?.vaildCodeBtn.isEnabled = true
+//                            })
+//                        }
+//                    }
+//                   
+//                }
+//            }, error: { (error) in
+//                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+//                self.vaildCodeBtn.isEnabled = true
+//            })
+//         }
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
             vaildCodeBtn.isEnabled = false
-            // 校验用户是否注册  // 1 表示已注册, // 0 表示未注册
-            AppAPIHelper.login().checkRegist(phone: phoneTf.text!, complete: { [weak self] (checkRegistResult) in
-                // print("---\(checkRegistResult)")
+            let checkRegisterRequestModel = CheckRegisterRequestModel()
+            checkRegisterRequestModel.phone = phoneTf.text!
+            AppAPIHelper.login().CheckRegister(model: checkRegisterRequestModel, complete: {[weak self] (checkRegistResult) in
                 if let checkRegistResponse = checkRegistResult {
-                    if let result =  checkRegistResponse["result"] as? Int{
+                    if let result = checkRegistResponse["result"] as? Int {
                         if result == 1 {
-                            SVProgressHUD.showErrorMessage(ErrorMessage: "该用户已注册!!!", ForDuration: 2.0, completion: nil)
+                            SVProgressHUD.showErrorMessage(ErrorMessage: "该用户已注册,请登录", ForDuration: 2.0, completion: nil)
                             self?.vaildCodeBtn.isEnabled = true
-                            return
                         } else {
                             SVProgressHUD.showProgressMessage(ProgressMessage: "")
-                            // 用户未注册,发送验证码
-                            AppAPIHelper.login().SendCode(phone: (self?.phoneTf.text!)!, complete: {[weak self] (result) in
+                            let sendVerificationCodeRequestModel = SendVerificationCodeRequestModel()
+                            sendVerificationCodeRequestModel.phone = (self?.phoneTf.text!)!
+                            AppAPIHelper.login().SendVerificationCode(model: sendVerificationCodeRequestModel, complete: { [weak self] (result) in
                                 SVProgressHUD.dismiss()
                                 self?.vaildCodeBtn.isEnabled = true
                                 if let response = result {
@@ -148,23 +186,20 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
                                         self?.timer = Timer.scheduledTimer(timeInterval: 1,target:self!,selector: #selector(self?.updatecodeBtnTitle),userInfo: nil,repeats: true)
                                         self?.timeStamp = String.init(format: "%ld", response["timeStamp"] as!  Int)
                                         self?.vToken = String.init(format: "%@", response["vToken"] as! String)
-                                        
                                     }
                                 }
-                                }, error: { (error) in
-                                    SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-                                    self?.vaildCodeBtn.isEnabled = true
+                            }, error: { (error) in
+                                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+                                self?.vaildCodeBtn.isEnabled = true
                             })
                         }
                     }
-                   
                 }
             }, error: { (error) in
-                // print("====\(error.code)")
                 SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
                 self.vaildCodeBtn.isEnabled = true
             })
-         }
+        }
     }
     //MARK:-   更新秒数
     func updatecodeBtnTitle() {
@@ -269,20 +304,39 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     //MARK:- 网易云登录
     func LoginYunxin(){
         
-        AppAPIHelper.login().registWYIM(phone: self.phoneTf.text!, token: self
-            .phoneTf.text!, complete: { (result) in
-                let datadic = result as? Dictionary<String,String>
-                if let _ = datadic {
-                    UserDefaults.standard.set(self.phoneTf.text, forKey: "phone")
-                    UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
-                    UserDefaults.standard.synchronize()
-                    NIMSDK.shared().loginManager.login(self.phoneTf.text!, token: self.passTf.text!, completion: { (error) in
-                        if (error != nil){
-                            self.dismissController()
-                        }
-                    })
-                }
-        }) { (error)  in
+//        AppAPIHelper.login().registWYIM(phone: self.phoneTf.text!, token: self
+//            .phoneTf.text!, complete: { (result) in
+//                let datadic = result as? Dictionary<String,String>
+//                if let _ = datadic {
+//                    UserDefaults.standard.set(self.phoneTf.text, forKey: "phone")
+//                    UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
+//                    UserDefaults.standard.synchronize()
+//                    NIMSDK.shared().loginManager.login(self.phoneTf.text!, token: self.passTf.text!, completion: { (error) in
+//                        if (error != nil){
+//                            self.dismissController()
+//                        }
+//                    })
+//                }
+//        }) { (error)  in
+//        }
+        let registerWYIMRequestModel = RegisterWYIMRequestModel()
+        registerWYIMRequestModel.name_value = phoneTf.text!
+        registerWYIMRequestModel.phone = phoneTf.text!
+        registerWYIMRequestModel.accid_value = phoneTf.text!
+        AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { [weak self](result) in
+            if let datadic = result as? Dictionary<String,String> {
+//            if let _ = datadic {
+                UserDefaults.standard.set(self?.phoneTf.text, forKey: "phone")
+                UserDefaults.standard.set((datadic["token_value"])!, forKey: "tokenvalue")
+                UserDefaults.standard.synchronize()
+                NIMSDK.shared().loginManager.login((self?.phoneTf.text!)!, token: (self?.passTf.text!)!, completion: { (error) in
+                    if (error != nil){
+                            self?.dismissController()
+                    }
+                })
+            }
+        }) { (error) in
+            
         }
     }
     

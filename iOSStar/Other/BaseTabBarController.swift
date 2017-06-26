@@ -83,7 +83,7 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
 //        } else {
 //            self.tabBar.hideBadgeOnItemIndex(index: 2)
 //        }
-        print("====\(self.sessionUnreadCount)")
+        print("未读消息条数====\(self.sessionUnreadCount)")
         self.refreshSessionBadge()
     }
     

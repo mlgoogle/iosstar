@@ -43,7 +43,15 @@ protocol UserApi {
     func weichattokenLogin( id:Int64,token:String,complete: CompleteBlock?, error: ErrorBlock?)
     // 修改nickname 
     func modfyNickname(requestModel:ModifyNicknameModel,complete: CompleteBlock?, error: ErrorBlock? )
+
+     func tokenLogin( complete: CompleteBlock?, error: ErrorBlock?)
     
+    
+
+    // 微信token登录(模型)
+    func weChatTokenLogin(model:WeChatTokenRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
+    
+
     // 获取已购明星数量
     
     func requestBuyStarCount(complete: CompleteBlock?, error: ErrorBlock?)

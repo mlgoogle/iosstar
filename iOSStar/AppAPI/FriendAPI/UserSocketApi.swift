@@ -9,6 +9,10 @@
 import UIKit
 
 class UserSocketApi: BaseSocketAPI, UserApi  {
+    internal func tokenLogin(complete: CompleteBlock?, error: ErrorBlock?) {
+        
+    }
+
 
 
     func requestStarMailList(requestModel:StarMailListRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
@@ -91,7 +95,9 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
 
     }
 
-    // MARK: -  tokenLogin token登录
+    
+    // MARK: -  WX tokenLogin token登录
+
     func weichattokenLogin( id:Int64,token:String,complete: CompleteBlock?, error: ErrorBlock?){
         
         let param: [String: Any] = [SocketConst.Key.uid: id,
@@ -99,6 +105,12 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         print(param)
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .tokenLogin, dict: param as [String : AnyObject])
         //startRequest(packet, complete: complete, error: error)
+        startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
+    }
+    
+    func weChatTokenLogin(model: WeChatTokenRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
+        
+        let packet : SocketDataPacket = SocketDataPacket.init(opcode: .tokenLogin, model: model)
         startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
     }
 

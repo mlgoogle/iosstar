@@ -73,7 +73,7 @@ class MarketAuctionViewController: MarketBaseViewController {
             return
         }
         if statusModel!.status && statusModel!.remainingTime > 0 {
-            endTime = Int64(Date().timeIntervalSince1970) + statusModel!.remainingTime + YD_CountDownHelper.shared.timeDistance
+            endTime = Int64(Date().timeIntervalSince1970) + statusModel!.remainingTime
             initCountDownBlock()
         } else {
 

@@ -36,6 +36,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         initUI()
         
     }
+    
     func initUI(){
         
 //        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
@@ -44,8 +45,6 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
 
 //         UserDefaults.standard.set((UserDefaults.standard.object(forKey: "phone") as? String)!, forKey: "lastLogin")
        
-    
-    
        loginBtn.titleLabel?.setAttributeText(text: "还没有账户 现在注册", firstFont: 14, secondFont: 14, firstColor: UIColor.init(hexString: "999999"), secondColor: UIColor.init(hexString: AppConst.Color.main), range: NSRange(location: 6, length: 4))
         
         let backViewTap = UITapGestureRecognizer.init(target: self, action: #selector(backViewTapClick))
@@ -133,13 +132,15 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
             SVProgressHUD.showErrorMessage(ErrorMessage: "请输入6位字符以上密码", ForDuration: 2.0, completion: nil)
             return
         }
-        
         SVProgressHUD.showProgressMessage(ProgressMessage: "登录中······")
         if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]) {
-            AppAPIHelper.login().login(phone: phone.text!, password: (passPwd.text?.md5_string())!, complete: { [weak self](result)  in
+            let loginRequestModel = LoginRequestModel()
+            loginRequestModel.phone = phone.text!
+            loginRequestModel.pwd = (passPwd.text?.md5_string())!
+            AppAPIHelper.login().login(model: loginRequestModel, complete: {[weak self] (result) in
                 SVProgressHUD.dismiss()
                 let datadic = result as? UserModel
-                SVProgressHUD.showSuccessMessage(SuccessMessage:"登录成功", ForDuration: 2.0, completion: {
+                SVProgressHUD.showSuccessMessage(SuccessMessage: "登录成功", ForDuration: 2.0, completion: { 
                     btn.isUserInteractionEnabled = true
                     if let _ = datadic {
                         UserDefaults.standard.set(self?.phone.text, forKey: "phone")
@@ -150,11 +151,10 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
                     }
                 })
-            }) { (error) in
-                    btn.isUserInteractionEnabled = true
-                    print(error.code)
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "手机号或密码错误", ForDuration: 2.0, completion: nil)
-            }
+            }, error: { (error) in
+                btn.isUserInteractionEnabled = true
+                SVProgressHUD.showErrorMessage(ErrorMessage: "手机号或密码错误", ForDuration: 2.0, completion: nil)
+            })
         } else {
             
             btn.isUserInteractionEnabled = true
@@ -163,20 +163,39 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
     
     //MARK:- 网易云登录
     func LoginYunxin(){
-        AppAPIHelper.login().registWYIM(phone: self.phone.text!, token: self
-            .phone.text!, complete: { (result) in
-                let datadic = result as? Dictionary<String,String>
-                if let _ = datadic {
-                    UserDefaults.standard.set(self.phone.text, forKey: "phone")
-                    UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
-                    UserDefaults.standard.synchronize()
-                    NIMSDK.shared().loginManager.login(self.phone.text!, token: self.phone.text!, completion: { (error) in
-                        if (error != nil){
-                            self.dismissController()
-                        }
-                    })
-                }
-        }) { (error)  in
+//        AppAPIHelper.login().registWYIM(phone: self.phone.text!, token: self
+//            .phone.text!, complete: { (result) in
+//                let datadic = result as? Dictionary<String,String>
+//                if let _ = datadic {
+//                    UserDefaults.standard.set(self.phone.text, forKey: "phone")
+//                    UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
+//                    UserDefaults.standard.synchronize()
+//                    NIMSDK.shared().loginManager.login(self.phone.text!, token: self.phone.text!, completion: { (error) in
+//                        if (error != nil){
+//                            self.dismissController()
+//                        }
+//                    })
+//                }
+//        }) { (error)  in
+//        }
+        let registerWYIMRequestModel = RegisterWYIMRequestModel()
+        registerWYIMRequestModel.name_value = phone.text!
+        registerWYIMRequestModel.phone = phone.text!
+        registerWYIMRequestModel.accid_value = phone.text!
+        AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: {[weak self] (result) in
+            if let datadic = result as? Dictionary<String,String> {
+//            if let _ = datadic {
+                UserDefaults.standard.set(self?.phone.text, forKey: "phone")
+                UserDefaults.standard.set((datadic["token_value"])!, forKey: "tokenvalue")
+                UserDefaults.standard.synchronize()
+                NIMSDK.shared().loginManager.login((self?.phone.text!)!, token: (self?.phone.text!)!, completion: { (error) in
+                    if(error != nil) {
+                        self?.dismissController()
+                    }
+                })
+            }
+        }) { (error) in
+        
         }
     }
   

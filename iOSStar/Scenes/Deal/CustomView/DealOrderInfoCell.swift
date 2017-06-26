@@ -28,7 +28,6 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
  
     @IBOutlet weak var coutTextField: UITextField!
     
-    var maxCount = 600
     
     var isCount = false
     var delegate:OrderInfoChangeDelegate?
@@ -65,10 +64,8 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
     }
 
     func setPriceAndCount(price:Double, count:Int) {
-        if count > maxCount {
-            self.count = maxCount
-        }
-        coutTextField.text = "\(maxCount)"
+
+        coutTextField.text = "\(count)"
         priceTextField.text = String(format: "%.2f", price)
         self.price = Double(priceTextField.text!)!
         delegate?.priceDidChange(totalPrice: getCurrentPrice(), count: count, price: price)
@@ -85,11 +82,6 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
             if string == "." {
                 return false
             } else {
-                if textField.text != nil {
-                    if Int(coutTextField.text!)! > maxCount {
-                        return false
-                    }
-                }
                 return true
             }
             

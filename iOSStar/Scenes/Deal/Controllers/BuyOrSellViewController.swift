@@ -69,6 +69,11 @@ class BuyOrSellViewController: DealBaseViewController {
         guard starListModel != nil else {
             return
         }
+        guard count < totalCount || count == totalCount else {
+
+            SVProgressHUD.showErrorMessage(ErrorMessage: "转让/求购数量不能超过总发行量", ForDuration: 1.5, completion: nil)
+            return
+        }
         SVProgressHUD.show()
         let model = BuyOrSellRequestModel()
         model.buySell = dealType.rawValue
@@ -180,7 +185,6 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
                 guard realTimeData != nil else {
                     return orderCell
                 }
-                orderCell.maxCount = totalCount
                 orderCell.price = price
                 orderCell.setPriceAndCount(price:price, count:count)
             }
