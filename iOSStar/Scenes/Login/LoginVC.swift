@@ -109,6 +109,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
     @IBAction func doRegist(_ sender: Any) {
         view.endEditing(true)
         self.phone.text = ""
+        self.passPwd.text = ""
         ShareDataModel.share().isweichaLogin = false
         self.resultBlock!(doStateClick.doRegist as AnyObject?)
         
@@ -128,10 +129,10 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
             SVProgressHUD.showErrorMessage(ErrorMessage: "手机号码格式错误", ForDuration: 2.0, completion: nil)
             return
         }
-//        if !isPassWord(pwd: passPwd.text!) {
-//            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入6位字符以上密码", ForDuration: 2.0, completion: nil)
-//            return
-//        }
+        if !isPassWord(pwd: passPwd.text!) {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入6位字符以上密码", ForDuration: 2.0, completion: nil)
+            return
+        }
         
         SVProgressHUD.showProgressMessage(ProgressMessage: "登录中······")
         if isTelNumber(num: phone.text!) && checkTextFieldEmpty([passPwd]) {
