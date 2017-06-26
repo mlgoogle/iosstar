@@ -16,19 +16,18 @@ class MessageCell:  OEZTableViewCell{
     override func update(_ data: Any!) {
         
         let model = data as! OrderListModel
-       
+        
         print("===\(model)")
         
         
-         StartModel.getStartName(startCode: model.symbol) { (result) in
+        StartModel.getStartName(startCode: model.symbol) { (result) in
             let data = result as! StartModel
             let str = model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id ? "转让":"求购"
             self.content.text = "\(data.name)" +  " " + "(" + "\(data.code)" + ")" +  " " + str
         }
         time_lb.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.openTime), format: "YY-MM-dd HH:mm:ss")
-         dosee.setTitle("", for: .normal)
-        if model.handle == 0
-        {
+        dosee.setTitle("", for: .normal)
+        if model.handle == 0 {
             if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.buyHandle == 0 && model.sellHandle == 1) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 1)){
                 dosee.setTitle("未确认", for: .normal)
                 dosee.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
@@ -39,61 +38,51 @@ class MessageCell:  OEZTableViewCell{
             }
                 
             else{
-          
-            dosee.setTitle("订单生成", for: .normal)
-            dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
-            }
-        }
-        else if model.handle == 1{
-            
-            if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.buyHandle == 1  && model.sellHandle == 0) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 1 && model.buyHandle == 0)){
-               dosee.setTitle("已确认", for: .normal)
                 
+                dosee.setTitle("订单生成", for: .normal)
                 dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
             }
-           else if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.buyHandle == 0 && model.sellHandle == 1) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 1)){
+        } else if model.handle == 1{
+            
+            if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.buyHandle == 1  && model.sellHandle == 0) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 1 && model.buyHandle == 0)){
+                dosee.setTitle("已确认", for: .normal)
+                dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
+            } else if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.buyHandle == 0 && model.sellHandle == 1) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 1)){
                 dosee.setTitle("未确认", for: .normal)
                 dosee.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
-            }
-            else  if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 0) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 0)){
+            } else  if ((model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 0) || (model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id && model.sellHandle == 0 && model.buyHandle == 0)){
                 dosee.setTitle("已确认", for: .normal)
                 dosee.setTitleColor(UIColor.init(hexString: AppConst.Color.orange), for: .normal)
+            } else {
+                dosee.setTitle("订单生成", for: .normal)
+                dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
+                
             }
-            else{
-             dosee.setTitle("订单生成", for: .normal)
-             dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
-
-            }
-         
-        }
-        else if model.handle == -1{
-          dosee.setTitle("订单取消", for: .normal)
-          dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
-        }
-        else if model.handle == -2{
+            
+        } else if model.handle == -1{
+            dosee.setTitle("订单取消", for: .normal)
+            dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
+        } else if model.handle == -2{
             var title = "对方时间不足"
             if model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id {
                 title = "您时间不足"
             }
             dosee.setTitle(title, for: .normal)
             dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
-        }
-        else if model.handle == -3{
+        } else if model.handle == -3{
             var title = "对方金额不足"
             if model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id {
                 title = "您金额不足"
             }
             dosee.setTitle(title, for: .normal)
             dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
-        }
-        else if model.handle == 2{
-             dosee.setTitle("交易成功", for: .normal)
-             dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
-        }
-        else{
-          dosee.setTitle("交易成功", for: .normal)
-             dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
-      
+        } else if model.handle == 2{
+            dosee.setTitle("交易成功", for: .normal)
+            dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
+        } else {
+            dosee.setTitle("交易成功", for: .normal)
+            dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
+            
         }
         
     }
