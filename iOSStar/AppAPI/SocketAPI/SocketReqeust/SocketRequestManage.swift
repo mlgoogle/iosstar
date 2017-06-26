@@ -74,7 +74,8 @@ class SocketRequestManage: NSObject {
             let response:SocketJsonResponse = SocketJsonResponse(packet:packet)
             self.receiveOrderResult!(response)
         }else if packet.operate_code == SocketConst.OPCode.onlyLogin.rawValue{
-            AppConfigHelper.shared().showOnlyLogin()
+            stop()
+            NotificationCenter.default.post(name: Notification.Name.init(rawValue: AppConst.NoticeKey.onlyLogin.rawValue), object: nil, userInfo: nil)
         }else{
             socketRequests.removeValue(forKey: packet.session_id)
         }

@@ -98,7 +98,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
 
         }
        else{
-        tabar.selectedIndex = 0
+            tabar.selectedIndex = 0
         }
         
     

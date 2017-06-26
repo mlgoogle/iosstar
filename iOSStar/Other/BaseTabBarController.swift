@@ -16,7 +16,7 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(showOnlyLogin), name: Notification.Name.init(rawValue: AppConst.NoticeKey.onlyLogin.rawValue), object: nil)
         initcustomer()
         
     }

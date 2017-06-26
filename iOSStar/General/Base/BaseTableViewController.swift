@@ -22,12 +22,14 @@ class BaseTableViewController: UITableViewController , TableViewHelperProtocol {
     //友盟页面统计
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
 //        MobClick.beginLogPageView(NSStringFromClass(self.classForCoder))
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 //        MobClick.beginLogPageView(NSStringFromClass(self.classForCoder))
         SVProgressHUD.dismiss()
+//        NotificationCenter.default.removeObserver(self, name: Notification.Name.init(rawValue: AppConst.NoticeKey.onlyLogin.rawValue), object: nil)
     }
     //MARK:TableViewHelperProtocol
     func isCacheCellHeight() -> Bool {

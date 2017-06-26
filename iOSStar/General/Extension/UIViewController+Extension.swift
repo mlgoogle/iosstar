@@ -96,8 +96,6 @@ extension UIViewController {
     }
     //退出登录
     func userLogout() {
-
-
         if let phoneString = UserDefaults.standard.object(forKey: "phone") as? String {
             UserDefaults.standard.set(phoneString, forKey: "lastLogin")
         }
@@ -261,6 +259,14 @@ extension UIViewController {
 
     
     }
- 
+
+    func showOnlyLogin(){
+        userLogout()
+        let onlyLoginAlter = UIAlertController.init(title: "被迫下线", message: "您的账号在另一地点登录，您已被迫下线", preferredStyle: .alert)
+        let sureAction = UIAlertAction.init(title: "确定", style: .default, handler: nil)
+        onlyLoginAlter.addAction(sureAction)
+        present(onlyLoginAlter, animated: true, completion: nil)
+    }
+    
 }
 

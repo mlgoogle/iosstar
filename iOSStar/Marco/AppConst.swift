@@ -51,6 +51,7 @@ class AppConst {
     
     enum NoticeKey: String {
         case logoutNotice = "LogoutNotice"
+        case onlyLogin = "onlyLogin"
     }
     
     class Color {
@@ -76,7 +77,8 @@ class AppConst {
     class Network {
         #if true  //是否测试环境
         static let TcpServerIP:String = "dapi.star.smartdata-x.com";
-        static let TcpServerPort:UInt16 = 16104
+//        static let TcpServerIP:String = "139.224.34.22";
+        static let TcpServerPort:UInt16 = 16060
         static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
         static let TcpServerIP:String = "api.star.smartdata-x.com";
@@ -163,6 +165,7 @@ class AppConst {
         case allDeal = 6009
     }
     
+    
     class WechatKey {
         static let Scope = "snsapi_userinfo"
         static let State = "wpstate"
@@ -185,7 +188,7 @@ class AppConst {
     }
     
     class NotifyDefine {
-        static let onlyLogin = "onlyLogin"
+
     }
     
 }
