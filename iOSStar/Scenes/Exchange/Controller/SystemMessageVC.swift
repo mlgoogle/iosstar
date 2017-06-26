@@ -71,11 +71,19 @@ class MessageCell:  OEZTableViewCell{
           dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
         }
         else if model.handle == -2{
-          dosee.setTitle("转让时间不足", for: .normal)
-             dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
+            var title = "对方时间不足"
+            if model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id {
+                title = "您时间不足"
+            }
+            dosee.setTitle(title, for: .normal)
+            dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
         }
         else if model.handle == -3{
-            dosee.setTitle("求购金币不足", for: .normal)
+            var title = "对方金额不足"
+            if model.buyUid == UserModel.share().getCurrentUser()?.userinfo?.id {
+                title = "您金额不足"
+            }
+            dosee.setTitle(title, for: .normal)
             dosee.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
         }
         else if model.handle == 2{
@@ -121,7 +129,7 @@ class SystemMessageVC: BasePageListTableViewController {
         if vcs!.count > 1{
             // push过来的
             if vcs?[vcs!.count - 1] == self {
-                self.navigationController?.popViewController(animated: true)
+                _ = navigationController?.popViewController(animated: true)
             }
         } else {
             // modal

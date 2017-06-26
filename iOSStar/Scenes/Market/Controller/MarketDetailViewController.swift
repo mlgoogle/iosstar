@@ -289,21 +289,18 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
         if segue.identifier ==  "meetFans"{
             if let vc = segue.destination as? OrderStarViewController{
                 vc.starInfo = starModel
-                // 存储明星代码数据
-                UserDefaults.standard.set(starModel?.symbol, forKey: "starCode")
-                UserDefaults.standard.synchronize()
             }
         }
     }
     
     func pushToDealPage(index:Int) {
-        //if checkLogin() {
-        //}
         let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as! DealViewController
         vc.starListModel = starModel
         vc.realTimeData = realTimeModel
         vc.index = index
+        let auctionVC = childViewControllers[2] as? MarketAuctionViewController
+        vc.totalCount = auctionVC?.totalCount ?? 0
         navigationController?.pushViewController(vc, animated: true)
 
     }

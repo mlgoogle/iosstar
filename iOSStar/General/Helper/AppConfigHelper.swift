@@ -33,13 +33,15 @@ class AppConfigHelper: NSObject {
     }
     
     func getstart(){
-        AppAPIHelper.user().addstarinfo(complete: { (result) in
+    
+        let requestModel = GetAllStarInfoModel()
+
+        AppAPIHelper.user().requestAllStarInfo(requestModel: requestModel, complete: { (result) in
             print(NSHomeDirectory())
             if let model = result as? [StartModel]{
                 for news in model{
                     let realm = try! Realm()
                     try! realm.write {
-                        
                         realm.add(news, update: true)
                     }
                 }
@@ -53,7 +55,8 @@ class AppConfigHelper: NSObject {
         if  UserDefaults.standard.object(forKey: "phone") as? String == nil {
             return
         }
-        AppAPIHelper.user().tokenLogin(complete: { (result) in
+        let requestModel = TokenLoginRequestModel()
+        AppAPIHelper.user().tokenLogin(requestModel: requestModel, complete: { (result) in
             let datadic = result as? UserModel
             if let _ = datadic {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)

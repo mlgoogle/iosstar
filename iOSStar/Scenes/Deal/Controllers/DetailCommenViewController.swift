@@ -11,7 +11,7 @@ import MJRefresh
 class DetailCommenViewController: DealBaseViewController {
     @IBOutlet weak var tableView: UITableView!
     var dealTitles = ["名称/代码","成交时间","成交价/成交量","类型/成交额"]
-    var entrustTitles = ["名称/代码","委托价/时间","委托量/成交量","类型/状态"]
+    var entrustTitles = ["名称/代码","委托时间","委托价/委托量","类型/状态"]
     var header:MJRefreshNormalHeader?
     var footer:MJRefreshAutoStateFooter?
     var count = 0

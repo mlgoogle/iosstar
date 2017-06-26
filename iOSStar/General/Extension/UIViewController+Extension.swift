@@ -239,10 +239,11 @@ extension UIViewController {
 //        }
     }
     func getUserRealmInfo(complete: CompleteBlock?){
-    
-        AppAPIHelper.user().getauthentication(complete: { (result) in
+        let requestModel = GetAuthenticationRequestModel()
+        
+        AppAPIHelper.user().requestAuthentication(requestModel: requestModel, complete: { (result) in
             complete?(result as AnyObject)
-        }) { (result) in
+        }) { (error) in
             
         }
     }
@@ -251,10 +252,11 @@ extension UIViewController {
     func getUserInfo(complete: CompleteBlock?){
         
          if UserDefaults.standard.object(forKey: "phone") as? String != nil{
-            AppAPIHelper.user().getauserinfo(complete: { (result) in
+
+            let requestModel = UserInfoRequestModel()
+            AppAPIHelper.user().requestUserInfo(requestModel: requestModel, complete: { (result) in
                 complete?(result as AnyObject)
-            }) { (error) in
-                
+            }, error: { (error) in
                 if let nav : UINavigationController = self.tabBarController?.selectedViewController as? UINavigationController{
                     if nav.viewControllers.count > 0{
                         self.userLogout()
@@ -262,10 +264,22 @@ extension UIViewController {
                         
                     }
                 }
-                
-                
-               
-            }
+            })
+//            AppAPIHelper.user().getauserinfo(complete: { (result) in
+//                complete?(result as AnyObject)
+//            }) { (error) in
+//                
+//                if let nav : UINavigationController = self.tabBarController?.selectedViewController as? UINavigationController{
+//                    if nav.viewControllers.count > 0{
+//                        self.userLogout()
+//                        _ = self.navigationController?.popToRootViewController(animated: true)
+//                        
+//                    }
+//                }
+//                
+//                
+//               
+//            }
         }
     }
     //获取明星姓名

@@ -109,7 +109,7 @@ class SettingVC: BaseTableViewController {
         let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
             // 退出
             self.userLogout()
-            self.navigationController?.popToRootViewController(animated: true)
+            _ = self.navigationController?.popToRootViewController(animated: true)
         }
         
         // 添加

@@ -128,40 +128,66 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
         //  来判断是否请求接口设置交易密码
         if setPass == true{
             if passString.length() == 6{
-                
                 if ShareDataModel.share().wechatUserInfo["passString"] != passString{
                  SVProgressHUD.showErrorMessage(ErrorMessage: "两次密码输入不一致", ForDuration: 2.0, completion: {})
                     return
                 }
-            
             }
-            AppAPIHelper.user().ResetPassWd(timestamp: 1, vCode: " ", vToken: " ", pwd: passString.md5_string()  , type: 0, phone: phoneNum, complete: { (result) in
-              
-                if let model = result {
-                    
-                    // print("=========\(String(describing: result))")
-                    
-                    let dic = model as! [String : AnyObject]
-                    if dic["status"] as! Int  == 0 {
-                      SVProgressHUD.showSuccessMessage(SuccessMessage: "设置成功", ForDuration: 2.0, completion: {
-                        for controller  in (self.navigationController?.viewControllers)!{
-                            if controller.isKind(of: OrderStarViewController.self) {
-                                let orderVc = OrderStarViewController()
-                                self.navigationController?.popToViewController(controller, animated: true)
-                            } else {
-                                self.navigationController?.popToRootViewController(animated: true)
-                            }
-                        }
-                      })
-                    }else{
-                        SVProgressHUD.showErrorMessage(ErrorMessage: "设置失败", ForDuration: 2.0, completion: nil)
-                    }
-                    
-                }
-            }) { (error) in
+            let requsetModel = ResetPassWdModel()
+            requsetModel.phone = phoneNum
+            requsetModel.pwd = passString.md5_string()
+            requsetModel.timestamp = 1
+            requsetModel.type = 0
+            AppAPIHelper.user().resetPassWd(requestModel:requsetModel , complete: { (result) in
                 
-            }
+                if let dic = result as? [String : AnyObject] {
+                    if let status = dic["status"] as? Int {
+                        if status == 0 {
+                            SVProgressHUD.showSuccessMessage(SuccessMessage: "设置成功", ForDuration: 2.0, completion: {
+                                for controller  in (self.navigationController?.viewControllers)!{
+                                    if controller.isKind(of: OrderStarViewController.self) {
+                                        _ = OrderStarViewController()
+                                        _ = self.navigationController?.popToViewController(controller, animated: true)
+                                    } else {
+                                        _ = self.navigationController?.popToRootViewController(animated: true)
+                                    }
+                                }
+                            })
+                        }
+                    }
+                }else{
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "设置失败", ForDuration: 2.0, completion: nil)
+                }
+        }) { (error) in
             
+        }
+//            AppAPIHelper.user().ResetPassWd(timestamp: 1, vCode: " ", vToken: " ", pwd: passString.md5_string()  , type: 0, phone: phoneNum, complete: { (result) in
+//              
+//                if let model = result {
+//                    
+//                    // print("=========\(String(describing: result))")
+//                    
+//                    let dic = model as! [String : AnyObject]
+//                    if dic["status"] as! Int  == 0 {
+//                      SVProgressHUD.showSuccessMessage(SuccessMessage: "设置成功", ForDuration: 2.0, completion: {
+//                        for controller  in (self.navigationController?.viewControllers)!{
+//                            if controller.isKind(of: OrderStarViewController.self) {
+//                                let orderVc = OrderStarViewController()
+//                                self.navigationController?.popToViewController(controller, animated: true)
+//                            } else {
+//                                self.navigationController?.popToRootViewController(animated: true)
+//                            }
+//                        }
+//                      })
+//                    }else{
+//                        SVProgressHUD.showErrorMessage(ErrorMessage: "设置失败", ForDuration: 2.0, completion: nil)
+//                    }
+//                    
+//                }
+//            }) { (error) in
+//                
+//            }
+//            
             
         }else{
               //   来判断密码长度

@@ -13,7 +13,7 @@ class AllOrderViewController: DealBaseViewController {
     
     var identifiers = ["DealTitleMenuCell", NoDataCell.className()]
     @IBOutlet weak var tableView: UITableView!
-    var titles = ["名称/代码","委托价","价格","类型/状态"]
+    var titles = ["名称/代码","委托量","价格","类型/状态"]
     var orderData:[EntrustListModel]?
 
     var header:MJRefreshNormalHeader?

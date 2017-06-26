@@ -12,6 +12,7 @@ class DealBaseViewController: UIViewController {
     var starListModel:MarketListModel?
     var realTimeData:RealTimeModel?
     var positionCount = 0
+    var totalCount = 0
     var dealType:AppConst.DealType = AppConst.DealType.sell
     override func viewDidLoad() {
         super.viewDidLoad()
