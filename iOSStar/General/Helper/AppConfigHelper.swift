@@ -276,7 +276,7 @@ class AppConfigHelper: NSObject {
     func setupReceiveOrderResult() {
         AppAPIHelper.dealAPI().setReceiveOrderResult { (response) in
             if let model = response as? OrderResultModel {
-                let body = "您有一条新的订单状态更新:\(self.dealResult[model.result]),请查看"
+                let body = "您有一条新的订单状态更新:\(self.dealResult[model.result]!),请查看"
                 if UIApplication.shared.applicationState == .background {
                     self.localNotify(body: body, userInfo: nil)
                 } else {
