@@ -268,5 +268,13 @@ extension UIViewController {
         present(onlyLoginAlter, animated: true, completion: nil)
     }
     
+    func gethelp(){
+        if let helpVC = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: CustomerServiceVC.className()) as? CustomerServiceVC{
+            if let nav = tabBarController?.selectedViewController as? UINavigationController{
+                nav.pushViewController(helpVC, animated: true)
+            }
+        }
+        print("No CustomerServiceVC")
+    }
 }
 

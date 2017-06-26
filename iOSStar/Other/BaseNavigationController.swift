@@ -19,6 +19,9 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
         navigationBar.barTintColor = UIColor.white
         navigationBar.isTranslucent = false
         
+        NotificationCenter.default.addObserver(self, selector: #selector(gethelp), name: Notification.Name.init(rawValue: AppConst.NoticeKey.frozeUser.rawValue), object: nil)
+        
+        
     }
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {

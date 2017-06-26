@@ -35,6 +35,7 @@ class AppConst {
     static let isMock = false
     static let sha256Key = "t1@s#df!"
     static let pid = 1002
+    static let frozeCode = -101
     static let bundleId = "com.newxfin.goods"
     static let loginSuccess = "loginSuccess"
     static let loginSuccessNotice = "loginSuccessNotice"
@@ -52,6 +53,7 @@ class AppConst {
     enum NoticeKey: String {
         case logoutNotice = "LogoutNotice"
         case onlyLogin = "onlyLogin"
+        case frozeUser = "frozeUser"
     }
     
     class Color {

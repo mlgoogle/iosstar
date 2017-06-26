@@ -24,7 +24,7 @@ class ShareDataModel: NSObject {
     var isShowInWindows : Bool = false
     var registerModel: RegisterRequestModel = RegisterRequestModel()
     var wxregisterModel: WXRegisterRequestModel = WXRegisterRequestModel()
-  
+    var controlSwitch: Bool = true
 }
 class OrderInformation: NSObject {
     

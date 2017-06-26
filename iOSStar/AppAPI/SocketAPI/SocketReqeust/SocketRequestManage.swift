@@ -82,7 +82,12 @@ class SocketRequestManage: NSObject {
         objc_sync_exit(self)
         let response:SocketJsonResponse = SocketJsonResponse(packet:packet)
         let statusCode:Int = response.statusCode;
+        if statusCode == AppConst.frozeCode{
+            ShareDataModel.share().controlSwitch = false
+            return
+        }
         if ( statusCode < 0) && packet.data?.count != 0 {
+            
             socketReqeust?.onError(statusCode)
             
         } else {
