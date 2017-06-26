@@ -259,7 +259,7 @@ class OrderStarViewController: UIViewController {
                                                 
                                                 
                                                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
-                                                let tradePassWordVC = vc as! TradePassWordVC
+                                                _ = vc as! TradePassWordVC
                                                 self.navigationController?.pushViewController(vc, animated: true )
                                                 return
                         }
@@ -320,7 +320,7 @@ class OrderStarViewController: UIViewController {
             if let response = result {
                 if response["result"] as! Int == 1 {
                     SVProgressHUD.showSuccessMessage(SuccessMessage: "约见成功!", ForDuration: 2.0, completion: nil)
-                    self.navigationController?.popViewController(animated: true)
+                    _ = self.navigationController?.popViewController(animated: true)
                 }
             }
         }) { (error) in

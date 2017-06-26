@@ -25,6 +25,7 @@ class ShareDataModel: NSObject {
     var registerModel: RegisterRequestModel = RegisterRequestModel()
     var wxregisterModel: WXRegisterRequestModel = WXRegisterRequestModel()
     var controlSwitch: Bool = true
+    var buttonExtOnceSwitch = true
 }
 class OrderInformation: NSObject {
     

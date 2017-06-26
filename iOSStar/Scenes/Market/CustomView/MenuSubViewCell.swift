@@ -119,7 +119,7 @@ extension MenuSubViewCell:UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if dataSource?.count ?? 0 == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: NoDataCell.className(), for: indexPath) as! NoDataCell
-            var string = "添加明星，就可以实时跟踪您关心的行情。"
+            var string = "行情信息加载中"
             if type == 0 {
                 string = "行情信息加载中"
             }

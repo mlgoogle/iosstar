@@ -69,6 +69,11 @@ class BuyOrSellViewController: DealBaseViewController {
         guard starListModel != nil else {
             return
         }
+        guard count < totalCount || count == totalCount else {
+
+            SVProgressHUD.showErrorMessage(ErrorMessage: "转让/求购数量不能超过总发行量", ForDuration: 1.5, completion: nil)
+            return
+        }
         SVProgressHUD.show()
         let model = BuyOrSellRequestModel()
         model.buySell = dealType.rawValue
@@ -136,8 +141,6 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
     
     
     func priceDidChange(totalPrice: Double, count: Int, price: Double) {
-        
-
         let priceString = String(format: "%.2f", totalPrice)
         orderPriceLabel.setAttributeText(text: "总价：\(priceString)", firstFont: 18, secondFont: 18, firstColor: UIColor(hexString: "999999"), secondColor: UIColor(hexString: "FB9938"), range: NSRange(location: 3, length: priceString.length()))
         self.count = count

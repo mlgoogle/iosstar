@@ -13,13 +13,14 @@ extension UIButton{
     private struct controlKeys{
         static var acceptEventInterval = "controlInterval"
         static var acceptEventTime = "controlTime"
+        
     }
     var controlInterval: TimeInterval{
         get{
             if let interval = objc_getAssociatedObject(self, &controlKeys.acceptEventInterval) as? TimeInterval{
                 return interval
             }
-            return 1.0
+            return 3.0
         }
         set{
             objc_setAssociatedObject(self, &controlKeys.acceptEventInterval, newValue as TimeInterval, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -38,23 +39,28 @@ extension UIButton{
     }
     
     override open class func initialize(){
-        return
+    
         if self == UIButton.self {
-            let sysSel = #selector(UIButton.sendAction(_:to:for:))
-            let sysMethod: Method = class_getInstanceMethod(self, sysSel)
-            let oldSel = #selector(UIButton.sendAction(_:to:for:))
-            let oldMethod: Method = class_getInstanceMethod(self, sysSel)
-            let newSel = #selector(UIButton.y_sendAction(_:to:for:))
-            let newMethod: Method = class_getInstanceMethod(self, newSel)
-            method_exchangeImplementations(sysMethod, newMethod)
-            return
+            if ShareDataModel.share().buttonExtOnceSwitch {
+                let sysSel = #selector(UIButton.sendAction(_:to:for:))
+                let sysMethod: Method = class_getInstanceMethod(self, sysSel)
+                let newSel = #selector(UIButton.y_sendAction(_:to:for:))
+                let newMethod: Method = class_getInstanceMethod(self, newSel)
+                let didAddMethod = class_addMethod(self, sysSel, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))
+                if didAddMethod{
+                    class_replaceMethod(self, newSel, method_getImplementation(sysMethod), method_getTypeEncoding(sysMethod))
+                }else{
+                    method_exchangeImplementations(sysMethod, newMethod)
+                }
+                ShareDataModel.share().buttonExtOnceSwitch = false
+            }
         }
     }
     
     func y_sendAction(_ action: Selector, to target: AnyObject?, for event: UIEvent?)  {
         if self.classForCoder != UIButton.self{
             
-//            self.sendAction(action, to: target, for: event)
+            self.y_sendAction(action, to: target, for: event)
             
             return
         }
@@ -65,6 +71,7 @@ extension UIButton{
         }
         
         if NSDate().timeIntervalSince1970 - self.controlTime < self.controlInterval{
+            print("onc")
             return
         }
         

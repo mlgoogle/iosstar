@@ -44,10 +44,10 @@ class DealDoubleRowCell: UITableViewCell {
             }
         }
         underNameLabel.text = model.symbol
-        secondLabel1.text = String(format: "%.2f", model.openPrice)
+        secondLabel1.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.positionTime), format: "YYYY-MM-dd")
         secondLabel2.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.positionTime), format: "HH:mm:SS")
-        thirdLabel1.text = "\(model.amount)"
-        thirdLabel2.text = "\(model.rtAmount)"
+        thirdLabel1.text = String(format: "%.2f", model.openPrice)
+        thirdLabel2.text = "\(model.amount)"
         lastLabel1.text = dealType[model.buySell]
         lastLabel2.text = dealStatus[model.handle]
         

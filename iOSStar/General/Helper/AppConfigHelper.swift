@@ -33,13 +33,15 @@ class AppConfigHelper: NSObject {
     }
     
     func getstart(){
-        AppAPIHelper.user().addstarinfo(complete: { (result) in
+    
+        let requestModel = GetAllStarInfoModel()
+
+        AppAPIHelper.user().requestAllStarInfo(requestModel: requestModel, complete: { (result) in
             print(NSHomeDirectory())
             if let model = result as? [StartModel]{
                 for news in model{
                     let realm = try! Realm()
                     try! realm.write {
-                        
                         realm.add(news, update: true)
                     }
                 }
@@ -53,7 +55,8 @@ class AppConfigHelper: NSObject {
         if  UserDefaults.standard.object(forKey: "phone") as? String == nil {
             return
         }
-        AppAPIHelper.user().tokenLogin(complete: { (result) in
+        let requestModel = TokenLoginRequestModel()
+        AppAPIHelper.user().tokenLogin(requestModel: requestModel, complete: { (result) in
             let datadic = result as? UserModel
             if let _ = datadic {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
@@ -71,20 +74,45 @@ class AppConfigHelper: NSObject {
         }
         
     }
+    
     func LoginYunxin(){
-        AppAPIHelper.login().registWYIM(phone: UserDefaults.standard.object(forKey: "phone") as! String, token: UserDefaults.standard.object(forKey: "phone")! as! String, complete: { (result) in
-            let datadic = result as? Dictionary<String,String>
-            if let _ = datadic {
+//        AppAPIHelper.login().registWYIM(phone: UserDefaults.standard.object(forKey: "phone") as! String, token: UserDefaults.standard.object(forKey: "phone")! as! String, complete: { (result) in
+//            let datadic = result as? Dictionary<String,String>
+//            if let _ = datadic {
+//                
+//                NIMSDK.shared().loginManager.login(UserDefaults.standard.object(forKey: "phone") as! String, token: (datadic?["token_value"]!)!, completion: { (error) in
+//                    if (error == nil){
+//                        
+//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
+//                    }
+//                })
+//            }
+//        }) { (error)  in
+//            SVProgressHUD.showErrorMessage(ErrorMessage: "失败", ForDuration: 2.0, completion: nil)
+//      }
+        let registerWYIMRequestModel = RegisterWYIMRequestModel()
+        registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as! String
+        registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as! String
+        registerWYIMRequestModel.accid_value = UserDefaults.standard.object(forKey: "phone") as! String
+        
+        print( "====  \(registerWYIMRequestModel)" )
+        
+        AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { (result) in
+            if let datadic = result as? Dictionary<String,String> {
                 
-                NIMSDK.shared().loginManager.login(UserDefaults.standard.object(forKey: "phone") as! String, token: (datadic?["token_value"]!)!, completion: { (error) in
-                    if (error == nil){
-                        
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
+                print("datadic====   \(datadic)")
+                
+                let phone = UserDefaults.standard.object(forKey: "phone") as! String
+                let token = (datadic["token_value"]!)
+
+                NIMSDK.shared().loginManager.login(phone, token: token, completion: { (error) in
+                    if (error == nil) {
+                       NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
                     }
-                    
-                })
-            }
-        }) { (error)  in
+            })
+          }
+        }) { (error) in
+            
         }
     }
      // MARK: - 网易云信
@@ -248,7 +276,7 @@ class AppConfigHelper: NSObject {
     func setupReceiveOrderResult() {
         AppAPIHelper.dealAPI().setReceiveOrderResult { (response) in
             if let model = response as? OrderResultModel {
-                let body = "您有一条新的订单状态更新:\(self.dealResult[model.result]),请查看"
+                let body = "您有一条新的订单状态更新:\(self.dealResult[model.result]!),请查看"
                 if UIApplication.shared.applicationState == .background {
                     self.localNotify(body: body, userInfo: nil)
                 } else {

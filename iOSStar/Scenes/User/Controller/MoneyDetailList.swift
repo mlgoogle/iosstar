@@ -69,61 +69,32 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
     }
     
     override func didRequest(_ pageIndex : Int) {
-
         // 代表选择了月份筛选
-        if indexString != nil {
-            AppAPIHelper.user().creditlist(status: 0, pos: Int32(pageIndex - 1) * 10, count: 10, time: indexString!, complete: { (result) in
-                
-                self.reponseData = result
-                self.nodataView.isHidden = false
-                if let object = result {
-                    let model : RechargeListModel = object as! RechargeListModel
-                    self.didRequestComplete(model.depositsinfo as AnyObject)
-                    self.tableView.reloadData()
-                    if self.dataSource?.count == 0 {
-                        self.nodataView.isHidden = false
-                    }else{
-                        self.nodataView.isHidden = true
-                    }
-                   
-                
-                }
-            }, error: { (error) in
-                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-                self.didRequestComplete(nil)
-                self.nodataView.isHidden = false
-                    
+        let requestModel = CreditListRequetModel()
+        requestModel.status = 0
+        requestModel.startPos = Int32(pageIndex - 1) * 10
+        requestModel.time = indexString == nil ? "" : indexString!
+        AppAPIHelper.user().requestCreditList(requestModel: requestModel, complete: { (result) in
+            self.reponseData = result
+            self.nodataView.isHidden = false
+            if let object = result {
+                let model : RechargeListModel = object as! RechargeListModel
+                self.didRequestComplete(model.depositsinfo as AnyObject)
                 self.tableView.reloadData()
-            })
-        } else {
-          
-            // 获取全部的
-            AppAPIHelper.user().creditlist(status: 0, pos: Int32((pageIndex - 1) * 10), count: 10, time: "", complete: { (result) in
-                
-                // print("=====\(String(describing: result))")
-                
-                self.reponseData = result
-                
-                if let object = result {
-                    let model : RechargeListModel = object as! RechargeListModel
-                    self.didRequestComplete(model.depositsinfo as AnyObject)
-                    self.tableView.reloadData()
-                }
                 if self.dataSource?.count == 0 {
                     self.nodataView.isHidden = false
                 }else{
                     self.nodataView.isHidden = true
                 }
-                
-            }) { (error ) in
-                self.nodataView.isHidden = true
-                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-                self.didRequestComplete(nil)
-                self.nodataView.isHidden = false
-                self.tableView.reloadData()
             }
-        }
- }
+        }, error: { (error) in
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+            self.didRequestComplete(nil)
+            self.nodataView.isHidden = false
+            self.tableView.reloadData()
+        })
+        
+    }
    
     
     deinit {
