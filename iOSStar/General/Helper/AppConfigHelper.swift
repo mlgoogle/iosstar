@@ -57,8 +57,8 @@ class AppConfigHelper: NSObject {
         }
         let requestModel = TokenLoginRequestModel()
         AppAPIHelper.user().tokenLogin(requestModel: requestModel, complete: { (result) in
-            let datadic = result as? UserModel
-            if let _ = datadic {
+            if let _ = result as? UserModel {
+                self.updateDeviceToken()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
 
                 UserDefaults.standard.synchronize()
@@ -216,6 +216,10 @@ class AppConfigHelper: NSObject {
         UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "3921700954", appSecret: "04b48b094faeb16683c32669824ebdad", redirectURL: "www.baidu.com")
         UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1106199654", appSecret: nil, redirectURL: "www.baidu.com")
 
+    }
+    func updateDeviceToken() {
+        let requestModel = UpdateDeviceTokenModel()
+        AppAPIHelper.user().updateDeviceToken(requestModel: requestModel, complete: nil, error: nil)
     }
     
     func setupRealmConfig() {

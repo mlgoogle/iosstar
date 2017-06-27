@@ -42,7 +42,7 @@ class AppConst {
     static let chooseServiceTypeSuccess = "chooseServiceTypeSuccess"
     static let valueStarCode = "valueStarCode"
     static let getStarService = "getStarService"
-    
+ 
     enum KVOKey: String {
         case selectProduct = "selectProduct"
         case allProduct = "allProduct"
@@ -93,6 +93,7 @@ class AppConst {
         static let qiniuHost = "http://ofr5nvpm7.bkt.clouddn.com/"
     }
     class Text {
+        static let deviceToken = "deviceToken"
         static let PhoneFormatErr = "请输入正确的手机号"
         static let VerifyCodeErr  = "请输入正确的验证码"
         static let SMSVerifyCodeErr  = "获取验证码失败"

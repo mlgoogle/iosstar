@@ -10,7 +10,8 @@ import UIKit
 import SVProgressHUD
 class MoneyDetailListCell: OEZTableViewCell {
     
-
+    var rechargeStatus:[Int8 : String] = [1:"处理中", 2:"充值成功", 3:"充值失败",4:"用户取消"]
+    var rechargeType:[Int8 : String] = [1:"微信支付", 2:"银行卡支付", 3:"支付宝支付"]
     @IBOutlet weak var weekLb: UILabel!            // 姓名LbstatusLb
     @IBOutlet weak var timeLb: UILabel!            // 时间Lb
     @IBOutlet weak var moneyCountLb: UILabel!      // 充值金额Lb
@@ -24,9 +25,9 @@ class MoneyDetailListCell: OEZTableViewCell {
         let model = data as! Model
         self.moneyCountLb.text = "+" + " "  + String.init(format: "%.2f", model.amount)
         let timestr : Int = Date.stringToTimeStamp(stringTime: model.depositTime)
-        self.withDrawto.text = model.depositType == 1 ? "微信支付" :"银行卡"
+        self.withDrawto.text = rechargeType[model.depositType]
         self.weekLb.text = Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "yyyy")
-        self.statusLb.text = model.status == 1 ? "处理中" : (model.status == 2 ?  "充值成功":  "充值失败")
+        self.statusLb.text = rechargeStatus[model.status]
         self.timeLb.text =  Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "MM-dd")
         self.minuteLb.text =  Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "HH:mm:ss")
         
@@ -64,7 +65,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
          nodataView.isHidden = true
         navLeft?.addTarget(self , action: #selector(selectDate), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = right
-        navLeft?.setImage(UIImage.init(named: "calendar@2x"), for: .normal)
+        navLeft?.setImage(UIImage.init(named: "calendar"), for: .normal)
         ShareDataModel.share().addObserver(self, forKeyPath: "selectMonth", options: .new, context: nil)
     }
     
@@ -87,7 +88,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
                 }
             }
         }, error: { (error) in
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+//            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
             self.didRequestComplete(nil)
             self.nodataView.isHidden = false
             self.tableView.reloadData()

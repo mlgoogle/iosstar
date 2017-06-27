@@ -54,7 +54,7 @@ class AccountMoneyRequestModel: UserBaseModel {
 class CreditListRequetModel: MarketBaseModel {
     var status:Int32 = 0
     var startPos:Int32 = 0
-    var count:Int32 = 0
+    var count:Int32 = 10
     var time = ""
 }
 

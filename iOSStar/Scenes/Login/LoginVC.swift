@@ -115,7 +115,6 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
     }
     //MARK:-  登录
     @IBAction func doLogin(_ sender: Any) {
-        let btn = sender as! UIButton
         
         if !checkTextFieldEmpty([phone]) {
             return
@@ -139,8 +138,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
             AppAPIHelper.login().login(model: loginRequestModel, complete: {[weak self] (result) in
                 SVProgressHUD.dismiss()
                 let datadic = result as? UserModel
-                SVProgressHUD.showSuccessMessage(SuccessMessage: "登录成功", ForDuration: 2.0, completion: { 
-                    
+                SVProgressHUD.showSuccessMessage(SuccessMessage: "登录成功", ForDuration: 2.0, completion: {
                     if let _ = datadic {
                         UserDefaults.standard.set(self?.phone.text, forKey: "phone")
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
@@ -148,8 +146,11 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
                         self?.LoginYunxin()
                         UserModel.share().upateUserInfo(userObject: datadic!)
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
+                        AppConfigHelper.shared().updateDeviceToken()
+
                     }
                 })
+
             }, error: { (error) in
                 
                 SVProgressHUD.showErrorMessage(ErrorMessage: "手机号或密码错误", ForDuration: 2.0, completion: nil)
