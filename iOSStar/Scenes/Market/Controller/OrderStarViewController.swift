@@ -188,12 +188,18 @@ class OrderStarViewController: UIViewController {
             let serviceType = notification.object as! ServiceTypeModel
             serviceTypeModel = serviceType
             // print("===\(serviceTypeModel)")
-            self.priceLabel.text = String.init(format:"%@秒",serviceType.price)
+            
+            let strString = String.init(format:"即将消耗: %@秒",serviceType.price)
+            let attrs = [NSForegroundColorAttributeName:UIColor.colorFromRGB(0xFB9938)]
+            
+            let attributedString  = NSMutableAttributedString(string: strString, attributes: attrs)
+            let attrsM = [NSForegroundColorAttributeName:UIColor.colorFromRGB(0x666666)]
+            attributedString.addAttributes(attrsM, range: NSMakeRange(0, 5))
+            self.priceLabel.attributedText = attributedString
+            
+            // self.priceLabel.text = String.init(format:"即将消耗: %@秒",serviceType.price)
         }
     }
-    
-    
-    
     
     // MARK: - 获取明星信息
     func requestStarInfos() {
@@ -241,6 +247,10 @@ class OrderStarViewController: UIViewController {
         }
         if orderPalace.text?.length() == 0 {
             SVProgressHUD.showErrorMessage(ErrorMessage: "请选择城市", ForDuration: 2.0, completion: nil)
+            return
+        }
+        if feedBack.text.length() == 0 {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入备注信息", ForDuration: 2.0, completion: nil)
             return
         }
         //判断是否实名认证
@@ -319,7 +329,8 @@ class OrderStarViewController: UIViewController {
         AppAPIHelper.marketAPI().requestBuyStarService(requestModel: requestModel, complete: { (result) in
             if let response = result {
                 if response["result"] as! Int == 1 {
-                    SVProgressHUD.showSuccessMessage(SuccessMessage: "约见成功!", ForDuration: 2.0, completion: nil)
+                    //
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "约见成功，请耐心等待，并保持手机通话畅通", ForDuration: 2.0, completion: nil)
                     _ = self.navigationController?.popViewController(animated: true)
                 }
             }

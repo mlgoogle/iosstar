@@ -41,6 +41,7 @@ class ContainVC: UIViewController {
         let weChatLoginRequestModel = WeChatLoginRequestModel()
         weChatLoginRequestModel.openid = ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!
         weChatLoginRequestModel.deviceId = "123"
+        
         AppAPIHelper.login().WeChatLogin(model: weChatLoginRequestModel, complete: {[weak self] (result) in
             if let response = result as? UserModel {
                 
@@ -57,6 +58,7 @@ class ContainVC: UIViewController {
                         weChatTokenRequestModel.id = (response.userinfo?.id)!
                         weChatTokenRequestModel.token = token
                         AppAPIHelper.user().weChatTokenLogin(model: weChatTokenRequestModel, complete: { (result) in
+                            print("=====\(String(describing: result))")
                             UserDefaults.standard.set(phone, forKey: "phone")
                             UserDefaults.standard.set(token, forKey: "token")
                             UserDefaults.standard.synchronize()
@@ -73,6 +75,7 @@ class ContainVC: UIViewController {
             }
             AppConfigHelper.shared().updateDeviceToken()
         }) { (error) in
+            print(error)
             ShareDataModel.share().isweichaLogin = true
             self.scrollView?.setContentOffset(CGPoint.init(x: (self.scrollView?.frame.size.width)!, y: 0), animated: true)
         }

@@ -110,7 +110,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
             
             print(error)
             
-             SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
         }
     }
     
