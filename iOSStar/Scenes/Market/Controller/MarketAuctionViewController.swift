@@ -191,8 +191,10 @@ class MarketAuctionViewController: MarketBaseViewController {
                     self.reloadSections(section: 4)
                     self.endRefres(count:models.count)
                     
-                } else{
+                } else {
                     self.fansList = models
+                    self.reloadSections(section: 4)
+
                     self.endRefres(count:self.fansList!.count)
                 }
                 self.isFirst = false

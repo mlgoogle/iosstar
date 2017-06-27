@@ -22,6 +22,7 @@ class ContactListCell: OEZTableViewCell {
         chatButton.layer.borderColor = UIColor(hexString: AppConst.Color.main).cgColor
         chatButton.layer.cornerRadius = 2
         chatButton.layer.masksToBounds = true
+        chatButton.isUserInteractionEnabled = false
     
     }
 

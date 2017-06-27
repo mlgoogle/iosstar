@@ -12,7 +12,7 @@ import Foundation
 class MarketBaseModel: BaseModel {
     
     var id:Int64 = UserModel.share().getCurrentUser()?.userinfo?.id ?? 142
-    var token =  UserModel.share().getCurrentUser()?.userinfo?.token ?? "6902464177061903496"
+    var token =  UserModel.share().getCurrentUser()?.token ?? "6902464177061903496"
 }
 
 class RealTimeRequestModel:MarketBaseModel {

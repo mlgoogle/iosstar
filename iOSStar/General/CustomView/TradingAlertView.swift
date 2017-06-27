@@ -120,7 +120,7 @@ class TradingAlertView: UIView {
 //                
 //                self.disMissAlertView()
 //            })
-            self.delay(2) {
+           _ = self.delay(3) {
                  self.disMissAlertView()
              }
         }

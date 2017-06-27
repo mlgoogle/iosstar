@@ -44,6 +44,7 @@ class ContainVC: UIViewController {
         
         AppAPIHelper.login().WeChatLogin(model: weChatLoginRequestModel, complete: {[weak self] (result) in
             if let response = result as? UserModel {
+                
                 if (response.result == -302) {
                     ShareDataModel.share().isweichaLogin = true
                     self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.width)!, y: 0), animated: true)
@@ -72,6 +73,7 @@ class ContainVC: UIViewController {
                     }
                 }
             }
+            AppConfigHelper.shared().updateDeviceToken()
         }) { (error) in
             print(error)
             ShareDataModel.share().isweichaLogin = true

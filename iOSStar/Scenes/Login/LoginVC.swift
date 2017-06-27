@@ -112,6 +112,9 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
         } else {
             tabar.selectedIndex = 0
         }
+
+      
+      
         self.dismissController()
     }
     
@@ -129,6 +132,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
         
         let btn = sender as! UIButton
         btn.isUserInteractionEnabled = false
+
         if !checkTextFieldEmpty([phone]) {
             return
         }
@@ -151,8 +155,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
             AppAPIHelper.login().login(model: loginRequestModel, complete: {[weak self] (result) in
                 SVProgressHUD.dismiss()
                 let datadic = result as? UserModel
-                SVProgressHUD.showSuccessMessage(SuccessMessage: "登录成功", ForDuration: 2.0, completion: { 
-                    btn.isUserInteractionEnabled = true
+                SVProgressHUD.showSuccessMessage(SuccessMessage: "登录成功", ForDuration: 2.0, completion: {
                     if let _ = datadic {
                         UserDefaults.standard.set(self?.phone.text, forKey: "phone")
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
@@ -160,16 +163,16 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
                         self?.LoginYunxin()
                         UserModel.share().upateUserInfo(userObject: datadic!)
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
+                        AppConfigHelper.shared().updateDeviceToken()
+
                     }
                 })
+
             }, error: { (error) in
-                btn.isUserInteractionEnabled = true
+                
                 SVProgressHUD.showErrorMessage(ErrorMessage: "手机号或密码错误", ForDuration: 2.0, completion: nil)
             })
-        } else {
-            
-            btn.isUserInteractionEnabled = true
-        }
+        } 
     }
     
     //MARK:- 网易云登录
