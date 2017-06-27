@@ -338,9 +338,7 @@ class AppConfigHelper: NSObject {
         return false
     }
 
-    func showOnlyLogin(){
-        print("单点登录")
-    }
+
     
     
 }
