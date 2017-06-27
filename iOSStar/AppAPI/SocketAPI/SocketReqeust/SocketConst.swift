@@ -126,7 +126,6 @@ class SocketConst: NSObject {
         case todayOrder = 6007
         //历史交易
         case historyOrder = 6009
-        
         //委托粉丝榜粉丝榜
         case fansList = 6011
         //订单粉丝榜
@@ -141,7 +140,7 @@ class SocketConst: NSObject {
         case update = 3033
         
         //更新devicetoken
-        case updateDeviceToken = 1
+        case updateDeviceToken = 3035
         
         //单点登录
         case onlyLogin = 3040

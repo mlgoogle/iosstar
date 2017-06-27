@@ -57,8 +57,8 @@ class AppConfigHelper: NSObject {
         }
         let requestModel = TokenLoginRequestModel()
         AppAPIHelper.user().tokenLogin(requestModel: requestModel, complete: { (result) in
-            let datadic = result as? UserModel
-            if let _ = datadic {
+            if let _ = result as? UserModel {
+                self.updateDeviceToken()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
 
                 UserDefaults.standard.synchronize()
@@ -217,20 +217,27 @@ class AppConfigHelper: NSObject {
         UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1106199654", appSecret: nil, redirectURL: "www.baidu.com")
 
     }
+    func updateDeviceToken() {
+        let requestModel = UpdateDeviceTokenModel()
+        AppAPIHelper.user().updateDeviceToken(requestModel: requestModel, complete: nil, error: nil)
+    }
     
     func setupRealmConfig() {
         var config = Realm.Configuration()
         config.fileURL =  config.fileURL!.deletingLastPathComponent()
             .appendingPathComponent("\("starShare").realm")
-        config.schemaVersion = 2
+        config.schemaVersion = 3
         
         //数据库迁移操作
         config.migrationBlock = { migration, oldSchemaVersion in
             
-            if oldSchemaVersion < 2 {
+            if oldSchemaVersion < 3 {
                 
                 migration.enumerateObjects(ofType: EntrustListModel.className(), { (oldObject, newObject) in
                     newObject!["pchg"] = 0.0
+                })
+                migration.enumerateObjects(ofType: WeChatPayResultModel.className(), { (oldObject, newObject) in
+                    newObject!["rid"] = ""
                 })
             }
         }

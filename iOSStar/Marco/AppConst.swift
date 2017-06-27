@@ -42,7 +42,7 @@ class AppConst {
     static let chooseServiceTypeSuccess = "chooseServiceTypeSuccess"
     static let valueStarCode = "valueStarCode"
     static let getStarService = "getStarService"
-    
+ 
     enum KVOKey: String {
         case selectProduct = "selectProduct"
         case allProduct = "allProduct"
@@ -79,11 +79,12 @@ class AppConst {
     class Network {
         #if true  //是否测试环境
         static let TcpServerIP:String = "dapi.star.smartdata-x.com";
+
 //        static let TcpServerIP:String = "139.224.34.22";
         static let TcpServerPort:UInt16 = 16060
         static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
-        static let TcpServerIP:String = "api.star.smartdata-x.com";
+        static let TcpServerIP:String = "dapi.star.smartdata-x.com";
         static let TcpServerPort:UInt16 = 16104;
         static let HttpHostUrl:String = "api.star.smartdata-x.com";
         
@@ -92,6 +93,7 @@ class AppConst {
         static let qiniuHost = "http://ofr5nvpm7.bkt.clouddn.com/"
     }
     class Text {
+        static let deviceToken = "deviceToken"
         static let PhoneFormatErr = "请输入正确的手机号"
         static let VerifyCodeErr  = "请输入正确的验证码"
         static let SMSVerifyCodeErr  = "获取验证码失败"

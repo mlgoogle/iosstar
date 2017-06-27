@@ -74,6 +74,10 @@ class WeChatPayResultModel: Object {
     dynamic var noncestr = ""
     dynamic var timestamp = ""
     dynamic var sign = ""
-//    dynamic var rid = ""
+    dynamic var rid = ""
 }
 
+class AliPayResultModel: Object {
+    dynamic var orderinfo = ""
+    dynamic var rid = ""
+}

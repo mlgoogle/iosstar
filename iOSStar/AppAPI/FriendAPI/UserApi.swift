@@ -67,4 +67,6 @@ protocol UserApi {
     //更新devicetoken
     func updateDeviceToken(requestModel:UpdateDeviceTokenModel, complete: CompleteBlock?, error: ErrorBlock?)
     
+    func cancelRecharge(requestModel:CancelRechargeModel,  complete: CompleteBlock?, error: ErrorBlock?)
+    
 }
