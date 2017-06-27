@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
+class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate{
 
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var contentView: UIView!
@@ -25,26 +25,38 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
     @IBOutlet weak var width: NSLayoutConstraint!
    
     @IBOutlet var loginBtn: UIButton!
-    //手机号
-    @IBOutlet weak var passPwd: UITextField!
+    
     // 登录密码
+    @IBOutlet weak var passPwd: UITextField!
+    // 手机号
     @IBOutlet weak var phone: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initNav()
         initUI()
+    
+        passPwd.delegate = self
+        passPwd.returnKeyType = .done
         
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func initUI(){
         
-//        let tap  = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
-//        view.addGestureRecognizer(tap)
-//        contentView.addGestureRecognizer(tap)
-
-//         UserDefaults.standard.set((UserDefaults.standard.object(forKey: "phone") as? String)!, forKey: "lastLogin")
-       
        loginBtn.titleLabel?.setAttributeText(text: "还没有账户 现在注册", firstFont: 14, secondFont: 14, firstColor: UIColor.init(hexString: "999999"), secondColor: UIColor.init(hexString: AppConst.Color.main), range: NSRange(location: 6, length: 4))
         
         let backViewTap = UITapGestureRecognizer.init(target: self, action: #selector(backViewTapClick))
@@ -59,9 +71,8 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         print(self.top.constant)
         self.left.constant = UIScreen.main.bounds.size.width/320.0 * 30
         self.right.constant = UIScreen.main.bounds.size.width/320.0 * 30
-        
-        
     }
+    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if (touch.view?.isDescendant(of: contentView))! {
             return false;
@@ -78,6 +89,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         
         didClose()
     }
+    
     // MARK: - 导航栏
     func initNav(){
         let btn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 20, height: 20))
@@ -91,19 +103,18 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
     }
     //MARK:   界面消失
     func didClose(){
+        
         let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
         let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
-         if tabar.selectedIndex == 1{
 
+        if tabar.selectedIndex == 1 {
+            
+        } else {
+            tabar.selectedIndex = 0
         }
-       else{
-        tabar.selectedIndex = 0
-        }
-        
-    
-       
         self.dismissController()
     }
+    
     //MARK:   注册
     @IBAction func doRegist(_ sender: Any) {
         view.endEditing(true)
@@ -115,10 +126,10 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
     }
     //MARK:-  登录
     @IBAction func doLogin(_ sender: Any) {
-        let btn = sender as! UIButton
         
-         btn.isUserInteractionEnabled = false
-         if !checkTextFieldEmpty([phone]) {
+        let btn = sender as! UIButton
+        btn.isUserInteractionEnabled = false
+        if !checkTextFieldEmpty([phone]) {
             return
         }
         if !checkTextFieldEmpty([passPwd]) {
@@ -184,7 +195,6 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
         registerWYIMRequestModel.accid_value = phone.text!
         AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: {[weak self] (result) in
             if let datadic = result as? Dictionary<String,String> {
-//            if let _ = datadic {
                 UserDefaults.standard.set(self?.phone.text, forKey: "phone")
                 UserDefaults.standard.set((datadic["token_value"])!, forKey: "tokenvalue")
                 UserDefaults.standard.synchronize()
@@ -212,10 +222,11 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
     @IBAction func didMiss(_ sender: Any) {
         didClose()
     }
-     //MARK:  重置密码
+    //MARK:  重置密码
     @IBAction func doResetPass(_ sender: Any) {
         self.resultBlock!(doStateClick.doResetPwd as AnyObject)
     }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
        
          view.endEditing(true)

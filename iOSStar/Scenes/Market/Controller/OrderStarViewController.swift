@@ -192,9 +192,6 @@ class OrderStarViewController: UIViewController {
         }
     }
     
-    
-    
-    
     // MARK: - 获取明星信息
     func requestStarInfos() {
         

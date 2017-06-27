@@ -22,11 +22,13 @@ import Alamofire
 class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDelegate,UNUserNotificationCenterDelegate{
     var window: UIWindow?
     var sdkConfigDelegate: NTESSDKConfigDelegate?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-         let config = BugoutConfig.default()
-         config?.enabledShakeFeedback = true
-         config?.enabledMonitorException = false
-         Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
+        
+        let config = BugoutConfig.default()
+        config?.enabledShakeFeedback = true
+        config?.enabledMonitorException = false
+        Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
         
         UIApplication.shared.applicationIconBadgeNumber = 0
         
@@ -41,16 +43,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         
         AppConfigHelper.shared().setupRealmConfig()
         AppConfigHelper.shared().updateUpdateInfo()
-    
         AppConfigHelper.shared().setupReceiveOrderResult()
+        
         // 个推
         AppConfigHelper.shared().setupGeTuiSDK(sdkDelegate: self)
         AppConfigHelper.shared().getstart()
+        
         // 登录
-
         AppConfigHelper.shared().login()
         
-    
         UIApplication.shared.statusBarStyle = .default
 
         return true
@@ -72,21 +73,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-       
-        
-        if (url.host == "safepay"){
+        if (url.host == "safepay") {
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (result) in
-                if let dataDic = result as? [String : AnyObject]{
+                if let dataDic = result as? [String : AnyObject] {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.aliPay.aliPayCode), object:(Int.init((dataDic["resultStatus"] as! String))), userInfo:nil)
-                    
                 }
             })
-
-           
-        }else{
+        }else {
               WXApi.handleOpen(url, delegate: self)
         }
-
          return true
     }
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
@@ -94,25 +89,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         return true
     }
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        
-       
-        if (url.host == "safepay"){
-            
+        if (url.host == "safepay") {
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (result) in
-               
                 if let dataDic = result as? [String : AnyObject]{
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.aliPay.aliPayCode), object:(Int.init((dataDic["resultStatus"] as! String))), userInfo:nil)
-               
                 }
-              
             })
-      
         }
-        else{
+        else {
           WXApi.handleOpen(url, delegate: self)
         }
-        
-        
         return true
     }
 
@@ -151,7 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
             }
         }
         
-        func accessToken(code: String)
+    func accessToken(code: String)
         {
             let param = [SocketConst.Key.appid : AppConst.WechatKey.Appid,
                          "code" : code,

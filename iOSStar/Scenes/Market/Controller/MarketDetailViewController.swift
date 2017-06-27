@@ -255,7 +255,7 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
             break
         }
     }
-    func doGetRelam(){
+    func doGetRelam() {
         self.getUserRealmInfo { (result) in
             if let model = result{
                 let object =  model as! [String : AnyObject]
@@ -275,13 +275,13 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
                                             return
                     }
                     
-                }else{
+                }else {
                     
                     self.performSegue(withIdentifier: "meetFans", sender: nil)
                 }
             }
         }
-        }
+    }
 
     
     // Segue传值
