@@ -242,7 +242,7 @@ extension UIViewController {
         AppAPIHelper.user().requestAuthentication(requestModel: requestModel, complete: { (result) in
             complete?(result as AnyObject)
         }) { (error) in
-            
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
         }
     }
     

@@ -40,6 +40,7 @@ class MoneyDetailListCell: OEZTableViewCell {
 class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDelegate {
     
     var contentoffset = CGFloat()
+    
     var navLeft : UIButton?
     
     // 存储模型数据传入下一个界面
@@ -49,10 +50,12 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
     var indexString : String?
     
     @IBOutlet var nodataView: UIView!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,7 +65,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
         
         navLeft?.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20)
         let right = UIBarButtonItem.init(customView: navLeft!)
-         nodataView.isHidden = true
+        nodataView.isHidden = true
         navLeft?.addTarget(self , action: #selector(selectDate), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = right
         navLeft?.setImage(UIImage.init(named: "calendar"), for: .normal)
@@ -70,12 +73,20 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
     }
     
     override func didRequest(_ pageIndex : Int) {
-        // 代表选择了月份筛选
+       
         let requestModel = CreditListRequetModel()
         requestModel.status = 0
+
+        // 代表选择了月份筛选
+
         requestModel.startPos = Int32(pageIndex - 1) * 10 + 1
+
         requestModel.time = indexString == nil ? "" : indexString!
+        
         AppAPIHelper.user().requestCreditList(requestModel: requestModel, complete: { (result) in
+            
+            // print("===\(result)")
+            
             self.reponseData = result
             self.nodataView.isHidden = false
             if let model = result as? RechargeListModel {
@@ -98,6 +109,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
    
     
     deinit {
+        
         ShareDataModel.share().removeObserver(self, forKeyPath: "selectMonth", context: nil)
     }
     
@@ -111,6 +123,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
         (ResultVC as! ResultVC).responseData = moder.depositsinfo?[indexPath.row]
         self.navigationController?.pushViewController(ResultVC, animated: true)
     }
+    
     
     func selectDate(){
         
@@ -139,10 +152,8 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
                 navLeft?.isEnabled = true
                 self.tableView.isScrollEnabled = true
                 if selectMonth != "1000000" {
-                   // monthLb.text = "2017年" + " " + "\(selectMonth)" + "月"
                 }
             }
         }
     }
-
 }
