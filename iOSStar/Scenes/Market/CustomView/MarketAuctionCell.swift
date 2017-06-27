@@ -20,7 +20,7 @@ class MarketAuctionCell: UITableViewCell {
         
     }
     func setFans(model:FansListModel) {
-        dateLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.trades!.positionTime), format: "MM-dd HH:MM:SS")
+        dateLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.trades!.positionTime), format: "MM-dd HH:mm:SS")
 
         iconImageView.kf.setImage(with: URL(string: model.user!.headUrl))
         nameLabel.text = model.user!.nickname
