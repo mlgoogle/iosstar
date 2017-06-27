@@ -83,7 +83,6 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
             }
             else if errorCode == -2{
                 cancelRecharge()
-
                 SVProgressHUD.showError(withStatus: "用户中途取消")
                 return
             }

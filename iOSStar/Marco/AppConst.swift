@@ -35,6 +35,7 @@ class AppConst {
     static let isMock = false
     static let sha256Key = "t1@s#df!"
     static let pid = 1002
+    static let frozeCode = -101
     static let bundleId = "com.newxfin.goods"
     static let loginSuccess = "loginSuccess"
     static let loginSuccessNotice = "loginSuccessNotice"
@@ -51,6 +52,8 @@ class AppConst {
     
     enum NoticeKey: String {
         case logoutNotice = "LogoutNotice"
+        case onlyLogin = "onlyLogin"
+        case frozeUser = "frozeUser"
     }
     
     class Color {
@@ -76,6 +79,8 @@ class AppConst {
     class Network {
         #if true  //是否测试环境
         static let TcpServerIP:String = "dapi.star.smartdata-x.com";
+
+//        static let TcpServerIP:String = "139.224.34.22";
         static let TcpServerPort:UInt16 = 16060
         static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
@@ -163,6 +168,7 @@ class AppConst {
         case allDeal = 6009
     }
     
+    
     class WechatKey {
         static let Scope = "snsapi_userinfo"
         static let State = "wpstate"
@@ -185,7 +191,7 @@ class AppConst {
     }
     
     class NotifyDefine {
-        static let onlyLogin = "onlyLogin"
+
     }
     
 }

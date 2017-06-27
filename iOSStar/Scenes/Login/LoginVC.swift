@@ -97,7 +97,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
 
         }
        else{
-        tabar.selectedIndex = 0
+            tabar.selectedIndex = 0
         }
         
     
@@ -117,8 +117,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
     @IBAction func doLogin(_ sender: Any) {
         let btn = sender as! UIButton
         
-         btn.isUserInteractionEnabled = false
-         if !checkTextFieldEmpty([phone]) {
+        if !checkTextFieldEmpty([phone]) {
             return
         }
         if !checkTextFieldEmpty([passPwd]) {
@@ -141,7 +140,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
                 SVProgressHUD.dismiss()
                 let datadic = result as? UserModel
                 SVProgressHUD.showSuccessMessage(SuccessMessage: "登录成功", ForDuration: 2.0, completion: { 
-                    btn.isUserInteractionEnabled = true
+                    
                     if let _ = datadic {
                         UserDefaults.standard.set(self?.phone.text, forKey: "phone")
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
@@ -152,13 +151,10 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate{
                     }
                 })
             }, error: { (error) in
-                btn.isUserInteractionEnabled = true
+                
                 SVProgressHUD.showErrorMessage(ErrorMessage: "手机号或密码错误", ForDuration: 2.0, completion: nil)
             })
-        } else {
-            
-            btn.isUserInteractionEnabled = true
-        }
+        } 
     }
     
     //MARK:- 网易云登录
