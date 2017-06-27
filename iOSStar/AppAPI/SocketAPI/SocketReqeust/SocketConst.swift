@@ -120,7 +120,6 @@ class SocketConst: NSObject {
         
         //当天委托
         case todayEntrust = 6001
-        
         //历史委托
         case historyEntrust = 6005
         //当天成交
