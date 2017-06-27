@@ -11,7 +11,7 @@ import SVProgressHUD
 class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     
     
-    
+    var rid = ""
     
     @IBOutlet var collectView: RechargeCollectView!
 
@@ -58,15 +58,13 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     func alipaysuccess(_ notice: NSNotification) {
         if let errorCode: Int = notice.object as? Int{
             if errorCode == 9000 {
-                SVProgressHUD.showSuccess(withStatus: "充值成功")
+                SVProgressHUD.showErrorMessage(ErrorMessage: "充值成功", ForDuration: 1.5, completion: nil)
+            } else if errorCode == 6001{
+                cancelRecharge()
+                SVProgressHUD.showErrorMessage(ErrorMessage: "支付取消", ForDuration: 1.5, completion: nil)
                 return
-            }
-            else if errorCode == 6001{
-                SVProgressHUD.showError(withStatus: "支付取消")
-                return
-            }
-            else {
-                SVProgressHUD.showError(withStatus: "用户中途取消")
+            } else {
+                SVProgressHUD.showErrorMessage(ErrorMessage: "支付失败", ForDuration: 1.5, completion: nil)
                 return
             }
         }
@@ -84,6 +82,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
                 return
             }
             else if errorCode == -2{
+                cancelRecharge()
                 SVProgressHUD.showError(withStatus: "用户中途取消")
                 return
             }
@@ -117,50 +116,20 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     //MARK:去充值
     @IBAction func doRecharge(_ sender: Any) {
         //微信充值
-        // print(rechargeMoney)
         if rechargeMoney == 0.0 {
-
         SVProgressHUD.showErrorMessage(ErrorMessage: "请输入充值金额", ForDuration: 2.0, completion: {
-           
 
         })
-             return
+            return
         }
         if paytype == 0 {
            doWeiXinPay()
         }else{
            doAliPay()
         }
-        
-       
-        
+
     }
-   
-    func weixinpay(){
-        SVProgressHUD.show(withStatus: "加载中")
-        let requestModel = WeChatPayModel()
-        requestModel.title = "余额充值"
-        requestModel.price = rechargeMoney
-        AppAPIHelper.user().wechatPay(requestModel: requestModel, complete: { (result) in
-            SVProgressHUD.dismiss()
-            if let object = result {
-                let request : PayReq = PayReq()
-                let str : String = object["timestamp"] as! String!
-                //                            ShareModel.share().shareData["rid"] =  object["rid"] as! String!
-                request.timeStamp = UInt32(str)!
-                request.sign = object["sign"] as! String!
-                request.package = object["package"] as! String!
-                request.nonceStr = object["noncestr"] as! String!
-                request.partnerId = object["partnerid"] as! String!
-                request.prepayId = object["prepayid"] as! String!
-                WXApi.send(request)
-            }
-            
-        }) { (error) in
-            print(error)
-        }
-       
-    }
+
     
     //MARK:选择充值金额
     @IBAction func chooseRechargeMoney(_ sender: Any) {
@@ -266,59 +235,41 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
 extension RechargeVC {
     
     fileprivate func doAliPay() {
-    
+        
         SVProgressHUD.show(withStatus: "加载中")
-      let requestModel = AliPayRequestModel()
+        let requestModel = AliPayRequestModel()
         requestModel.title = "余额充值"
         requestModel.price = rechargeMoney
         AppAPIHelper.user().alipay(requestModel: requestModel, complete: { (result) in
             SVProgressHUD.dismiss()
-            if let dataDic = result as? [String : AnyObject]{
-                if (Int.init((dataDic["resultStatus"] as! String))==6001){
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "支付取消", ForDuration: 2, completion: {
-                        
-                    })
-                }
-                else  if (Int.init((dataDic["resultStatus"] as! String))==9000){
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "支付成功", ForDuration: 2, completion: {
-                        
-                    })
-                }else{
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "支付失败", ForDuration: 2, completion: {})
-                }
+            if let model = result as? AliPayResultModel {
+                self.rid = model.rid
+                self.openAliPay(orderInfo: model.orderinfo)
             }
         }) { (error) in
             
         }
-//        AppAPIHelper.user().alipay(title: "余额充值", price: rechargeMoney, complete: { (result) in
-//        
-//        if let object = result  as? [String : AnyObject]{
-//        AlipaySDK.defaultService().payOrder(object["orderinfo"] as! String, fromScheme: "iOSStar", callback: { (result) in
-//    
-//            SVProgressHUD.dismiss()
-//            if let dataDic = result as? [String : AnyObject]{
-//                if (Int.init((dataDic["resultStatus"] as! String))==6001){
-//                  SVProgressHUD.showErrorMessage(ErrorMessage: "支付取消", ForDuration: 2, completion: {
-//                    
-//                  })
-//                }
-//               else  if (Int.init((dataDic["resultStatus"] as! String))==9000){
-//                    SVProgressHUD.showErrorMessage(ErrorMessage: "支付成功", ForDuration: 2, completion: {
-//                        
-//                    })
-//                }else{
-//                    SVProgressHUD.showErrorMessage(ErrorMessage: "支付失败", ForDuration: 2, completion: {})
-//                }
-//            }
-//        })
-//        }
-//      }) { (error) in
-//        
-//        }
-        // NOTE: 调用支付结果开始支付
-     
+        
+    }
+
+    func cancelRecharge() {
+        let requestModel = CancelRechargeModel()
+        requestModel.rid = rid
+        requestModel.payResult = 1
+
+        AppAPIHelper.user().cancelRecharge(requestModel: requestModel, complete: { (response) in
+            
+            
+        }) { (error) in
+            
+            
+        }
     }
     
+    func openAliPay(orderInfo:String) {
+        AlipaySDK.defaultService().payOrder(orderInfo, fromScheme: "iOSStar") { (result) in
+        }
+    }
     
     fileprivate func doWeiXinPay() {
     
@@ -328,20 +279,19 @@ extension RechargeVC {
         requestModel.price = rechargeMoney
         AppAPIHelper.user().wechatPay(requestModel: requestModel, complete: { (result) in
             SVProgressHUD.dismiss()
-            if let object = result {
+            if let model = result as? WeChatPayResultModel {
+                self.rid = model.rid
                 let request : PayReq = PayReq()
-                let str : String = object["timestamp"] as! String!
-                //                            ShareModel.share().shareData["rid"] =  object["rid"] as! String!
-                request.timeStamp = UInt32(str)!
-                request.sign = object["sign"] as! String!
-                request.package = object["package"] as! String!
-                request.nonceStr = object["noncestr"] as! String!
-                request.partnerId = object["partnerid"] as! String!
-                request.prepayId = object["prepayid"] as! String!
+                request.timeStamp = UInt32(model.timestamp)!
+                request.sign = model.sign
+                request.package = model.package
+                request.nonceStr = model.noncestr
+                request.partnerId = model.partnerid
+                request.prepayId = model.prepayid
                 WXApi.send(request)
             }
-            
         }) { (error) in
+            SVProgressHUD.dismiss()
             print(error)
         }
     }
