@@ -108,9 +108,12 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
 
         AppAPIHelper.newsApi().requestBannerList(complete: { (response)  in
             if let models = response as? [BannerModel] {
+                print(models)
                 self.bannerModels = models
+                
                 var bannersUrl:[String] = []
                 for model in models {
+                    model.pic_url = "http://\(model.pic_url)"
                     bannersUrl.append(model.pic_url)
                 }
             self.bannerScrollView?.imageURLStringsGroup = bannersUrl

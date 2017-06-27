@@ -106,17 +106,22 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
 //        }
 //        else{
         
-            let model = self.dataSource?[indexPath.row] as! StarInfoModel
-            let session = NIMSession(model.accid, type: .P2P)
-            print(model.accid)
-            let vc = YDSSessionViewController(session: session)
-            vc?.starcode = model.starcode
-            self.navigationController?.pushViewController(vc!, animated: true)
+//            let model = self.dataSource?[indexPath.row] as! StarInfoModel
+//            let session = NIMSession(model.accid, type: .P2P)
+//            print(model.accid)
+//            let vc = YDSSessionViewController(session: session)
+//            vc?.starcode = model.starcode
+//            self.navigationController?.pushViewController(vc!, animated: true)
             
 //        }
         
     
         //StarInfoModel
+        let starInfoModel = self.dataSource?[indexPath.row] as! StarInfoModel
+        let session = NIMSession(starInfoModel.faccid, type: .P2P)
+        let vc = YDSSessionViewController(session: session)
+        vc?.starcode = starInfoModel.starcode
+        self.navigationController?.pushViewController(vc!, animated: true)
       
 
     }
