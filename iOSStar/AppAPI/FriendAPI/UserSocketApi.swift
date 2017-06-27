@@ -36,7 +36,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
     //微信支付
     func wechatPay(requestModel:WeChatPayModel , complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .weixinpay, model: requestModel)
-        startRequest(packet, complete: complete, error: error)
+        startModelRequest(packet, modelClass: WeChatPayResultModel.self, complete: complete, error: error)
     }
 
     //我的资产
@@ -143,7 +143,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
      // MARK: 支付宝支付
     func alipay(requestModel: AliPayRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .alipay, model: requestModel)
-        startRequest(packet, complete: complete, error: error)
+        startModelRequest(packet, modelClass: AliPayResultModel.self, complete: complete, error: error)
     }
 
     //版本更新提醒
@@ -154,6 +154,10 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
     //更新devicetoken
     func updateDeviceToken(requestModel:UpdateDeviceTokenModel, complete: CompleteBlock?, error: ErrorBlock?){
         let packet = SocketDataPacket(opcode: .updateDeviceToken, model: requestModel)
+        startResultIntRequest(packet, complete: complete, error: error)
+    }
+    func cancelRecharge(requestModel:CancelRechargeModel,  complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .cancelRecharge, model: requestModel)
         startResultIntRequest(packet, complete: complete, error: error)
     }
 }

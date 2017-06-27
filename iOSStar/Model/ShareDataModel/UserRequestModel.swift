@@ -84,8 +84,9 @@ class GetAllStarInfoModel: BaseModel {
     var code = "123"
     var all = 1
 }
-class AliPayRequestModel: WeChatPayModel {
-    
+class AliPayRequestModel: MarketBaseModel {
+    var title = ""
+    var price:Double = 0.0
 }
 
 class ResetPayPwdRequestModel: UserBaseModel {
@@ -101,4 +102,8 @@ class WeChatTokenRequestModel: BaseModel {
     
     var id : Int64 = 0
     var token : String = ""
+}
+class CancelRechargeModel: UserBaseModel {
+    var rid = ""
+    var payResult:Int64 = 1
 }

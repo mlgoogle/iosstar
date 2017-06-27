@@ -222,15 +222,18 @@ class AppConfigHelper: NSObject {
         var config = Realm.Configuration()
         config.fileURL =  config.fileURL!.deletingLastPathComponent()
             .appendingPathComponent("\("starShare").realm")
-        config.schemaVersion = 2
+        config.schemaVersion = 3
         
         //数据库迁移操作
         config.migrationBlock = { migration, oldSchemaVersion in
             
-            if oldSchemaVersion < 2 {
+            if oldSchemaVersion < 3 {
                 
                 migration.enumerateObjects(ofType: EntrustListModel.className(), { (oldObject, newObject) in
                     newObject!["pchg"] = 0.0
+                })
+                migration.enumerateObjects(ofType: WeChatPayResultModel.className(), { (oldObject, newObject) in
+                    newObject!["rid"] = ""
                 })
             }
         }

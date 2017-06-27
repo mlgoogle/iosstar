@@ -72,13 +72,12 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
         // 代表选择了月份筛选
         let requestModel = CreditListRequetModel()
         requestModel.status = 0
-        requestModel.startPos = Int32(pageIndex - 1) * 10
+        requestModel.startPos = Int32(pageIndex - 1) * 10 + 1
         requestModel.time = indexString == nil ? "" : indexString!
         AppAPIHelper.user().requestCreditList(requestModel: requestModel, complete: { (result) in
             self.reponseData = result
             self.nodataView.isHidden = false
-            if let object = result {
-                let model : RechargeListModel = object as! RechargeListModel
+            if let model = result as? RechargeListModel {
                 self.didRequestComplete(model.depositsinfo as AnyObject)
                 self.tableView.reloadData()
                 if self.dataSource?.count == 0 {

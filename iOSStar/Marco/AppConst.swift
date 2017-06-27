@@ -76,10 +76,10 @@ class AppConst {
     class Network {
         #if true  //是否测试环境
         static let TcpServerIP:String = "dapi.star.smartdata-x.com";
-        static let TcpServerPort:UInt16 = 16104
+        static let TcpServerPort:UInt16 = 16060
         static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
-        static let TcpServerIP:String = "api.star.smartdata-x.com";
+        static let TcpServerIP:String = "dapi.star.smartdata-x.com";
         static let TcpServerPort:UInt16 = 16104;
         static let HttpHostUrl:String = "api.star.smartdata-x.com";
         
