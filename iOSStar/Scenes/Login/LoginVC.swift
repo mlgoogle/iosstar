@@ -131,7 +131,6 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
     @IBAction func doLogin(_ sender: Any) {
         
         let btn = sender as! UIButton
-        btn.isUserInteractionEnabled = false
 
         if !checkTextFieldEmpty([phone]) {
             return
