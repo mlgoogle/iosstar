@@ -77,6 +77,7 @@ class AppConst {
     };
     
     class Network {
+
         #if true  //是否测试环境
         static let TcpServerIP:String = "dapi.star.smartdata-x.com"; 
 //        static let TcpServerIP:String = "139.224.34.22";
@@ -86,7 +87,7 @@ class AppConst {
         static let TcpServerIP:String = "api.star.smartdata-x.com";
         static let TcpServerPort:UInt16 = 16060;
         static let HttpHostUrl:String = "api.star.smartdata-x.com";
-        
+
         #endif
         static let TimeoutSec:UInt16 = 10
         static let qiniuHost = "http://ofr5nvpm7.bkt.clouddn.com/"
