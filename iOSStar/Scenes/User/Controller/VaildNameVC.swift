@@ -36,10 +36,13 @@ class VaildNameVC:  BaseTableViewController {
                 SVProgressHUD.showErrorMessage(ErrorMessage: "您尚未勾选《免责声明》，请选择", ForDuration: 2.0, completion: nil)
                 return
             }
+        
+                SVProgressHUD.show(withStatus: "加载中")
             AppAPIHelper.user().authentication(realname: name.text!, id_card: card.text!, complete: { (result) in
                 if let model = result {
-                    
+                    SVProgressHUD.dismiss()
                     let dic = model as! [String : AnyObject]
+                
                     if dic["result"] as! Int  == 0 {
                         SVProgressHUD.showSuccessMessage(SuccessMessage: "实名认证成功", ForDuration: 2.0, completion: {
                             
