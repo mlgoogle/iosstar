@@ -25,6 +25,7 @@ class MessageCell:  OEZTableViewCell{
             let str = model.sellUid == UserModel.share().getCurrentUser()?.userinfo?.id ? "转让":"求购"
             self.content.text = "\(data.name)" +  " " + "(" + "\(data.code)" + ")" +  " " + str
         }
+//        print(model)
         time_lb.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.openTime), format: "YY-MM-dd HH:mm:ss")
         dosee.setTitle("", for: .normal)
         if model.handle == 0 {
