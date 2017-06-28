@@ -296,8 +296,14 @@ class OrderStarViewController: UIViewController {
                         rootvc.showAll = false
                         
                         rootvc.resultBlock = { (result) in
-                            self.domeet()
-                            controller.dismissController()
+                            
+                            if ((result as? String) != nil){
+                                self.domeet()
+                                controller.dismissController()
+                            }else{
+                            SVProgressHUD.showErrorMessage(ErrorMessage:  "约见已取消,请重新约见！", ForDuration: 2, completion: nil)
+                            }
+                           
                             
                         }
                         controller.modalPresentationStyle = .custom
