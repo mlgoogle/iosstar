@@ -17,19 +17,61 @@ class OrderType : UITableViewCell,UITextViewDelegate{
     @IBOutlet weak var orderType: UILabel!
 }
 
-//  反馈Cell
-class FeedbackCell: UITableViewCell , UITextViewDelegate{
+// MARK: - 反馈Cell
+
+protocol FeedbackCellDelegate {
+    
+    func didSelectRules()
+}
+
+class FeedbackCell: UITableViewCell , UITextViewDelegate {
  
+    var delegate : FeedbackCellDelegate?
+    
     // 意见反馈
     @IBOutlet weak var feedBack: UITextView!
     
     // placeholder
     @IBOutlet weak var placeHolderLabel: UILabel!
     
+    // tips
+    @IBOutlet weak var tipsTextView: UITextView!
+    
+    let contentStr = "    TIPS：请提前一个月约见。履约过程中产生的相关费用由用户承担明星出行的安保费通讯费、交通费、住宿费、餐饮费、服化费等必要开支。确定约见即表示您已阅读并同意《约见规则》"  as NSString
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         feedBack.delegate = self
+        
+        
+        let attributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 12.0),
+                          NSForegroundColorAttributeName:UIColor.colorFromRGB(0x999999)]
+        let tipsAttrs  = NSMutableAttributedString(string: contentStr as String, attributes: attributes)
+        let attrs = [NSForegroundColorAttributeName:UIColor.colorFromRGB(0x8C0808)]
+        tipsAttrs.addAttributes(attrs, range: NSMakeRange(NSString(string:contentStr).length - 6, 6))
+        let range = contentStr.range(of: "《约见规则》", options: .regularExpression, range: NSMakeRange(0,contentStr.length))
+        tipsAttrs.addAttribute(NSLinkAttributeName, value: "frist://", range: range)
+        tipsTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.colorFromRGB(0x8C0808)]
+        tipsTextView.attributedText = tipsAttrs
+        tipsTextView.delegate = self
+        tipsTextView.isEditable = false
+        tipsTextView.isScrollEnabled = false
+        tipsTextView.isUserInteractionEnabled = true
     }
+    
+    // MARK: - UITextViewDelegate
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        textView.resignFirstResponder()
+        if URL.scheme == "frist" {
+            // 代理
+            if self.delegate != nil {
+                delegate?.didSelectRules()
+            }
+            return false
+        }
+        return true
+    }
+    
     
     func textViewDidChange(_ textView: UITextView) {
         feedBack.text = textView.text
@@ -39,13 +81,12 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate{
         } else {
             placeHolderLabel.text = ""
             placeHolderLabel.isHidden = true
-            
         }
     }
     
 }
 
-// 明星资料Cell
+// MARK: -  明星资料Cell
 class StarDataCell: UITableViewCell {
     
     // 背景图片
@@ -61,13 +102,11 @@ class StarDataCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //        bkImageView.contentMode = .scaleAspectFit
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
     }
-    
     
     // 设置明星信息
     func setStarInfo(model:MarketListModel) {
@@ -98,6 +137,7 @@ class OrderStarViewController: UIViewController {
     
     // 确定约见按钮
     @IBOutlet weak var completeButton: UIButton!
+    
     // 秒数价格
     @IBOutlet weak var priceLabel: UILabel!
     
@@ -253,6 +293,11 @@ class OrderStarViewController: UIViewController {
             SVProgressHUD.showErrorMessage(ErrorMessage: "请输入备注信息", ForDuration: 2.0, completion: nil)
             return
         }
+        if feedBack.text.length() >= 200 {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "备注信息200字内", ForDuration: 2.0, completion: nil)
+            return
+        }
+        
         //判断是否实名认证
         self.getUserInfo { (result) in
             if let response = result{
@@ -409,23 +454,49 @@ extension OrderStarViewController {
         
         // 获取选择时间的字符串
         let time = Date.yt_convertDateToStr(datePickerView.date, format: "yyyy-MM-dd")
+        // 现在时间的字符串
+        let nowTime = Date.yt_convertDateToStr(NSDate() as Date, format: "yyyy-MM-dd")
+    
+        print("选择的时间=\(time) , 现在的时间=\(nowTime)")
         
+        // 选择的时间
         let chooseDate = datePickerView.date
-        // 只能选择大于今天的时间
-        if chooseDate.timeIntervalSince(NSDate() as Date) <= 0 {
-            
-            /** 最好提示用户,且选择当前的时间*/
-            print("不能选择之前的时间")
-            let nowTime = Date.yt_convertDateToStr(NSDate() as Date, format: "yyyy-MM-dd")
-            orderTime.text = nowTime
-            inputDateTextField.resignFirstResponder()
-            return
-            
-        } else {
+        
+        // nowDate
+        let nowDate = NSDate() as Date
+
+        let compsMonth = Calendar.current.dateComponents([.month], from: nowDate, to: chooseDate)
+        
+        print("===\(String(describing: compsMonth.month))")
+        
+        // 只能选择一个月之后的时间
+        if compsMonth.month! >= 1 {
             orderTime.text = time
-            
             inputDateTextField.resignFirstResponder()
+        } else {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请至少提前一个月约见", ForDuration: 2.0, completion: nil)
+            inputDateTextField.resignFirstResponder()
+            orderTime.text = ""
+            return
+
+            
         }
+        
+        // 只能选择大于今天的时间[
+//        if chooseDate.timeIntervalSince(NSDate() as Date) <= 0 {
+//            
+//            /** 最好提示用户,且选择当前的时间*/
+//            print("不能选择之前的时间")
+//            let nowTime = Date.yt_convertDateToStr(NSDate() as Date, format: "yyyy-MM-dd")
+//            orderTime.text = nowTime
+//            inputDateTextField.resignFirstResponder()
+//            return
+//            
+//        } else {
+//            orderTime.text = time
+//            
+//            inputDateTextField.resignFirstResponder()
+//        }
     }
     func datecancelClick() {
         
@@ -612,7 +683,7 @@ extension OrderStarViewController {
 }
 
 // MARK: - tableView [DataSource -- Delegate]
-extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate {
+extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate,FeedbackCellDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -683,11 +754,17 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FeedbackCell") as! FeedbackCell
             feedBack = cell.feedBack
             cell.selectionStyle = .none
+            cell.delegate = self
             return cell
         }
         
         return cell!
         
+    }
+    
+    func didSelectRules() {
+        
+        print("点击了约见规则")
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
