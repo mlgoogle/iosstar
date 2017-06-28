@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1240,14 +1239,17 @@
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hji-CD-vPc">
-                                                    <rect key="frame" x="176" y="12" width="156" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hji-CD-vPc">
+                                                    <rect key="frame" x="330" y="22.5" width="0.0" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Hji-CD-vPc" secondAttribute="trailing" constant="12" id="kdJ-6h-g2y"/>
+                                                <constraint firstItem="Hji-CD-vPc" firstAttribute="centerY" secondItem="BeI-OO-1hE" secondAttribute="centerY" id="zd3-VI-x52"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
@@ -1269,14 +1271,17 @@
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2s-qQ-DOa">
-                                                    <rect key="frame" x="176" y="12" width="156" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2s-qQ-DOa">
+                                                    <rect key="frame" x="332" y="22.5" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Z2s-qQ-DOa" firstAttribute="centerY" secondItem="RVv-wb-7BP" secondAttribute="centerY" id="Ofw-pI-hsH"/>
+                                                <constraint firstAttribute="trailing" secondItem="Z2s-qQ-DOa" secondAttribute="trailing" constant="10" id="iHB-XK-Ixi"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
@@ -1292,17 +1297,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OXs-W1-y9Y">
-                                                    <rect key="frame" x="23" y="8" width="329" height="100"/>
+                                                    <rect key="frame" x="15" y="8" width="345" height="100"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lxT-jn-6xV">
-                                                            <rect key="frame" x="0.0" y="3" width="323" height="91"/>
+                                                            <rect key="frame" x="0.0" y="3" width="339" height="91"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入您对此次约见的其他要求200字以内... " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbM-lR-d7N">
-                                                            <rect key="frame" x="5" y="10" width="319" height="21"/>
+                                                            <rect key="frame" x="5" y="10" width="335" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="hGi-pp-Dz2"/>
                                                             </constraints>
@@ -1329,44 +1334,40 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2y-8e-SC8">
-                                                    <rect key="frame" x="14" y="113" width="350" height="50"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RrC-4E-UhX">
+                                                    <rect key="frame" x="15" y="113" width="345" height="80"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="OIA-dn-JBL"/>
+                                                        <constraint firstAttribute="height" constant="80" id="sWd-d8-dDJ"/>
                                                     </constraints>
                                                     <attributedString key="attributedText">
-                                                        <fragment content="   ">
+                                                        <fragment content="  TIPS：请提前一个月约见。履约过程中产生的相关费用由用户承担明星出行的安保费通讯费、交通费、住宿费、餐饮费、服化费等必要开支。确定约见即表示您已阅读并同意《约见规则》">
                                                             <attributes>
-                                                                <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                        <fragment content="TIPS：请至少提前一个月约见。履约过程中产生的相关费用由用户承担明星出行的安保费通讯费、交通费、住宿费、餐饮费、服化费等必要开支。确定约见即表示您已阅读并同意">
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="12" name=".PingFangSC-Regular"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                        <fragment content="《约见规则》">
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.81564277410507202" green="0.19742085843616217" blue="0.12942886045240734" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <font key="NSFont" size="12" name=".PingFangSC-Regular"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="12" name="PingFangSC-Regular"/>
+                                                                <integer key="NSLigature" value="0"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="34.600000000000001" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                                    <tabStops>
+                                                                        <textTab alignment="left" location="34.599998474121094">
+                                                                            <options/>
+                                                                        </textTab>
+                                                                    </tabStops>
+                                                                </paragraphStyle>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                </textView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="M2y-8e-SC8" secondAttribute="trailing" constant="11" id="I2q-ch-YP7"/>
-                                                <constraint firstItem="M2y-8e-SC8" firstAttribute="leading" secondItem="kWu-OC-3Qc" secondAttribute="leading" constant="14" id="eJS-ug-qvo"/>
+                                                <constraint firstItem="RrC-4E-UhX" firstAttribute="leading" secondItem="kWu-OC-3Qc" secondAttribute="leading" constant="15" id="IqQ-mJ-hlz"/>
+                                                <constraint firstAttribute="trailing" secondItem="RrC-4E-UhX" secondAttribute="trailing" constant="15" id="cce-zb-Z2s"/>
                                                 <constraint firstItem="OXs-W1-y9Y" firstAttribute="top" secondItem="kWu-OC-3Qc" secondAttribute="top" constant="8" id="jgm-nm-nYO"/>
-                                                <constraint firstItem="M2y-8e-SC8" firstAttribute="top" secondItem="OXs-W1-y9Y" secondAttribute="bottom" constant="5" id="lLI-qV-nnb"/>
-                                                <constraint firstAttribute="trailing" secondItem="OXs-W1-y9Y" secondAttribute="trailing" constant="23" id="pfC-Fv-OyG"/>
-                                                <constraint firstItem="OXs-W1-y9Y" firstAttribute="leading" secondItem="kWu-OC-3Qc" secondAttribute="leading" constant="23" id="wbg-y7-R9N"/>
+                                                <constraint firstAttribute="trailing" secondItem="OXs-W1-y9Y" secondAttribute="trailing" constant="15" id="pfC-Fv-OyG"/>
+                                                <constraint firstItem="RrC-4E-UhX" firstAttribute="top" secondItem="OXs-W1-y9Y" secondAttribute="bottom" constant="5" id="sSz-dT-Q3V"/>
+                                                <constraint firstItem="OXs-W1-y9Y" firstAttribute="leading" secondItem="kWu-OC-3Qc" secondAttribute="leading" constant="15" id="wbg-y7-R9N"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1374,6 +1375,7 @@
                                         <connections>
                                             <outlet property="feedBack" destination="lxT-jn-6xV" id="g9e-vp-Bd8"/>
                                             <outlet property="placeHolderLabel" destination="IbM-lR-d7N" id="JSa-Vr-4iK"/>
+                                            <outlet property="tipsTextView" destination="RrC-4E-UhX" id="pbi-4N-HF3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1403,7 +1405,7 @@
                                             <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="90000秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXo-zk-Nro">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="即将消耗:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXo-zk-Nro">
                                         <rect key="frame" x="20" y="1" width="218" height="49"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1451,7 +1453,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BoP-0B-6HE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2389.5999999999999" y="-779.46026986506752"/>
+            <point key="canvasLocation" x="2389.5" y="-779.5"/>
         </scene>
         <!--Market Search View Controller-->
         <scene sceneID="0XC-ic-yLb">
