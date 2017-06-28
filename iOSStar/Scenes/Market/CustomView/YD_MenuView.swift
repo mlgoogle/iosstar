@@ -124,9 +124,8 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if isScreenWidth {
             let margin = selfLayout!.sectionInset.left + selfLayout!.sectionInset.right + frame.origin.x
-           
-            let width = kScreenWidth - margin - selfLayout!.minimumInteritemSpacing * (CGFloat(items!.count) - 1)
-            let size = CGSize(width:width > 0 ? width : 1 / CGFloat(items!.count), height: 15)
+            let width = (kScreenWidth - margin - selfLayout!.minimumInteritemSpacing * (CGFloat(items!.count) - 1) ) / CGFloat(items!.count)
+            let size = CGSize(width: (width > 0 ? width : 0), height: 15)
             return size
         } else {
             let title = items?[indexPath.row]
