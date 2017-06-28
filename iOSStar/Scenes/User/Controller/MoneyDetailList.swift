@@ -10,7 +10,8 @@ import UIKit
 import SVProgressHUD
 class MoneyDetailListCell: OEZTableViewCell {
     
-
+    var rechargeStatus:[Int8 : String] = [1:"处理中", 2:"充值成功", 3:"充值失败",4:"用户取消"]
+    var rechargeType:[Int8 : String] = [1:"微信支付", 2:"银行卡支付", 3:"支付宝支付"]
     @IBOutlet weak var weekLb: UILabel!            // 姓名LbstatusLb
     @IBOutlet weak var timeLb: UILabel!            // 时间Lb
     @IBOutlet weak var moneyCountLb: UILabel!      // 充值金额Lb
@@ -24,9 +25,9 @@ class MoneyDetailListCell: OEZTableViewCell {
         let model = data as! Model
         self.moneyCountLb.text = "+" + " "  + String.init(format: "%.2f", model.amount)
         let timestr : Int = Date.stringToTimeStamp(stringTime: model.depositTime)
-        self.withDrawto.text = model.depositType == 1 ? "微信支付" :"银行卡"
+        self.withDrawto.text = rechargeType[model.depositType]
         self.weekLb.text = Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "yyyy")
-        self.statusLb.text = model.status == 1 ? "处理中" : (model.status == 2 ?  "充值成功":  "充值失败")
+        self.statusLb.text = rechargeStatus[model.status]
         self.timeLb.text =  Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "MM-dd")
         self.minuteLb.text =  Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "HH:mm:ss")
         
@@ -39,6 +40,7 @@ class MoneyDetailListCell: OEZTableViewCell {
 class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDelegate {
     
     var contentoffset = CGFloat()
+    
     var navLeft : UIButton?
     
     // 存储模型数据传入下一个界面
@@ -48,10 +50,12 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
     var indexString : String?
     
     @IBOutlet var nodataView: UIView!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,72 +65,51 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
         
         navLeft?.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20)
         let right = UIBarButtonItem.init(customView: navLeft!)
-         nodataView.isHidden = true
+        nodataView.isHidden = true
         navLeft?.addTarget(self , action: #selector(selectDate), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = right
-        navLeft?.setImage(UIImage.init(named: "calendar@2x"), for: .normal)
+        navLeft?.setImage(UIImage.init(named: "calendar"), for: .normal)
         ShareDataModel.share().addObserver(self, forKeyPath: "selectMonth", options: .new, context: nil)
     }
     
     override func didRequest(_ pageIndex : Int) {
+       
+        let requestModel = CreditListRequetModel()
+        requestModel.status = 0
 
         // 代表选择了月份筛选
-        if indexString != nil {
-            AppAPIHelper.user().creditlist(status: 0, pos: Int32(pageIndex - 1) * 10, count: 10, time: indexString!, complete: { (result) in
-                
-                self.reponseData = result
-                self.nodataView.isHidden = false
-                if let object = result {
-                    let model : RechargeListModel = object as! RechargeListModel
-                    self.didRequestComplete(model.depositsinfo as AnyObject)
-                    self.tableView.reloadData()
-                    if self.dataSource?.count == 0 {
-                        self.nodataView.isHidden = false
-                    }else{
-                        self.nodataView.isHidden = true
-                    }
-                   
-                
-                }
-            }, error: { (error) in
-                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-                self.didRequestComplete(nil)
-                self.nodataView.isHidden = false
-                    
+
+        requestModel.startPos = Int32(pageIndex - 1) * 10 + 1
+
+        requestModel.time = indexString == nil ? "" : indexString!
+        
+        AppAPIHelper.user().requestCreditList(requestModel: requestModel, complete: { (result) in
+            
+            // print("===\(result)")
+            
+            self.reponseData = result
+            self.nodataView.isHidden = false
+            if let model = result as? RechargeListModel {
+                self.didRequestComplete(model.depositsinfo as AnyObject)
                 self.tableView.reloadData()
-            })
-        } else {
-          
-            // 获取全部的
-            AppAPIHelper.user().creditlist(status: 0, pos: Int32((pageIndex - 1) * 10), count: 10, time: "", complete: { (result) in
-                
-                // print("=====\(String(describing: result))")
-                
-                self.reponseData = result
-                
-                if let object = result {
-                    let model : RechargeListModel = object as! RechargeListModel
-                    self.didRequestComplete(model.depositsinfo as AnyObject)
-                    self.tableView.reloadData()
-                }
                 if self.dataSource?.count == 0 {
                     self.nodataView.isHidden = false
                 }else{
                     self.nodataView.isHidden = true
                 }
-                
-            }) { (error ) in
-                self.nodataView.isHidden = true
-                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-                self.didRequestComplete(nil)
-                self.nodataView.isHidden = false
-                self.tableView.reloadData()
             }
-        }
- }
+        }, error: { (error) in
+//            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+            self.didRequestComplete(nil)
+            self.nodataView.isHidden = false
+            self.tableView.reloadData()
+        })
+        
+    }
    
     
     deinit {
+        
         ShareDataModel.share().removeObserver(self, forKeyPath: "selectMonth", context: nil)
     }
     
@@ -140,6 +123,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
         (ResultVC as! ResultVC).responseData = moder.depositsinfo?[indexPath.row]
         self.navigationController?.pushViewController(ResultVC, animated: true)
     }
+    
     
     func selectDate(){
         
@@ -168,10 +152,8 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
                 navLeft?.isEnabled = true
                 self.tableView.isScrollEnabled = true
                 if selectMonth != "1000000" {
-                   // monthLb.text = "2017年" + " " + "\(selectMonth)" + "月"
                 }
             }
         }
     }
-
 }

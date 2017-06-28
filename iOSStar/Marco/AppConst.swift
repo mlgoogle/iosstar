@@ -35,13 +35,14 @@ class AppConst {
     static let isMock = false
     static let sha256Key = "t1@s#df!"
     static let pid = 1002
+    static let frozeCode = -101
     static let bundleId = "com.newxfin.goods"
     static let loginSuccess = "loginSuccess"
     static let loginSuccessNotice = "loginSuccessNotice"
     static let chooseServiceTypeSuccess = "chooseServiceTypeSuccess"
     static let valueStarCode = "valueStarCode"
     static let getStarService = "getStarService"
-    
+ 
     enum KVOKey: String {
         case selectProduct = "selectProduct"
         case allProduct = "allProduct"
@@ -51,6 +52,8 @@ class AppConst {
     
     enum NoticeKey: String {
         case logoutNotice = "LogoutNotice"
+        case onlyLogin = "onlyLogin"
+        case frozeUser = "frozeUser"
     }
     
     class Color {
@@ -74,20 +77,25 @@ class AppConst {
     };
     
     class Network {
-        #if false  //是否测试环境
-        static let TcpServerIP:String = "139.224.34.22";
+
+        #if true  //是否测试环境
+
+        static let TcpServerIP:String = "dapi.star.smartdata-x.com";
+
+//        static let TcpServerIP:String = "139.224.34.22";
         static let TcpServerPort:UInt16 = 16060
-        static let TttpHostUrl:String = "139.224.34.22";
+        static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
-        static let TcpServerIP:String = "139.224.34.22";
-        static let TcpServerPort:UInt16 = 16060;
-        static let HttpHostUrl:String = "139.224.34.22";
-        
+        static let TcpServerIP:String = "dapi.star.smartdata-x.com";
+        static let TcpServerPort:UInt16 = 16104;
+        static let HttpHostUrl:String = "api.star.smartdata-x.com";
+
         #endif
         static let TimeoutSec:UInt16 = 10
         static let qiniuHost = "http://ofr5nvpm7.bkt.clouddn.com/"
     }
     class Text {
+        static let deviceToken = "deviceToken"
         static let PhoneFormatErr = "请输入正确的手机号"
         static let VerifyCodeErr  = "请输入正确的验证码"
         static let SMSVerifyCodeErr  = "获取验证码失败"
@@ -163,6 +171,7 @@ class AppConst {
         case allDeal = 6009
     }
     
+    
     class WechatKey {
         static let Scope = "snsapi_userinfo"
         static let State = "wpstate"
@@ -185,7 +194,6 @@ class AppConst {
     }
     
     class NotifyDefine {
-        
 
     }
     

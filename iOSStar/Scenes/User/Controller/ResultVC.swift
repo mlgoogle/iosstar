@@ -35,8 +35,6 @@ class ResultVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // print("\(self.responseData as! Model)")
         
         title = "账单详情"
         

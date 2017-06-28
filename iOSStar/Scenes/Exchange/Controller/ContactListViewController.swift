@@ -42,8 +42,11 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
     }
     
     override func didRequest(_ pageIndex: Int) {
+        let requestModel = StarMailListRequestModel()
+        requestModel.status = 1
+        requestModel.startPos = (pageIndex - 1) * 10
         
-        AppAPIHelper.user().starmaillist(status: 1, pos: Int32((pageIndex - 1) * 10), count: 10, complete: { (result) in
+        AppAPIHelper.user().requestStarMailList(requestModel: requestModel, complete: { (result) in
             if  let Model  = result as? StarListModel{
                 self.didRequestComplete( Model.depositsinfo as AnyObject)
                 if self.dataSource?.count == 0{
@@ -52,15 +55,15 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
                     self.nodaView.isHidden = true
                 }
             }
-            
-        }) { (error ) in
-             self.didRequestComplete(nil)
+        }) { (error) in
+            self.didRequestComplete(nil)
             if self.dataSource?.count == nil{
-               self.nodaView.isHidden = false
+                self.nodaView.isHidden = false
             }else{
                 self.nodaView.isHidden = true
             }
         }
+
 
     }
     override func   LoginSuccess(){
@@ -69,51 +72,56 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-        if setRealm == false{
-            self.getUserRealmInfo { (result) in
-                if let model = result{
-                    let object =  model as! [String : AnyObject]
-                    let alertVc = AlertViewController()
-                    if object["realname"] as! String == ""{
-                        
-                        alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-                                            titleLabelText: "您还没有身份验证",
-                                            
-                                            subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
-                                            
-                                            completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
-                                                alertVc?.dismissAlertVc()
-                                                
-                                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
-                                                self.navigationController?.pushViewController(vc, animated: true )
-                                                return
-                        }
-                        
-                    }else{
-                        self.setRealm = true
-                        let model = self.dataSource?[indexPath.row] as! StarInfoModel
-                        let session = NIMSession(model.accid, type: .P2P)
-                        print(model.accid)
-                        let vc = YDSSessionViewController(session: session)
-                        vc?.starcode = model.starcode
-                        self.navigationController?.pushViewController(vc!, animated: true)
-                    }
-                }
-            }
-        }
-        else{
+//        if setRealm == false {
+//            self.getUserRealmInfo { (result) in
+//                if let model = result{
+//                    let object =  model as! [String : AnyObject]
+//                    let alertVc = AlertViewController()
+//                    if object["realname"] as! String == ""{
+//                        
+//                        alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
+//                                            titleLabelText: "您还没有身份验证",
+//                                            
+//                                            subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
+//                                            
+//                                            completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
+//                                                alertVc?.dismissAlertVc()
+//                                                
+//                                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
+//                                                self.navigationController?.pushViewController(vc, animated: true )
+//                                                return
+//                        }
+//                        
+//                    }else{
+//                        self.setRealm = true
+//                        let model = self.dataSource?[indexPath.row] as! StarInfoModel
+//                        let session = NIMSession(model.accid, type: .P2P)
+//                        print(model.accid)
+//                        let vc = YDSSessionViewController(session: session)
+//                        vc?.starcode = model.starcode
+//                        self.navigationController?.pushViewController(vc!, animated: true)
+//                    }
+//                }
+//            }
+//        }
+//        else{
+        
+//            let model = self.dataSource?[indexPath.row] as! StarInfoModel
+//            let session = NIMSession(model.accid, type: .P2P)
+//            print(model.accid)
+//            let vc = YDSSessionViewController(session: session)
+//            vc?.starcode = model.starcode
+//            self.navigationController?.pushViewController(vc!, animated: true)
             
-            let model = self.dataSource?[indexPath.row] as! StarInfoModel
-            let session = NIMSession(model.accid, type: .P2P)
-            print(model.accid)
-            let vc = YDSSessionViewController(session: session)
-            vc?.starcode = model.starcode
-            self.navigationController?.pushViewController(vc!, animated: true)
-            
-        }
+//        }
         
     
         //StarInfoModel
+        let starInfoModel = self.dataSource?[indexPath.row] as! StarInfoModel
+        let session = NIMSession(starInfoModel.faccid, type: .P2P)
+        let vc = YDSSessionViewController(session: session)
+        vc?.starcode = starInfoModel.starcode
+        self.navigationController?.pushViewController(vc!, animated: true)
       
 
     }

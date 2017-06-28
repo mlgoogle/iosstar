@@ -12,7 +12,7 @@ class DealDoubleRowCell: UITableViewCell {
     
 
     var dealType:[Int:String] = [-1:"转让",1:"求购"]
-    var dealStatus:[Int32:String] = [-2:"失败",0:"进行", 1:"成功", 2:"成功"]
+    var dealStatus:[Int32:String] = [-2:"委托失败",0:"委托中", 1:"委托中", 2:"委托成功"]
     @IBOutlet weak var nameLabel: UILabel!
 
     @IBOutlet weak var underNameLabel: UILabel!
@@ -44,10 +44,10 @@ class DealDoubleRowCell: UITableViewCell {
             }
         }
         underNameLabel.text = model.symbol
-        secondLabel1.text = String(format: "%.2f", model.openPrice)
+        secondLabel1.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.positionTime), format: "YYYY-MM-dd")
         secondLabel2.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.positionTime), format: "HH:mm:SS")
-        thirdLabel1.text = "\(model.amount)"
-        thirdLabel2.text = "\(model.rtAmount)"
+        thirdLabel1.text = String(format: "%.2f", model.openPrice)
+        thirdLabel2.text = "\(model.amount)"
         lastLabel1.text = dealType[model.buySell]
         lastLabel2.text = dealStatus[model.handle]
         

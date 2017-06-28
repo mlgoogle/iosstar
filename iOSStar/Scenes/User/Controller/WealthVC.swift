@@ -111,8 +111,6 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                             self.navigationController?.pushViewController(vc, animated: true )
                                             return
                     }
-                    
-                    
                 }
                 else{
                     let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")

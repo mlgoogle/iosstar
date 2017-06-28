@@ -16,7 +16,7 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(showOnlyLogin), name: Notification.Name.init(rawValue: AppConst.NoticeKey.onlyLogin.rawValue), object: nil)
         initcustomer()
         
     }
@@ -33,7 +33,7 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
         delegate = self
         
         let storyboardNames = ["News","Market","Exchange","User"]
-        let titles = ["首页","行情","星聊","个人中心"]
+        let titles = ["资讯","热度","星聊","我的"]
         for (index, name) in storyboardNames.enumerated() {
             let storyboard = UIStoryboard.init(name: name, bundle: nil)
             let controller = storyboard.instantiateInitialViewController()
@@ -83,7 +83,7 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
 //        } else {
 //            self.tabBar.hideBadgeOnItemIndex(index: 2)
 //        }
-        print("====\(self.sessionUnreadCount)")
+        print("未读消息条数====\(self.sessionUnreadCount)")
         self.refreshSessionBadge()
     }
     

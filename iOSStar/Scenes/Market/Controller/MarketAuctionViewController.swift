@@ -36,7 +36,7 @@ class MarketAuctionViewController: MarketBaseViewController {
 
 
         requestAuctionSattus()
-        requestFansList()
+       // requestFansList()
         requetTotalCount()
         requestPositionCount()
         requestPercent()
@@ -52,6 +52,7 @@ class MarketAuctionViewController: MarketBaseViewController {
     func initCountDownBlock() {
 
         YD_CountDownHelper.shared.marketBuyOrSellListRefresh = { [weak self] (result)in
+            self?.isRefresh = true
             self?.requestFansList()
             self?.requestPositionCount()
             self?.requestPercent()
@@ -63,10 +64,6 @@ class MarketAuctionViewController: MarketBaseViewController {
                 return
             }
             self?.count -= 1
-    
-            if self!.isFirst {
-                self!.tableView.reloadData()
-            }
             self!.reloadSections(section: 1)
 
         }
@@ -76,12 +73,10 @@ class MarketAuctionViewController: MarketBaseViewController {
             return
         }
         if statusModel!.status && statusModel!.remainingTime > 0 {
-            endTime = Int64(Date().timeIntervalSince1970) + statusModel!.remainingTime + YD_CountDownHelper.shared.timeDistance
+            endTime = Int64(Date().timeIntervalSince1970) + statusModel!.remainingTime
             initCountDownBlock()
         } else {
-            if self.isFirst {
-                self.tableView.reloadData()
-            }
+
             self.reloadSections(section: 1)
         }
 
@@ -96,9 +91,6 @@ class MarketAuctionViewController: MarketBaseViewController {
         AppAPIHelper.marketAPI().requestPositionCount(requestModel: r, complete: { (response) in
             if let model = response as? PositionCountModel {
                 self.countModel = model
-                if self.isFirst {
-                    self.tableView.reloadData()
-                }
                 self.reloadSections(section: 2)
             }
         }) { (error) in
@@ -114,14 +106,10 @@ class MarketAuctionViewController: MarketBaseViewController {
         AppAPIHelper.marketAPI().requstBuySellPercent(requestModel: requestModel, complete: { (response) in
             if let model = response as? BuySellCountModel{
                 self.buySellModel = model
-                if self.isFirst {
-                self.tableView.reloadData()
-                }
                 self.reloadSections(section: 3)
             }
             
         }) { (error) in
-            
                 self.reloadSections(section: 3)
         }
 
@@ -143,11 +131,11 @@ class MarketAuctionViewController: MarketBaseViewController {
         AppAPIHelper.marketAPI().requestAuctionStatus(requestModel: model, complete: { (response) in
             if let model = response as? AuctionStatusModel {
                 self.statusModel = model
-                self.refreshSatus()
+                self.perform(#selector(self.refreshSatus), with: nil, afterDelay: 2.0)
             
             }
         }) { (error) in
-            self.refreshSatus()
+                self.perform(#selector(self.refreshSatus), with: nil, afterDelay: 2.0)
         }
     }
     func endRefres(count:Int) {
@@ -181,7 +169,13 @@ class MarketAuctionViewController: MarketBaseViewController {
         let requestModel = FanListRequestModel()
         requestModel.buySell = buySell
         requestModel.symbol = starCode!
-        requestModel.start = Int32(fansList?.count ?? 0)
+        if isRefresh  {
+
+            requestModel.start = 0
+        } else {
+            
+            requestModel.start = Int32(fansList?.count ?? 0)
+        }
         AppAPIHelper.marketAPI().requestEntrustFansList(requestModel: requestModel, complete: { (response) in
             if let models = response  as? [FansListModel] {
                 if  self.fansList?.count ?? 0 != 0 {
@@ -197,8 +191,10 @@ class MarketAuctionViewController: MarketBaseViewController {
                     self.reloadSections(section: 4)
                     self.endRefres(count:models.count)
                     
-                } else{
+                } else {
                     self.fansList = models
+                    self.reloadSections(section: 4)
+
                     self.endRefres(count:self.fansList!.count)
                 }
                 self.isFirst = false
@@ -230,13 +226,12 @@ class MarketAuctionViewController: MarketBaseViewController {
         }) { (error) in
             
             
-            
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        refreshSatus()
+        self.perform(#selector(self.refreshSatus), with: nil, afterDelay: 2.0)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -263,12 +258,10 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
             buySell = -1
         }
         self.index = index
-        YD_CountDownHelper.shared.marketBuyOrSellListRefresh = nil
+
         YD_CountDownHelper.shared.countDownRefresh = nil
 
-        initCountDownBlock()
-        requestFansList()
-
+        refreshSatus()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -280,7 +273,6 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
             headerView.isShowImage = false
             return headerView
         }
-        
         return nil
     }
     
@@ -332,6 +324,9 @@ extension MarketAuctionViewController:UITableViewDataSource, UITableViewDelegate
             if let nodataCell = cell as? NoDataCell {
                 nodataCell.setImageAndTitle(image: UIImage(named: "nodata_fanslist"), title: nil)
             } else if let fansCell = cell as? MarketAuctionCell {
+                guard fansList != nil else {
+                    return fansCell
+                }
                 fansCell.setFans(model:fansList![indexPath.row])
 
             }

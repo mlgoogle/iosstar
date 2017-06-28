@@ -76,19 +76,55 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
     }
     //MARK: 发送验证码
     @IBAction func sendVaildCode(_ sender: Any) {
+//        if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
+//            self.vaildCodeBtn.isEnabled = false
+//            // 校验用户是否注册
+//            AppAPIHelper.login().checkRegist(phone: self.phoneTf.text!, complete: {[weak self] (checkRegistResult) in
+//                if let checkRegistResponse = checkRegistResult {
+//                    if checkRegistResponse["result"] as! Int == 0 {
+//                        SVProgressHUD.showErrorMessage(ErrorMessage: "该用户未注册!!!", ForDuration: 2.0, completion: nil)
+//                        self?.vaildCodeBtn.isEnabled = true
+//                        return
+//                    } else {
+//                        // 已注册 发验证码
+//                        SVProgressHUD.showProgressMessage(ProgressMessage: "")
+        
+//                        AppAPIHelper.login().SendCode(phone: (self?.phoneTf.text)!, complete: { [weak self] (result) in
+//                            SVProgressHUD.dismiss()
+//                            self?.vaildCodeBtn.isEnabled = true
+//                            if let response = result {
+//                                if response["result"] as! Int == 1 {
+//                                    self?.timer = Timer.scheduledTimer(timeInterval: 1,target:self!,selector: #selector(self?.updatecodeBtnTitle),userInfo: nil,repeats: true)
+//                                    self?.timeStamp = String.init(format: "%ld", response["timeStamp"] as!  Int)
+//                                    self?.vToken = String.init(format: "%@", response["vToken"] as! String)
+//                                }
+//                            }
+//                        }, error: { (error) in
+//                            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+//                            self?.vaildCodeBtn.isEnabled = true
+//                        })
+//                    }
+//                }
+//            }, error: { (error) in
+//                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+//                self.vaildCodeBtn.isEnabled = true
+//            })
+//        }
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
             self.vaildCodeBtn.isEnabled = false
-            // 校验用户是否注册
-            AppAPIHelper.login().checkRegist(phone: self.phoneTf.text!, complete: {[weak self] (checkRegistResult) in
+            let checkRegisterRequestModel = CheckRegisterRequestModel()
+            checkRegisterRequestModel.phone = phoneTf.text!
+            AppAPIHelper.login().CheckRegister(model: checkRegisterRequestModel, complete: {[weak self] (checkRegistResult) in
                 if let checkRegistResponse = checkRegistResult {
                     if checkRegistResponse["result"] as! Int == 0 {
                         SVProgressHUD.showErrorMessage(ErrorMessage: "该用户未注册!!!", ForDuration: 2.0, completion: nil)
                         self?.vaildCodeBtn.isEnabled = true
                         return
                     } else {
-                        // 已注册 发验证码
                         SVProgressHUD.showProgressMessage(ProgressMessage: "")
-                        AppAPIHelper.login().SendCode(phone: (self?.phoneTf.text)!, complete: { [weak self] (result) in
+                        let sendVerificationCodeRequestModel = SendVerificationCodeRequestModel()
+                        sendVerificationCodeRequestModel.phone = (self?.phoneTf.text)!
+                        AppAPIHelper.login().SendVerificationCode(model: sendVerificationCodeRequestModel, complete: {[weak self] (result) in
                             SVProgressHUD.dismiss()
                             self?.vaildCodeBtn.isEnabled = true
                             if let response = result {
@@ -137,7 +173,6 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
             SVProgressHUD.showErrorMessage(ErrorMessage: "请输入6位字符以上密码", ForDuration: 2.0, completion: nil)
             return
         }
-        
         if first_input.text != second_input.text {
             SVProgressHUD.showErrorMessage(ErrorMessage: "两次密码不一致", ForDuration: 2.0, completion: nil)
             return
@@ -148,18 +183,11 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
             SVProgressHUD.showErrorMessage(ErrorMessage: "验证码不正确", ForDuration: 0.5, completion:nil)
             return
         }
- 
-        // FIXME: - 此处先给"123456"的验证码
-        /*
-        if codeTf.text != "123456" {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 2.0, completion: nil)
-            return
-        }
-        */
+
         AppAPIHelper.login().ResetPassWd(phone: self.phoneTf.text!, pwd: (self.first_input.text?.md5_string())!, complete: { (result)  in
             if let response = result{
                 if response["result"] as! Int == 1{
-                    //重置成功
+                    // 重置成功
                     SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功", ForDuration: 2.0, completion: { 
                       _ =  self.navigationController?.popViewController(animated: true)
                     })

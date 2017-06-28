@@ -155,7 +155,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         timeLineView.scaleYEnabled = false
         timeLineView.xAxis.axisMinimum = 0
         timeLineView.xAxis.axisMaximum = 30
-        timeLineView.leftAxis.axisMinimum = 0
+//        timeLineView.leftAxis.axisMinimum = 0
         timeLineView.xAxis.labelFont = UIFont.systemFont(ofSize: 0)
         timeLineView.leftAxis.labelFont = UIFont.systemFont(ofSize: 10)
         timeLineView.leftAxis.gridColor = UIColor.init(rgbHex: 0xf2f2f2)
@@ -178,7 +178,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
     
     func markerLineText(model: TimeLineModel) -> String {
         let time = Date.yt_convertDateToStr(Date.init(timeIntervalSince1970: TimeInterval(model.priceTime)), format: "MM-dd HH:mm")
-        let price = String.init(format: "%.4f", model.currentPrice)
+        let price = String.init(format: "%.2f", model.currentPrice)
         return "\(time)\n最新价\(price)"
     }
     func imageFromUIView(_ view: UIView) -> UIImage {
@@ -229,6 +229,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         set.drawFilledEnabled = true
         set.fillColor = UIColor(red: 203.0 / 255, green: 66.0 / 255, blue: 50.0 / 255, alpha: 0.5)
         let data: LineChartData  = LineChartData.init(dataSets: [set])
+        timeLineView.xAxis.axisMaximum = Double(entrys.count > 30 ? entrys.count+5 : 30)
         timeLineView.data = data
         timeLineView.data?.notifyDataChanged()
         timeLineView.setNeedsDisplay()
@@ -254,7 +255,7 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
             break
         }
     }
-    func doGetRelam(){
+    func doGetRelam() {
         self.getUserRealmInfo { (result) in
             if let model = result{
                 let object =  model as! [String : AnyObject]
@@ -274,13 +275,13 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
                                             return
                     }
                     
-                }else{
+                }else {
                     
                     self.performSegue(withIdentifier: "meetFans", sender: nil)
                 }
             }
         }
-        }
+    }
 
     
     // Segue传值
@@ -288,21 +289,18 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
         if segue.identifier ==  "meetFans"{
             if let vc = segue.destination as? OrderStarViewController{
                 vc.starInfo = starModel
-                // 存储明星代码数据
-                UserDefaults.standard.set(starModel?.symbol, forKey: "starCode")
-                UserDefaults.standard.synchronize()
             }
         }
     }
     
     func pushToDealPage(index:Int) {
-        //if checkLogin() {
-        //}
         let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as! DealViewController
         vc.starListModel = starModel
         vc.realTimeData = realTimeModel
         vc.index = index
+        let auctionVC = childViewControllers[2] as? MarketAuctionViewController
+        vc.totalCount = auctionVC?.totalCount ?? 0
         navigationController?.pushViewController(vc, animated: true)
 
     }

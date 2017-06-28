@@ -9,8 +9,8 @@
 import UIKit
 
 // 屏幕宽高
-private let kSCREEN_W : CGFloat = UIScreen.main.bounds.size.width
-private let kSCREEN_H : CGFloat = UIScreen.main.bounds.size.height
+private var kSCREEN_W : CGFloat = UIScreen.main.bounds.size.width
+private var kSCREEN_H : CGFloat = UIScreen.main.bounds.size.height
 
 class AlertViewController: UIViewController {
     
@@ -95,7 +95,7 @@ class AlertViewController: UIViewController {
     fileprivate func setupSubTitleTextView() {
         subTitleTextView.text = ""
         // subTitleTextView.textAlignment = .center
-        // subTitleTextView.font = UIFont.systemFont(ofSize: 14.0)
+         subTitleTextView.font = UIFont.systemFont(ofSize: 14.0)
         // subTitleTextView.textColor = UIColor.colorFromRGB(0x999999)
         subTitleTextView.isEditable = false
         subTitleTextView.isScrollEnabled = false
@@ -118,10 +118,20 @@ extension AlertViewController {
         
         let mainScreenBounds = UIScreen.main.bounds
         self.view.frame.size = mainScreenBounds.size
+
+        var kLEFT_MARGIN :CGFloat = 0
+        var kTOP_MARGIN  :CGFloat = 0
         
-        let kLEFT_MARGIN :CGFloat = 37
-        let kTOP_MARGIN : CGFloat = 118
-        
+        if kSCREEN_H == 568 {
+             kLEFT_MARGIN = 19
+             kTOP_MARGIN = 59
+        } else {
+            kLEFT_MARGIN  = 37
+            kTOP_MARGIN   = 118
+        }
+        // let kLEFT_MARGIN :CGFloat = kSCREEN_W * 0.1
+        // let kTOP_MARGIN : CGFloat = kSCREEN_H * 0.085
+
         contentView.frame = CGRect(x: kLEFT_MARGIN,
                                    y: kTOP_MARGIN,
                                    width: kSCREEN_W - (kLEFT_MARGIN * 2) ,
@@ -194,8 +204,8 @@ extension AlertViewController {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 10
         paragraphStyle.alignment = .center
-        let attributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 14.0),
-                          NSParagraphStyleAttributeName: paragraphStyle,
+        
+        let attributes = [NSParagraphStyleAttributeName: paragraphStyle,
                           NSForegroundColorAttributeName:UIColor.colorFromRGB(0x999999)]
         self.subTitleTextView.attributedText = NSAttributedString(string: subTitleText, attributes: attributes)
         

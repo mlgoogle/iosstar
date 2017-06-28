@@ -73,13 +73,21 @@ class SocketRequestManage: NSObject {
         }else if packet.operate_code == SocketConst.OPCode.orderResult.rawValue{
             let response:SocketJsonResponse = SocketJsonResponse(packet:packet)
             self.receiveOrderResult!(response)
-        } else {
+        }else if packet.operate_code == SocketConst.OPCode.onlyLogin.rawValue{
+            stop()
+            NotificationCenter.default.post(name: Notification.Name.init(rawValue: AppConst.NoticeKey.onlyLogin.rawValue), object: nil, userInfo: nil)
+        }else{
             socketRequests.removeValue(forKey: packet.session_id)
         }
         objc_sync_exit(self)
         let response:SocketJsonResponse = SocketJsonResponse(packet:packet)
         let statusCode:Int = response.statusCode;
+        if statusCode == AppConst.frozeCode{
+            ShareDataModel.share().controlSwitch = false
+            return
+        }
         if ( statusCode < 0) && packet.data?.count != 0 {
+            
             socketReqeust?.onError(statusCode)
             
         } else {

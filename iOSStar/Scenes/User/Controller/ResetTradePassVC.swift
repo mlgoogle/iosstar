@@ -91,19 +91,54 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
     }
     //MARK: 发送验证码
     @IBAction func sendVaildCode(_ sender: Any) {
+//        if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
+//            self.vaildCodeBtn.isEnabled = false
+//            // 校验用户是否注册
+//            AppAPIHelper.login().checkRegist(phone: self.phoneTf.text!, complete: {[weak self] (checkRegistResult) in
+//                if let checkRegistResponse = checkRegistResult {
+//                    if checkRegistResponse["result"] as! Int == 0 {
+//                        SVProgressHUD.showErrorMessage(ErrorMessage: "该用户未注册!!!", ForDuration: 2.0, completion: nil)
+//                        self?.vaildCodeBtn.isEnabled = true
+//                        return
+//                    } else {
+//                        // 已注册 发验证码
+//                        SVProgressHUD.showProgressMessage(ProgressMessage: "")
+//                        AppAPIHelper.login().SendCode(phone: (self?.phoneTf.text)!, complete: { [weak self] (result) in
+//                            SVProgressHUD.dismiss()
+//                            self?.vaildCodeBtn.isEnabled = true
+//                            if let response = result {
+//                                if response["result"] as! Int == 1 {
+//                                    self?.timer = Timer.scheduledTimer(timeInterval: 1, target:self!, selector: #selector(self?.updatecodeBtnTitle), userInfo: nil, repeats: true)
+//                                    self?.timeStamp = response["timeStamp"] as! Int
+//                                    self?.vToken = String.init(format: "%@", response["vToken"] as! String)
+//                                }
+//                            }
+//                            }, error: { (error) in
+//                                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+//                                self?.vaildCodeBtn.isEnabled = true
+//                        })
+//                    }
+//                }
+//                }, error: { (error) in
+//                    SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+//                    self.vaildCodeBtn.isEnabled = true
+//            })
+//        }
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
             self.vaildCodeBtn.isEnabled = false
-            // 校验用户是否注册
-            AppAPIHelper.login().checkRegist(phone: self.phoneTf.text!, complete: {[weak self] (checkRegistResult) in
+            let checkRegisterRequestModel = CheckRegisterRequestModel()
+            checkRegisterRequestModel.phone = phoneTf.text!
+            AppAPIHelper.login().CheckRegister(model: checkRegisterRequestModel, complete: {[weak self] (checkRegistResult) in
                 if let checkRegistResponse = checkRegistResult {
                     if checkRegistResponse["result"] as! Int == 0 {
                         SVProgressHUD.showErrorMessage(ErrorMessage: "该用户未注册!!!", ForDuration: 2.0, completion: nil)
                         self?.vaildCodeBtn.isEnabled = true
                         return
                     } else {
-                        // 已注册 发验证码
                         SVProgressHUD.showProgressMessage(ProgressMessage: "")
-                        AppAPIHelper.login().SendCode(phone: (self?.phoneTf.text)!, complete: { [weak self] (result) in
+                        let sendVerificationCodeRequestModel = SendVerificationCodeRequestModel()
+                        sendVerificationCodeRequestModel.phone = (self?.phoneTf.text!)!
+                        AppAPIHelper.login().SendVerificationCode(model: sendVerificationCodeRequestModel, complete: {[weak self] (result) in
                             SVProgressHUD.dismiss()
                             self?.vaildCodeBtn.isEnabled = true
                             if let response = result {
@@ -113,15 +148,15 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
                                     self?.vToken = String.init(format: "%@", response["vToken"] as! String)
                                 }
                             }
-                            }, error: { (error) in
-                                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-                                self?.vaildCodeBtn.isEnabled = true
+                        }, error: { (error) in
+                            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+                            self?.vaildCodeBtn.isEnabled = true
                         })
                     }
                 }
-                }, error: { (error) in
-                    SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-                    self.vaildCodeBtn.isEnabled = true
+            }, error: { (error) in
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+                self.vaildCodeBtn.isEnabled = true
             })
         }
     }
@@ -161,44 +196,18 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
         requestModel.vToken = self.vToken
         requestModel.pwd = (first_input.text?.md5_string())!
         requestModel.phone = self.phoneTf.text!
-        
         AppAPIHelper.user().ResetPayPwd(requestModel: requestModel, complete: { (result) in
-            
             if let resultModel = result {
-                
-                
                 let dict = resultModel as! [String : AnyObject]
                 if dict["status"] as! Int == 0 {
-                    SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功",
-                                                     ForDuration: 2.0,
-                                                     completion: {
-                                                _ = self.navigationController?.popViewController(animated: true)
-                                            })
-                                        }
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功",ForDuration: 2.0,completion: {
+                        _ = self.navigationController?.popViewController(animated: true)
+                    })
+                }
             }
         }) { (error) in
             SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion:nil)
         }
-        
     }
-    
 }
 
-
-// FIXME: - 之前的接口
-//        AppAPIHelper.user().ResetPassWd(timestamp: Int64(timeStamp), vCode: self.codeTf.text!, vToken: self.vToken, pwd: (first_input.text?.md5_string())! , type: 1, phone: self.phoneTf.text!, complete: { (result) in
-//            if let model = result {
-//
-//                // print("-----\(result)")
-//
-//                let dic = model as! [String : AnyObject]
-//                if dic["status"] as! Int  == 0 {
-//                    SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功", ForDuration: 1, completion: {
-//                        self.navigationController?.popViewController(animated: true)
-//                    })
-//                }
-//
-//            }
-//        }) { (error) in
-//
-//        }

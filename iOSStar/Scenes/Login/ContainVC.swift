@@ -15,6 +15,7 @@ enum doStateClick{
     case doResetPwd  //  忘记密码
     case donext //  下一步
     case close //  下一步
+    case doJoin  //加入星享
  
 }
 class ContainVC: UIViewController {
@@ -35,45 +36,87 @@ class ContainVC: UIViewController {
         // Do any additional setup after loading the view.
     }
        //MARK:-  登录成功
-    func loginSuccess(_ notice: NSNotification){
+    func loginSuccess(_ notice: NSNotification) {
         
-        AppAPIHelper.login().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { [weak self](result)  in
-            
-            if let response = result as? UserModel{
-          
-                if (response.result)  == -302{
-                       ShareDataModel.share().isweichaLogin = true
-
-                       self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.frame.size.width)!, y: 0), animated: true)
-                }else{
-                    
-                    
+        let weChatLoginRequestModel = WeChatLoginRequestModel()
+        weChatLoginRequestModel.openid = ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!
+        weChatLoginRequestModel.deviceId = "123"
+        
+        AppAPIHelper.login().WeChatLogin(model: weChatLoginRequestModel, complete: {[weak self] (result) in
+            if let response = result as? UserModel {
+                
+                if (response.result == -302) {
+                    ShareDataModel.share().isweichaLogin = true
+                    self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.width)!, y: 0), animated: true)
+                } else {
                     UserModel.share().upateUserInfo(userObject: response)
-                    
-                    if let userinfo = response.userinfo{
-                        let phone  : String = (userinfo.phone)
+                    if let userinfo = response.userinfo {
+                        let phone : String = (userinfo.phone)
                         let token : String = (response.token)
-                        AppAPIHelper.user().weichattokenLogin(id: (response.userinfo?.id)!, token: token, complete: { (result) in
+                        
+                        let weChatTokenRequestModel =  WeChatTokenRequestModel()
+                        weChatTokenRequestModel.id = (response.userinfo?.id)!
+                        weChatTokenRequestModel.token = token
+                        AppAPIHelper.user().weChatTokenLogin(model: weChatTokenRequestModel, complete: { (result) in
+                            print("=====\(String(describing: result))")
                             UserDefaults.standard.set(phone, forKey: "phone")
                             UserDefaults.standard.set(token, forKey: "token")
                             UserDefaults.standard.synchronize()
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
-                            
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo:nil)
                             self?.doYunxin(complete: { (result) in
-                                
+                        
                             })
                             self?.dismissController()
-                        }, error: { (error ) in
-                            
+                        }, error: { (error) in
+                            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
                         })
                     }
                 }
             }
-           
-        }) { (error)  in
+            AppConfigHelper.shared().updateDeviceToken()
+        }) { (error) in
+            print(error)
             ShareDataModel.share().isweichaLogin = true
             self.scrollView?.setContentOffset(CGPoint.init(x: (self.scrollView?.frame.size.width)!, y: 0), animated: true)
         }
+        
+//        AppAPIHelper.login().WeichatLogin(openid: ShareDataModel.share().wechatUserInfo[SocketConst.Key.openid]!, deviceId: "123", complete: { [weak self](result)  in
+//            
+//            if let response = result as? UserModel{
+//          
+//                if (response.result)  == -302{
+//                       ShareDataModel.share().isweichaLogin = true
+//
+//                       self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.frame.size.width)!, y: 0), animated: true)
+//                }else{
+//                    
+//                    
+//                    UserModel.share().upateUserInfo(userObject: response)
+//                    
+//                    if let userinfo = response.userinfo{
+//                        let phone  : String = (userinfo.phone)
+//                        let token : String = (response.token)
+//                        AppAPIHelper.user().weichattokenLogin(id: (response.userinfo?.id)!, token: token, complete: { (result) in
+//                            UserDefaults.standard.set(phone, forKey: "phone")
+//                            UserDefaults.standard.set(token, forKey: "token")
+//                            UserDefaults.standard.synchronize()
+//                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
+//                            
+//                            self?.doYunxin(complete: { (result) in
+//                                
+//                            })
+//                            self?.dismissController()
+//                        }, error: { (error ) in
+//                            
+//                        })
+//                    }
+//                }
+//            }
+//           
+//        }) { (error)  in
+//            ShareDataModel.share().isweichaLogin = true
+//            self.scrollView?.setContentOffset(CGPoint.init(x: (self.scrollView?.frame.size.width)!, y: 0), animated: true)
+//        }
 
     }
     
@@ -81,7 +124,9 @@ class ContainVC: UIViewController {
     
    //MARK:- 设置UI
     func initUI(){
+        
         self.automaticallyAdjustsScrollViewInsets = false;
+        //登录视图
         scrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
         self.scrollView?.isScrollEnabled = false
         scrollView?.isPagingEnabled = true
@@ -109,24 +154,37 @@ class ContainVC: UIViewController {
         vc.view.frame = CGRect.init(x: 0, y: 0, width: view.frame.size.width, height: ((self.scrollView?.frame.size.height)!+10))
         
         self.addChildViewController(vc)
-        //
+        //注册视图
         let rvc = UIStoryboard.init(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "RegistVC") as! RegistVC
         self.scrollView?.addSubview(rvc.view)
         rvc.view.frame = CGRect.init(x:  vc.view.frame.size.width, y: -10, width: vc.view.frame.size.width, height: ((self.scrollView?.frame.size.height)!+10))
-          rvc.resultBlock = { [weak self](result) in
+        rvc.resultBlock = { [weak self](result) in
             switch result as! doStateClick {
-            case .doResetPwd:
-                
-                let vc = UIStoryboard.init(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "ForgotPwdVC")
-                self?.navigationController?.pushViewController(vc, animated: true)
-                break
-            //
-            default:
-                self?.scrollView?.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
+                case .doResetPwd:
+                    
+                    let vc = UIStoryboard.init(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "ForgotPwdVC")
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                    break
+                case .doJoin:
+                    self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.frame.size.width)!*2 , y: 0), animated: true)
+                    break
+                default:
+                    self?.scrollView?.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
             }
            
         }
         self.addChildViewController(rvc)
+        
+        //id视图
+        let jvc = UIStoryboard.init(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "JoinVC") as! JoinVC
+        self.scrollView?.addSubview(jvc.view)
+        jvc.view.frame = CGRect.init(x:  vc.view.frame.size.width*2, y: -10, width: vc.view.frame.size.width, height: ((self.scrollView?.frame.size.height)!+10))
+        jvc.resultBlock = { [weak self](result) in
+            self?.scrollView?.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
+            rvc.LoginYunxin()
+        }
+        self.addChildViewController(jvc)
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

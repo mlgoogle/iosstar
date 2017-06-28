@@ -30,7 +30,7 @@ class MarketFansCell: UITableViewCell {
             headerUrl = model.sell_user!.headUrl
             name = model.sell_user!.nickname
         }
-        dateLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(model.trades!.closeTime, format: "MM-DD HH:MM:SS")
+        dateLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(model.trades!.openTime, format: "MM-dd HH:mm:ss")
         iconImaageView.kf.setImage(with: URL(string: headerUrl))
         nameLabel.text = name
         topLabel.text = String.init(format: "%.2d", index + 1)

@@ -9,16 +9,43 @@
 import UIKit
 import SVProgressHUD
 
-class OrderType : UITableViewCell{
+class OrderType : UITableViewCell,UITextViewDelegate{
     
     // 具体时间
     @IBOutlet weak var orderAccount: UILabel!
     // 约见时间
     @IBOutlet weak var orderType: UILabel!
-    // 意见反馈
-    @IBOutlet weak var feedBack: UITextView!
 }
 
+//  反馈Cell
+class FeedbackCell: UITableViewCell , UITextViewDelegate{
+ 
+    // 意见反馈
+    @IBOutlet weak var feedBack: UITextView!
+    
+    // placeholder
+    @IBOutlet weak var placeHolderLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        feedBack.delegate = self
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        feedBack.text = textView.text
+        if textView.text == nil {
+            placeHolderLabel.text = "请输入您对此次约见的其他要求200字以内... "
+            placeHolderLabel.isHidden = false
+        } else {
+            placeHolderLabel.text = ""
+            placeHolderLabel.isHidden = true
+            
+        }
+    }
+    
+}
+
+// 明星资料Cell
 class StarDataCell: UITableViewCell {
     
     // 背景图片
@@ -57,14 +84,16 @@ class StarDataCell: UITableViewCell {
 
 // MRAK: - viewDidLoad
 class OrderStarViewController: UIViewController {
-    
+
+    // MarketDetailViewController 传过来的模型
     var starInfo:MarketListModel?
-    
+
     var starModelInfo:BannerDetaiStarModel?
     
-    // CELL传输过来的类型
+    // OrderStartViewCell 传过来的模型
     var serviceTypeModel : ServiceTypeModel!
     
+    // 获取明星服务类型的数组
     var serviceModel : [ServiceTypeModel]?
     
     // 确定约见按钮
@@ -101,7 +130,6 @@ class OrderStarViewController: UIViewController {
     var selectRow = 0
     // cityPickerView选择的Componentow (市)
     var selectComponent = 0
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -159,12 +187,19 @@ class OrderStarViewController: UIViewController {
         if notification.object != nil {
             let serviceType = notification.object as! ServiceTypeModel
             serviceTypeModel = serviceType
-            self.priceLabel.text = String.init(format:"%@秒",serviceType.price)
+            // print("===\(serviceTypeModel)")
+            
+            let strString = String.init(format:"即将消耗: %@秒",serviceType.price)
+            let attrs = [NSForegroundColorAttributeName:UIColor.colorFromRGB(0xFB9938)]
+            
+            let attributedString  = NSMutableAttributedString(string: strString, attributes: attrs)
+            let attrsM = [NSForegroundColorAttributeName:UIColor.colorFromRGB(0x666666)]
+            attributedString.addAttributes(attrsM, range: NSMakeRange(0, 5))
+            self.priceLabel.attributedText = attributedString
+            
+            // self.priceLabel.text = String.init(format:"即将消耗: %@秒",serviceType.price)
         }
     }
-    
-    
-    
     
     // MARK: - 获取明星信息
     func requestStarInfos() {
@@ -214,6 +249,10 @@ class OrderStarViewController: UIViewController {
             SVProgressHUD.showErrorMessage(ErrorMessage: "请选择城市", ForDuration: 2.0, completion: nil)
             return
         }
+        if feedBack.text.length() == 0 {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入备注信息", ForDuration: 2.0, completion: nil)
+            return
+        }
         //判断是否实名认证
         self.getUserInfo { (result) in
             if let response = result{
@@ -230,15 +269,22 @@ class OrderStarViewController: UIViewController {
                                                 
                                                 
                                                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
+                                                _ = vc as! TradePassWordVC
                                                 self.navigationController?.pushViewController(vc, animated: true )
                                                 return
                         }
                     }
                     else{
                         let model = OrderInformation()
-                        model.orderStatus = "1213.00"
-                        model.orderPrice = "12311.00"
-                        model.orderInfomation = "12311"
+//                        model.orderStatus = "1213.00"
+//                        model.orderInfomation = "12311"
+//                        model.orderPrice = "12311.00"
+                        model.orderStatus = self.serviceTypeModel.name
+                        if self.starInfo != nil {
+                            model.orderInfomation = String.init(format: "%@ (%@)", (self.starInfo?.name)! ,(self.starInfo?.symbol)!)
+                        }
+                        model.orderPrice = "\(self.serviceTypeModel.price)秒"
+                        
                         //将值传给 sharedatemodel
                         ShareDataModel.share().orderInfo = model
                         let storyboard = UIStoryboard.init(name: "Order", bundle: nil)
@@ -262,7 +308,6 @@ class OrderStarViewController: UIViewController {
                 }
             }
         }
-        
     }
     
     // 约见
@@ -284,8 +329,9 @@ class OrderStarViewController: UIViewController {
         AppAPIHelper.marketAPI().requestBuyStarService(requestModel: requestModel, complete: { (result) in
             if let response = result {
                 if response["result"] as! Int == 1 {
-                    SVProgressHUD.showSuccessMessage(SuccessMessage: "约见成功!", ForDuration: 2.0, completion: nil)
-                    self.navigationController?.popViewController(animated: true)
+                    //
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "约见成功，请耐心等待，并保持手机通话畅通", ForDuration: 2.0, completion: nil)
+                    _ = self.navigationController?.popViewController(animated: true)
                 }
             }
         }) { (error) in
@@ -628,7 +674,7 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate {
         }
         if indexPath.row == 4 {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FeedbackCell") as! OrderType
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FeedbackCell") as! FeedbackCell
             feedBack = cell.feedBack
             cell.selectionStyle = .none
             return cell

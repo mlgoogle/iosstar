@@ -117,6 +117,7 @@ class TableViewHelper {
     
     
     func didRequestComplete<T:UIViewController>(_ dataSource:inout Array<AnyObject>?,pageDatas:Array<AnyObject>?,controller:T) where T:TableViewHelperProtocol {
+        controller.setIsLoadData(true);
         if controller.pageIndex == 1 {
             dataSource = pageDatas;
         }
@@ -129,7 +130,6 @@ class TableViewHelper {
                 controller.notLoadMore();
             }
         }
-        controller.setIsLoadData(true);
     }
     // MARK: - cacheCellClass
     func addCacheCellClass<T:UITableViewCell>(_ type:T.Type,cellIdentifier:String) {

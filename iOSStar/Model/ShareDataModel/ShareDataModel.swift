@@ -22,7 +22,10 @@ class ShareDataModel: NSObject {
     var isReturnBackClick : Bool = false
     var orderInfo : OrderInformation?
     var isShowInWindows : Bool = false
-  
+    var registerModel: RegisterRequestModel = RegisterRequestModel()
+    var wxregisterModel: WXRegisterRequestModel = WXRegisterRequestModel()
+    var controlSwitch: Bool = true
+    var buttonExtOnceSwitch = true
 }
 class OrderInformation: NSObject {
     

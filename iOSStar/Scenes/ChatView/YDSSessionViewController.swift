@@ -33,16 +33,20 @@ class YDSSessionViewController: NTESSessionViewController {
         
         
 
-        if let phone = UserDefaults.standard.object(forKey: "phone") as? String {            
-            AppAPIHelper.user().reducetime(phone: phone, starcode: self.starcode, deduct_amount: 1, complete: { (result) in
+        if let phone = UserDefaults.standard.object(forKey: "phone") as? String {
+          
+            let requestModel = ReduceTimeModel()
+            requestModel.starcode = starcode
+            requestModel.phone = phone
+            requestModel.deduct_amount = 1
+            AppAPIHelper.user().reduceTime(requestModel: requestModel, complete: { (response) in
+                super.send(message)
+
+            }, error: { (error) in
                 super.send(message)
                 
-                print("======\(result)")
-                
-            }) { (error) in
-                super.send(message)
-                
-            }
+            })
+
         }
         
 

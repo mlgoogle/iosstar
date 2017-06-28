@@ -73,31 +73,50 @@ extension UIViewController {
       //登录网易云信
     func doYunxin(complete: CompleteBlock?){
         
+//        if UserDefaults.standard.object(forKey: "phone") as? String != nil {
+//            
+//            let phoneNum = (UserDefaults.standard.object(forKey: "phone") as? String)!
+//            
+//            AppAPIHelper.login().registWYIM(phone : phoneNum, token : phoneNum, complete : { (result) in
+//                let datatic = result as? Dictionary<String,String>
+//                if let response = datatic {
+//                    NIMSDK.shared().loginManager.login( phoneNum, token: (response["token_value"])!, completion: { (error) in
+//                        if (error != nil){
+//                        }
+//                        complete?(true as AnyObject)
+//                        
+//                    })
+//                    UserDefaults.standard.set((response["token_value"])!, forKey: "tokenvalue")
+//                    UserDefaults.standard.synchronize()
+//                }
+//            }) { (error) in
+//               
+//            }
+//        }
         if UserDefaults.standard.object(forKey: "phone") as? String != nil {
-            
             let phoneNum = (UserDefaults.standard.object(forKey: "phone") as? String)!
-            
-            AppAPIHelper.login().registWYIM(phone : phoneNum, token : phoneNum, complete : { (result) in
+            let registerWYIMRequestModel = RegisterWYIMRequestModel()
+            registerWYIMRequestModel.name_value = phoneNum
+            registerWYIMRequestModel.phone = phoneNum
+            registerWYIMRequestModel.accid_value = phoneNum
+            AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { (result) in
                 let datatic = result as? Dictionary<String,String>
                 if let response = datatic {
-                    NIMSDK.shared().loginManager.login( phoneNum, token: (response["token_value"])!, completion: { (error) in
+                    NIMSDK.shared().loginManager.login(phoneNum, token: (response["token_value"])!, completion: { (error) in
                         if (error != nil){
                         }
                         complete?(true as AnyObject)
-                        
                     })
                     UserDefaults.standard.set((response["token_value"])!, forKey: "tokenvalue")
                     UserDefaults.standard.synchronize()
                 }
-            }) { (error) in
-               
-            }
+            }, error: { (error) in
+                
+            })
         }
     }
     //退出登录
     func userLogout() {
-
-
         if let phoneString = UserDefaults.standard.object(forKey: "phone") as? String {
             UserDefaults.standard.set(phoneString, forKey: "lastLogin")
         }
@@ -218,11 +237,12 @@ extension UIViewController {
 //        }
     }
     func getUserRealmInfo(complete: CompleteBlock?){
-    
-        AppAPIHelper.user().getauthentication(complete: { (result) in
+        let requestModel = GetAuthenticationRequestModel()
+        
+        AppAPIHelper.user().requestAuthentication(requestModel: requestModel, complete: { (result) in
             complete?(result as AnyObject)
-        }) { (result) in
-            
+        }) { (error) in
+            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
         }
     }
     
@@ -230,10 +250,11 @@ extension UIViewController {
     func getUserInfo(complete: CompleteBlock?){
         
          if UserDefaults.standard.object(forKey: "phone") as? String != nil{
-            AppAPIHelper.user().getauserinfo(complete: { (result) in
+
+            let requestModel = UserInfoRequestModel()
+            AppAPIHelper.user().requestUserInfo(requestModel: requestModel, complete: { (result) in
                 complete?(result as AnyObject)
-            }) { (error) in
-                
+            }, error: { (error) in
                 if let nav : UINavigationController = self.tabBarController?.selectedViewController as? UINavigationController{
                     if nav.viewControllers.count > 0{
                         self.userLogout()
@@ -241,10 +262,22 @@ extension UIViewController {
                         
                     }
                 }
-                
-                
-               
-            }
+            })
+//            AppAPIHelper.user().getauserinfo(complete: { (result) in
+//                complete?(result as AnyObject)
+//            }) { (error) in
+//                
+//                if let nav : UINavigationController = self.tabBarController?.selectedViewController as? UINavigationController{
+//                    if nav.viewControllers.count > 0{
+//                        self.userLogout()
+//                        _ = self.navigationController?.popToRootViewController(animated: true)
+//                        
+//                    }
+//                }
+//                
+//                
+//               
+//            }
         }
     }
     //获取明星姓名
@@ -261,6 +294,22 @@ extension UIViewController {
 
     
     }
- 
+
+    func showOnlyLogin(){
+        userLogout()
+        let onlyLoginAlter = UIAlertController.init(title: "被迫下线", message: "您的账号在另一地点登录，您已被迫下线", preferredStyle: .alert)
+        let sureAction = UIAlertAction.init(title: "确定", style: .default, handler: nil)
+        onlyLoginAlter.addAction(sureAction)
+        present(onlyLoginAlter, animated: true, completion: nil)
+    }
+    
+    func gethelp(){
+        if let helpVC = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: CustomerServiceVC.className()) as? CustomerServiceVC{
+            if let nav = tabBarController?.selectedViewController as? UINavigationController{
+                nav.pushViewController(helpVC, animated: true)
+            }
+        }
+        print("No CustomerServiceVC")
+    }
 }
 

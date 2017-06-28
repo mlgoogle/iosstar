@@ -22,11 +22,13 @@ import Alamofire
 class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDelegate,UNUserNotificationCenterDelegate{
     var window: UIWindow?
     var sdkConfigDelegate: NTESSDKConfigDelegate?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-         let config = BugoutConfig.default()
-         config?.enabledShakeFeedback = true
-         config?.enabledMonitorException = false
-         Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
+        
+        let config = BugoutConfig.default()
+        config?.enabledShakeFeedback = true
+//        config?.enabledMonitorException = false
+        Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
         
         UIApplication.shared.applicationIconBadgeNumber = 0
         
@@ -41,16 +43,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         
         AppConfigHelper.shared().setupRealmConfig()
         AppConfigHelper.shared().updateUpdateInfo()
-    
         AppConfigHelper.shared().setupReceiveOrderResult()
+        
         // 个推
         AppConfigHelper.shared().setupGeTuiSDK(sdkDelegate: self)
         AppConfigHelper.shared().getstart()
+        
         // 登录
-
         AppConfigHelper.shared().login()
         
-    
         UIApplication.shared.statusBarStyle = .default
 
         return true
@@ -58,8 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
    
 
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -67,26 +67,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         // 模拟程序进入后台的本地通知推送
         // print("进入后台")
         // AppConfigHelper.shared().AlertlocalNotify()
-        
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-       
-        
-        if (url.host == "safepay"){
+        if (url.host == "safepay") {
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (result) in
-                if let dataDic = result as? [String : AnyObject]{
+                if let dataDic = result as? [String : AnyObject] {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.aliPay.aliPayCode), object:(Int.init((dataDic["resultStatus"] as! String))), userInfo:nil)
-                    
                 }
             })
 
-           
         }else{
               WXApi.handleOpen(url, delegate: self)
         }
-
          return true
     }
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
@@ -94,25 +87,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         return true
     }
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        
-       
-        if (url.host == "safepay"){
-            
+        if (url.host == "safepay") {
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (result) in
-               
                 if let dataDic = result as? [String : AnyObject]{
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.aliPay.aliPayCode), object:(Int.init((dataDic["resultStatus"] as! String))), userInfo:nil)
-               
                 }
-              
             })
-      
         }
-        else{
+        else {
           WXApi.handleOpen(url, delegate: self)
         }
-        
-        
         return true
     }
 
@@ -143,7 +127,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
             else{
                 if resp.isKind(of: PayResp.classForCoder()) {
                     let authResp:PayResp = resp as! PayResp
-                    
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.WechatPay.WechatKeyErrorCode), object: NSNumber.init(value: authResp.errCode), userInfo:nil)
                     
                     return
@@ -151,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
             }
         }
         
-        func accessToken(code: String)
+    func accessToken(code: String)
         {
             let param = [SocketConst.Key.appid : AppConst.WechatKey.Appid,
                          "code" : code,
@@ -201,12 +184,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         let deviceToken_ns = NSData.init(data: deviceToken);    // 转换成NSData类型
         var token = deviceToken_ns.description.trimmingCharacters(in: CharacterSet(charactersIn: "<>"));
         token = token.replacingOccurrences(of: " ", with: "")
-        
+    
+        UserDefaults.standard.setValue(token, forKey: AppConst.Text.deviceToken)
         // [ GTSdk ]：向个推服务器注册deviceToken
         GeTuiSdk.registerDeviceToken(token);
         
-        NSLog("\n>>>[DeviceToken Success]:%@\n\n",token);
-    }
+            }
     
     /** 远程通知注册失败委托 */
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -228,7 +211,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         application.applicationIconBadgeNumber = 0;        // 标签
         
-        NSLog("\n>>>[Receive RemoteNotification]:%@\n\n",userInfo);
+        
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
