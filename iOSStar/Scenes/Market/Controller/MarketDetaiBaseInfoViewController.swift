@@ -105,7 +105,6 @@ extension MarketDetaiBaseInfoViewController:UITableViewDataSource, UITableViewDe
             
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MarketExperienceCell", for: indexPath) as! MarketExperienceCell
-            
             let model = achives?[indexPath.row]
             cell.setTitle(title: (model?.achive)!)
             return cell

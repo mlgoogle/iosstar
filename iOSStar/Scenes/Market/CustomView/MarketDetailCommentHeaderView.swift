@@ -22,8 +22,8 @@ class MarketDetailCommentHeaderView: UITableViewHeaderFooterView {
     }
     
     func addSubViews() {
-        backgroundColor = UIColor(hexString: "fafafa")
-        addSubview(infoLabel)
+        contentView.backgroundColor = UIColor(hexString: "FAFAFA")
+        contentView.addSubview(infoLabel)
         infoLabel.snp.makeConstraints { (make) in
             make.top.equalTo(25)
             make.left.equalTo(12)
