@@ -53,6 +53,7 @@ import UIKit
                 //忘记密码
                 switch result as! doStateClick {
                 case .close:
+                     self?.resultBlock?(result )
                     self?.dismissController()
                     break
                 default:
@@ -70,6 +71,7 @@ import UIKit
             
             switch result as! doStateClick{
             case .close:
+                self?.resultBlock?(result )
                 self?.dismissController()
                 break
             default:
