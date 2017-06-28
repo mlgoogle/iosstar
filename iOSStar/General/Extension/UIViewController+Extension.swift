@@ -268,7 +268,7 @@ extension UIViewController {
 //            }) { (error) in
 //                
 //                if let nav : UINavigationController = self.tabBarController?.selectedViewController as? UINavigationController{
-//                    if nav.viewControllers.count > 0{
+//                    if nav.viewControlloers.count > 0{
 //                        self.userLogout()
 //                        _ = self.navigationController?.popToRootViewController(animated: true)
 //                        
@@ -291,8 +291,6 @@ extension UIViewController {
         }else{
             complete?(nil)
         }
-
-    
     }
 
     func showOnlyLogin(){
@@ -300,7 +298,9 @@ extension UIViewController {
         let onlyLoginAlter = UIAlertController.init(title: "被迫下线", message: "您的账号在另一地点登录，您已被迫下线", preferredStyle: .alert)
         let sureAction = UIAlertAction.init(title: "确定", style: .default, handler: nil)
         onlyLoginAlter.addAction(sureAction)
-        present(onlyLoginAlter, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(onlyLoginAlter, animated: true, completion: nil)
+        }
     }
     
     func gethelp(){

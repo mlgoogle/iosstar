@@ -167,6 +167,7 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
         AppAPIHelper.marketAPI().sendComment(requestModel: requestModel, complete: { (response) in
             self.header?.beginRefreshing()
         }) { (error) in
+            
         }
     }
     
@@ -199,7 +200,6 @@ extension MarketCommentViewController:UITableViewDataSource, UITableViewDelegate
             return nil
         }
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: MarketDetailCommentHeaderView.className())  as? MarketDetailCommentHeaderView
-        header?.contentView.backgroundColor = UIColor(hexString: "FAFAFA")
         header?.setCount(count: totalCount)
         return header
     }
