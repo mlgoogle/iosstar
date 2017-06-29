@@ -11,8 +11,7 @@ import Foundation
 
 class UserBaseModel: BaseModel {
     
-//    var id : Int64 = (UserModel.share().getCurrentUser()?.userinfo?.id)!
-    var id : Int64 = UserModel.share().getCurrentUser()?.userinfo?.id ?? 0
+    var id : Int64 = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
 }
 
 class StarMailListRequestModel: MarketBaseModel {
@@ -71,7 +70,7 @@ class UserInfoRequestModel: MarketBaseModel {
     
 }
 class TokenLoginRequestModel: MarketBaseModel {
-    var token_time = UserModel.share().getCurrentUser()?.token_time ?? 0
+    var token_time = StarUserModel.getCurrentUser()?.token_time ?? 0
 }
 
 class ModifyNicknameModel: MarketBaseModel {

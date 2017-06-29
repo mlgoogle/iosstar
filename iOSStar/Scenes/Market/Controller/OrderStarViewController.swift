@@ -369,7 +369,7 @@ class OrderStarViewController: UIViewController {
             starCode = (starInfo?.symbol)!
         }
         let requestModel = ServiceTypeRequestModel()
-        requestModel.uid = (UserModel.share().getCurrentUser()?.userinfo?.id)!
+        requestModel.uid = (StarUserModel.getCurrentUser()?.userinfo?.id)!
         requestModel.starcode = starCode
         requestModel.mid = serviceTypeModel.mid
         requestModel.city_name = orderPalace.text!
