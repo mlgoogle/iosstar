@@ -57,6 +57,23 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
         tipsTextView.isEditable = false
         tipsTextView.isScrollEnabled = false
         tipsTextView.isUserInteractionEnabled = true
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(textViewNotifitionAction), name: NSNotification.Name.UITextViewTextDidChange, object: nil);
+    }
+    
+    // 限制不超过200字
+    func textViewNotifitionAction(userInfo:NSNotification){
+        let textVStr = feedBack.text as NSString;
+        if (textVStr.length > 200) {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "备注信息不超过200字", ForDuration: 2.0, completion: nil)
+            return
+        }
+        
+    }
+    
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidChange, object: nil)
     }
     
     // MARK: - UITextViewDelegate
@@ -73,6 +90,8 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
     }
     
     
+    
+    
     func textViewDidChange(_ textView: UITextView) {
         feedBack.text = textView.text
         if textView.text == nil {
@@ -83,7 +102,7 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
             placeHolderLabel.isHidden = true
         }
     }
-    
+
 }
 
 // MARK: -  明星资料Cell
@@ -297,7 +316,7 @@ class OrderStarViewController: UIViewController {
             return
         }
         if feedBack.text.length() == 0 {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入备注信息", ForDuration: 2.0, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "备注信息不能为空,且不超过200字", ForDuration: 2.0, completion: nil)
             return
         }
         if feedBack.text.length() >= 200 {
