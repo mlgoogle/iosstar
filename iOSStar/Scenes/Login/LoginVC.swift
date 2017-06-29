@@ -129,9 +129,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
     }
     //MARK:-  登录
     @IBAction func doLogin(_ sender: Any) {
-        
-        let btn = sender as! UIButton
-
+    
         if !checkTextFieldEmpty([phone]) {
             return
         }
