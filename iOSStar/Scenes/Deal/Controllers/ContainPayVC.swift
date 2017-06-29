@@ -44,7 +44,7 @@ import UIKit
         self.scrollView?.addSubview(rvc.view)
         rvc.resultBlock = { [weak self](result) in
             
-            if ((result as? String) != nil){
+            if result is String{
                 
                 self?.resultBlock?(result )
                 //result 的值就是
