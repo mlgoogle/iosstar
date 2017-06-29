@@ -57,6 +57,23 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
         tipsTextView.isEditable = false
         tipsTextView.isScrollEnabled = false
         tipsTextView.isUserInteractionEnabled = true
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(textViewNotifitionAction), name: NSNotification.Name.UITextViewTextDidChange, object: nil);
+    }
+    
+    // 限制不超过200字
+    func textViewNotifitionAction(userInfo:NSNotification){
+        let textVStr = feedBack.text as NSString;
+        if (textVStr.length > 200) {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "备注信息不超过200字", ForDuration: 2.0, completion: nil)
+            return
+        }
+        
+    }
+    
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidChange, object: nil)
     }
     
     // MARK: - UITextViewDelegate
@@ -73,6 +90,8 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
     }
     
     
+    
+    
     func textViewDidChange(_ textView: UITextView) {
         feedBack.text = textView.text
         if textView.text == nil {
@@ -83,7 +102,7 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
             placeHolderLabel.isHidden = true
         }
     }
-    
+
 }
 
 // MARK: -  明星资料Cell
@@ -153,21 +172,28 @@ class OrderStarViewController: UIViewController {
     
     // 假的框为了弹出(Date)键盘
     @IBOutlet weak var inputDateTextField: UITextField!
+    
     // datePickerView
     var datePickerView = UIDatePicker()
+    
     // dateToolBar
     var dateToolBar = UIToolbar()
     
     // 假的框为了弹出(city)键盘
-    @IBOutlet weak var inputCityTextField: UITextField!
+   @IBOutlet weak var inputCityTextField: UITextField!
+   
     // cityPickerView
     var cityPickerView = UIPickerView()
+    
     // cityToolBar
     var cityToolBar = UIToolbar()
+    
     //  cityList
     var dataCity = Array<Dictionary<String, AnyObject>>()
+    
     // cityPickerView选择的row (省份)
     var selectRow = 0
+    
     // cityPickerView选择的Componentow (市)
     var selectComponent = 0
     
@@ -290,7 +316,7 @@ class OrderStarViewController: UIViewController {
             return
         }
         if feedBack.text.length() == 0 {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入备注信息", ForDuration: 2.0, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "备注信息不能为空,且不超过200字", ForDuration: 2.0, completion: nil)
             return
         }
         if feedBack.text.length() >= 200 {
@@ -321,9 +347,6 @@ class OrderStarViewController: UIViewController {
                     }
                     else{
                         let model = OrderInformation()
-//                        model.orderStatus = "1213.00"
-//                        model.orderInfomation = "12311"
-//                        model.orderPrice = "12311.00"
                         model.orderStatus = self.serviceTypeModel.name
                         if self.starInfo != nil {
                             model.orderInfomation = String.init(format: "%@ (%@)", (self.starInfo?.name)! ,(self.starInfo?.symbol)!)
@@ -348,8 +371,6 @@ class OrderStarViewController: UIViewController {
                             }else{
                             SVProgressHUD.showErrorMessage(ErrorMessage:  "约见已取消,请重新约见！", ForDuration: 2, completion: nil)
                             }
-                           
-                            
                         }
                         controller.modalPresentationStyle = .custom
                         controller.modalTransitionStyle = .crossDissolve
@@ -412,6 +433,11 @@ extension OrderStarViewController {
         let local = Locale.init(identifier: "zh_CN")
         datePickerView.locale = local
         datePickerView.datePickerMode = .date
+        
+        // 一个月之后的时间
+        let oneDay : TimeInterval = 24 * 60 * 60 * 1
+        let afterAMonth = NSDate.init(timeIntervalSinceNow: oneDay * 31)
+        datePickerView.minimumDate = afterAMonth as Date
         
         // 确定按钮
         let sure : UIButton = UIButton.init(frame: CGRect.init(x: 0,
@@ -765,6 +791,8 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate,Fee
     func didSelectRules() {
         
         print("点击了约见规则")
+        SVProgressHUD.showSuccessMessage(SuccessMessage: "等一个H5页面", ForDuration: 2.0, completion: nil)
+        return
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -16,11 +16,9 @@ let kGtAppSecret:String = "4DXXxrRirbAhqYJor3THd"
 
 class AppConfigHelper: NSObject {
     
-//<<<<<<< HEAD
+
     var dealResult:[Int32 : String] = [-1 : "订单取消", 0 : "扣费成功", -2 : "转让方持有时间不足", -3 : "求购方金币不足", 2 : "交易成功"]
-//=======
-//    var dealResult:[Int32 : String] = [-1 : "订单取消", 0 : "扣费成功", 1 : "转让方持有时间不足", 2 : "求购方星享币不足"]
-//>>>>>>> iosstar/master
+
     var updateModel:UpdateParam?
     lazy var alertView: TradingAlertView = {
         let alertView = Bundle.main.loadNibNamed("TradingAlertView", owner: nil, options: nil)?.first as! TradingAlertView
@@ -249,13 +247,13 @@ class AppConfigHelper: NSObject {
                 StartModel.getStartName(startCode: model.symbol, complete: { (star) in
                     
                     if let starModel = star as? StartModel {
-                        let body = "匹配成功提醒：\(starModel.name)（\(starModel.code)）匹配成功，请到系统消息中查看。"
-
+                        
                         // 处在后台
                         if UIApplication.shared.applicationState == .background {
+                            let body = "匹配成功提醒：\(starModel.name)（\(starModel.code)）匹配成功，请到系统消息中查看"
                             self.localNotify(body: body, userInfo: nil)
                         } else {
-                            self.alertView.str = body
+                            self.alertView.str = "匹配成功提醒：\(starModel.name)（\(starModel.code)）匹配成功，请到系统消息中查看,点击查看。"
                             self.performSelector(onMainThread: #selector(self.showAlert), with: nil, waitUntilDone: false)
                         }
                     }
@@ -276,7 +274,7 @@ class AppConfigHelper: NSObject {
     func setupReceiveOrderResult() {
         AppAPIHelper.dealAPI().setReceiveOrderResult { (response) in
             if let model = response as? OrderResultModel {
-                let body = "您有一条新的订单状态更新:\(self.dealResult[model.result]!),请查看"
+                let body = "您有一条新的订单状态更新:\(self.dealResult[model.result]!),请您查看。"
                 if UIApplication.shared.applicationState == .background {
                     self.localNotify(body: body, userInfo: nil)
                 } else {
