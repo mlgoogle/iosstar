@@ -129,8 +129,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
     }
     //MARK:-  登录
     @IBAction func doLogin(_ sender: Any) {
-        
-        let btn = sender as! UIButton
+
         if !checkTextFieldEmpty([phone]) {
             return
         }
@@ -175,21 +174,6 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
     
     //MARK:- 网易云登录
     func LoginYunxin(){
-//        AppAPIHelper.login().registWYIM(phone: self.phone.text!, token: self
-//            .phone.text!, complete: { (result) in
-//                let datadic = result as? Dictionary<String,String>
-//                if let _ = datadic {
-//                    UserDefaults.standard.set(self.phone.text, forKey: "phone")
-//                    UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
-//                    UserDefaults.standard.synchronize()
-//                    NIMSDK.shared().loginManager.login(self.phone.text!, token: self.phone.text!, completion: { (error) in
-//                        if (error != nil){
-//                            self.dismissController()
-//                        }
-//                    })
-//                }
-//        }) { (error)  in
-//        }
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
         registerWYIMRequestModel.name_value = phone.text!
         registerWYIMRequestModel.phone = phone.text!
