@@ -98,7 +98,12 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
         }, error: { (error) in
 //            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
             self.didRequestComplete(nil)
-            self.nodataView.isHidden = false
+            
+            if self.dataSource == nil {
+                self.nodataView.isHidden = false
+            }else{
+                self.nodataView.isHidden = true
+            }
             self.tableView.reloadData()
         })
         
