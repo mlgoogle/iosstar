@@ -74,7 +74,7 @@ class DealDoubleRowCell: UITableViewCell {
         thirdLabel1.text = "\(model.openPrice)"
         thirdLabel2.text = "\(model.amount)"
         var type = -1
-        if model.sellUid == UserModel.share().getCurrentUser()!.id {
+        if model.sellUid == StarUserModel.getCurrentUser()?.userinfo?.id ?? 0{
            type = 1
         }
         lastLabel1.text = dealType[type]

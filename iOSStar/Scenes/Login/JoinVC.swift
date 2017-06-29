@@ -62,7 +62,7 @@ class JoinVC: UIViewController, UITextViewDelegate ,UIGestureRecognizerDelegate{
         ShareDataModel.share().wxregisterModel.agentId = middleFieldText.text!
 //        ShareDataModel.share().wxregisterModel.recommend = littleFieldText.text!
         ShareDataModel.share().wxregisterModel.sub_agentId = toalFieldText.text!
-        AppAPIHelper.login().BindWeichat(model: ShareDataModel.share().wxregisterModel, complete: { [weak self](result)  in
+        AppAPIHelper.login().BindWeichat(model: ShareDataModel.share().wxregisterModel, complete: { (result)  in
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
             
         }) { (error )  in

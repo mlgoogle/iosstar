@@ -10,7 +10,7 @@ import UIKit
 
 class ServiceTypeRequestModel: BaseModel {
     
-    var uid          : Int64 = UserModel.share().getCurrentUser()?.userinfo?.id ?? 0
+    var uid          : Int64 = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
     var starcode     : String = ""
     var mid          : Int64 = 0
     var city_name    : String = ""

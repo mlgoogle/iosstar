@@ -77,7 +77,7 @@ class UserVC: BaseCustomTableViewController  {
                     // let  phonetext  = (UserDefaults.standard.object(forKey: "phone") as! String)
                     // let index = phonetext.index(phonetext.endIndex, offsetBy: -6)
                     // self.nickNameLabel?.text = "星享用户" + (phonetext.substring(from: index))
-                    let nameUid = UserModel.share().getCurrentUser()?.userinfo?.id
+                    let nameUid = StarUserModel.getCurrentUser()?.userinfo?.id
                     let stringUid = String.init(format: "%d", nameUid!)
                     self.nickNameLabel?.text = "星享用户" + stringUid
                 } else  {

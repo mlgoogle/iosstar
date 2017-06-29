@@ -52,8 +52,8 @@ class DealSocketAPI: BaseSocketAPI, DealAPI{
 
     //验证交易密码
     func checkPayPass( paypwd: String, complete: CompleteBlock?, error: ErrorBlock?){
-        let param: [String: Any] = [SocketConst.Key.id: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,
-                                    SocketConst.Key.paypwd :paypwd, SocketConst.Key.token : String.init(format: "%@",  (UserModel.share().getCurrentUser()?.token)!),]
+        let param: [String: Any] = [SocketConst.Key.id: StarUserModel.getCurrentUser()?.userinfo?.id ?? 0,
+                                    SocketConst.Key.paypwd :paypwd, SocketConst.Key.token :StarUserModel.getCurrentUser()?.token ?? ""]
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .paypwd, dict: param as [String : AnyObject])
          startRequest(packet, complete: complete, error: error)
     
