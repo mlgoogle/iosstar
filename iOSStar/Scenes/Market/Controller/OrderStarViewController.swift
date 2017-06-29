@@ -342,7 +342,7 @@ class OrderStarViewController: UIViewController {
                         
                         rootvc.resultBlock = { (result) in
                             
-                            if ((result as? String) != nil){
+                            if result is String{
                                 self.domeet()
                                 controller.dismissController()
                             }else{
