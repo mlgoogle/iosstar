@@ -12,6 +12,7 @@ class MoneyDetailListCell: OEZTableViewCell {
     
     var rechargeStatus:[Int8 : String] = [1:"处理中", 2:"充值成功", 3:"充值失败",4:"用户取消"]
     var rechargeType:[Int8 : String] = [1:"微信支付", 2:"银行卡支付", 3:"支付宝支付"]
+    
     @IBOutlet weak var weekLb: UILabel!            // 姓名LbstatusLb
     @IBOutlet weak var timeLb: UILabel!            // 时间Lb
     @IBOutlet weak var moneyCountLb: UILabel!      // 充值金额Lb
@@ -23,18 +24,44 @@ class MoneyDetailListCell: OEZTableViewCell {
     override func update(_ data: Any!) {
         
         let model = data as! Model
-        self.moneyCountLb.text = "+" + " "  + String.init(format: "%.2f", model.amount)
+        
+        print("===\(model)")
+        
+        // recharge_type == 0 + 充值记录
+        // recharge_type == 1 - 约见记录
+        // recharge_type == 2 - 聊天记录
+        
+        if model.recharge_type == 0 {
+            self.moneyCountLb.text = "+" + " "  + String.init(format: "%.2f", model.amount)
+            self.withDrawto.text = rechargeType[model.depositType]
+            self.statusLb.text = rechargeStatus[model.status]
+        } else if model.recharge_type == 1 {
+            var starName = ""
+            StartModel.getStartName(startCode: model.transaction_id, complete: { (star) in
+                if let starModel = star as? StartModel {
+                    starName = starModel.name
+                }
+            })
+            self.moneyCountLb.text = "-" + " " + String.init(format: "%d", Int(model.amount))
+            self.withDrawto.text = String.init(format: "%@ (%@)", starName,model.transaction_id)
+            self.statusLb.text = "约见"
+        } else {
+            var starName = ""
+            StartModel.getStartName(startCode: model.transaction_id, complete: { (star) in
+                if let starModel = star as? StartModel {
+                    starName = starModel.name
+                }
+            })
+            self.moneyCountLb.text = "-" +  String.init(format: "%d", Int(model.amount))
+            self.withDrawto.text = String.init(format: "%@ (%@)", starName,model.transaction_id)
+            self.statusLb.text = "星聊"
+        }
+        
         let timestr : Int = Date.stringToTimeStamp(stringTime: model.depositTime)
-        self.withDrawto.text = rechargeType[model.depositType]
         self.weekLb.text = Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "yyyy")
-        self.statusLb.text = rechargeStatus[model.status]
         self.timeLb.text =  Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "MM-dd")
         self.minuteLb.text =  Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "HH:mm:ss")
-        
     }
-        //        BankLogoColor.share().checkLocalBank(string: model.ba)
-    
-
 }
 
 class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDelegate {
@@ -82,6 +109,8 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
         requestModel.startPos = Int32(pageIndex - 1) * 10 + 1
 
         requestModel.time = indexString == nil ? "" : indexString!
+        
+        print("====\(requestModel)")
         
         AppAPIHelper.user().requestCreditList(requestModel: requestModel, complete: { (result) in
         
@@ -141,8 +170,8 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
         let indexStr = String.init(format:"%d",index)
         
         indexString = indexStr
-        
         didRequest(1)
+        self.tableView.reloadData()
     }
     //MARK -
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
