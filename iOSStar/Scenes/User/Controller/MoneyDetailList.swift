@@ -84,10 +84,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
         requestModel.time = indexString == nil ? "" : indexString!
         
         AppAPIHelper.user().requestCreditList(requestModel: requestModel, complete: { (result) in
-            
-            // print("===\(result)")
-            
-            self.reponseData = result
+        
             self.nodataView.isHidden = false
             if let model = result as? RechargeListModel {
                 self.didRequestComplete(model.depositsinfo as AnyObject)
@@ -119,8 +116,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
 
         
         let ResultVC = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResultVC")
-        let moder = self.reponseData as! RechargeListModel
-        (ResultVC as! ResultVC).responseData = moder.depositsinfo?[indexPath.row]
+        (ResultVC as! ResultVC).responseData = self.dataSource?[indexPath.row]
         self.navigationController?.pushViewController(ResultVC, animated: true)
     }
     
