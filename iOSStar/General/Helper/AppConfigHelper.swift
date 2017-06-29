@@ -76,12 +76,13 @@ class AppConfigHelper: NSObject {
     }
     
     func LoginYunxin(){
-        SVProgressHUD.showErrorMessage(ErrorMessage: "失败", ForDuration: 2.0, completion: nil)
+
+//        SVProgressHUD.showErrorMessage(ErrorMessage: "失败", ForDuration: 2.0, completion: nil)
 
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
         registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as! String
         registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as! String
-        registerWYIMRequestModel.accid_value = UserDefaults.standard.object(forKey: "phone") as! String
+         registerWYIMRequestModel.uid = Int((UserModel.share().getCurrentUser()?.userinfo?.id)!)
         
         print( "====  \(registerWYIMRequestModel)" )
         
@@ -214,12 +215,12 @@ class AppConfigHelper: NSObject {
         var config = Realm.Configuration()
         config.fileURL =  config.fileURL!.deletingLastPathComponent()
             .appendingPathComponent("\("starShare").realm")
-        config.schemaVersion = 3
+        config.schemaVersion = 4
         
         //数据库迁移操作
         config.migrationBlock = { migration, oldSchemaVersion in
             
-            if oldSchemaVersion < 3 {
+            if oldSchemaVersion < 4 {
                 
                 migration.enumerateObjects(ofType: EntrustListModel.className(), { (oldObject, newObject) in
                     newObject!["pchg"] = 0.0
@@ -227,6 +228,10 @@ class AppConfigHelper: NSObject {
                 migration.enumerateObjects(ofType: WeChatPayResultModel.className(), { (oldObject, newObject) in
                     newObject!["rid"] = ""
                 })
+                migration.enumerateObjects(ofType: UserModel.className(), { (oldObject, newObject) in
+                    newObject!["token_time"] = 0
+                })
+                
             }
         }
         Realm.Configuration.defaultConfiguration = config

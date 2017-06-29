@@ -25,6 +25,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
     @IBOutlet weak var width: NSLayoutConstraint!
    
     @IBOutlet var loginBtn: UIButton!
+    var uid : Int = 0
     
     // 登录密码
     @IBOutlet weak var passPwd: UITextField!
@@ -129,8 +130,6 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
     }
     //MARK:-  登录
     @IBAction func doLogin(_ sender: Any) {
-        
-      
 
         if !checkTextFieldEmpty([phone]) {
             return
@@ -153,11 +152,13 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
             loginRequestModel.pwd = (passPwd.text?.md5_string())!
             AppAPIHelper.login().login(model: loginRequestModel, complete: {[weak self] (result) in
                 SVProgressHUD.dismiss()
+                
                 let datadic = result as? UserModel
                 SVProgressHUD.showSuccessMessage(SuccessMessage: "登录成功", ForDuration: 2.0, completion: {
                     if let _ = datadic {
                         UserDefaults.standard.set(self?.phone.text, forKey: "phone")
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
+                        self?.uid = Int(datadic!.userinfo!.id)
                         UserDefaults.standard.synchronize()
                         self?.LoginYunxin()
                         UserModel.share().upateUserInfo(userObject: datadic!)
@@ -176,11 +177,10 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
     
     //MARK:- 网易云登录
     func LoginYunxin(){
-
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
         registerWYIMRequestModel.name_value = phone.text!
         registerWYIMRequestModel.phone = phone.text!
-        registerWYIMRequestModel.accid_value = phone.text!
+        registerWYIMRequestModel.uid = self.uid
         AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: {[weak self] (result) in
             if let datadic = result as? Dictionary<String,String> {
                 UserDefaults.standard.set(self?.phone.text, forKey: "phone")
@@ -194,7 +194,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
                 })
             }
         }) { (error) in
-        
+        print(error)
         }
     }
   

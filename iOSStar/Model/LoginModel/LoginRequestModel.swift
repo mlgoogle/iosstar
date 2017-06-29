@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class LoginRequestModel: BaseModel {
     var phone = ""
     var pwd = ""
@@ -60,7 +61,8 @@ class ResetPassWdRequestModel: BaseModel {
 
 class RegisterWYIMRequestModel : BaseModel {
     var name_value = ""
-    var accid_value = ""
+    var user_type = 0
+    var uid  = 0
     var phone = ""
     var memberId = 1001
     var agentId = "186681261"

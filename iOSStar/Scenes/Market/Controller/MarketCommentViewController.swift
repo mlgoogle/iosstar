@@ -41,9 +41,13 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
 
         }
         registerNotification()
+        
+        
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableView.register(NoDataCell.self, forCellReuseIdentifier: NoDataCell.className())
         tableView.estimatedRowHeight = 100
+        
+        
         requestCommentList()
         setupRefresh()
 

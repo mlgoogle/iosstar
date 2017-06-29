@@ -84,7 +84,7 @@ class BuyOrSellViewController: DealBaseViewController {
         AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: { (response) in
             SVProgressHUD.dismiss()
             _ = self.navigationController?.popViewController(animated: true)
-            SVProgressHUD.showSuccessMessage(SuccessMessage: "委托成功", ForDuration: 1.5, completion: nil)
+            SVProgressHUD.showSuccessMessage(SuccessMessage: "挂单成功", ForDuration: 1.5, completion: nil)
             
         }) { (error) in
             SVProgressHUD.dismiss()

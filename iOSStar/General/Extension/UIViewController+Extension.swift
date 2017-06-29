@@ -98,7 +98,8 @@ extension UIViewController {
             let registerWYIMRequestModel = RegisterWYIMRequestModel()
             registerWYIMRequestModel.name_value = phoneNum
             registerWYIMRequestModel.phone = phoneNum
-            registerWYIMRequestModel.accid_value = phoneNum
+//            registerWYIMRequestModel.accid_value = phoneNum
+            registerWYIMRequestModel.uid =  Int((UserModel.share().getCurrentUser()?.userinfo?.id)!)
             AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { (result) in
                 let datatic = result as? Dictionary<String,String>
                 if let response = datatic {
