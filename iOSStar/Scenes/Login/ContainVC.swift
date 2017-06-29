@@ -50,7 +50,7 @@ class ContainVC: UIViewController {
                     ShareDataModel.share().isweichaLogin = true
                     self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.width)!, y: 0), animated: true)
                 } else {
-                      AppConfigHelper.shared().updateDeviceToken()
+                    AppConfigHelper.shared().updateDeviceToken()
                     UserDefaults.standard.set(response.userinfo?.phone, forKey: "phone")
                     UserDefaults.standard.set(response.token, forKey: "token")
                     StarUserModel.upateUserInfo(userObject: response)

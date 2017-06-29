@@ -170,10 +170,10 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
                 })
 
             }, error: { (error) in
-                
-                SVProgressHUD.showErrorMessage(ErrorMessage: "手机号或密码错误", ForDuration: 2.0, completion: nil)
+                self.didRequestError(error)
+//                SVProgressHUD.showErrorMessage(ErrorMessage: "网络连接超时", ForDuration: 2.0, completion: nil)
             })
-        } 
+        }
     }
     
     //MARK:- 网易云登录
