@@ -791,6 +791,8 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate,Fee
     func didSelectRules() {
         
         print("点击了约见规则")
+        SVProgressHUD.showSuccessMessage(SuccessMessage: "等一个H5页面", ForDuration: 2.0, completion: nil)
+        return
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

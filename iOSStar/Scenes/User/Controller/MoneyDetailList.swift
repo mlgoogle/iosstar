@@ -170,8 +170,8 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
         let indexStr = String.init(format:"%d",index)
         
         indexString = indexStr
-        
         didRequest(1)
+        self.tableView.reloadData()
     }
     //MARK -
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
