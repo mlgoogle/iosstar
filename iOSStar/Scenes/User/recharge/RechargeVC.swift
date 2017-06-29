@@ -176,10 +176,10 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
             })
         }
     }
-    //MARK:loadview添加支付方式的view
+    //MARK: loadview添加支付方式的view
     func loadview(){
         bgview = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.size.width, height: tableView.frame.size.height))
-        bgview.backgroundColor = UIColor.clear
+        bgview.backgroundColor = UIColor.init(colorLiteralRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
         tableView.addSubview(bgview)
         
         let btn = UIButton.init(type: .custom)
