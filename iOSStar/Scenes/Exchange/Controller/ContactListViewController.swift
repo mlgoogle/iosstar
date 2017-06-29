@@ -53,7 +53,9 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
                     self.nodaView.isHidden = false
                 }else{
                     self.nodaView.isHidden = true
+                    self.nodaView.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
                 }
+                self.tableView.reloadData()
             }
         }) { (error) in
             self.didRequestComplete(nil)
@@ -61,6 +63,7 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
                 self.nodaView.isHidden = false
             }else{
                 self.nodaView.isHidden = true
+                self.nodaView.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
             }
         }
 
