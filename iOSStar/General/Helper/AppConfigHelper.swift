@@ -57,7 +57,9 @@ class AppConfigHelper: NSObject {
         }
         let requestModel = TokenLoginRequestModel()
         AppAPIHelper.user().tokenLogin(requestModel: requestModel, complete: { (result) in
-            if let _ = result as? StarUserModel {
+            if let model = result as? StarUserModel {
+                StarUserModel.upateUserInfo(userObject: model)
+                UserDefaults.standard.set(model.userinfo?.phone, forKey: "phone")
                 self.updateDeviceToken()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
 
@@ -249,7 +251,7 @@ class AppConfigHelper: NSObject {
                 StartModel.getStartName(startCode: model.symbol, complete: { (star) in
                     
                     if let starModel = star as? StartModel {
-                        let body = "匹配成功提醒：\(starModel.name)（\(starModel.code)）匹配成功，请到系统消息中查看。"
+                        let body = "匹配成功提醒：\(starModel.name)（\(starModel.code)）匹配成功，请到系统消息中查看，点击查看"
 
                         // 处在后台
                         if UIApplication.shared.applicationState == .background {
@@ -276,7 +278,7 @@ class AppConfigHelper: NSObject {
     func setupReceiveOrderResult() {
         AppAPIHelper.dealAPI().setReceiveOrderResult { (response) in
             if let model = response as? OrderResultModel {
-                let body = "您有一条新的订单状态更新:\(self.dealResult[model.result]!),请查看"
+                let body = "您有一条新的订单状态更新:\(self.dealResult[model.result]!),点击查看"
                 if UIApplication.shared.applicationState == .background {
                     self.localNotify(body: body, userInfo: nil)
                 } else {

@@ -56,8 +56,8 @@ class ContainVC: UIViewController {
                     StarUserModel.upateUserInfo(userObject: response)
 //                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo:nil)
                     self?.doYunxin(complete: { (result) in
-                        self?.dismissController()
                     })
+                    self?.dismissController()
                 }
             }
           
