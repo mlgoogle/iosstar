@@ -31,7 +31,8 @@ class MarketFansCell: UITableViewCell {
             name = model.sell_user!.nickname
         }
         dateLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(model.trades!.openTime, format: "MM-dd HH:mm:ss")
-        iconImaageView.kf.setImage(with: URL(string: headerUrl))
+        iconImaageView.kf.setImage(with: URL(string: headerUrl),placeholder:UIImage.init(named: "\(index%8+1)") )
+        
         nameLabel.text = name
         topLabel.text = String.init(format: "%.2d", index + 1)
         price_lb.text = String(format: "%.2f元/秒", model.trades!.openPrice)
