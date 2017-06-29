@@ -101,6 +101,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         YD_CountDownHelper.shared.marketTimeLineRefresh = { [weak self] (result)in
             self?.requestLineData()
             self?.requestRealTime()
+            
         }
     }
     override func didReceiveMemoryWarning() {

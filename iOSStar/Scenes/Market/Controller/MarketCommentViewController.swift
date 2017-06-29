@@ -38,7 +38,6 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
             bottomMargin.constant = 0
             inputViewHeight.constant = 0
             tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 450))
-
         }
         registerNotification()
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
