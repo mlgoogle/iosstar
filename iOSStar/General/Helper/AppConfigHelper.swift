@@ -16,11 +16,9 @@ let kGtAppSecret:String = "4DXXxrRirbAhqYJor3THd"
 
 class AppConfigHelper: NSObject {
     
-//<<<<<<< HEAD
+
     var dealResult:[Int32 : String] = [-1 : "订单取消", 0 : "扣费成功", -2 : "转让方持有时间不足", -3 : "求购方金币不足", 2 : "交易成功"]
-//=======
-//    var dealResult:[Int32 : String] = [-1 : "订单取消", 0 : "扣费成功", 1 : "转让方持有时间不足", 2 : "求购方星享币不足"]
-//>>>>>>> iosstar/master
+
     var updateModel:UpdateParam?
     lazy var alertView: TradingAlertView = {
         let alertView = Bundle.main.loadNibNamed("TradingAlertView", owner: nil, options: nil)?.first as! TradingAlertView
@@ -57,7 +55,9 @@ class AppConfigHelper: NSObject {
         }
         let requestModel = TokenLoginRequestModel()
         AppAPIHelper.user().tokenLogin(requestModel: requestModel, complete: { (result) in
-            if let _ = result as? UserModel {
+            if let model = result as? StarUserModel {
+                StarUserModel.upateUserInfo(userObject: model)
+                UserDefaults.standard.set(model.userinfo?.phone, forKey: "phone")
                 self.updateDeviceToken()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
 
@@ -76,24 +76,13 @@ class AppConfigHelper: NSObject {
     }
     
     func LoginYunxin(){
-//        AppAPIHelper.login().registWYIM(phone: UserDefaults.standard.object(forKey: "phone") as! String, token: UserDefaults.standard.object(forKey: "phone")! as! String, complete: { (result) in
-//            let datadic = result as? Dictionary<String,String>
-//            if let _ = datadic {
-//                
-//                NIMSDK.shared().loginManager.login(UserDefaults.standard.object(forKey: "phone") as! String, token: (datadic?["token_value"]!)!, completion: { (error) in
-//                    if (error == nil){
-//                        
-//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
-//                    }
-//                })
-//            }
-//        }) { (error)  in
-//            SVProgressHUD.showErrorMessage(ErrorMessage: "失败", ForDuration: 2.0, completion: nil)
-//      }
+
+//        SVProgressHUD.showErrorMessage(ErrorMessage: "失败", ForDuration: 2.0, completion: nil)
+
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
-        registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as! String
-        registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as! String
-        registerWYIMRequestModel.accid_value = UserDefaults.standard.object(forKey: "phone") as! String
+        registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as? String  ?? "123"
+        registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as? String ?? "123"
+        registerWYIMRequestModel.uid = Int(StarUserModel.getCurrentUser()?.id ?? 0)
         
         print( "====  \(registerWYIMRequestModel)" )
         
@@ -226,12 +215,12 @@ class AppConfigHelper: NSObject {
         var config = Realm.Configuration()
         config.fileURL =  config.fileURL!.deletingLastPathComponent()
             .appendingPathComponent("\("starShare").realm")
-        config.schemaVersion = 3
+        config.schemaVersion = 4
         
         //数据库迁移操作
         config.migrationBlock = { migration, oldSchemaVersion in
             
-            if oldSchemaVersion < 3 {
+            if oldSchemaVersion < 4 {
                 
                 migration.enumerateObjects(ofType: EntrustListModel.className(), { (oldObject, newObject) in
                     newObject!["pchg"] = 0.0
@@ -239,6 +228,10 @@ class AppConfigHelper: NSObject {
                 migration.enumerateObjects(ofType: WeChatPayResultModel.className(), { (oldObject, newObject) in
                     newObject!["rid"] = ""
                 })
+                migration.enumerateObjects(ofType: StarUserModel.className(), { (oldObject, newObject) in
+                    newObject!["token_time"] = 0
+                })
+                
             }
         }
         Realm.Configuration.defaultConfiguration = config
@@ -254,12 +247,13 @@ class AppConfigHelper: NSObject {
             if let model = response as? ReceiveMacthingModel{
                 
                 StartModel.getStartName(startCode: model.symbol, complete: { (star) in
-                    
+                     
                     if let starModel = star as? StartModel {
-                        let body = "匹配成功提醒：\(starModel.name)（\(starModel.code)）匹配成功，请到系统消息中查看。"
+                        let body = "匹配成功提醒：\(starModel.name)（\(starModel.code)）匹配成功，请到系统消息中查看，点击查看"
 
                         // 处在后台
                         if UIApplication.shared.applicationState == .background {
+                    
                             self.localNotify(body: body, userInfo: nil)
                         } else {
                             self.alertView.str = body
@@ -283,7 +277,8 @@ class AppConfigHelper: NSObject {
     func setupReceiveOrderResult() {
         AppAPIHelper.dealAPI().setReceiveOrderResult { (response) in
             if let model = response as? OrderResultModel {
-                let body = "您有一条新的订单状态更新:\(self.dealResult[model.result]!),请查看"
+                let body = "您有一条新的订单状态更新:\(self.dealResult[model.result]!),点击查看"
+
                 if UIApplication.shared.applicationState == .background {
                     self.localNotify(body: body, userInfo: nil)
                 } else {

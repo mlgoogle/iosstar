@@ -25,6 +25,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
     @IBOutlet weak var width: NSLayoutConstraint!
    
     @IBOutlet var loginBtn: UIButton!
+    var uid : Int = 0
     
     // 登录密码
     @IBOutlet weak var passPwd: UITextField!
@@ -151,14 +152,17 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
             loginRequestModel.pwd = (passPwd.text?.md5_string())!
             AppAPIHelper.login().login(model: loginRequestModel, complete: {[weak self] (result) in
                 SVProgressHUD.dismiss()
-                let datadic = result as? UserModel
+
+                let datadic = result as? StarUserModel
                   SVProgressHUD.showSuccessMessage(SuccessMessage: "登录成功", ForDuration: 2.0, completion: {
+
                     if let _ = datadic {
                         UserDefaults.standard.set(self?.phone.text, forKey: "phone")
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
+                        self?.uid = Int(datadic!.userinfo!.id)
                         UserDefaults.standard.synchronize()
                         self?.LoginYunxin()
-                        UserModel.share().upateUserInfo(userObject: datadic!)
+                        StarUserModel.upateUserInfo(userObject: datadic!)
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
                         AppConfigHelper.shared().updateDeviceToken()
 
@@ -166,10 +170,10 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
                 })
 
             }, error: { (error) in
-                
-                SVProgressHUD.showErrorMessage(ErrorMessage: "手机号或密码错误", ForDuration: 2.0, completion: nil)
+                self.didRequestError(error)
+//                SVProgressHUD.showErrorMessage(ErrorMessage: "网络连接超时", ForDuration: 2.0, completion: nil)
             })
-        } 
+        }
     }
     
     //MARK:- 网易云登录
@@ -177,7 +181,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
         registerWYIMRequestModel.name_value = phone.text!
         registerWYIMRequestModel.phone = phone.text!
-        registerWYIMRequestModel.accid_value = phone.text!
+        registerWYIMRequestModel.uid = self.uid
         AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: {[weak self] (result) in
             if let datadic = result as? Dictionary<String,String> {
                 UserDefaults.standard.set(self?.phone.text, forKey: "phone")
@@ -185,12 +189,13 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
                 UserDefaults.standard.synchronize()
                 NIMSDK.shared().loginManager.login((self?.phone.text!)!, token: (self?.phone.text!)!, completion: { (error) in
                     if(error != nil) {
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
                         self?.dismissController()
                     }
                 })
             }
         }) { (error) in
-        
+        print(error)
         }
     }
   

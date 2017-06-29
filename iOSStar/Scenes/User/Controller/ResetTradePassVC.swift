@@ -190,7 +190,7 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
         }
         
         let requestModel = ResetPayPwdRequestModel()
-        requestModel.id = (UserModel.share().getCurrentUser()?.userinfo?.id)!
+        requestModel.id = (StarUserModel.getCurrentUser()?.userinfo?.id)!
         requestModel.timestamp = Int64(timeStamp)
         requestModel.vCode = self.codeTf.text!
         requestModel.vToken = self.vToken

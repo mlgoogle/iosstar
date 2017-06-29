@@ -38,7 +38,6 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
             bottomMargin.constant = 0
             inputViewHeight.constant = 0
             tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 450))
-
         }
         registerNotification()
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -47,8 +46,6 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
         requestCommentList()
         setupRefresh()
 
-
-        
     }
     
     func setupRefresh() {
@@ -73,7 +70,6 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
         let rect = notification?.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
         var y:CGFloat = -286.0
         if rect != nil {
-        
             y = -rect!.size.height
         }
         UIView.animate(withDuration: 0.5) {
@@ -129,18 +125,14 @@ class MarketCommentViewController: MarketBaseViewController, UITextFieldDelegate
                     self.tableView.reloadData()
                 }
             }
-            if self.dataSource?.count ?? 0 == 0 {
-                self.addNodataButton()
-            }
+
             self.refreshDelegate?.refreshList(dataSource: self.dataSource, totalCount: self.totalCount)
         }) { (error) in
-            self.addNodataButton()
         }
         
     }
     func addNodataButton() {
         endRefresh()
-
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return checkLogin()

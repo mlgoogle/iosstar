@@ -101,6 +101,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         YD_CountDownHelper.shared.marketTimeLineRefresh = { [weak self] (result)in
             self?.requestLineData()
             self?.requestRealTime()
+            
         }
     }
     override func didReceiveMemoryWarning() {
@@ -295,13 +296,15 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
     
     func pushToDealPage(index:Int) {
         let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as! DealViewController
-        vc.starListModel = starModel
-        vc.realTimeData = realTimeModel
-        vc.index = index
-        let auctionVC = childViewControllers[2] as? MarketAuctionViewController
-        vc.totalCount = auctionVC?.totalCount ?? 0
-        navigationController?.pushViewController(vc, animated: true)
+        
+        if let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as? DealViewController {
+            vc.starListModel = starModel
+            vc.realTimeData = realTimeModel
+            vc.index = index
+            let auctionVC = childViewControllers[2] as? MarketAuctionViewController
+            vc.totalCount = auctionVC?.totalCount ?? 0
+            navigationController?.pushViewController(vc, animated: true)
+        }
 
     }
 
