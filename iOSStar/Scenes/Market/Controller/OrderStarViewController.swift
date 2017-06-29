@@ -153,21 +153,28 @@ class OrderStarViewController: UIViewController {
     
     // 假的框为了弹出(Date)键盘
     @IBOutlet weak var inputDateTextField: UITextField!
+    
     // datePickerView
     var datePickerView = UIDatePicker()
+    
     // dateToolBar
     var dateToolBar = UIToolbar()
     
     // 假的框为了弹出(city)键盘
-    @IBOutlet weak var inputCityTextField: UITextField!
+   @IBOutlet weak var inputCityTextField: UITextField!
+   
     // cityPickerView
     var cityPickerView = UIPickerView()
+    
     // cityToolBar
     var cityToolBar = UIToolbar()
+    
     //  cityList
     var dataCity = Array<Dictionary<String, AnyObject>>()
+    
     // cityPickerView选择的row (省份)
     var selectRow = 0
+    
     // cityPickerView选择的Componentow (市)
     var selectComponent = 0
     
@@ -321,9 +328,6 @@ class OrderStarViewController: UIViewController {
                     }
                     else{
                         let model = OrderInformation()
-//                        model.orderStatus = "1213.00"
-//                        model.orderInfomation = "12311"
-//                        model.orderPrice = "12311.00"
                         model.orderStatus = self.serviceTypeModel.name
                         if self.starInfo != nil {
                             model.orderInfomation = String.init(format: "%@ (%@)", (self.starInfo?.name)! ,(self.starInfo?.symbol)!)
@@ -348,8 +352,6 @@ class OrderStarViewController: UIViewController {
                             }else{
                             SVProgressHUD.showErrorMessage(ErrorMessage:  "约见已取消,请重新约见！", ForDuration: 2, completion: nil)
                             }
-                           
-                            
                         }
                         controller.modalPresentationStyle = .custom
                         controller.modalTransitionStyle = .crossDissolve
@@ -413,8 +415,10 @@ extension OrderStarViewController {
         datePickerView.locale = local
         datePickerView.datePickerMode = .date
         
-        // var minDate = dateFormatter.dateFromString("2016-5-20")
-        // datePickerView.minimumDate = minDate
+        // 一个月之后的时间
+        let oneDay : TimeInterval = 24 * 60 * 60 * 1
+        let afterAMonth = NSDate.init(timeIntervalSinceNow: oneDay * 31)
+        datePickerView.minimumDate = afterAMonth as Date
         
         // 确定按钮
         let sure : UIButton = UIButton.init(frame: CGRect.init(x: 0,
