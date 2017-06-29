@@ -12,6 +12,7 @@ class MoneyDetailListCell: OEZTableViewCell {
     
     var rechargeStatus:[Int8 : String] = [1:"处理中", 2:"充值成功", 3:"充值失败",4:"用户取消"]
     var rechargeType:[Int8 : String] = [1:"微信支付", 2:"银行卡支付", 3:"支付宝支付"]
+    
     @IBOutlet weak var weekLb: UILabel!            // 姓名LbstatusLb
     @IBOutlet weak var timeLb: UILabel!            // 时间Lb
     @IBOutlet weak var moneyCountLb: UILabel!      // 充值金额Lb
@@ -25,23 +26,37 @@ class MoneyDetailListCell: OEZTableViewCell {
         let model = data as! Model
         
         print("===\(model)")
-        // 0 +充值记录  1- 约见记录 2 - 聊天记录
+        
+        // recharge_type == 0 + 充值记录
+        // recharge_type == 1 - 约见记录
+        // recharge_type == 2 - 聊天记录
         
         if model.recharge_type == 0 {
             self.moneyCountLb.text = "+" + " "  + String.init(format: "%.2f", model.amount)
             self.withDrawto.text = rechargeType[model.depositType]
             self.statusLb.text = rechargeStatus[model.status]
         } else if model.recharge_type == 1 {
-            self.moneyCountLb.text = "-" + " "  + String.init(format: "%d", model.amount)
-            self.withDrawto.text = "林志玲 (1001)"
+            var starName = ""
+            StartModel.getStartName(startCode: model.transaction_id, complete: { (star) in
+                if let starModel = star as? StartModel {
+                    starName = starModel.name
+                }
+            })
+            self.moneyCountLb.text = "-" + " " + String.init(format: "%d", Int(model.amount))
+            self.withDrawto.text = String.init(format: "%@ (%@)", starName,model.transaction_id)
             self.statusLb.text = "约见"
         } else {
-            print("====\(model.amount)")
-            
-            self.moneyCountLb.text = "-" + " "  + String.init(format: "%d", model.amount)
-            self.withDrawto.text = "林志玲 (1001)"
+            var starName = ""
+            StartModel.getStartName(startCode: model.transaction_id, complete: { (star) in
+                if let starModel = star as? StartModel {
+                    starName = starModel.name
+                }
+            })
+            self.moneyCountLb.text = "-" +  String.init(format: "%d", Int(model.amount))
+            self.withDrawto.text = String.init(format: "%@ (%@)", starName,model.transaction_id)
             self.statusLb.text = "星聊"
         }
+        
         let timestr : Int = Date.stringToTimeStamp(stringTime: model.depositTime)
         self.weekLb.text = Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "yyyy")
         self.timeLb.text =  Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "MM-dd")

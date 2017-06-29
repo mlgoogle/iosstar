@@ -413,6 +413,9 @@ extension OrderStarViewController {
         datePickerView.locale = local
         datePickerView.datePickerMode = .date
         
+        // var minDate = dateFormatter.dateFromString("2016-5-20")
+        // datePickerView.minimumDate = minDate
+        
         // 确定按钮
         let sure : UIButton = UIButton.init(frame: CGRect.init(x: 0,
                                                                y: 0,
