@@ -247,7 +247,7 @@ class AppConfigHelper: NSObject {
             if let model = response as? ReceiveMacthingModel{
                 
                 StartModel.getStartName(startCode: model.symbol, complete: { (star) in
-                    
+                     
                     if let starModel = star as? StartModel {
                         let body = "匹配成功提醒：\(starModel.name)（\(starModel.code)）匹配成功，请到系统消息中查看，点击查看"
 
