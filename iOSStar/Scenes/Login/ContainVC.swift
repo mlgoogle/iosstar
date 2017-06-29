@@ -53,10 +53,10 @@ class ContainVC: UIViewController {
                     UserDefaults.standard.set(response.userinfo?.phone, forKey: "phone")
                     UserDefaults.standard.set(response.token, forKey: "token")
                     StarUserModel.upateUserInfo(userObject: response)
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo:nil)
+//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo:nil)
                     self?.doYunxin(complete: { (result) in
+                        self?.dismissController()
                     })
-                    self?.dismissController()
                 }
             }
             AppConfigHelper.shared().updateDeviceToken()
