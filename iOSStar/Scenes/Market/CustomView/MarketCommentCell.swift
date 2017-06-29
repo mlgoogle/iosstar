@@ -22,11 +22,8 @@ class MarketCommentCell: UITableViewCell {
         commentLabel.text = model.comments
         
         nicknameLabel.text = model.nick_name
-        if model.head_url == " "{
-            iconImageView.image = UIImage.init(named: "\(arc4random()%9)")
-        }else{
-            iconImageView.kf.setImage(with: URL(string: model.head_url))
-        }
+       
+        iconImageView.kf.setImage(with: URL(string: model.head_url),placeholder:UIImage.init(named: "\(arc4random()%8+1)"))
         timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.cms_time), format: "YYYY-MM-dd")
         
     }
