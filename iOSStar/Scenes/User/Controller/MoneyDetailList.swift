@@ -23,18 +23,30 @@ class MoneyDetailListCell: OEZTableViewCell {
     override func update(_ data: Any!) {
         
         let model = data as! Model
-        self.moneyCountLb.text = "+" + " "  + String.init(format: "%.2f", model.amount)
+        
+        print("===\(model)")
+        // 0 +充值记录  1- 约见记录 2 - 聊天记录
+        
+        if model.recharge_type == 0 {
+            self.moneyCountLb.text = "+" + " "  + String.init(format: "%.2f", model.amount)
+            self.withDrawto.text = rechargeType[model.depositType]
+            self.statusLb.text = rechargeStatus[model.status]
+        } else if model.recharge_type == 1 {
+            self.moneyCountLb.text = "-" + " "  + String.init(format: "%d", model.amount)
+            self.withDrawto.text = "林志玲 (1001)"
+            self.statusLb.text = "约见"
+        } else {
+            print("====\(model.amount)")
+            
+            self.moneyCountLb.text = "-" + " "  + String.init(format: "%d", model.amount)
+            self.withDrawto.text = "林志玲 (1001)"
+            self.statusLb.text = "星聊"
+        }
         let timestr : Int = Date.stringToTimeStamp(stringTime: model.depositTime)
-        self.withDrawto.text = rechargeType[model.depositType]
         self.weekLb.text = Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "yyyy")
-        self.statusLb.text = rechargeStatus[model.status]
         self.timeLb.text =  Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "MM-dd")
         self.minuteLb.text =  Date.yt_convertDateStrWithTimestempWithSecond(timestr, format: "HH:mm:ss")
-        
     }
-        //        BankLogoColor.share().checkLocalBank(string: model.ba)
-    
-
 }
 
 class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDelegate {
@@ -82,6 +94,8 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
         requestModel.startPos = Int32(pageIndex - 1) * 10 + 1
 
         requestModel.time = indexString == nil ? "" : indexString!
+        
+        print("====\(requestModel)")
         
         AppAPIHelper.user().requestCreditList(requestModel: requestModel, complete: { (result) in
             

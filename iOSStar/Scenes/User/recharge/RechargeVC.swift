@@ -10,7 +10,6 @@ import UIKit
 import SVProgressHUD
 class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     
-    
     var rid = ""
     
     @IBOutlet var collectView: RechargeCollectView!
@@ -89,7 +88,6 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         }
     }
     func textFieldDidChange(_ textFile : NSNotification) {
-        
         if inputMoney.text != "" {
             if Double.init(inputMoney.text!)! > 50000 {
                 SVProgressHUD.showErrorMessage(ErrorMessage: "金额不能大于50000", ForDuration: 2.0, completion: nil)
