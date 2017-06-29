@@ -152,16 +152,17 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
             loginRequestModel.pwd = (passPwd.text?.md5_string())!
             AppAPIHelper.login().login(model: loginRequestModel, complete: {[weak self] (result) in
                 SVProgressHUD.dismiss()
-                
-                let datadic = result as? UserModel
-                SVProgressHUD.showSuccessMessage(SuccessMessage: "登录成功", ForDuration: 2.0, completion: {
+
+                let datadic = result as? StarUserModel
+                  SVProgressHUD.showSuccessMessage(SuccessMessage: "登录成功", ForDuration: 2.0, completion: {
+
                     if let _ = datadic {
                         UserDefaults.standard.set(self?.phone.text, forKey: "phone")
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
                         self?.uid = Int(datadic!.userinfo!.id)
                         UserDefaults.standard.synchronize()
                         self?.LoginYunxin()
-                        UserModel.share().upateUserInfo(userObject: datadic!)
+                        StarUserModel.upateUserInfo(userObject: datadic!)
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
                         AppConfigHelper.shared().updateDeviceToken()
 

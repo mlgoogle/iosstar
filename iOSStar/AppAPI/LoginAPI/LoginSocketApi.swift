@@ -38,12 +38,12 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
         print(param)
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .login, dict: param as [String : AnyObject])
         //startRequest(packet, complete: complete, error: error)
-        startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
+        startModelRequest(packet, modelClass: StarUserModel.self, complete: complete, error: error)
     }
     // 登录(模型)
     func login(model: LoginRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
         let packet : SocketDataPacket = SocketDataPacket.init(opcode: .login, model: model)
-        startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
+        startModelRequest(packet, modelClass: StarUserModel.self, complete: complete, error: error)
     }
     
     
@@ -83,7 +83,7 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
                                     ]
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .WchatLogin, dict: param as [String : AnyObject])
         
-        startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
+        startModelRequest(packet, modelClass: StarUserModel.self, complete: complete, error: error)
     }
     
     // 微信登录(模型)
@@ -91,7 +91,7 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
         
         let packet : SocketDataPacket = SocketDataPacket.init(opcode: .WchatLogin, model: model)
         
-        startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
+        startModelRequest(packet, modelClass: StarUserModel.self, complete: complete, error: error)
     }
     
     // MARK: - 校验用户是否注册

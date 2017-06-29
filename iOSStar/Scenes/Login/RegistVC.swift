@@ -271,7 +271,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
         registerWYIMRequestModel.name_value = phoneTf.text!
         registerWYIMRequestModel.phone = phoneTf.text!
         
-        registerWYIMRequestModel.uid = Int((UserModel.share().getCurrentUser()?.userinfo?.id)!)
+        registerWYIMRequestModel.uid = Int(StarUserModel.getCurrentUser()?.id ?? 0)
 //        registerWYIMRequestModel.accid_value = phoneTf.text!
         AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { [weak self](result) in
             if let datadic = result as? Dictionary<String,String> {

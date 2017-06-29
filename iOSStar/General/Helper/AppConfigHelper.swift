@@ -57,7 +57,7 @@ class AppConfigHelper: NSObject {
         }
         let requestModel = TokenLoginRequestModel()
         AppAPIHelper.user().tokenLogin(requestModel: requestModel, complete: { (result) in
-            if let _ = result as? UserModel {
+            if let _ = result as? StarUserModel {
                 self.updateDeviceToken()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
 
@@ -80,9 +80,9 @@ class AppConfigHelper: NSObject {
 //        SVProgressHUD.showErrorMessage(ErrorMessage: "失败", ForDuration: 2.0, completion: nil)
 
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
-        registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as! String
-        registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as! String
-         registerWYIMRequestModel.uid = Int((UserModel.share().getCurrentUser()?.userinfo?.id)!)
+        registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as? String  ?? "123"
+        registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as? String ?? "123"
+        registerWYIMRequestModel.uid = Int(StarUserModel.getCurrentUser()?.id ?? 0)
         
         print( "====  \(registerWYIMRequestModel)" )
         
@@ -228,7 +228,7 @@ class AppConfigHelper: NSObject {
                 migration.enumerateObjects(ofType: WeChatPayResultModel.className(), { (oldObject, newObject) in
                     newObject!["rid"] = ""
                 })
-                migration.enumerateObjects(ofType: UserModel.className(), { (oldObject, newObject) in
+                migration.enumerateObjects(ofType: StarUserModel.className(), { (oldObject, newObject) in
                     newObject!["token_time"] = 0
                 })
                 

@@ -44,24 +44,23 @@ class ContainVC: UIViewController {
         
         AppAPIHelper.login().WeChatLogin(model: weChatLoginRequestModel, complete: {[weak self] (result) in
             
-            if let response = result as? UserModel {
+            if let response = result as? StarUserModel {
                 
                 if (response.result == -302) {
                     ShareDataModel.share().isweichaLogin = true
                     self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.width)!, y: 0), animated: true)
                 } else {
-                    
+                      AppConfigHelper.shared().updateDeviceToken()
                     UserDefaults.standard.set(response.userinfo?.phone, forKey: "phone")
                     UserDefaults.standard.set(response.token, forKey: "token")
-                    UserModel.share().upateUserInfo(userObject: response)
+                    StarUserModel.upateUserInfo(userObject: response)
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo:nil)
                     self?.doYunxin(complete: { (result) in
-                        
                     })
                     self?.dismissController()
                 }
             }
-            AppConfigHelper.shared().updateDeviceToken()
+          
         }) { (error) in
             ShareDataModel.share().isweichaLogin = true
             self.scrollView?.setContentOffset(CGPoint.init(x: (self.scrollView?.frame.size.width)!, y: 0), animated: true)
@@ -70,14 +69,14 @@ class ContainVC: UIViewController {
 
 
     }
-    func updateTokenWithUserInfo(userInfo:UserModel) {
+    func updateTokenWithUserInfo(userInfo:StarUserModel) {
         
             let token = userInfo.token
             let weChatTokenRequestModel =  WeChatTokenRequestModel()
             weChatTokenRequestModel.id = userInfo.userinfo?.id ?? 0
             weChatTokenRequestModel.token = token
             AppAPIHelper.user().weChatTokenLogin(model: weChatTokenRequestModel, complete: { (result) in
-                if let model = result as? UserModel {
+                if let model = result as? StarUserModel {
                     UserDefaults.standard.set(model.token, forKey: "token")
                     UserDefaults.standard.synchronize()
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo:nil)

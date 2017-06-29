@@ -91,7 +91,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
     // MARK: -  tokenLogin token登录
     func tokenLogin(requestModel:TokenLoginRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .tokenLogin, model: requestModel)
-        startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
+        startModelRequest(packet, modelClass: StarUserModel.self, complete: complete, error: error)
 
     }
 
@@ -105,13 +105,13 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         print(param)
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .tokenLogin, dict: param as [String : AnyObject])
         //startRequest(packet, complete: complete, error: error)
-        startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
+        startModelRequest(packet, modelClass: StarUserModel.self, complete: complete, error: error)
     }
     
     func weChatTokenLogin(model: WeChatTokenRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
         
         let packet : SocketDataPacket = SocketDataPacket.init(opcode: .tokenLogin, model: model)
-        startModelRequest(packet, modelClass: UserModel.self, complete: complete, error: error)
+        startModelRequest(packet, modelClass: StarUserModel.self, complete: complete, error: error)
     }
 
     
@@ -127,7 +127,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
     // MARK: 已购明星接口
     func requestBuyStarCount(complete: CompleteBlock?, error: ErrorBlock?) {
         
-        let param: [String: Any] = [SocketConst.Key.id: UserModel.share().getCurrentUser()?.userinfo?.id ?? 0,]
+        let param: [String: Any] = [SocketConst.Key.id: StarUserModel.getCurrentUser()?.userinfo?.id ?? 0,]
         
         let packet: SocketDataPacket =  SocketDataPacket.init(opcode: .buyStarCount, dict: param  as [String : AnyObject])
         
