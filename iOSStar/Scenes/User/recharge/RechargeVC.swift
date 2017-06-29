@@ -26,7 +26,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     var selectBtn : Bool = false
     @IBOutlet weak var payTypeImg: UIImageView!
     var  payView : SelectPayType!
-    var   rechargeMoney : Double = 0.00
+    var  rechargeMoney : Double = 0.00
     var  bgview : UIView!
     var  paytype  = Int()
     override func viewWillAppear(_ animated: Bool) {
@@ -57,13 +57,14 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     func alipaysuccess(_ notice: NSNotification) {
         if let errorCode: Int = notice.object as? Int{
             if errorCode == 9000 {
-                SVProgressHUD.showErrorMessage(ErrorMessage: "充值成功", ForDuration: 1.5, completion: nil)
-            } else if errorCode == 6001{
+                SVProgressHUD.showSuccessMessage(SuccessMessage:"充值成功", ForDuration: 2.0, completion: nil)
+                return
+            } else if errorCode == 6001 {
                 cancelRecharge()
-                SVProgressHUD.showErrorMessage(ErrorMessage: "支付取消", ForDuration: 1.5, completion: nil)
+                SVProgressHUD.showErrorMessage(ErrorMessage:"支付取消", ForDuration: 2.0, completion: nil)
                 return
             } else {
-                SVProgressHUD.showErrorMessage(ErrorMessage: "支付失败", ForDuration: 1.5, completion: nil)
+                SVProgressHUD.showErrorMessage(ErrorMessage:"支付失败", ForDuration: 2.0, completion: nil)
                 return
             }
         }
@@ -73,16 +74,16 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     func paysuccess(_ notice: NSNotification) {
         if let errorCode: Int = notice.object as? Int{
             if errorCode == 0 {
-                SVProgressHUD.showSuccess(withStatus: "充值成功")
+                SVProgressHUD.showSuccessMessage(SuccessMessage: "充值成功", ForDuration: 2.0, completion: nil)
                 return  
             }
             else if errorCode == -4{
-                SVProgressHUD.showError(withStatus: "支付失败")
+                SVProgressHUD.showErrorMessage(ErrorMessage: "支付失败", ForDuration: 2.0, completion: nil)
                 return
             }
             else if errorCode == -2{
                 cancelRecharge()
-                SVProgressHUD.showError(withStatus: "用户中途取消")
+                SVProgressHUD.showErrorMessage(ErrorMessage: "用户中途取消", ForDuration: 2.0, completion: nil)
                 return
             }
         }
@@ -115,14 +116,12 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     @IBAction func doRecharge(_ sender: Any) {
         //微信充值
         if rechargeMoney == 0.0 {
-        SVProgressHUD.showErrorMessage(ErrorMessage: "请输入充值金额", ForDuration: 2.0, completion: {
-
-        })
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入充值金额", ForDuration: 2.0, completion: nil)
             return
         }
         if paytype == 0 {
            doWeiXinPay()
-        }else{
+        } else {
            doAliPay()
         }
 
@@ -140,7 +139,6 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         let moneyStr = String(stringInterpolationSegment:((sender as! UIButton).tag))
        
         inputMoney.text = moneyStr
-        
         inputMoney.resignFirstResponder()
         let btn = sender as! UIButton
         if rechargeMoney != 0.0{
