@@ -23,6 +23,8 @@ class UserModel: Object {
      dynamic var userinfo  : UserModel?
      dynamic var result : Int64 = 0
      dynamic var token : String = " "
+    
+    dynamic var token_time:Int64 = 0
      dynamic var nickname : String = " "
      dynamic var head_url : String = " "
     

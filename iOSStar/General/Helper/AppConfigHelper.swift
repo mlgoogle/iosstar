@@ -76,20 +76,7 @@ class AppConfigHelper: NSObject {
     }
     
     func LoginYunxin(){
-//        AppAPIHelper.login().registWYIM(phone: UserDefaults.standard.object(forKey: "phone") as! String, token: UserDefaults.standard.object(forKey: "phone")! as! String, complete: { (result) in
-//            let datadic = result as? Dictionary<String,String>
-//            if let _ = datadic {
-//                
-//                NIMSDK.shared().loginManager.login(UserDefaults.standard.object(forKey: "phone") as! String, token: (datadic?["token_value"]!)!, completion: { (error) in
-//                    if (error == nil){
-//                        
-//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
-//                    }
-//                })
-//            }
-//        }) { (error)  in
-//            SVProgressHUD.showErrorMessage(ErrorMessage: "失败", ForDuration: 2.0, completion: nil)
-//      }
+
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
         registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as! String
         registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as! String
@@ -226,12 +213,12 @@ class AppConfigHelper: NSObject {
         var config = Realm.Configuration()
         config.fileURL =  config.fileURL!.deletingLastPathComponent()
             .appendingPathComponent("\("starShare").realm")
-        config.schemaVersion = 3
+        config.schemaVersion = 4
         
         //数据库迁移操作
         config.migrationBlock = { migration, oldSchemaVersion in
             
-            if oldSchemaVersion < 3 {
+            if oldSchemaVersion < 4 {
                 
                 migration.enumerateObjects(ofType: EntrustListModel.className(), { (oldObject, newObject) in
                     newObject!["pchg"] = 0.0
@@ -239,6 +226,10 @@ class AppConfigHelper: NSObject {
                 migration.enumerateObjects(ofType: WeChatPayResultModel.className(), { (oldObject, newObject) in
                     newObject!["rid"] = ""
                 })
+                migration.enumerateObjects(ofType: UserModel.className(), { (oldObject, newObject) in
+                    newObject!["token_time"] = 0
+                })
+                
             }
         }
         Realm.Configuration.defaultConfiguration = config

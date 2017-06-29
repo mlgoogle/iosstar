@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class LoginRequestModel: BaseModel {
     var phone = ""
     var pwd = ""
