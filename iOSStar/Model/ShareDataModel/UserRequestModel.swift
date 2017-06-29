@@ -71,7 +71,7 @@ class UserInfoRequestModel: MarketBaseModel {
     
 }
 class TokenLoginRequestModel: MarketBaseModel {
-    
+    var token_time = UserModel.share().getCurrentUser()?.token_time ?? 0
 }
 
 class ModifyNicknameModel: MarketBaseModel {

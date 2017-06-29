@@ -76,8 +76,8 @@ class DealOrderInfoCell: UITableViewCell,UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
+
         if textField == coutTextField {
-            
             isCount = true
             if string == "." {
                 return false
