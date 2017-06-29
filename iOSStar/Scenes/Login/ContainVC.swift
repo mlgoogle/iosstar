@@ -43,45 +43,53 @@ class ContainVC: UIViewController {
         weChatLoginRequestModel.deviceId = "123"
         
         AppAPIHelper.login().WeChatLogin(model: weChatLoginRequestModel, complete: {[weak self] (result) in
+            
             if let response = result as? UserModel {
                 
                 if (response.result == -302) {
                     ShareDataModel.share().isweichaLogin = true
                     self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.width)!, y: 0), animated: true)
                 } else {
+                    
+                    UserDefaults.standard.set(response.userinfo?.phone, forKey: "phone")
+                    UserDefaults.standard.set(response.token, forKey: "token")
                     UserModel.share().upateUserInfo(userObject: response)
-                    if let userinfo = response.userinfo {
-                        let phone : String = (userinfo.phone)
-                        let token : String = (response.token)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo:nil)
+                    self?.doYunxin(complete: { (result) in
                         
-                        let weChatTokenRequestModel =  WeChatTokenRequestModel()
-                        weChatTokenRequestModel.id = (response.userinfo?.id)!
-                        weChatTokenRequestModel.token = token
-                        AppAPIHelper.user().weChatTokenLogin(model: weChatTokenRequestModel, complete: { (result) in
-                            print("=====\(String(describing: result))")
-                            UserDefaults.standard.set(phone, forKey: "phone")
-                            UserDefaults.standard.set(token, forKey: "token")
-                            UserDefaults.standard.synchronize()
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo:nil)
-                            self?.doYunxin(complete: { (result) in
-                        
-                            })
-                            self?.dismissController()
-                        }, error: { (error) in
-                            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-                        })
-                    }
+                    })
+                    self?.dismissController()
                 }
             }
             AppConfigHelper.shared().updateDeviceToken()
         }) { (error) in
-            print(error)
             ShareDataModel.share().isweichaLogin = true
             self.scrollView?.setContentOffset(CGPoint.init(x: (self.scrollView?.frame.size.width)!, y: 0), animated: true)
         }
         
 
 
+    }
+    func updateTokenWithUserInfo(userInfo:UserModel) {
+        
+            let token = userInfo.token
+            let weChatTokenRequestModel =  WeChatTokenRequestModel()
+            weChatTokenRequestModel.id = userInfo.userinfo?.id ?? 0
+            weChatTokenRequestModel.token = token
+            AppAPIHelper.user().weChatTokenLogin(model: weChatTokenRequestModel, complete: { (result) in
+                if let model = result as? UserModel {
+                    UserDefaults.standard.set(model.token, forKey: "token")
+                    UserDefaults.standard.synchronize()
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo:nil)
+                    self.doYunxin(complete: { (result) in
+                        
+                    })
+                    self.dismissController()
+                }
+            }, error: { (error) in
+                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+            })
+    
     }
     
 
