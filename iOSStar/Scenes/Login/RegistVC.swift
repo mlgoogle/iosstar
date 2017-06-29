@@ -267,21 +267,6 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     //MARK:- 网易云登录
     func LoginYunxin(){
         
-//        AppAPIHelper.login().registWYIM(phone: self.phoneTf.text!, token: self
-//            .phoneTf.text!, complete: { (result) in
-//                let datadic = result as? Dictionary<String,String>
-//                if let _ = datadic {
-//                    UserDefaults.standard.set(self.phoneTf.text, forKey: "phone")
-//                    UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
-//                    UserDefaults.standard.synchronize()
-//                    NIMSDK.shared().loginManager.login(self.phoneTf.text!, token: self.passTf.text!, completion: { (error) in
-//                        if (error != nil){
-//                            self.dismissController()
-//                        }
-//                    })
-//                }
-//        }) { (error)  in
-//        }
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
         registerWYIMRequestModel.name_value = phoneTf.text!
         registerWYIMRequestModel.phone = phoneTf.text!

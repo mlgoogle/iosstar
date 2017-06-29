@@ -76,20 +76,8 @@ class AppConfigHelper: NSObject {
     }
     
     func LoginYunxin(){
-//        AppAPIHelper.login().registWYIM(phone: UserDefaults.standard.object(forKey: "phone") as! String, token: UserDefaults.standard.object(forKey: "phone")! as! String, complete: { (result) in
-//            let datadic = result as? Dictionary<String,String>
-//            if let _ = datadic {
-//                
-//                NIMSDK.shared().loginManager.login(UserDefaults.standard.object(forKey: "phone") as! String, token: (datadic?["token_value"]!)!, completion: { (error) in
-//                    if (error == nil){
-//                        
-//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
-//                    }
-//                })
-//            }
-//        }) { (error)  in
-//            SVProgressHUD.showErrorMessage(ErrorMessage: "失败", ForDuration: 2.0, completion: nil)
-//      }
+        SVProgressHUD.showErrorMessage(ErrorMessage: "失败", ForDuration: 2.0, completion: nil)
+
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
         registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as! String
         registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as! String
