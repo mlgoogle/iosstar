@@ -50,6 +50,7 @@ class ContainVC: UIViewController {
                     ShareDataModel.share().isweichaLogin = true
                     self?.scrollView?.setContentOffset(CGPoint.init(x: (self?.scrollView?.width)!, y: 0), animated: true)
                 } else {
+                      AppConfigHelper.shared().updateDeviceToken()
                     UserDefaults.standard.set(response.userinfo?.phone, forKey: "phone")
                     UserDefaults.standard.set(response.token, forKey: "token")
                     StarUserModel.upateUserInfo(userObject: response)
@@ -59,7 +60,7 @@ class ContainVC: UIViewController {
                     self?.dismissController()
                 }
             }
-            AppConfigHelper.shared().updateDeviceToken()
+          
         }) { (error) in
             ShareDataModel.share().isweichaLogin = true
             self.scrollView?.setContentOffset(CGPoint.init(x: (self.scrollView?.frame.size.width)!, y: 0), animated: true)
@@ -151,7 +152,7 @@ class ContainVC: UIViewController {
         jvc.view.frame = CGRect.init(x:  vc.view.frame.size.width*2, y: -10, width: vc.view.frame.size.width, height: ((self.scrollView?.frame.size.height)!+10))
         jvc.resultBlock = { [weak self](result) in
             self?.scrollView?.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
-            rvc.LoginYunxin()
+//            rvc.LoginYunxin()
         }
         self.addChildViewController(jvc)
         

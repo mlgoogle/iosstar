@@ -77,10 +77,12 @@ class AppConfigHelper: NSObject {
     
     func LoginYunxin(){
 
+//        SVProgressHUD.showErrorMessage(ErrorMessage: "失败", ForDuration: 2.0, completion: nil)
+
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
-        registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as! String
-        registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as! String
-        registerWYIMRequestModel.accid_value = UserDefaults.standard.object(forKey: "phone") as! String
+        registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as? String  ?? "123"
+        registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as? String ?? "123"
+        registerWYIMRequestModel.uid = Int(StarUserModel.getCurrentUser()?.id ?? 0)
         
         print( "====  \(registerWYIMRequestModel)" )
         
