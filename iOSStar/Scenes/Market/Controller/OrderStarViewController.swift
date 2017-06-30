@@ -203,7 +203,7 @@ class OrderStarViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+
         tableView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0)
         tableView.showsVerticalScrollIndicator = false
         
@@ -317,7 +317,7 @@ class OrderStarViewController: UIViewController {
             SVProgressHUD.showErrorMessage(ErrorMessage: "备注信息不能为空,且不超过200字", ForDuration: 2.0, completion: nil)
             return
         }
-        if feedBack.text.length() >= 200 {
+        if feedBack.text.length() > 200 {
             SVProgressHUD.showErrorMessage(ErrorMessage: "备注信息200字内", ForDuration: 2.0, completion: nil)
             return
         }
@@ -789,8 +789,12 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate,Fee
     func didSelectRules() {
         
         print("点击了约见规则")
-        SVProgressHUD.showSuccessMessage(SuccessMessage: "等一个H5页面", ForDuration: 2.0, completion: nil)
-        return
+        let baseWebVc = BaseWebVC()
+        baseWebVc.loadRequest = "http://122.144.169.219:3389/meet"
+        baseWebVc.navtitle = "约见规则"
+        self.navigationController?.pushViewController(baseWebVc, animated: true)
+//        SVProgressHUD.showSuccessMessage(SuccessMessage: "等一个H5页面", ForDuration: 2.0, completion: nil)
+//        return
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

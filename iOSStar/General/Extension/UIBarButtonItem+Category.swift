@@ -38,4 +38,18 @@ extension UIBarButtonItem {
         btn.addTarget(target, action: action, for: .touchUpInside)
         return UIBarButtonItem(customView: btn)
     }
+    
+    
+    class func creatRightBarButtonItem(title:String, target : Any? ,action : Selector) -> UIBarButtonItem {
+        
+        let btn = UIButton()
+        btn.setTitle(title, for: .normal)
+        let color = UIColor(hexString: AppConst.Color.main)
+        btn.setTitleColor(color, for: .normal)
+        btn.addTarget(target, action: action, for: .touchUpInside)
+        btn.sizeToFit()
+        return UIBarButtonItem(customView: btn)
+        
+    }
+
 }
