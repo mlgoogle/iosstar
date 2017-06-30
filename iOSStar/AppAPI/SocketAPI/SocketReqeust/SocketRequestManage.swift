@@ -65,7 +65,7 @@ class SocketRequestManage: NSObject {
         
         objc_sync_enter(self)
         var  socketReqeust = socketRequests[packet.session_id]
-        if packet.operate_code == SocketConst.OPCode.lineData.rawValue + 1{
+        if packet.operate_code == SocketConst.OPCode.fansList.rawValue + 1{
             socketReqeust = timelineRequest
         }else if packet.operate_code == SocketConst.OPCode.receiveMatching.rawValue {
             let response:SocketJsonResponse = SocketJsonResponse(packet:packet)           
