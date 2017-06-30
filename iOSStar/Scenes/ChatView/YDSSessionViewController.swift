@@ -16,9 +16,21 @@ class YDSSessionViewController: NTESSessionViewController {
     
         tableView.backgroundColor = UIColor.init(hexString: "FAFAFA")
         
-
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.creatRightBarButtonItem(title: "星聊须知", target: self, action: #selector(rightButtonClick))
+        
         // Do any additional setup after loading the view.
     }
+    
+    func rightButtonClick() {
+        
+//        print("点击了右边的按钮吧")
+        let vc = BaseWebVC()
+        vc.loadRequest = "http://122.144.169.219:3389/talk"
+        vc.navtitle = "星聊须知"
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -48,9 +60,6 @@ class YDSSessionViewController: NTESSessionViewController {
             })
 
         }
-        
-
-       
     }
     
 
