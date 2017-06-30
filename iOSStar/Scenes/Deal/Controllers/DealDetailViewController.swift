@@ -37,7 +37,7 @@ class DealDetailViewController: DealBaseViewController ,DealScrollViewScrollDele
         menuView?.isScreenWidth = true
         menuView?.isShowLineView = false
         menuView?.isSelectZoom = true
-        menuView?.items = ["当日成交","当日委托","历史委托","历史交易"]
+        menuView?.items = ["当日成交","当日委托","历史委托","历史成交"]
         menuView?.reloadData()
         menuView?.delegate = self
         view.addSubview(menuView!)
