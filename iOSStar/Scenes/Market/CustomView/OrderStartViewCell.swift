@@ -16,6 +16,7 @@ class OrderItemButton : UIButton {
         super.awakeFromNib()
         
         self.imageView?.contentMode = .center
+        self.imageView?.contentMode = .scaleAspectFit
         self.titleLabel?.textAlignment = .center
     }
 
@@ -24,13 +25,14 @@ class OrderItemButton : UIButton {
         
         // 调整图片的位置
         self.imageView?.centerX = self.width * 0.5
-        self.imageView?.y = 0 ;
+        self.imageView?.y = 0
+        self.imageView?.height = self.height * 0.75
         
         // 调整文字的位置
         self.titleLabel?.x = 0;
         self.titleLabel?.width = self.width;
-        self.titleLabel?.y = (self.imageView?.height)!;
-        self.titleLabel?.height = self.height - (self.imageView?.height)!;
+        self.titleLabel?.y = (self.imageView?.height)!
+        self.titleLabel?.height = self.height - (self.imageView?.height)!
     }
 }
 
@@ -119,19 +121,19 @@ class OrderStarItem: UICollectionViewCell {
     func setServiceType(_ serviceTypeModel : ServiceTypeModel) {
         
         serviceTypeButton.setTitle(serviceTypeModel.name, for: .normal)
-        serviceTypeButton.setImage(UIImage(named: "kefu_QQ"), for: .normal)
-        serviceTypeButton.setImage(UIImage(named: "kefu_weixin"), for: .selected)
+        // serviceTypeButton.setImage(UIImage(named: "kefu_QQ"), for: .normal)
+        // serviceTypeButton.setImage(UIImage(named: "kefu_weixin"), for: .selected)
             
-//        if serviceTypeModel.url1.length() == 0 {
-//            serviceTypeButton.setImage(UIImage(named: "kefu_QQ"), for: .normal)
-//        } else {
-//            serviceTypeButton.kf.setImage(with: URL(string: serviceTypeModel.url1),for: .normal)
-//        }
-//        if serviceTypeModel.url2.length() == 0 {
-//            serviceTypeButton.setImage(UIImage(named: "kefu_weixin"), for: .selected)
-//        } else {
-//            serviceTypeButton.kf.setImage(with: URL(string: serviceTypeModel.url2),for: .selected)
-//        }
+        if serviceTypeModel.url1.length() == 0 {
+            serviceTypeButton.setImage(UIImage(named: "kefu_QQ"), for: .normal)
+        } else {
+            serviceTypeButton.kf.setImage(with: URL(string: serviceTypeModel.url1),for: .normal)
+        }
+        if serviceTypeModel.url2.length() == 0 {
+            serviceTypeButton.setImage(UIImage(named: "kefu_weixin"), for: .selected)
+        } else {
+            serviceTypeButton.kf.setImage(with: URL(string: serviceTypeModel.url2),for: .selected)
+        }
     }
 }
 private let KOrderStarItemID = "OrderStarItemID"

@@ -42,7 +42,7 @@ class MoneyDetailListCell: OEZTableViewCell {
                     starName = starModel.name
                 }
             })
-            self.moneyCountLb.text = "-" + " " + String.init(format: "%d", Int(model.amount))
+            self.moneyCountLb.text = "-" + " " + String.init(format: "%d秒", Int(model.amount))
             self.withDrawto.text = String.init(format: "%@ (%@)", starName,model.transaction_id)
             self.statusLb.text = "约见"
         } else {
@@ -52,7 +52,7 @@ class MoneyDetailListCell: OEZTableViewCell {
                     starName = starModel.name
                 }
             })
-            self.moneyCountLb.text = "-" +  String.init(format: "%d", Int(model.amount))
+            self.moneyCountLb.text = "-" +  String.init(format: "%d秒", Int(model.amount))
             self.withDrawto.text = String.init(format: "%@ (%@)", starName,model.transaction_id)
             self.statusLb.text = "星聊"
         }

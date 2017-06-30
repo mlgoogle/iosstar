@@ -66,6 +66,7 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
         let textVStr = feedBack.text as NSString;
         if (textVStr.length > 200) {
             SVProgressHUD.showErrorMessage(ErrorMessage: "备注信息不超过200字", ForDuration: 2.0, completion: nil)
+            feedBack.resignFirstResponder()
             return
         }
         
@@ -88,9 +89,6 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
         }
         return true
     }
-    
-    
-    
     
     func textViewDidChange(_ textView: UITextView) {
         feedBack.text = textView.text
@@ -205,7 +203,7 @@ class OrderStarViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+
         tableView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0)
         tableView.showsVerticalScrollIndicator = false
         
@@ -319,7 +317,7 @@ class OrderStarViewController: UIViewController {
             SVProgressHUD.showErrorMessage(ErrorMessage: "备注信息不能为空,且不超过200字", ForDuration: 2.0, completion: nil)
             return
         }
-        if feedBack.text.length() >= 200 {
+        if feedBack.text.length() > 200 {
             SVProgressHUD.showErrorMessage(ErrorMessage: "备注信息200字内", ForDuration: 2.0, completion: nil)
             return
         }
@@ -369,7 +367,7 @@ class OrderStarViewController: UIViewController {
                                 self.domeet()
                                 controller.dismissController()
                             }else{
-                            SVProgressHUD.showErrorMessage(ErrorMessage:  "约见已取消,请重新约见！", ForDuration: 2, completion: nil)
+                                SVProgressHUD.showErrorMessage(ErrorMessage:  "约见已取消,请重新约见！", ForDuration: 2, completion: nil)
                             }
                         }
                         controller.modalPresentationStyle = .custom
@@ -483,7 +481,7 @@ extension OrderStarViewController {
         // 现在时间的字符串
         let nowTime = Date.yt_convertDateToStr(NSDate() as Date, format: "yyyy-MM-dd")
     
-        print("选择的时间=\(time) , 现在的时间=\(nowTime)")
+        // print("选择的时间=\(time) , 现在的时间=\(nowTime)")
         
         // 选择的时间
         let chooseDate = datePickerView.date
@@ -493,7 +491,7 @@ extension OrderStarViewController {
 
         let compsMonth = Calendar.current.dateComponents([.month], from: nowDate, to: chooseDate)
         
-        print("===\(String(describing: compsMonth.month))")
+        // print("===\(String(describing: compsMonth.month))")
         
         // 只能选择一个月之后的时间
         if compsMonth.month! >= 1 {
@@ -791,8 +789,12 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate,Fee
     func didSelectRules() {
         
         print("点击了约见规则")
-        SVProgressHUD.showSuccessMessage(SuccessMessage: "等一个H5页面", ForDuration: 2.0, completion: nil)
-        return
+        let baseWebVc = BaseWebVC()
+        baseWebVc.loadRequest = "http://122.144.169.219:3389/meet"
+        baseWebVc.navtitle = "约见规则"
+        self.navigationController?.pushViewController(baseWebVc, animated: true)
+//        SVProgressHUD.showSuccessMessage(SuccessMessage: "等一个H5页面", ForDuration: 2.0, completion: nil)
+//        return
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

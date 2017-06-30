@@ -69,7 +69,7 @@ class SettingVC: BaseTableViewController {
        
         if indexPath.row == 0{
             let vc = BaseWebVC()
-            vc.loadRequest = "http://www.baidu.com"
+            vc.loadRequest = "http://122.144.169.219:3389/transaction"
             vc.navtitle = "买卖规则"
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -81,7 +81,7 @@ class SettingVC: BaseTableViewController {
         if indexPath.row == 1{
             let vc = BaseWebVC()
             print(fileSizeOfCache())
-            vc.loadRequest = "http://www.baidu.com"
+            vc.loadRequest = "http://122.144.169.219:3389/aboutStar"
             vc.navtitle = "关于我们"
             self.navigationController?.pushViewController(vc, animated: true)
         }
