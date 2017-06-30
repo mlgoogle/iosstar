@@ -14,20 +14,23 @@ class ExchangeViewController: UIViewController ,UITabBarControllerDelegate,NIMSy
     var realName :Bool = false
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.getUserInfo { [weak self ](result) in
-            if let response = result{
-                let object = response as! UserInfoModel
-                self?.needPwd = object.is_setpwd
-                
+        //为了添加判断来请求防止崩溃
+        if checkLogin()
+        {
+            self.getUserInfo { [weak self ](result) in
+                if let response = result{
+                    let object = response as! UserInfoModel
+                    self?.needPwd = object.is_setpwd
+                    
+                }
             }
-        }
-        
-        self.getUserRealmInfo { [weak self](result) in
-            if let model = result{
-                if let object =  model as? [String : AnyObject]{
-                    if object["realname"] as! String == ""{
-                        self?.realName = true
+            
+            self.getUserRealmInfo { [weak self](result) in
+                if let model = result{
+                    if let object =  model as? [String : AnyObject]{
+                        if object["realname"] as! String == ""{
+                            self?.realName = true
+                        }
                     }
                 }
             }

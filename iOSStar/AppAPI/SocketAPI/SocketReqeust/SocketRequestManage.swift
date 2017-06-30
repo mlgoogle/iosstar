@@ -65,7 +65,7 @@ class SocketRequestManage: NSObject {
         
         objc_sync_enter(self)
         var  socketReqeust = socketRequests[packet.session_id]
-        if packet.operate_code == SocketConst.OPCode.fansList.rawValue + 1{
+        if packet.operate_code == SocketConst.OPCode.timeLine.rawValue + 1{
             socketReqeust = timelineRequest
         }else if packet.operate_code == SocketConst.OPCode.receiveMatching.rawValue {
             let response:SocketJsonResponse = SocketJsonResponse(packet:packet)           
@@ -136,11 +136,10 @@ class SocketRequestManage: NSObject {
         packet.session_id = sessionId;
         operate_code = Int(packet.operate_code)
         objc_sync_enter(self)
-        if packet.operate_code ==  SocketConst.OPCode.lineData.rawValue{
+        if packet.operate_code ==  SocketConst.OPCode.timeLine.rawValue{
             timelineRequest = socketReqeust
         } else {
             socketRequests[packet.session_id] = socketReqeust
-
         }
 
         objc_sync_exit(self)
