@@ -19,7 +19,7 @@ class NewsDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setCustomTitle(title: "资讯详情")
-        shareActionTitlt.tintColor = UIColor.init(hexString: AppConst.Color.main)
+//        shareActionTitlt.tintColor = UIColor.init(hexString: AppConst.Color.main)
         let webView = WKWebView(frame: CGRect(x: 0, y: 44, width: kScreenWidth, height: kScreenHeight - 44))
         UIApplication.shared.statusBarStyle = .default;
         let url = URL(string: newsModel!.link_url)

@@ -50,7 +50,7 @@ class ContactListCell: OEZTableViewCell {
         
         cellModel = model
         nameLabel.text = model.starname
-        jobLabel.text = model.faccid
+        jobLabel.text =  "明星"
         if statusBtn != nil{
         // 0 已拒绝 1 约见
         

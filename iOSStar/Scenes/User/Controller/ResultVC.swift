@@ -81,7 +81,7 @@ class ResultVC: UITableViewController {
             })
             img.kf.setImage(with: URL(string: pic_url))
             titleInfo.text = starName
-            money.text = "-" + String.init(format: "%d", Int(model.amount))
+            money.text = "-" + String.init(format: "%d秒", Int(model.amount))
             status.text = "约见"
             bank.text = "发行人信息"
             bankInfo.text = String.init(format: "%@ (%@)", starName,model.transaction_id)
@@ -97,7 +97,7 @@ class ResultVC: UITableViewController {
             })
             img.kf.setImage(with: URL(string: pic_url))
             titleInfo.text = starName
-            money.text = "-" + String.init(format: "%d", Int(model.amount))
+            money.text = "-" + String.init(format: "%d秒", Int(model.amount))
             status.text = "星聊"
             bankInfo.text = String.init(format: "%@ (%@)", starName,model.transaction_id)
             bank.text = "发行人信息"

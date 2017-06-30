@@ -209,34 +209,10 @@ extension UIViewController {
         view.endEditing(true)
         
     }
-    //判断是否使命认证
+    //判断是否实名认证
     func checkVaildName(complete: CompleteBlock?){
         
-//        if UserDefaults.standard.object(forKey: "phone") as? String != nil{
-//            AppAPIHelper.login().registWYIM(phone: (UserDefaults.standard.object(forKey: "phone") as? String)!, token:(UserDefaults.standard.object(forKey: "phone") as? String)!, complete: { (result) in
-//                
-//                let datadic = result as? Dictionary<String,String>
-//                
-//                if let _ = datadic {
-//                    
-//                    NIMSDK.shared().loginManager.login((UserDefaults.standard.object(forKey: "phone") as? String)!, token: (datadic?["token_value"])!, completion: { (error) in
-//                        if (error != nil){
-//                            
-//                        }
-//                        complete?(true as AnyObject)
-//                        //                        self.LoginSuccess()
-//                        
-//                    })
-//                    UserDefaults.standard.set((datadic?["token_value"])!, forKey: "tokenvalue")
-//                    UserDefaults.standard.synchronize()
-//                    
-//                    
-//                }
-//                
-//            }) { (error) in
-//                
-//            }
-//        }
+
     }
     func getUserRealmInfo(complete: CompleteBlock?){
         let requestModel = GetAuthenticationRequestModel()
@@ -244,7 +220,7 @@ extension UIViewController {
         AppAPIHelper.user().requestAuthentication(requestModel: requestModel, complete: { (result) in
             complete?(result as AnyObject)
         }) { (error) in
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+//            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
         }
     }
     
@@ -265,21 +241,7 @@ extension UIViewController {
                     }
                 }
             })
-//            AppAPIHelper.user().getauserinfo(complete: { (result) in
-//                complete?(result as AnyObject)
-//            }) { (error) in
-//                
-//                if let nav : UINavigationController = self.tabBarController?.selectedViewController as? UINavigationController{
-//                    if nav.viewControlloers.count > 0{
-//                        self.userLogout()
-//                        _ = self.navigationController?.popToRootViewController(animated: true)
-//                        
-//                    }
-//                }
-//                
-//                
-//               
-//            }
+
         }
     }
     //获取明星姓名

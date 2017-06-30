@@ -12,7 +12,7 @@ class DealDoubleRowCell: UITableViewCell {
     
 
     var dealType:[Int:String] = [-1:"转让",1:"求购"]
-    var dealStatus:[Int32:String] = [-2:"委托失败",0:"委托中", 1:"委托中", 2:"委托成功"]
+    var dealStatus:[Int32:String] = [-2:"委托失败",-1 : "委托失败", 0:"委托中", 1:"委托中", 2:"委托成功"]
     @IBOutlet weak var nameLabel: UILabel!
 
     @IBOutlet weak var underNameLabel: UILabel!
@@ -73,9 +73,9 @@ class DealDoubleRowCell: UITableViewCell {
         secondLabel2.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.openTime), format: "HH:mm:SS")
         thirdLabel1.text = "\(model.openPrice)"
         thirdLabel2.text = "\(model.amount)"
-        var type = -1
+        var type = 1
         if model.sellUid == StarUserModel.getCurrentUser()?.userinfo?.id ?? 0{
-           type = 1
+           type = -1
         }
         lastLabel1.text = dealType[type]
         lastLabel2.text = "\(Double(model.amount) * model.openPrice)"

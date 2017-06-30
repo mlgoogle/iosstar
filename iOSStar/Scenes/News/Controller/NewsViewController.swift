@@ -57,6 +57,8 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         super.viewDidLoad()
         
 
+        
+        
         setupBannerView()
         setupNavigation()
         requestNewsList()
@@ -113,7 +115,9 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
                 
                 var bannersUrl:[String] = []
                 for model in models {
-                    model.pic_url = "http://\(model.pic_url)"
+                    if !model.pic_url.hasPrefix("http") {
+                        model.pic_url = "http://\(model.pic_url)"
+                    }
                     bannersUrl.append(model.pic_url)
                 }
             self.bannerScrollView?.imageURLStringsGroup = bannersUrl
@@ -130,6 +134,9 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
             footer?.endRefreshing()
         }
     }
+    
+
+
     func requestNewsList()  {
         var startNumber = 0
         if !isRefresh {
@@ -160,9 +167,11 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
     }
 
 
+    
+    
     func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
 
-        
+
         if (bannerModels?.count ?? 0) == 0 {
             return
         }

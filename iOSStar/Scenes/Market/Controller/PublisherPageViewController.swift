@@ -29,7 +29,7 @@ class PublisherPageViewController: UIViewController {
         guard bannerModel != nil else {
             return
         }
-        shareActionTitle.tintColor = UIColor.init(hexString: AppConst.Color.main)
+//        shareActionTitle.tintColor = UIColor.init(hexString: AppConst.Color.main)
         doBuy.backgroundColor = UIColor.init(hexString: AppConst.Color.main)
         setCustomTitle(title:"\(bannerModel!.name)（\(bannerModel!.code)）")
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: "PubInfoHeaderView")

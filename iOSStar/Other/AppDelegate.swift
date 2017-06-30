@@ -211,11 +211,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         application.applicationIconBadgeNumber = 0;        // 标签
         
-        
+        let vc = UIStoryboard.init(name: "Exchange", bundle: nil).instantiateViewController(withIdentifier: "SystemMessageVC")
+        let nav = UINavigationController.init(rootViewController: vc)
+        UIApplication.shared.keyWindow?.rootViewController?.present(nav, animated: true, completion: nil)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        
+        let vc = UIStoryboard.init(name: "Exchange", bundle: nil).instantiateViewController(withIdentifier: "SystemMessageVC")
+        let nav = UINavigationController.init(rootViewController: vc)
+        UIApplication.shared.keyWindow?.rootViewController?.present(nav, animated: true, completion: nil)
         // [ GTSdk ]：将收到的APNs信息传给个推统计
         GeTuiSdk.handleRemoteNotification(userInfo);
         

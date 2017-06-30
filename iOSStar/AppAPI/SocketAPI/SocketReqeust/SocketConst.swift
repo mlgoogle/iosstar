@@ -70,8 +70,6 @@ class SocketConst: NSObject {
         //分类明星
         case marketStar = 11003
         
-        //分时图
-        case lineData = 11017
 
         //添加自选
         case addOptinal = 11015

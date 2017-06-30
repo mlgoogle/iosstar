@@ -33,7 +33,8 @@ class UserVC: BaseCustomTableViewController  {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        titltArry = ["我的钱包","我预约的明星","客服中心","常见问题","通用设置"]
+//        titltArry = ["我的钱包","我预约的明星","客服中心","常见问题","通用设置"]
+        titltArry = ["我的钱包","我预约的明星","客服中心","通用设置"]
         self.tableView.reloadData()
     
         NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccessNotice), name: Notification.Name(rawValue:AppConst.loginSuccessNotice), object: nil)
@@ -100,7 +101,7 @@ class UserVC: BaseCustomTableViewController  {
 
      override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return section == 0 ? 1 : (section == 1 ? 5 : (section == 2 ? 1 : (section == 3 ? 1 : 3 ) ))
+        return section == 0 ? 1 : (section == 1 ? 4 : (section == 2 ? 1 : (section == 3 ? 1 : 3 ) ))
     }
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 2 ? 20 : (section == 3 ? 20 : 0.001)
@@ -176,13 +177,13 @@ class UserVC: BaseCustomTableViewController  {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             //CustomerServiceVC 客服中心
-            if indexPath.row == 3{
-                let vc = BaseWebVC()
-                vc.loadRequest = "http://www.baidu.com"
-                vc.navtitle = "常见问题"
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-            if indexPath.row == 4 {
+//            if indexPath.row == 3{
+//                let vc = BaseWebVC()
+//                vc.loadRequest = "http://www.baidu.com"
+//                vc.navtitle = "常见问题"
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }
+            if indexPath.row == 3 {
                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "SettingVC")
                 self.navigationController?.pushViewController(vc, animated: true)
             }

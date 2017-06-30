@@ -76,17 +76,11 @@ class DetailCommenViewController: DealBaseViewController {
         if checkIfEntrust() {
             let requestModel = DealRecordRequestModel()
             requestModel.start = Int32(count)
-            
             requestEntrustList(isRefresh: isRefresh,requestModel:requestModel,opcode:opcode!)
         } else {
             let requestModel = OrderRecordRequestModel()
             requestModel.start = Int32(count)
-            if type == .todayComplete   {
-                requestModel.status = 2
-            } else {
-                requestModel.status = 3
-
-            }
+            requestModel.status = 2
             requestOrderData(isRefresh: isRefresh, requestModel: requestModel,opcode:opcode!)
         }
     }

@@ -41,6 +41,7 @@ class MarketAuctionViewController: MarketBaseViewController {
         requestPositionCount()
         requestPercent()
 
+        endRefres(count: 0)
         
         footer = MJRefreshAutoNormalFooter {
             self.isRefresh = false
@@ -170,10 +171,8 @@ class MarketAuctionViewController: MarketBaseViewController {
         requestModel.buySell = buySell
         requestModel.symbol = starCode!
         if isRefresh  {
-
-            requestModel.start = 0
+            requestModel.start = 1
         } else {
-            
             requestModel.start = Int32(fansList?.count ?? 0)
         }
         AppAPIHelper.marketAPI().requestEntrustFansList(requestModel: requestModel, complete: { (response) in
