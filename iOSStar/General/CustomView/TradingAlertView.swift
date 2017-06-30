@@ -43,7 +43,7 @@ class TradingAlertView: UIView {
                               NSForegroundColorAttributeName:UIColor.colorFromRGB(0x666666)]
             let attributedString  = NSMutableAttributedString(string: str!, attributes: attributes)
             let attrs = [NSForegroundColorAttributeName:UIColor.colorFromRGB(0x8D0809)]
-            attributedString.addAttributes(attrs, range: NSMakeRange(NSString(string:str!).length - 5, 4))
+            attributedString.addAttributes(attrs, range: NSMakeRange(NSString(string:str!).length - 4, 4))
             detailLabel.attributedText = attributedString
             
             // 字体宽度
