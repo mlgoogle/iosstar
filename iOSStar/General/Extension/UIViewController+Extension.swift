@@ -241,21 +241,7 @@ extension UIViewController {
                     }
                 }
             })
-//            AppAPIHelper.user().getauserinfo(complete: { (result) in
-//                complete?(result as AnyObject)
-//            }) { (error) in
-//                
-//                if let nav : UINavigationController = self.tabBarController?.selectedViewController as? UINavigationController{
-//                    if nav.viewControlloers.count > 0{
-//                        self.userLogout()
-//                        _ = self.navigationController?.popToRootViewController(animated: true)
-//                        
-//                    }
-//                }
-//                
-//                
-//               
-//            }
+
         }
     }
     //获取明星姓名

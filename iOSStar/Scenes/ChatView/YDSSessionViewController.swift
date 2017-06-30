@@ -31,7 +31,7 @@ class YDSSessionViewController: NTESSessionViewController {
         // 消息类型 message.messageType
         // self.starcode
         
-        super.send(message)
+//        super.send(message)
 
         if let phone = UserDefaults.standard.object(forKey: "phone") as? String {
           

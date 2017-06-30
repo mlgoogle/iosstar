@@ -57,8 +57,9 @@ class ExchangeViewController: UIViewController ,UITabBarControllerDelegate,NIMSy
                                     return
             }
         }else{
-            let alertVc = AlertViewController()
+         
             if realName {
+                   let alertVc = AlertViewController()
                 alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
                                     titleLabelText: "您还没有身份验证",
                                     subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
