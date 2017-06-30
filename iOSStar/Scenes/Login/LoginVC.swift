@@ -170,8 +170,8 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
                 })
 
             }, error: { (error) in
-                self.didRequestError(error)
-//                SVProgressHUD.showErrorMessage(ErrorMessage: "网络连接超时", ForDuration: 2.0, completion: nil)
+//                self.didRequestError(error)
+                SVProgressHUD.showErrorMessage(ErrorMessage: "网络连接超时", ForDuration: 2.0, completion: nil)
             })
         }
     }
