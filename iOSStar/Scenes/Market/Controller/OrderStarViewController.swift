@@ -294,7 +294,8 @@ class OrderStarViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }) { (error) in
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+            self.didRequestError(error)
+//            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
         }
     }
     
@@ -397,6 +398,8 @@ class OrderStarViewController: UIViewController {
         requestModel.comment = feedBack.text
         
         AppAPIHelper.marketAPI().requestBuyStarService(requestModel: requestModel, complete: { (result) in
+            
+            
             if let response = result {
                 if response["result"] as! Int == 1 {
                     //
@@ -404,9 +407,7 @@ class OrderStarViewController: UIViewController {
                     _ = self.navigationController?.popViewController(animated: true)
                 }
             }
-        }) { (error) in
-            print("error -----\(error)")
-        }
+        },error: errorBlockFunc())
         
     }
 }
@@ -594,23 +595,23 @@ extension OrderStarViewController {
     
     // city确定按钮事件
     func sureClick(){
-        
-        let dic : Dictionary = dataCity[selectComponent]
-        let name = dic["name"] as! String
-        let arr : Array = (dic[name] as AnyObject) as! Array<AnyObject>
-        let nameDic = arr[selectRow]["name"]
-        
-        if nameDic != nil {
-            orderPalace.text = nameDic as? String
-        }
-        inputCityTextField.resignFirstResponder()
-        selectRow = 0
-        selectComponent = 0
-        cityPickerView.selectRow(selectComponent, inComponent: 0, animated: true)
-        cityPickerView.selectRow(0, inComponent: 1, animated: true)
-        
-    }
     
+    let dic : Dictionary = dataCity[selectComponent]
+            if let name = dic["name"] as? String{
+                if  let arr : Array = (dic[name] as AnyObject) as? Array<AnyObject> {
+                    if let nameDic = arr[selectRow]["name"] {
+                        if nameDic != nil {
+                            orderPalace.text = nameDic as? String
+                        }
+                        inputCityTextField.resignFirstResponder()
+                        selectRow = 0
+                        selectComponent = 0
+                        cityPickerView.selectRow(selectComponent, inComponent: 0, animated: true)
+                        cityPickerView.selectRow(0, inComponent: 1, animated: true)
+                    }
+                }
+            }
+        }
     func cancelClick(){
         selectRow = 0
         selectComponent = 0
@@ -675,6 +676,7 @@ extension OrderStarViewController : UIPickerViewDelegate,UIPickerViewDataSource 
         }else{
             
             selectRow = row
+
         }
     }
 }
@@ -697,9 +699,9 @@ extension OrderStarViewController {
         print("点击了右边按钮");
         
         let view : ShareView = Bundle.main.loadNibNamed("ShareView", owner: self, options: nil)?.last as! ShareView
-        view.title = "星享"
+        view.title = "星悦"
         view.thumbImage = "QQ"
-        view.descr = "关于星享"
+        view.descr = "关于星悦"
         view.webpageUrl = "http://www.baidu.com"
         view.shareViewController(viewController: self)
         

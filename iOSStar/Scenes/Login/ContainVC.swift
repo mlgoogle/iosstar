@@ -69,29 +69,6 @@ class ContainVC: UIViewController {
 
 
     }
-    func updateTokenWithUserInfo(userInfo:StarUserModel) {
-        
-            let token = userInfo.token
-            let weChatTokenRequestModel =  WeChatTokenRequestModel()
-            weChatTokenRequestModel.id = userInfo.userinfo?.id ?? 0
-            weChatTokenRequestModel.token = token
-            AppAPIHelper.user().weChatTokenLogin(model: weChatTokenRequestModel, complete: { (result) in
-                if let model = result as? StarUserModel {
-                    UserDefaults.standard.set(model.token, forKey: "token")
-                    UserDefaults.standard.synchronize()
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo:nil)
-                    self.doYunxin(complete: { (result) in
-                        
-                    })
-                    self.dismissController()
-                }
-            }, error: { (error) in
-                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-            })
-    
-    }
-    
-
     
    //MARK:- 设置UI
     func initUI(){

@@ -98,11 +98,26 @@ extension UIViewController {
     }
     //退出登录
     func userLogout() {
-        if let phoneString = UserDefaults.standard.object(forKey: "phone") as? String {
-            UserDefaults.standard.set(phoneString, forKey: "lastLogin")
+        //为了让退回跟视图
+        if let nav : UINavigationController = self.tabBarController?.selectedViewController as? UINavigationController{
+            if nav.viewControllers.count > 0{
+                if let phoneString = UserDefaults.standard.object(forKey: "phone") as? String {
+                    UserDefaults.standard.set(phoneString, forKey: "lastLogin")
+                }
+                UserDefaults.standard.removeObject(forKey:"phone")
+                UserDefaults.standard.removeObject(forKey: "token")
+                tabBarController?.selectedIndex = 0
+                _ = self.navigationController?.popToRootViewController(animated: true)
+                
+            }else{
+                if let phoneString = UserDefaults.standard.object(forKey: "phone") as? String {
+                    UserDefaults.standard.set(phoneString, forKey: "lastLogin")
+                }
+                UserDefaults.standard.removeObject(forKey:"phone")
+                UserDefaults.standard.removeObject(forKey: "token")
+                tabBarController?.selectedIndex = 0
+            }
         }
-        UserDefaults.standard.removeObject(forKey:"phone")
-        UserDefaults.standard.removeObject(forKey: "token")
     }
     
     //检查text是否为空
@@ -207,13 +222,7 @@ extension UIViewController {
             AppAPIHelper.user().requestUserInfo(requestModel: requestModel, complete: { (result) in
                 complete?(result as AnyObject)
             }, error: { (error) in
-                if let nav : UINavigationController = self.tabBarController?.selectedViewController as? UINavigationController{
-                    if nav.viewControllers.count > 0{
-                        self.userLogout()
-                        _ = self.navigationController?.popToRootViewController(animated: true)
-                        
-                    }
-                }
+               self.userLogout()
             })
 
         }
