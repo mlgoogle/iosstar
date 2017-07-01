@@ -53,11 +53,10 @@ extension UIViewController {
         controller.modalTransitionStyle = .crossDissolve
         present(controller, animated: true, completion: {
         })
-        
     }
+    
     //检查是否已登录
     func checkLogin() -> Bool {
-        
         if UserDefaults.standard.object(forKey: "phone") as? String == nil {
             let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
             let controller = storyboard.instantiateInitialViewController()
@@ -72,27 +71,7 @@ extension UIViewController {
     }
       //登录网易云信
     func doYunxin(complete: CompleteBlock?){
-        
-//        if UserDefaults.standard.object(forKey: "phone") as? String != nil {
-//            
-//            let phoneNum = (UserDefaults.standard.object(forKey: "phone") as? String)!
-//            
-//            AppAPIHelper.login().registWYIM(phone : phoneNum, token : phoneNum, complete : { (result) in
-//                let datatic = result as? Dictionary<String,String>
-//                if let response = datatic {
-//                    NIMSDK.shared().loginManager.login( phoneNum, token: (response["token_value"])!, completion: { (error) in
-//                        if (error != nil){
-//                        }
-//                        complete?(true as AnyObject)
-//                        
-//                    })
-//                    UserDefaults.standard.set((response["token_value"])!, forKey: "tokenvalue")
-//                    UserDefaults.standard.synchronize()
-//                }
-//            }) { (error) in
-//               
-//            }
-//        }
+
         if UserDefaults.standard.object(forKey: "phone") as? String != nil {
             let phoneNum = (UserDefaults.standard.object(forKey: "phone") as? String)!
             let registerWYIMRequestModel = RegisterWYIMRequestModel()
@@ -124,7 +103,6 @@ extension UIViewController {
         }
         UserDefaults.standard.removeObject(forKey:"phone")
         UserDefaults.standard.removeObject(forKey: "token")
-        tabBarController?.selectedIndex = 0
     }
     
     //检查text是否为空
@@ -158,11 +136,7 @@ extension UIViewController {
     }
     //导航栏透明
     func translucent(clear: Bool) {
-        
-        //     let navImageName = clear ? "nav_clear" : "nav_color"
-        //        let navImageName = "nav_bg"
-        //        navigationController?.navigationBar.setBackgroundImage(UIImage.init(named: navImageName), for: .any, barMetrics: .default)
-        
+
         navigationController?.navigationBar.isTranslucent = clear;
         
     }
