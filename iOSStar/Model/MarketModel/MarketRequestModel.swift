@@ -40,7 +40,7 @@ class StarListRequestModel: MarketBaseModel {
 class SendCommentModel: BaseModel {
     var symbol = ""
     var fans_id =  "\(StarUserModel.getCurrentUser()?.userinfo?.id ?? 0)"
-    var nick_name = StarUserModel.getCurrentUser()?.userinfo?.agentName ?? "星享用户"
+    var nick_name = StarUserModel.getCurrentUser()?.userinfo?.agentName ?? "星说用户"
     var comments = ""
     
     var head_url = StarUserModel.getCurrentUser()?.userinfo?.avatar_Large ?? "http://tva1.sinaimg.cn/crop.0.0.512.512.180/686fe7e0jw8f114yfoiqkj20e80e8glw.jpg"

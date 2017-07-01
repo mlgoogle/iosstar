@@ -33,9 +33,9 @@ class NewsDetailViewController: UIViewController {
     @IBAction func shareAction(_ sender: Any) {
         
         let view : ShareView = Bundle.main.loadNibNamed("ShareView", owner: self, options: nil)?.last as! ShareView
-        view.title = "星享"
+        view.title = "星说"
         view.thumbImage = "QQ"
-        view.descr = "关于星享"
+        view.descr = "关于星说"
         view.webpageUrl = "http://www.baidu.com"
         view.shareViewController(viewController: self)
 

@@ -38,6 +38,8 @@ class YDSSessionViewController: NTESSessionViewController {
     }
     //- (void)sendMessage:(NIMMessage *)message
     
+    
+    
     override func send(_ message: NIMMessage!) {
         
         // 消息类型 message.messageType
