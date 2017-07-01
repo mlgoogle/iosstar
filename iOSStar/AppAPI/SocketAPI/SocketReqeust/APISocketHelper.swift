@@ -114,9 +114,18 @@ class APISocketHelper:NSObject, GCDAsyncSocketDelegate,SocketHelper {
     }
 
     @objc func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
-
+        userLogout()
     }
-
+    func userLogout() {
+        if let phoneString = UserDefaults.standard.object(forKey: "phone") as? String {
+            UserDefaults.standard.set(phoneString, forKey: "lastLogin")
+        }
+        UserDefaults.standard.removeObject(forKey:"phone")
+        UserDefaults.standard.removeObject(forKey: "token")
+        if let tabBarVC = UIApplication.shared.keyWindow?.rootViewController  as? UITabBarController {
+            tabBarVC.selectedIndex = 0
+        }
+    }
     deinit {
         socket?.disconnect()
     }
