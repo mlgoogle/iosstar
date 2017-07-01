@@ -21,6 +21,16 @@ class YDSSessionViewController: NTESSessionViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ShareDataModel.share().voiceSwitch = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        ShareDataModel.share().voiceSwitch = false
+    }
+    
     func rightButtonClick() {
         
 //        print("点击了右边的按钮吧")

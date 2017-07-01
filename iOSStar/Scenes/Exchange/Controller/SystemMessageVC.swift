@@ -70,11 +70,14 @@ class MessageCell:  OEZTableViewCell{
               title = "您金额不足"
             }
             colorString = "333333"
+        } else if model.handle == -4{
+            title = "交易失败"
+            colorString = "333333"
         } else if model.handle == 2{
-            title = "交易成功"
+            title = "交易完成"
             colorString = "333333"
         } else {
-            title = "交易成功"
+            title = "交易完成"
             colorString = "333333"
         }
         dosee.setTitle(title, for: .normal)
