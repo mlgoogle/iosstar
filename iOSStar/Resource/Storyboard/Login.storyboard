@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j9j-xh-Qc8">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j9j-xh-Qc8">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -138,7 +138,7 @@
                                                             <constraint firstAttribute="height" constant="21" id="ddW-L3-GHh"/>
                                                         </constraints>
                                                         <attributedString key="attributedText">
-                                                            <fragment content="星享，">
+                                                            <fragment content="星悦，">
                                                                 <attributes>
                                                                     <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
                                                                 </attributes>
@@ -1020,7 +1020,7 @@
                                                             <constraint firstAttribute="width" constant="175" id="aUC-p5-2ez"/>
                                                         </constraints>
                                                         <attributedString key="attributedText">
-                                                            <fragment content="星享">
+                                                            <fragment content="星悦">
                                                                 <attributes>
                                                                     <font key="NSFont" size="15" name="PingFangSC-Regular"/>
                                                                 </attributes>
@@ -1336,19 +1336,19 @@
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="dt3-9U-fVo"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <state key="normal" title="进入星享"/>
+                                                        <state key="normal" title="进入星悦"/>
                                                         <connections>
                                                             <action selector="joinXingXiang:" destination="9CJ-9Y-qZN" eventType="touchUpInside" id="QeB-Tg-hiz"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加入星享" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0BX-g8-GgR">
-                                                        <rect key="frame" x="97.5" y="35" width="73.5" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加入星悦" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0BX-g8-GgR">
+                                                        <rect key="frame" x="97.5" y="35" width="74" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入区域总经销ID(会员机构)" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="925-Y2-005">
-                                                        <rect key="frame" x="20" y="86" width="228" height="44"/>
+                                                        <rect key="frame" x="20" y="87" width="228" height="44"/>
                                                         <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="cqn-hR-XYt"/>
@@ -1361,7 +1361,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入区域经销ID(区域经纪人)" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dp8-bI-vwr">
-                                                        <rect key="frame" x="20" y="155" width="228" height="44"/>
+                                                        <rect key="frame" x="20" y="156" width="228" height="44"/>
                                                         <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="PwH-F8-2Ld"/>
@@ -1375,7 +1375,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入零售商ID（经纪人）     ." textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4Xn-LO-YH9">
-                                                        <rect key="frame" x="20" y="224" width="228" height="44"/>
+                                                        <rect key="frame" x="20" y="225" width="228" height="44"/>
                                                         <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="B6M-tI-e6c"/>
@@ -1390,7 +1390,7 @@
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIPS：请从您的经纪人或者推荐人那里获 取相对应的ID，请至少填写一个以上的ID 信息" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibp-wZ-6OI">
-                                                        <rect key="frame" x="20" y="293" width="228" height="50.5"/>
+                                                        <rect key="frame" x="20" y="294" width="228" height="50.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>

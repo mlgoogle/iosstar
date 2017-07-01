@@ -68,7 +68,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         if userInfoData?.nick_name == "" {
             let nameUid = StarUserModel.getCurrentUser()?.userinfo?.id
             let stringUid = String.init(format: "%d", nameUid!)
-            nickName.text = "星享用户" + stringUid
+            nickName.text = "星悦用户" + stringUid
         } else {
             nickName.text = userInfoData?.nick_name
         }
