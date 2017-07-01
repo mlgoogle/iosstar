@@ -47,7 +47,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
         //StarInfoModel
         let model = dataSource?[indexPath.row] as! StarInfoModel
         let session = NIMSession(model.faccid, type: .P2P)
-        let vc = NTESSessionViewController(session: session)
+        let vc = YDSSessionViewController(session: session)
         vc?.starcode = model.starcode
         self.navigationController?.pushViewController(vc!, animated: true)
     }
@@ -58,7 +58,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
         if action == 3 {
             let starInfoModel = data as! StarInfoModel
             let session = NIMSession(starInfoModel.faccid, type: .P2P)
-            let vc = NTESSessionViewController(session: session)
+            let vc = YDSSessionViewController(session: session)
             vc?.starcode = starInfoModel.starcode
             self.navigationController?.pushViewController(vc!, animated: true)
 //            print("点击了聊一聊按钮?")

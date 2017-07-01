@@ -26,6 +26,8 @@ class ShareDataModel: NSObject {
     var wxregisterModel: WXRegisterRequestModel = WXRegisterRequestModel()
     var controlSwitch: Bool = true
     var buttonExtOnceSwitch = true
+    var voiceSwitch = false
+    var baseTabbarC: BaseTabBarController?
 }
 class OrderInformation: NSObject {
     
