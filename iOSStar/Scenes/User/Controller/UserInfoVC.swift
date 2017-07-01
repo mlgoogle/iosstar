@@ -68,7 +68,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         if userInfoData?.nick_name == "" {
             let nameUid = StarUserModel.getCurrentUser()?.userinfo?.id
             let stringUid = String.init(format: "%d", nameUid!)
-            nickName.text = "星享用户" + stringUid
+            nickName.text = "星悦用户" + stringUid
         } else {
             nickName.text = userInfoData?.nick_name
         }
@@ -107,8 +107,8 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         }) { (error) in
             
             print(error)
-            
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+            self.didRequestError(error)
+//            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
         }
     }
     

@@ -305,7 +305,7 @@ class AppConfigHelper: NSObject {
         localNotify.timeZone = NSTimeZone.default
         localNotify.soundName = UILocalNotificationDefaultSoundName
         if #available(iOS 8.2, *) {
-            localNotify.alertTitle = "星享"
+            localNotify.alertTitle = "星悦"
         } else {
             // Fallback on earlier versions
         }
