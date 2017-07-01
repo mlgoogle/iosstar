@@ -149,13 +149,15 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
                                 }
                             }
                         }, error: { (error) in
-                            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+//                            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+                            self?.didRequestError(error)
                             self?.vaildCodeBtn.isEnabled = true
                         })
                     }
                 }
             }, error: { (error) in
-                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+                self.didRequestError(error)
+//                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
                 self.vaildCodeBtn.isEnabled = true
             })
         }
