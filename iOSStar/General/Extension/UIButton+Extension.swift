@@ -59,9 +59,7 @@ extension UIButton{
     
     func y_sendAction(_ action: Selector, to target: AnyObject?, for event: UIEvent?)  {
         if self.classForCoder != UIButton.self || ShareDataModel.share().voiceSwitch{
-            
             self.y_sendAction(action, to: target, for: event)
-            
             return
         }
         
