@@ -33,7 +33,7 @@ class UserVC: BaseCustomTableViewController  {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        titltArry = ["我的钱包","我预约的明星","客服中心","常见问题","通用设置"]
+//        titltArry = ["我的钱包","我约的明星","客服中心","常见问题","通用设置"]
         titltArry = ["我的钱包","我预约的明星","客服中心","通用设置"]
         self.tableView.reloadData()
     

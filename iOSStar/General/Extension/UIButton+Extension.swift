@@ -58,10 +58,8 @@ extension UIButton{
     }
     
     func y_sendAction(_ action: Selector, to target: AnyObject?, for event: UIEvent?)  {
-        if self.classForCoder != UIButton.self{
-            
+        if self.classForCoder != UIButton.self || ShareDataModel.share().voiceSwitch{
             self.y_sendAction(action, to: target, for: event)
-            
             return
         }
         
@@ -70,7 +68,9 @@ extension UIButton{
             return
         }
         
-        if NSDate().timeIntervalSince1970 - self.controlTime < self.controlInterval{
+        
+        
+        if NSDate().timeIntervalSince1970 - self.controlTime < self.controlInterval {
             print("onc")
             return
         }
