@@ -271,8 +271,8 @@ class AppConfigHelper: NSObject {
             let nav = UINavigationController.init(rootViewController: vc)
             UIApplication.shared.keyWindow?.rootViewController?.present(nav, animated: true, completion: nil)
         }
+
     }
-    
     
     func setupReceiveOrderResult() {
         AppAPIHelper.dealAPI().setReceiveOrderResult { (response) in
