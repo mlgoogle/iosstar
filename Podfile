@@ -16,7 +16,7 @@ target 'iOSStar' do
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'SnapKit'
-    pod 'RealmSwift'
+    pod 'RealmSwift’,’~> 2.1.1’
     pod 'NIMSDK', '~> 3.5.5'
     pod 'CocoaLumberjack', '~> 2.0.0-rc2'
     pod 'SDWebImage', '3.8.2'
