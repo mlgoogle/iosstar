@@ -30,10 +30,10 @@ target 'iOSStar' do
     pod 'CocoaAsyncSocket', '~> 7.5.0'
     pod 'MJRefresh', '~> 3.1.12'
     pod 'AliPay', '~> 2.1.2'
-    pod 'UMengUShare/Social/ReducedQQ'
-    pod 'UMengUShare/Social/ReducedWeChat'
-    pod 'UMengUShare/UI'
-    pod 'UMengUShare/Social/ReducedSina'
+    pod 'UMengUShare/Social/ReducedQQ’, ‘6.4.2’
+    pod 'UMengUShare/Social/ReducedWeChat', ‘6.4.2’
+    pod 'UMengUShare/UI', ‘6.4.2’
+    pod 'UMengUShare/Social/ReducedSina', ‘6.4.2’
     pod 'GTSDK'
 end
 
