@@ -13,7 +13,6 @@ env:
     - SCHEME="iOSStar"
 
 before_install:
-  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
 
 script:
