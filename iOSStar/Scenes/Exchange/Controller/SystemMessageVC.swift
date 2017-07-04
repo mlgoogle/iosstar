@@ -137,7 +137,7 @@ class SystemMessageVC: BasePageListTableViewController {
     override func didRequest(_ pageIndex: Int) {
         if self.dataSource?.count != nil && (self.dataSource?.count)! >= 0 {
             self.nodata.isHidden = true
-            self.nodata.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+//            self.nodata.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
             tableView.reloadData()
         }
         let model = OrderRecordRequestModel()
@@ -152,7 +152,7 @@ class SystemMessageVC: BasePageListTableViewController {
             self.nodata.isHidden = false
             }else{
              self.nodata.isHidden = true
-             self.nodata.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+//              = CGRect.init(x: 0, y: 0, width: 0, height: 0)
                 self.tableView.reloadData()
             }
         }
@@ -162,7 +162,7 @@ class SystemMessageVC: BasePageListTableViewController {
             self.nodata.isHidden = false
         }else{
             self.nodata.isHidden = true
-            self.nodata.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+//            self.nodata.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
                self.tableView.reloadData()
         }
         }

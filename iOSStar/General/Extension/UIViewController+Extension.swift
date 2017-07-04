@@ -78,7 +78,6 @@ extension UIViewController {
             let registerWYIMRequestModel = RegisterWYIMRequestModel()
             registerWYIMRequestModel.name_value = phoneNum
             registerWYIMRequestModel.phone = phoneNum
-//            registerWYIMRequestModel.accid_value = phoneNum
             registerWYIMRequestModel.uid =  Int(StarUserModel.getCurrentUser()?.id ?? 0)
             AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { (result) in
                 let datatic = result as? Dictionary<String,String>
@@ -219,7 +218,8 @@ extension UIViewController {
             AppAPIHelper.user().requestUserInfo(requestModel: requestModel, complete: { (result) in
                 complete?(result as AnyObject)
             }, error: { (error) in
-               self.userLogout()
+                //刷新下token
+             AppConfigHelper.shared().login()
             })
 
         }
