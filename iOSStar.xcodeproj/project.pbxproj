@@ -3486,7 +3486,7 @@
 				TargetAttributes = {
 					A07238491EA768AC00E755DB = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = GED83X9MRE;
+						DevelopmentTeam = 96YGS7NXK5;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -4183,10 +4183,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iOSStar/iOSStar.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhijun Hu (72333MKM33)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhijun Hu (72333MKM33)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yong ming lu (FD5S65ADL4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yong ming lu (FD5S65ADL4)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = GED83X9MRE;
+				DEVELOPMENT_TEAM = 96YGS7NXK5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4221,13 +4221,14 @@
 					"\"$(SRCROOT)/iOSSTar/Resource/alipay\"",
 					"$(PROJECT_DIR)/iOSStar/Resource/GtSdkLib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.redsky.starshare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.redsky.starshare.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cd195ddb-4108-484e-831b-01ad9e86dada";
-				PROVISIONING_PROFILE_SPECIFIER = com.starShare.Develop;
+				PROVISIONING_PROFILE = "8885437b-99b9-416e-b5ff-89157b4d0d85";
+				PROVISIONING_PROFILE_SPECIFIER = xingyueDevelop;
 				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -4239,9 +4240,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iOSStar/iOSStar.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhijun Hu (72333MKM33)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhijun Hu (72333MKM33)";
-				DEVELOPMENT_TEAM = GED83X9MRE;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: yong ming lu (96YGS7NXK5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: yong ming lu (96YGS7NXK5)";
+				DEVELOPMENT_TEAM = 96YGS7NXK5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4276,12 +4277,13 @@
 					"\"$(SRCROOT)/iOSSTar/Resource/alipay\"",
 					"$(PROJECT_DIR)/iOSStar/Resource/GtSdkLib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.redsky.starshare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.redsky.starshare.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cd195ddb-4108-484e-831b-01ad9e86dada";
-				PROVISIONING_PROFILE_SPECIFIER = com.starShare.Develop;
+				PROVISIONING_PROFILE = "f9340b2d-a4e3-492e-91f6-09a3bfc695e4";
+				PROVISIONING_PROFILE_SPECIFIER = xingyueDistribution;
 				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
