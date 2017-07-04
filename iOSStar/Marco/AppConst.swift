@@ -86,7 +86,6 @@ class AppConst {
         static let TcpServerIP:String = "api.star.smartdata-x.com";
         static let TcpServerPort:UInt16 = 16006
         static let HttpHostUrl:String = "api.star.smartdata-x.com";
-
         #endif
         static let TimeoutSec:UInt16 = 10
         static let qiniuHost = "http://ofr5nvpm7.bkt.clouddn.com/"
