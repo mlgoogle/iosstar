@@ -64,7 +64,7 @@ class StarUserModel: Object {
             return nil
         }
     }
-     
+    
 }
 class WeChatPayResultModel: Object {
     
