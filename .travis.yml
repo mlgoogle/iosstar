@@ -1,3 +1,4 @@
 language: objective-c
-before_install
-- pod repo update
+script:
+  - xctool -workspace iOSStar.xcworkspace -scheme iOSStar -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xctool test -workspace iOSStar.xcworkspace -scheme iOSStarTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
