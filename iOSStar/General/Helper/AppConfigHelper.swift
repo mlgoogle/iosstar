@@ -197,6 +197,18 @@ class AppConfigHelper: NSObject {
         }
         
     }
+    func registerUMAnalytics() {
+        MobClick.setCrashReportEnabled(false)
+        UMAnalyticsConfig.sharedInstance().appKey = "595ce5814ad1562ed6000348"
+        UMAnalyticsConfig.sharedInstance().channelId = ""
+        MobClick.start(withConfigure: UMAnalyticsConfig.sharedInstance())
+        //version标识
+        let version: String? = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
+        MobClick.setAppVersion(version)
+        //日志加密设置
+        MobClick.setEncryptEnabled(true)
+    }
+    
     
     func setupUMSDK() {
         UMSocialManager.default().openLog(true)
