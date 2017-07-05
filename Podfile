@@ -31,6 +31,7 @@ target 'iOSStar' do
     pod 'UMengUShare/UI'
     pod 'UMengUShare/Social/ReducedSina'
     pod 'GTSDK'
+    pod 'UMengAnalytics-NO-IDFA'
 
 end
 # Uncomment this line to define a global platform for your project
