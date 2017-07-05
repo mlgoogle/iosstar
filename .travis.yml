@@ -3,4 +3,3 @@ language: objective-c
 script:
   - sudo gem install cocoapods --pre
   - xctool -workspace iOSStar.xcworkspace -scheme iOSStar -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-  - xctool test -workspace iOSStar.xcworkspace -scheme iOSStarTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
