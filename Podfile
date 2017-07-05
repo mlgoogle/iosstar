@@ -1,13 +1,10 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '9.0'
 target 'iOSStar' do
     # Comment this line if you're not using Swift and don't want to use dynamic frameworks
     use_frameworks!
- 
 
-  
- 
-    # Pods for iosblackcwpard
+    pod 'RealmSwift', '2.6.1'
     pod 'Alamofire', '~> 4.2.0'
     pod 'SDCycleScrollView','~> 1.64'
     pod 'SVProgressHUD', '~> 2.0.3'
@@ -16,7 +13,6 @@ target 'iOSStar' do
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'SnapKit'
-    pod 'RealmSwift’,’2.1.1’
     pod 'NIMSDK', '~> 3.5.5'
     pod 'CocoaLumberjack', '~> 2.0.0-rc2'
     pod 'SDWebImage', '3.8.2'
@@ -30,11 +26,11 @@ target 'iOSStar' do
     pod 'CocoaAsyncSocket', '~> 7.5.0'
     pod 'MJRefresh', '~> 3.1.12'
     pod 'AliPay', '~> 2.1.2'
-    pod 'UMengUShare/Social/ReducedQQ’, ‘6.4.2’
-    pod 'UMengUShare/Social/ReducedWeChat', ‘6.4.2’
-    pod 'UMengUShare/UI', ‘6.4.2’
-    pod 'UMengUShare/Social/ReducedSina', ‘6.4.2’
+    pod 'UMengUShare/Social/ReducedQQ’
+    pod 'UMengUShare/Social/ReducedWeChat'
+    pod 'UMengUShare/UI'
+    pod 'UMengUShare/Social/ReducedSina'
     pod 'GTSDK'
+
 end
-
-
+# Uncomment this line to define a global platform for your project
