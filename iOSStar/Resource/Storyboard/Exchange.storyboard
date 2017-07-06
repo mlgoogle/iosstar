@@ -11,7 +11,7 @@
         <!--Exchange View Controller-->
         <scene sceneID="zmc-xa-t3A">
             <objects>
-                <viewController id="VjQ-gV-Ro6" customClass="ExchangeViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExchangeViewController" hidesBottomBarWhenPushed="YES" id="VjQ-gV-Ro6" customClass="ExchangeViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WtC-wE-Q9M"/>
                         <viewControllerLayoutGuide type="bottom" id="jLd-MJ-P5b"/>
@@ -344,8 +344,8 @@
                                         <connections>
                                             <outlet property="chatButton" destination="qUl-jo-YLS" id="YlA-Xq-MoO"/>
                                             <outlet property="iconImageView" destination="Cmg-oy-Igi" id="MsJ-Kg-4MI"/>
-                                            <outlet property="jobLabel" destination="FgW-iC-CBe" id="C8q-IC-ggD"/>
-                                            <outlet property="nameLabel" destination="tRP-iy-GJ4" id="Cs8-UP-sOh"/>
+                                            <outlet property="jobLabel" destination="FgW-iC-CBe" id="KUP-aH-NQq"/>
+                                            <outlet property="nameLabel" destination="tRP-iy-GJ4" id="znc-YF-4lA"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

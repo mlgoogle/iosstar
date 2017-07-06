@@ -20,6 +20,7 @@ class StarMailListRequestModel: MarketBaseModel {
     var startPos = 0
 }
 
+
 class ReduceTimeModel: BaseModel {
     var phone = ""
     var deduct_amount = 0
@@ -106,3 +107,12 @@ class CancelRechargeModel: UserBaseModel {
     var rid = ""
     var payResult:Int64 = 1
 }
+class WithDrawModel: UserBaseModel {
+    var rid = ""
+    var payResult:Int64 = 1
+}
+class WithDrawListModel: UserBaseModel {
+    var rid = ""
+    var payResult:Int64 = 1
+}
+

@@ -84,3 +84,15 @@ class BuySellPercentRequest: MarketBaseModel {
 class EntrustCountRequestModel: MarketBaseModel {
     var symbol = "1001"
 }
+class BankCardListRequestModel: MarketBaseModel {
+    var cardNo = "1001"
+}
+class UnbindCardListRequestModel: MarketBaseModel {
+    var cardNo = "1001"
+}
+class BindCardListRequestModel: MarketBaseModel {
+    var symbol = "1001"
+    var account = "1001"
+    var bankUsername = "1001"
+}
+

@@ -24,7 +24,7 @@ class HeaderCell: UITableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
 }
 
-class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource,CustomeAlertViewDelegate {
     var needPwd : Int = 2
     var setPwd : Bool = true
     var  market_cap : UILabel?
@@ -60,10 +60,10 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         return section == 0 ? 1: 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 225 : 44
+        return indexPath.section == 0 ? 225 : 50
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell  = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as! HeaderCell
@@ -87,6 +87,13 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             //            }
             //            return cell
             
+        }
+        
+        if indexPath.section == 2{
+            if indexPath.row == 0{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "WithDrawCell")
+                return cell!
+            }
         }
         return cell
         
@@ -117,6 +124,31 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
+        }
+        if indexPath.section == 2 {
+        //WithdrawalVC
+            
+            if self.needPwd == 1{
+                let alertVc = AlertViewController()
+                alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
+                                    
+                                    titleLabelText: "开通支付",
+                                    subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购明星时间，转让明星时间，\n和明星在‘星聊’中聊天，并且还能约见明星。",
+                                    completeButtonTitle: "我 知 道 了") {[weak alertVc] (completeButton) in
+                                        alertVc?.dismissAlertVc()
+                                        
+                                        
+                                        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
+                                        self.navigationController?.pushViewController(vc, animated: true )
+                                        return
+                }
+            }
+            else{
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "WithdrawalVC")
+                self.navigationController?.pushViewController(vc!, animated: true)
+            }
+
+           
         }
     }
     
@@ -169,5 +201,42 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 1 ? 10 : 0.0001
+    }
+    @IBAction func showAlert(_ sender: Any) {
+        
+        let customer : CustomeShowBankView = CustomeShowBankView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height + 40))
+        customer.delegate = self
+        tableView.isScrollEnabled = false
+        self.view.addSubview(customer)
+    }
+    func didSelectMonth(index:Int){
+        if index == 1{
+        //
+            let model = BankCardListRequestModel()
+            AppAPIHelper.user().bankcardList(requestModel: model, complete: { [weak self](result) in
+                let vc = self?.storyboard?.instantiateViewController(withIdentifier: "BankCardVC")
+                self?.navigationController?.pushViewController(vc!, animated: true)
+            }) { [weak self](error ) in
+                let alertVc = AlertViewController()
+                alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
+                                                                                    titleLabelText: "您还没有绑定银行卡",
+                
+                                                                subTitleText: "您需要银行卡进行明星时间交易",
+                                                                completeButtonTitle: "开 始 绑 定") {[weak alertVc] (completeButton) in
+                                                                    alertVc?.dismissAlertVc()
+                
+                                                                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "BindingBankCardVC")
+                                                                    self?.navigationController?.pushViewController(vc, animated: true )
+                                                                    return
+                                            }
+
+            }
+          
+        }
+        if index == 0{
+            //
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MoneyDetailList")
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
     }
 }

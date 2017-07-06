@@ -14,6 +14,7 @@ class ExchangeViewController: UIViewController ,UITabBarControllerDelegate,NIMSy
     var realName :Bool = false
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         //为了添加判断来请求防止崩溃
         if checkLogin()
         {
@@ -30,12 +31,15 @@ class ExchangeViewController: UIViewController ,UITabBarControllerDelegate,NIMSy
                     if let object =  model as? [String : AnyObject]{
                         if object["realname"] as! String == ""{
                             self?.realName = true
+                        }else{
+                         self?.realName = false
                         }
                     }
                 }
             }
         }
     }
+    
     // 订单列表Action
     @IBAction func toOrderList(_ sender: UIButton) {
         let vc = UIStoryboard.init(name: "Exchange", bundle: nil).instantiateViewController(withIdentifier: "SystemMessageVC")
