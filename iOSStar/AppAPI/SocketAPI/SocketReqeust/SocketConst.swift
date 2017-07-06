@@ -139,7 +139,11 @@ class SocketConst: NSObject {
         
         //更新devicetoken
         case updateDeviceToken = 3035
-        
+        case bankcardList = 8003
+        case unbindcard = 8007
+        case bindCard = 8005
+        case withdraw = 8011
+        case bankinfo = 8009
         //单点登录
         case onlyLogin = 3040
         //取消充值
@@ -155,6 +159,7 @@ class SocketConst: NSObject {
         case operate = 6
         case order = 7
         case getlist = 9
+        case bank = 8
         case news = 10
         case market = 11
         case comment = 12

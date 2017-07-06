@@ -57,8 +57,4 @@ class Model: BaseModel {
     // 明星的代码
     var transaction_id : String = ""
     
-    // json 返回数组 来接收对象 调用  RechargeListModel 返回来的model
-    //    class func depositsinfoModelClass() ->AnyClass {
-    //        return  RechargeListModel.classForCoder()    }
-    
 }
