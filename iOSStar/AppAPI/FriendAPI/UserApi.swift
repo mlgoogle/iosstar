@@ -66,7 +66,18 @@ protocol UserApi {
 
     //更新devicetoken
     func updateDeviceToken(requestModel:UpdateDeviceTokenModel, complete: CompleteBlock?, error: ErrorBlock?)
-    
+    //获取好友列表
+    func requestStarOrderList(requestModel:StarMailListRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
     func cancelRecharge(requestModel:CancelRechargeModel,  complete: CompleteBlock?, error: ErrorBlock?)
+    //银行卡列表
+    func bankcardList(requestModel:BankCardListRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
+    //绑定银行卡
+    func bindcard(requestModel:BindCardListRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
+    //解绑银行卡
+    //获取银行卡信息
+    func bankcardifo(requestModel:BankCardListRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
+    func unbindcard( requestModel:UnbindCardListRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
+    //提现
+    func withDraw(requestModel:WithDrawModel, complete: CompleteBlock?, error: ErrorBlock?)
     
 }

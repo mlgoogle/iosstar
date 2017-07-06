@@ -15,8 +15,9 @@ class TitleCell: UITableViewCell {
     
 }
 
-class UserVC: BaseCustomTableViewController  {
+class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegate,NIMConversationManagerDelegate {
 
+    var sessionUnreadCount : Int = 0
     // 资产总额
     var  account : UILabel?
     // 昵称
@@ -36,7 +37,10 @@ class UserVC: BaseCustomTableViewController  {
 //        titltArry = ["我的钱包","我约的明星","客服中心","常见问题","通用设置"]
         titltArry = ["我的钱包","我预约的明星","客服中心","通用设置"]
         self.tableView.reloadData()
-    
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccess(_:)), name: Notification.Name(rawValue:AppConst.loginSuccess), object: nil)
+        NIMSDK.shared().systemNotificationManager.add(self)
+        NIMSDK.shared().conversationManager.add(self)
+        self.sessionUnreadCount = NIMSDK.shared().conversationManager.allUnreadCount()
         NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccessNotice), name: Notification.Name(rawValue:AppConst.loginSuccessNotice), object: nil)
     }
 
@@ -49,6 +53,9 @@ class UserVC: BaseCustomTableViewController  {
     
     func LoginSuccessNotice() {
         
+        NIMSDK.shared().systemNotificationManager.add(self)
+        NIMSDK.shared().conversationManager.add(self)
+        self.sessionUnreadCount = NIMSDK.shared().conversationManager.allUnreadCount()
         AppAPIHelper.user().requestBuyStarCount(complete: { (result) in
             
             if let model = result {
@@ -252,4 +259,54 @@ class UserVC: BaseCustomTableViewController  {
        return vi
     }
    
+    @IBAction func pushMessage(_ sender: Any) {
+   
+        let storyboard = UIStoryboard.init(name: "Exchange", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "ExchangeViewController")
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+   
+}
+extension UserVC{
+    func LoginSuccess(_ LoginSuccess : NSNotification){
+        
+        NIMSDK.shared().systemNotificationManager.add(self)
+        NIMSDK.shared().conversationManager.add(self)
+        self.sessionUnreadCount = NIMSDK.shared().conversationManager.allUnreadCount()
+     
+        print("未读消息条数====\(self.sessionUnreadCount)")
+        self.refreshSessionBadge()
+    }
+    func didAdd(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
+        
+        //       self.tabBar.showshowBadgeOnItemIndex(index: 2)
+        self.sessionUnreadCount = totalUnreadCount
+        self.refreshSessionBadge()
+    }
+    
+    func didUpdate(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
+        self.sessionUnreadCount = totalUnreadCount
+        self.refreshSessionBadge()
+        //         self.tabBar.showshowBadgeOnItemIndex(index: 2)
+    }
+    
+    func didRemove(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
+        // self.tabBar.hideBadgeOnItemIndex(index: 2)
+        self.sessionUnreadCount = totalUnreadCount;
+        self.refreshSessionBadge()
+        
+    }
+    
+    func allMessagesDeleted() {
+        // self.tabBar.hideBadgeOnItemIndex(index: 2)
+        self.sessionUnreadCount = 0
+        self.refreshSessionBadge()
+    }
+    func refreshSessionBadge() {
+        if self.sessionUnreadCount == 0 {
+            
+        } else {
+            
+        }
+    }
 }
