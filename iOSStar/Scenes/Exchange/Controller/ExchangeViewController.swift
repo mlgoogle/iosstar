@@ -30,6 +30,8 @@ class ExchangeViewController: UIViewController ,UITabBarControllerDelegate,NIMSy
                     if let object =  model as? [String : AnyObject]{
                         if object["realname"] as! String == ""{
                             self?.realName = true
+                        }else{
+                         self?.realName = false
                         }
                     }
                 }
