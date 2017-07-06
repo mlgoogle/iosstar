@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="My8-fP-YK9">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Buy Star Time View Controller-->
+        <scene sceneID="8BS-Kt-O7R">
+            <objects>
+                <viewController storyboardIdentifier="BuyStarTimeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wuD-hy-2ba" customClass="BuyStarTimeViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dxv-j2-gKe"/>
+                        <viewControllerLayoutGuide type="bottom" id="MMP-gk-Bui"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aLM-mb-kHl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iSQ-hE-SwG">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pyk-Lw-12Y" customClass="StarCardLayout" customModule="iOSStar" customModuleProvider="target">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Grc-Ca-z6P">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="wuD-hy-2ba" id="S2s-nL-Jf8"/>
+                                    <outlet property="delegate" destination="wuD-hy-2ba" id="hVW-i6-Nke"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MMP-gk-Bui" firstAttribute="top" secondItem="iSQ-hE-SwG" secondAttribute="bottom" id="DDA-jb-Hnd"/>
+                            <constraint firstItem="iSQ-hE-SwG" firstAttribute="top" secondItem="Dxv-j2-gKe" secondAttribute="bottom" id="KcC-a3-Fov"/>
+                            <constraint firstItem="iSQ-hE-SwG" firstAttribute="leading" secondItem="aLM-mb-kHl" secondAttribute="leading" id="v4f-G8-GHm"/>
+                            <constraint firstAttribute="trailing" secondItem="iSQ-hE-SwG" secondAttribute="trailing" id="vPA-SM-ZzO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="iSQ-hE-SwG" id="T0f-wQ-U6x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dRR-2q-9hh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1281" y="280"/>
+        </scene>
+        <!--星享-->
+        <scene sceneID="61a-X6-S6V">
+            <objects>
+                <viewController id="nEJ-SN-kHm" customClass="DiscoverViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V0I-Ms-lWT"/>
+                        <viewControllerLayoutGuide type="bottom" id="n2E-uQ-N9d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WnC-r7-fkk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="星享" id="zuJ-B8-WbT">
+                        <barButtonItem key="rightBarButtonItem" image="market_search" id="flR-A1-eHX">
+                            <color key="tintColor" red="0.5490196078431373" green="0.031372549019607843" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="searchAction:" destination="nEJ-SN-kHm" id="yun-QJ-4dm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KLy-n4-ekl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="852" y="-77.811094452773617"/>
+        </scene>
+        <!--Star Interactive View Controller-->
+        <scene sceneID="72K-hb-2fM">
+            <objects>
+                <viewController storyboardIdentifier="StarInteractiveViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Tvd-9U-vm0" customClass="StarInteractiveViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="05V-cd-ogi"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nqp-LM-yYE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7sB-rW-XMN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mz4-jk-AXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1905" y="159"/>
+        </scene>
+        <!--Base Navigation Controller-->
+        <scene sceneID="ebb-Mx-qaH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="My8-fP-YK9" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iiF-iI-esP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nEJ-SN-kHm" kind="relationship" relationship="rootViewController" id="AOx-SE-GDw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yi2-8s-DMI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-87.200000000000003" y="-77.811094452773617"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="market_search" width="17" height="17"/>
+    </resources>
+</document>

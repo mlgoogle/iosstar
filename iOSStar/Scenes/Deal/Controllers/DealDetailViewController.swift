@@ -29,8 +29,9 @@ class DealDetailViewController: DealBaseViewController ,DealScrollViewScrollDele
         
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
-        layout.minimumInteritemSpacing = (kScreenWidth - 50 - 62 * 4) / 3
-        layout.minimumLineSpacing = (kScreenWidth - 50 - 62 * 4) / 3
+        layout.itemSize = CGSize(width: (kScreenWidth - 50) / 4, height: 30)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
         layout.scrollDirection =  .horizontal
         menuView = YD_VMenuView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 30), layout: layout)
         menuView?.backgroundColor = UIColor.clear

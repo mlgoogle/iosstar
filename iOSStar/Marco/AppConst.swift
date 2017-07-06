@@ -123,6 +123,7 @@ class AppConst {
         case User = "User"
         case Login = "Login"
         case Exchange = "Exchange"
+        case Discover = "Discover"
     }
     
     enum RegisterIdentifier:String {
@@ -168,7 +169,16 @@ class AppConst {
         case allDeal = 6009
     }
     
-    
+    enum StarStatus {
+        //预售
+        case presell
+        //发售
+        case selling
+        //求购
+        case askToBuy
+        //更多
+        case more
+     }
     class WechatKey {
         static let Scope = "snsapi_userinfo"
         static let State = "wpstate"

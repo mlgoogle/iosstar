@@ -55,6 +55,13 @@
 		6E1CE59D1F03DA8A0095AEB3 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E1CE59C1F03DA8A0095AEB3 /* bg.png */; };
 		6E22721D1EF941B300AF9579 /* CommenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E22721C1EF941B300AF9579 /* CommenModel.swift */; };
 		6E2CC4511F0D065E00281559 /* UIViewController+Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC4501F0D065E00281559 /* UIViewController+Analysis.swift */; };
+		6E2CC4531F0DD96700281559 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E2CC4521F0DD96700281559 /* Discover.storyboard */; };
+		6E2CC45F1F0DEA3000281559 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC45E1F0DEA3000281559 /* DiscoverViewController.swift */; };
+		6E2CC4611F0DEA7100281559 /* BuyStarTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC4601F0DEA7100281559 /* BuyStarTimeViewController.swift */; };
+		6E2CC4631F0DEA8C00281559 /* StarInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC4621F0DEA8C00281559 /* StarInteractiveViewController.swift */; };
+		6E2CC4651F0E0E3200281559 /* StarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC4641F0E0E3200281559 /* StarCardView.swift */; };
+		6E2CC4671F0E24EC00281559 /* 138415562044.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E2CC4661F0E24EC00281559 /* 138415562044.jpg */; };
+		6E2CC4691F0E2E6000281559 /* StarCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC4681F0E2E6000281559 /* StarCardLayout.swift */; };
 		6E2D43B11EDEE9DD00DC9643 /* MarketRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B01EDEE9DD00DC9643 /* MarketRequestModel.swift */; };
 		6E2D43B31EDEEED400DC9643 /* YD_CountDownHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B21EDEEED400DC9643 /* YD_CountDownHelper.swift */; };
 		6E2D43B51EDFB5E100DC9643 /* BannerDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B41EDFB5E100DC9643 /* BannerDetailImageCell.swift */; };
@@ -554,6 +561,13 @@
 		6E1CE59C1F03DA8A0095AEB3 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		6E22721C1EF941B300AF9579 /* CommenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommenModel.swift; path = iOSStar/Model/ShareDataModel/CommenModel.swift; sourceTree = SOURCE_ROOT; };
 		6E2CC4501F0D065E00281559 /* UIViewController+Analysis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Analysis.swift"; sourceTree = "<group>"; };
+		6E2CC4521F0DD96700281559 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
+		6E2CC45E1F0DEA3000281559 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		6E2CC4601F0DEA7100281559 /* BuyStarTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyStarTimeViewController.swift; sourceTree = "<group>"; };
+		6E2CC4621F0DEA8C00281559 /* StarInteractiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarInteractiveViewController.swift; sourceTree = "<group>"; };
+		6E2CC4641F0E0E3200281559 /* StarCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarCardView.swift; sourceTree = "<group>"; };
+		6E2CC4661F0E24EC00281559 /* 138415562044.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 138415562044.jpg; sourceTree = "<group>"; };
+		6E2CC4681F0E2E6000281559 /* StarCardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarCardLayout.swift; sourceTree = "<group>"; };
 		6E2D43B01EDEE9DD00DC9643 /* MarketRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketRequestModel.swift; sourceTree = "<group>"; };
 		6E2D43B21EDEEED400DC9643 /* YD_CountDownHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YD_CountDownHelper.swift; sourceTree = "<group>"; };
 		6E2D43B41EDFB5E100DC9643 /* BannerDetailImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerDetailImageCell.swift; sourceTree = "<group>"; };
@@ -567,7 +581,7 @@
 		6E62C7BC1EF8B2BE0053FE1E /* AuctionTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuctionTimeCell.swift; sourceTree = "<group>"; };
 		6E62C7BE1EF8B3060053FE1E /* AuctionPositionInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuctionPositionInfoCell.swift; sourceTree = "<group>"; };
 		6E62C7C01EF8B3370053FE1E /* AuctionProgreseeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuctionProgreseeCell.swift; sourceTree = "<group>"; };
-		6E7A1F6A1EE579E9007BF6D8 /* YD_MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YD_MenuView.swift; sourceTree = "<group>"; };
+		6E7A1F6A1EE579E9007BF6D8 /* YD_MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YD_MenuView.swift; path = ../../Scenes/Market/CustomView/YD_MenuView.swift; sourceTree = "<group>"; };
 		6E7A1F6C1EE652E4007BF6D8 /* MarketDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailHeaderView.swift; sourceTree = "<group>"; };
 		6E7A1F6F1EE6DC22007BF6D8 /* NoDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataCell.swift; sourceTree = "<group>"; };
 		6E7A1F721EE96BD1007BF6D8 /* DealAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealAPI.swift; sourceTree = "<group>"; };
@@ -1535,7 +1549,6 @@
 			isa = PBXGroup;
 			children = (
 				6E16166D1EB0973700D95CB6 /* MarketMenuView.swift */,
-				6E7A1F6A1EE579E9007BF6D8 /* YD_MenuView.swift */,
 				6E7A1F6C1EE652E4007BF6D8 /* MarketDetailHeaderView.swift */,
 				6E16166F1EB0A7AA00D95CB6 /* MenuItemCell.swift */,
 				6E1616711EB1EF2300D95CB6 /* MenuSubViewCell.swift */,
@@ -1608,9 +1621,38 @@
 			path = iOSStar/Scenes/Deal/CustomView;
 			sourceTree = SOURCE_ROOT;
 		};
+		6E2CC4541F0DD9A800281559 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				6E2CC4551F0DD9A800281559 /* Controllers */,
+				6E2CC4561F0DD9A800281559 /* CustomView */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		6E2CC4551F0DD9A800281559 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6E2CC45E1F0DEA3000281559 /* DiscoverViewController.swift */,
+				6E2CC4601F0DEA7100281559 /* BuyStarTimeViewController.swift */,
+				6E2CC4621F0DEA8C00281559 /* StarInteractiveViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6E2CC4561F0DD9A800281559 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				6E2CC4641F0E0E3200281559 /* StarCardView.swift */,
+				6E2CC4681F0E2E6000281559 /* StarCardLayout.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		6E7A1F6E1EE6DB02007BF6D8 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				6E7A1F6A1EE579E9007BF6D8 /* YD_MenuView.swift */,
 				8D7308751EF2C14A0051E713 /* TradingAlertView.swift */,
 				8D7308761EF2C14A0051E713 /* TradingAlertView.xib */,
 				6E7A1F6F1EE6DC22007BF6D8 /* NoDataCell.swift */,
@@ -3093,6 +3135,7 @@
 		A072385F1EA76AA300E755DB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				6E2CC4541F0DD9A800281559 /* Discover */,
 				A04CF0761ED6CB6800B93D28 /* User */,
 				A0155E0C1EA8C9220047B95B /* Login */,
 				A03D3C4D1EA86A6300F85308 /* News */,
@@ -3121,6 +3164,7 @@
 			children = (
 				8D4F6AA51F0751570038DE32 /* 1242x2208.png */,
 				6E1CE59C1F03DA8A0095AEB3 /* bg.png */,
+				6E2CC4661F0E24EC00281559 /* 138415562044.jpg */,
 				A0155E061EA8ABF20047B95B /* Images.xcassets */,
 			);
 			path = image;
@@ -3242,6 +3286,7 @@
 			isa = PBXGroup;
 			children = (
 				A07238B41EA76F4100E755DB /* News.storyboard */,
+				6E2CC4521F0DD96700281559 /* Discover.storyboard */,
 				A07238B61EA76F4D00E755DB /* Deal.storyboard */,
 				8DAC7E281EE1419D001AD3EF /* User.storyboard */,
 				6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */,
@@ -3546,6 +3591,7 @@
 				A03D3F901EA86A6500F85308 /* NTESContactViewController.xib in Resources */,
 				A0C9D6761EAE102300FC438D /* video_chat_tip_sender.aac in Resources */,
 				A03D3FB21EA86A6500F85308 /* NTESFileTransSelectViewController.xib in Resources */,
+				6E2CC4671F0E24EC00281559 /* 138415562044.jpg in Resources */,
 				A0C9D6711EAE102300FC438D /* message.wav in Resources */,
 				A07238B71EA76F4D00E755DB /* Deal.storyboard in Resources */,
 				A03D3FBD1EA86A6500F85308 /* NTESVideoViewController.xib in Resources */,
@@ -3555,6 +3601,7 @@
 				6E1CE59D1F03DA8A0095AEB3 /* bg.png in Resources */,
 				A03D3FB41EA86A6500F85308 /* NTESGalleryViewController.xib in Resources */,
 				8D7308781EF2C14A0051E713 /* TradingAlertView.xib in Resources */,
+				6E2CC4531F0DD96700281559 /* Discover.storyboard in Resources */,
 				8DD224C11ED820970048D7D3 /* Market.storyboard in Resources */,
 				8DAC7E291EE1419D001AD3EF /* User.storyboard in Resources */,
 				A0C9D66E1EAE102300FC438D /* NIMKitEmoticon.bundle in Resources */,
@@ -3743,6 +3790,7 @@
 				A084BB4F1ED5793500DFC868 /* TableViewHelper.swift in Sources */,
 				6EBF590C1EC6EB75003F67B4 /* MarketSocketAPI.swift in Sources */,
 				A0856A111EB0B5C3004F349B /* UIBarExtension.swift in Sources */,
+				6E2CC4611F0DEA7100281559 /* BuyStarTimeViewController.swift in Sources */,
 				6E62C7BB1EF8B2AB0053FE1E /* AuctionImageViewCell.swift in Sources */,
 				A07238A01EA76AA300E755DB /* String+Extension.swift in Sources */,
 				A03D3FE51EA86A6500F85308 /* NTESBirthPickerView.m in Sources */,
@@ -3810,6 +3858,7 @@
 				A03D3F281EA86A6400F85308 /* NIMKitLocationPoint.m in Sources */,
 				6E1616641EB04D0700D95CB6 /* ExchangeViewController.swift in Sources */,
 				6E192DF41EC2EA8200915D08 /* PubInfoHeaderView.swift in Sources */,
+				6E2CC4691F0E2E6000281559 /* StarCardLayout.swift in Sources */,
 				A03D3FB81EA86A6500F85308 /* NTESSessionViewController.m in Sources */,
 				A03D3F161EA86A6400F85308 /* NIMInputView.m in Sources */,
 				6E1B56FD1ED28D6700A014AE /* AuctionHeaderCell.swift in Sources */,
@@ -3833,6 +3882,7 @@
 				A084BC881ED59CF800DFC868 /* base64.m in Sources */,
 				A0F4FA211ECD70A200D13302 /* NSDateExt.swift in Sources */,
 				A03D3F031EA86A6400F85308 /* NIMContactDataCell.m in Sources */,
+				6E2CC45F1F0DEA3000281559 /* DiscoverViewController.swift in Sources */,
 				6E192DEE1EC2B9AB00915D08 /* SearchResultCell.swift in Sources */,
 				A03D3F551EA86A6500F85308 /* NIMKitDevice.m in Sources */,
 				A03D3F861EA86A6500F85308 /* NTESContactDataMember.m in Sources */,
@@ -4043,6 +4093,7 @@
 				6E1B57131ED40AEE00A014AE /* DealPropertyCell.swift in Sources */,
 				A072389A1EA76AA300E755DB /* BaseTabBarController.swift in Sources */,
 				A03D3FC21EA86A6500F85308 /* NTESVideoChatViewController.m in Sources */,
+				6E2CC4631F0DEA8C00281559 /* StarInteractiveViewController.swift in Sources */,
 				6E2D43B31EDEEED400DC9643 /* YD_CountDownHelper.swift in Sources */,
 				8E1E8A841EFB95B6001B2D7B /* JoinVC.swift in Sources */,
 				6E16166C1EB0960E00D95CB6 /* MarketViewController.swift in Sources */,
@@ -4058,6 +4109,7 @@
 				6E1616601EB0343600D95CB6 /* NewsListCell.swift in Sources */,
 				A03D3F971EA86A6500F85308 /* NTESSystemNotificationViewController.m in Sources */,
 				6E7A1F701EE6DC22007BF6D8 /* NoDataCell.swift in Sources */,
+				6E2CC4651F0E0E3200281559 /* StarCardView.swift in Sources */,
 				A03D3F781EA86A6500F85308 /* NTESChatroomMaker.m in Sources */,
 				A03D3FB31EA86A6500F85308 /* NTESGalleryViewController.m in Sources */,
 				A04CF0951ED6CB6800B93D28 /* CustomerServiceVC.swift in Sources */,

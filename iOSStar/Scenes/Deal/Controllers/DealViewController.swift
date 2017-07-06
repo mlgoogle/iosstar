@@ -29,9 +29,10 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
     func setupMenuView() {
         navigationController?.navigationBar.setBackgroundImage(UIColor.white.imageWithColor(), for: .default)
         let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: (kScreenWidth - 44 - 28) / 5, height: 40)
         layout.sectionInset = UIEdgeInsets(top: -3, left: 0, bottom: 0, right: 28)
-        layout.minimumInteritemSpacing = (kScreenWidth - 44 - 28 - 35 * 5) / 4
-        layout.minimumLineSpacing = (kScreenWidth - 44 - 28 - 35 * 5) / 4
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
         layout.scrollDirection =  .horizontal
         menuView = YD_VMenuView(frame: CGRect(x: 0, y: 0, width: kScreenWidth - 44, height: 40), layout: layout)
         menuView?.backgroundColor = UIColor.clear

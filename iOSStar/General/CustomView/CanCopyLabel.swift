@@ -53,13 +53,10 @@ class CanCopyLabel: UILabel {
         menu.setTargetRect(bounds, in: self)
         // 显示菜单控制器，默认是不可见状态
         menu.setMenuVisible(true, animated: true)
-        
     }
     
     func copyText() {
-        
         UIPasteboard.general.string = self.text
-        
     }
     
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {

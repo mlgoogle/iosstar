@@ -122,18 +122,20 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if isScreenWidth {
-            let margin = selfLayout!.sectionInset.left + selfLayout!.sectionInset.right + frame.origin.x
-            let width = (kScreenWidth - margin - selfLayout!.minimumInteritemSpacing * (CGFloat(items!.count) - 1) ) / CGFloat(items!.count)
-            let size = CGSize(width: (width > 0 ? width : 0), height: 15)
-            return size
-        } else {
-            let title = items?[indexPath.row]
-            guard title != nil else {
-                return CGSize(width: 0, height: 0)
-            }
-            return CGSize(width: (title?.boundingRectWithSize(CGSize(width: 0, height: 20), font: UIFont.systemFont(ofSize: 16)).size.width)!, height: 30)
-        }
+        
+        return selfLayout!.itemSize
+//        if isScreenWidth {
+//            let margin = selfLayout!.sectionInset.left + selfLayout!.sectionInset.right + frame.origin.x
+//            let width = (kScreenWidth - margin - selfLayout!.minimumInteritemSpacing * (CGFloat(items!.count) - 1) ) / CGFloat(items!.count)
+//            let size = CGSize(width: (width > 0 ? width : 0), height: 15)
+//            return size
+//        } else {
+//            let title = items?[indexPath.row]
+//            guard title != nil else {
+//                return CGSize(width: 0, height: 0)
+//            }
+//            return CGSize(width: (title?.boundingRectWithSize(CGSize(width: 0, height: 20), font: UIFont.systemFont(ofSize: 16)).size.width)!, height: 30)
+//        }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
@@ -147,7 +149,10 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     }
     
     func redressLineViewOrigin() {
-        menuCollectionView?.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+        
+        let indexPath = IndexPath(item: 0, section: 0)
+        moveLineView(indexPath: indexPath)
+        menuCollectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
 }
