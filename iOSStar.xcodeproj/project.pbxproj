@@ -54,6 +54,7 @@
 		6E1B57211ED41BDA00A014AE /* DealScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57201ED41BDA00A014AE /* DealScrollView.swift */; };
 		6E1CE59D1F03DA8A0095AEB3 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E1CE59C1F03DA8A0095AEB3 /* bg.png */; };
 		6E22721D1EF941B300AF9579 /* CommenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E22721C1EF941B300AF9579 /* CommenModel.swift */; };
+		6E2CC4511F0D065E00281559 /* UIViewController+Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC4501F0D065E00281559 /* UIViewController+Analysis.swift */; };
 		6E2D43B11EDEE9DD00DC9643 /* MarketRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B01EDEE9DD00DC9643 /* MarketRequestModel.swift */; };
 		6E2D43B31EDEEED400DC9643 /* YD_CountDownHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B21EDEEED400DC9643 /* YD_CountDownHelper.swift */; };
 		6E2D43B51EDFB5E100DC9643 /* BannerDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B41EDFB5E100DC9643 /* BannerDetailImageCell.swift */; };
@@ -555,6 +556,7 @@
 		6E1B57201ED41BDA00A014AE /* DealScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealScrollView.swift; sourceTree = "<group>"; };
 		6E1CE59C1F03DA8A0095AEB3 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		6E22721C1EF941B300AF9579 /* CommenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommenModel.swift; path = iOSStar/Model/ShareDataModel/CommenModel.swift; sourceTree = SOURCE_ROOT; };
+		6E2CC4501F0D065E00281559 /* UIViewController+Analysis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Analysis.swift"; sourceTree = "<group>"; };
 		6E2D43B01EDEE9DD00DC9643 /* MarketRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketRequestModel.swift; sourceTree = "<group>"; };
 		6E2D43B21EDEEED400DC9643 /* YD_CountDownHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YD_CountDownHelper.swift; sourceTree = "<group>"; };
 		6E2D43B41EDFB5E100DC9643 /* BannerDetailImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerDetailImageCell.swift; sourceTree = "<group>"; };
@@ -3213,6 +3215,7 @@
 		A07238881EA76AA300E755DB /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				6E2CC4501F0D065E00281559 /* UIViewController+Analysis.swift */,
 				8D2C3DBA1EF0CEF100FA996A /* UIView.swift */,
 				A05A3D491EEA464800476481 /* UIViewController+Extension.swift */,
 				A0856A101EB0B5C3004F349B /* UIBarExtension.swift */,
@@ -3881,6 +3884,7 @@
 				A03D3F021EA86A6400F85308 /* NIMPageView.m in Sources */,
 				A03D3F871EA86A6500F85308 /* NTESGroupedContacts.m in Sources */,
 				A03D3EE51EA86A6400F85308 /* UIActionSheet+NTESBlock.m in Sources */,
+				6E2CC4511F0D065E00281559 /* UIViewController+Analysis.swift in Sources */,
 				A03D3FC71EA86A6500F85308 /* NTESMutiClientsCell.m in Sources */,
 				A03D3F8A1EA86A6500F85308 /* NTESContactUtilCell.m in Sources */,
 				A03D3F3A1EA86A6400F85308 /* NIMSessionNetChatNotifyContentView.m in Sources */,
@@ -4220,6 +4224,7 @@
 					"\"$(SRCROOT)/Pods/AliPay/AlipaySDK.framework\"",
 					"\"$(SRCROOT)/Util\"",
 					"\"$(SRCROOT)/openssl\"",
+					"\"${PODS_ROOT}/Headers/Public/UMMobClick\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iOSStar/Resource/plist/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -4235,7 +4240,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.redsky.starshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6ef0398e-8519-47a9-8364-6150cc15a1c5";
+				PROVISIONING_PROFILE = "cd195ddb-4108-484e-831b-01ad9e86dada";
 				PROVISIONING_PROFILE_SPECIFIER = com.starShare.Develop;
 				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -4276,6 +4281,7 @@
 					"\"$(SRCROOT)/Pods/AliPay/AlipaySDK.framework\"",
 					"\"$(SRCROOT)/Util\"",
 					"\"$(SRCROOT)/openssl\"",
+					"\"${PODS_ROOT}/Headers/Public/UMMobClick\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iOSStar/Resource/plist/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -4291,7 +4297,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.redsky.starshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6ef0398e-8519-47a9-8364-6150cc15a1c5";
+				PROVISIONING_PROFILE = "cd195ddb-4108-484e-831b-01ad9e86dada";
 				PROVISIONING_PROFILE_SPECIFIER = com.starShare.Develop;
 				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

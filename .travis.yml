@@ -1,0 +1,5 @@
+osx_image: xocde8
+language: objective-c
+script:
+  - sudo gem install cocoapods --pre
+  - xctool -workspace iOSStar.xcworkspace -scheme iOSStar -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO

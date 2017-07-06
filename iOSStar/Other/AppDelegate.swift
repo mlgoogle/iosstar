@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         AppConfigHelper.shared().setupRealmConfig()
         AppConfigHelper.shared().updateUpdateInfo()
         AppConfigHelper.shared().setupReceiveOrderResult()
+        AppConfigHelper.shared().registerUMAnalytics()
         
         // 个推
         AppConfigHelper.shared().setupGeTuiSDK(sdkDelegate: self)
