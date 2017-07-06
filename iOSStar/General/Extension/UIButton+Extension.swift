@@ -20,7 +20,7 @@ extension UIButton{
             if let interval = objc_getAssociatedObject(self, &controlKeys.acceptEventInterval) as? TimeInterval{
                 return interval
             }
-            return 3.0
+            return 1.0
         }
         set{
             objc_setAssociatedObject(self, &controlKeys.acceptEventInterval, newValue as TimeInterval, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)

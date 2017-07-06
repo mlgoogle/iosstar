@@ -32,8 +32,8 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
     func initcustomer(){
         delegate = self
         
-        let storyboardNames = ["News","Market","Exchange","User"]
-        let titles = ["资讯","热度","星聊","我的"]
+        let storyboardNames = ["News","Market","User"]
+        let titles = ["资讯","热度","我的"]
         for (index, name) in storyboardNames.enumerated() {
             let storyboard = UIStoryboard.init(name: name, bundle: nil)
             let controller = storyboard.instantiateInitialViewController()
@@ -98,7 +98,7 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
         
-        if tabBarController.selectedIndex == 2  || tabBarController.selectedIndex == 3{
+        if tabBarController.selectedIndex == 2 {
 
             if  checkLogin(){
             

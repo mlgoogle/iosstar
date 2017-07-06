@@ -7,89 +7,111 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class BindingBankCardVC: UITableViewController {
-
+    
+    //持卡人姓名
+    @IBOutlet var name: UITextField!
+    //银行卡号
+    @IBOutlet var cardNum: UITextField!
+    //手机号
+    @IBOutlet var phone: UITextField!
+    //验证码
+    @IBOutlet var vaildCode: UITextField!
+    //定时器
+    private var timer: Timer?
+    //时间戳
+    private var codeTime = 60
+    //时间戳
+    var timeStamp =  ""
+    //token
+    var vToken = ""
+    //发送验证码
+    @IBOutlet var SendCode: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.tableView.tableFooterView = UIView.init()
+        
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-//
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    @IBAction func sendCode(_ sender: Any) {
+        
+        if checkTextFieldEmpty([phone]) && isTelNumber(num: phone.text!) {
+            let sendVerificationCodeRequestModel = SendVerificationCodeRequestModel()
+            sendVerificationCodeRequestModel.phone = (self.phone.text!)
+            AppAPIHelper.login().SendVerificationCode(model: sendVerificationCodeRequestModel, complete: { [weak self] (result) in
+                SVProgressHUD.dismiss()
+                self?.SendCode.isEnabled = true
+                if let response = result {
+                    if response["result"] as! Int == 1 {
+                        self?.timer = Timer.scheduledTimer(timeInterval: 1,target:self!,selector: #selector(self?.updatecodeBtnTitle),userInfo: nil,repeats: true)
+                                                                self?.timeStamp = String.init(format: "%ld", response["timeStamp"] as!  Int)
+                                                                self?.vToken = String.init(format: "%@", response["vToken"] as! String)
+                    }
+                }
+                }, error: { (error) in
+                    self.didRequestError(error)
+                    
+                    self.SendCode.isEnabled = true
+            })
+        }
+        
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    //MARK:-   更新秒数
+    func updatecodeBtnTitle() {
+        if codeTime == 0 {
+            SendCode.isEnabled = true
+            SendCode.setTitle("重新发送", for: .normal)
+            codeTime = 60
+            timer?.invalidate()
+            SendCode.setTitleColor(UIColor.init(hexString: "ffffff"), for: .normal)
+            SendCode.backgroundColor = UIColor(hexString: AppConst.Color.orange)
+            return
+        }
+        SendCode.isEnabled = false
+        codeTime = codeTime - 1
+        let title: String = "\(codeTime)秒重新发送"
+        SendCode.setTitle(title, for: .normal)
+        SendCode.setTitleColor(UIColor.init(hexString: "000000"), for: .normal)
+        SendCode.backgroundColor = UIColor(hexString: "ECECEC")
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    @IBAction func bingCard(_ sender: Any) {
+        
+        if  checkTextFieldEmpty([phone,vaildCode,cardNum]){
+            let string = "yd1742653sd" + self.timeStamp + self.vaildCode.text! + self.phone.text!
+            if string.md5_string() != self.vToken{
+                SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)
+                return
+                    
+          
+            }
+            
+            let model = BindCardListRequestModel()
+            model.bankUsername = name.text!
+            model.account = cardNum.text!
+            AppAPIHelper.user().bindcard(requestModel: model, complete: { (result) in
+                
+                SVProgressHUD.showSuccessMessage(SuccessMessage: "绑定成功", ForDuration: 1, completion: { 
+                    self.navigationController?.popViewController(animated: true)
+                })
+            }, error: { (error) in
+                self.didRequestError(error)
+            })
+      
+            
+        }
+    
+       
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+ 
+    
 }

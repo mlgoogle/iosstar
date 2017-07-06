@@ -160,4 +160,38 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         let packet = SocketDataPacket(opcode: .cancelRecharge, model: requestModel)
         startResultIntRequest(packet, complete: complete, error: error)
     }
+    func requestStarOrderList(requestModel:StarMailListRequestModel, complete: CompleteBlock?, error: ErrorBlock?){
+        let packet = SocketDataPacket(opcode: .getlist, model: requestModel)
+        startModelRequest(packet, modelClass: StarListModel.self, complete: complete, error: error)
+    }
+    //MARK: 银行卡
+    func bankcardList(requestModel:BankCardListRequestModel, complete: CompleteBlock?, error: ErrorBlock?){
+    
+        let packet = SocketDataPacket(opcode: .bankcardList, model: requestModel)
+        startModelRequest(packet, modelClass: BankListModel.self, complete: complete, error: error)
+    }
+    //MARK: 解绑银行卡
+    func unbindcard( requestModel:UnbindCardListRequestModel, complete: CompleteBlock?, error: ErrorBlock?){
+        let packet = SocketDataPacket(opcode: .unbindcard, model: requestModel)
+        startModelRequest(packet, modelClass: UnBindBank.self, complete: complete, error: error)
+    }
+    func bankcardifo(requestModel:BankCardListRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .bankinfo, model: requestModel)
+        startModelRequest(packet, modelClass: BankInfo.self, complete: complete, error: error)
+    }
+    //MARK: 绑定银行卡
+    func bindcard(requestModel:BindCardListRequestModel, complete: CompleteBlock?, error: ErrorBlock?){
+        let packet = SocketDataPacket(opcode: .bindCard, model: requestModel)
+        startModelRequest(packet, modelClass: BindBank.self, complete: complete, error: error)
+    }
+    //MARK: 提现
+    func withDraw(requestModel:WithDrawModel, complete: CompleteBlock?, error: ErrorBlock?){
+        let packet = SocketDataPacket(opcode: .withdraw, model: requestModel)
+        startModelRequest(packet, modelClass: BindBank.self, complete: complete, error: error)
+    }
+    func withDrawList(requestModel:WithDrawListModel, complete: CompleteBlock?, error: ErrorBlock?){
+        let packet = SocketDataPacket(opcode: .withdraw, model: requestModel)
+        startModelRequest(packet, modelClass: BindBank.self, complete: complete, error: error)
+    }
+   
 }

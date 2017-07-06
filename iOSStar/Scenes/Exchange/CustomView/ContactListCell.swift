@@ -7,23 +7,72 @@
 //
 
 import UIKit
-
-class ContactListCell: OEZTableViewCell {
-
-    @IBOutlet weak var jobLabel: UILabel!
-    @IBOutlet weak var statusBtn: UIButton!
+class GetOrderStarsVCCell : OEZTableViewCell{
+ 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var contView: UIView!
+    @IBOutlet var ownsecond: UILabel!
     var cellModel: StarInfoModel = StarInfoModel()
     override func awakeFromNib() {
         super.awakeFromNib()
-        chatButton.layer.borderWidth = 1
-        chatButton.layer.borderColor = UIColor(hexString: AppConst.Color.main).cgColor
+
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
+    @IBAction func haveAChat(_sender: UIButton) {
+        didSelectRowAction(3, data: cellModel)
+    }
+    
+    override func update(_ data: Any!) {
+        
+        guard data != nil else{return}
+        let model = data as! StarInfoModel
+        StartModel.getStartName(startCode: model.starcode) { (response) in
+            if let star = response as? StartModel {
+                self.iconImageView.kf.setImage(with: URL(string: star.pic_url))
+            }
+            
+        }
+        cellModel = model
+        nameLabel.text = model.starname
+       
+        ownsecond.text = "\(model.ownseconds)"
+        
+    }
+    @IBAction func dochat(_ sender: Any) {
+        didSelectRowAction(5, data: cellModel)
+    }
+    
+    @IBAction func domeet(_ sender: Any) {
+        didSelectRowAction(4, data: cellModel)
+    }
+}
+//MARK: -普通的cell
+class ContactListCell: OEZTableViewCell {
+
+    //工作
+    @IBOutlet weak var jobLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var chatButton: UIButton!
+    @IBOutlet weak var iconImageView: UIImageView!
+
+   
+    var cellModel: StarInfoModel = StarInfoModel()
+    override func awakeFromNib() {
+        super.awakeFromNib()
         chatButton.layer.cornerRadius = 2
         chatButton.layer.masksToBounds = true
-        chatButton.isUserInteractionEnabled = false
-    
+        self.clipsToBounds = true
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = 2
+   
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -46,28 +95,41 @@ class ContactListCell: OEZTableViewCell {
             }
             
         }
-        
-        
+        var title = ""
+        var color = ""
+        if model.appoint == 0 {
+            color = AppConst.Color.main
+            title = "没有约见"
+        } else if model.appoint == 1{
+            color = AppConst.Color.main
+
+            title = "待确认"
+        }
+        else if model.appoint == 2{
+            color = "CCCCCC"
+            title = "已拒绝"
+        }
+        else if model.appoint == 3{
+            color = AppConst.Color.main
+            title = "已完成"
+        }
+        else {
+            color = AppConst.Color.main
+            title = "已同意"
+        }
+        chatButton.setTitle(title, for: .normal)
+        chatButton.backgroundColor  = UIColor.init(hexString: color)
+        chatButton.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
         cellModel = model
-        nameLabel.text = model.starname
-        jobLabel.text =  "明星"
-        if statusBtn != nil{
-        // 0 已拒绝 1 约见
-        
-         // statusBtn.isHidden = model.appoint == 0  ? true : false
-            if model.appoint == 0 {
-//                statusBtn.setTitle("已拒绝", for: .normal)
-                statusBtn.isHidden = true
-            } else if model.appoint == 1{
-                statusBtn.setTitle("已约见", for: .normal)
-            } else {
-                statusBtn.setTitle("已拒绝", for: .normal)
-            }
-            statusBtn.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
-        
+        if (nameLabel != nil){
+            nameLabel.text = model.starname
+            jobLabel.text =  "演员"
+            chatButton.setTitle("聊一聊", for: .normal)
+           
+        }else{
+         jobLabel.text =  "11000000"
         }
        
-        
     }
-
+ 
 }
