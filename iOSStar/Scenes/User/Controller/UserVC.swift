@@ -318,7 +318,7 @@ extension UserVC{
     func LoginYunxin(){
         
         //        SVProgressHUD.showErrorMessage(ErrorMessage: "失败", ForDuration: 2.0, completion: nil)
-        
+        if checkLogin(){
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
         registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as? String  ?? "123"
         registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as? String ?? "123"
@@ -346,5 +346,6 @@ extension UserVC{
         }) { (error) in
             
         }
+    }
     }
 }
