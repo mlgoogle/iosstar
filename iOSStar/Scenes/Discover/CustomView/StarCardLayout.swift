@@ -8,7 +8,7 @@
 
 import UIKit
 public let ItemWidth:CGFloat = kScreenWidth - 88
-public let ItemHeight:CGFloat = kScreenHeight - 150
+public let ItemHeight:CGFloat = kScreenHeight - 44 - 40 - 64
 let scaleFactor:CGFloat = 0.5
 let activeDistance:CGFloat = kScreenWidth + 400
 class StarCardLayout: UICollectionViewFlowLayout {
@@ -27,7 +27,7 @@ class StarCardLayout: UICollectionViewFlowLayout {
         super.prepare()
    
         itemSize = CGSize(width: ItemWidth, height: ItemHeight)
-        sectionInset = UIEdgeInsets(top: 20, left: 50, bottom: 20, right: 50)
+        sectionInset = UIEdgeInsets(top: 53, left: 50, bottom: 60, right: 50)
         scrollDirection = .horizontal
         minimumInteritemSpacing = 0
         minimumLineSpacing = 0
@@ -56,13 +56,9 @@ class StarCardLayout: UICollectionViewFlowLayout {
         
         var visiableRect = CGRect()
         visiableRect.size = collectionView!.frame.size
-        
         visiableRect.origin = collectionView!.contentOffset
         let array = super.layoutAttributesForElements(in: rect)
         let centerX = collectionView!.contentOffset.x + collectionView!.frame.size.width * 0.5
-        
-        
-       
         for attrs in array! {
             guard visiableRect.intersects(attrs.frame) else {
                 continue

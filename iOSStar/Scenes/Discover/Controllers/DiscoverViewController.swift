@@ -8,12 +8,19 @@
 
 import UIKit
 
-class DiscoverViewController: UIViewController {
+class DiscoverViewController: UIViewController, MenuViewDelegate{
 
+    lazy var scrollView: UIScrollView = {
+        
+        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 40, width: kScreenWidth, height: kScreenHeight - 40 - 44 - 64))
+        
+        scrollView.contentSize = CGSize(width: kScreenWidth * 2, height: 0)
+        scrollView.isScrollEnabled = false
+        return scrollView
+    }()
     var menuView:YD_VMenuView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         UIApplication.shared.isStatusBarHidden = false
         initMenuView()
     }
@@ -29,21 +36,25 @@ class DiscoverViewController: UIViewController {
         menuView?.isScreenWidth = true
         menuView?.items = ["抢购明星", "明星互动"]
         menuView?.reloadData()
-
-
+        menuView?.delegate = self
+        view.addSubview(scrollView)
         addChildViewControllers()
     }
     func addChildViewControllers() {
         let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Discover.rawValue, bundle: nil)
-        
-        let vc = storyBoard.instantiateViewController(withIdentifier: BuyStarTimeViewController.className())
-        
-        addChildViewController(vc)
-        vc.view.frame = CGRect(x: 0, y: 40, width: kScreenWidth, height: kScreenHeight - 40 - 40)
-        view.addSubview(vc.view)
-        
+        let identifiers = [BuyStarTimeViewController.className(), StarInteractiveViewController.className()]
+        for (index, identifier) in identifiers.enumerated() {
+            let vc = storyBoard.instantiateViewController(withIdentifier: identifier!)
+            addChildViewController(vc)
+            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: kScreenHeight - 40 - 44 - 64 )
+            scrollView.addSubview(vc.view)
+        }
     }
-
+    func menuViewDidSelect(indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.3) { 
+            self.scrollView.contentOffset = CGPoint(x: CGFloat(indexPath.row) * kScreenWidth, y: 0)
+        }
+    }
     @IBAction func searchAction(_ sender: Any) {
         let stroyBoard = UIStoryboard(name: AppConst.StoryBoardName.Markt.rawValue, bundle: nil)
         let vc =  stroyBoard.instantiateViewController(withIdentifier: MarketSearchViewController.className())
