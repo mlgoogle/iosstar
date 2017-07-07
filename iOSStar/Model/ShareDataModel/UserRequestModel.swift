@@ -17,7 +17,14 @@ class UserBaseModel: BaseModel {
 class StarMailListRequestModel: MarketBaseModel {
     var status = 0
     var count = 10
+    var uid:Int64 = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
     var startPos = 0
+}
+class StarMailOrderListRequestModel: MarketBaseModel {
+    
+    var count = 10
+    var uid:Int64 = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
+    var pos = 0
 }
 
 
@@ -107,12 +114,14 @@ class CancelRechargeModel: UserBaseModel {
     var rid = ""
     var payResult:Int64 = 1
 }
-class WithDrawModel: UserBaseModel {
-    var rid = ""
-    var payResult:Int64 = 1
-}
-class WithDrawListModel: UserBaseModel {
-    var rid = ""
-    var payResult:Int64 = 1
+class WithDrawrequestModel: UserBaseModel {
+    var price = 0.0
+//    var withdrawPwd = "123"
+   }
+class WithDrawListrequestModel: UserBaseModel {
+    var status = 0
+    var start = 0
+    var count = 0
+    var startPos = 0
 }
 

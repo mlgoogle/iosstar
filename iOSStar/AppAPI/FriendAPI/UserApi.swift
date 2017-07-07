@@ -12,6 +12,7 @@ protocol UserApi {
     
       //获取好友列表
     func requestStarMailList(requestModel:StarMailListRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
+    func requestOrderStarMailList(requestModel:StarMailOrderListRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
       //发送时间少一秒
     func reduceTime(requestModel:ReduceTimeModel, complete: CompleteBlock?, error: ErrorBlock?)
       //预约的明细
@@ -78,6 +79,7 @@ protocol UserApi {
     func bankcardifo(requestModel:BankCardListRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
     func unbindcard( requestModel:UnbindCardListRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
     //提现
-    func withDraw(requestModel:WithDrawModel, complete: CompleteBlock?, error: ErrorBlock?)
+    func withDraw(requestModel:WithDrawrequestModel, complete: CompleteBlock?, error: ErrorBlock?)
+    func withDrawList(requestModel:CreditListRequetModel, complete: CompleteBlock?, error: ErrorBlock?)
     
 }

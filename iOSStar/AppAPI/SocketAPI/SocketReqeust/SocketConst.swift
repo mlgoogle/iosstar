@@ -126,6 +126,7 @@ class SocketConst: NSObject {
         case historyOrder = 6009
         //委托粉丝榜粉丝榜
         case fansList = 6011
+        case getalllist = 10029
         //订单粉丝榜
         case orderFansList = 6015
         //持有明星时间
@@ -142,7 +143,8 @@ class SocketConst: NSObject {
         case bankcardList = 8003
         case unbindcard = 8007
         case bindCard = 8005
-        case withdraw = 8011
+        case withdraw = 7057
+        case withdrawlist = 6019
         case bankinfo = 8009
         //单点登录
         case onlyLogin = 3040

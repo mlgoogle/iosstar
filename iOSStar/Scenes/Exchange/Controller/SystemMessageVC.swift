@@ -332,12 +332,15 @@ class SystemMessageVC: BasePageListTableViewController {
         let rootvc = controller.viewControllers[0] as! ContainPayVC
         
         rootvc.resultBlock = { (result) in
-            if canel {
-                self.doorder(order, true)
-            }else{
-                self.doorder(order, false)
-            }
+            
+        SVProgressHUD.showSuccessMessage(SuccessMessage: "密码校验成功", ForDuration: 0.5, completion: {
+                if canel {
+                            self.doorder(order, true)
+                        }else{
+                            self.doorder(order, false)
+                        }
             controller.dismissController()
+        })
             
         }
         controller.modalPresentationStyle = .custom

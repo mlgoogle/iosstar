@@ -20,6 +20,10 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         startModelRequest(packet, modelClass: StarListModel.self, complete: complete, error: error)
     }
 
+    func requestOrderStarMailList(requestModel:StarMailOrderListRequestModel, complete: CompleteBlock?, error: ErrorBlock?){
+        let packet = SocketDataPacket(opcode: .getalllist, model: requestModel)
+        startModelRequest(packet, modelClass: OrderStarListModel.self, complete: complete, error: error)
+    }
     
     //聊天减时间
     func reduceTime(requestModel:ReduceTimeModel, complete: CompleteBlock?, error: ErrorBlock?) {
@@ -185,13 +189,14 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         startModelRequest(packet, modelClass: BindBank.self, complete: complete, error: error)
     }
     //MARK: 提现
-    func withDraw(requestModel:WithDrawModel, complete: CompleteBlock?, error: ErrorBlock?){
+    func withDraw(requestModel:WithDrawrequestModel, complete: CompleteBlock?, error: ErrorBlock?){
         let packet = SocketDataPacket(opcode: .withdraw, model: requestModel)
-        startModelRequest(packet, modelClass: BindBank.self, complete: complete, error: error)
+        startModelRequest(packet, modelClass: WithDrawResultModel.self, complete: complete, error: error)
     }
-    func withDrawList(requestModel:WithDrawListModel, complete: CompleteBlock?, error: ErrorBlock?){
-        let packet = SocketDataPacket(opcode: .withdraw, model: requestModel)
-        startModelRequest(packet, modelClass: BindBank.self, complete: complete, error: error)
+    func withDrawList(requestModel:CreditListRequetModel, complete: CompleteBlock?, error: ErrorBlock?){
+        let packet = SocketDataPacket(opcode: .withdrawlist, model: requestModel)
+        startModelRequest(packet, modelClass: WithdrawListModel
+            .self, complete: complete, error: error)
     }
    
 }

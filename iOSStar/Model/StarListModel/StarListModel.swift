@@ -69,7 +69,33 @@ class StarInfoModel: NSObject {
     var starname : String = ""
     var uid : Int64 = 0
     var accid : String = ""
-
+ 
+}
+class OrderStarListInfoModel: NSObject {
+    
+    var star_code : String = "-"
+    var star_name : String = "-"
+    var star_pic : String = "-"
+    var star_type : Int64 = 0
+    var meet_id  = 1
+    var meet_name : String = "-"
+    var meet_time : String = "-"
+    var meet_type = 1
+    var comment : String = "-"
+    
     
     
 }
+class OrderStarListModel: NSObject {
+    
+    var list : [OrderStarListInfoModel]?
+    
+    
+    class func listModelClass() ->AnyClass {
+        return  OrderStarListInfoModel.classForCoder()
+    }
+   
+    
+    
+}
+
