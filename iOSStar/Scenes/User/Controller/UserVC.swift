@@ -29,7 +29,8 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
     
     // 名字数组
     var titltArry = [""]
-    
+    //messagebtn
+    @IBOutlet var message: UIButton!
     var responseData: UserInfoModel?
    
     override func viewDidLoad() {
@@ -37,6 +38,8 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
 //        titltArry = ["我的钱包","我约的明星","客服中心","常见问题","通用设置"]
         titltArry = ["我的钱包","我预约的明星","客服中心","通用设置"]
         self.tableView.reloadData()
+     
+        LoginYunxin()
         NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccess(_:)), name: Notification.Name(rawValue:AppConst.loginSuccess), object: nil)
         NIMSDK.shared().systemNotificationManager.add(self)
         NIMSDK.shared().conversationManager.add(self)
@@ -127,6 +130,8 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
             nickNameLabel = cell.nickNameLabel
             iconImageView = cell.iconImageView
             buyStarCountLabel = cell.buyStarLabel
+            message = cell.message
+            self.message.setImage(UIImage.init(named: "messagenotip"), for: .normal)
            return cell
         }else if indexPath.section == 2{
             
@@ -304,8 +309,41 @@ extension UserVC{
     }
     func refreshSessionBadge() {
         if self.sessionUnreadCount == 0 {
-            
+             self.message.setImage(UIImage.init(named: "messagenotip"), for: .normal)
         } else {
+            self.message.setImage(UIImage.init(named: "messagetip"), for: .normal)
+        }
+    }
+    
+    func LoginYunxin(){
+        
+        //        SVProgressHUD.showErrorMessage(ErrorMessage: "失败", ForDuration: 2.0, completion: nil)
+        
+        let registerWYIMRequestModel = RegisterWYIMRequestModel()
+        registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as? String  ?? "123"
+        registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as? String ?? "123"
+        registerWYIMRequestModel.uid = Int(StarUserModel.getCurrentUser()?.id ?? 0)
+        
+        print( "====  \(registerWYIMRequestModel)" )
+        
+        AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { (result) in
+            if let datadic = result as? Dictionary<String,String> {
+                
+                let phone = UserDefaults.standard.object(forKey: "phone") as! String
+                let token = (datadic["token_value"]!)
+                
+                NIMSDK.shared().loginManager.login(phone, token: token, completion: { (error) in
+                    if (error == nil) {
+                        
+                        NIMSDK.shared().systemNotificationManager.add(self)
+                        NIMSDK.shared().conversationManager.add(self)
+                        self.sessionUnreadCount = NIMSDK.shared().conversationManager.allUnreadCount()
+                        
+                        print("未读消息条数====\(self.sessionUnreadCount)")
+                    }
+                })
+            }
+        }) { (error) in
             
         }
     }
