@@ -9,6 +9,7 @@
 import UIKit
 class HeaderCell: UITableViewCell {
     
+    @IBOutlet var message: UIButton!
     @IBOutlet var bgView: UIView!
     // 星享币
     @IBOutlet weak var balance: UILabel!
