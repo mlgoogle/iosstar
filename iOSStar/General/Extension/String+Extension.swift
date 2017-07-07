@@ -124,7 +124,37 @@ extension String {
         let hexBytes = hash.map { String(format: "%02hhx", $0) }
         return hexBytes.joined()
     }
-    
+    func nsRange(from range: Range<String.Index>) -> NSRange {
+        let from = range.lowerBound.samePosition(in: utf16)
+        let to = range.upperBound.samePosition(in: utf16)
+        return NSRange(location: utf16.distance(from: utf16.startIndex, to: from),
+                       length: utf16.distance(from: from, to: to))
+    }
+    func range(from nsRange: NSRange) -> Range<String.Index>? {
+        guard
+            let from16 = utf16.index(utf16.startIndex, offsetBy: nsRange.location, limitedBy: utf16.endIndex),
+            let to16 = utf16.index(utf16.startIndex, offsetBy: nsRange.location + nsRange.length, limitedBy: utf16.endIndex),
+            let from = from16.samePosition(in: self),
+            let to = to16.samePosition(in: self)
+            else { return nil }
+        return from ..< to
+    }
+
+    func isMoneyString() -> Bool {
+        if self.length() == 0{
+            return true
+        }
+        
+        let money = self as NSString
+        if money.range(of: ".").location == NSNotFound {
+            return true
+        }
+        let leftMoneyStr = money.substring(from: money.range(of: ".").location+1) as NSString
+        if leftMoneyStr.range(of: ".").location != NSNotFound {
+            return false
+        }
+        return leftMoneyStr.length <= 2
+    }
     func sha1() -> String {
         let data = self.data(using: String.Encoding.utf8)!
         var digest = [UInt8](repeating: 0, count:Int(CC_SHA1_DIGEST_LENGTH))

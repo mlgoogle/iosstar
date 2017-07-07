@@ -10,7 +10,8 @@ import UIKit
 
    class ContainPayVC: UIViewController {
     var scrollView : UIScrollView?
-    var showAll : Bool = true 
+    var showAll : Bool = true
+    var contOffset : Bool = false
     var resultBlock: CompleteBlock?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,7 @@ import UIKit
         scrollView?.isPagingEnabled = true
         scrollView?.backgroundColor = UIColor.clear
         
+       
         //进入交易密码界面
         let rvc = UIStoryboard.init(name: "Order", bundle: nil).instantiateViewController(withIdentifier: "InputPassVC") as! InputPassVC
         self.scrollView?.addSubview(rvc.view)
@@ -53,7 +55,7 @@ import UIKit
                 //忘记密码
                 switch result as! doStateClick {
                 case .close:
-                     self?.resultBlock?(result )
+                    self?.resultBlock?(result )
                     self?.dismissController()
                     break
                 default:
@@ -87,6 +89,10 @@ import UIKit
         vc.view.frame = CGRect.init(x: 0, y: 0, width: view.frame.size.width, height: ((self.scrollView?.frame.size.height)!+10))
         scrollView?.addSubview(vc.view)
         rvc.view.frame = CGRect.init(x:  vc.view.frame.size.width, y: -10, width: vc.view.frame.size.width, height: ((self.scrollView?.frame.size.height)!+10))
+        if contOffset{
+           rvc.textField.becomeFirstResponder()
+            self.scrollView?.setContentOffset(CGPoint.init(x: (self.scrollView?.frame.size.width)!, y: 0), animated: true)
+        }
         self.addChildViewController(vc)
         
         

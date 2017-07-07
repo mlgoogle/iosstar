@@ -63,6 +63,7 @@ class ContactListCell: OEZTableViewCell {
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var iconImageView: UIImageView!
 
+    @IBOutlet var orderTime: UILabel!
    
     var cellModel: StarInfoModel = StarInfoModel()
     override func awakeFromNib() {
@@ -88,48 +89,79 @@ class ContactListCell: OEZTableViewCell {
     override func update(_ data: Any!) {
         
         guard data != nil else{return}
-        let model = data as! StarInfoModel
-        StartModel.getStartName(startCode: model.starcode) { (response) in
-            if let star = response as? StartModel {
-                self.iconImageView.kf.setImage(with: URL(string: star.pic_url))
+        if  let model = data as? StarInfoModel{
+            StartModel.getStartName(startCode: model.starcode) { (response) in
+                if let star = response as? StartModel {
+                    self.iconImageView.kf.setImage(with: URL(string: star.pic_url))
+                }
+                
             }
-            
+            var title = ""
+            var color = ""
+            if model.appoint == 0 {
+                color = AppConst.Color.main
+                title = "没有约见"
+            } else if model.appoint == 1{
+                color = AppConst.Color.main
+                
+                title = "待确认"
+            }
+            else if model.appoint == 2{
+                color = "CCCCCC"
+                title = "已拒绝"
+            }
+            else if model.appoint == 3{
+                color = AppConst.Color.main
+                title = "已完成"
+            }
+            else {
+                color = AppConst.Color.main
+                title = "已同意"
+            }
+            chatButton.setTitle(title, for: .normal)
+            chatButton.backgroundColor  = UIColor.init(hexString: color)
+            chatButton.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
+            cellModel = model
+            if (nameLabel != nil){
+                nameLabel.text = model.starname
+                jobLabel.text =  "演员"
+                chatButton.setTitle("聊一聊", for: .normal)
+                
+            }else{
+                jobLabel.text =  "11000000"
+            }
         }
-        var title = ""
-        var color = ""
-        if model.appoint == 0 {
-            color = AppConst.Color.main
-            title = "没有约见"
-        } else if model.appoint == 1{
-            color = AppConst.Color.main
-
-            title = "待确认"
+        else{
+            if  let model = data as? OrderStarListInfoModel{
+                var title = ""
+                var color = ""
+                if model.meet_type == 4 {
+                    color = AppConst.Color.orange
+                    title = "已同意"
+                } else if model.meet_type == 1{
+                     color = AppConst.Color.orange
+                     title = "已预订"
+                }
+                else if model.meet_type == 2{
+                    color = "CCCCCC"
+                    title = "已拒绝"
+                }
+                else if model.meet_type == 3{
+                     color = "CCCCCC"
+                    title = "已完成"
+                }
+                else {
+                     color = "CCCCCC"
+                    title = "已同意"
+                }
+                 chatButton.setTitle(title, for: .normal)
+                chatButton.backgroundColor = UIColor.init(hexString: color)
+                jobLabel.text =  model.star_name
+                orderTime.text  = model.meet_time
+                self.iconImageView.kf.setImage(with: URL(string: model.star_pic))
+                orderTime.text = model.meet_time
+            }
         }
-        else if model.appoint == 2{
-            color = "CCCCCC"
-            title = "已拒绝"
-        }
-        else if model.appoint == 3{
-            color = AppConst.Color.main
-            title = "已完成"
-        }
-        else {
-            color = AppConst.Color.main
-            title = "已同意"
-        }
-        chatButton.setTitle(title, for: .normal)
-        chatButton.backgroundColor  = UIColor.init(hexString: color)
-        chatButton.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
-        cellModel = model
-        if (nameLabel != nil){
-            nameLabel.text = model.starname
-            jobLabel.text =  "演员"
-            chatButton.setTitle("聊一聊", for: .normal)
-           
-        }else{
-         jobLabel.text =  "11000000"
-        }
-       
     }
  
 }

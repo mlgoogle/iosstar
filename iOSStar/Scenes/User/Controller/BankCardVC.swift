@@ -59,9 +59,7 @@ class BankCardVC: BasePageListTableViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
      
     }
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
-    }
+  
     override func didRequest(_ pageIndex: Int) {
         let model = BankCardListRequestModel()
         AppAPIHelper.user().bankcardList(requestModel: model, complete: { [weak self](result) in
@@ -71,21 +69,18 @@ class BankCardVC: BasePageListTableViewController {
                 }
                self?.dataArry.append(model)
                self?.didRequestComplete( self?.dataArry as AnyObject)
-                
-                self?.tableView.reloadData()
-               
+               self?.tableView.reloadData()
             }
          
         }) { (error ) in
             self.didRequestError(error)
         }
-     
-        
-        
     }
-     //MARK: --tableView的代理和数据源的设置
+     //MARK:- tableView的代理和数据源的设置
   
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 140
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BankCardVCCell") as! BindingBankVCCell
         let model = self.dataArry[indexPath.row]
@@ -93,30 +88,55 @@ class BankCardVC: BasePageListTableViewController {
         cell.close.addTarget(self, action: #selector(deletebank), for: .touchUpInside)
         return cell
     }
-    func deletebank(){
-        let model = UnbindCardListRequestModel()
-        
-        AppAPIHelper.user().unbindcard(requestModel: model, complete: { (resule) in
-            SVProgressHUD.showSuccessMessage(SuccessMessage: "解绑成功", ForDuration: 2, completion: { 
-                self.navigationController?.popViewController(animated: true)
-            })
-        }) { (error ) in
-            self.didRequestError(error)
-        }
-    }
+   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-      func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!){
-        let model = UnbindCardListRequestModel()
-        
-        AppAPIHelper.user().unbindcard(requestModel: model, complete: { (resule) in
-            
-        }) { (error ) in
-            self.didRequestError(error)
-        }
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 5
     }
-  
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
+    }
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let share = UITableViewRowAction(style: .normal, title: "删除") { action, index  in
+            self.deletebank()
+//            tableView.reloadData()
+        }
+        share.backgroundColor = UIColor.init(hexString: "F98D8D")
+        return [share]
+    }
+   //MARK:- 删除银行卡
+    func deletebank(){
+        
+        
+        let alertController = UIAlertController(title: "提示", message: "是否解绑银行卡", preferredStyle:.alert)
+        // 设置2个UIAlertAction
+        let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
+         self.tableView.reloadData()
+        }
+        let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
+            let model = UnbindCardListRequestModel()
+           
+            AppAPIHelper.user().unbindcard(requestModel: model, complete: { (resule) in
+                SVProgressHUD.showSuccessMessage(SuccessMessage: "解绑成功", ForDuration: 2, completion: {
+                    self.navigationController?.popViewController(animated: true)
+                })
+            }) { (error ) in
+                self.didRequestError(error)
+            }
+            
+        }
+        // 添加
+        alertController.addAction(cancelAction)
+        alertController.addAction(completeAction)
+        // 弹出
+        self.present(alertController, animated: true, completion: nil)
+      
+    }
 
     
  

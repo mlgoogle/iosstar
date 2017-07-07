@@ -27,24 +27,50 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
         return true
     }
     override func didRequest(_ pageIndex: Int) {
-        let requestModel = StarMailListRequestModel()
-        requestModel.status = 1
-        requestModel.startPos = (pageIndex - 1) * 10
-        AppAPIHelper.user().requestStarMailList(requestModel: requestModel, complete: { (result) in
-            let Model : StarListModel = result as! StarListModel
-            self.didRequestComplete( Model.depositsinfo as AnyObject)
-            self.tableView.reloadData()
-            if (self.dataSource?.count == 0){
-            self.nodaView.isHidden = false
-            }else{
-            self.nodaView.isHidden = true
+        if domeet{
+            let requestModel = StarMailListRequestModel()
+            requestModel.status = 1
+            requestModel.startPos = (pageIndex - 1) * 10
+            AppAPIHelper.user().requestStarMailList(requestModel: requestModel, complete: { (result) in
+                let Model : StarListModel = result as! StarListModel
+                self.didRequestComplete( Model.depositsinfo as AnyObject)
+                self.tableView.reloadData()
+                if (self.dataSource?.count == 0){
+                    self.nodaView.isHidden = false
+                }else{
+                    self.nodaView.isHidden = true
+                }
+            }) { (error ) in
+                
+                
+                self.didRequestComplete(nil)
+                if (self.dataSource?.count == nil || self.dataSource?.count == 0){
+                    self.nodaView.isHidden = false
+                }else{
+                    self.nodaView.isHidden = true
+                }
             }
-        }) { (error ) in
-            self.didRequestComplete(nil)
-            if (self.dataSource?.count == nil){
-                self.nodaView.isHidden = false
-            }else{
-                self.nodaView.isHidden = true
+        }else{
+        
+            let requestModel = StarMailOrderListRequestModel()
+          
+            requestModel.pos = (pageIndex - 1) * 10
+            AppAPIHelper.user().requestOrderStarMailList(requestModel: requestModel, complete: { (result) in
+                let Model  = result as! OrderStarListModel
+                self.didRequestComplete( Model.list as AnyObject)
+                self.tableView.reloadData()
+                if (self.dataSource?.count == 0){
+                    self.nodaView.isHidden = false
+                }else{
+                    self.nodaView.isHidden = true
+                }
+            }) { (error ) in
+                self.didRequestComplete(nil)
+                if (self.dataSource?.count == nil  || self.dataSource?.count == 0){
+                    self.nodaView.isHidden = false
+                }else{
+                    self.nodaView.isHidden = true
+                }
             }
         }
     }
@@ -96,7 +122,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ContactListCell") as! ContactListCell
-            let model = self.dataSource?[indexPath.section] as! StarInfoModel
+            let model = self.dataSource?[indexPath.section] as! OrderStarListInfoModel
                     cell.update(model)
             cell.chatButton.isUserInteractionEnabled = false
             return cell
@@ -146,8 +172,12 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
     @IBAction func orderStatus(_ sender: Any) {
         domeet = false
         seleNumber = 10000000
-        unseleNumber = 10000000
-        tableView.reloadData()
+         unseleNumber = 10000000
+        self.dataSource?.removeAll()
+         self.nodaView.isHidden = false
+        self.tableView.reloadData()
+         pageIndex = 1
+        self.didRequest(1)
         ownSecond.backgroundColor = UIColor.clear
         orderStatus.backgroundColor = UIColor.init(hexString: "333333")
     }
@@ -155,7 +185,11 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
          domeet = true
          seleNumber = 10000000
          unseleNumber = 10000000
-        tableView.reloadData()
+         self.dataSource?.removeAll()
+         pageIndex = 1
+         self.nodaView.isHidden = false
+         self.tableView.reloadData()
+         self.didRequest(1)
         orderStatus.backgroundColor = UIColor.clear
         ownSecond.backgroundColor = UIColor.init(hexString: "333333")
     }
