@@ -56,7 +56,7 @@ class BankListModel: BaseModel {
     // 银行名称
     var bank:  String = "--"
     // 支行名称
-    var account: String = "--"
+    var account: String = ""
     // 银行卡号
 //    var account: String = "cardNo"
     //  开户名

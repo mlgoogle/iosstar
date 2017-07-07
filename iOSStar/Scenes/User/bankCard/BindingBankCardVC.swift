@@ -44,6 +44,7 @@ class BindingBankCardVC: UITableViewController {
     }
     @IBAction func sendCode(_ sender: Any) {
         
+        
         if checkTextFieldEmpty([phone]) && isTelNumber(num: phone.text!) {
             let sendVerificationCodeRequestModel = SendVerificationCodeRequestModel()
             sendVerificationCodeRequestModel.phone = (self.phone.text!)
@@ -85,7 +86,7 @@ class BindingBankCardVC: UITableViewController {
     }
     @IBAction func bingCard(_ sender: Any) {
         
-        if  checkTextFieldEmpty([phone,vaildCode,cardNum]){
+        if  checkTextFieldEmpty([phone,vaildCode,cardNum,name]){
             let string = "yd1742653sd" + self.timeStamp + self.vaildCode.text! + self.phone.text!
             if string.md5_string() != self.vToken{
                 SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)

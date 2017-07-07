@@ -144,63 +144,37 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Custo
                 }
             }
             else{
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "WithdrawalVC")
-                self.navigationController?.pushViewController(vc!, animated: true)
+                
+                let model = BankCardListRequestModel()
+                AppAPIHelper.user().bankcardList(requestModel: model, complete: { [weak self](result) in
+                    let vc = self?.storyboard?.instantiateViewController(withIdentifier: "WithdrawalVC")
+                    self?.navigationController?.pushViewController(vc!, animated: true)
+                }) { [weak self](error ) in
+                    let alertVc = AlertViewController()
+                    alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
+                                        titleLabelText: "您还没有绑定银行卡",
+                                        
+                                        subTitleText: "您需要银行卡进行明星时间交易",
+                                        completeButtonTitle: "开 始 绑 定") {[weak alertVc] (completeButton) in
+                                            alertVc?.dismissAlertVc()
+                                            
+                                            let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "BindingBankCardVC")
+                                            self?.navigationController?.pushViewController(vc, animated: true )
+                                            return
+                    }
+                    
+                }
+                
             }
 
            
         }
     }
     
-    //                let alertVc = AlertViewController()
-    //                self.getUserRealmInfo { (result) in
-    //                    if let model = result{
-    //                        let object =  model as! [String : AnyObject]
-    //
-    //                        if object["realname"] as! String == ""{
-    //                            alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-    //                                                titleLabelText: "您还没有身份验证",
-    //
-    //                                                subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
-    //                                                completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
-    //                                                    alertVc?.dismissAlertVc()
-    //
-    //                                                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
-    //                                                    self.navigationController?.pushViewController(vc, animated: true )
-    //                                                    return
-    //                            }
-    //
-    //                        }
-    //                        else {
-    //                            if self.needPwd == 0{
-    //
-    ////                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
-    ////                                self.navigationController?.pushViewController(vc, animated: true )
-    //
-    //                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "RechargeVC")
-    //                                self.navigationController?.pushViewController(vc, animated: true)
-    //                            }// 设置交易密码
-    //                            // else if ShareDataModel.share().isReturnBackClick == false {
-    //                            else if (UserDefaults.standard.bool(forKey: "isReturnBackClick") == false) {
-    //
-    ////
-    //                                }
-    //
-    //                            }
-    //                            else {
-    //                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
-    //                                self.navigationController?.pushViewController(vc, animated: true )
-    //
-    //                            }
-    //                          }
-    //                        }
-    //                    }
-    //            }
-    //            if indexPath.row == 1 {
-    //
+  
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 1 ? 10 : 0.0001
+        return section == 0 ? 0.0001 : (section == 2 ? 0.001 : 20)
     }
     @IBAction func showAlert(_ sender: Any) {
         

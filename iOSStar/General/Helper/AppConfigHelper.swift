@@ -243,6 +243,9 @@ class AppConfigHelper: NSObject {
                 migration.enumerateObjects(ofType: StarUserModel.className(), { (oldObject, newObject) in
                     newObject!["token_time"] = 0
                 })
+                migration.enumerateObjects(ofType: StarUserModel.className(), { (oldObject, newObject) in
+                    newObject!["token_time"] = 0
+                })
                 
             }
         }

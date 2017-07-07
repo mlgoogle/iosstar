@@ -129,13 +129,18 @@ class  InputPassVC: UIViewController ,UITextFieldDelegate{
                 if let dic = result as? [String : AnyObject]{
                     if let resultNum = dic["result"] as? Int{
                         if resultNum == 1 {
-                            SVProgressHUD.showErrorMessage(ErrorMessage: "订单已确认", ForDuration: 0.23, completion: {
-                                self.resultBlock?("123" as AnyObject)
+                            self.resultBlock?("123" as AnyObject)
+                        }
+                        else{
+                            SVProgressHUD.showErrorMessage(ErrorMessage: "密码输入错误", ForDuration: 1, completion: {
+                                textField.becomeFirstResponder()
+                                textField.text = ""
+                                self.passString = ""
+                                self.setCircleShow(0)
                             })
                         }
                     }else{
-                    
-//                        textField.becomeFirstResponder()
+
                         SVProgressHUD.showErrorMessage(ErrorMessage: "密码输入错误", ForDuration: 1, completion: {
                              textField.becomeFirstResponder()
                             textField.text = ""

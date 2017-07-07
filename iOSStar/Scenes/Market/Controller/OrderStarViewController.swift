@@ -365,9 +365,14 @@ class OrderStarViewController: UIViewController {
                         rootvc.resultBlock = { (result) in
                             
                             if result is String{
-                                self.domeet()
-                                controller.dismissController()
-                            }else{
+                                 SVProgressHUD.showSuccessMessage(SuccessMessage: "密码校验成功", ForDuration: 0.5, completion: { 
+                                      self.domeet()
+                                    controller.dismissController()
+
+                                 })
+                              
+                                                            }
+                            else{
                                 SVProgressHUD.showErrorMessage(ErrorMessage:  "约见已取消,请重新约见！", ForDuration: 2, completion: nil)
                             }
                         }
