@@ -104,22 +104,38 @@ class BankCardVC: BasePageListTableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let share = UITableViewRowAction(style: .normal, title: "删除") { action, index  in
             self.deletebank()
-            tableView.reloadData()
+//            tableView.reloadData()
         }
         share.backgroundColor = UIColor.init(hexString: "F98D8D")
         return [share]
     }
    //MARK:- 删除银行卡
     func deletebank(){
-        let model = UnbindCardListRequestModel()
         
-        AppAPIHelper.user().unbindcard(requestModel: model, complete: { (resule) in
-            SVProgressHUD.showSuccessMessage(SuccessMessage: "解绑成功", ForDuration: 2, completion: {
-                self.navigationController?.popViewController(animated: true)
-            })
-        }) { (error ) in
-            self.didRequestError(error)
+        
+        let alertController = UIAlertController(title: "提示", message: "是否解绑银行卡", preferredStyle:.alert)
+        // 设置2个UIAlertAction
+        let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
+         self.tableView.reloadData()
         }
+        let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
+            let model = UnbindCardListRequestModel()
+           
+            AppAPIHelper.user().unbindcard(requestModel: model, complete: { (resule) in
+                SVProgressHUD.showSuccessMessage(SuccessMessage: "解绑成功", ForDuration: 2, completion: {
+                    self.navigationController?.popViewController(animated: true)
+                })
+            }) { (error ) in
+                self.didRequestError(error)
+            }
+            
+        }
+        // 添加
+        alertController.addAction(cancelAction)
+        alertController.addAction(completeAction)
+        // 弹出
+        self.present(alertController, animated: true, completion: nil)
+      
     }
 
     

@@ -23,7 +23,7 @@ class WithdrawalVC: BaseTableViewController,UITextFieldDelegate {
         let  navLeft = UIButton.init(type: .custom)
         navLeft.setTitle("提现记录", for: .normal)
         navLeft.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-        
+        inputMoney.becomeFirstResponder()
         navLeft.setTitleColor(UIColor.init(hexString: "333333"), for: .normal)
         navLeft.frame = CGRect.init(x: 0, y: 0, width: 60, height: 20)
         let right = UIBarButtonItem.init(customView: navLeft)
@@ -39,11 +39,21 @@ class WithdrawalVC: BaseTableViewController,UITextFieldDelegate {
         AppAPIHelper.user().bankcardList(requestModel: model, complete: { [weak self](result) in
             if let model =  result as? BankListModel{
                
-//              self?.account.text = model.bankUsername + model.cardNo
-                
-                let index = model.cardNo.index(model.cardNo.startIndex,  offsetBy: 4)
-                let index1 = model.cardNo.index(model.cardNo.startIndex,  offsetBy: model.cardNo.length()-3)
-                self?.account.text =  model.cardNo.substring(to: index) + "  **** " + model.cardNo.substring(from: index1)
+                let dataModel = BankCardListRequestModel()
+                dataModel.cardNo = model.cardNo
+                AppAPIHelper.user().bankcardifo(requestModel: dataModel, complete: { [weak self](result) in
+                    if let dataBank =  result as? BankInfo{
+//                        self?.bankName.text = dataBank.bankName
+//                        self?.cardType.text = dataBank.cardName
+                             let index1 = model.cardNo.index(model.cardNo.startIndex,  offsetBy: model.cardNo.length()-3)
+                            self?.account.text = dataBank.bankName + "(" + model.cardNo.substring(from: index1) + ")"
+                    }
+                    
+                    }, error: { (error) in
+                        
+                })
+//
+               
             }
             
         }) { (error ) in
