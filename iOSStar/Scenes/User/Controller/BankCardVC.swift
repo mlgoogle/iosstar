@@ -52,14 +52,41 @@ class BankCardVC: BasePageListTableViewController {
         
         self.title = "我的银行卡"
         super.viewDidLoad()
+        let btn : UIButton = UIButton.init(type: UIButtonType.custom)
+        
+        btn.setTitle("", for: UIControlState.normal)
+        
+        btn.setBackgroundImage(UIImage.init(named: "back"), for: UIControlState.normal )
+        
+        btn.addTarget(self, action: #selector(popself), for: UIControlEvents.touchUpInside)
+        
+        let barItem : UIBarButtonItem = UIBarButtonItem.init(customView: btn)
+        
+        btn.frame = CGRect.init(x: 0, y: 13, width: 9, height: 17)
+        self.navigationItem.leftBarButtonItem = barItem
     }
-    
+    func popself(){
+        for nav in (self.navigationController?.viewControllers)! {
+            if nav .isKind(of: WealthVC.self ){
+                self.navigationController?.popToViewController(nav, animated: true)
+                }
+            }
+        }
+  
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
      
     }
   
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true;
+    }
     override func didRequest(_ pageIndex: Int) {
         let model = BankCardListRequestModel()
         AppAPIHelper.user().bankcardList(requestModel: model, complete: { [weak self](result) in
