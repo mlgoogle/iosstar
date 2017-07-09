@@ -15,6 +15,7 @@ class StarInfoCell: UITableViewCell {
     @IBOutlet weak var starIntroLabel: UILabel!
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var backView: UIView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         iconImageView.layer.masksToBounds = true
@@ -24,4 +25,7 @@ class StarInfoCell: UITableViewCell {
     }
 
 
+    func setBackImage(imageName:String) {
+        backImageView.image = UIImage(named: imageName)
+    }
 }

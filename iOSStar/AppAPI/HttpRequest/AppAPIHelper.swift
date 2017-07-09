@@ -15,7 +15,7 @@ class AppAPIHelper: NSObject {
     fileprivate static var _newsApi = NewsSocketAPI()
     fileprivate static var _marketAPI = MarketSocketAPI()
     fileprivate static var _dealAPI = DealSocketAPI()
-
+    fileprivate static var _discoverAPI = DiscoverSocketAPI()
     class func login() -> LoginApi{
         return _loginApi
     }
@@ -33,7 +33,9 @@ class AppAPIHelper: NSObject {
     class func dealAPI()-> DealAPI {
         return _dealAPI
     }
-    
+    class func discoverPAI()-> DiscoverAPI {
+        return _discoverAPI
+    }
     
 }
 

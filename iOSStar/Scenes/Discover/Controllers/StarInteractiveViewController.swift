@@ -11,8 +11,21 @@ import UIKit
 class StarInteractiveViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
+    var imageNames:[String]?
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        configImageNames()
+    }
+    
+    func configImageNames()  {
+        imageNames = []
+        for index in 0...10 {
+            imageNames?.append("starList_back\(index)")
+        }
+    }
+    
+    func requestStar() {
 
     }
 
@@ -26,7 +39,8 @@ extension StarInteractiveViewController:UITableViewDelegate, UITableViewDataSour
         return 10
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StarInfoCell.className(), for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: StarInfoCell.className(), for: indexPath) as! StarInfoCell
+        cell.setBackImage(imageName: (imageNames?[indexPath.row % 10])!)
         return cell
     }
     

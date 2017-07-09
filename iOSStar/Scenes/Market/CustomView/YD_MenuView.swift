@@ -19,11 +19,13 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
             lineView.isHidden = true
         }
     }
-    //是否宽度为屏幕宽度
+    var itemIdentifier = MenuItemCell.className()
+    var itemClass:AnyClass = MenuItemCell.self
+    //是否宽度为屏幕宽度, 默认不
     var isScreenWidth = false
     //是否选中放大，默认false
     var isSelectZoom = false
-    var items:[String]?
+    var itemData:[AnyObject]?
     private var selfLayout:UICollectionViewFlowLayout?
     private var selectIndexPath:IndexPath = IndexPath(item: 0, section: 0)
     var menuCollectionView:UICollectionView?
@@ -59,12 +61,14 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
             flowLayout = layout
         }
         selfLayout = flowLayout
+        selfLayout?.scrollDirection = .horizontal
         menuCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height), collectionViewLayout: flowLayout!)
         menuCollectionView?.showsHorizontalScrollIndicator = false
         menuCollectionView?.backgroundColor = UIColor.white
         menuCollectionView?.delegate = self
         menuCollectionView?.dataSource = self
-        menuCollectionView?.register(MenuItemCell.self, forCellWithReuseIdentifier: "MenuItemCell")
+
+        menuCollectionView?.register(itemClass, forCellWithReuseIdentifier: itemIdentifier!)
         addSubview(menuCollectionView!)
         lineView.frame = CGRect(x: flowLayout!.itemSize.width / 2 + flowLayout!.sectionInset.left, y: menuCollectionView!.sd_height - 3, width: 20, height: 3)
         menuCollectionView?.addSubview(lineView)
@@ -95,14 +99,15 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items == nil ? 0 : items!.count
+        return itemData == nil ? 0 : itemData!.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuItemCell", for: indexPath) as! MenuItemCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemIdentifier!, for: indexPath) as! BaseItemCell
         
-        cell.setTitle(title: items![indexPath.item], colorString: indexPath.row == selectIndexPath.item ? AppConst.Color.main : "C2CFD8", isZoom:indexPath.row == selectIndexPath.item ? isSelectZoom : false)
+        
+        cell.setData(data: itemData?[indexPath.row], colorString: indexPath.row == selectIndexPath.item ? AppConst.Color.main : "C2CFD8", isZoom:indexPath.row == selectIndexPath.item ? isSelectZoom : false)
         return cell
     }
     
@@ -113,46 +118,24 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
         delegate?.menuViewDidSelect(indexPath: indexPath)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
-        return selfLayout!.minimumInteritemSpacing
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return selfLayout!.minimumLineSpacing
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return selfLayout!.itemSize
-//        if isScreenWidth {
-//            let margin = selfLayout!.sectionInset.left + selfLayout!.sectionInset.right + frame.origin.x
-//            let width = (kScreenWidth - margin - selfLayout!.minimumInteritemSpacing * (CGFloat(items!.count) - 1) ) / CGFloat(items!.count)
-//            let size = CGSize(width: (width > 0 ? width : 0), height: 15)
-//            return size
-//        } else {
-//            let title = items?[indexPath.row]
-//            guard title != nil else {
-//                return CGSize(width: 0, height: 0)
-//            }
-//            return CGSize(width: (title?.boundingRectWithSize(CGSize(width: 0, height: 20), font: UIFont.systemFont(ofSize: 16)).size.width)!, height: 30)
-//        }
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        return selfLayout!.sectionInset
-    }
     
     func reloadData() {
+        menuCollectionView?.register(itemClass, forCellWithReuseIdentifier: itemIdentifier!)
         menuCollectionView?.reloadData()
-        
         perform(#selector(redressLineViewOrigin), with: nil, afterDelay: 0.5)
     }
     
     func redressLineViewOrigin() {
-        
         let indexPath = IndexPath(item: 0, section: 0)
         moveLineView(indexPath: indexPath)
         menuCollectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
+}
+
+
+class BaseItemCell: UICollectionViewCell {
+    func setData(data:AnyObject?, colorString:String?, isZoom:Bool) {
+ 
+    }
 }

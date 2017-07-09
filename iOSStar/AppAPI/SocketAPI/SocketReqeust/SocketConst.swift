@@ -150,6 +150,7 @@ class SocketConst: NSObject {
         case onlyLogin = 3040
         //取消充值
         case cancelRecharge = 7055
+        
     }
     enum type:UInt8 {
         case error  = 0

@@ -11,12 +11,13 @@ import UIKit
 class StarCardView: UICollectionViewCell {
 
     
-   lazy var showImageView:UIImageView = {
-       let imageView = UIImageView()
-    
-    imageView.image = UIImage(named: "138415562044.jpg")
-    imageView.contentMode = .scaleAspectFill
-    imageView.clipsToBounds = true  
+    lazy var showImageView:UIImageView = {
+        let imageView = UIImageView()
+        imageView.isUserInteractionEnabled = true   
+        
+        imageView.image = UIImage(named: "138415562044.jpg")
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
         
     }()
@@ -42,6 +43,7 @@ class StarCardView: UICollectionViewCell {
         return label
     }()
 
+    var backImage:UIImage?
     
    override init(frame: CGRect) {
         super.init(frame: frame)
@@ -85,13 +87,15 @@ class StarCardView: UICollectionViewCell {
             make.height.equalTo(18)
         }
         
-        
+        backImage = showImageView.image
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         addSubViews()
         
     }
+    
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
