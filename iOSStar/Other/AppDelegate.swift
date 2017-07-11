@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let config = BugoutConfig.default()
-        config?.enabledShakeFeedback = false
+//        let config = BugoutConfig.default()
+//        config?.enabledShakeFeedback = false
 //        config?.enabledMonitorException = false
 //        Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
         
