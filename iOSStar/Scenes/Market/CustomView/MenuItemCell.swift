@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class MenuItemCell: UICollectionViewCell {
+class MenuItemCell: BaseItemCell {
     
     lazy var titleLabel:UILabel = {
        
@@ -37,19 +37,20 @@ class MenuItemCell: UICollectionViewCell {
             make.center.equalTo(self)
         }
     }
-    
-    func setTitle(title:String?, colorString:String?, isZoom:Bool) {
-
-        var fontSize:CGFloat = 14.0
-        var string = colorString
-        if isZoom {
-            fontSize = 16.0
-            string = "333333"
+    override func setData(data: AnyObject?, colorString: String?, isZoom: Bool) {
+        if let title = data as? String {
+            var fontSize:CGFloat = 14.0
+            var string = colorString
+            if isZoom {
+                fontSize = 16.0
+                string = "333333"
+            }
+            titleLabel.font = UIFont.systemFont(ofSize: fontSize)
+            titleLabel.text = title
+            titleLabel.textColor = UIColor(hexString: string)
         }
-        titleLabel.font = UIFont.systemFont(ofSize: fontSize)
-        titleLabel.text = title
-        titleLabel.textColor = UIColor(hexString: string)
     }
+
     
 
 }

@@ -46,7 +46,7 @@ class PubInfoHeaderView: UITableViewHeaderFooterView {
         addSubview(bottomLineView)
         
         bottomLineView.snp.makeConstraints { (make) in
-            make.bottom.equalTo(-1)
+            make.top.equalTo(titleLabel.snp.bottom).offset(12)
             make.height.equalTo(1)
             make.left.equalTo(lineView)
             make.right.equalTo(-12)

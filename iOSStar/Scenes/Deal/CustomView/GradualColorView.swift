@@ -69,10 +69,8 @@ class GradualColorView: UIView {
         gradientLayer.frame = CGRect(x: 0, y: 0, width: realWidth * CGFloat(percent), height: frame.size.height)
         if isShowImage {
             imageView.center = CGPoint(x: realWidth * CGFloat(percent), y: imageView.center.y)
-            layer.insertSublayer(gradientLayer, below: imageView.layer)
-        } else {
-            layer.addSublayer(gradientLayer)
         }
+        layer.insertSublayer(gradientLayer, at: 0)
         subLayer = gradientLayer
 
         if isRound {
