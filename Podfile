@@ -32,6 +32,8 @@ target 'iOSStar' do
     pod 'UMengUShare/Social/ReducedSina'
     pod 'GTSDK'
     pod 'UMengAnalytics-NO-IDFA'
-
+    target '星悦UITests' do
+        inherit! :search_paths
+    end
 end
 # Uncomment this line to define a global platform for your project
