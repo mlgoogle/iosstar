@@ -77,7 +77,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="140" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6z6-Hx-nhP">
                                 <rect key="frame" x="0.0" y="-4" width="375" height="621"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarIntroduceCell" rowHeight="170" id="aRs-SG-bQm" customClass="StarIntroduceCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="170"/>
@@ -124,6 +124,9 @@
                                                                 <constraint firstAttribute="height" constant="44" id="NDn-dp-reu"/>
                                                             </constraints>
                                                             <state key="normal" image="intro_chat"/>
+                                                            <connections>
+                                                                <action selector="chatAction:" destination="aRs-SG-bQm" eventType="touchUpInside" id="siu-9c-ZmR"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4p-oV-LET">
                                                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -163,6 +166,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="TVZ-Ij-EbW" secondAttribute="trailing" id="iuO-iS-I2G"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="backImageView" destination="q4K-cu-nTd" id="70O-md-g6P"/>
+                                            <outlet property="iconImageView" destination="yub-eW-ZHW" id="Y41-TQ-GFi"/>
+                                            <outlet property="jobLabel" destination="Xmq-wn-Xtf" id="AEE-af-c0o"/>
+                                            <outlet property="nameLabel" destination="unZ-49-43j" id="a4l-2c-iUF"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketExperienceCell" rowHeight="21" id="USb-Pt-76y" customClass="MarketExperienceCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="198" width="375" height="21"/>
@@ -195,6 +204,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -260,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FO5-rY-fjU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1744.8" y="658.92053973013503"/>
+            <point key="canvasLocation" x="2009" y="714"/>
         </scene>
         <!--Selling View Controller-->
         <scene sceneID="ssn-jF-OdG">
@@ -276,7 +286,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZA6-30-1N6">
                                 <rect key="frame" x="0.0" y="20" width="375" height="597"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SellingIntroCell" rowHeight="157" id="g3b-Lx-vl4" customClass="SellingIntroCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="157"/>
@@ -339,8 +349,14 @@
                                                 <constraint firstItem="lwL-Dq-tvV" firstAttribute="centerY" secondItem="kCF-fc-Bty" secondAttribute="centerY" id="nYx-5N-h3c"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="backImageView" destination="Qoz-Wu-Ged" id="TXu-tI-Tg7"/>
+                                            <outlet property="iconImageView" destination="kCF-fc-Bty" id="cfx-Yk-WBO"/>
+                                            <outlet property="jobLabel" destination="MDX-m1-hwT" id="mru-Mr-LR3"/>
+                                            <outlet property="nickNameLabel" destination="79t-DW-BR0" id="jOs-Yk-asc"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SellingTimeAndCountCell" rowHeight="86" id="ccr-2j-ry2" customClass="SellingTimeAndCountCell" customModule="iOSStar" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SellingTimeAndCountCell" rowHeight="86" id="ccr-2j-ry2" customClass="SellingTimeAndCountCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="185" width="375" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ccr-2j-ry2" id="X7d-tY-Kdm">
@@ -370,8 +386,13 @@
                                                 <constraint firstItem="5Dy-f9-oCF" firstAttribute="centerX" secondItem="X7d-tY-Kdm" secondAttribute="centerX" id="may-BU-Rza"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="countLabel" destination="Ri9-If-eiM" id="8Sz-G0-fHT"/>
+                                            <outlet property="timeLabel" destination="5Dy-f9-oCF" id="XCr-so-ckR"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SellingCountDownCell" id="Y7z-na-jwS" customClass="SellingCountDownCell" customModule="iOSStar" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SellingCountDownCell" id="Y7z-na-jwS" customClass="SellingCountDownCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="271" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y7z-na-jwS" id="uLb-ap-Cx3">
@@ -381,17 +402,35 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fxi-7H-a9P" customClass="GradualColorView" customModule="iOSStar" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ldu-7O-CMk">
+                                                            <rect key="frame" x="187" y="0.0" width="1" height="43.5"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="1" id="cay-7v-5VA"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距离结束还有" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4X-mP-Ih2">
+                                                            <rect key="frame" x="100" y="13.5" width="86" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距离结束还有123:23:58" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lua-an-h5a">
-                                                            <rect key="frame" x="96" y="11.5" width="182.5" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <rect key="frame" x="189" y="10" width="215" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="lua-an-h5a" firstAttribute="centerY" secondItem="fxi-7H-a9P" secondAttribute="centerY" id="HRO-8u-uHX"/>
-                                                        <constraint firstItem="lua-an-h5a" firstAttribute="centerX" secondItem="fxi-7H-a9P" secondAttribute="centerX" id="opi-pa-ZA3"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Ldu-7O-CMk" secondAttribute="bottom" id="0do-WO-FB7"/>
+                                                        <constraint firstItem="Ldu-7O-CMk" firstAttribute="leading" secondItem="a4X-mP-Ih2" secondAttribute="trailing" constant="1" id="OLG-Ez-gUv"/>
+                                                        <constraint firstItem="Ldu-7O-CMk" firstAttribute="centerY" secondItem="a4X-mP-Ih2" secondAttribute="centerY" id="XYA-LQ-5ec"/>
+                                                        <constraint firstItem="Ldu-7O-CMk" firstAttribute="centerX" secondItem="fxi-7H-a9P" secondAttribute="centerX" id="Y67-i5-aiO"/>
+                                                        <constraint firstItem="lua-an-h5a" firstAttribute="leading" secondItem="Ldu-7O-CMk" secondAttribute="trailing" constant="1" id="gKA-Hh-mmo"/>
+                                                        <constraint firstItem="lua-an-h5a" firstAttribute="centerY" secondItem="fxi-7H-a9P" secondAttribute="centerY" id="pK1-3H-5Bw"/>
+                                                        <constraint firstItem="Ldu-7O-CMk" firstAttribute="top" secondItem="fxi-7H-a9P" secondAttribute="top" id="qez-f3-wag"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -402,8 +441,12 @@
                                                 <constraint firstItem="fxi-7H-a9P" firstAttribute="top" secondItem="uLb-ap-Cx3" secondAttribute="top" id="NvB-ZN-ReL"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="backColorView" destination="fxi-7H-a9P" id="LIt-jK-UiQ"/>
+                                            <outlet property="countDownLabel" destination="lua-an-h5a" id="ksv-jV-VC3"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SellingBuyCountCell" id="LhN-Ig-i2A" customClass="SellingBuyCountCell" customModule="iOSStar" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SellingBuyCountCell" id="LhN-Ig-i2A" customClass="SellingBuyCountCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="315" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LhN-Ig-i2A" id="83z-h2-tvS">
@@ -426,16 +469,29 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rfl-SZ-VxU">
+                                                    <rect key="frame" x="25" y="43.5" width="350" height="0.5"/>
+                                                    <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="0.5" id="PNg-FW-ghU"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="LQq-I2-SiQ" firstAttribute="centerY" secondItem="83z-h2-tvS" secondAttribute="centerY" id="4mQ-we-Fii"/>
+                                                <constraint firstAttribute="bottom" secondItem="Rfl-SZ-VxU" secondAttribute="bottom" id="Aim-s7-zJT"/>
                                                 <constraint firstItem="Zqp-ZQ-p7d" firstAttribute="centerY" secondItem="LQq-I2-SiQ" secondAttribute="centerY" id="Mtb-AE-fuK"/>
+                                                <constraint firstAttribute="trailing" secondItem="Rfl-SZ-VxU" secondAttribute="trailing" id="Rwh-lY-PzB"/>
                                                 <constraint firstItem="LQq-I2-SiQ" firstAttribute="leading" secondItem="83z-h2-tvS" secondAttribute="leading" constant="25" id="byV-YA-AqT"/>
                                                 <constraint firstAttribute="trailing" secondItem="Zqp-ZQ-p7d" secondAttribute="trailing" constant="25" id="e4T-vh-iIK"/>
+                                                <constraint firstItem="Rfl-SZ-VxU" firstAttribute="leading" secondItem="83z-h2-tvS" secondAttribute="leading" constant="25" id="fg9-B0-G7B"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="countTextField" destination="Zqp-ZQ-p7d" id="Ihn-P1-19K"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SellingPriceCell" id="m7P-1a-HUk" customClass="SellingPriceCell" customModule="iOSStar" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SellingPriceCell" id="m7P-1a-HUk" customClass="SellingPriceCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="359" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m7P-1a-HUk" id="IhF-L5-5Ss">
@@ -469,8 +525,11 @@
                                                 <constraint firstAttribute="trailing" secondItem="KHA-Fb-DzS" secondAttribute="trailing" constant="25" id="dx4-cJ-300"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="priceLabel" destination="KHA-Fb-DzS" id="JMV-yQ-t9x"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SellingTipsCell" rowHeight="108" id="7vc-71-W8P" customClass="SellingTipsCell" customModule="iOSStar" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SellingTipsCell" rowHeight="108" id="7vc-71-W8P" customClass="SellingTipsCell" customModule="iOSStar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="403" width="375" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7vc-71-W8P" id="xYT-oS-9Rh">
@@ -511,6 +570,9 @@
                                         <state key="normal" title="确定购买">
                                             <color key="titleColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="buyAction:" destination="Upl-u4-KUF" eventType="touchUpInside" id="kBG-97-HWC"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETa-5f-H0b">
                                         <rect key="frame" x="0.0" y="0.0" width="235" height="50"/>
@@ -571,7 +633,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDN-45-hpu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2565.5999999999999" y="648.12593703148434"/>
+            <point key="canvasLocation" x="1402" y="714"/>
         </scene>
         <!--Star Interactive View Controller-->
         <scene sceneID="j2d-7l-o1m">
@@ -685,11 +747,12 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="BMU-sO-awa" id="enu-IJ-99u"/>
+                        <segue destination="QsL-LK-lIk" kind="show" identifier="InterToIntroduce" id="9oy-qd-fDe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsE-gD-en3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2414" y="-46"/>
+            <point key="canvasLocation" x="2535" y="-46"/>
         </scene>
         <!--星享-->
         <scene sceneID="61a-X6-S6V">
@@ -744,4 +807,7 @@
         <image name="kefu_center" width="373" height="160"/>
         <image name="market_search" width="17" height="17"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="9oy-qd-fDe"/>
+    </inferredMetricsTieBreakers>
 </document>

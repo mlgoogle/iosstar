@@ -8,8 +8,9 @@
 
 import UIKit
 
-class SellingPriceCell: UITableViewCell {
+class SellingPriceCell: SellingBaseCell {
 
+    @IBOutlet weak var priceLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,7 +19,12 @@ class SellingPriceCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    }
+    
+    override func setPanicModel(model: PanicBuyInfoModel?) {
+        guard model != nil else {
+            return
+        }
     }
 
 }

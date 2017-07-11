@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         let config = BugoutConfig.default()
         config?.enabledShakeFeedback = false
 //        config?.enabledMonitorException = false
-        Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
+//        Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
         
         UIApplication.shared.applicationIconBadgeNumber = 0
         

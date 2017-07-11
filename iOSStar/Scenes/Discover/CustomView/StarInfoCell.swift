@@ -28,4 +28,11 @@ class StarInfoCell: UITableViewCell {
     func setBackImage(imageName:String) {
         backImageView.image = UIImage(named: imageName)
     }
+    func setStarModel(starModel:StarSortListModel) {
+        
+        let url = URL(string: starModel.pic)
+        iconImageView.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        starNameLabel.text = starModel.name
+        
+    }
 }

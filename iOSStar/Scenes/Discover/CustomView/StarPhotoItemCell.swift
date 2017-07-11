@@ -41,7 +41,7 @@ class StarPhotoItemCell: BaseItemCell {
     }
     override func setData(data: AnyObject?, colorString: String?, isZoom: Bool) {
         if let urlString = data as? String {
-            
+            showImageView.kf.setImage(with: URL(string: urlString), placeholder: UIImage(named: "138415562044.jpg"), options: nil, progressBlock: nil, completionHandler: nil)
             
         }
     }

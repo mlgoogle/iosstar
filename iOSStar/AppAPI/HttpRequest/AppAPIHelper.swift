@@ -33,7 +33,7 @@ class AppAPIHelper: NSObject {
     class func dealAPI()-> DealAPI {
         return _dealAPI
     }
-    class func discoverPAI()-> DiscoverAPI {
+    class func discoverAPI()-> DiscoverAPI {
         return _discoverAPI
     }
     

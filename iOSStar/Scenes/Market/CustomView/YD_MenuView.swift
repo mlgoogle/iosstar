@@ -83,6 +83,10 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
         moveLineView(indexPath: indexPath)
     }
     private func moveLineView(indexPath:IndexPath) {
+
+        guard isShowLineView else {
+            return
+        }
         menuCollectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         let cell = menuCollectionView?.cellForItem(at: indexPath)
         guard cell != nil else {
@@ -90,9 +94,7 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
         }
         menuCollectionView?.reloadData()
         selectIndexPath = indexPath
-        guard isShowLineView else {
-            return
-        }
+
         UIView.animate(withDuration: 0.3) {
             self.lineView.center = CGPoint(x: (cell?.center.x)!, y: self.lineView.center.y)
         }
@@ -127,8 +129,8 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
     
     func redressLineViewOrigin() {
         let indexPath = IndexPath(item: 0, section: 0)
+        
         moveLineView(indexPath: indexPath)
-        menuCollectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
 }

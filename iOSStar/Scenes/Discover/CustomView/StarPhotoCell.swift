@@ -22,6 +22,7 @@ class StarPhotoCell: UITableViewCell {
 
         menuView.itemIdentifier = StarPhotoItemCell.className()
         menuView.itemClass = StarPhotoItemCell.classForCoder()
+        menuView.menuCollectionView?.backgroundColor = UIColor(hexString: "fafafa")
         return menuView
     }()
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

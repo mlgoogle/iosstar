@@ -32,6 +32,8 @@ class YD_CountDownHelper: NSObject {
     var marketBuyOrSellListRefresh:CompleteBlock?
     
     var marketInfoRefresh:CompleteBlock?
+    
+
     //行情刷新轮询标记
     var marketIdentifier = 0
     //行情刷新轮询标记最大值
@@ -87,13 +89,14 @@ class YD_CountDownHelper: NSObject {
         return getTextWithTimeCount(timeCount: count)
     }
     
-    func getTextWithTimeCount(timeCount:Int) -> String {
+    func getTextWithTimeCount(timeCount:Int, formatString:String = "%.2d:%.2d:%.2d") -> String {
         let hours = timeCount / 3600
         let minutes = (timeCount % 3600) / 60
         let seconds = timeCount % 60
-        return String(format: "%.2d:%.2d:%.2d", hours, minutes, seconds)
+        return String(format: formatString, hours, minutes, seconds)
     }
     
+
     func resetDataSource() {
 
     }

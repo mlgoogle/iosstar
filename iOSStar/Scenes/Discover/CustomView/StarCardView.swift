@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class StarCardView: UICollectionViewCell {
 
@@ -60,33 +61,33 @@ class StarCardView: UICollectionViewCell {
         showImageView.layer.shadowOffset = CGSize(width: 10, height: 10)
         
         contentView.addSubview(showImageView)
-        showImageView.addSubview(infoView)
-        infoView.addSubview(statusLabel)
-        infoView.addSubview(priceLabel)
+//        showImageView.addSubview(infoView)
+//        infoView.addSubview(statusLabel)
+//        infoView.addSubview(priceLabel)
         showImageView.snp.makeConstraints { (make) in
             make.top.equalTo(53)
             make.left.equalTo(15)
             make.right.equalTo(-15)
             make.bottom.equalTo(-60)
         }
-        infoView.snp.makeConstraints { (make) in
-            make.bottom.equalTo(0)
-            make.left.equalTo(0)
-            make.right.equalTo(0)
-            make.height.equalTo(75)
-        }
-
-        statusLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(14)
-            make.centerX.equalTo(infoView)
-            make.height.equalTo(14)
-        }
-        priceLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(statusLabel.snp.bottom).offset(14)
-            make.centerX.equalTo(statusLabel)
-            make.height.equalTo(18)
-        }
-        
+//        infoView.snp.makeConstraints { (make) in
+//            make.bottom.equalTo(0)
+//            make.left.equalTo(0)
+//            make.right.equalTo(0)
+//            make.height.equalTo(75)
+//        }
+//
+//        statusLabel.snp.makeConstraints { (make) in
+//            make.top.equalTo(14)
+//            make.centerX.equalTo(infoView)
+//            make.height.equalTo(14)
+//        }
+//        priceLabel.snp.makeConstraints { (make) in
+//            make.top.equalTo(statusLabel.snp.bottom).offset(14)
+//            make.centerX.equalTo(statusLabel)
+//            make.height.equalTo(18)
+//        }
+//        
         backImage = showImageView.image
     }
     required init?(coder aDecoder: NSCoder) {
@@ -95,6 +96,19 @@ class StarCardView: UICollectionViewCell {
         
     }
     
+    func setStarModel(starModel:StarSortListModel) {
+        
+        KingfisherManager.shared.downloader.downloadImage(with: URL(string: starModel.home_pic)!, options: nil, progressBlock: nil) { (image, error, url, data) in
+            if image != nil {
+                self.showImageView.image = image
+                self.backImage = image
+            }
+            
+            
+        }
+
+        
+    }
     
     /*
     // Only override draw() if you perform custom drawing.

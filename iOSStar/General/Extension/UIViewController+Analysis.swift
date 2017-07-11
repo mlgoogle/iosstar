@@ -42,7 +42,7 @@ extension UIViewController {
         
         let classname = NSStringFromClass(self.classForCoder)
         
-//        MobClick.beginLogPageView(classname)
+        MobClick.beginLogPageView(classname)
         /**
          * 因为此时方法实现已经替换，所以analysisViewWillAppear(animated) 相当于调用系统原来的 viewWillAppear
          */
@@ -54,7 +54,7 @@ extension UIViewController {
         
         let classname = NSStringFromClass(self.classForCoder)
         
-//        MobClick.endLogPageView(classname)
+        MobClick.endLogPageView(classname)
         
         
         analysisViewWillDisAppear(animated: animated)

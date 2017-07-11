@@ -10,9 +10,22 @@ import UIKit
 
 class SellingCountDownCell: UITableViewCell {
 
+    @IBOutlet weak var countDownLabel: UILabel!
+    @IBOutlet weak var backColorView: GradualColorView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        backColorView.bringSubview(toFront: countDownLabel)
+
+        backColorView.realWidth = kScreenWidth
+        backColorView.completeColors = [UIColor(hexString: "FE9023"), UIColor(hexString: "FBD831")]
+        backColorView.isShowImage = false
+        backColorView.percent = 1.0
+        backColorView.addGradualColorLayer(isRound: false)
+
+    }
+    func setRemainingTime(count:Int) {
+        countDownLabel.text = YD_CountDownHelper.shared.getTextWithTimeCount(timeCount: count)
+        countDownLabel.setNeedsDisplay()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

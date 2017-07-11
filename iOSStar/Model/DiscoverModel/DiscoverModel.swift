@@ -24,3 +24,36 @@ class StarSortListModel: Object {
     dynamic var pchg = 0.0
     dynamic var pushlish_type = 0
 }
+class BuyRemainingTimeModel: Object {
+    dynamic var symbol = ""
+    dynamic var remainingTime:Int64 = 0
+}
+class PanicBuyInfoModel: Object {
+    dynamic var star_code = ""
+    dynamic var star_name = ""
+    dynamic var head_url = ""
+    dynamic var star_type:Int64 = 0
+    dynamic var publish_type:Int64 = 0
+    dynamic var publish_time:Int64 = 0
+    dynamic var publish_last_time:Int64 = 0
+    dynamic var publish_begin_time:Int64 = 0
+    dynamic var publish_end_time:Int64 = 0
+}
+
+class StarIntroduceResult: Object {
+    dynamic var resultvalue:StarDetaiInfoModel?
+}
+
+class StarDetaiInfoModel: Object {
+    
+    dynamic var star_code = ""
+    dynamic var star_name = ""
+    dynamic var star_tpye:Int64 = 0
+    dynamic var head_url = ""
+    dynamic var back_pic = ""
+    dynamic var portray1 = ""
+    dynamic var portray2 = ""
+    dynamic var portray3 = ""
+    dynamic var portray4 = ""
+    dynamic var acc_id = ""    
+}
