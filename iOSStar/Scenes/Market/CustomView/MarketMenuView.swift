@@ -15,7 +15,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     var delegate:SubViewItemSelectDelegate?
     var items:[String]? {
         didSet{
-            menuView?.items = items
+            menuView?.itemData = items as [AnyObject]?
             subViewCollectionView?.reloadData()
         }
     }
