@@ -1,14 +1,14 @@
 //
-//  UserVC.swift
+//  BaseTest.swift
 //  iOSStar
 //
-//  Created by sum on 2017/7/10.
+//  Created by sum on 2017/7/11.
 //  Copyright © 2017年 YunDian. All rights reserved.
 //
 
 import XCTest
 @testable import UserVC
-class UserVC: XCTestCase {
+class BaseTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -18,7 +18,6 @@ class UserVC: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-        
     }
     
     func testExample() {

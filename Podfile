@@ -32,7 +32,7 @@ target 'iOSStar' do
     pod 'UMengUShare/Social/ReducedSina'
     pod 'GTSDK'
     pod 'UMengAnalytics-NO-IDFA'
-    target '星悦UITests' do
+    target 'IOSStarTests' do
         inherit! :search_paths
     end
 end
