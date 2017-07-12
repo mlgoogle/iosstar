@@ -29,6 +29,8 @@ class BuyRemainingTimeModel: Object {
     dynamic var remainingTime:Int64 = 0
 }
 class PanicBuyInfoModel: Object {
+    dynamic var publish_price = 0.0
+    dynamic var back_pic_url = ""
     dynamic var star_code = ""
     dynamic var star_name = ""
     dynamic var head_url = ""
@@ -45,7 +47,6 @@ class StarIntroduceResult: Object {
 }
 
 class StarDetaiInfoModel: Object {
-    
     dynamic var star_code = ""
     dynamic var star_name = ""
     dynamic var star_tpye:Int64 = 0

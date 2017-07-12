@@ -110,7 +110,12 @@ class SellingViewController: UIViewController {
     }
 }
 
-extension SellingViewController:UITableViewDataSource, UITableViewDelegate{
+extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate{
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        tableView.scrollToRow(at: IndexPath(row: 4, section: 0), at: .bottom, animated: true)
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(sectionHeights[indexPath.row])
     }
@@ -124,6 +129,11 @@ extension SellingViewController:UITableViewDataSource, UITableViewDelegate{
         case 2:
             if let countDownCell = cell as? SellingCountDownCell {
                 countDownCell.setRemainingTime(count:remainingTime)
+            }
+        case 3:
+            if let buyCountCell = cell as? SellingBuyCountCell {
+                buyCountCell.countTextField.delegate = self
+
             }
         case 5:
             if let tipsCell = cell as? SellingTipsCell {
