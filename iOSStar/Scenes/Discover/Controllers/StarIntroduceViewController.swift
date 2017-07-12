@@ -111,28 +111,25 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     
     func chat() {
         
+        
     }
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > 25 {
             navigationController?.setNavigationBarHidden(false, animated: true)
         } else {
             navigationController?.setNavigationBarHidden(true, animated: true)
-
         }
     }
     func numberOfPhotos(in photoBrowser: MWPhotoBrowser!) -> UInt {
         return 1
     }
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
-    
-        
         let photo = MWPhoto(url:URL(string: images[Int(index)]))
         return photo
     }
 
     func menuViewDidSelect(indexPath: IndexPath) {
-    
-
         let vc = PhotoBrowserVC(delegate: self)
         present(vc!, animated: true, completion: nil)
     }
@@ -160,9 +157,10 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             header?.setTitle(title:"个人介绍")
             header?.contentView.backgroundColor = UIColor(hexString: "fafafa")
             return header
+        } else {
+            return UIView()
         }
         
-        return nil
         
     }
     func numberOfSections(in tableView: UITableView) -> Int {

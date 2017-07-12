@@ -35,3 +35,18 @@ class BuyStarTimeRequestModel:BuyRemainingTimeRequestModel {
     var amount:Int64 = 0
     var price = 0.0
 }
+class CircleListRequestModel: BaseModel {
+    
+    var pos:Int64 = 1
+    var count:Int32 = 10
+}
+class ApproveCircleModel: BaseModel {
+    var star_code = "1001"
+    var circle_id:Int64 = 10001
+    var uid:Int64 = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
+}
+class CommentCircleModel: ApproveCircleModel {
+    var direction = 0
+    var content = "111111111"
+    
+}

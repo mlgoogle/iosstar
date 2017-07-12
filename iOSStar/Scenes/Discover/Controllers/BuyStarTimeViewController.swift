@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+
 class BuyStarTimeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -107,18 +109,82 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
         }
          return cell
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let starModel = dataSouce![indexPath.row]
+    
+    func commentCircle() {
+        
+        let requestModel = CommentCircleModel()
+        AppAPIHelper.discoverAPI().commentCircle(requestModel: requestModel, complete: { (response) in
+            
 
-        var segueString = "ToSelling"
-        switch starModel.pushlish_type {
-        case 2:
-            segueString = "ToIntroduce"
-        default:
-            break
+        }) { (error) in
+            
         }
+    }
+    
+    func approveCircle() {
+        let requestModel = ApproveCircleModel()
+        AppAPIHelper.discoverAPI().approveCircle(requestModel: requestModel, complete: { (response) in
+            
+        }) { (error) in
+            
+        }
+    }
+    func requestCirCleList() {
+        
+    
+        let requestModel = CircleListRequestModel()
+        
+        AppAPIHelper.discoverAPI().requestCircleList(requestModel: requestModel, complete: { (response) in
+            if let models = response as? [CircleListModel] {
+                
+                for model in models {
+                    
+                    
+                    
+                    
+                }
+                
+                
+                
+                
+            }
+            
+            
+        }) { (error) in
+            
+        }
+    }
+    
+    func transferFormat(model:CircleListModel) -> [Any] {
+        
+        
+        
+        var list = [Any]()
+        
+        for approve in model.approve_list {
+            
+        }
+        
+        return list
+    }
 
-        performSegue(withIdentifier: segueString, sender: indexPath)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+
+//        commentCircle()
+//        approveCircle()
+        requestCirCleList()
+//        let starModel = dataSouce![indexPath.row]
+//
+//        var segueString = "ToSelling"
+//        switch starModel.pushlish_type {
+//        case 2:
+//            segueString = "ToIntroduce"
+//        default:
+//            break
+//        }
+//
+//        performSegue(withIdentifier: segueString, sender: indexPath)
 
     }
 }
