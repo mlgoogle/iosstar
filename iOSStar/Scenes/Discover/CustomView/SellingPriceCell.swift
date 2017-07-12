@@ -25,6 +25,7 @@ class SellingPriceCell: SellingBaseCell {
         guard model != nil else {
             return
         }
+        
+        priceLabel.text = "￥\(String(format: "%.2f", model!.publish_price))/秒"
     }
-
 }

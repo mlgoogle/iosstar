@@ -106,7 +106,6 @@
 		6EBF590A1EC6EAAF003F67B4 /* MarketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF59091EC6EAAF003F67B4 /* MarketAPI.swift */; };
 		6EBF590C1EC6EB75003F67B4 /* MarketSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF590B1EC6EB75003F67B4 /* MarketSocketAPI.swift */; };
 		6EBF590E1EC93BE9003F67B4 /* Label+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF590D1EC93BE9003F67B4 /* Label+Extension.swift */; };
-		6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */; };
 		6ECAA1A71ECD7527000FBED7 /* MarketCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECAA1A61ECD7527000FBED7 /* MarketCommentCell.swift */; };
 		6ECAA1A91ECD7560000FBED7 /* MarketInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECAA1A81ECD7560000FBED7 /* MarketInfoCell.swift */; };
 		6ECAA1AB1ECD75B1000FBED7 /* MarketExperienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECAA1AA1ECD75B1000FBED7 /* MarketExperienceCell.swift */; };
@@ -125,6 +124,12 @@
 		6EFE79E41ECC49710096470D /* MarketAuctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E31ECC49710096470D /* MarketAuctionViewController.swift */; };
 		6EFE79E61ECC49810096470D /* MarketCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */; };
 		6EFF56D41F137B82003895EB /* SellingBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFF56D31F137B82003895EB /* SellingBaseCell.swift */; };
+		6EFF56D71F1473B8003895EB /* Heat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EFF56D61F1473B8003895EB /* Heat.storyboard */; };
+		6EFF56DD1F147447003895EB /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EFF56DA1F147447003895EB /* Exchange.storyboard */; };
+		6EFF56DE1F147447003895EB /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EFF56DB1F147447003895EB /* Market.storyboard */; };
+		6EFF56DF1F147447003895EB /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EFF56DC1F147447003895EB /* News.storyboard */; };
+		6EFF56E61F1476CF003895EB /* HeatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFF56E51F1476CF003895EB /* HeatListViewController.swift */; };
+		6EFF56E81F147890003895EB /* HeatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFF56E71F147890003895EB /* HeatListCell.swift */; };
 		6EFFC21C1EF381640041A3BD /* PositionStarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFFC21B1EF381640041A3BD /* PositionStarCell.swift */; };
 		8D1660631EF157D50077C377 /* ServiceTypeRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1660621EF157D50077C377 /* ServiceTypeRequestModel.swift */; };
 		8D2C3DBB1EF0CEF100FA996A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2C3DBA1EF0CEF100FA996A /* UIView.swift */; };
@@ -137,7 +142,6 @@
 		8DAC7E291EE1419D001AD3EF /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAC7E281EE1419D001AD3EF /* User.storyboard */; };
 		8DAC7E2F1EE26455001AD3EF /* UserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */; };
 		8DAC7E331EE640F3001AD3EF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAC7E321EE640F3001AD3EF /* Login.storyboard */; };
-		8DD224C11ED820970048D7D3 /* Market.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DD224C01ED820970048D7D3 /* Market.storyboard */; };
 		8DD224C51ED916460048D7D3 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD224C41ED916460048D7D3 /* AlertViewController.swift */; };
 		8DE79EA31EDE912500F1F24A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE79EA21EDE912500F1F24A /* Foundation.framework */; };
 		8DE79EA51EDE913600F1F24A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE79EA41EDE913600F1F24A /* CFNetwork.framework */; };
@@ -463,7 +467,6 @@
 		A07238AA1EA76B7600E755DB /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A07238A91EA76B7600E755DB /* libz.tbd */; };
 		A07238AC1EA76B9A00E755DB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A07238AB1EA76B9A00E755DB /* SystemConfiguration.framework */; };
 		A07238B21EA76D9100E755DB /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A07238B11EA76D9100E755DB /* libsqlite3.tbd */; };
-		A07238B51EA76F4100E755DB /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B41EA76F4100E755DB /* News.storyboard */; };
 		A07238B71EA76F4D00E755DB /* Deal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A07238B61EA76F4D00E755DB /* Deal.storyboard */; };
 		A07D34701EEE416A00136733 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07D346F1EEE416A00136733 /* ShareView.swift */; };
 		A07D34741EEE417900136733 /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A07D34731EEE417900136733 /* ShareView.xib */; };
@@ -634,7 +637,6 @@
 		6EBF590B1EC6EB75003F67B4 /* MarketSocketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketSocketAPI.swift; sourceTree = "<group>"; };
 		6EBF590D1EC93BE9003F67B4 /* Label+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Label+Extension.swift"; sourceTree = "<group>"; };
 		6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOSStar-Bridging-Header.h"; sourceTree = "<group>"; };
-		6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
 		6ECAA1A61ECD7527000FBED7 /* MarketCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketCommentCell.swift; sourceTree = "<group>"; };
 		6ECAA1A81ECD7560000FBED7 /* MarketInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketInfoCell.swift; sourceTree = "<group>"; };
 		6ECAA1AA1ECD75B1000FBED7 /* MarketExperienceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketExperienceCell.swift; sourceTree = "<group>"; };
@@ -653,6 +655,12 @@
 		6EFE79E31ECC49710096470D /* MarketAuctionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketAuctionViewController.swift; sourceTree = "<group>"; };
 		6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketCommentViewController.swift; sourceTree = "<group>"; };
 		6EFF56D31F137B82003895EB /* SellingBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellingBaseCell.swift; sourceTree = "<group>"; };
+		6EFF56D61F1473B8003895EB /* Heat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Heat.storyboard; sourceTree = "<group>"; };
+		6EFF56DA1F147447003895EB /* Exchange.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
+		6EFF56DB1F147447003895EB /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
+		6EFF56DC1F147447003895EB /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
+		6EFF56E51F1476CF003895EB /* HeatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatListViewController.swift; sourceTree = "<group>"; };
+		6EFF56E71F147890003895EB /* HeatListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatListCell.swift; sourceTree = "<group>"; };
 		6EFFC21B1EF381640041A3BD /* PositionStarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionStarCell.swift; sourceTree = "<group>"; };
 		8408122B704986AA5A9C486E /* Pods-iOSStar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.debug.xcconfig"; sourceTree = "<group>"; };
 		8D1660621EF157D50077C377 /* ServiceTypeRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTypeRequestModel.swift; sourceTree = "<group>"; };
@@ -666,7 +674,6 @@
 		8DAC7E281EE1419D001AD3EF /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequestModel.swift; sourceTree = "<group>"; };
 		8DAC7E321EE640F3001AD3EF /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		8DD224C01ED820970048D7D3 /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
 		8DD224C41ED916460048D7D3 /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		8DE79EA21EDE912500F1F24A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8DE79EA41EDE913600F1F24A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -1254,7 +1261,6 @@
 		A07238A91EA76B7600E755DB /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		A07238AB1EA76B9A00E755DB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A07238B11EA76D9100E755DB /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		A07238B41EA76F4100E755DB /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		A07238B61EA76F4D00E755DB /* Deal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Deal.storyboard; sourceTree = "<group>"; };
 		A07D346F1EEE416A00136733 /* ShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		A07D34731EEE417900136733 /* ShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareView.xib; sourceTree = "<group>"; };
@@ -1784,6 +1790,67 @@
 			name = MarketModel;
 			path = iOSStar/Model/MarketModel;
 			sourceTree = SOURCE_ROOT;
+		};
+		6EFF56D81F147447003895EB /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				6EFF56D91F147447003895EB /* 0.9.0StoryBoard */,
+			);
+			path = Deprecated;
+			sourceTree = "<group>";
+		};
+		6EFF56D91F147447003895EB /* 0.9.0StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				6EFF56DA1F147447003895EB /* Exchange.storyboard */,
+				6EFF56DB1F147447003895EB /* Market.storyboard */,
+				6EFF56DC1F147447003895EB /* News.storyboard */,
+			);
+			path = 0.9.0StoryBoard;
+			sourceTree = "<group>";
+		};
+		6EFF56E01F147679003895EB /* DeprecatedScenes */ = {
+			isa = PBXGroup;
+			children = (
+				6EFF56E11F147679003895EB /* 0.9.0 */,
+			);
+			path = DeprecatedScenes;
+			sourceTree = "<group>";
+		};
+		6EFF56E11F147679003895EB /* 0.9.0 */ = {
+			isa = PBXGroup;
+			children = (
+				A03D3C511EA86A6300F85308 /* Exchange */,
+				A03D3C4F1EA86A6300F85308 /* Market */,
+				A03D3C4D1EA86A6300F85308 /* News */,
+			);
+			path = 0.9.0;
+			sourceTree = "<group>";
+		};
+		6EFF56E21F1476B8003895EB /* Heat */ = {
+			isa = PBXGroup;
+			children = (
+				6EFF56E31F1476B8003895EB /* Controllers */,
+				6EFF56E41F1476B8003895EB /* CustomView */,
+			);
+			path = Heat;
+			sourceTree = "<group>";
+		};
+		6EFF56E31F1476B8003895EB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6EFF56E51F1476CF003895EB /* HeatListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6EFF56E41F1476B8003895EB /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				6EFF56E71F147890003895EB /* HeatListCell.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
 		};
 		8E1E8A851EFB987D001B2D7B /* LoginModel */ = {
 			isa = PBXGroup;
@@ -3213,12 +3280,11 @@
 		A072385F1EA76AA300E755DB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				6EFF56E01F147679003895EB /* DeprecatedScenes */,
+				6EFF56E21F1476B8003895EB /* Heat */,
 				6E2CC4541F0DD9A800281559 /* Discover */,
 				A04CF0761ED6CB6800B93D28 /* User */,
 				A0155E0C1EA8C9220047B95B /* Login */,
-				A03D3C4D1EA86A6300F85308 /* News */,
-				A03D3C4F1EA86A6300F85308 /* Market */,
-				A03D3C511EA86A6300F85308 /* Exchange */,
 				A03D3C531EA86A6300F85308 /* Deal */,
 				A03D3C551EA86A6300F85308 /* ChatView */,
 			);
@@ -3228,6 +3294,7 @@
 		A07238671EA76AA300E755DB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				6EFF56D81F147447003895EB /* Deprecated */,
 				A084BC291ED59CF800DFC868 /* alipay */,
 				6E0922A11EA88DFE002725A0 /* Base.lproj */,
 				A07238B31EA76F3500E755DB /* Storyboard */,
@@ -3365,12 +3432,10 @@
 		A07238B31EA76F3500E755DB /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				A07238B41EA76F4100E755DB /* News.storyboard */,
 				6E2CC4521F0DD96700281559 /* Discover.storyboard */,
+				6EFF56D61F1473B8003895EB /* Heat.storyboard */,
 				A07238B61EA76F4D00E755DB /* Deal.storyboard */,
 				8DAC7E281EE1419D001AD3EF /* User.storyboard */,
-				6EC3302A1EA84D8B005C8DF9 /* Exchange.storyboard */,
-				8DD224C01ED820970048D7D3 /* Market.storyboard */,
 				8DAC7E321EE640F3001AD3EF /* Login.storyboard */,
 				A03A46CE1EEFD5BA00EAB8B1 /* Order.storyboard */,
 			);
@@ -3658,9 +3723,10 @@
 				A04CF0A41ED6CB6800B93D28 /* SelectPayType.xib in Resources */,
 				A0C9D6701EAE102300FC438D /* NIMKitSettings.bundle in Resources */,
 				A07D34741EEE417900136733 /* ShareView.xib in Resources */,
-				A07238B51EA76F4100E755DB /* News.storyboard in Resources */,
+				6EFF56DE1F147447003895EB /* Market.storyboard in Resources */,
 				A03D3F981EA86A6500F85308 /* NTESSystemNotificationViewController.xib in Resources */,
 				A03D3F941EA86A6500F85308 /* NTESCustomSysNotificationViewController.xib in Resources */,
+				6EFF56DF1F147447003895EB /* News.storyboard in Resources */,
 				A0A667EF1EC31D6800612510 /* errorcode.plist in Resources */,
 				A03D3FD91EA86A6500F85308 /* NTESAboutViewController.xib in Resources */,
 				A03D3FE41EA86A6500F85308 /* NTESUserInfoSettingViewController.xib in Resources */,
@@ -3668,6 +3734,7 @@
 				8DAC7E331EE640F3001AD3EF /* Login.storyboard in Resources */,
 				A0C9D6741EAE102300FC438D /* video_chat_tip_onTimer.aac in Resources */,
 				A0C9D6721EAE102300FC438D /* video_chat_tip_HangUp.aac in Resources */,
+				6EFF56DD1F147447003895EB /* Exchange.storyboard in Resources */,
 				A03D3F901EA86A6500F85308 /* NTESContactViewController.xib in Resources */,
 				A0C9D6761EAE102300FC438D /* video_chat_tip_sender.aac in Resources */,
 				A03D3FB21EA86A6500F85308 /* NTESFileTransSelectViewController.xib in Resources */,
@@ -3682,16 +3749,15 @@
 				A03D3FB41EA86A6500F85308 /* NTESGalleryViewController.xib in Resources */,
 				8D7308781EF2C14A0051E713 /* TradingAlertView.xib in Resources */,
 				6E2CC4531F0DD96700281559 /* Discover.storyboard in Resources */,
-				8DD224C11ED820970048D7D3 /* Market.storyboard in Resources */,
 				8DAC7E291EE1419D001AD3EF /* User.storyboard in Resources */,
 				A0C9D66E1EAE102300FC438D /* NIMKitEmoticon.bundle in Resources */,
+				6EFF56D71F1473B8003895EB /* Heat.storyboard in Resources */,
 				A0C9D6751EAE102300FC438D /* video_chat_tip_receiver.aac in Resources */,
 				A0C9D6771EAE102300FC438D /* video_connect_chat_tip_sender.aac in Resources */,
 				A03A46CF1EEFD5BA00EAB8B1 /* Order.storyboard in Resources */,
 				A072389E1EA76AA300E755DB /* README.txt in Resources */,
 				A0C9D6731EAE102300FC438D /* video_chat_tip_OnCall.aac in Resources */,
 				A0155E071EA8ABF20047B95B /* Images.xcassets in Resources */,
-				6EC3302B1EA84D8B005C8DF9 /* Exchange.storyboard in Resources */,
 				A03D3F9B1EA86A6500F85308 /* NTESLoginViewController.xib in Resources */,
 				A03D3FC81EA86A6500F85308 /* NTESMutiClientsCell.xib in Resources */,
 				A03D3F961EA86A6500F85308 /* NTESSystemNotificationCell.xib in Resources */,
@@ -3901,6 +3967,7 @@
 				6E16166E1EB0973700D95CB6 /* MarketMenuView.swift in Sources */,
 				6E7A1F781EE96C8B007BF6D8 /* DealRequestModel.swift in Sources */,
 				A03D3F0D1EA86A6400F85308 /* NIMInputAtCache.m in Sources */,
+				6EFF56E61F1476CF003895EB /* HeatListViewController.swift in Sources */,
 				A03D3EED1EA86A6400F85308 /* M80AttributedLabel+NIMKit.m in Sources */,
 				A03D3FEF1EA86A6500F85308 /* NTESDemoConfig.m in Sources */,
 				A03D3F3B1EA86A6400F85308 /* NIMSessionNotificationContentView.m in Sources */,
@@ -4210,6 +4277,7 @@
 				A03D3F971EA86A6500F85308 /* NTESSystemNotificationViewController.m in Sources */,
 				6E7A1F701EE6DC22007BF6D8 /* NoDataCell.swift in Sources */,
 				6E2CC4651F0E0E3200281559 /* StarCardView.swift in Sources */,
+				6EFF56E81F147890003895EB /* HeatListCell.swift in Sources */,
 				6E2CC47D1F0F7B1700281559 /* StarPhotoItemCell.swift in Sources */,
 				A03D3F781EA86A6500F85308 /* NTESChatroomMaker.m in Sources */,
 				A03D3FB31EA86A6500F85308 /* NTESGalleryViewController.m in Sources */,
