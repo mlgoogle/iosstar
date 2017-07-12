@@ -34,6 +34,9 @@ target 'iOSStar' do
     pod 'UMengAnalytics-NO-IDFA'
     target 'IOSStarTests' do
         inherit! :search_paths
+        pod 'Realm'
+        pod 'Realm/Headers'
     end
+    
 end
 # Uncomment this line to define a global platform for your project

@@ -595,7 +595,6 @@
 		A0B49C751F14D0DA0058042E /* ShareDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */; };
 		A0B49C761F14D0DA0058042E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3B1C1EB9C5860023093A /* UserModel.swift */; };
 		A0B49C771F14D0DA0058042E /* UserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */; };
-		A0B49C781F14D0DA0058042E /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A46C61EEF71F800EAB8B1 /* UserInfoModel.swift */; };
 		A0B49C791F14D0DA0058042E /* CommenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E22721C1EF941B300AF9579 /* CommenModel.swift */; };
 		A0B49C7A1F14D0DA0058042E /* BankCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02D07A91F0CCAC100BC43D9 /* BankCard.swift */; };
 		A0B49C7B1F14D0DA0058042E /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC45E1F0DEA3000281559 /* DiscoverViewController.swift */; };
@@ -1158,6 +1157,7 @@
 		A0B49F601F14D0DC0058042E /* AppConfigHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9F31EE1ED85B04008B12A5 /* AppConfigHelper.swift */; };
 		A0B49F611F14D0DC0058042E /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08569F91EB08FCA004F349B /* BaseNavigationController.swift */; };
 		A0B49F621F14D0DC0058042E /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084BB4E1ED5793500DFC868 /* TableViewHelper.swift */; };
+		A0B49F651F14DBA60058042E /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A46C61EEF71F800EAB8B1 /* UserInfoModel.swift */; };
 		A0B6FB861ED952F10060CCDC /* ResetTradePassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6FB851ED952F10060CCDC /* ResetTradePassVC.swift */; };
 		A0BC76401EC47C4E0050F1D6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0BC763F1EC47C4E0050F1D6 /* Settings.bundle */; };
 		A0C9D66E1EAE102300FC438D /* NIMKitEmoticon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D65F1EAE102300FC438D /* NIMKitEmoticon.bundle */; };
@@ -5238,6 +5238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B49F651F14DBA60058042E /* UserInfoModel.swift in Sources */,
 				A0B49C551F14D0DA0058042E /* DealAPI.swift in Sources */,
 				A0B49C561F14D0DA0058042E /* DealSocketAPI.swift in Sources */,
 				A0B49C571F14D0DA0058042E /* MarketAPI.swift in Sources */,
@@ -5273,7 +5274,6 @@
 				A0B49C751F14D0DA0058042E /* ShareDataModel.swift in Sources */,
 				A0B49C761F14D0DA0058042E /* UserModel.swift in Sources */,
 				A0B49C771F14D0DA0058042E /* UserRequestModel.swift in Sources */,
-				A0B49C781F14D0DA0058042E /* UserInfoModel.swift in Sources */,
 				A0B49C791F14D0DA0058042E /* CommenModel.swift in Sources */,
 				A0B49C7A1F14D0DA0058042E /* BankCard.swift in Sources */,
 				A0B49C7B1F14D0DA0058042E /* DiscoverViewController.swift in Sources */,
@@ -6099,6 +6099,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B7838E955A5D136C413B7BB1 /* Pods-IOSStarTests.debug.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				ENABLE_TESTABILITY = YES;
@@ -6138,9 +6139,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B5682A5040EEA5BE80F933A8 /* Pods-IOSStarTests.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				ENABLE_TESTABILITY = NO;
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iOSSTar/Marco",
