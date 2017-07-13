@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33D9D1D51D0BD8E5F016A7F4 /* Pods_IOSStarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D8773CD4998727905237B2 /* Pods_IOSStarTests.framework */; };
 		6C914579279831D674DBBB68 /* Pods_iOSStar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */; };
 		6E0C6B061EC43A6400D9C2BC /* NewsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0C6B051EC43A6400D9C2BC /* NewsApi.swift */; };
 		6E0C6B081EC43ABF00D9C2BC /* NewsSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0C6B071EC43ABF00D9C2BC /* NewsSocketAPI.swift */; };
@@ -506,6 +507,660 @@
 		A0A667EF1EC31D6800612510 /* errorcode.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0A667EE1EC31D6800612510 /* errorcode.plist */; };
 		A0A996C81EBC4D67000048DC /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A996C61EBC4D67000048DC /* LoginApi.swift */; };
 		A0A996C91EBC4D67000048DC /* LoginSocketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A996C71EBC4D67000048DC /* LoginSocketApi.swift */; };
+		A0B48DDA1F14AED50058042E /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B48DD91F14AED50058042E /* CocoaAsyncSocket.framework */; };
+		A0B48DDD1F14AF520058042E /* OEZCommSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B48DDC1F14AF520058042E /* OEZCommSDK.framework */; };
+		A0B48DF11F14B5160058042E /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B48DE31F14B5160058042E /* MBProgressHUD.framework */; };
+		A0B48DF21F14B5160058042E /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B48DE41F14B5160058042E /* MJRefresh.framework */; };
+		A0B48DF31F14B5160058042E /* MWPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B48DE51F14B5160058042E /* MWPhotoBrowser.framework */; };
+		A0B48DF41F14B5160058042E /* Pods_iOSStar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B48DE61F14B5160058042E /* Pods_iOSStar.framework */; };
+		A0B48DF51F14B5160058042E /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B48DE71F14B5160058042E /* Reachability.framework */; };
+		A0B48DF81F14B5160058042E /* SDCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B48DEA1F14B5160058042E /* SDCycleScrollView.framework */; };
+		A0B48DF91F14B5160058042E /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B48DEB1F14B5160058042E /* SDWebImage.framework */; };
+		A0B48DFA1F14B5160058042E /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B48DEC1F14B5160058042E /* SnapKit.framework */; };
+		A0B48DFB1F14B5160058042E /* SSZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B48DED1F14B5160058042E /* SSZipArchive.framework */; };
+		A0B48DFC1F14B5160058042E /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B48DEE1F14B5160058042E /* SVProgressHUD.framework */; };
+		A0B48DFD1F14B5160058042E /* Toast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B48DEF1F14B5160058042E /* Toast.framework */; };
+		A0B48DFE1F14B5160058042E /* TZImagePickerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B48DF01F14B5160058042E /* TZImagePickerController.framework */; };
+		A0B491A71F14BAB20058042E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B4919F1F14BA3B0058042E /* Fabric.framework */; };
+		A0B491AA1F14BC830058042E /* NIMAVChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491A81F14BC830058042E /* NIMAVChat.framework */; };
+		A0B491AB1F14BC830058042E /* NIMSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491A91F14BC830058042E /* NIMSDK.framework */; };
+		A0B491C51F14C2C90058042E /* UMMobClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491B11F14C2B80058042E /* UMMobClick.framework */; };
+		A0B491C61F14C3200058042E /* UMSocialCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491BD1F14C2B80058042E /* UMSocialCore.framework */; };
+		A0B491C71F14C3200058042E /* UMSocialNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491BE1F14C2B80058042E /* UMSocialNetwork.framework */; };
+		A0B491C81F14C3200058042E /* UMSocialSDKPromptResources.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491BF1F14C2B80058042E /* UMSocialSDKPromptResources.bundle */; };
+		A0B491C91F14C3690058042E /* libUMSocialLog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491C11F14C2B80058042E /* libUMSocialLog.a */; };
+		A0B491CA1F14C3690058042E /* UMSocialSDKResources.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491C31F14C2B80058042E /* UMSocialSDKResources.bundle */; };
+		A0B491CB1F14C3690058042E /* UShareUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491C41F14C2B80058042E /* UShareUI.framework */; };
+		A0B491CD1F14C3F30058042E /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A084BB521ED591F600DFC868 /* AlipaySDK.framework */; };
+		A0B491D01F14C5370058042E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491CF1F14C5370058042E /* Crashlytics.framework */; };
+		A0B491D11F14C5860058042E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491A11F14BA3B0058042E /* Fabric.framework */; };
+		A0B491D31F14C5A90058042E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491D21F14C5A90058042E /* Crashlytics.framework */; };
+		A0B49C391F14CB1B0058042E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31571EA846B900F85308 /* libc++.tbd */; };
+		A0B49C3A1F14CB2F0058042E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A07238A91EA76B7600E755DB /* libz.tbd */; };
+		A0B49C3B1F14CB420058042E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A07238B11EA76D9100E755DB /* libsqlite3.tbd */; };
+		A0B49C3C1F14CE280058042E /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A084BC8E1ED59DA500DFC868 /* libssl.a */; };
+		A0B49C3D1F14CE4E0058042E /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A084BC8D1ED59DA500DFC868 /* libcrypto.a */; };
+		A0B49C3E1F14CF5F0058042E /* DiscoverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03F21F10D73B0003D51F /* DiscoverAPI.swift */; };
+		A0B49C3F1F14CF5F0058042E /* DiscoverSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03F41F10D75D0003D51F /* DiscoverSocketAPI.swift */; };
+		A0B49C401F14CF5F0058042E /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07238781EA76AA300E755DB /* BaseTabBarController.swift */; };
+		A0B49C411F14CF5F0058042E /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084BB501ED57FAF00DFC868 /* BaseTableViewController.swift */; };
+		A0B49C421F14CF5F0058042E /* BaseCustomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084BB4C1ED5790E00DFC868 /* BaseCustomTableViewController.swift */; };
+		A0B49C431F14CF5F0058042E /* RedBackItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9F31F01ED91258008B12A5 /* RedBackItemViewController.swift */; };
+		A0B49C441F14CF5F0058042E /* BaseWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A086FE151EDFF3F500AD04AD /* BaseWebVC.swift */; };
+		A0B49C451F14CF5F0058042E /* PhotoBrowserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBE0A001F10894B0042D8B1 /* PhotoBrowserVC.swift */; };
+		A0B49C461F14CF5F0058042E /* UIViewController+Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC4501F0D065E00281559 /* UIViewController+Analysis.swift */; };
+		A0B49C471F14CF5F0058042E /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2C3DBA1EF0CEF100FA996A /* UIView.swift */; };
+		A0B49C481F14CF5F0058042E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05A3D491EEA464800476481 /* UIViewController+Extension.swift */; };
+		A0B49C491F14CF5F0058042E /* UIBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0856A101EB0B5C3004F349B /* UIBarExtension.swift */; };
+		A0B49C4A1F14CF5F0058042E /* NSDateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F4FA201ECD70A200D13302 /* NSDateExt.swift */; };
+		A0B49C4B1F14CF5F0058042E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07238891EA76AA300E755DB /* String+Extension.swift */; };
+		A0B49C4C1F14CF5F0058042E /* SVProgressHUDExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072388A1EA76AA300E755DB /* SVProgressHUDExt.swift */; };
+		A0B49C4D1F14CF5F0058042E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E193C4F1EBADFC90049AEDE /* UIColor+Extension.swift */; };
+		A0B49C4E1F14CF5F0058042E /* UIViewController+ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A667EA1EC2B67D00612510 /* UIViewController+ChatView.swift */; };
+		A0B49C4F1F14CF5F0058042E /* Label+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF590D1EC93BE9003F67B4 /* Label+Extension.swift */; };
+		A0B49C501F14CF5F0058042E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54EE0E1ED566F100E14EC3 /* UIView+Extension.swift */; };
+		A0B49C511F14CF5F0058042E /* UITabBar+badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5D21511EE8F92B00DE25A9 /* UITabBar+badge.swift */; };
+		A0B49C521F14CF5F0058042E /* UIBarButtonItem+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D61054C1EFA254800170760 /* UIBarButtonItem+Category.swift */; };
+		A0B49C531F14CF5F0058042E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D05E11F010A4F00A9F852 /* UIButton+Extension.swift */; };
+		A0B49C541F14CF5F0058042E /* IOSStarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B48DC61F14A01E0058042E /* IOSStarTests.swift */; };
+		A0B49C551F14D0DA0058042E /* DealAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F721EE96BD1007BF6D8 /* DealAPI.swift */; };
+		A0B49C561F14D0DA0058042E /* DealSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F791EE96DE1007BF6D8 /* DealSocketAPI.swift */; };
+		A0B49C571F14D0DA0058042E /* MarketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF59091EC6EAAF003F67B4 /* MarketAPI.swift */; };
+		A0B49C581F14D0DA0058042E /* MarketSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBF590B1EC6EB75003F67B4 /* MarketSocketAPI.swift */; };
+		A0B49C591F14D0DA0058042E /* NewsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0C6B051EC43A6400D9C2BC /* NewsApi.swift */; };
+		A0B49C5A1F14D0DA0058042E /* NewsSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0C6B071EC43ABF00D9C2BC /* NewsSocketAPI.swift */; };
+		A0B49C5B1F14D0DA0058042E /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07DF7CB1EC072B700C2254E /* UserApi.swift */; };
+		A0B49C5C1F14D0DA0058042E /* UserSocketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07DF7CD1EC072D200C2254E /* UserSocketApi.swift */; };
+		A0B49C5D1F14D0DA0058042E /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A996C61EBC4D67000048DC /* LoginApi.swift */; };
+		A0B49C5E1F14D0DA0058042E /* LoginSocketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A996C71EBC4D67000048DC /* LoginSocketApi.swift */; };
+		A0B49C5F1F14D0DA0058042E /* BaseSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3B1A1EB9778F0023093A /* BaseSocketAPI.swift */; };
+		A0B49C601F14D0DA0058042E /* SocketConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3B181EB975B10023093A /* SocketConst.swift */; };
+		A0B49C611F14D0DA0058042E /* APISocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AF81EB973F10023093A /* APISocketHelper.swift */; };
+		A0B49C621F14D0DA0058042E /* SocketDataPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFA1EB973F10023093A /* SocketDataPacket.swift */; };
+		A0B49C631F14D0DA0058042E /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFB1EB973F10023093A /* SocketHelper.swift */; };
+		A0B49C641F14D0DA0058042E /* SocketRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFC1EB973F10023093A /* SocketRequest.swift */; };
+		A0B49C651F14D0DA0058042E /* SocketRequestManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFD1EB973F10023093A /* SocketRequestManage.swift */; };
+		A0B49C661F14D0DA0058042E /* SocketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFE1EB973F10023093A /* SocketResponse.swift */; };
+		A0B49C671F14D0DA0058042E /* AppAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E120F8B1EB966F4004E1E33 /* AppAPIHelper.swift */; };
+		A0B49C681F14D0DA0058042E /* DiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03F71F10D9130003D51F /* DiscoverModel.swift */; };
+		A0B49C691F14D0DA0058042E /* DiscoverRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6A224F1F1314CF00C5F838 /* DiscoverRequestModel.swift */; };
+		A0B49C6A1F14D0DA0058042E /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1E8A861EFB98BE001B2D7B /* LoginModel.swift */; };
+		A0B49C6B1F14D0DA0058042E /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1E8A881EFB9A08001B2D7B /* LoginRequestModel.swift */; };
+		A0B49C6C1F14D0DA0058042E /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F751EE96C7E007BF6D8 /* DealModel.swift */; };
+		A0B49C6D1F14D0DA0058042E /* DealRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F771EE96C8B007BF6D8 /* DealRequestModel.swift */; };
+		A0B49C6E1F14D0DA0058042E /* RechargeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03F96A21ED7FF3800FC78D4 /* RechargeListModel.swift */; };
+		A0B49C6F1F14D0DA0058042E /* MarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA46941EC5AEAA0004F942 /* MarketModel.swift */; };
+		A0B49C701F14D0DA0058042E /* MarketRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B01EDEE9DD00DC9643 /* MarketRequestModel.swift */; };
+		A0B49C711F14D0DA0058042E /* ServiceTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8F1F21EF0EADC0044A70F /* ServiceTypeModel.swift */; };
+		A0B49C721F14D0DA0058042E /* ServiceTypeRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1660621EF157D50077C377 /* ServiceTypeRequestModel.swift */; };
+		A0B49C731F14D0DA0058042E /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0C6B0A1EC4514400D9C2BC /* News.swift */; };
+		A0B49C741F14D0DA0058042E /* StarListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0504F821EC4476B008F4182 /* StarListModel.swift */; };
+		A0B49C751F14D0DA0058042E /* ShareDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */; };
+		A0B49C761F14D0DA0058042E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3B1C1EB9C5860023093A /* UserModel.swift */; };
+		A0B49C771F14D0DA0058042E /* UserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAC7E2E1EE26455001AD3EF /* UserRequestModel.swift */; };
+		A0B49C781F14D0DA0058042E /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A46C61EEF71F800EAB8B1 /* UserInfoModel.swift */; };
+		A0B49C791F14D0DA0058042E /* CommenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E22721C1EF941B300AF9579 /* CommenModel.swift */; };
+		A0B49C7A1F14D0DA0058042E /* BankCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02D07A91F0CCAC100BC43D9 /* BankCard.swift */; };
+		A0B49C7B1F14D0DA0058042E /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC45E1F0DEA3000281559 /* DiscoverViewController.swift */; };
+		A0B49C7C1F14D0DA0058042E /* BuyStarTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC4601F0DEA7100281559 /* BuyStarTimeViewController.swift */; };
+		A0B49C7D1F14D0DA0058042E /* StarInteractiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC4621F0DEA8C00281559 /* StarInteractiveViewController.swift */; };
+		A0B49C7E1F14D0DA0058042E /* StarIntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC4801F0F8C9B00281559 /* StarIntroduceViewController.swift */; };
+		A0B49C7F1F14D0DA0058042E /* SellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03E01F10C9870003D51F /* SellingViewController.swift */; };
+		A0B49C801F14D0DA0058042E /* StarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC4641F0E0E3200281559 /* StarCardView.swift */; };
+		A0B49C811F14D0DA0058042E /* StarInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC46A1F0F19BB00281559 /* StarInfoCell.swift */; };
+		A0B49C821F14D0DA0058042E /* StarCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC4681F0E2E6000281559 /* StarCardLayout.swift */; };
+		A0B49C831F14D0DA0058042E /* StarPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC47A1F0F738600281559 /* StarPhotoCell.swift */; };
+		A0B49C841F14D0DA0058042E /* StarPhotoItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC47C1F0F7B1700281559 /* StarPhotoItemCell.swift */; };
+		A0B49C851F14D0DA0058042E /* StarIntroduceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CC47E1F0F89F900281559 /* StarIntroduceCell.swift */; };
+		A0B49C861F14D0DA0058042E /* SellingIntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03E21F10CED40003D51F /* SellingIntroCell.swift */; };
+		A0B49C871F14D0DA0058042E /* SellingTimeAndCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03E41F10CEF80003D51F /* SellingTimeAndCountCell.swift */; };
+		A0B49C881F14D0DA0058042E /* SellingCountDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03E61F10CF120003D51F /* SellingCountDownCell.swift */; };
+		A0B49C891F14D0DA0058042E /* SellingBuyCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03E81F10CF220003D51F /* SellingBuyCountCell.swift */; };
+		A0B49C8A1F14D0DA0058042E /* SellingPriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03EA1F10CF310003D51F /* SellingPriceCell.swift */; };
+		A0B49C8B1F14D0DA0058042E /* SellingTipsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03EC1F10CF410003D51F /* SellingTipsCell.swift */; };
+		A0B49C8C1F14D0DA0058042E /* SellingBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFF56D31F137B82003895EB /* SellingBaseCell.swift */; };
+		A0B49C8D1F14D0DA0058042E /* BindingBankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0791ED6CB6800B93D28 /* BindingBankCardVC.swift */; };
+		A0B49C8E1F14D0DA0058042E /* WithDrawaListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02D07A71F0C9AC300BC43D9 /* WithDrawaListVC.swift */; };
+		A0B49C8F1F14D0DA0058042E /* BankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DDE061F0C89A000DBF17E /* BankCardVC.swift */; };
+		A0B49C901F14D0DA0058042E /* TipBindVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF07A1ED6CB6800B93D28 /* TipBindVC.swift */; };
+		A0B49C911F14D0DA0058042E /* AccountInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF07C1ED6CB6800B93D28 /* AccountInfoVC.swift */; };
+		A0B49C921F14D0DA0058042E /* CustomerServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF07D1ED6CB6800B93D28 /* CustomerServiceVC.swift */; };
+		A0B49C931F14D0DA0058042E /* DealListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF07E1ED6CB6800B93D28 /* DealListVC.swift */; };
+		A0B49C941F14D0DA0058042E /* GetOrderStarsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF07F1ED6CB6800B93D28 /* GetOrderStarsVC.swift */; };
+		A0B49C951F14D0DA0058042E /* MoneyDetailList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0811ED6CB6800B93D28 /* MoneyDetailList.swift */; };
+		A0B49C961F14D0DA0058042E /* ResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0821ED6CB6800B93D28 /* ResultVC.swift */; };
+		A0B49C971F14D0DA0058042E /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0831ED6CB6800B93D28 /* SettingVC.swift */; };
+		A0B49C981F14D0DA0058042E /* TradePassWordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0841ED6CB6800B93D28 /* TradePassWordVC.swift */; };
+		A0B49C991F14D0DA0058042E /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0851ED6CB6800B93D28 /* UserInfoVC.swift */; };
+		A0B49C9A1F14D0DA0058042E /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0861ED6CB6800B93D28 /* UserVC.swift */; };
+		A0B49C9B1F14D0DA0058042E /* WealthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0871ED6CB6800B93D28 /* WealthVC.swift */; };
+		A0B49C9C1F14D0DA0058042E /* VaildNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0A71ED6CBB900B93D28 /* VaildNameVC.swift */; };
+		A0B49C9D1F14D0DA0058042E /* ResetTradePassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6FB851ED952F10060CCDC /* ResetTradePassVC.swift */; };
+		A0B49C9E1F14D0DA0058042E /* StatementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0675F911EDA78FC00147B3B /* StatementVC.swift */; };
+		A0B49C9F1F14D0DA0058042E /* RechargeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0891ED6CB6800B93D28 /* RechargeVC.swift */; };
+		A0B49CA01F14D0DA0058042E /* WithdrawalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF08A1ED6CB6800B93D28 /* WithdrawalVC.swift */; };
+		A0B49CA11F14D0DA0058042E /* RechargeCollectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03B41EF1EF266FC00BDC68C /* RechargeCollectView.swift */; };
+		A0B49CA21F14D0DA0058042E /* CustomeAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF08C1ED6CB6800B93D28 /* CustomeAlertView.swift */; };
+		A0B49CA31F14D0DA0058042E /* SelectPayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF08D1ED6CB6800B93D28 /* SelectPayType.swift */; };
+		A0B49CA41F14D0DA0058042E /* SelectPayTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF08F1ED6CB6800B93D28 /* SelectPayTypeCell.swift */; };
+		A0B49CA51F14D0DA0058042E /* RegistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0155E0F1EA8C9760047B95B /* RegistVC.swift */; };
+		A0B49CA61F14D0DA0058042E /* ForgotPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A9BB41EA99547009E6B2B /* ForgotPwdVC.swift */; };
+		A0B49CA71F14D0DA0058042E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085A51A1EB0771C00149F14 /* LoginVC.swift */; };
+		A0B49CA81F14D0DA0058042E /* InputPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A085A51C1EB079F200149F14 /* InputPwdVC.swift */; };
+		A0B49CA91F14D0DA0058042E /* ContainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF98761EBCC498009B1D8A /* ContainVC.swift */; };
+		A0B49CAA1F14D0DA0058042E /* JoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1E8A831EFB95B6001B2D7B /* JoinVC.swift */; };
+		A0B49CAB1F14D0DA0058042E /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616581EAF1F4C00D95CB6 /* NewsViewController.swift */; };
+		A0B49CAC1F14D0DA0058042E /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16165B1EAF2EF100D95CB6 /* NewsDetailViewController.swift */; };
+		A0B49CAD1F14D0DA0058042E /* PublisherPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E192DEF1EC2E14900915D08 /* PublisherPageViewController.swift */; };
+		A0B49CAE1F14D0DA0058042E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E73B921F0B34BC00CA7F41 /* HomeVC.swift */; };
+		A0B49CAF1F14D0DA0058042E /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07D346F1EEE416A00136733 /* ShareView.swift */; };
+		A0B49CB01F14D0DA0058042E /* PubInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E192DF31EC2EA8200915D08 /* PubInfoHeaderView.swift */; };
+		A0B49CB11F14D0DA0058042E /* NewsNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16165D1EAF322F00D95CB6 /* NewsNavigationView.swift */; };
+		A0B49CB21F14D0DA0058042E /* NewsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16165F1EB0343600D95CB6 /* NewsListCell.swift */; };
+		A0B49CB31F14D0DA0058042E /* BannerDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B41EDFB5E100DC9643 /* BannerDetailImageCell.swift */; };
+		A0B49CB41F14D0DA0058042E /* BannerDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B61EDFB61100DC9643 /* BannerDetailInfoCell.swift */; };
+		A0B49CB51F14D0DA0058042E /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16166A1EB0960E00D95CB6 /* MarketViewController.swift */; };
+		A0B49CB61F14D0DA0058042E /* MarketSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E192DEB1EC2B69500915D08 /* MarketSearchViewController.swift */; };
+		A0B49CB71F14D0DA0058042E /* MarketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */; };
+		A0B49CB81F14D0DA0058042E /* OrderStarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79C71ECBE1970096470D /* OrderStarViewController.swift */; };
+		A0B49CB91F14D0DA0058042E /* MarketDetaiBaseInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79DF1ECC49160096470D /* MarketDetaiBaseInfoViewController.swift */; };
+		A0B49CBA1F14D0DA0058042E /* MarketCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */; };
+		A0B49CBB1F14D0DA0058042E /* MarketFansListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E11ECC49570096470D /* MarketFansListViewController.swift */; };
+		A0B49CBC1F14D0DA0058042E /* MarketAuctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79E31ECC49710096470D /* MarketAuctionViewController.swift */; };
+		A0B49CBD1F14D0DA0058042E /* MarketBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B56F61ECFD54D00A014AE /* MarketBaseViewController.swift */; };
+		A0B49CBE1F14D0DA0058042E /* MarketMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16166D1EB0973700D95CB6 /* MarketMenuView.swift */; };
+		A0B49CBF1F14D0DA0058042E /* MarketDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F6C1EE652E4007BF6D8 /* MarketDetailHeaderView.swift */; };
+		A0B49CC01F14D0DA0058042E /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16166F1EB0A7AA00D95CB6 /* MenuItemCell.swift */; };
+		A0B49CC11F14D0DA0058042E /* MenuSubViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616711EB1EF2300D95CB6 /* MenuSubViewCell.swift */; };
+		A0B49CC21F14D0DA0058042E /* SubViewItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E193C4B1EB9C87B0049AEDE /* SubViewItemCell.swift */; };
+		A0B49CC31F14D0DA0058042E /* MenuWidthLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E193C4D1EBAD3240049AEDE /* MenuWidthLayout.swift */; };
+		A0B49CC41F14D0DA0058042E /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E192DED1EC2B9AB00915D08 /* SearchResultCell.swift */; };
+		A0B49CC51F14D0DA0058042E /* MarketDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79881ECAEF3B0096470D /* MarketDetailCell.swift */; };
+		A0B49CC61F14D0DA0058042E /* MarketDetailSubViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79D51ECC3AD50096470D /* MarketDetailSubViewCell.swift */; };
+		A0B49CC71F14D0DA0058042E /* MarketDetailMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE798B1ECB21F70096470D /* MarketDetailMenuView.swift */; };
+		A0B49CC81F14D0DA0058042E /* ImageMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79C91ECBEE080096470D /* ImageMenuView.swift */; };
+		A0B49CC91F14D0DA0058042E /* ImageMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE79CB1ECC01B80096470D /* ImageMenuCell.swift */; };
+		A0B49CCA1F14D0DA0058042E /* OrderStartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5C28511ED6FB520005B2BE /* OrderStartViewCell.swift */; };
+		A0B49CCB1F14D0DA0058042E /* MarketCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECAA1A61ECD7527000FBED7 /* MarketCommentCell.swift */; };
+		A0B49CCC1F14D0DA0058042E /* MarketInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECAA1A81ECD7560000FBED7 /* MarketInfoCell.swift */; };
+		A0B49CCD1F14D0DA0058042E /* MarketExperienceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECAA1AA1ECD75B1000FBED7 /* MarketExperienceCell.swift */; };
+		A0B49CCE1F14D0DA0058042E /* MaketBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECAA1AC1ECD75DB000FBED7 /* MaketBannerCell.swift */; };
+		A0B49CCF1F14D0DA0058042E /* MarketFansCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECAA1AE1ECD761A000FBED7 /* MarketFansCell.swift */; };
+		A0B49CD01F14D0DA0058042E /* MarketSBFansCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECAA1B01ECD762D000FBED7 /* MarketSBFansCell.swift */; };
+		A0B49CD11F14D0DA0058042E /* MarketAuctionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B56FE1ED296F100A014AE /* MarketAuctionCell.swift */; };
+		A0B49CD21F14D0DA0058042E /* FansListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B56F41ECE878D00A014AE /* FansListHeaderView.swift */; };
+		A0B49CD31F14D0DA0058042E /* AuctionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B56FC1ED28D6700A014AE /* AuctionHeaderCell.swift */; };
+		A0B49CD41F14D0DA0058042E /* YD_SwipHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B56FA1ED2745400A014AE /* YD_SwipHeaderView.swift */; };
+		A0B49CD51F14D0DA0058042E /* GradualColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88DA971ED554B100EAA905 /* GradualColorView.swift */; };
+		A0B49CD61F14D0DA0058042E /* MarketDetailCommentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54EE161ED70DDE00E14EC3 /* MarketDetailCommentHeaderView.swift */; };
+		A0B49CD71F14D0DA0058042E /* AuctionImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62C7BA1EF8B2AB0053FE1E /* AuctionImageViewCell.swift */; };
+		A0B49CD81F14D0DA0058042E /* AuctionTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62C7BC1EF8B2BE0053FE1E /* AuctionTimeCell.swift */; };
+		A0B49CD91F14D0DA0058042E /* AuctionPositionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62C7BE1EF8B3060053FE1E /* AuctionPositionInfoCell.swift */; };
+		A0B49CDA1F14D0DA0058042E /* AuctionProgreseeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62C7C01EF8B3370053FE1E /* AuctionProgreseeCell.swift */; };
+		A0B49CDB1F14D0DA0058042E /* YDSSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A667EC1EC2B71C00612510 /* YDSSessionViewController.swift */; };
+		A0B49CDC1F14D0DA0058042E /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616621EB04D0700D95CB6 /* ExchangeViewController.swift */; };
+		A0B49CDD1F14D0DA0058042E /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616651EB04D4E00D95CB6 /* ContactListViewController.swift */; };
+		A0B49CDE1F14D0DA0058042E /* SystemMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084BB451ED52AD500DFC868 /* SystemMessageVC.swift */; };
+		A0B49CDF1F14D0DA0058042E /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD224C41ED916460048D7D3 /* AlertViewController.swift */; };
+		A0B49CE01F14D0DA0058042E /* ContactListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1616671EB04DCE00D95CB6 /* ContactListCell.swift */; };
+		A0B49CE11F14D0DA0058042E /* DealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57041ED305F600A014AE /* DealViewController.swift */; };
+		A0B49CE21F14D0DA0058042E /* BuyOrSellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57021ED2EDEA00A014AE /* BuyOrSellViewController.swift */; };
+		A0B49CE31F14D0DA0058042E /* BuyYetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57061ED3CB1400A014AE /* BuyYetViewController.swift */; };
+		A0B49CE41F14D0DA0058042E /* AllOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57081ED3CB4100A014AE /* AllOrderViewController.swift */; };
+		A0B49CE51F14D0DA0058042E /* DetailCommenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E88DA571ED4520A00EAA905 /* DetailCommenViewController.swift */; };
+		A0B49CE61F14D0DA0058042E /* DealDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B570A1ED3CBA800A014AE /* DealDetailViewController.swift */; };
+		A0B49CE71F14D0DA0058042E /* YD_DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54EE121ED5A13B00E14EC3 /* YD_DatePickerViewController.swift */; };
+		A0B49CE81F14D0DA0058042E /* SurePayOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A46C81EEF990400EAB8B1 /* SurePayOrderVC.swift */; };
+		A0B49CE91F14D0DA0058042E /* SurePayAllOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05ADDFF1EFA6979003D69ED /* SurePayAllOrderVC.swift */; };
+		A0B49CEA1F14D0DA0058042E /* ContainPayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A46CA1EEF996500EAB8B1 /* ContainPayVC.swift */; };
+		A0B49CEB1F14D0DA0058042E /* InputPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A46CC1EEF997B00EAB8B1 /* InputPassVC.swift */; };
+		A0B49CEC1F14D0DA0058042E /* DealBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0E01E51EEE6B0C0087093D /* DealBaseViewController.swift */; };
+		A0B49CED1F14D0DA0058042E /* DealScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57201ED41BDA00A014AE /* DealScrollView.swift */; };
+		A0B49CEE1F14D0DA0058042E /* DealStarInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57161ED40F5300A014AE /* DealStarInfoCell.swift */; };
+		A0B49CEF1F14D0DA0058042E /* DealMarketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57181ED40F7800A014AE /* DealMarketCell.swift */; };
+		A0B49CF01F14D0DA0058042E /* DealOrderInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B571A1ED40FA000A014AE /* DealOrderInfoCell.swift */; };
+		A0B49CF11F14D0DA0058042E /* DealHintCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B571C1ED40FE100A014AE /* DealHintCell.swift */; };
+		A0B49CF21F14D0DA0058042E /* DealTitleMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B570E1ED40A2800A014AE /* DealTitleMenuCell.swift */; };
+		A0B49CF31F14D0DA0058042E /* DealDoubleRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57101ED40A7700A014AE /* DealDoubleRowCell.swift */; };
+		A0B49CF41F14D0DA0058042E /* DealSingleRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B571E1ED410C900A014AE /* DealSingleRowCell.swift */; };
+		A0B49CF51F14D0DA0058042E /* DealPropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57121ED40AEE00A014AE /* DealPropertyCell.swift */; };
+		A0B49CF61F14D0DA0058042E /* DealSelectDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57141ED40B0C00A014AE /* DealSelectDateCell.swift */; };
+		A0B49CF71F14D0DA0058042E /* PositionStarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFFC21B1EF381640041A3BD /* PositionStarCell.swift */; };
+		A0B49CF81F14D0DA0058042E /* NSData+NTES.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C571EA86A6300F85308 /* NSData+NTES.h */; };
+		A0B49CF91F14D0DA0058042E /* NSData+NTES.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C581EA86A6300F85308 /* NSData+NTES.m */; };
+		A0B49CFA1F14D0DA0058042E /* NSDictionary+NTESJson.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C591EA86A6300F85308 /* NSDictionary+NTESJson.h */; };
+		A0B49CFB1F14D0DA0058042E /* NSDictionary+NTESJson.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C5A1EA86A6300F85308 /* NSDictionary+NTESJson.m */; };
+		A0B49CFC1F14D0DA0058042E /* NSString+NTES.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C5B1EA86A6300F85308 /* NSString+NTES.h */; };
+		A0B49CFD1F14D0DA0058042E /* NSString+NTES.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C5C1EA86A6300F85308 /* NSString+NTES.m */; };
+		A0B49CFE1F14D0DA0058042E /* UIActionSheet+NTESBlock.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C5D1EA86A6300F85308 /* UIActionSheet+NTESBlock.h */; };
+		A0B49CFF1F14D0DA0058042E /* UIActionSheet+NTESBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C5E1EA86A6300F85308 /* UIActionSheet+NTESBlock.m */; };
+		A0B49D001F14D0DA0058042E /* UIAlertView+NTESBlock.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C5F1EA86A6300F85308 /* UIAlertView+NTESBlock.h */; };
+		A0B49D011F14D0DA0058042E /* UIAlertView+NTESBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C601EA86A6300F85308 /* UIAlertView+NTESBlock.m */; };
+		A0B49D021F14D0DA0058042E /* UIImage+NTES.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C611EA86A6300F85308 /* UIImage+NTES.h */; };
+		A0B49D031F14D0DA0058042E /* UIImage+NTES.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C621EA86A6300F85308 /* UIImage+NTES.m */; };
+		A0B49D041F14D0DA0058042E /* UIImage+NTESColor.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C631EA86A6300F85308 /* UIImage+NTESColor.h */; };
+		A0B49D051F14D0DA0058042E /* UIImage+NTESColor.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C641EA86A6300F85308 /* UIImage+NTESColor.m */; };
+		A0B49D061F14D0DA0058042E /* UIResponder+NTESFirstResponder.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C651EA86A6300F85308 /* UIResponder+NTESFirstResponder.h */; };
+		A0B49D071F14D0DA0058042E /* UIResponder+NTESFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C661EA86A6300F85308 /* UIResponder+NTESFirstResponder.m */; };
+		A0B49D081F14D0DA0058042E /* UIScrollView+NTESDirection.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C671EA86A6300F85308 /* UIScrollView+NTESDirection.h */; };
+		A0B49D091F14D0DA0058042E /* UIScrollView+NTESDirection.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C681EA86A6300F85308 /* UIScrollView+NTESDirection.m */; };
+		A0B49D0A1F14D0DA0058042E /* UIScrollView+NTESPullToRefresh.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C691EA86A6300F85308 /* UIScrollView+NTESPullToRefresh.h */; };
+		A0B49D0B1F14D0DA0058042E /* UIScrollView+NTESPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C6A1EA86A6300F85308 /* UIScrollView+NTESPullToRefresh.m */; };
+		A0B49D0C1F14D0DA0058042E /* UIView+NTES.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C6B1EA86A6300F85308 /* UIView+NTES.h */; };
+		A0B49D0D1F14D0DA0058042E /* UIView+NTES.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C6C1EA86A6300F85308 /* UIView+NTES.m */; };
+		A0B49D101F14D0DA0058042E /* NIMExtensionHelper.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C711EA86A6300F85308 /* NIMExtensionHelper.h */; };
+		A0B49D111F14D0DA0058042E /* NIMExtensionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C721EA86A6300F85308 /* NIMExtensionHelper.m */; };
+		A0B49D121F14D0DA0058042E /* NSString+NIMKit.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C731EA86A6300F85308 /* NSString+NIMKit.h */; };
+		A0B49D131F14D0DA0058042E /* NSString+NIMKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C741EA86A6300F85308 /* NSString+NIMKit.m */; };
+		A0B49D141F14D0DA0058042E /* UIImage+NIM.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C751EA86A6300F85308 /* UIImage+NIM.h */; };
+		A0B49D151F14D0DA0058042E /* UIImage+NIM.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C761EA86A6300F85308 /* UIImage+NIM.m */; };
+		A0B49D161F14D0DA0058042E /* UITableView+NIMScrollToBottom.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C771EA86A6300F85308 /* UITableView+NIMScrollToBottom.h */; };
+		A0B49D171F14D0DA0058042E /* UITableView+NIMScrollToBottom.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C781EA86A6300F85308 /* UITableView+NIMScrollToBottom.m */; };
+		A0B49D181F14D0DA0058042E /* UIView+NIM.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C791EA86A6300F85308 /* UIView+NIM.h */; };
+		A0B49D191F14D0DA0058042E /* UIView+NIM.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C7A1EA86A6300F85308 /* UIView+NIM.m */; };
+		A0B49D1A1F14D0DA0058042E /* NIMCommonTableData.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C7C1EA86A6300F85308 /* NIMCommonTableData.h */; };
+		A0B49D1B1F14D0DA0058042E /* NIMCommonTableData.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C7D1EA86A6300F85308 /* NIMCommonTableData.m */; };
+		A0B49D1C1F14D0DA0058042E /* NIMCommonTableDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C7E1EA86A6300F85308 /* NIMCommonTableDelegate.h */; };
+		A0B49D1D1F14D0DA0058042E /* NIMCommonTableDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C7F1EA86A6300F85308 /* NIMCommonTableDelegate.m */; };
+		A0B49D1E1F14D0DA0058042E /* NIMCommonTableViewCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C801EA86A6300F85308 /* NIMCommonTableViewCell.h */; };
+		A0B49D1F1F14D0DA0058042E /* NIMGlobalMacro.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C811EA86A6300F85308 /* NIMGlobalMacro.h */; };
+		A0B49D201F14D0DA0058042E /* NIMKitColorButtonCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C821EA86A6300F85308 /* NIMKitColorButtonCell.h */; };
+		A0B49D211F14D0DA0058042E /* NIMKitColorButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C831EA86A6300F85308 /* NIMKitColorButtonCell.m */; };
+		A0B49D221F14D0DA0058042E /* NIMKitDataProviderImpl.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C841EA86A6300F85308 /* NIMKitDataProviderImpl.h */; };
+		A0B49D231F14D0DA0058042E /* NIMKitDataProviderImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C851EA86A6300F85308 /* NIMKitDataProviderImpl.m */; };
+		A0B49D241F14D0DA0058042E /* NIMKitSwitcherCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C861EA86A6300F85308 /* NIMKitSwitcherCell.h */; };
+		A0B49D251F14D0DA0058042E /* NIMKitSwitcherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C871EA86A6300F85308 /* NIMKitSwitcherCell.m */; };
+		A0B49D261F14D0DA0058042E /* NIMKitUIConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C881EA86A6300F85308 /* NIMKitUIConfig.h */; };
+		A0B49D271F14D0DA0058042E /* NIMKitUIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C891EA86A6300F85308 /* NIMKitUIConfig.m */; };
+		A0B49D281F14D0DA0058042E /* NIMKit.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C8A1EA86A6300F85308 /* NIMKit.h */; };
+		A0B49D291F14D0DA0058042E /* NIMKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C8B1EA86A6300F85308 /* NIMKit.m */; };
+		A0B49D2A1F14D0DA0058042E /* NIMCellConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C8D1EA86A6300F85308 /* NIMCellConfig.h */; };
+		A0B49D2B1F14D0DA0058042E /* NIMInputProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C8E1EA86A6300F85308 /* NIMInputProtocol.h */; };
+		A0B49D2C1F14D0DA0058042E /* NIMKitDataProvider.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C8F1EA86A6300F85308 /* NIMKitDataProvider.h */; };
+		A0B49D2D1F14D0DA0058042E /* NIMKitMessageProvider.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C901EA86A6300F85308 /* NIMKitMessageProvider.h */; };
+		A0B49D2E1F14D0DA0058042E /* NIMMessageCellProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C911EA86A6300F85308 /* NIMMessageCellProtocol.h */; };
+		A0B49D2F1F14D0DA0058042E /* NIMSessionConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C921EA86A6300F85308 /* NIMSessionConfig.h */; };
+		A0B49D301F14D0DA0058042E /* NIMAvatarImageView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C951EA86A6300F85308 /* NIMAvatarImageView.h */; };
+		A0B49D311F14D0DA0058042E /* NIMAvatarImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C961EA86A6300F85308 /* NIMAvatarImageView.m */; };
+		A0B49D321F14D0DA0058042E /* NIMBadgeView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C971EA86A6300F85308 /* NIMBadgeView.h */; };
+		A0B49D331F14D0DA0058042E /* NIMBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C981EA86A6300F85308 /* NIMBadgeView.m */; };
+		A0B49D341F14D0DA0058042E /* NIMCustomLeftBarView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C991EA86A6300F85308 /* NIMCustomLeftBarView.h */; };
+		A0B49D351F14D0DA0058042E /* NIMCustomLeftBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C9A1EA86A6300F85308 /* NIMCustomLeftBarView.m */; };
+		A0B49D361F14D0DA0058042E /* NIMKitMediaFetcher.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C9B1EA86A6300F85308 /* NIMKitMediaFetcher.h */; };
+		A0B49D371F14D0DA0058042E /* NIMKitMediaFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C9C1EA86A6300F85308 /* NIMKitMediaFetcher.m */; };
+		A0B49D381F14D0DA0058042E /* NIMKitNotificationFirer.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C9D1EA86A6300F85308 /* NIMKitNotificationFirer.h */; };
+		A0B49D391F14D0DA0058042E /* NIMKitNotificationFirer.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3C9E1EA86A6300F85308 /* NIMKitNotificationFirer.m */; };
+		A0B49D3A1F14D0DA0058042E /* NIMLoadProgressView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CA01EA86A6300F85308 /* NIMLoadProgressView.h */; };
+		A0B49D3B1F14D0DA0058042E /* NIMLoadProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CA11EA86A6300F85308 /* NIMLoadProgressView.m */; };
+		A0B49D3C1F14D0DA0058042E /* NIMPageView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CA41EA86A6300F85308 /* NIMPageView.h */; };
+		A0B49D3D1F14D0DA0058042E /* NIMPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CA51EA86A6300F85308 /* NIMPageView.m */; };
+		A0B49D3E1F14D0DA0058042E /* NIMContactDataCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CA81EA86A6300F85308 /* NIMContactDataCell.h */; };
+		A0B49D3F1F14D0DA0058042E /* NIMContactDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CA91EA86A6300F85308 /* NIMContactDataCell.m */; };
+		A0B49D401F14D0DA0058042E /* NIMContactDefines.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CAA1EA86A6300F85308 /* NIMContactDefines.h */; };
+		A0B49D411F14D0DA0058042E /* NIMGroupedDataCollection.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CAC1EA86A6300F85308 /* NIMGroupedDataCollection.h */; };
+		A0B49D421F14D0DA0058042E /* NIMGroupedDataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CAD1EA86A6300F85308 /* NIMGroupedDataCollection.m */; };
+		A0B49D431F14D0DA0058042E /* NIMGroupedUsrInfo.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CAE1EA86A6300F85308 /* NIMGroupedUsrInfo.h */; };
+		A0B49D441F14D0DA0058042E /* NIMGroupedUsrInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CAF1EA86A6300F85308 /* NIMGroupedUsrInfo.m */; };
+		A0B49D451F14D0DA0058042E /* NIMContactDataItem.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CB01EA86A6300F85308 /* NIMContactDataItem.h */; };
+		A0B49D461F14D0DA0058042E /* NIMContactDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CB11EA86A6300F85308 /* NIMContactDataItem.m */; };
+		A0B49D471F14D0DA0058042E /* NIMContactPickedView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CB21EA86A6300F85308 /* NIMContactPickedView.h */; };
+		A0B49D481F14D0DA0058042E /* NIMContactPickedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CB31EA86A6300F85308 /* NIMContactPickedView.m */; };
+		A0B49D491F14D0DA0058042E /* NIMContactSelectConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CB41EA86A6300F85308 /* NIMContactSelectConfig.h */; };
+		A0B49D4A1F14D0DA0058042E /* NIMContactSelectConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CB51EA86A6300F85308 /* NIMContactSelectConfig.m */; };
+		A0B49D4B1F14D0DA0058042E /* NIMContactSelectTabView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CB61EA86A6300F85308 /* NIMContactSelectTabView.h */; };
+		A0B49D4C1F14D0DA0058042E /* NIMContactSelectTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CB71EA86A6300F85308 /* NIMContactSelectTabView.m */; };
+		A0B49D4D1F14D0DA0058042E /* NIMContactSelectViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CB81EA86A6300F85308 /* NIMContactSelectViewController.h */; };
+		A0B49D4E1F14D0DA0058042E /* NIMContactSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CB91EA86A6300F85308 /* NIMContactSelectViewController.m */; };
+		A0B49D4F1F14D0DA0058042E /* NIMGrowingInternalTextView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CBC1EA86A6300F85308 /* NIMGrowingInternalTextView.h */; };
+		A0B49D501F14D0DA0058042E /* NIMGrowingInternalTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CBD1EA86A6300F85308 /* NIMGrowingInternalTextView.m */; };
+		A0B49D511F14D0DA0058042E /* NIMGrowingTextView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CBE1EA86A6300F85308 /* NIMGrowingTextView.h */; };
+		A0B49D521F14D0DA0058042E /* NIMGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CBF1EA86A6300F85308 /* NIMGrowingTextView.m */; };
+		A0B49D531F14D0DA0058042E /* NIMInputAtCache.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CC01EA86A6300F85308 /* NIMInputAtCache.h */; };
+		A0B49D541F14D0DA0058042E /* NIMInputAtCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CC11EA86A6400F85308 /* NIMInputAtCache.m */; };
+		A0B49D551F14D0DA0058042E /* NIMInputAudioRecordIndicatorView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CC21EA86A6400F85308 /* NIMInputAudioRecordIndicatorView.h */; };
+		A0B49D561F14D0DA0058042E /* NIMInputAudioRecordIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CC31EA86A6400F85308 /* NIMInputAudioRecordIndicatorView.m */; };
+		A0B49D571F14D0DA0058042E /* NIMInputBarItemType.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CC41EA86A6400F85308 /* NIMInputBarItemType.h */; };
+		A0B49D581F14D0DA0058042E /* NIMInputEmoticonButton.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CC51EA86A6400F85308 /* NIMInputEmoticonButton.h */; };
+		A0B49D591F14D0DA0058042E /* NIMInputEmoticonButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CC61EA86A6400F85308 /* NIMInputEmoticonButton.m */; };
+		A0B49D5A1F14D0DA0058042E /* NIMInputEmoticonContainerView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CC71EA86A6400F85308 /* NIMInputEmoticonContainerView.h */; };
+		A0B49D5B1F14D0DA0058042E /* NIMInputEmoticonContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CC81EA86A6400F85308 /* NIMInputEmoticonContainerView.m */; };
+		A0B49D5C1F14D0DB0058042E /* NIMInputEmoticonDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CC91EA86A6400F85308 /* NIMInputEmoticonDefine.h */; };
+		A0B49D5D1F14D0DB0058042E /* NIMInputEmoticonManager.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CCA1EA86A6400F85308 /* NIMInputEmoticonManager.h */; };
+		A0B49D5E1F14D0DB0058042E /* NIMInputEmoticonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CCB1EA86A6400F85308 /* NIMInputEmoticonManager.m */; };
+		A0B49D5F1F14D0DB0058042E /* NIMInputEmoticonParser.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CCC1EA86A6400F85308 /* NIMInputEmoticonParser.h */; };
+		A0B49D601F14D0DB0058042E /* NIMInputEmoticonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CCD1EA86A6400F85308 /* NIMInputEmoticonParser.m */; };
+		A0B49D611F14D0DB0058042E /* NIMInputEmoticonTabView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CCE1EA86A6400F85308 /* NIMInputEmoticonTabView.h */; };
+		A0B49D621F14D0DB0058042E /* NIMInputEmoticonTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CCF1EA86A6400F85308 /* NIMInputEmoticonTabView.m */; };
+		A0B49D631F14D0DB0058042E /* NIMInputMoreContainerView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CD01EA86A6400F85308 /* NIMInputMoreContainerView.h */; };
+		A0B49D641F14D0DB0058042E /* NIMInputMoreContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CD11EA86A6400F85308 /* NIMInputMoreContainerView.m */; };
+		A0B49D651F14D0DB0058042E /* NIMInputToolBar.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CD21EA86A6400F85308 /* NIMInputToolBar.h */; };
+		A0B49D661F14D0DB0058042E /* NIMInputToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CD31EA86A6400F85308 /* NIMInputToolBar.m */; };
+		A0B49D671F14D0DB0058042E /* NIMInputView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CD41EA86A6400F85308 /* NIMInputView.h */; };
+		A0B49D681F14D0DB0058042E /* NIMInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CD51EA86A6400F85308 /* NIMInputView.m */; };
+		A0B49D691F14D0DB0058042E /* NIMKitEvent.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CD71EA86A6400F85308 /* NIMKitEvent.h */; };
+		A0B49D6A1F14D0DB0058042E /* NIMKitEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CD81EA86A6400F85308 /* NIMKitEvent.m */; };
+		A0B49D6B1F14D0DB0058042E /* NIMKitInfo.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CD91EA86A6400F85308 /* NIMKitInfo.h */; };
+		A0B49D6C1F14D0DB0058042E /* NIMKitInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CDA1EA86A6400F85308 /* NIMKitInfo.m */; };
+		A0B49D6D1F14D0DB0058042E /* NIMKitInfoFetchOption.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CDB1EA86A6400F85308 /* NIMKitInfoFetchOption.h */; };
+		A0B49D6E1F14D0DB0058042E /* NIMKitInfoFetchOption.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CDC1EA86A6400F85308 /* NIMKitInfoFetchOption.m */; };
+		A0B49D6F1F14D0DB0058042E /* NIMMediaItem.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CDD1EA86A6400F85308 /* NIMMediaItem.h */; };
+		A0B49D701F14D0DB0058042E /* NIMMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CDE1EA86A6400F85308 /* NIMMediaItem.m */; };
+		A0B49D711F14D0DB0058042E /* NIMMessageModel.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CDF1EA86A6400F85308 /* NIMMessageModel.h */; };
+		A0B49D721F14D0DB0058042E /* NIMMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CE01EA86A6400F85308 /* NIMMessageModel.m */; };
+		A0B49D731F14D0DB0058042E /* NIMTimestampModel.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CE11EA86A6400F85308 /* NIMTimestampModel.h */; };
+		A0B49D741F14D0DB0058042E /* NIMTimestampModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CE21EA86A6400F85308 /* NIMTimestampModel.m */; };
+		A0B49D751F14D0DB0058042E /* NIMAudioContentConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CE61EA86A6400F85308 /* NIMAudioContentConfig.h */; };
+		A0B49D761F14D0DB0058042E /* NIMAudioContentConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CE71EA86A6400F85308 /* NIMAudioContentConfig.m */; };
+		A0B49D771F14D0DB0058042E /* NIMBaseSessionContentConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CE81EA86A6400F85308 /* NIMBaseSessionContentConfig.h */; };
+		A0B49D781F14D0DB0058042E /* NIMBaseSessionContentConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CE91EA86A6400F85308 /* NIMBaseSessionContentConfig.m */; };
+		A0B49D791F14D0DB0058042E /* NIMFileContentConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CEA1EA86A6400F85308 /* NIMFileContentConfig.h */; };
+		A0B49D7A1F14D0DB0058042E /* NIMFileContentConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CEB1EA86A6400F85308 /* NIMFileContentConfig.m */; };
+		A0B49D7B1F14D0DB0058042E /* NIMImageContentConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CEC1EA86A6400F85308 /* NIMImageContentConfig.h */; };
+		A0B49D7C1F14D0DB0058042E /* NIMImageContentConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CED1EA86A6400F85308 /* NIMImageContentConfig.m */; };
+		A0B49D7D1F14D0DB0058042E /* NIMLocationContentConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CEE1EA86A6400F85308 /* NIMLocationContentConfig.h */; };
+		A0B49D7E1F14D0DB0058042E /* NIMLocationContentConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CEF1EA86A6400F85308 /* NIMLocationContentConfig.m */; };
+		A0B49D831F14D0DB0058042E /* NIMTipContentConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CF41EA86A6400F85308 /* NIMTipContentConfig.h */; };
+		A0B49D841F14D0DB0058042E /* NIMTipContentConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CF51EA86A6400F85308 /* NIMTipContentConfig.m */; };
+		A0B49D851F14D0DB0058042E /* NIMUnsupportContentConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CF61EA86A6400F85308 /* NIMUnsupportContentConfig.h */; };
+		A0B49D861F14D0DB0058042E /* NIMUnsupportContentConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CF71EA86A6400F85308 /* NIMUnsupportContentConfig.m */; };
+		A0B49D871F14D0DB0058042E /* NIMVideoContentConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CF81EA86A6400F85308 /* NIMVideoContentConfig.h */; };
+		A0B49D881F14D0DB0058042E /* NIMVideoContentConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CF91EA86A6400F85308 /* NIMVideoContentConfig.m */; };
+		A0B49D891F14D0DB0058042E /* NIMCellLayoutConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CFA1EA86A6400F85308 /* NIMCellLayoutConfig.h */; };
+		A0B49D8A1F14D0DB0058042E /* NIMCellLayoutConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CFB1EA86A6400F85308 /* NIMCellLayoutConfig.m */; };
+		A0B49D8B1F14D0DB0058042E /* NIMKitLocationPoint.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CFD1EA86A6400F85308 /* NIMKitLocationPoint.h */; };
+		A0B49D8C1F14D0DB0058042E /* NIMKitLocationPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CFE1EA86A6400F85308 /* NIMKitLocationPoint.m */; };
+		A0B49D8D1F14D0DB0058042E /* NIMKitMessageAtModel.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3CFF1EA86A6400F85308 /* NIMKitMessageAtModel.h */; };
+		A0B49D8E1F14D0DB0058042E /* NIMKitMessageAtModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D001EA86A6400F85308 /* NIMKitMessageAtModel.m */; };
+		A0B49D8F1F14D0DB0058042E /* NIMMessageCellFactory.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D011EA86A6400F85308 /* NIMMessageCellFactory.h */; };
+		A0B49D901F14D0DB0058042E /* NIMMessageCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D021EA86A6400F85308 /* NIMMessageCellFactory.m */; };
+		A0B49D911F14D0DB0058042E /* NIMMessageMaker.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D031EA86A6400F85308 /* NIMMessageMaker.h */; };
+		A0B49D921F14D0DB0058042E /* NIMMessageMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D041EA86A6400F85308 /* NIMMessageMaker.m */; };
+		A0B49D931F14D0DB0058042E /* NIMKitAudioCenter.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D061EA86A6400F85308 /* NIMKitAudioCenter.h */; };
+		A0B49D941F14D0DB0058042E /* NIMKitAudioCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D071EA86A6400F85308 /* NIMKitAudioCenter.m */; };
+		A0B49D951F14D0DB0058042E /* NIMSessionConfigurateProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D081EA86A6400F85308 /* NIMSessionConfigurateProtocol.h */; };
+		A0B49D961F14D0DB0058042E /* NIMSessionConfigurator.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D091EA86A6400F85308 /* NIMSessionConfigurator.h */; };
+		A0B49D971F14D0DB0058042E /* NIMSessionConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D0A1EA86A6400F85308 /* NIMSessionConfigurator.m */; };
+		A0B49D981F14D0DB0058042E /* NIMSessionDataSourceImpl.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D0B1EA86A6400F85308 /* NIMSessionDataSourceImpl.h */; };
+		A0B49D991F14D0DB0058042E /* NIMSessionDataSourceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D0C1EA86A6400F85308 /* NIMSessionDataSourceImpl.m */; };
+		A0B49D9A1F14D0DB0058042E /* NIMSessionInteractorImpl.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D0D1EA86A6400F85308 /* NIMSessionInteractorImpl.h */; };
+		A0B49D9B1F14D0DB0058042E /* NIMSessionInteractorImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D0E1EA86A6400F85308 /* NIMSessionInteractorImpl.m */; };
+		A0B49D9C1F14D0DB0058042E /* NIMSessionLayoutImpl.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D0F1EA86A6400F85308 /* NIMSessionLayoutImpl.h */; };
+		A0B49D9D1F14D0DB0058042E /* NIMSessionLayoutImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D101EA86A6400F85308 /* NIMSessionLayoutImpl.m */; };
+		A0B49D9E1F14D0DB0058042E /* NIMSessionMsgDatasource.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D111EA86A6400F85308 /* NIMSessionMsgDatasource.h */; };
+		A0B49D9F1F14D0DB0058042E /* NIMSessionMsgDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D121EA86A6400F85308 /* NIMSessionMsgDatasource.m */; };
+		A0B49DA01F14D0DB0058042E /* NIMSessionPrivateProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D131EA86A6400F85308 /* NIMSessionPrivateProtocol.h */; };
+		A0B49DA11F14D0DB0058042E /* NIMSessionTableAdapter.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D141EA86A6400F85308 /* NIMSessionTableAdapter.h */; };
+		A0B49DA21F14D0DB0058042E /* NIMSessionTableAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D151EA86A6400F85308 /* NIMSessionTableAdapter.m */; };
+		A0B49DA31F14D0DB0058042E /* NIMMessageCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D171EA86A6400F85308 /* NIMMessageCell.h */; };
+		A0B49DA41F14D0DB0058042E /* NIMMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D181EA86A6400F85308 /* NIMMessageCell.m */; };
+		A0B49DA51F14D0DB0058042E /* NIMSessionTimestampCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D191EA86A6400F85308 /* NIMSessionTimestampCell.h */; };
+		A0B49DA61F14D0DB0058042E /* NIMSessionTimestampCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D1A1EA86A6400F85308 /* NIMSessionTimestampCell.m */; };
+		A0B49DA71F14D0DB0058042E /* NIMSessionAudioContentView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D1C1EA86A6400F85308 /* NIMSessionAudioContentView.h */; };
+		A0B49DA81F14D0DB0058042E /* NIMSessionAudioContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D1D1EA86A6400F85308 /* NIMSessionAudioContentView.m */; };
+		A0B49DA91F14D0DB0058042E /* NIMSessionFileTransContentView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D1E1EA86A6400F85308 /* NIMSessionFileTransContentView.h */; };
+		A0B49DAA1F14D0DB0058042E /* NIMSessionFileTransContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D1F1EA86A6400F85308 /* NIMSessionFileTransContentView.m */; };
+		A0B49DAB1F14D0DB0058042E /* NIMSessionImageContentView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D201EA86A6400F85308 /* NIMSessionImageContentView.h */; };
+		A0B49DAC1F14D0DB0058042E /* NIMSessionImageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D211EA86A6400F85308 /* NIMSessionImageContentView.m */; };
+		A0B49DAD1F14D0DB0058042E /* NIMSessionLocationContentView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D221EA86A6400F85308 /* NIMSessionLocationContentView.h */; };
+		A0B49DAE1F14D0DB0058042E /* NIMSessionLocationContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D231EA86A6400F85308 /* NIMSessionLocationContentView.m */; };
+		A0B49DAF1F14D0DB0058042E /* NIMSessionMessageContentView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D241EA86A6400F85308 /* NIMSessionMessageContentView.h */; };
+		A0B49DB01F14D0DB0058042E /* NIMSessionMessageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D251EA86A6400F85308 /* NIMSessionMessageContentView.m */; };
+		A0B49DB71F14D0DB0058042E /* NIMSessionUnknowContentView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D2C1EA86A6400F85308 /* NIMSessionUnknowContentView.h */; };
+		A0B49DB81F14D0DB0058042E /* NIMSessionUnknowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D2D1EA86A6400F85308 /* NIMSessionUnknowContentView.m */; };
+		A0B49DB91F14D0DB0058042E /* NIMSessionVideoContentView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D2E1EA86A6400F85308 /* NIMSessionVideoContentView.h */; };
+		A0B49DBA1F14D0DB0058042E /* NIMSessionVideoContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D2F1EA86A6400F85308 /* NIMSessionVideoContentView.m */; };
+		A0B49DBB1F14D0DB0058042E /* NIMLocationViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D311EA86A6400F85308 /* NIMLocationViewController.h */; };
+		A0B49DBC1F14D0DB0058042E /* NIMLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D321EA86A6400F85308 /* NIMLocationViewController.m */; };
+		A0B49DBD1F14D0DB0058042E /* NIMSessionViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D331EA86A6400F85308 /* NIMSessionViewController.h */; };
+		A0B49DBE1F14D0DB0058042E /* NIMSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D341EA86A6400F85308 /* NIMSessionViewController.m */; };
+		A0B49DBF1F14D0DB0058042E /* NIMSessionListDefaultConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D371EA86A6400F85308 /* NIMSessionListDefaultConfig.h */; };
+		A0B49DC01F14D0DB0058042E /* NIMSessionListDefaultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D381EA86A6400F85308 /* NIMSessionListDefaultConfig.m */; };
+		A0B49DC11F14D0DB0058042E /* NIMSessionListViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D391EA86A6400F85308 /* NIMSessionListViewController.h */; };
+		A0B49DC21F14D0DB0058042E /* NIMSessionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D3A1EA86A6400F85308 /* NIMSessionListViewController.m */; };
+		A0B49DC31F14D0DB0058042E /* NIMSessionListCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D3C1EA86A6400F85308 /* NIMSessionListCell.h */; };
+		A0B49DC41F14D0DB0058042E /* NIMSessionListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D3D1EA86A6400F85308 /* NIMSessionListCell.m */; };
+		A0B49DC51F14D0DB0058042E /* NIMKitDevice.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D651EA86A6400F85308 /* NIMKitDevice.h */; };
+		A0B49DC61F14D0DB0058042E /* NIMKitDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D661EA86A6400F85308 /* NIMKitDevice.m */; };
+		A0B49DC71F14D0DB0058042E /* NIMKitFileLocationHelper.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D671EA86A6400F85308 /* NIMKitFileLocationHelper.h */; };
+		A0B49DC81F14D0DB0058042E /* NIMKitFileLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D681EA86A6400F85308 /* NIMKitFileLocationHelper.m */; };
+		A0B49DC91F14D0DB0058042E /* NIMKitTimerHolder.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D691EA86A6400F85308 /* NIMKitTimerHolder.h */; };
+		A0B49DCA1F14D0DB0058042E /* NIMKitTimerHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D6A1EA86A6400F85308 /* NIMKitTimerHolder.m */; };
+		A0B49DCB1F14D0DB0058042E /* NIMKitUtil.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D6B1EA86A6400F85308 /* NIMKitUtil.h */; };
+		A0B49DCC1F14D0DB0058042E /* NIMKitUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D6C1EA86A6400F85308 /* NIMKitUtil.m */; };
+		A0B49DCD1F14D0DB0058042E /* NIMPinyinConverter.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D6E1EA86A6400F85308 /* NIMPinyinConverter.h */; };
+		A0B49DCE1F14D0DB0058042E /* NIMPinyinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D6F1EA86A6400F85308 /* NIMPinyinConverter.m */; };
+		A0B49DCF1F14D0DB0058042E /* NIMSpellingCenter.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D701EA86A6400F85308 /* NIMSpellingCenter.h */; };
+		A0B49DD01F14D0DB0058042E /* NIMSpellingCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D711EA86A6400F85308 /* NIMSpellingCenter.m */; };
+		A0B49DD11F14D0DB0058042E /* SwizzlingDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D741EA86A6400F85308 /* SwizzlingDefine.h */; };
+		A0B49DD21F14D0DB0058042E /* UINavigationBar+Swizzling.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D751EA86A6400F85308 /* UINavigationBar+Swizzling.h */; };
+		A0B49DD31F14D0DB0058042E /* UINavigationBar+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D761EA86A6400F85308 /* UINavigationBar+Swizzling.m */; };
+		A0B49DD41F14D0DB0058042E /* UINavigationController+Swizzling.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D771EA86A6400F85308 /* UINavigationController+Swizzling.h */; };
+		A0B49DD51F14D0DB0058042E /* UINavigationController+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D781EA86A6400F85308 /* UINavigationController+Swizzling.m */; };
+		A0B49DD61F14D0DB0058042E /* UINavigationItem+Swizzling.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D791EA86A6400F85308 /* UINavigationItem+Swizzling.h */; };
+		A0B49DD71F14D0DB0058042E /* UINavigationItem+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D7A1EA86A6400F85308 /* UINavigationItem+Swizzling.m */; };
+		A0B49DD81F14D0DB0058042E /* UIView+Swizzling.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D7B1EA86A6400F85308 /* UIView+Swizzling.h */; };
+		A0B49DD91F14D0DB0058042E /* UIView+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D7C1EA86A6400F85308 /* UIView+Swizzling.m */; };
+		A0B49DDA1F14D0DB0058042E /* UIViewController+Swizzling.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D7D1EA86A6400F85308 /* UIViewController+Swizzling.h */; };
+		A0B49DDB1F14D0DB0058042E /* UIViewController+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3D7E1EA86A6400F85308 /* UIViewController+Swizzling.m */; };
+		A0B49E101F14D0DB0058042E /* NTESLiveInfoViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DC11EA86A6400F85308 /* NTESLiveInfoViewController.h */; };
+		A0B49E111F14D0DB0058042E /* NTESLiveInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DC21EA86A6400F85308 /* NTESLiveInfoViewController.m */; };
+		A0B49E121F14D0DB0058042E /* NTESLiveViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DC31EA86A6400F85308 /* NTESLiveViewController.h */; };
+		A0B49E131F14D0DB0058042E /* NTESLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DC41EA86A6400F85308 /* NTESLiveViewController.m */; };
+		A0B49E141F14D0DB0058042E /* NTESChatroomListCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DC71EA86A6400F85308 /* NTESChatroomListCell.h */; };
+		A0B49E151F14D0DB0058042E /* NTESChatroomListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DC81EA86A6400F85308 /* NTESChatroomListCell.m */; };
+		A0B49E161F14D0DB0058042E /* NTESChatroomMemberCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DC91EA86A6400F85308 /* NTESChatroomMemberCell.h */; };
+		A0B49E171F14D0DB0058042E /* NTESChatroomMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DCA1EA86A6400F85308 /* NTESChatroomMemberCell.m */; };
+		A0B49E181F14D0DB0058042E /* NTESChatroomSegmentedControl.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DCB1EA86A6400F85308 /* NTESChatroomSegmentedControl.h */; };
+		A0B49E191F14D0DB0058042E /* NTESChatroomSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DCC1EA86A6400F85308 /* NTESChatroomSegmentedControl.m */; };
+		A0B49E1A1F14D0DB0058042E /* NTESLiveActionView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DCD1EA86A6400F85308 /* NTESLiveActionView.h */; };
+		A0B49E1B1F14D0DB0058042E /* NTESLiveActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DCE1EA86A6400F85308 /* NTESLiveActionView.m */; };
+		A0B49E1C1F14D0DB0058042E /* NTESLiveBroadcastView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DCF1EA86A6400F85308 /* NTESLiveBroadcastView.h */; };
+		A0B49E1D1F14D0DB0058042E /* NTESLiveBroadcastView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DD01EA86A6400F85308 /* NTESLiveBroadcastView.m */; };
+		A0B49E1E1F14D0DB0058042E /* NTESLiveMasterInfoView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DD11EA86A6400F85308 /* NTESLiveMasterInfoView.h */; };
+		A0B49E1F1F14D0DB0058042E /* NTESLiveMasterInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DD21EA86A6400F85308 /* NTESLiveMasterInfoView.m */; };
+		A0B49E221F14D0DB0058042E /* NTESCustomSysNotificationSender.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DD81EA86A6400F85308 /* NTESCustomSysNotificationSender.h */; };
+		A0B49E231F14D0DB0058042E /* NTESCustomSysNotificationSender.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DD91EA86A6400F85308 /* NTESCustomSysNotificationSender.m */; };
+		A0B49E241F14D0DB0058042E /* NTESContactDataMember.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DDB1EA86A6400F85308 /* NTESContactDataMember.h */; };
+		A0B49E251F14D0DB0058042E /* NTESContactDataMember.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DDC1EA86A6400F85308 /* NTESContactDataMember.m */; };
+		A0B49E261F14D0DB0058042E /* NTESGroupedContacts.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DDD1EA86A6400F85308 /* NTESGroupedContacts.h */; };
+		A0B49E271F14D0DB0058042E /* NTESGroupedContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DDE1EA86A6400F85308 /* NTESGroupedContacts.m */; };
+		A0B49E281F14D0DB0058042E /* NTESGroupedDataCollection.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DDF1EA86A6400F85308 /* NTESGroupedDataCollection.h */; };
+		A0B49E291F14D0DB0058042E /* NTESGroupedDataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DE01EA86A6400F85308 /* NTESGroupedDataCollection.m */; };
+		A0B49E2A1F14D0DB0058042E /* NTESContactDefines.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DE41EA86A6400F85308 /* NTESContactDefines.h */; };
+		A0B49E2B1F14D0DB0058042E /* NTESContactUtilCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DE51EA86A6400F85308 /* NTESContactUtilCell.h */; };
+		A0B49E2C1F14D0DB0058042E /* NTESContactUtilCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DE61EA86A6400F85308 /* NTESContactUtilCell.m */; };
+		A0B49E2D1F14D0DB0058042E /* NTESContactUtilItem.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DE71EA86A6400F85308 /* NTESContactUtilItem.h */; };
+		A0B49E2E1F14D0DB0058042E /* NTESContactUtilItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DE81EA86A6400F85308 /* NTESContactUtilItem.m */; };
+		A0B49E2F1F14D0DB0058042E /* NTESUserListCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DE91EA86A6400F85308 /* NTESUserListCell.h */; };
+		A0B49E301F14D0DB0058042E /* NTESUserListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DEA1EA86A6400F85308 /* NTESUserListCell.m */; };
+		A0B49E311F14D0DB0058042E /* NTESBlackListViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DED1EA86A6400F85308 /* NTESBlackListViewController.h */; };
+		A0B49E321F14D0DB0058042E /* NTESBlackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DEE1EA86A6400F85308 /* NTESBlackListViewController.m */; };
+		A0B49E331F14D0DB0058042E /* NTESContactAddFriendViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DEF1EA86A6400F85308 /* NTESContactAddFriendViewController.h */; };
+		A0B49E341F14D0DB0058042E /* NTESContactAddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DF01EA86A6400F85308 /* NTESContactAddFriendViewController.m */; };
+		A0B49E351F14D0DB0058042E /* NTESContactViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DF11EA86A6400F85308 /* NTESContactViewController.h */; };
+		A0B49E361F14D0DB0058042E /* NTESContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DF21EA86A6400F85308 /* NTESContactViewController.m */; };
+		A0B49E3A1F14D0DB0058042E /* NTESCustomNotificationObject.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DF91EA86A6400F85308 /* NTESCustomNotificationObject.h */; };
+		A0B49E3B1F14D0DB0058042E /* NTESCustomNotificationObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DFA1EA86A6400F85308 /* NTESCustomNotificationObject.m */; };
+		A0B49E3C1F14D0DB0058042E /* NTESCustomSysNotificationViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DFB1EA86A6400F85308 /* NTESCustomSysNotificationViewController.h */; };
+		A0B49E3D1F14D0DB0058042E /* NTESCustomSysNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DFC1EA86A6400F85308 /* NTESCustomSysNotificationViewController.m */; };
+		A0B49E3F1F14D0DB0058042E /* NTESSystemNotificationCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DFE1EA86A6400F85308 /* NTESSystemNotificationCell.h */; };
+		A0B49E401F14D0DB0058042E /* NTESSystemNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3DFF1EA86A6400F85308 /* NTESSystemNotificationCell.m */; };
+		A0B49E421F14D0DB0058042E /* NTESSystemNotificationViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E011EA86A6400F85308 /* NTESSystemNotificationViewController.h */; };
+		A0B49E431F14D0DB0058042E /* NTESSystemNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E021EA86A6400F85308 /* NTESSystemNotificationViewController.m */; };
+		A0B49E451F14D0DB0058042E /* NTESLoginManager.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E061EA86A6400F85308 /* NTESLoginManager.h */; };
+		A0B49E461F14D0DB0058042E /* NTESLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E071EA86A6400F85308 /* NTESLoginManager.m */; };
+		A0B49E471F14D0DB0058042E /* NTESLoginViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E091EA86A6400F85308 /* NTESLoginViewController.h */; };
+		A0B49E481F14D0DB0058042E /* NTESLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E0A1EA86A6400F85308 /* NTESLoginViewController.m */; };
+		A0B49E4A1F14D0DB0058042E /* NTESRegisterViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E0C1EA86A6400F85308 /* NTESRegisterViewController.h */; };
+		A0B49E4B1F14D0DB0058042E /* NTESRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E0D1EA86A6400F85308 /* NTESRegisterViewController.m */; };
+		A0B49E4D1F14D0DB0058042E /* NTESSessionConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E111EA86A6400F85308 /* NTESSessionConfig.h */; };
+		A0B49E4E1F14D0DB0058042E /* NTESSessionConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E121EA86A6400F85308 /* NTESSessionConfig.m */; };
+		A0B49E4F1F14D0DB0058042E /* NTESChartletAttachment.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E151EA86A6400F85308 /* NTESChartletAttachment.h */; };
+		A0B49E501F14D0DB0058042E /* NTESChartletAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E161EA86A6400F85308 /* NTESChartletAttachment.m */; };
+		A0B49E511F14D0DB0058042E /* NTESCustomAttachmentDecoder.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E171EA86A6400F85308 /* NTESCustomAttachmentDecoder.h */; };
+		A0B49E521F14D0DB0058042E /* NTESCustomAttachmentDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E181EA86A6400F85308 /* NTESCustomAttachmentDecoder.m */; };
+		A0B49E531F14D0DB0058042E /* NTESCustomAttachmentDefines.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E191EA86A6400F85308 /* NTESCustomAttachmentDefines.h */; };
+		A0B49E541F14D0DB0058042E /* NTESJanKenPonAttachment.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E1A1EA86A6400F85308 /* NTESJanKenPonAttachment.h */; };
+		A0B49E551F14D0DB0058042E /* NTESJanKenPonAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E1B1EA86A6400F85308 /* NTESJanKenPonAttachment.m */; };
+		A0B49E561F14D0DB0058042E /* NTESSearchLocalHistoryObject.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E1C1EA86A6400F85308 /* NTESSearchLocalHistoryObject.h */; };
+		A0B49E571F14D0DB0058042E /* NTESSearchLocalHistoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E1D1EA86A6400F85308 /* NTESSearchLocalHistoryObject.m */; };
+		A0B49E581F14D0DB0058042E /* NTESSessionFileStatusProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E1E1EA86A6400F85308 /* NTESSessionFileStatusProtocol.h */; };
+		A0B49E591F14D0DB0058042E /* NTESSessionMsgConverter.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E1F1EA86A6400F85308 /* NTESSessionMsgConverter.h */; };
+		A0B49E5A1F14D0DB0058042E /* NTESSessionMsgConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E201EA86A6400F85308 /* NTESSessionMsgConverter.m */; };
+		A0B49E5B1F14D0DB0058042E /* NTESSnapchatAttachment.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E211EA86A6400F85308 /* NTESSnapchatAttachment.h */; };
+		A0B49E5C1F14D0DB0058042E /* NTESSnapchatAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E221EA86A6400F85308 /* NTESSnapchatAttachment.m */; };
+		A0B49E5F1F14D0DB0058042E /* NTESSearchCellLayoutConstant.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E281EA86A6400F85308 /* NTESSearchCellLayoutConstant.h */; };
+		A0B49E601F14D0DB0058042E /* NTESSearchMessageContentCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E291EA86A6400F85308 /* NTESSearchMessageContentCell.h */; };
+		A0B49E611F14D0DB0058042E /* NTESSearchMessageContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E2A1EA86A6400F85308 /* NTESSearchMessageContentCell.m */; };
+		A0B49E621F14D0DB0058042E /* NTESSearchMessageEntraceCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E2B1EA86A6400F85308 /* NTESSearchMessageEntraceCell.h */; };
+		A0B49E631F14D0DB0058042E /* NTESSearchMessageEntraceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E2C1EA86A6400F85308 /* NTESSearchMessageEntraceCell.m */; };
+		A0B49E641F14D0DB0058042E /* NTESSessionChartletContentView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E2E1EA86A6400F85308 /* NTESSessionChartletContentView.h */; };
+		A0B49E651F14D0DB0058042E /* NTESSessionChartletContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E2F1EA86A6400F85308 /* NTESSessionChartletContentView.m */; };
+		A0B49E661F14D0DB0058042E /* NTESSessionJankenponContentView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E301EA86A6400F85308 /* NTESSessionJankenponContentView.h */; };
+		A0B49E671F14D0DB0058042E /* NTESSessionJankenponContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E311EA86A6400F85308 /* NTESSessionJankenponContentView.m */; };
+		A0B49E681F14D0DB0058042E /* NTESSessionSnapchatContentView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E321EA86A6400F85308 /* NTESSessionSnapchatContentView.h */; };
+		A0B49E691F14D0DB0058042E /* NTESSessionSnapchatContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E331EA86A6400F85308 /* NTESSessionSnapchatContentView.m */; };
+		A0B49E6A1F14D0DB0058042E /* NTESSessionTipContentView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E341EA86A6400F85308 /* NTESSessionTipContentView.h */; };
+		A0B49E6B1F14D0DB0058042E /* NTESSessionTipContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E351EA86A6400F85308 /* NTESSessionTipContentView.m */; };
+		A0B49E6E1F14D0DB0058042E /* NTESAudio2TextViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E3A1EA86A6400F85308 /* NTESAudio2TextViewController.h */; };
+		A0B49E6F1F14D0DB0058042E /* NTESAudio2TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E3B1EA86A6400F85308 /* NTESAudio2TextViewController.m */; };
+		A0B49E711F14D0DB0058042E /* NTESFilePreViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E3E1EA86A6400F85308 /* NTESFilePreViewController.h */; };
+		A0B49E721F14D0DB0058042E /* NTESFilePreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E3F1EA86A6400F85308 /* NTESFilePreViewController.m */; };
+		A0B49E741F14D0DB0058042E /* NTESFileTransSelectViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E411EA86A6400F85308 /* NTESFileTransSelectViewController.h */; };
+		A0B49E751F14D0DB0058042E /* NTESFileTransSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E421EA86A6400F85308 /* NTESFileTransSelectViewController.m */; };
+		A0B49E771F14D0DB0058042E /* NTESGalleryViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E451EA86A6400F85308 /* NTESGalleryViewController.h */; };
+		A0B49E781F14D0DB0058042E /* NTESGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E461EA86A6400F85308 /* NTESGalleryViewController.m */; };
+		A0B49E7A1F14D0DB0058042E /* NTESSessionLocalHistoryViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E481EA86A6400F85308 /* NTESSessionLocalHistoryViewController.h */; };
+		A0B49E7B1F14D0DB0058042E /* NTESSessionLocalHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E491EA86A6400F85308 /* NTESSessionLocalHistoryViewController.m */; };
+		A0B49E7C1F14D0DB0058042E /* NTESSessionPeekViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E4A1EA86A6400F85308 /* NTESSessionPeekViewController.h */; };
+		A0B49E7D1F14D0DB0058042E /* NTESSessionPeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E4B1EA86A6400F85308 /* NTESSessionPeekViewController.m */; };
+		A0B49E7E1F14D0DB0058042E /* NTESSessionRemoteHistoryViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E4C1EA86A6400F85308 /* NTESSessionRemoteHistoryViewController.h */; };
+		A0B49E7F1F14D0DB0058042E /* NTESSessionRemoteHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E4D1EA86A6400F85308 /* NTESSessionRemoteHistoryViewController.m */; };
+		A0B49E801F14D0DB0058042E /* NTESSessionViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E4E1EA86A6400F85308 /* NTESSessionViewController.h */; };
+		A0B49E811F14D0DC0058042E /* NTESSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E4F1EA86A6400F85308 /* NTESSessionViewController.m */; };
+		A0B49E821F14D0DC0058042E /* NTESWhiteboardViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E511EA86A6400F85308 /* NTESWhiteboardViewController.h */; };
+		A0B49E831F14D0DC0058042E /* NTESWhiteboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E521EA86A6400F85308 /* NTESWhiteboardViewController.m */; };
+		A0B49E851F14D0DC0058042E /* NTESWhiteboardDrawView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E551EA86A6400F85308 /* NTESWhiteboardDrawView.h */; };
+		A0B49E861F14D0DC0058042E /* NTESWhiteboardDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E561EA86A6400F85308 /* NTESWhiteboardDrawView.m */; };
+		A0B49E871F14D0DC0058042E /* NTESVideoViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E581EA86A6400F85308 /* NTESVideoViewController.h */; };
+		A0B49E881F14D0DC0058042E /* NTESVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E591EA86A6400F85308 /* NTESVideoViewController.m */; };
+		A0B49E8A1F14D0DC0058042E /* NetCallChatInfo.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E5D1EA86A6400F85308 /* NetCallChatInfo.h */; };
+		A0B49E8B1F14D0DC0058042E /* NetCallChatInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E5E1EA86A6400F85308 /* NetCallChatInfo.m */; };
+		A0B49E8C1F14D0DC0058042E /* NTESAudioChatViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E5F1EA86A6400F85308 /* NTESAudioChatViewController.h */; };
+		A0B49E8D1F14D0DC0058042E /* NTESAudioChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E601EA86A6400F85308 /* NTESAudioChatViewController.m */; };
+		A0B49E8F1F14D0DC0058042E /* NTESNetChatViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E621EA86A6400F85308 /* NTESNetChatViewController.h */; };
+		A0B49E901F14D0DC0058042E /* NTESNetChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E631EA86A6400F85308 /* NTESNetChatViewController.m */; };
+		A0B49E911F14D0DC0058042E /* NTESVideoChatViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E641EA86A6400F85308 /* NTESVideoChatViewController.h */; };
+		A0B49E921F14D0DC0058042E /* NTESVideoChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E651EA86A6400F85308 /* NTESVideoChatViewController.m */; };
+		A0B49E931F14D0DC0058042E /* NTESVideoChatViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E661EA86A6400F85308 /* NTESVideoChatViewController.xib */; };
+		A0B49E941F14D0DC0058042E /* NTESGLView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E681EA86A6400F85308 /* NTESGLView.h */; };
+		A0B49E951F14D0DC0058042E /* NTESGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E691EA86A6400F85308 /* NTESGLView.m */; };
+		A0B49E961F14D0DC0058042E /* NTESRecordSelectView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E6A1EA86A6400F85308 /* NTESRecordSelectView.h */; };
+		A0B49E971F14D0DC0058042E /* NTESRecordSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E6B1EA86A6400F85308 /* NTESRecordSelectView.m */; };
+		A0B49E981F14D0DC0058042E /* NTESVideoChatNetStatusView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E6C1EA86A6400F85308 /* NTESVideoChatNetStatusView.h */; };
+		A0B49E991F14D0DC0058042E /* NTESVideoChatNetStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E6D1EA86A6400F85308 /* NTESVideoChatNetStatusView.m */; };
+		A0B49E9A1F14D0DC0058042E /* NTESMutiClientsCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E711EA86A6400F85308 /* NTESMutiClientsCell.h */; };
+		A0B49E9B1F14D0DC0058042E /* NTESMutiClientsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E721EA86A6400F85308 /* NTESMutiClientsCell.m */; };
+		A0B49E9D1F14D0DC0058042E /* NTESListHeader.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E751EA86A6400F85308 /* NTESListHeader.h */; };
+		A0B49E9E1F14D0DC0058042E /* NTESListHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E761EA86A6400F85308 /* NTESListHeader.m */; };
+		A0B49E9F1F14D0DC0058042E /* NTESMutiClientsHeaderView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E771EA86A6400F85308 /* NTESMutiClientsHeaderView.h */; };
+		A0B49EA01F14D0DC0058042E /* NTESMutiClientsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E781EA86A6400F85308 /* NTESMutiClientsHeaderView.m */; };
+		A0B49EA11F14D0DC0058042E /* NTESTextHeaderView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E791EA86A6400F85308 /* NTESTextHeaderView.h */; };
+		A0B49EA21F14D0DC0058042E /* NTESTextHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E7A1EA86A6400F85308 /* NTESTextHeaderView.m */; };
+		A0B49EA31F14D0DC0058042E /* NTESClientsTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E7C1EA86A6400F85308 /* NTESClientsTableViewController.h */; };
+		A0B49EA41F14D0DC0058042E /* NTESClientsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E7D1EA86A6400F85308 /* NTESClientsTableViewController.m */; };
+		A0B49EA51F14D0DC0058042E /* NTESSessionListViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E7E1EA86A6400F85308 /* NTESSessionListViewController.h */; };
+		A0B49EA61F14D0DC0058042E /* NTESSessionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E7F1EA86A6400F85308 /* NTESSessionListViewController.m */; };
+		A0B49EA71F14D0DC0058042E /* NTESLogManager.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E821EA86A6400F85308 /* NTESLogManager.h */; };
+		A0B49EA81F14D0DC0058042E /* NTESLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E831EA86A6400F85308 /* NTESLogManager.m */; };
+		A0B49EA91F14D0DC0058042E /* NTESLogUploader.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E841EA86A6400F85308 /* NTESLogUploader.h */; };
+		A0B49EAA1F14D0DC0058042E /* NTESLogUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E851EA86A6400F85308 /* NTESLogUploader.m */; };
+		A0B49EAB1F14D0DC0058042E /* NTESLogViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E861EA86A6400F85308 /* NTESLogViewController.h */; };
+		A0B49EAC1F14D0DC0058042E /* NTESLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E871EA86A6400F85308 /* NTESLogViewController.m */; };
+		A0B49EAE1F14D0DC0058042E /* NTESNetDetectViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E8A1EA86A6400F85308 /* NTESNetDetectViewController.h */; };
+		A0B49EAF1F14D0DC0058042E /* NTESNetDetectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E8B1EA86A6400F85308 /* NTESNetDetectViewController.m */; };
+		A0B49EB11F14D0DC0058042E /* NTESNoDisturbTimeCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E921EA86A6400F85308 /* NTESNoDisturbTimeCell.h */; };
+		A0B49EB21F14D0DC0058042E /* NTESNoDisturbTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E931EA86A6400F85308 /* NTESNoDisturbTimeCell.m */; };
+		A0B49EB31F14D0DC0058042E /* NTESTextSettingCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E941EA86A6400F85308 /* NTESTextSettingCell.h */; };
+		A0B49EB41F14D0DC0058042E /* NTESTextSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E951EA86A6400F85308 /* NTESTextSettingCell.m */; };
+		A0B49EB51F14D0DC0058042E /* NTESAboutViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E961EA86A6400F85308 /* NTESAboutViewController.h */; };
+		A0B49EB61F14D0DC0058042E /* NTESAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E971EA86A6400F85308 /* NTESAboutViewController.m */; };
+		A0B49EB81F14D0DC0058042E /* NTESSettingViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E991EA86A6400F85308 /* NTESSettingViewController.h */; };
+		A0B49EB91F14D0DC0058042E /* NTESSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E9A1EA86A6400F85308 /* NTESSettingViewController.m */; };
+		A0B49EBB1F14D0DC0058042E /* NTESAliasSettingViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E9D1EA86A6400F85308 /* NTESAliasSettingViewController.h */; };
+		A0B49EBC1F14D0DC0058042E /* NTESAliasSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E9E1EA86A6400F85308 /* NTESAliasSettingViewController.m */; };
+		A0B49EBD1F14D0DC0058042E /* NTESBirthSettingViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3E9F1EA86A6400F85308 /* NTESBirthSettingViewController.h */; };
+		A0B49EBE1F14D0DC0058042E /* NTESBirthSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EA01EA86A6400F85308 /* NTESBirthSettingViewController.m */; };
+		A0B49EBF1F14D0DC0058042E /* NTESEmailSettingViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EA11EA86A6400F85308 /* NTESEmailSettingViewController.h */; };
+		A0B49EC01F14D0DC0058042E /* NTESEmailSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EA21EA86A6400F85308 /* NTESEmailSettingViewController.m */; };
+		A0B49EC11F14D0DC0058042E /* NTESGenderSettingViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EA31EA86A6400F85308 /* NTESGenderSettingViewController.h */; };
+		A0B49EC21F14D0DC0058042E /* NTESGenderSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EA41EA86A6400F85308 /* NTESGenderSettingViewController.m */; };
+		A0B49EC31F14D0DC0058042E /* NTESMobileSettingViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EA51EA86A6400F85308 /* NTESMobileSettingViewController.h */; };
+		A0B49EC41F14D0DC0058042E /* NTESMobileSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EA61EA86A6400F85308 /* NTESMobileSettingViewController.m */; };
+		A0B49EC51F14D0DC0058042E /* NTESNickNameSettingViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EA71EA86A6400F85308 /* NTESNickNameSettingViewController.h */; };
+		A0B49EC61F14D0DC0058042E /* NTESNickNameSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EA81EA86A6400F85308 /* NTESNickNameSettingViewController.m */; };
+		A0B49EC71F14D0DC0058042E /* NTESSignSettingViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EA91EA86A6400F85308 /* NTESSignSettingViewController.h */; };
+		A0B49EC81F14D0DC0058042E /* NTESSignSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EAA1EA86A6400F85308 /* NTESSignSettingViewController.m */; };
+		A0B49EC91F14D0DC0058042E /* NTESUserInfoSettingViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EAB1EA86A6400F85308 /* NTESUserInfoSettingViewController.h */; };
+		A0B49ECA1F14D0DC0058042E /* NTESUserInfoSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EAC1EA86A6400F85308 /* NTESUserInfoSettingViewController.m */; };
+		A0B49ECC1F14D0DC0058042E /* NTESBirthPickerView.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EAF1EA86A6400F85308 /* NTESBirthPickerView.h */; };
+		A0B49ECD1F14D0DC0058042E /* NTESBirthPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EB01EA86A6400F85308 /* NTESBirthPickerView.m */; };
+		A0B49ECE1F14D0DC0058042E /* NTESSettingCheckCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EB11EA86A6400F85308 /* NTESSettingCheckCell.h */; };
+		A0B49ECF1F14D0DC0058042E /* NTESSettingCheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EB21EA86A6400F85308 /* NTESSettingCheckCell.m */; };
+		A0B49ED01F14D0DC0058042E /* NTESSettingPortraitCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EB31EA86A6400F85308 /* NTESSettingPortraitCell.h */; };
+		A0B49ED11F14D0DC0058042E /* NTESSettingPortraitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EB41EA86A6400F85308 /* NTESSettingPortraitCell.m */; };
+		A0B49ED21F14D0DC0058042E /* NTESSettingSwitcherCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EB51EA86A6400F85308 /* NTESSettingSwitcherCell.h */; };
+		A0B49ED31F14D0DC0058042E /* NTESDemoFetchChatroomTask.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EB81EA86A6400F85308 /* NTESDemoFetchChatroomTask.h */; };
+		A0B49ED41F14D0DC0058042E /* NTESDemoFetchChatroomTask.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EB91EA86A6400F85308 /* NTESDemoFetchChatroomTask.m */; };
+		A0B49ED51F14D0DC0058042E /* NTESDemoRegisterTask.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EBA1EA86A6400F85308 /* NTESDemoRegisterTask.h */; };
+		A0B49ED61F14D0DC0058042E /* NTESDemoRegisterTask.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EBB1EA86A6400F85308 /* NTESDemoRegisterTask.m */; };
+		A0B49ED71F14D0DC0058042E /* NTESDemoService.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EBC1EA86A6400F85308 /* NTESDemoService.h */; };
+		A0B49ED81F14D0DC0058042E /* NTESDemoService.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EBD1EA86A6400F85308 /* NTESDemoService.m */; };
+		A0B49ED91F14D0DC0058042E /* NTESDemoServiceTask.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EBE1EA86A6400F85308 /* NTESDemoServiceTask.h */; };
+		A0B49EDA1F14D0DC0058042E /* NTESBundleSetting.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EC01EA86A6400F85308 /* NTESBundleSetting.h */; };
+		A0B49EDB1F14D0DC0058042E /* NTESBundleSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EC11EA86A6400F85308 /* NTESBundleSetting.m */; };
+		A0B49EDC1F14D0DC0058042E /* NTESCADisplayLinkHolder.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EC21EA86A6400F85308 /* NTESCADisplayLinkHolder.h */; };
+		A0B49EDD1F14D0DC0058042E /* NTESCADisplayLinkHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EC31EA86A6400F85308 /* NTESCADisplayLinkHolder.m */; };
+		A0B49EDE1F14D0DC0058042E /* NTESClientUtil.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EC41EA86A6400F85308 /* NTESClientUtil.h */; };
+		A0B49EDF1F14D0DC0058042E /* NTESClientUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EC51EA86A6400F85308 /* NTESClientUtil.m */; };
+		A0B49EE01F14D0DC0058042E /* NTESDemoConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EC61EA86A6400F85308 /* NTESDemoConfig.h */; };
+		A0B49EE11F14D0DC0058042E /* NTESDemoConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EC71EA86A6400F85308 /* NTESDemoConfig.m */; };
+		A0B49EE21F14D0DC0058042E /* NTESDevice.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EC81EA86A6400F85308 /* NTESDevice.h */; };
+		A0B49EE31F14D0DC0058042E /* NTESDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EC91EA86A6400F85308 /* NTESDevice.m */; };
+		A0B49EE41F14D0DC0058042E /* NTESFileLocationHelper.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ECA1EA86A6400F85308 /* NTESFileLocationHelper.h */; };
+		A0B49EE51F14D0DC0058042E /* NTESFileLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ECB1EA86A6400F85308 /* NTESFileLocationHelper.m */; };
+		A0B49EE61F14D0DC0058042E /* NTESNotificationCenter.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ECC1EA86A6400F85308 /* NTESNotificationCenter.h */; };
+		A0B49EE71F14D0DC0058042E /* NTESNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ECD1EA86A6400F85308 /* NTESNotificationCenter.m */; };
+		A0B49EE81F14D0DC0058042E /* NTESSDKConfigDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ECE1EA86A6400F85308 /* NTESSDKConfigDelegate.h */; };
+		A0B49EE91F14D0DC0058042E /* NTESSDKConfigDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ECF1EA86A6400F85308 /* NTESSDKConfigDelegate.m */; };
+		A0B49EEA1F14D0DC0058042E /* NTESService.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ED01EA86A6400F85308 /* NTESService.h */; };
+		A0B49EEB1F14D0DC0058042E /* NTESService.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ED11EA86A6400F85308 /* NTESService.m */; };
+		A0B49EEC1F14D0DC0058042E /* NTESSessionUtil.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ED21EA86A6400F85308 /* NTESSessionUtil.h */; };
+		A0B49EED1F14D0DC0058042E /* NTESSessionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ED31EA86A6400F85308 /* NTESSessionUtil.m */; };
+		A0B49EEE1F14D0DC0058042E /* NTESTimerHolder.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ED41EA86A6400F85308 /* NTESTimerHolder.h */; };
+		A0B49EEF1F14D0DC0058042E /* NTESTimerHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ED51EA86A6400F85308 /* NTESTimerHolder.m */; };
+		A0B49EF01F14D0DC0058042E /* NTESUserUtil.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ED61EA86A6400F85308 /* NTESUserUtil.h */; };
+		A0B49EF11F14D0DC0058042E /* NTESUserUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ED71EA86A6400F85308 /* NTESUserUtil.m */; };
+		A0B49EF21F14D0DC0058042E /* NTESPinyinConverter.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ED91EA86A6400F85308 /* NTESPinyinConverter.h */; };
+		A0B49EF31F14D0DC0058042E /* NTESPinyinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDA1EA86A6400F85308 /* NTESPinyinConverter.m */; };
+		A0B49EF41F14D0DC0058042E /* NTESSpellingCenter.h in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDB1EA86A6400F85308 /* NTESSpellingCenter.h */; };
+		A0B49EF51F14D0DC0058042E /* NTESSpellingCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */; };
+		A0B49F521F14D0DC0058042E /* UpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3170741EF7A12700BA637F /* UpdateVC.swift */; };
+		A0B49F531F14D0DC0058042E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07238771EA76AA300E755DB /* AppDelegate.swift */; };
+		A0B49F541F14D0DC0058042E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072387A1EA76AA300E755DB /* ViewController.swift */; };
+		A0B49F551F14D0DC0058042E /* iOSStar-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */; };
+		A0B49F561F14D0DC0058042E /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072387C1EA76AA300E755DB /* AppConst.swift */; };
+		A0B49F581F14D0DC0058042E /* WechatAuthSDK.h in Sources */ = {isa = PBXBuildFile; fileRef = A07238821EA76AA300E755DB /* WechatAuthSDK.h */; };
+		A0B49F591F14D0DC0058042E /* WXApi.h in Sources */ = {isa = PBXBuildFile; fileRef = A07238831EA76AA300E755DB /* WXApi.h */; };
+		A0B49F5A1F14D0DC0058042E /* WXApiObject.h in Sources */ = {isa = PBXBuildFile; fileRef = A07238841EA76AA300E755DB /* WXApiObject.h */; };
+		A0B49F5B1F14D0DC0058042E /* YD_MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F6A1EE579E9007BF6D8 /* YD_MenuView.swift */; };
+		A0B49F5C1F14D0DC0058042E /* TradingAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7308751EF2C14A0051E713 /* TradingAlertView.swift */; };
+		A0B49F5D1F14D0DC0058042E /* NoDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F6F1EE6DC22007BF6D8 /* NoDataCell.swift */; };
+		A0B49F5E1F14D0DC0058042E /* CanCopyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DED0E571EEA907A00C10B3E /* CanCopyLabel.swift */; };
+		A0B49F5F1F14D0DC0058042E /* YD_CountDownHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B21EDEEED400DC9643 /* YD_CountDownHelper.swift */; };
+		A0B49F601F14D0DC0058042E /* AppConfigHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9F31EE1ED85B04008B12A5 /* AppConfigHelper.swift */; };
+		A0B49F611F14D0DC0058042E /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08569F91EB08FCA004F349B /* BaseNavigationController.swift */; };
+		A0B49F621F14D0DC0058042E /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084BB4E1ED5793500DFC868 /* TableViewHelper.swift */; };
 		A0B6FB861ED952F10060CCDC /* ResetTradePassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6FB851ED952F10060CCDC /* ResetTradePassVC.swift */; };
 		A0BC76401EC47C4E0050F1D6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0BC763F1EC47C4E0050F1D6 /* Settings.bundle */; };
 		A0C9D66E1EAE102300FC438D /* NIMKitEmoticon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D65F1EAE102300FC438D /* NIMKitEmoticon.bundle */; };
@@ -534,7 +1189,20 @@
 		A0F4FA231ECD871500D13302 /* City.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0F4FA221ECD871500D13302 /* City.plist */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A0B48DDE1F14B28D0058042E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A07238421EA768AC00E755DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A07238491EA768AC00E755DB;
+			remoteInfo = iOSStar;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		0CEBBF48509D2A9C3C037F6F /* Pods-星悦UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-星悦UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-星悦UITests/Pods-星悦UITests.release.xcconfig"; sourceTree = "<group>"; };
+		258B853FD1AA9F735132842A /* Pods___UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods___UITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		30016B3D07B9330ED11986CB /* Pods-星悦UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-星悦UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-星悦UITests/Pods-星悦UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		658ED50682E9CA02E39549B8 /* Pods-iOSStar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.release.xcconfig"; sourceTree = "<group>"; };
 		6E0922A31EA88DFE002725A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E0922A51EA88DFE002725A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
@@ -663,6 +1331,7 @@
 		6EFF56E71F147890003895EB /* HeatListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatListCell.swift; sourceTree = "<group>"; };
 		6EFFC21B1EF381640041A3BD /* PositionStarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionStarCell.swift; sourceTree = "<group>"; };
 		8408122B704986AA5A9C486E /* Pods-iOSStar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSStar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSStar/Pods-iOSStar.debug.xcconfig"; sourceTree = "<group>"; };
+		86D8773CD4998727905237B2 /* Pods_IOSStarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOSStarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1660621EF157D50077C377 /* ServiceTypeRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTypeRequestModel.swift; sourceTree = "<group>"; };
 		8D2C3DBA1EF0CEF100FA996A /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		8D4F6AA51F0751570038DE32 /* 1242x2208.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1242x2208.png; sourceTree = "<group>"; };
@@ -1382,6 +2051,69 @@
 		A0A667EE1EC31D6800612510 /* errorcode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = errorcode.plist; sourceTree = "<group>"; };
 		A0A996C61EBC4D67000048DC /* LoginApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
 		A0A996C71EBC4D67000048DC /* LoginSocketApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSocketApi.swift; sourceTree = "<group>"; };
+		A0B48DC41F14A01E0058042E /* IOSStarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSStarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0B48DC61F14A01E0058042E /* IOSStarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSStarTests.swift; sourceTree = "<group>"; };
+		A0B48DC81F14A01E0058042E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0B48DD91F14AED50058042E /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-gqpumkuujzpgdagggczmftujfjql/Build/Products/Debug-iphonesimulator/CocoaAsyncSocket/CocoaAsyncSocket.framework"; sourceTree = "<group>"; };
+		A0B48DDC1F14AF520058042E /* OEZCommSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OEZCommSDK.framework; path = iOSSTar/Marco/OEZCommSDK.framework; sourceTree = "<group>"; };
+		A0B48DE01F14B4560058042E /* OEZCommSDK */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = OEZCommSDK; path = iOSSTar/Marco/OEZCommSDK.framework/OEZCommSDK; sourceTree = "<group>"; };
+		A0B48DE31F14B5160058042E /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-gqpumkuujzpgdagggczmftujfjql/Build/Products/Debug-iphonesimulator/MBProgressHUD/MBProgressHUD.framework"; sourceTree = "<group>"; };
+		A0B48DE41F14B5160058042E /* MJRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MJRefresh.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-gqpumkuujzpgdagggczmftujfjql/Build/Products/Debug-iphonesimulator/MJRefresh/MJRefresh.framework"; sourceTree = "<group>"; };
+		A0B48DE51F14B5160058042E /* MWPhotoBrowser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MWPhotoBrowser.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-gqpumkuujzpgdagggczmftujfjql/Build/Products/Debug-iphonesimulator/MWPhotoBrowser/MWPhotoBrowser.framework"; sourceTree = "<group>"; };
+		A0B48DE61F14B5160058042E /* Pods_iOSStar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_iOSStar.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-gqpumkuujzpgdagggczmftujfjql/Build/Products/Debug-iphonesimulator/Pods_iOSStar.framework"; sourceTree = "<group>"; };
+		A0B48DE71F14B5160058042E /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-gqpumkuujzpgdagggczmftujfjql/Build/Products/Debug-iphonesimulator/Reachability/Reachability.framework"; sourceTree = "<group>"; };
+		A0B48DE81F14B5160058042E /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-gqpumkuujzpgdagggczmftujfjql/Build/Products/Debug-iphonesimulator/Realm/Realm.framework"; sourceTree = "<group>"; };
+		A0B48DE91F14B5160058042E /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-gqpumkuujzpgdagggczmftujfjql/Build/Products/Debug-iphonesimulator/RealmSwift/RealmSwift.framework"; sourceTree = "<group>"; };
+		A0B48DEA1F14B5160058042E /* SDCycleScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDCycleScrollView.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-gqpumkuujzpgdagggczmftujfjql/Build/Products/Debug-iphonesimulator/SDCycleScrollView/SDCycleScrollView.framework"; sourceTree = "<group>"; };
+		A0B48DEB1F14B5160058042E /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-gqpumkuujzpgdagggczmftujfjql/Build/Products/Debug-iphonesimulator/SDWebImage/SDWebImage.framework"; sourceTree = "<group>"; };
+		A0B48DEC1F14B5160058042E /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-gqpumkuujzpgdagggczmftujfjql/Build/Products/Debug-iphonesimulator/SnapKit/SnapKit.framework"; sourceTree = "<group>"; };
+		A0B48DED1F14B5160058042E /* SSZipArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SSZipArchive.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-gqpumkuujzpgdagggczmftujfjql/Build/Products/Debug-iphonesimulator/SSZipArchive/SSZipArchive.framework"; sourceTree = "<group>"; };
+		A0B48DEE1F14B5160058042E /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-gqpumkuujzpgdagggczmftujfjql/Build/Products/Debug-iphonesimulator/SVProgressHUD/SVProgressHUD.framework"; sourceTree = "<group>"; };
+		A0B48DEF1F14B5160058042E /* Toast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Toast.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-gqpumkuujzpgdagggczmftujfjql/Build/Products/Debug-iphonesimulator/Toast/Toast.framework"; sourceTree = "<group>"; };
+		A0B48DF01F14B5160058042E /* TZImagePickerController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TZImagePickerController.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-gqpumkuujzpgdagggczmftujfjql/Build/Products/Debug-iphonesimulator/TZImagePickerController/TZImagePickerController.framework"; sourceTree = "<group>"; };
+		A0B48E041F14B6D30058042E /* Aliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aliases.swift; sourceTree = "<group>"; };
+		A0B48E051F14B6D30058042E /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		A0B48E061F14B6D30058042E /* LinkingObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkingObjects.swift; sourceTree = "<group>"; };
+		A0B48E071F14B6D30058042E /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		A0B48E081F14B6D30058042E /* Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
+		A0B48E091F14B6D30058042E /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		A0B48E0A1F14B6D30058042E /* ObjectiveCSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveCSupport.swift; sourceTree = "<group>"; };
+		A0B48E0B1F14B6D30058042E /* ObjectSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSchema.swift; sourceTree = "<group>"; };
+		A0B48E0C1F14B6D30058042E /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
+		A0B48E0D1F14B6D30058042E /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		A0B48E0E1F14B6D30058042E /* Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
+		A0B48E0F1F14B6D30058042E /* RealmCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCollection.swift; sourceTree = "<group>"; };
+		A0B48E101F14B6D30058042E /* RealmConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfiguration.swift; sourceTree = "<group>"; };
+		A0B48E111F14B6D30058042E /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		A0B48E121F14B6D30058042E /* Schema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schema.swift; sourceTree = "<group>"; };
+		A0B48E131F14B6D30058042E /* SortDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDescriptor.swift; sourceTree = "<group>"; };
+		A0B48E141F14B6D30058042E /* SwiftVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftVersion.swift; sourceTree = "<group>"; };
+		A0B48E151F14B6D30058042E /* Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
+		A0B48E161F14B6D30058042E /* ThreadSafeReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafeReference.swift; sourceTree = "<group>"; };
+		A0B48E171F14B6D30058042E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		A0B4919F1F14BA3B0058042E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		A0B491A11F14BA3B0058042E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		A0B491A21F14BA3B0058042E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A0B491A31F14BA3B0058042E /* run */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = run; sourceTree = "<group>"; };
+		A0B491A41F14BA3B0058042E /* upload-symbols */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "upload-symbols"; sourceTree = "<group>"; };
+		A0B491A51F14BA3B0058042E /* uploadDSYM */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = uploadDSYM; sourceTree = "<group>"; };
+		A0B491A81F14BC830058042E /* NIMAVChat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NIMAVChat.framework; path = Pods/NIMSDK/NIMAVChat/NIMAVChat.framework; sourceTree = "<group>"; };
+		A0B491A91F14BC830058042E /* NIMSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NIMSDK.framework; path = Pods/NIMSDK/NIMSDK/NIMSDK.framework; sourceTree = "<group>"; };
+		A0B491B11F14C2B80058042E /* UMMobClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UMMobClick.framework; path = "Pods/UMengAnalytics-NO-IDFA/umsdk_IOS_analyics_no-idfa_v4.2.5/UMMobClick.framework"; sourceTree = "<group>"; };
+		A0B491B41F14C2B80058042E /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
+		A0B491B51F14C2B80058042E /* UMSocialQQHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMSocialQQHandler.h; sourceTree = "<group>"; };
+		A0B491B71F14C2B80058042E /* libSocialSina.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialSina.a; sourceTree = "<group>"; };
+		A0B491B81F14C2B80058042E /* UMSocialSinaHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMSocialSinaHandler.h; sourceTree = "<group>"; };
+		A0B491BA1F14C2B80058042E /* libSocialWeChat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWeChat.a; sourceTree = "<group>"; };
+		A0B491BB1F14C2B80058042E /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
+		A0B491BD1F14C2B80058042E /* UMSocialCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMSocialCore.framework; sourceTree = "<group>"; };
+		A0B491BE1F14C2B80058042E /* UMSocialNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMSocialNetwork.framework; sourceTree = "<group>"; };
+		A0B491BF1F14C2B80058042E /* UMSocialSDKPromptResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKPromptResources.bundle; sourceTree = "<group>"; };
+		A0B491C11F14C2B80058042E /* libUMSocialLog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMSocialLog.a; sourceTree = "<group>"; };
+		A0B491C31F14C2B80058042E /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResources.bundle; sourceTree = "<group>"; };
+		A0B491C41F14C2B80058042E /* UShareUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UShareUI.framework; sourceTree = "<group>"; };
+		A0B491CF1F14C5370058042E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Pods/Crashlytics/Crashlytics.framework; sourceTree = "<group>"; };
+		A0B491D21F14C5A90058042E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Pods/Crashlytics/iOS/Crashlytics.framework; sourceTree = "<group>"; };
 		A0B6FB851ED952F10060CCDC /* ResetTradePassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetTradePassVC.swift; sourceTree = "<group>"; };
 		A0BC763F1EC47C4E0050F1D6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A0C9D65E1EAE102300FC438D /* NIMDev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = NIMDev.entitlements; sourceTree = "<group>"; };
@@ -1410,6 +2142,8 @@
 		A0EF98761EBCC498009B1D8A /* ContainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainVC.swift; sourceTree = "<group>"; };
 		A0F4FA201ECD70A200D13302 /* NSDateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExt.swift; sourceTree = "<group>"; };
 		A0F4FA221ECD871500D13302 /* City.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = City.plist; sourceTree = "<group>"; };
+		B5682A5040EEA5BE80F933A8 /* Pods-IOSStarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSStarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOSStarTests/Pods-IOSStarTests.release.xcconfig"; sourceTree = "<group>"; };
+		B7838E955A5D136C413B7BB1 /* Pods-IOSStarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOSStarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOSStarTests/Pods-IOSStarTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1450,12 +2184,81 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A0B48DC11F14A01E0058042E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0B49C3D1F14CE4E0058042E /* libcrypto.a in Frameworks */,
+				A0B49C3C1F14CE280058042E /* libssl.a in Frameworks */,
+				A0B49C3B1F14CB420058042E /* libsqlite3.tbd in Frameworks */,
+				A0B49C3A1F14CB2F0058042E /* libz.tbd in Frameworks */,
+				A0B49C391F14CB1B0058042E /* libc++.tbd in Frameworks */,
+				A0B491D31F14C5A90058042E /* Crashlytics.framework in Frameworks */,
+				A0B491D11F14C5860058042E /* Fabric.framework in Frameworks */,
+				A0B491D01F14C5370058042E /* Crashlytics.framework in Frameworks */,
+				A0B491A71F14BAB20058042E /* Fabric.framework in Frameworks */,
+				A0B491CD1F14C3F30058042E /* AlipaySDK.framework in Frameworks */,
+				A0B491C91F14C3690058042E /* libUMSocialLog.a in Frameworks */,
+				A0B491CA1F14C3690058042E /* UMSocialSDKResources.bundle in Frameworks */,
+				A0B491CB1F14C3690058042E /* UShareUI.framework in Frameworks */,
+				A0B491C61F14C3200058042E /* UMSocialCore.framework in Frameworks */,
+				A0B491C71F14C3200058042E /* UMSocialNetwork.framework in Frameworks */,
+				A0B491C81F14C3200058042E /* UMSocialSDKPromptResources.bundle in Frameworks */,
+				A0B491C51F14C2C90058042E /* UMMobClick.framework in Frameworks */,
+				A0B491AA1F14BC830058042E /* NIMAVChat.framework in Frameworks */,
+				A0B491AB1F14BC830058042E /* NIMSDK.framework in Frameworks */,
+				A0B48DDD1F14AF520058042E /* OEZCommSDK.framework in Frameworks */,
+				A0B48DF11F14B5160058042E /* MBProgressHUD.framework in Frameworks */,
+				A0B48DF21F14B5160058042E /* MJRefresh.framework in Frameworks */,
+				A0B48DF31F14B5160058042E /* MWPhotoBrowser.framework in Frameworks */,
+				A0B48DF41F14B5160058042E /* Pods_iOSStar.framework in Frameworks */,
+				A0B48DF51F14B5160058042E /* Reachability.framework in Frameworks */,
+				A0B48DF81F14B5160058042E /* SDCycleScrollView.framework in Frameworks */,
+				A0B48DF91F14B5160058042E /* SDWebImage.framework in Frameworks */,
+				A0B48DFA1F14B5160058042E /* SnapKit.framework in Frameworks */,
+				A0B48DFB1F14B5160058042E /* SSZipArchive.framework in Frameworks */,
+				A0B48DFC1F14B5160058042E /* SVProgressHUD.framework in Frameworks */,
+				A0B48DFD1F14B5160058042E /* Toast.framework in Frameworks */,
+				A0B48DFE1F14B5160058042E /* TZImagePickerController.framework in Frameworks */,
+				A0B48DDA1F14AED50058042E /* CocoaAsyncSocket.framework in Frameworks */,
+				33D9D1D51D0BD8E5F016A7F4 /* Pods_IOSStarTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		514D3E8AF1A3675B9BA8BCD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A0B491D21F14C5A90058042E /* Crashlytics.framework */,
+				A0B491CF1F14C5370058042E /* Crashlytics.framework */,
+				A0B491B11F14C2B80058042E /* UMMobClick.framework */,
+				A0B491B21F14C2B80058042E /* SocialLibraries */,
+				A0B491BC1F14C2B80058042E /* UMSocialSDK */,
+				A0B491C01F14C2B80058042E /* UMSocialSDKPlugin */,
+				A0B491C21F14C2B80058042E /* UMSocialUI */,
+				A0B491A81F14BC830058042E /* NIMAVChat.framework */,
+				A0B491A91F14BC830058042E /* NIMSDK.framework */,
+				A0B4919E1F14BA3B0058042E /* Fabric */,
+				A0B48E031F14B6D30058042E /* RealmSwift */,
+				A0B48DE31F14B5160058042E /* MBProgressHUD.framework */,
+				A0B48DE41F14B5160058042E /* MJRefresh.framework */,
+				A0B48DE51F14B5160058042E /* MWPhotoBrowser.framework */,
+				A0B48DE61F14B5160058042E /* Pods_iOSStar.framework */,
+				A0B48DE71F14B5160058042E /* Reachability.framework */,
+				A0B48DE81F14B5160058042E /* Realm.framework */,
+				A0B48DE91F14B5160058042E /* RealmSwift.framework */,
+				A0B48DEA1F14B5160058042E /* SDCycleScrollView.framework */,
+				A0B48DEB1F14B5160058042E /* SDWebImage.framework */,
+				A0B48DEC1F14B5160058042E /* SnapKit.framework */,
+				A0B48DED1F14B5160058042E /* SSZipArchive.framework */,
+				A0B48DEE1F14B5160058042E /* SVProgressHUD.framework */,
+				A0B48DEF1F14B5160058042E /* Toast.framework */,
+				A0B48DF01F14B5160058042E /* TZImagePickerController.framework */,
+				A0B48DE01F14B4560058042E /* OEZCommSDK */,
+				A0B48DDC1F14AF520058042E /* OEZCommSDK.framework */,
+				A0B48DD91F14AED50058042E /* CocoaAsyncSocket.framework */,
 				8DE849411EE7D10500D31B1C /* AdSupport.framework */,
 				8DE8493F1EE7D0DF00D31B1C /* UserNotifications.framework */,
 				A089C7191EE65A2E00371024 /* ImageIO.framework */,
@@ -1481,6 +2284,8 @@
 				A07238A71EA76B6D00E755DB /* CoreTelephony.framework */,
 				A07238A51EA76B5E00E755DB /* Security.framework */,
 				8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */,
+				258B853FD1AA9F735132842A /* Pods___UITests.framework */,
+				86D8773CD4998727905237B2 /* Pods_IOSStarTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1490,6 +2295,10 @@
 			children = (
 				8408122B704986AA5A9C486E /* Pods-iOSStar.debug.xcconfig */,
 				658ED50682E9CA02E39549B8 /* Pods-iOSStar.release.xcconfig */,
+				30016B3D07B9330ED11986CB /* Pods-星悦UITests.debug.xcconfig */,
+				0CEBBF48509D2A9C3C037F6F /* Pods-星悦UITests.release.xcconfig */,
+				B7838E955A5D136C413B7BB1 /* Pods-IOSStarTests.debug.xcconfig */,
+				B5682A5040EEA5BE80F933A8 /* Pods-IOSStarTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -3247,6 +4056,7 @@
 			isa = PBXGroup;
 			children = (
 				A072384C1EA768AD00E755DB /* iOSStar */,
+				A0B48DC51F14A01E0058042E /* IOSStarTests */,
 				A072384B1EA768AD00E755DB /* Products */,
 				56F7911E6B6B9C2FD9F7E114 /* Pods */,
 				514D3E8AF1A3675B9BA8BCD7 /* Frameworks */,
@@ -3257,6 +4067,7 @@
 			isa = PBXGroup;
 			children = (
 				A072384A1EA768AD00E755DB /* iOSStar.app */,
+				A0B48DC41F14A01E0058042E /* IOSStarTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3587,6 +4398,133 @@
 			path = iOSSTar/AppAPI/LoginAPI;
 			sourceTree = SOURCE_ROOT;
 		};
+		A0B48DC51F14A01E0058042E /* IOSStarTests */ = {
+			isa = PBXGroup;
+			children = (
+				A0B48DC61F14A01E0058042E /* IOSStarTests.swift */,
+				A0B48DC81F14A01E0058042E /* Info.plist */,
+			);
+			path = IOSStarTests;
+			sourceTree = "<group>";
+		};
+		A0B48E031F14B6D30058042E /* RealmSwift */ = {
+			isa = PBXGroup;
+			children = (
+				A0B48E041F14B6D30058042E /* Aliases.swift */,
+				A0B48E051F14B6D30058042E /* Error.swift */,
+				A0B48E061F14B6D30058042E /* LinkingObjects.swift */,
+				A0B48E071F14B6D30058042E /* List.swift */,
+				A0B48E081F14B6D30058042E /* Migration.swift */,
+				A0B48E091F14B6D30058042E /* Object.swift */,
+				A0B48E0A1F14B6D30058042E /* ObjectiveCSupport.swift */,
+				A0B48E0B1F14B6D30058042E /* ObjectSchema.swift */,
+				A0B48E0C1F14B6D30058042E /* Optional.swift */,
+				A0B48E0D1F14B6D30058042E /* Property.swift */,
+				A0B48E0E1F14B6D30058042E /* Realm.swift */,
+				A0B48E0F1F14B6D30058042E /* RealmCollection.swift */,
+				A0B48E101F14B6D30058042E /* RealmConfiguration.swift */,
+				A0B48E111F14B6D30058042E /* Results.swift */,
+				A0B48E121F14B6D30058042E /* Schema.swift */,
+				A0B48E131F14B6D30058042E /* SortDescriptor.swift */,
+				A0B48E141F14B6D30058042E /* SwiftVersion.swift */,
+				A0B48E151F14B6D30058042E /* Sync.swift */,
+				A0B48E161F14B6D30058042E /* ThreadSafeReference.swift */,
+				A0B48E171F14B6D30058042E /* Util.swift */,
+			);
+			name = RealmSwift;
+			path = Pods/RealmSwift/RealmSwift;
+			sourceTree = "<group>";
+		};
+		A0B4919E1F14BA3B0058042E /* Fabric */ = {
+			isa = PBXGroup;
+			children = (
+				A0B4919F1F14BA3B0058042E /* Fabric.framework */,
+				A0B491A01F14BA3B0058042E /* iOS */,
+				A0B491A21F14BA3B0058042E /* README.md */,
+				A0B491A31F14BA3B0058042E /* run */,
+				A0B491A41F14BA3B0058042E /* upload-symbols */,
+				A0B491A51F14BA3B0058042E /* uploadDSYM */,
+			);
+			name = Fabric;
+			path = Pods/Fabric;
+			sourceTree = "<group>";
+		};
+		A0B491A01F14BA3B0058042E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A0B491A11F14BA3B0058042E /* Fabric.framework */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		A0B491B21F14C2B80058042E /* SocialLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				A0B491B31F14C2B80058042E /* QQ */,
+				A0B491B61F14C2B80058042E /* Sina */,
+				A0B491B91F14C2B80058042E /* WeChat */,
+			);
+			name = SocialLibraries;
+			path = Pods/UMengUShare/UShareSDK/SocialLibraries;
+			sourceTree = "<group>";
+		};
+		A0B491B31F14C2B80058042E /* QQ */ = {
+			isa = PBXGroup;
+			children = (
+				A0B491B41F14C2B80058042E /* libSocialQQ.a */,
+				A0B491B51F14C2B80058042E /* UMSocialQQHandler.h */,
+			);
+			path = QQ;
+			sourceTree = "<group>";
+		};
+		A0B491B61F14C2B80058042E /* Sina */ = {
+			isa = PBXGroup;
+			children = (
+				A0B491B71F14C2B80058042E /* libSocialSina.a */,
+				A0B491B81F14C2B80058042E /* UMSocialSinaHandler.h */,
+			);
+			path = Sina;
+			sourceTree = "<group>";
+		};
+		A0B491B91F14C2B80058042E /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				A0B491BA1F14C2B80058042E /* libSocialWeChat.a */,
+				A0B491BB1F14C2B80058042E /* UMSocialWechatHandler.h */,
+			);
+			path = WeChat;
+			sourceTree = "<group>";
+		};
+		A0B491BC1F14C2B80058042E /* UMSocialSDK */ = {
+			isa = PBXGroup;
+			children = (
+				A0B491BD1F14C2B80058042E /* UMSocialCore.framework */,
+				A0B491BE1F14C2B80058042E /* UMSocialNetwork.framework */,
+				A0B491BF1F14C2B80058042E /* UMSocialSDKPromptResources.bundle */,
+			);
+			name = UMSocialSDK;
+			path = Pods/UMengUShare/UShareSDK/UMSocialSDK;
+			sourceTree = "<group>";
+		};
+		A0B491C01F14C2B80058042E /* UMSocialSDKPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				A0B491C11F14C2B80058042E /* libUMSocialLog.a */,
+			);
+			name = UMSocialSDKPlugin;
+			path = Pods/UMengUShare/UShareSDK/UMSocialSDKPlugin;
+			sourceTree = "<group>";
+		};
+		A0B491C21F14C2B80058042E /* UMSocialUI */ = {
+			isa = PBXGroup;
+			children = (
+				A0B491C31F14C2B80058042E /* UMSocialSDKResources.bundle */,
+				A0B491C41F14C2B80058042E /* UShareUI.framework */,
+			);
+			name = UMSocialUI;
+			path = Pods/UMengUShare/UShareSDK/UMSocialUI;
+			sourceTree = "<group>";
+		};
 		A0C9D6591EAE102300FC438D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -3664,6 +4602,27 @@
 			productReference = A072384A1EA768AD00E755DB /* iOSStar.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A0B48DC31F14A01E0058042E /* IOSStarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0B48DCB1F14A01E0058042E /* Build configuration list for PBXNativeTarget "IOSStarTests" */;
+			buildPhases = (
+				4E0374CAA41DBD69DE3768DE /* [CP] Check Pods Manifest.lock */,
+				A0B48DC01F14A01E0058042E /* Sources */,
+				A0B48DC11F14A01E0058042E /* Frameworks */,
+				A0B48DC21F14A01E0058042E /* Resources */,
+				BDB21E8F4BBDBC311E83D31A /* [CP] Embed Pods Frameworks */,
+				CA84C64A0A8F62E21E30DB6E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0B48DDF1F14B28D0058042E /* PBXTargetDependency */,
+			);
+			name = IOSStarTests;
+			productName = IOSStarTests;
+			productReference = A0B48DC41F14A01E0058042E /* IOSStarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -3673,7 +4632,7 @@
 				KnownAssetTags = (
 					New,
 				);
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = YunDian;
 				TargetAttributes = {
@@ -3691,6 +4650,11 @@
 							};
 						};
 					};
+					A0B48DC31F14A01E0058042E = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A07238491EA768AC00E755DB;
+					};
 				};
 			};
 			buildConfigurationList = A07238451EA768AC00E755DB /* Build configuration list for PBXProject "iOSStar" */;
@@ -3707,6 +4671,7 @@
 			projectRoot = "";
 			targets = (
 				A07238491EA768AC00E755DB /* iOSStar */,
+				A0B48DC31F14A01E0058042E /* IOSStarTests */,
 			);
 		};
 /* End PBXProject section */
@@ -3774,9 +4739,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A0B48DC21F14A01E0058042E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4E0374CAA41DBD69DE3768DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		5E27EACE16652A4A5C1BD116 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3820,6 +4807,36 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 13b0dd85b007ad78249b02fc26fa3972dff8da79 09fbffcee88c3bfa1086819566cdaf4b4c0f451fe57b9699cd9525804778308d";
 		};
+		BDB21E8F4BBDBC311E83D31A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IOSStarTests/Pods-IOSStarTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA84C64A0A8F62E21E30DB6E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IOSStarTests/Pods-IOSStarTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D1F838C853D5136DD7D27F3A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3832,7 +4849,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -4285,7 +5302,643 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A0B48DC01F14A01E0058042E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0B49C551F14D0DA0058042E /* DealAPI.swift in Sources */,
+				A0B49C561F14D0DA0058042E /* DealSocketAPI.swift in Sources */,
+				A0B49C571F14D0DA0058042E /* MarketAPI.swift in Sources */,
+				A0B49C581F14D0DA0058042E /* MarketSocketAPI.swift in Sources */,
+				A0B49C591F14D0DA0058042E /* NewsApi.swift in Sources */,
+				A0B49C5A1F14D0DA0058042E /* NewsSocketAPI.swift in Sources */,
+				A0B49C5B1F14D0DA0058042E /* UserApi.swift in Sources */,
+				A0B49C5C1F14D0DA0058042E /* UserSocketApi.swift in Sources */,
+				A0B49C5D1F14D0DA0058042E /* LoginApi.swift in Sources */,
+				A0B49C5E1F14D0DA0058042E /* LoginSocketApi.swift in Sources */,
+				A0B49C5F1F14D0DA0058042E /* BaseSocketAPI.swift in Sources */,
+				A0B49C601F14D0DA0058042E /* SocketConst.swift in Sources */,
+				A0B49C611F14D0DA0058042E /* APISocketHelper.swift in Sources */,
+				A0B49C621F14D0DA0058042E /* SocketDataPacket.swift in Sources */,
+				A0B49C631F14D0DA0058042E /* SocketHelper.swift in Sources */,
+				A0B49C641F14D0DA0058042E /* SocketRequest.swift in Sources */,
+				A0B49C651F14D0DA0058042E /* SocketRequestManage.swift in Sources */,
+				A0B49C661F14D0DA0058042E /* SocketResponse.swift in Sources */,
+				A0B49C671F14D0DA0058042E /* AppAPIHelper.swift in Sources */,
+				A0B49C681F14D0DA0058042E /* DiscoverModel.swift in Sources */,
+				A0B49C691F14D0DA0058042E /* DiscoverRequestModel.swift in Sources */,
+				A0B49C6A1F14D0DA0058042E /* LoginModel.swift in Sources */,
+				A0B49C6B1F14D0DA0058042E /* LoginRequestModel.swift in Sources */,
+				A0B49C6C1F14D0DA0058042E /* DealModel.swift in Sources */,
+				A0B49C6D1F14D0DA0058042E /* DealRequestModel.swift in Sources */,
+				A0B49C6E1F14D0DA0058042E /* RechargeListModel.swift in Sources */,
+				A0B49C6F1F14D0DA0058042E /* MarketModel.swift in Sources */,
+				A0B49C701F14D0DA0058042E /* MarketRequestModel.swift in Sources */,
+				A0B49C711F14D0DA0058042E /* ServiceTypeModel.swift in Sources */,
+				A0B49C721F14D0DA0058042E /* ServiceTypeRequestModel.swift in Sources */,
+				A0B49C731F14D0DA0058042E /* News.swift in Sources */,
+				A0B49C741F14D0DA0058042E /* StarListModel.swift in Sources */,
+				A0B49C751F14D0DA0058042E /* ShareDataModel.swift in Sources */,
+				A0B49C761F14D0DA0058042E /* UserModel.swift in Sources */,
+				A0B49C771F14D0DA0058042E /* UserRequestModel.swift in Sources */,
+				A0B49C781F14D0DA0058042E /* UserInfoModel.swift in Sources */,
+				A0B49C791F14D0DA0058042E /* CommenModel.swift in Sources */,
+				A0B49C7A1F14D0DA0058042E /* BankCard.swift in Sources */,
+				A0B49C7B1F14D0DA0058042E /* DiscoverViewController.swift in Sources */,
+				A0B49C7C1F14D0DA0058042E /* BuyStarTimeViewController.swift in Sources */,
+				A0B49C7D1F14D0DA0058042E /* StarInteractiveViewController.swift in Sources */,
+				A0B49C7E1F14D0DA0058042E /* StarIntroduceViewController.swift in Sources */,
+				A0B49C7F1F14D0DA0058042E /* SellingViewController.swift in Sources */,
+				A0B49C801F14D0DA0058042E /* StarCardView.swift in Sources */,
+				A0B49C811F14D0DA0058042E /* StarInfoCell.swift in Sources */,
+				A0B49C821F14D0DA0058042E /* StarCardLayout.swift in Sources */,
+				A0B49C831F14D0DA0058042E /* StarPhotoCell.swift in Sources */,
+				A0B49C841F14D0DA0058042E /* StarPhotoItemCell.swift in Sources */,
+				A0B49C851F14D0DA0058042E /* StarIntroduceCell.swift in Sources */,
+				A0B49C861F14D0DA0058042E /* SellingIntroCell.swift in Sources */,
+				A0B49C871F14D0DA0058042E /* SellingTimeAndCountCell.swift in Sources */,
+				A0B49C881F14D0DA0058042E /* SellingCountDownCell.swift in Sources */,
+				A0B49C891F14D0DA0058042E /* SellingBuyCountCell.swift in Sources */,
+				A0B49C8A1F14D0DA0058042E /* SellingPriceCell.swift in Sources */,
+				A0B49C8B1F14D0DA0058042E /* SellingTipsCell.swift in Sources */,
+				A0B49C8C1F14D0DA0058042E /* SellingBaseCell.swift in Sources */,
+				A0B49C8D1F14D0DA0058042E /* BindingBankCardVC.swift in Sources */,
+				A0B49C8E1F14D0DA0058042E /* WithDrawaListVC.swift in Sources */,
+				A0B49C8F1F14D0DA0058042E /* BankCardVC.swift in Sources */,
+				A0B49C901F14D0DA0058042E /* TipBindVC.swift in Sources */,
+				A0B49C911F14D0DA0058042E /* AccountInfoVC.swift in Sources */,
+				A0B49C921F14D0DA0058042E /* CustomerServiceVC.swift in Sources */,
+				A0B49C931F14D0DA0058042E /* DealListVC.swift in Sources */,
+				A0B49C941F14D0DA0058042E /* GetOrderStarsVC.swift in Sources */,
+				A0B49C951F14D0DA0058042E /* MoneyDetailList.swift in Sources */,
+				A0B49C961F14D0DA0058042E /* ResultVC.swift in Sources */,
+				A0B49C971F14D0DA0058042E /* SettingVC.swift in Sources */,
+				A0B49C981F14D0DA0058042E /* TradePassWordVC.swift in Sources */,
+				A0B49C991F14D0DA0058042E /* UserInfoVC.swift in Sources */,
+				A0B49C9A1F14D0DA0058042E /* UserVC.swift in Sources */,
+				A0B49C9B1F14D0DA0058042E /* WealthVC.swift in Sources */,
+				A0B49C9C1F14D0DA0058042E /* VaildNameVC.swift in Sources */,
+				A0B49C9D1F14D0DA0058042E /* ResetTradePassVC.swift in Sources */,
+				A0B49C9E1F14D0DA0058042E /* StatementVC.swift in Sources */,
+				A0B49C9F1F14D0DA0058042E /* RechargeVC.swift in Sources */,
+				A0B49CA01F14D0DA0058042E /* WithdrawalVC.swift in Sources */,
+				A0B49CA11F14D0DA0058042E /* RechargeCollectView.swift in Sources */,
+				A0B49CA21F14D0DA0058042E /* CustomeAlertView.swift in Sources */,
+				A0B49CA31F14D0DA0058042E /* SelectPayType.swift in Sources */,
+				A0B49CA41F14D0DA0058042E /* SelectPayTypeCell.swift in Sources */,
+				A0B49CA51F14D0DA0058042E /* RegistVC.swift in Sources */,
+				A0B49CA61F14D0DA0058042E /* ForgotPwdVC.swift in Sources */,
+				A0B49CA71F14D0DA0058042E /* LoginVC.swift in Sources */,
+				A0B49CA81F14D0DA0058042E /* InputPwdVC.swift in Sources */,
+				A0B49CA91F14D0DA0058042E /* ContainVC.swift in Sources */,
+				A0B49CAA1F14D0DA0058042E /* JoinVC.swift in Sources */,
+				A0B49CAB1F14D0DA0058042E /* NewsViewController.swift in Sources */,
+				A0B49CAC1F14D0DA0058042E /* NewsDetailViewController.swift in Sources */,
+				A0B49CAD1F14D0DA0058042E /* PublisherPageViewController.swift in Sources */,
+				A0B49CAE1F14D0DA0058042E /* HomeVC.swift in Sources */,
+				A0B49CAF1F14D0DA0058042E /* ShareView.swift in Sources */,
+				A0B49CB01F14D0DA0058042E /* PubInfoHeaderView.swift in Sources */,
+				A0B49CB11F14D0DA0058042E /* NewsNavigationView.swift in Sources */,
+				A0B49CB21F14D0DA0058042E /* NewsListCell.swift in Sources */,
+				A0B49CB31F14D0DA0058042E /* BannerDetailImageCell.swift in Sources */,
+				A0B49CB41F14D0DA0058042E /* BannerDetailInfoCell.swift in Sources */,
+				A0B49CB51F14D0DA0058042E /* MarketViewController.swift in Sources */,
+				A0B49CB61F14D0DA0058042E /* MarketSearchViewController.swift in Sources */,
+				A0B49CB71F14D0DA0058042E /* MarketDetailViewController.swift in Sources */,
+				A0B49CB81F14D0DA0058042E /* OrderStarViewController.swift in Sources */,
+				A0B49CB91F14D0DA0058042E /* MarketDetaiBaseInfoViewController.swift in Sources */,
+				A0B49CBA1F14D0DA0058042E /* MarketCommentViewController.swift in Sources */,
+				A0B49CBB1F14D0DA0058042E /* MarketFansListViewController.swift in Sources */,
+				A0B49CBC1F14D0DA0058042E /* MarketAuctionViewController.swift in Sources */,
+				A0B49CBD1F14D0DA0058042E /* MarketBaseViewController.swift in Sources */,
+				A0B49CBE1F14D0DA0058042E /* MarketMenuView.swift in Sources */,
+				A0B49CBF1F14D0DA0058042E /* MarketDetailHeaderView.swift in Sources */,
+				A0B49CC01F14D0DA0058042E /* MenuItemCell.swift in Sources */,
+				A0B49CC11F14D0DA0058042E /* MenuSubViewCell.swift in Sources */,
+				A0B49CC21F14D0DA0058042E /* SubViewItemCell.swift in Sources */,
+				A0B49CC31F14D0DA0058042E /* MenuWidthLayout.swift in Sources */,
+				A0B49CC41F14D0DA0058042E /* SearchResultCell.swift in Sources */,
+				A0B49CC51F14D0DA0058042E /* MarketDetailCell.swift in Sources */,
+				A0B49CC61F14D0DA0058042E /* MarketDetailSubViewCell.swift in Sources */,
+				A0B49CC71F14D0DA0058042E /* MarketDetailMenuView.swift in Sources */,
+				A0B49CC81F14D0DA0058042E /* ImageMenuView.swift in Sources */,
+				A0B49CC91F14D0DA0058042E /* ImageMenuCell.swift in Sources */,
+				A0B49CCA1F14D0DA0058042E /* OrderStartViewCell.swift in Sources */,
+				A0B49CCB1F14D0DA0058042E /* MarketCommentCell.swift in Sources */,
+				A0B49CCC1F14D0DA0058042E /* MarketInfoCell.swift in Sources */,
+				A0B49CCD1F14D0DA0058042E /* MarketExperienceCell.swift in Sources */,
+				A0B49CCE1F14D0DA0058042E /* MaketBannerCell.swift in Sources */,
+				A0B49CCF1F14D0DA0058042E /* MarketFansCell.swift in Sources */,
+				A0B49CD01F14D0DA0058042E /* MarketSBFansCell.swift in Sources */,
+				A0B49CD11F14D0DA0058042E /* MarketAuctionCell.swift in Sources */,
+				A0B49CD21F14D0DA0058042E /* FansListHeaderView.swift in Sources */,
+				A0B49CD31F14D0DA0058042E /* AuctionHeaderCell.swift in Sources */,
+				A0B49CD41F14D0DA0058042E /* YD_SwipHeaderView.swift in Sources */,
+				A0B49CD51F14D0DA0058042E /* GradualColorView.swift in Sources */,
+				A0B49CD61F14D0DA0058042E /* MarketDetailCommentHeaderView.swift in Sources */,
+				A0B49CD71F14D0DA0058042E /* AuctionImageViewCell.swift in Sources */,
+				A0B49CD81F14D0DA0058042E /* AuctionTimeCell.swift in Sources */,
+				A0B49CD91F14D0DA0058042E /* AuctionPositionInfoCell.swift in Sources */,
+				A0B49CDA1F14D0DA0058042E /* AuctionProgreseeCell.swift in Sources */,
+				A0B49CDB1F14D0DA0058042E /* YDSSessionViewController.swift in Sources */,
+				A0B49CDC1F14D0DA0058042E /* ExchangeViewController.swift in Sources */,
+				A0B49CDD1F14D0DA0058042E /* ContactListViewController.swift in Sources */,
+				A0B49CDE1F14D0DA0058042E /* SystemMessageVC.swift in Sources */,
+				A0B49CDF1F14D0DA0058042E /* AlertViewController.swift in Sources */,
+				A0B49CE01F14D0DA0058042E /* ContactListCell.swift in Sources */,
+				A0B49CE11F14D0DA0058042E /* DealViewController.swift in Sources */,
+				A0B49CE21F14D0DA0058042E /* BuyOrSellViewController.swift in Sources */,
+				A0B49CE31F14D0DA0058042E /* BuyYetViewController.swift in Sources */,
+				A0B49CE41F14D0DA0058042E /* AllOrderViewController.swift in Sources */,
+				A0B49CE51F14D0DA0058042E /* DetailCommenViewController.swift in Sources */,
+				A0B49CE61F14D0DA0058042E /* DealDetailViewController.swift in Sources */,
+				A0B49CE71F14D0DA0058042E /* YD_DatePickerViewController.swift in Sources */,
+				A0B49CE81F14D0DA0058042E /* SurePayOrderVC.swift in Sources */,
+				A0B49CE91F14D0DA0058042E /* SurePayAllOrderVC.swift in Sources */,
+				A0B49CEA1F14D0DA0058042E /* ContainPayVC.swift in Sources */,
+				A0B49CEB1F14D0DA0058042E /* InputPassVC.swift in Sources */,
+				A0B49CEC1F14D0DA0058042E /* DealBaseViewController.swift in Sources */,
+				A0B49CED1F14D0DA0058042E /* DealScrollView.swift in Sources */,
+				A0B49CEE1F14D0DA0058042E /* DealStarInfoCell.swift in Sources */,
+				A0B49CEF1F14D0DA0058042E /* DealMarketCell.swift in Sources */,
+				A0B49CF01F14D0DA0058042E /* DealOrderInfoCell.swift in Sources */,
+				A0B49CF11F14D0DA0058042E /* DealHintCell.swift in Sources */,
+				A0B49CF21F14D0DA0058042E /* DealTitleMenuCell.swift in Sources */,
+				A0B49CF31F14D0DA0058042E /* DealDoubleRowCell.swift in Sources */,
+				A0B49CF41F14D0DA0058042E /* DealSingleRowCell.swift in Sources */,
+				A0B49CF51F14D0DA0058042E /* DealPropertyCell.swift in Sources */,
+				A0B49CF61F14D0DA0058042E /* DealSelectDateCell.swift in Sources */,
+				A0B49CF71F14D0DA0058042E /* PositionStarCell.swift in Sources */,
+				A0B49CF81F14D0DA0058042E /* NSData+NTES.h in Sources */,
+				A0B49CF91F14D0DA0058042E /* NSData+NTES.m in Sources */,
+				A0B49CFA1F14D0DA0058042E /* NSDictionary+NTESJson.h in Sources */,
+				A0B49CFB1F14D0DA0058042E /* NSDictionary+NTESJson.m in Sources */,
+				A0B49CFC1F14D0DA0058042E /* NSString+NTES.h in Sources */,
+				A0B49CFD1F14D0DA0058042E /* NSString+NTES.m in Sources */,
+				A0B49CFE1F14D0DA0058042E /* UIActionSheet+NTESBlock.h in Sources */,
+				A0B49CFF1F14D0DA0058042E /* UIActionSheet+NTESBlock.m in Sources */,
+				A0B49D001F14D0DA0058042E /* UIAlertView+NTESBlock.h in Sources */,
+				A0B49D011F14D0DA0058042E /* UIAlertView+NTESBlock.m in Sources */,
+				A0B49D021F14D0DA0058042E /* UIImage+NTES.h in Sources */,
+				A0B49D031F14D0DA0058042E /* UIImage+NTES.m in Sources */,
+				A0B49D041F14D0DA0058042E /* UIImage+NTESColor.h in Sources */,
+				A0B49D051F14D0DA0058042E /* UIImage+NTESColor.m in Sources */,
+				A0B49D061F14D0DA0058042E /* UIResponder+NTESFirstResponder.h in Sources */,
+				A0B49D071F14D0DA0058042E /* UIResponder+NTESFirstResponder.m in Sources */,
+				A0B49D081F14D0DA0058042E /* UIScrollView+NTESDirection.h in Sources */,
+				A0B49D091F14D0DA0058042E /* UIScrollView+NTESDirection.m in Sources */,
+				A0B49D0A1F14D0DA0058042E /* UIScrollView+NTESPullToRefresh.h in Sources */,
+				A0B49D0B1F14D0DA0058042E /* UIScrollView+NTESPullToRefresh.m in Sources */,
+				A0B49D0C1F14D0DA0058042E /* UIView+NTES.h in Sources */,
+				A0B49D0D1F14D0DA0058042E /* UIView+NTES.m in Sources */,
+				A0B49D101F14D0DA0058042E /* NIMExtensionHelper.h in Sources */,
+				A0B49D111F14D0DA0058042E /* NIMExtensionHelper.m in Sources */,
+				A0B49D121F14D0DA0058042E /* NSString+NIMKit.h in Sources */,
+				A0B49D131F14D0DA0058042E /* NSString+NIMKit.m in Sources */,
+				A0B49D141F14D0DA0058042E /* UIImage+NIM.h in Sources */,
+				A0B49D151F14D0DA0058042E /* UIImage+NIM.m in Sources */,
+				A0B49D161F14D0DA0058042E /* UITableView+NIMScrollToBottom.h in Sources */,
+				A0B49D171F14D0DA0058042E /* UITableView+NIMScrollToBottom.m in Sources */,
+				A0B49D181F14D0DA0058042E /* UIView+NIM.h in Sources */,
+				A0B49D191F14D0DA0058042E /* UIView+NIM.m in Sources */,
+				A0B49D1A1F14D0DA0058042E /* NIMCommonTableData.h in Sources */,
+				A0B49D1B1F14D0DA0058042E /* NIMCommonTableData.m in Sources */,
+				A0B49D1C1F14D0DA0058042E /* NIMCommonTableDelegate.h in Sources */,
+				A0B49D1D1F14D0DA0058042E /* NIMCommonTableDelegate.m in Sources */,
+				A0B49D1E1F14D0DA0058042E /* NIMCommonTableViewCell.h in Sources */,
+				A0B49D1F1F14D0DA0058042E /* NIMGlobalMacro.h in Sources */,
+				A0B49D201F14D0DA0058042E /* NIMKitColorButtonCell.h in Sources */,
+				A0B49D211F14D0DA0058042E /* NIMKitColorButtonCell.m in Sources */,
+				A0B49D221F14D0DA0058042E /* NIMKitDataProviderImpl.h in Sources */,
+				A0B49D231F14D0DA0058042E /* NIMKitDataProviderImpl.m in Sources */,
+				A0B49D241F14D0DA0058042E /* NIMKitSwitcherCell.h in Sources */,
+				A0B49D251F14D0DA0058042E /* NIMKitSwitcherCell.m in Sources */,
+				A0B49D261F14D0DA0058042E /* NIMKitUIConfig.h in Sources */,
+				A0B49D271F14D0DA0058042E /* NIMKitUIConfig.m in Sources */,
+				A0B49D281F14D0DA0058042E /* NIMKit.h in Sources */,
+				A0B49D291F14D0DA0058042E /* NIMKit.m in Sources */,
+				A0B49D2A1F14D0DA0058042E /* NIMCellConfig.h in Sources */,
+				A0B49D2B1F14D0DA0058042E /* NIMInputProtocol.h in Sources */,
+				A0B49D2C1F14D0DA0058042E /* NIMKitDataProvider.h in Sources */,
+				A0B49D2D1F14D0DA0058042E /* NIMKitMessageProvider.h in Sources */,
+				A0B49D2E1F14D0DA0058042E /* NIMMessageCellProtocol.h in Sources */,
+				A0B49D2F1F14D0DA0058042E /* NIMSessionConfig.h in Sources */,
+				A0B49D301F14D0DA0058042E /* NIMAvatarImageView.h in Sources */,
+				A0B49D311F14D0DA0058042E /* NIMAvatarImageView.m in Sources */,
+				A0B49D321F14D0DA0058042E /* NIMBadgeView.h in Sources */,
+				A0B49D331F14D0DA0058042E /* NIMBadgeView.m in Sources */,
+				A0B49D341F14D0DA0058042E /* NIMCustomLeftBarView.h in Sources */,
+				A0B49D351F14D0DA0058042E /* NIMCustomLeftBarView.m in Sources */,
+				A0B49D361F14D0DA0058042E /* NIMKitMediaFetcher.h in Sources */,
+				A0B49D371F14D0DA0058042E /* NIMKitMediaFetcher.m in Sources */,
+				A0B49D381F14D0DA0058042E /* NIMKitNotificationFirer.h in Sources */,
+				A0B49D391F14D0DA0058042E /* NIMKitNotificationFirer.m in Sources */,
+				A0B49D3A1F14D0DA0058042E /* NIMLoadProgressView.h in Sources */,
+				A0B49D3B1F14D0DA0058042E /* NIMLoadProgressView.m in Sources */,
+				A0B49D3C1F14D0DA0058042E /* NIMPageView.h in Sources */,
+				A0B49D3D1F14D0DA0058042E /* NIMPageView.m in Sources */,
+				A0B49D3E1F14D0DA0058042E /* NIMContactDataCell.h in Sources */,
+				A0B49D3F1F14D0DA0058042E /* NIMContactDataCell.m in Sources */,
+				A0B49D401F14D0DA0058042E /* NIMContactDefines.h in Sources */,
+				A0B49D411F14D0DA0058042E /* NIMGroupedDataCollection.h in Sources */,
+				A0B49D421F14D0DA0058042E /* NIMGroupedDataCollection.m in Sources */,
+				A0B49D431F14D0DA0058042E /* NIMGroupedUsrInfo.h in Sources */,
+				A0B49D441F14D0DA0058042E /* NIMGroupedUsrInfo.m in Sources */,
+				A0B49D451F14D0DA0058042E /* NIMContactDataItem.h in Sources */,
+				A0B49D461F14D0DA0058042E /* NIMContactDataItem.m in Sources */,
+				A0B49D471F14D0DA0058042E /* NIMContactPickedView.h in Sources */,
+				A0B49D481F14D0DA0058042E /* NIMContactPickedView.m in Sources */,
+				A0B49D491F14D0DA0058042E /* NIMContactSelectConfig.h in Sources */,
+				A0B49D4A1F14D0DA0058042E /* NIMContactSelectConfig.m in Sources */,
+				A0B49D4B1F14D0DA0058042E /* NIMContactSelectTabView.h in Sources */,
+				A0B49D4C1F14D0DA0058042E /* NIMContactSelectTabView.m in Sources */,
+				A0B49D4D1F14D0DA0058042E /* NIMContactSelectViewController.h in Sources */,
+				A0B49D4E1F14D0DA0058042E /* NIMContactSelectViewController.m in Sources */,
+				A0B49D4F1F14D0DA0058042E /* NIMGrowingInternalTextView.h in Sources */,
+				A0B49D501F14D0DA0058042E /* NIMGrowingInternalTextView.m in Sources */,
+				A0B49D511F14D0DA0058042E /* NIMGrowingTextView.h in Sources */,
+				A0B49D521F14D0DA0058042E /* NIMGrowingTextView.m in Sources */,
+				A0B49D531F14D0DA0058042E /* NIMInputAtCache.h in Sources */,
+				A0B49D541F14D0DA0058042E /* NIMInputAtCache.m in Sources */,
+				A0B49D551F14D0DA0058042E /* NIMInputAudioRecordIndicatorView.h in Sources */,
+				A0B49D561F14D0DA0058042E /* NIMInputAudioRecordIndicatorView.m in Sources */,
+				A0B49D571F14D0DA0058042E /* NIMInputBarItemType.h in Sources */,
+				A0B49D581F14D0DA0058042E /* NIMInputEmoticonButton.h in Sources */,
+				A0B49D591F14D0DA0058042E /* NIMInputEmoticonButton.m in Sources */,
+				A0B49D5A1F14D0DA0058042E /* NIMInputEmoticonContainerView.h in Sources */,
+				A0B49D5B1F14D0DA0058042E /* NIMInputEmoticonContainerView.m in Sources */,
+				A0B49D5C1F14D0DB0058042E /* NIMInputEmoticonDefine.h in Sources */,
+				A0B49D5D1F14D0DB0058042E /* NIMInputEmoticonManager.h in Sources */,
+				A0B49D5E1F14D0DB0058042E /* NIMInputEmoticonManager.m in Sources */,
+				A0B49D5F1F14D0DB0058042E /* NIMInputEmoticonParser.h in Sources */,
+				A0B49D601F14D0DB0058042E /* NIMInputEmoticonParser.m in Sources */,
+				A0B49D611F14D0DB0058042E /* NIMInputEmoticonTabView.h in Sources */,
+				A0B49D621F14D0DB0058042E /* NIMInputEmoticonTabView.m in Sources */,
+				A0B49D631F14D0DB0058042E /* NIMInputMoreContainerView.h in Sources */,
+				A0B49D641F14D0DB0058042E /* NIMInputMoreContainerView.m in Sources */,
+				A0B49D651F14D0DB0058042E /* NIMInputToolBar.h in Sources */,
+				A0B49D661F14D0DB0058042E /* NIMInputToolBar.m in Sources */,
+				A0B49D671F14D0DB0058042E /* NIMInputView.h in Sources */,
+				A0B49D681F14D0DB0058042E /* NIMInputView.m in Sources */,
+				A0B49D691F14D0DB0058042E /* NIMKitEvent.h in Sources */,
+				A0B49D6A1F14D0DB0058042E /* NIMKitEvent.m in Sources */,
+				A0B49D6B1F14D0DB0058042E /* NIMKitInfo.h in Sources */,
+				A0B49D6C1F14D0DB0058042E /* NIMKitInfo.m in Sources */,
+				A0B49D6D1F14D0DB0058042E /* NIMKitInfoFetchOption.h in Sources */,
+				A0B49D6E1F14D0DB0058042E /* NIMKitInfoFetchOption.m in Sources */,
+				A0B49D6F1F14D0DB0058042E /* NIMMediaItem.h in Sources */,
+				A0B49D701F14D0DB0058042E /* NIMMediaItem.m in Sources */,
+				A0B49D711F14D0DB0058042E /* NIMMessageModel.h in Sources */,
+				A0B49D721F14D0DB0058042E /* NIMMessageModel.m in Sources */,
+				A0B49D731F14D0DB0058042E /* NIMTimestampModel.h in Sources */,
+				A0B49D741F14D0DB0058042E /* NIMTimestampModel.m in Sources */,
+				A0B49D751F14D0DB0058042E /* NIMAudioContentConfig.h in Sources */,
+				A0B49D761F14D0DB0058042E /* NIMAudioContentConfig.m in Sources */,
+				A0B49D771F14D0DB0058042E /* NIMBaseSessionContentConfig.h in Sources */,
+				A0B49D781F14D0DB0058042E /* NIMBaseSessionContentConfig.m in Sources */,
+				A0B49D791F14D0DB0058042E /* NIMFileContentConfig.h in Sources */,
+				A0B49D7A1F14D0DB0058042E /* NIMFileContentConfig.m in Sources */,
+				A0B49D7B1F14D0DB0058042E /* NIMImageContentConfig.h in Sources */,
+				A0B49D7C1F14D0DB0058042E /* NIMImageContentConfig.m in Sources */,
+				A0B49D7D1F14D0DB0058042E /* NIMLocationContentConfig.h in Sources */,
+				A0B49D7E1F14D0DB0058042E /* NIMLocationContentConfig.m in Sources */,
+				A0B49D831F14D0DB0058042E /* NIMTipContentConfig.h in Sources */,
+				A0B49D841F14D0DB0058042E /* NIMTipContentConfig.m in Sources */,
+				A0B49D851F14D0DB0058042E /* NIMUnsupportContentConfig.h in Sources */,
+				A0B49D861F14D0DB0058042E /* NIMUnsupportContentConfig.m in Sources */,
+				A0B49D871F14D0DB0058042E /* NIMVideoContentConfig.h in Sources */,
+				A0B49D881F14D0DB0058042E /* NIMVideoContentConfig.m in Sources */,
+				A0B49D891F14D0DB0058042E /* NIMCellLayoutConfig.h in Sources */,
+				A0B49D8A1F14D0DB0058042E /* NIMCellLayoutConfig.m in Sources */,
+				A0B49D8B1F14D0DB0058042E /* NIMKitLocationPoint.h in Sources */,
+				A0B49D8C1F14D0DB0058042E /* NIMKitLocationPoint.m in Sources */,
+				A0B49D8D1F14D0DB0058042E /* NIMKitMessageAtModel.h in Sources */,
+				A0B49D8E1F14D0DB0058042E /* NIMKitMessageAtModel.m in Sources */,
+				A0B49D8F1F14D0DB0058042E /* NIMMessageCellFactory.h in Sources */,
+				A0B49D901F14D0DB0058042E /* NIMMessageCellFactory.m in Sources */,
+				A0B49D911F14D0DB0058042E /* NIMMessageMaker.h in Sources */,
+				A0B49D921F14D0DB0058042E /* NIMMessageMaker.m in Sources */,
+				A0B49D931F14D0DB0058042E /* NIMKitAudioCenter.h in Sources */,
+				A0B49D941F14D0DB0058042E /* NIMKitAudioCenter.m in Sources */,
+				A0B49D951F14D0DB0058042E /* NIMSessionConfigurateProtocol.h in Sources */,
+				A0B49D961F14D0DB0058042E /* NIMSessionConfigurator.h in Sources */,
+				A0B49D971F14D0DB0058042E /* NIMSessionConfigurator.m in Sources */,
+				A0B49D981F14D0DB0058042E /* NIMSessionDataSourceImpl.h in Sources */,
+				A0B49D991F14D0DB0058042E /* NIMSessionDataSourceImpl.m in Sources */,
+				A0B49D9A1F14D0DB0058042E /* NIMSessionInteractorImpl.h in Sources */,
+				A0B49D9B1F14D0DB0058042E /* NIMSessionInteractorImpl.m in Sources */,
+				A0B49D9C1F14D0DB0058042E /* NIMSessionLayoutImpl.h in Sources */,
+				A0B49D9D1F14D0DB0058042E /* NIMSessionLayoutImpl.m in Sources */,
+				A0B49D9E1F14D0DB0058042E /* NIMSessionMsgDatasource.h in Sources */,
+				A0B49D9F1F14D0DB0058042E /* NIMSessionMsgDatasource.m in Sources */,
+				A0B49DA01F14D0DB0058042E /* NIMSessionPrivateProtocol.h in Sources */,
+				A0B49DA11F14D0DB0058042E /* NIMSessionTableAdapter.h in Sources */,
+				A0B49DA21F14D0DB0058042E /* NIMSessionTableAdapter.m in Sources */,
+				A0B49DA31F14D0DB0058042E /* NIMMessageCell.h in Sources */,
+				A0B49DA41F14D0DB0058042E /* NIMMessageCell.m in Sources */,
+				A0B49DA51F14D0DB0058042E /* NIMSessionTimestampCell.h in Sources */,
+				A0B49DA61F14D0DB0058042E /* NIMSessionTimestampCell.m in Sources */,
+				A0B49DA71F14D0DB0058042E /* NIMSessionAudioContentView.h in Sources */,
+				A0B49DA81F14D0DB0058042E /* NIMSessionAudioContentView.m in Sources */,
+				A0B49DA91F14D0DB0058042E /* NIMSessionFileTransContentView.h in Sources */,
+				A0B49DAA1F14D0DB0058042E /* NIMSessionFileTransContentView.m in Sources */,
+				A0B49DAB1F14D0DB0058042E /* NIMSessionImageContentView.h in Sources */,
+				A0B49DAC1F14D0DB0058042E /* NIMSessionImageContentView.m in Sources */,
+				A0B49DAD1F14D0DB0058042E /* NIMSessionLocationContentView.h in Sources */,
+				A0B49DAE1F14D0DB0058042E /* NIMSessionLocationContentView.m in Sources */,
+				A0B49DAF1F14D0DB0058042E /* NIMSessionMessageContentView.h in Sources */,
+				A0B49DB01F14D0DB0058042E /* NIMSessionMessageContentView.m in Sources */,
+				A0B49DB71F14D0DB0058042E /* NIMSessionUnknowContentView.h in Sources */,
+				A0B49DB81F14D0DB0058042E /* NIMSessionUnknowContentView.m in Sources */,
+				A0B49DB91F14D0DB0058042E /* NIMSessionVideoContentView.h in Sources */,
+				A0B49DBA1F14D0DB0058042E /* NIMSessionVideoContentView.m in Sources */,
+				A0B49DBB1F14D0DB0058042E /* NIMLocationViewController.h in Sources */,
+				A0B49DBC1F14D0DB0058042E /* NIMLocationViewController.m in Sources */,
+				A0B49DBD1F14D0DB0058042E /* NIMSessionViewController.h in Sources */,
+				A0B49DBE1F14D0DB0058042E /* NIMSessionViewController.m in Sources */,
+				A0B49DBF1F14D0DB0058042E /* NIMSessionListDefaultConfig.h in Sources */,
+				A0B49DC01F14D0DB0058042E /* NIMSessionListDefaultConfig.m in Sources */,
+				A0B49DC11F14D0DB0058042E /* NIMSessionListViewController.h in Sources */,
+				A0B49DC21F14D0DB0058042E /* NIMSessionListViewController.m in Sources */,
+				A0B49DC31F14D0DB0058042E /* NIMSessionListCell.h in Sources */,
+				A0B49DC41F14D0DB0058042E /* NIMSessionListCell.m in Sources */,
+				A0B49DC51F14D0DB0058042E /* NIMKitDevice.h in Sources */,
+				A0B49DC61F14D0DB0058042E /* NIMKitDevice.m in Sources */,
+				A0B49DC71F14D0DB0058042E /* NIMKitFileLocationHelper.h in Sources */,
+				A0B49DC81F14D0DB0058042E /* NIMKitFileLocationHelper.m in Sources */,
+				A0B49DC91F14D0DB0058042E /* NIMKitTimerHolder.h in Sources */,
+				A0B49DCA1F14D0DB0058042E /* NIMKitTimerHolder.m in Sources */,
+				A0B49DCB1F14D0DB0058042E /* NIMKitUtil.h in Sources */,
+				A0B49DCC1F14D0DB0058042E /* NIMKitUtil.m in Sources */,
+				A0B49DCD1F14D0DB0058042E /* NIMPinyinConverter.h in Sources */,
+				A0B49DCE1F14D0DB0058042E /* NIMPinyinConverter.m in Sources */,
+				A0B49DCF1F14D0DB0058042E /* NIMSpellingCenter.h in Sources */,
+				A0B49DD01F14D0DB0058042E /* NIMSpellingCenter.m in Sources */,
+				A0B49DD11F14D0DB0058042E /* SwizzlingDefine.h in Sources */,
+				A0B49DD21F14D0DB0058042E /* UINavigationBar+Swizzling.h in Sources */,
+				A0B49DD31F14D0DB0058042E /* UINavigationBar+Swizzling.m in Sources */,
+				A0B49DD41F14D0DB0058042E /* UINavigationController+Swizzling.h in Sources */,
+				A0B49DD51F14D0DB0058042E /* UINavigationController+Swizzling.m in Sources */,
+				A0B49DD61F14D0DB0058042E /* UINavigationItem+Swizzling.h in Sources */,
+				A0B49DD71F14D0DB0058042E /* UINavigationItem+Swizzling.m in Sources */,
+				A0B49DD81F14D0DB0058042E /* UIView+Swizzling.h in Sources */,
+				A0B49DD91F14D0DB0058042E /* UIView+Swizzling.m in Sources */,
+				A0B49DDA1F14D0DB0058042E /* UIViewController+Swizzling.h in Sources */,
+				A0B49DDB1F14D0DB0058042E /* UIViewController+Swizzling.m in Sources */,
+				A0B49E101F14D0DB0058042E /* NTESLiveInfoViewController.h in Sources */,
+				A0B49E111F14D0DB0058042E /* NTESLiveInfoViewController.m in Sources */,
+				A0B49E121F14D0DB0058042E /* NTESLiveViewController.h in Sources */,
+				A0B49E131F14D0DB0058042E /* NTESLiveViewController.m in Sources */,
+				A0B49E141F14D0DB0058042E /* NTESChatroomListCell.h in Sources */,
+				A0B49E151F14D0DB0058042E /* NTESChatroomListCell.m in Sources */,
+				A0B49E161F14D0DB0058042E /* NTESChatroomMemberCell.h in Sources */,
+				A0B49E171F14D0DB0058042E /* NTESChatroomMemberCell.m in Sources */,
+				A0B49E181F14D0DB0058042E /* NTESChatroomSegmentedControl.h in Sources */,
+				A0B49E191F14D0DB0058042E /* NTESChatroomSegmentedControl.m in Sources */,
+				A0B49E1A1F14D0DB0058042E /* NTESLiveActionView.h in Sources */,
+				A0B49E1B1F14D0DB0058042E /* NTESLiveActionView.m in Sources */,
+				A0B49E1C1F14D0DB0058042E /* NTESLiveBroadcastView.h in Sources */,
+				A0B49E1D1F14D0DB0058042E /* NTESLiveBroadcastView.m in Sources */,
+				A0B49E1E1F14D0DB0058042E /* NTESLiveMasterInfoView.h in Sources */,
+				A0B49E1F1F14D0DB0058042E /* NTESLiveMasterInfoView.m in Sources */,
+				A0B49E221F14D0DB0058042E /* NTESCustomSysNotificationSender.h in Sources */,
+				A0B49E231F14D0DB0058042E /* NTESCustomSysNotificationSender.m in Sources */,
+				A0B49E241F14D0DB0058042E /* NTESContactDataMember.h in Sources */,
+				A0B49E251F14D0DB0058042E /* NTESContactDataMember.m in Sources */,
+				A0B49E261F14D0DB0058042E /* NTESGroupedContacts.h in Sources */,
+				A0B49E271F14D0DB0058042E /* NTESGroupedContacts.m in Sources */,
+				A0B49E281F14D0DB0058042E /* NTESGroupedDataCollection.h in Sources */,
+				A0B49E291F14D0DB0058042E /* NTESGroupedDataCollection.m in Sources */,
+				A0B49E2A1F14D0DB0058042E /* NTESContactDefines.h in Sources */,
+				A0B49E2B1F14D0DB0058042E /* NTESContactUtilCell.h in Sources */,
+				A0B49E2C1F14D0DB0058042E /* NTESContactUtilCell.m in Sources */,
+				A0B49E2D1F14D0DB0058042E /* NTESContactUtilItem.h in Sources */,
+				A0B49E2E1F14D0DB0058042E /* NTESContactUtilItem.m in Sources */,
+				A0B49E2F1F14D0DB0058042E /* NTESUserListCell.h in Sources */,
+				A0B49E301F14D0DB0058042E /* NTESUserListCell.m in Sources */,
+				A0B49E311F14D0DB0058042E /* NTESBlackListViewController.h in Sources */,
+				A0B49E321F14D0DB0058042E /* NTESBlackListViewController.m in Sources */,
+				A0B49E331F14D0DB0058042E /* NTESContactAddFriendViewController.h in Sources */,
+				A0B49E341F14D0DB0058042E /* NTESContactAddFriendViewController.m in Sources */,
+				A0B49E351F14D0DB0058042E /* NTESContactViewController.h in Sources */,
+				A0B49E361F14D0DB0058042E /* NTESContactViewController.m in Sources */,
+				A0B49E3A1F14D0DB0058042E /* NTESCustomNotificationObject.h in Sources */,
+				A0B49E3B1F14D0DB0058042E /* NTESCustomNotificationObject.m in Sources */,
+				A0B49E3C1F14D0DB0058042E /* NTESCustomSysNotificationViewController.h in Sources */,
+				A0B49E3D1F14D0DB0058042E /* NTESCustomSysNotificationViewController.m in Sources */,
+				A0B49E3F1F14D0DB0058042E /* NTESSystemNotificationCell.h in Sources */,
+				A0B49E401F14D0DB0058042E /* NTESSystemNotificationCell.m in Sources */,
+				A0B49E421F14D0DB0058042E /* NTESSystemNotificationViewController.h in Sources */,
+				A0B49E431F14D0DB0058042E /* NTESSystemNotificationViewController.m in Sources */,
+				A0B49E451F14D0DB0058042E /* NTESLoginManager.h in Sources */,
+				A0B49E461F14D0DB0058042E /* NTESLoginManager.m in Sources */,
+				A0B49E471F14D0DB0058042E /* NTESLoginViewController.h in Sources */,
+				A0B49E481F14D0DB0058042E /* NTESLoginViewController.m in Sources */,
+				A0B49E4A1F14D0DB0058042E /* NTESRegisterViewController.h in Sources */,
+				A0B49E4B1F14D0DB0058042E /* NTESRegisterViewController.m in Sources */,
+				A0B49E4D1F14D0DB0058042E /* NTESSessionConfig.h in Sources */,
+				A0B49E4E1F14D0DB0058042E /* NTESSessionConfig.m in Sources */,
+				A0B49E4F1F14D0DB0058042E /* NTESChartletAttachment.h in Sources */,
+				A0B49E501F14D0DB0058042E /* NTESChartletAttachment.m in Sources */,
+				A0B49E511F14D0DB0058042E /* NTESCustomAttachmentDecoder.h in Sources */,
+				A0B49E521F14D0DB0058042E /* NTESCustomAttachmentDecoder.m in Sources */,
+				A0B49E531F14D0DB0058042E /* NTESCustomAttachmentDefines.h in Sources */,
+				A0B49E541F14D0DB0058042E /* NTESJanKenPonAttachment.h in Sources */,
+				A0B49E551F14D0DB0058042E /* NTESJanKenPonAttachment.m in Sources */,
+				A0B49E561F14D0DB0058042E /* NTESSearchLocalHistoryObject.h in Sources */,
+				A0B49E571F14D0DB0058042E /* NTESSearchLocalHistoryObject.m in Sources */,
+				A0B49E581F14D0DB0058042E /* NTESSessionFileStatusProtocol.h in Sources */,
+				A0B49E591F14D0DB0058042E /* NTESSessionMsgConverter.h in Sources */,
+				A0B49E5A1F14D0DB0058042E /* NTESSessionMsgConverter.m in Sources */,
+				A0B49E5B1F14D0DB0058042E /* NTESSnapchatAttachment.h in Sources */,
+				A0B49E5C1F14D0DB0058042E /* NTESSnapchatAttachment.m in Sources */,
+				A0B49E5F1F14D0DB0058042E /* NTESSearchCellLayoutConstant.h in Sources */,
+				A0B49E601F14D0DB0058042E /* NTESSearchMessageContentCell.h in Sources */,
+				A0B49E611F14D0DB0058042E /* NTESSearchMessageContentCell.m in Sources */,
+				A0B49E621F14D0DB0058042E /* NTESSearchMessageEntraceCell.h in Sources */,
+				A0B49E631F14D0DB0058042E /* NTESSearchMessageEntraceCell.m in Sources */,
+				A0B49E641F14D0DB0058042E /* NTESSessionChartletContentView.h in Sources */,
+				A0B49E651F14D0DB0058042E /* NTESSessionChartletContentView.m in Sources */,
+				A0B49E661F14D0DB0058042E /* NTESSessionJankenponContentView.h in Sources */,
+				A0B49E671F14D0DB0058042E /* NTESSessionJankenponContentView.m in Sources */,
+				A0B49E681F14D0DB0058042E /* NTESSessionSnapchatContentView.h in Sources */,
+				A0B49E691F14D0DB0058042E /* NTESSessionSnapchatContentView.m in Sources */,
+				A0B49E6A1F14D0DB0058042E /* NTESSessionTipContentView.h in Sources */,
+				A0B49E6B1F14D0DB0058042E /* NTESSessionTipContentView.m in Sources */,
+				A0B49E6E1F14D0DB0058042E /* NTESAudio2TextViewController.h in Sources */,
+				A0B49E6F1F14D0DB0058042E /* NTESAudio2TextViewController.m in Sources */,
+				A0B49E711F14D0DB0058042E /* NTESFilePreViewController.h in Sources */,
+				A0B49E721F14D0DB0058042E /* NTESFilePreViewController.m in Sources */,
+				A0B49E741F14D0DB0058042E /* NTESFileTransSelectViewController.h in Sources */,
+				A0B49E751F14D0DB0058042E /* NTESFileTransSelectViewController.m in Sources */,
+				A0B49E771F14D0DB0058042E /* NTESGalleryViewController.h in Sources */,
+				A0B49E781F14D0DB0058042E /* NTESGalleryViewController.m in Sources */,
+				A0B49E7A1F14D0DB0058042E /* NTESSessionLocalHistoryViewController.h in Sources */,
+				A0B49E7B1F14D0DB0058042E /* NTESSessionLocalHistoryViewController.m in Sources */,
+				A0B49E7C1F14D0DB0058042E /* NTESSessionPeekViewController.h in Sources */,
+				A0B49E7D1F14D0DB0058042E /* NTESSessionPeekViewController.m in Sources */,
+				A0B49E7E1F14D0DB0058042E /* NTESSessionRemoteHistoryViewController.h in Sources */,
+				A0B49E7F1F14D0DB0058042E /* NTESSessionRemoteHistoryViewController.m in Sources */,
+				A0B49E801F14D0DB0058042E /* NTESSessionViewController.h in Sources */,
+				A0B49E811F14D0DC0058042E /* NTESSessionViewController.m in Sources */,
+				A0B49E821F14D0DC0058042E /* NTESWhiteboardViewController.h in Sources */,
+				A0B49E831F14D0DC0058042E /* NTESWhiteboardViewController.m in Sources */,
+				A0B49E851F14D0DC0058042E /* NTESWhiteboardDrawView.h in Sources */,
+				A0B49E861F14D0DC0058042E /* NTESWhiteboardDrawView.m in Sources */,
+				A0B49E871F14D0DC0058042E /* NTESVideoViewController.h in Sources */,
+				A0B49E881F14D0DC0058042E /* NTESVideoViewController.m in Sources */,
+				A0B49E8A1F14D0DC0058042E /* NetCallChatInfo.h in Sources */,
+				A0B49E8B1F14D0DC0058042E /* NetCallChatInfo.m in Sources */,
+				A0B49E8C1F14D0DC0058042E /* NTESAudioChatViewController.h in Sources */,
+				A0B49E8D1F14D0DC0058042E /* NTESAudioChatViewController.m in Sources */,
+				A0B49E8F1F14D0DC0058042E /* NTESNetChatViewController.h in Sources */,
+				A0B49E901F14D0DC0058042E /* NTESNetChatViewController.m in Sources */,
+				A0B49E911F14D0DC0058042E /* NTESVideoChatViewController.h in Sources */,
+				A0B49E921F14D0DC0058042E /* NTESVideoChatViewController.m in Sources */,
+				A0B49E931F14D0DC0058042E /* NTESVideoChatViewController.xib in Sources */,
+				A0B49E941F14D0DC0058042E /* NTESGLView.h in Sources */,
+				A0B49E951F14D0DC0058042E /* NTESGLView.m in Sources */,
+				A0B49E961F14D0DC0058042E /* NTESRecordSelectView.h in Sources */,
+				A0B49E971F14D0DC0058042E /* NTESRecordSelectView.m in Sources */,
+				A0B49E981F14D0DC0058042E /* NTESVideoChatNetStatusView.h in Sources */,
+				A0B49E991F14D0DC0058042E /* NTESVideoChatNetStatusView.m in Sources */,
+				A0B49E9A1F14D0DC0058042E /* NTESMutiClientsCell.h in Sources */,
+				A0B49E9B1F14D0DC0058042E /* NTESMutiClientsCell.m in Sources */,
+				A0B49E9D1F14D0DC0058042E /* NTESListHeader.h in Sources */,
+				A0B49E9E1F14D0DC0058042E /* NTESListHeader.m in Sources */,
+				A0B49E9F1F14D0DC0058042E /* NTESMutiClientsHeaderView.h in Sources */,
+				A0B49EA01F14D0DC0058042E /* NTESMutiClientsHeaderView.m in Sources */,
+				A0B49EA11F14D0DC0058042E /* NTESTextHeaderView.h in Sources */,
+				A0B49EA21F14D0DC0058042E /* NTESTextHeaderView.m in Sources */,
+				A0B49EA31F14D0DC0058042E /* NTESClientsTableViewController.h in Sources */,
+				A0B49EA41F14D0DC0058042E /* NTESClientsTableViewController.m in Sources */,
+				A0B49EA51F14D0DC0058042E /* NTESSessionListViewController.h in Sources */,
+				A0B49EA61F14D0DC0058042E /* NTESSessionListViewController.m in Sources */,
+				A0B49EA71F14D0DC0058042E /* NTESLogManager.h in Sources */,
+				A0B49EA81F14D0DC0058042E /* NTESLogManager.m in Sources */,
+				A0B49EA91F14D0DC0058042E /* NTESLogUploader.h in Sources */,
+				A0B49EAA1F14D0DC0058042E /* NTESLogUploader.m in Sources */,
+				A0B49EAB1F14D0DC0058042E /* NTESLogViewController.h in Sources */,
+				A0B49EAC1F14D0DC0058042E /* NTESLogViewController.m in Sources */,
+				A0B49EAE1F14D0DC0058042E /* NTESNetDetectViewController.h in Sources */,
+				A0B49EAF1F14D0DC0058042E /* NTESNetDetectViewController.m in Sources */,
+				A0B49EB11F14D0DC0058042E /* NTESNoDisturbTimeCell.h in Sources */,
+				A0B49EB21F14D0DC0058042E /* NTESNoDisturbTimeCell.m in Sources */,
+				A0B49EB31F14D0DC0058042E /* NTESTextSettingCell.h in Sources */,
+				A0B49EB41F14D0DC0058042E /* NTESTextSettingCell.m in Sources */,
+				A0B49EB51F14D0DC0058042E /* NTESAboutViewController.h in Sources */,
+				A0B49EB61F14D0DC0058042E /* NTESAboutViewController.m in Sources */,
+				A0B49EB81F14D0DC0058042E /* NTESSettingViewController.h in Sources */,
+				A0B49EB91F14D0DC0058042E /* NTESSettingViewController.m in Sources */,
+				A0B49EBB1F14D0DC0058042E /* NTESAliasSettingViewController.h in Sources */,
+				A0B49EBC1F14D0DC0058042E /* NTESAliasSettingViewController.m in Sources */,
+				A0B49EBD1F14D0DC0058042E /* NTESBirthSettingViewController.h in Sources */,
+				A0B49EBE1F14D0DC0058042E /* NTESBirthSettingViewController.m in Sources */,
+				A0B49EBF1F14D0DC0058042E /* NTESEmailSettingViewController.h in Sources */,
+				A0B49EC01F14D0DC0058042E /* NTESEmailSettingViewController.m in Sources */,
+				A0B49EC11F14D0DC0058042E /* NTESGenderSettingViewController.h in Sources */,
+				A0B49EC21F14D0DC0058042E /* NTESGenderSettingViewController.m in Sources */,
+				A0B49EC31F14D0DC0058042E /* NTESMobileSettingViewController.h in Sources */,
+				A0B49EC41F14D0DC0058042E /* NTESMobileSettingViewController.m in Sources */,
+				A0B49EC51F14D0DC0058042E /* NTESNickNameSettingViewController.h in Sources */,
+				A0B49EC61F14D0DC0058042E /* NTESNickNameSettingViewController.m in Sources */,
+				A0B49EC71F14D0DC0058042E /* NTESSignSettingViewController.h in Sources */,
+				A0B49EC81F14D0DC0058042E /* NTESSignSettingViewController.m in Sources */,
+				A0B49EC91F14D0DC0058042E /* NTESUserInfoSettingViewController.h in Sources */,
+				A0B49ECA1F14D0DC0058042E /* NTESUserInfoSettingViewController.m in Sources */,
+				A0B49ECC1F14D0DC0058042E /* NTESBirthPickerView.h in Sources */,
+				A0B49ECD1F14D0DC0058042E /* NTESBirthPickerView.m in Sources */,
+				A0B49ECE1F14D0DC0058042E /* NTESSettingCheckCell.h in Sources */,
+				A0B49ECF1F14D0DC0058042E /* NTESSettingCheckCell.m in Sources */,
+				A0B49ED01F14D0DC0058042E /* NTESSettingPortraitCell.h in Sources */,
+				A0B49ED11F14D0DC0058042E /* NTESSettingPortraitCell.m in Sources */,
+				A0B49ED21F14D0DC0058042E /* NTESSettingSwitcherCell.h in Sources */,
+				A0B49ED31F14D0DC0058042E /* NTESDemoFetchChatroomTask.h in Sources */,
+				A0B49ED41F14D0DC0058042E /* NTESDemoFetchChatroomTask.m in Sources */,
+				A0B49ED51F14D0DC0058042E /* NTESDemoRegisterTask.h in Sources */,
+				A0B49ED61F14D0DC0058042E /* NTESDemoRegisterTask.m in Sources */,
+				A0B49ED71F14D0DC0058042E /* NTESDemoService.h in Sources */,
+				A0B49ED81F14D0DC0058042E /* NTESDemoService.m in Sources */,
+				A0B49ED91F14D0DC0058042E /* NTESDemoServiceTask.h in Sources */,
+				A0B49EDA1F14D0DC0058042E /* NTESBundleSetting.h in Sources */,
+				A0B49EDB1F14D0DC0058042E /* NTESBundleSetting.m in Sources */,
+				A0B49EDC1F14D0DC0058042E /* NTESCADisplayLinkHolder.h in Sources */,
+				A0B49EDD1F14D0DC0058042E /* NTESCADisplayLinkHolder.m in Sources */,
+				A0B49EDE1F14D0DC0058042E /* NTESClientUtil.h in Sources */,
+				A0B49EDF1F14D0DC0058042E /* NTESClientUtil.m in Sources */,
+				A0B49EE01F14D0DC0058042E /* NTESDemoConfig.h in Sources */,
+				A0B49EE11F14D0DC0058042E /* NTESDemoConfig.m in Sources */,
+				A0B49EE21F14D0DC0058042E /* NTESDevice.h in Sources */,
+				A0B49EE31F14D0DC0058042E /* NTESDevice.m in Sources */,
+				A0B49EE41F14D0DC0058042E /* NTESFileLocationHelper.h in Sources */,
+				A0B49EE51F14D0DC0058042E /* NTESFileLocationHelper.m in Sources */,
+				A0B49EE61F14D0DC0058042E /* NTESNotificationCenter.h in Sources */,
+				A0B49EE71F14D0DC0058042E /* NTESNotificationCenter.m in Sources */,
+				A0B49EE81F14D0DC0058042E /* NTESSDKConfigDelegate.h in Sources */,
+				A0B49EE91F14D0DC0058042E /* NTESSDKConfigDelegate.m in Sources */,
+				A0B49EEA1F14D0DC0058042E /* NTESService.h in Sources */,
+				A0B49EEB1F14D0DC0058042E /* NTESService.m in Sources */,
+				A0B49EEC1F14D0DC0058042E /* NTESSessionUtil.h in Sources */,
+				A0B49EED1F14D0DC0058042E /* NTESSessionUtil.m in Sources */,
+				A0B49EEE1F14D0DC0058042E /* NTESTimerHolder.h in Sources */,
+				A0B49EEF1F14D0DC0058042E /* NTESTimerHolder.m in Sources */,
+				A0B49EF01F14D0DC0058042E /* NTESUserUtil.h in Sources */,
+				A0B49EF11F14D0DC0058042E /* NTESUserUtil.m in Sources */,
+				A0B49EF21F14D0DC0058042E /* NTESPinyinConverter.h in Sources */,
+				A0B49EF31F14D0DC0058042E /* NTESPinyinConverter.m in Sources */,
+				A0B49EF41F14D0DC0058042E /* NTESSpellingCenter.h in Sources */,
+				A0B49EF51F14D0DC0058042E /* NTESSpellingCenter.m in Sources */,
+				A0B49F521F14D0DC0058042E /* UpdateVC.swift in Sources */,
+				A0B49F531F14D0DC0058042E /* AppDelegate.swift in Sources */,
+				A0B49F541F14D0DC0058042E /* ViewController.swift in Sources */,
+				A0B49F551F14D0DC0058042E /* iOSStar-Bridging-Header.h in Sources */,
+				A0B49F561F14D0DC0058042E /* AppConst.swift in Sources */,
+				A0B49F581F14D0DC0058042E /* WechatAuthSDK.h in Sources */,
+				A0B49F591F14D0DC0058042E /* WXApi.h in Sources */,
+				A0B49F5A1F14D0DC0058042E /* WXApiObject.h in Sources */,
+				A0B49F5B1F14D0DC0058042E /* YD_MenuView.swift in Sources */,
+				A0B49F5C1F14D0DC0058042E /* TradingAlertView.swift in Sources */,
+				A0B49F5D1F14D0DC0058042E /* NoDataCell.swift in Sources */,
+				A0B49F5E1F14D0DC0058042E /* CanCopyLabel.swift in Sources */,
+				A0B49F5F1F14D0DC0058042E /* YD_CountDownHelper.swift in Sources */,
+				A0B49F601F14D0DC0058042E /* AppConfigHelper.swift in Sources */,
+				A0B49F611F14D0DC0058042E /* BaseNavigationController.swift in Sources */,
+				A0B49F621F14D0DC0058042E /* TableViewHelper.swift in Sources */,
+				A0B49C3E1F14CF5F0058042E /* DiscoverAPI.swift in Sources */,
+				A0B49C3F1F14CF5F0058042E /* DiscoverSocketAPI.swift in Sources */,
+				A0B49C401F14CF5F0058042E /* BaseTabBarController.swift in Sources */,
+				A0B49C411F14CF5F0058042E /* BaseTableViewController.swift in Sources */,
+				A0B49C421F14CF5F0058042E /* BaseCustomTableViewController.swift in Sources */,
+				A0B49C431F14CF5F0058042E /* RedBackItemViewController.swift in Sources */,
+				A0B49C441F14CF5F0058042E /* BaseWebVC.swift in Sources */,
+				A0B49C451F14CF5F0058042E /* PhotoBrowserVC.swift in Sources */,
+				A0B49C461F14CF5F0058042E /* UIViewController+Analysis.swift in Sources */,
+				A0B49C471F14CF5F0058042E /* UIView.swift in Sources */,
+				A0B49C481F14CF5F0058042E /* UIViewController+Extension.swift in Sources */,
+				A0B49C491F14CF5F0058042E /* UIBarExtension.swift in Sources */,
+				A0B49C4A1F14CF5F0058042E /* NSDateExt.swift in Sources */,
+				A0B49C4B1F14CF5F0058042E /* String+Extension.swift in Sources */,
+				A0B49C4C1F14CF5F0058042E /* SVProgressHUDExt.swift in Sources */,
+				A0B49C4D1F14CF5F0058042E /* UIColor+Extension.swift in Sources */,
+				A0B49C4E1F14CF5F0058042E /* UIViewController+ChatView.swift in Sources */,
+				A0B49C4F1F14CF5F0058042E /* Label+Extension.swift in Sources */,
+				A0B49C501F14CF5F0058042E /* UIView+Extension.swift in Sources */,
+				A0B49C511F14CF5F0058042E /* UITabBar+badge.swift in Sources */,
+				A0B49C521F14CF5F0058042E /* UIBarButtonItem+Category.swift in Sources */,
+				A0B49C531F14CF5F0058042E /* UIButton+Extension.swift in Sources */,
+				A0B49C541F14CF5F0058042E /* IOSStarTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A0B48DDF1F14B28D0058042E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A07238491EA768AC00E755DB /* iOSStar */;
+			targetProxy = A0B48DDE1F14B28D0058042E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6E0922A21EA88DFE002725A0 /* LaunchScreen.storyboard */ = {
@@ -4352,6 +6005,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -4394,6 +6048,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -4413,7 +6068,9 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = GED83X9MRE;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iOSStar/Marco",
 					"$(PROJECT_DIR)/iOSSTar/Resource/alipay",
@@ -4470,16 +6127,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhijun Hu (72333MKM33)";
 				DEVELOPMENT_TEAM = GED83X9MRE;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/iOSStar/Marco",
-					"$(PROJECT_DIR)/iOSSTar/Resource/alipay",
-					"\"$(SRCROOT)/iOSSTar/Resource/alipay/AlipaySDK.framework\"",
-					"\"$(SRCROOT)/iOSSTar/Resource/alipay\"",
-					"\"$(SRCROOT)/iOSSTar/Resource/alipay/openssl\"",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/iOSSTar/Library",
-				);
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -4514,6 +6163,84 @@
 			};
 			name = Release;
 		};
+		A0B48DCC1F14A01E0058042E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7838E955A5D136C413B7BB1 /* Pods-IOSStarTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iOSSTar/Marco",
+					"$(PROJECT_DIR)/Pods/Fabric",
+					"$(PROJECT_DIR)/Pods/NIMSDK/NIMAVChat",
+					"$(PROJECT_DIR)/Pods/NIMSDK/NIMSDK",
+					"$(PROJECT_DIR)/Pods/UMengAnalytics-NO-IDFA/umsdk_IOS_analyics_no-idfa_v4.2.5",
+					"$(PROJECT_DIR)/Pods/UMengUShare/UShareSDK/UMSocialSDK",
+					"$(PROJECT_DIR)/Pods/UMengUShare/UShareSDK/UMSocialUI",
+					"$(PROJECT_DIR)/iOSSTar/Library",
+					"$(PROJECT_DIR)/Pods/AliPay",
+					"$(PROJECT_DIR)/Pods/Crashlytics",
+					"$(PROJECT_DIR)/Pods/Fabric/iOS",
+					"$(PROJECT_DIR)/Pods/Crashlytics/iOS",
+				);
+				INFOPLIST_FILE = IOSStarTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iOSSTar/Marco/OEZCommSDK.framework",
+					"$(PROJECT_DIR)/Pods/UMengUShare/UShareSDK/UMSocialSDKPlugin",
+					"$(PROJECT_DIR)/iOSSTar/Resource/alipay",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = yudian.IOSStarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSStar.app/iOSStar";
+			};
+			name = Debug;
+		};
+		A0B48DCD1F14A01E0058042E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5682A5040EEA5BE80F933A8 /* Pods-IOSStarTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				ENABLE_TESTABILITY = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iOSSTar/Marco",
+					"$(PROJECT_DIR)/Pods/Fabric",
+					"$(PROJECT_DIR)/Pods/NIMSDK/NIMAVChat",
+					"$(PROJECT_DIR)/Pods/NIMSDK/NIMSDK",
+					"$(PROJECT_DIR)/Pods/UMengAnalytics-NO-IDFA/umsdk_IOS_analyics_no-idfa_v4.2.5",
+					"$(PROJECT_DIR)/Pods/UMengUShare/UShareSDK/UMSocialSDK",
+					"$(PROJECT_DIR)/Pods/UMengUShare/UShareSDK/UMSocialUI",
+					"$(PROJECT_DIR)/iOSSTar/Library",
+					"$(PROJECT_DIR)/Pods/AliPay",
+					"$(PROJECT_DIR)/Pods/Crashlytics",
+					"$(PROJECT_DIR)/Pods/Fabric/iOS",
+					"$(PROJECT_DIR)/Pods/Crashlytics/iOS",
+				);
+				INFOPLIST_FILE = IOSStarTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iOSSTar/Marco/OEZCommSDK.framework",
+					"$(PROJECT_DIR)/Pods/UMengUShare/UShareSDK/UMSocialSDKPlugin",
+					"$(PROJECT_DIR)/iOSSTar/Resource/alipay",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = yudian.IOSStarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSStar.app/iOSStar";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -4531,6 +6258,15 @@
 			buildConfigurations = (
 				A072385D1EA768AD00E755DB /* Debug */,
 				A072385E1EA768AD00E755DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0B48DCB1F14A01E0058042E /* Build configuration list for PBXNativeTarget "IOSStarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0B48DCC1F14A01E0058042E /* Debug */,
+				A0B48DCD1F14A01E0058042E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
