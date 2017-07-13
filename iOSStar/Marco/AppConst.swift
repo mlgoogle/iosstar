@@ -66,8 +66,19 @@ class AppConst {
         static let background = "background"
         static let auxiliary = "auxiliary"
         static let lightBlue = "lightBlue"
-    };
-     class SystemFont {
+    }
+    
+    enum ColorKey: UInt32 {
+        case main = 0x8c0808
+        case bgColor = 0xfafafa
+        case label6 = 0x666666
+        case label3 = 0x333333
+        case label9 = 0x999999
+        case closeColor = 0xFFFFFF
+        case linkColor = 0x75c1e7
+    }
+    
+    class SystemFont {
         static let S1 = UIFont.systemFont(ofSize: 18)
         static let S2 = UIFont.systemFont(ofSize: 15)
         static let S3 = UIFont.systemFont(ofSize: 13)
@@ -75,6 +86,19 @@ class AppConst {
         static let S5 = UIFont.systemFont(ofSize: 10)
         static let S14 = UIFont.systemFont(ofSize: 14)
     };
+    
+    enum iconFontName: String {
+        case backItem = "\u{e61a}"
+        case closeIcon = "\u{e62b}"
+        case newsIcon = "\u{e629}"
+        case userPlaceHolder = "\u{e60d}"
+        case thumpUpIcon = "\u{e624}"
+        case newsPlaceHolder = "\u{e603}"
+        case addIcon = "\u{e606}"
+        case commentIcon = "\u{e635}"
+        case thumbIcon = "\u{e62f}"
+        case showIcon = "\u{e628}"
+    }
     
     class Network {
         #if true  //是否测试环境
@@ -85,7 +109,6 @@ class AppConst {
         static let TcpServerIP:String = "api.star.smartdata-x.com";
         static let TcpServerPort:UInt16 = 16060
         static let HttpHostUrl:String = "api.star.smartdata-x.com";
-
         #endif
         static let TimeoutSec:UInt16 = 10
         static let qiniuHost = "http://ofr5nvpm7.bkt.clouddn.com/"
