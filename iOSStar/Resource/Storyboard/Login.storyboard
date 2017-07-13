@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j9j-xh-Qc8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j9j-xh-Qc8">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1348,34 +1348,27 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入区域总经销ID(会员机构)" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="925-Y2-005">
-                                                        <rect key="frame" x="20" y="87" width="228" height="44"/>
+                                                        <rect key="frame" x="20" y="87" width="228" height="0.0"/>
                                                         <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="cqn-hR-XYt"/>
+                                                            <constraint firstAttribute="height" id="cqn-hR-XYt"/>
                                                         </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="9CJ-9Y-qZN" id="WJe-ve-tot"/>
-                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入区域经销ID(区域经纪人)" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dp8-bI-vwr">
-                                                        <rect key="frame" x="20" y="156" width="228" height="44"/>
+                                                        <rect key="frame" x="20" y="87" width="228" height="0.0"/>
                                                         <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="PwH-F8-2Ld"/>
-                                                            <constraint firstAttribute="height" constant="44" id="uPO-ua-Bhl"/>
+                                                            <constraint firstAttribute="height" id="uPO-ua-Bhl"/>
                                                         </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="9CJ-9Y-qZN" id="Afx-W9-2r0"/>
-                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入零售商ID（经纪人）     ." textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4Xn-LO-YH9">
-                                                        <rect key="frame" x="20" y="225" width="228" height="44"/>
+                                                        <rect key="frame" x="20" y="112" width="228" height="44"/>
                                                         <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="B6M-tI-e6c"/>
@@ -1385,12 +1378,9 @@
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="9CJ-9Y-qZN" id="fYx-kP-ctM"/>
-                                                        </connections>
                                                     </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIPS：请从您的经纪人或者推荐人那里获 取相对应的ID，请至少填写一个以上的ID 信息" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibp-wZ-6OI">
-                                                        <rect key="frame" x="20" y="294" width="228" height="50.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIPS：请输入正确的渠道推广号" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibp-wZ-6OI">
+                                                        <rect key="frame" x="20" y="181" width="228" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1413,7 +1403,7 @@
                                                     <constraint firstItem="0BX-g8-GgR" firstAttribute="centerX" secondItem="YLg-8G-SlY" secondAttribute="centerX" id="3q3-a2-jxu"/>
                                                     <constraint firstAttribute="height" constant="400" id="A87-oe-Gxp"/>
                                                     <constraint firstAttribute="trailing" secondItem="2IX-GY-2ql" secondAttribute="trailing" id="BZV-EY-TSI"/>
-                                                    <constraint firstItem="dp8-bI-vwr" firstAttribute="top" secondItem="925-Y2-005" secondAttribute="bottom" constant="25" id="COT-tK-vTh"/>
+                                                    <constraint firstItem="dp8-bI-vwr" firstAttribute="top" secondItem="925-Y2-005" secondAttribute="bottom" id="COT-tK-vTh"/>
                                                     <constraint firstItem="dp8-bI-vwr" firstAttribute="leading" secondItem="YLg-8G-SlY" secondAttribute="leading" constant="20" id="COk-OD-LIZ"/>
                                                     <constraint firstAttribute="trailing" secondItem="S7u-dc-d3x" secondAttribute="trailing" constant="19" id="FFy-Ta-cev"/>
                                                     <constraint firstItem="S7u-dc-d3x" firstAttribute="top" secondItem="YLg-8G-SlY" secondAttribute="top" constant="15" id="GtW-8B-6IS"/>
@@ -1472,9 +1462,7 @@
                         <outlet property="joinBtn" destination="2IX-GY-2ql" id="QRJ-TI-Li7"/>
                         <outlet property="joinScrollView" destination="gLL-Gi-z4J" id="ZTp-CQ-xWf"/>
                         <outlet property="joinView" destination="YLg-8G-SlY" id="0Nm-JX-3Ka"/>
-                        <outlet property="littleFieldText" destination="4Xn-LO-YH9" id="byY-Wj-7FS"/>
-                        <outlet property="middleFieldText" destination="dp8-bI-vwr" id="xgh-Rm-59S"/>
-                        <outlet property="toalFieldText" destination="925-Y2-005" id="6c0-EY-yUr"/>
+                        <outlet property="littleFieldText" destination="4Xn-LO-YH9" id="91c-YT-vdw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UDz-hT-Vyx" userLabel="First Responder" sceneMemberID="firstResponder"/>
