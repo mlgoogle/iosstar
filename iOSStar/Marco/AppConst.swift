@@ -77,10 +77,9 @@ class AppConst {
     };
     
     class Network {
-
         #if true  //是否测试环境
-        static let TcpServerIP:String = "dapi.star.smartdata-x.com"; 
-        static let TcpServerPort:UInt16 = 16060
+        static let TcpServerIP:String = "139.224.34.22";
+        static let TcpServerPort:UInt16 = 16006
         static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
         static let TcpServerIP:String = "api.star.smartdata-x.com";
@@ -122,6 +121,7 @@ class AppConst {
         case User = "User"
         case Login = "Login"
         case Exchange = "Exchange"
+        case Discover = "Discover"
     }
     
     enum RegisterIdentifier:String {
@@ -167,7 +167,16 @@ class AppConst {
         case allDeal = 6009
     }
     
-    
+    enum StarStatus {
+        //预售
+        case presell
+        //发售
+        case selling
+        //求购
+        case askToBuy
+        //更多
+        case more
+     }
     class WechatKey {
         static let Scope = "snsapi_userinfo"
         static let State = "wpstate"

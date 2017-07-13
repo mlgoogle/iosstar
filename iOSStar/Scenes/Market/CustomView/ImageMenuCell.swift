@@ -11,7 +11,6 @@ import UIKit
 class ImageMenuCell: UICollectionViewCell {
 
     lazy var iconImageView:UIImageView = {
-       
         let imageView = UIImageView()
         imageView.image = UIImage(named: "8")
         imageView.isUserInteractionEnabled = true   

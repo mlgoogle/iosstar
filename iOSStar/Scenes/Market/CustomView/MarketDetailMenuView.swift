@@ -11,9 +11,15 @@ import UIKit
 class MarketDetailMenuView: UIView {
     
     lazy var menuView:YD_VMenuView = {
-        let menuView = YD_VMenuView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 50), layout: nil)
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: kScreenWidth / 4, height: 50)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        let menuView = YD_VMenuView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 50), layout: layout)
         menuView.isScreenWidth = true
-        menuView.items = ["简介","粉丝热度榜","拍卖","评论"]
+        let titles = ["简介","粉丝热度榜","拍卖","评论"]
+        menuView.itemData = titles as [AnyObject]?
         menuView.reloadData()
         return menuView
     }()

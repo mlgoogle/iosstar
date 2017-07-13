@@ -28,7 +28,7 @@ class MessageCell:  OEZTableViewCell{
             self.content.text = "\(data.name)" +  " " + "(" + "\(data.code)" + ")" +  " " + str
         }
         
-        time_lb.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.openTime), format: "YY-MM-dd HH:mm:ss")
+        time_lb.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.openTime), format: "YY-MM-dd HH:mm")
         if model.handle == 0 {
             if ((model.buyUid == userId && model.buyHandle == 0 && model.sellHandle == 1) || (model.sellUid == userId && model.sellHandle == 0 && model.buyHandle == 1)){
                 title = "未确认"

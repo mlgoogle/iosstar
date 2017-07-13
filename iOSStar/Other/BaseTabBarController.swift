@@ -32,8 +32,9 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
     func initcustomer(){
         delegate = self
         
-        let storyboardNames = ["News","Market","User"]
-        let titles = ["资讯","热度","我的"]
+        let storyboardNames = ["Discover","Heat","User"]
+        let titles = ["发现明星","明星热度","个人中心"]
+
         for (index, name) in storyboardNames.enumerated() {
             let storyboard = UIStoryboard.init(name: name, bundle: nil)
             let controller = storyboard.instantiateInitialViewController()

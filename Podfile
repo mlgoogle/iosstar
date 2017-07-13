@@ -3,7 +3,7 @@ platform :ios, '9.0'
 target 'iOSStar' do
     # Comment this line if you're not using Swift and don't want to use dynamic frameworks
     use_frameworks!
-    pod 'iCarousel'
+    pod 'MWPhotoBrowser'
     pod 'RealmSwift', '2.6.1'
     pod 'Alamofire', '~> 4.2.0'
     pod 'SDCycleScrollView','~> 1.64'
@@ -32,6 +32,8 @@ target 'iOSStar' do
     pod 'UMengUShare/Social/ReducedSina'
     pod 'GTSDK'
     pod 'UMengAnalytics-NO-IDFA'
-
+    target 'IOSStarTests' do
+        inherit! :search_paths
+    end
 end
 # Uncomment this line to define a global platform for your project

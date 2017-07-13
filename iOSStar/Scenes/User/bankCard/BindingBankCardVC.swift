@@ -98,10 +98,11 @@ class BindingBankCardVC: UITableViewController {
             let model = BindCardListRequestModel()
             model.bankUsername = name.text!
             model.account = cardNum.text!
-            AppAPIHelper.user().bindcard(requestModel: model, complete: { (result) in
+            AppAPIHelper.user().bindcard(requestModel: model, complete: { [weak self](result) in
                 
                 SVProgressHUD.showSuccessMessage(SuccessMessage: "绑定成功", ForDuration: 1, completion: { 
-                    self.navigationController?.popViewController(animated: true)
+                    let vc = self?.storyboard?.instantiateViewController(withIdentifier: "BankCardVC")
+                    self?.navigationController?.pushViewController(vc!, animated: true)
                 })
             }, error: { (error) in
                 self.didRequestError(error)

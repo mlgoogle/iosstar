@@ -65,7 +65,7 @@ class WithdrawalVC: BaseTableViewController,UITextFieldDelegate {
         self.getUserInfo { [weak self](result) in
             if let response = result{
                 let object = response as! UserInfoModel
-                self?.withDrawMoney.text = "可提现金额" + "¥" + String.init(format: "%.2f", object.balance)
+                self?.withDrawMoney.text = "可提现金额" + "," + "¥" + String.init(format: "%.2f", object.balance)
                 self?.accountMoney = object.balance
             }
         }

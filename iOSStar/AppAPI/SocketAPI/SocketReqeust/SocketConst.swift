@@ -96,6 +96,7 @@ class SocketConst: NSObject {
         case timeLine = 4003
         //明星列表
         case starList = 4007
+        case starScrollList = 4009
         //发送评论
         case sendComment = 12001
         //评论列表
@@ -150,6 +151,32 @@ class SocketConst: NSObject {
         case onlyLogin = 3040
         //取消充值
         case cancelRecharge = 7055
+        //抢购剩余时间
+        case remainingTime = 14001
+        //抢购明星信息
+        case panicBuyStarInfo = 14003
+        //明星介绍页详情
+        case starDetailInfo = 10031
+        
+        //抢购明星时间
+        case panicBuy = 14005
+        
+        //朋友圈
+        case circleList = 15001
+        
+        //某个明星的朋友圈
+        case starCircle = 15003
+        //发布朋友圈
+        case sendCircle = 15005
+        //删除朋友圈
+        case deleteCircle = 15007
+        //点赞朋友圈
+        case approveCircle = 15009
+        //评论朋友圈
+        case commentCircle = 15011
+        //明星回复评论
+        case starComment = 15013
+        
     }
     enum type:UInt8 {
         case error  = 0
@@ -166,6 +193,8 @@ class SocketConst: NSObject {
         case market = 11
         case comment = 12
         case search = 13
+        case buy = 14
+        case circle = 15
     }
     
     enum aType:UInt8 {
