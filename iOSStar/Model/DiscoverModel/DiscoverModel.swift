@@ -58,3 +58,4 @@ class StarDetaiInfoModel: Object {
     dynamic var portray4 = ""
     dynamic var acc_id = ""    
 }
+

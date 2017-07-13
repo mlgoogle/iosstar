@@ -54,7 +54,7 @@ class SellingViewController: UIViewController {
         
         totalPriceLabel.setAttributeText(text: text, firstFont: 16, secondFont: 16, firstColor: UIColor(hexString: "333333"), secondColor: UIColor(hexString: "FB9938"), range: NSRange(location: 4, length: text.length() - 4))
         
-        
+        totalPriceLabel.setNeedsDisplay()
     }
     func requestRemainTime() {
         guard starModel != nil else {
@@ -82,6 +82,7 @@ class SellingViewController: UIViewController {
     
             if let model = response as? PanicBuyInfoModel {
                 self.starInfoModel = model
+
                 self.tableView.reloadData()
             }
         }) { (error) in
@@ -104,24 +105,41 @@ class SellingViewController: UIViewController {
             
             
             
+            
         }) { (error) in
             
         }
     }
 }
 
-extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate{
-    
+extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIScrollViewDelegate{
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollView.endEditing(true)
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        scrollView.endEditing(true)
+    }
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        tableView.scrollToRow(at: IndexPath(row: 4, section: 0), at: .bottom, animated: true)
+        UIView.animate(withDuration: 0.5) {
+            self.tableView.contentOffset = CGPoint(x: 0, y: 200)
+        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(sectionHeights[indexPath.row])
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return identifiers.count
-
+    }
+    
+    func countChange(sender:UITextField) {
+        if sender.text != nil {
+            if let price = Double(sender.text!) {
+                setPriceWithPrice(price: price * (starInfoModel?.publish_price ?? 0))
+                
+            }
+        } else {
+            setPriceWithPrice(price: 0)
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifiers[indexPath.row]!, for: indexPath)
@@ -133,7 +151,8 @@ extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITe
         case 3:
             if let buyCountCell = cell as? SellingBuyCountCell {
                 buyCountCell.countTextField.delegate = self
-
+                buyCountCell.countTextField.addTarget(self, action: #selector(countChange(sender:)), for: .editingDidEnd)
+              
             }
         case 5:
             if let tipsCell = cell as? SellingTipsCell {

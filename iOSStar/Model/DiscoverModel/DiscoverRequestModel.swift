@@ -35,3 +35,4 @@ class BuyStarTimeRequestModel:BuyRemainingTimeRequestModel {
     var amount:Int64 = 0
     var price = 0.0
 }
+

@@ -40,4 +40,5 @@ class DiscoverSocketAPI:BaseSocketAPI, DiscoverAPI{
         let packet = SocketDataPacket(opcode: .panicBuy, model: requestModel)
         startResultIntRequest(packet, complete: complete, error: error)
     }
+
 }

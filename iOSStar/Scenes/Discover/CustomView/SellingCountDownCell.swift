@@ -8,8 +8,11 @@
 
 import UIKit
 
+
+
 class SellingCountDownCell: UITableViewCell {
 
+    @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var countDownLabel: UILabel!
     @IBOutlet weak var backColorView: GradualColorView!
     override func awakeFromNib() {
@@ -24,7 +27,14 @@ class SellingCountDownCell: UITableViewCell {
 
     }
     func setRemainingTime(count:Int) {
-        countDownLabel.text = YD_CountDownHelper.shared.getTextWithTimeCount(timeCount: count)
+        if count < 0 || count == 0{
+        
+            infoLabel.text = ""
+            countDownLabel.text = "不在发售时间"
+        } else {
+            countDownLabel.text = YD_CountDownHelper.shared.getTextWithTimeCount(timeCount: count)
+        }
+        infoLabel.setNeedsDisplay()
         countDownLabel.setNeedsDisplay()
     }
 

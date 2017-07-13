@@ -24,7 +24,6 @@ class DiscoverViewController: UIViewController, MenuViewDelegate{
         UIApplication.shared.isStatusBarHidden = false
         initMenuView()
     }
-    
     func initMenuView() {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: kScreenWidth / 2, height: 40)
