@@ -18,9 +18,5 @@ protocol DiscoverAPI {
     func requestStarDetailInfo(requestModel:StarDetaiInfoRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
   
     func buyStarTime(requestModel:BuyStarTimeRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
-    func requestCircleList(requestModel:CircleListRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
-    
-    func commentCircle(requestModel:CommentCircleModel,complete: CompleteBlock?, error: ErrorBlock?)
-    
-    func approveCircle(requestModel:ApproveCircleModel,complete: CompleteBlock?, error: ErrorBlock?)
+
 }

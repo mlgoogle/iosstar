@@ -86,6 +86,10 @@
 		6E54EE131ED5A13B00E14EC3 /* YD_DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54EE121ED5A13B00E14EC3 /* YD_DatePickerViewController.swift */; };
 		6E54EE171ED70DDE00E14EC3 /* MarketDetailCommentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54EE161ED70DDE00E14EC3 /* MarketDetailCommentHeaderView.swift */; };
 		6E6027841EC9916C001FBAA6 /* MarketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */; };
+		6E61D85D1F1654E00002B6F2 /* CircleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E61D85C1F1654E00002B6F2 /* CircleAPI.swift */; };
+		6E61D85F1F1654ED0002B6F2 /* CircleSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E61D85E1F1654ED0002B6F2 /* CircleSocketAPI.swift */; };
+		6E61D8621F165B1C0002B6F2 /* CircleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E61D8611F165B1C0002B6F2 /* CircleModel.swift */; };
+		6E61D8641F165B290002B6F2 /* CircleRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E61D8631F165B290002B6F2 /* CircleRequestModel.swift */; };
 		6E62C7BB1EF8B2AB0053FE1E /* AuctionImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62C7BA1EF8B2AB0053FE1E /* AuctionImageViewCell.swift */; };
 		6E62C7BD1EF8B2BE0053FE1E /* AuctionTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62C7BC1EF8B2BE0053FE1E /* AuctionTimeCell.swift */; };
 		6E62C7BF1EF8B3060053FE1E /* AuctionPositionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62C7BE1EF8B3060053FE1E /* AuctionPositionInfoCell.swift */; };
@@ -543,7 +547,7 @@
 		6E0C6B071EC43ABF00D9C2BC /* NewsSocketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsSocketAPI.swift; sourceTree = "<group>"; };
 		6E0C6B0A1EC4514400D9C2BC /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		6E0E01E51EEE6B0C0087093D /* DealBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealBaseViewController.swift; sourceTree = "<group>"; };
-		6E120F8B1EB966F4004E1E33 /* AppAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAPIHelper.swift; sourceTree = "<group>"; };
+		6E120F8B1EB966F4004E1E33 /* AppAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppAPIHelper.swift; path = ../../../../iOSStar/AppAPI/HttpRequest/AppAPIHelper.swift; sourceTree = "<group>"; };
 		6E1616541EAEF0CF00D95CB6 /* SDCycleScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDCycleScrollView.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSStar-bmxtycnpdoqrbibukoqgcsvtsgdm/Build/Products/Debug-iphonesimulator/SDCycleScrollView/SDCycleScrollView.framework"; sourceTree = "<group>"; };
 		6E1616581EAF1F4C00D95CB6 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		6E16165B1EAF2EF100D95CB6 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
@@ -617,6 +621,10 @@
 		6E54EE121ED5A13B00E14EC3 /* YD_DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YD_DatePickerViewController.swift; sourceTree = "<group>"; };
 		6E54EE161ED70DDE00E14EC3 /* MarketDetailCommentHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailCommentHeaderView.swift; sourceTree = "<group>"; };
 		6E6027831EC9916C001FBAA6 /* MarketDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailViewController.swift; sourceTree = "<group>"; };
+		6E61D85C1F1654E00002B6F2 /* CircleAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleAPI.swift; sourceTree = "<group>"; };
+		6E61D85E1F1654ED0002B6F2 /* CircleSocketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleSocketAPI.swift; sourceTree = "<group>"; };
+		6E61D8611F165B1C0002B6F2 /* CircleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleModel.swift; sourceTree = "<group>"; };
+		6E61D8631F165B290002B6F2 /* CircleRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRequestModel.swift; sourceTree = "<group>"; };
 		6E62C7BA1EF8B2AB0053FE1E /* AuctionImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuctionImageViewCell.swift; sourceTree = "<group>"; };
 		6E62C7BC1EF8B2BE0053FE1E /* AuctionTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuctionTimeCell.swift; sourceTree = "<group>"; };
 		6E62C7BE1EF8B3060053FE1E /* AuctionPositionInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuctionPositionInfoCell.swift; sourceTree = "<group>"; };
@@ -1523,14 +1531,6 @@
 			path = iOSStar/Model/NewsModel;
 			sourceTree = SOURCE_ROOT;
 		};
-		6E120F8A1EB966F4004E1E33 /* HttpRequest */ = {
-			isa = PBXGroup;
-			children = (
-				6E120F8B1EB966F4004E1E33 /* AppAPIHelper.swift */,
-			);
-			path = HttpRequest;
-			sourceTree = "<group>";
-		};
 		6E1616561EAF1F1B00D95CB6 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1733,6 +1733,25 @@
 			path = iOSStar/Model/DiscoverModel;
 			sourceTree = SOURCE_ROOT;
 		};
+		6E61D85B1F1654A90002B6F2 /* CircleAPI */ = {
+			isa = PBXGroup;
+			children = (
+				6E61D85C1F1654E00002B6F2 /* CircleAPI.swift */,
+				6E61D85E1F1654ED0002B6F2 /* CircleSocketAPI.swift */,
+			);
+			path = CircleAPI;
+			sourceTree = "<group>";
+		};
+		6E61D8601F165B060002B6F2 /* CircleModel */ = {
+			isa = PBXGroup;
+			children = (
+				6E61D8611F165B1C0002B6F2 /* CircleModel.swift */,
+				6E61D8631F165B290002B6F2 /* CircleRequestModel.swift */,
+			);
+			name = CircleModel;
+			path = iOSStar/Model/CircleModel;
+			sourceTree = SOURCE_ROOT;
+		};
 		6E7A1F6E1EE6DB02007BF6D8 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1868,6 +1887,7 @@
 		A001A96F1EAD9F5A00752F1A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6E61D8601F165B060002B6F2 /* CircleModel */,
 				6E4F03F61F10D7AC0003D51F /* DiscoverModel */,
 				8E1E8A851EFB987D001B2D7B /* LoginModel */,
 				6E7A1F741EE96C75007BF6D8 /* DealModel */,
@@ -3420,6 +3440,7 @@
 		A072388B1EA76AA300E755DB /* AppAPI */ = {
 			isa = PBXGroup;
 			children = (
+				6E61D85B1F1654A90002B6F2 /* CircleAPI */,
 				6E4F03F11F10D73B0003D51F /* DisCoverAPI */,
 				6E7A1F711EE96BAF007BF6D8 /* DealAPI */,
 				6EBF59081EC6EAA3003F67B4 /* MarketAPI */,
@@ -3427,7 +3448,6 @@
 				A07DF7CA1EC0728B00C2254E /* FriendAPI */,
 				A0A996C51EBC4D67000048DC /* LoginAPI */,
 				A0EF3AEA1EB973F10023093A /* SocketAPI */,
-				6E120F8A1EB966F4004E1E33 /* HttpRequest */,
 			);
 			path = AppAPI;
 			sourceTree = "<group>";
@@ -3631,6 +3651,7 @@
 		A0EF3AF71EB973F10023093A /* SocketReqeust */ = {
 			isa = PBXGroup;
 			children = (
+				6E120F8B1EB966F4004E1E33 /* AppAPIHelper.swift */,
 				A0EF3B1A1EB9778F0023093A /* BaseSocketAPI.swift */,
 				A0EF3B181EB975B10023093A /* SocketConst.swift */,
 				A0EF3AF81EB973F10023093A /* APISocketHelper.swift */,
@@ -3847,6 +3868,7 @@
 			files = (
 				A03D3F351EA86A6400F85308 /* NIMSessionAudioContentView.m in Sources */,
 				6E1B56F51ECE878D00A014AE /* FansListHeaderView.swift in Sources */,
+				6E61D85F1F1654ED0002B6F2 /* CircleSocketAPI.swift in Sources */,
 				A03D3FC41EA86A6500F85308 /* NTESGLView.m in Sources */,
 				6EFE79D61ECC3AD50096470D /* MarketDetailSubViewCell.swift in Sources */,
 				A03D3F581EA86A6500F85308 /* NIMKitUtil.m in Sources */,
@@ -3955,7 +3977,9 @@
 				6E193C4E1EBAD3240049AEDE /* MenuWidthLayout.swift in Sources */,
 				6E2D43B11EDEE9DD00DC9643 /* MarketRequestModel.swift in Sources */,
 				A03D3FDE1EA86A6500F85308 /* NTESEmailSettingViewController.m in Sources */,
+				6E61D8621F165B1C0002B6F2 /* CircleModel.swift in Sources */,
 				6E1616661EB04D4E00D95CB6 /* ContactListViewController.swift in Sources */,
+				6E61D8641F165B290002B6F2 /* CircleRequestModel.swift in Sources */,
 				6ECAA1A91ECD7560000FBED7 /* MarketInfoCell.swift in Sources */,
 				A03D3F621EA86A6500F85308 /* NTESNavigationHandler.m in Sources */,
 				A03D3EF01EA86A6400F85308 /* UIImage+NIM.m in Sources */,
@@ -4131,6 +4155,7 @@
 				A03D3FE71EA86A6500F85308 /* NTESSettingPortraitCell.m in Sources */,
 				A03D3EE41EA86A6400F85308 /* NSString+NTES.m in Sources */,
 				A03D3FA21EA86A6500F85308 /* NTESSearchLocalHistoryObject.m in Sources */,
+				6E61D85D1F1654E00002B6F2 /* CircleAPI.swift in Sources */,
 				A03D3F361EA86A6400F85308 /* NIMSessionFileTransContentView.m in Sources */,
 				6E7A1F6D1EE652E4007BF6D8 /* MarketDetailHeaderView.swift in Sources */,
 				A0E73B931F0B34BC00CA7F41 /* HomeVC.swift in Sources */,

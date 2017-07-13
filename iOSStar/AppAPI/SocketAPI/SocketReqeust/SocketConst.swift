@@ -164,10 +164,19 @@ class SocketConst: NSObject {
         //朋友圈
         case circleList = 15001
         
+        //某个明星的朋友圈
+        case starCircle = 15003
+        //发布朋友圈
+        case sendCircle = 15005
+        //删除朋友圈
+        case deleteCircle = 15007
         //点赞朋友圈
         case approveCircle = 15009
         //评论朋友圈
         case commentCircle = 15011
+        //明星回复评论
+        case starComment = 15013
+        
     }
     enum type:UInt8 {
         case error  = 0

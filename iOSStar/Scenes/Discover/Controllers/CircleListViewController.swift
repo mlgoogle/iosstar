@@ -21,24 +21,7 @@ class CircleListViewController: UIViewController {
 
         let requestModel = CircleListRequestModel()
 
-        AppAPIHelper.discoverAPI().requestCircleList(requestModel: requestModel, complete: { (response) in
-            if let models = response as? [CircleListModel] {
 
-                for model in models {
-                    
-
-                    
-                }
-                
-                
-                
-                
-            }
-            
-            
-        }) { (error) in
-            
-        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -26,6 +26,8 @@ class BuyStarTimeViewController: UIViewController {
         imageView.frame = CGRect(x: 50, y: 50
             , width: self.collectionView.frame.size.width - 100, height: self.collectionView.frame.size.height - 240)
 
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     var dataSouce:[StarSortListModel]?
@@ -112,45 +114,21 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
     
     func commentCircle() {
         
-        let requestModel = CommentCircleModel()
-        AppAPIHelper.discoverAPI().commentCircle(requestModel: requestModel, complete: { (response) in
-            
-
-        }) { (error) in
-            
-        }
     }
     
     func approveCircle() {
-        let requestModel = ApproveCircleModel()
-        AppAPIHelper.discoverAPI().approveCircle(requestModel: requestModel, complete: { (response) in
-            
-        }) { (error) in
-            
-        }
+
     }
     func requestCirCleList() {
-        
     
-        let requestModel = CircleListRequestModel()
-        
-        AppAPIHelper.discoverAPI().requestCircleList(requestModel: requestModel, complete: { (response) in
-            if let models = response as? [CircleListModel] {
-                
-                for model in models {
-                    
-                    
-                    
-                    
-                }
-                
-                
-                
-                
-            }
+
+        let model = SendCircleRequestModel()
+        AppAPIHelper.circleAPI().sendCircle(requestModel: model, complete: { (response) in
+            
             
             
         }) { (error) in
+            
             
         }
     }

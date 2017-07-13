@@ -40,19 +40,5 @@ class DiscoverSocketAPI:BaseSocketAPI, DiscoverAPI{
         let packet = SocketDataPacket(opcode: .panicBuy, model: requestModel)
         startResultIntRequest(packet, complete: complete, error: error)
     }
-    //朋友圈
-    func requestCircleList(requestModel:CircleListRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
-        let packet = SocketDataPacket(opcode: .circleList, model: requestModel)
-        startModelsRequest(packet, listName: "circle_list", modelClass: CircleListModel.self, complete: complete, error: error)
-    }
-    //评论动态
-    func commentCircle(requestModel:CommentCircleModel,complete: CompleteBlock?, error: ErrorBlock?) {
-        let packet = SocketDataPacket(opcode: .commentCircle, model: requestModel)
-        startResultIntRequest(packet, complete: complete, error: error)
-    }
-    //点赞动态
-    func approveCircle(requestModel:ApproveCircleModel,complete: CompleteBlock?, error: ErrorBlock?) {
-        let packet = SocketDataPacket(opcode: .approveCircle, model: requestModel)
-        startResultIntRequest(packet, complete: complete, error: error)
-    }
+
 }
