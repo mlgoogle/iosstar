@@ -53,8 +53,8 @@ class KeyboardInputViewController: UIViewController, HHEmojiKeyboardDelegate {
         return bar
     }()
     
+
     let emojiHeight = UIScreen.main.bounds.width*3/7
-    
     lazy var ykeyboard: HHEmojiKeyboard = {
         
         let dic = HHEmojiManage.getEmojiAll()
@@ -74,6 +74,8 @@ class KeyboardInputViewController: UIViewController, HHEmojiKeyboardDelegate {
         return keyboard
     }()
     
+    var sendMessage: CompleteBlock?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,7 +83,7 @@ class KeyboardInputViewController: UIViewController, HHEmojiKeyboardDelegate {
         NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil, queue: OperationQueue.main, using: { [weak self] (notice) in
             if let info = notice.userInfo{
                 if let frame = info["UIKeyboardFrameEndUserInfoKey"] as? CGRect{
-                        self?.toolbar.y =  frame.minY - 44
+                    self?.toolbar.y =  frame.minY - 44
                 }
                 
             }
@@ -95,14 +97,17 @@ class KeyboardInputViewController: UIViewController, HHEmojiKeyboardDelegate {
         toolbar.inputText.becomeFirstResponder()
         toolbar.sendBtn.addTarget(self, action: #selector(sendBtnTapped(_:)), for: .touchUpInside)
         toolbar.emothionBtn.addTarget(self, action: #selector(emothionBtnTapped(_:)), for: .touchUpInside)
+        //添加emoji表情
         view.addSubview(ykeyboard)
         //添加辅助视图toolbar
         view.addSubview(toolbar)
     }
     
     func sendBtnTapped(_ btn: UIButton) {
-        print(toolbar.inputText.text)
-        view.endEditing(true)
+        if sendMessage != nil {
+            sendMessage!(toolbar.inputText.text as AnyObject?)
+        }
+        dismissController()
     }
     
     func emothionBtnTapped(_ btn: UIButton)  {

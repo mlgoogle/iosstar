@@ -129,6 +129,7 @@ class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let model = tableData[section] as? CircleListModel{
+            print(model.comment_list.count)
             return model.comment_list.count+(model.approve_list.count > 0 ? 2:1)
         }
         return 0
@@ -173,20 +174,36 @@ class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!) {
-    
+        let model = tableData[indexPath.row]
         switch action {
         case cellAction.thumbUp.rawValue:
             print("点赞")
+            let param = ApproveCircleModel()
+            AppAPIHelper.circleAPI().approveCircle(requestModel: param, complete: { (result) in
+                print(result)
+            }, error: errorBlockFunc())
             break
         case cellAction.comment.rawValue:
             let keyboardVC = KeyboardInputViewController()
             keyboardVC.modalPresentationStyle = .custom
             keyboardVC.modalTransitionStyle = .crossDissolve
+            keyboardVC.sendMessage = { [weak self] (message) in
+                let param = CommentCircleModel()
+                param.content = message as! String
+                param.star_code = model.symbol
+                param.circle_id = model.circle_id
+                AppAPIHelper.circleAPI().commentCircle(requestModel: param, complete: { (result) in
+                    print(result)
+                }, error: self?.errorBlockFunc())
+            }
             present(keyboardVC, animated: true, completion: nil)
         case cellAction.reply.rawValue:
             let keyboardVC = KeyboardInputViewController()
             keyboardVC.modalPresentationStyle = .custom
             keyboardVC.modalTransitionStyle = .crossDissolve
+            keyboardVC.sendMessage = { [weak self] (message) in
+                print(message)
+            }
             present(keyboardVC, animated: true, completion: nil)
         default:
             print("")

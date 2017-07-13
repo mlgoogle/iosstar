@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import RealmSwift
+import Realm.RLMSchema
 class SocketResponse {
     fileprivate var body:SocketDataPacket?
     var statusCode:Int {
@@ -101,5 +102,19 @@ class SocketJsonResponse: SocketResponse {
         return nil;
     }
     
+    func responseModels(modelClass: AnyClass, listKey: String) -> AnyObject? {
+        if let bodyDict = responseJsonObject() as? [String: [[String: AnyObject]]] {
+            var ret = [Object]()
+            let cls = modelClass as! Object.Type
+            if let bodyArr = bodyDict[listKey] {
+                for item in bodyArr {
+                    let obj = cls.init(value: item, schema: RLMSchema.partialShared())
+                    ret.append(obj)
+                }
+                return ret as AnyObject?
+            }
+        }
+        return nil
+    }
 }
 
