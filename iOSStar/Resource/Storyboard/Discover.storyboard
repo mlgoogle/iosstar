@@ -808,7 +808,7 @@
         <!--Star NewsVC-->
         <scene sceneID="k5c-oB-CYQ">
             <objects>
-                <tableViewController restorationIdentifier="StarNewsVC" storyboardIdentifier="StarNewsVC" id="uh3-xu-obH" customClass="StarNewsVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="StarNewsVC" storyboardIdentifier="StarNewsVC" hidesBottomBarWhenPushed="YES" id="uh3-xu-obH" customClass="StarNewsVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qxH-0N-Oyi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -896,6 +896,9 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRO-6V-pD1" customClass="YYLabel">
                                             <rect key="frame" x="64" y="67" width="287" height="39"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="39" id="o4v-it-g6j"/>
+                                            </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="text" value="感谢这些天辛苦的你们[憧憬]孙婷和覃西[微笑]你们真美。"/>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="textColor">
@@ -934,6 +937,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="CommentBtn" destination="JFb-Z2-tEg" id="67o-6J-BRG"/>
+                                    <outlet property="contentHeight" destination="o4v-it-g6j" id="Gjc-bW-xT5"/>
                                     <outlet property="iconImage" destination="RMP-sT-lS9" id="ouG-UK-1UT"/>
                                     <outlet property="nameLabel" destination="QYw-kP-Bgv" id="SiS-Kr-NV0"/>
                                     <outlet property="newsLabel" destination="ZRO-6V-pD1" id="jMU-xh-HuC"/>
@@ -963,6 +967,9 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户A，用户B，用户C，用户D，用户E，用户F ……" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egC-lW-JxY">
                                                     <rect key="frame" x="33" y="9" width="262" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="E1d-oM-dHJ"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.57254901960000004" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -998,6 +1005,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="iconImage" destination="2yB-cK-Cca" id="XqR-aZ-tfA"/>
+                                    <outlet property="thumbUpHeight" destination="E1d-oM-dHJ" id="uDH-gZ-qUa"/>
                                     <outlet property="thumbupNames" destination="egC-lW-JxY" id="Jir-Yo-gIX"/>
                                 </connections>
                             </tableViewCell>
@@ -1014,6 +1022,9 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H44-mi-dyv" customClass="YYLabel">
                                                     <rect key="frame" x="8" y="0.0" width="279" height="36"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="h0G-cJ-Os1"/>
+                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="text" value=" 呵呵[微笑]谁能帮我把他们俩的脸都 p成杨幂的。"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="numberOfLines">
@@ -1051,6 +1062,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="commentHeight" destination="h0G-cJ-Os1" id="deJ-OF-0bA"/>
                                     <outlet property="commentLabel" destination="H44-mi-dyv" id="vil-qc-gAs"/>
                                 </connections>
                             </tableViewCell>
