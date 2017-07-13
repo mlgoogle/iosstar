@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+
 class BuyStarTimeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -24,6 +26,8 @@ class BuyStarTimeViewController: UIViewController {
         imageView.frame = CGRect(x: 50, y: 50
             , width: self.collectionView.frame.size.width - 100, height: self.collectionView.frame.size.height - 240)
 
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     var dataSouce:[StarSortListModel]?
@@ -103,13 +107,17 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StarCardView.className(), for: indexPath)
         if let card = cell as? StarCardView {
+            
             card.setStarModel(starModel: dataSouce![indexPath.row])
         }
          return cell
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let starModel = dataSouce![indexPath.row]
 
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        let starModel = dataSouce![indexPath.row]
         var segueString = "ToSelling"
         switch starModel.pushlish_type {
         case 2:
@@ -117,7 +125,6 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
         default:
             break
         }
-
         performSegue(withIdentifier: segueString, sender: indexPath)
 
     }

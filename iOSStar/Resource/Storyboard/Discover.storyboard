@@ -218,6 +218,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onD-89-VOI">
                                         <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
                                         <color key="backgroundColor" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="UrS-Mn-0R9"/>
+                                        </constraints>
                                         <state key="normal" title="求购时间">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -228,6 +231,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egb-L8-sGb">
                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
                                         <color key="backgroundColor" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="49j-SY-OmV"/>
+                                        </constraints>
                                         <state key="normal" title="约见明星">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -239,14 +245,13 @@
                                 <color key="backgroundColor" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="onD-89-VOI" secondAttribute="trailing" id="0yT-es-Wd7"/>
-                                    <constraint firstItem="onD-89-VOI" firstAttribute="top" secondItem="EzQ-r0-HYk" secondAttribute="top" id="1vM-jA-oi0"/>
                                     <constraint firstAttribute="bottom" secondItem="Egb-L8-sGb" secondAttribute="bottom" id="Ovq-tt-YgW"/>
                                     <constraint firstItem="onD-89-VOI" firstAttribute="width" secondItem="Egb-L8-sGb" secondAttribute="width" id="UjV-sY-eAr"/>
                                     <constraint firstAttribute="bottom" secondItem="onD-89-VOI" secondAttribute="bottom" id="hn9-lL-6rl"/>
+                                    <constraint firstAttribute="height" constant="50" id="l2W-fz-VWG"/>
                                     <constraint firstItem="onD-89-VOI" firstAttribute="leading" secondItem="Egb-L8-sGb" secondAttribute="trailing" id="nZ5-pJ-qdb"/>
                                     <constraint firstItem="onD-89-VOI" firstAttribute="height" secondItem="Egb-L8-sGb" secondAttribute="height" id="sbv-mR-VWn"/>
                                     <constraint firstItem="Egb-L8-sGb" firstAttribute="leading" secondItem="EzQ-r0-HYk" secondAttribute="leading" id="uox-zd-zWm"/>
-                                    <constraint firstItem="Egb-L8-sGb" firstAttribute="top" secondItem="EzQ-r0-HYk" secondAttribute="top" id="vSZ-F1-8lp"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -259,7 +264,6 @@
                             <constraint firstAttribute="trailing" secondItem="EzQ-r0-HYk" secondAttribute="trailing" id="Vx9-kv-XLI"/>
                             <constraint firstItem="b4s-af-cyz" firstAttribute="top" secondItem="6z6-Hx-nhP" secondAttribute="bottom" constant="50" id="Zm4-TO-i9n"/>
                             <constraint firstItem="EzQ-r0-HYk" firstAttribute="leading" secondItem="cAT-om-pye" secondAttribute="leading" id="x4Y-lI-daU"/>
-                            <constraint firstItem="EzQ-r0-HYk" firstAttribute="top" secondItem="6z6-Hx-nhP" secondAttribute="bottom" id="yC6-y2-AIs"/>
                         </constraints>
                     </view>
                     <connections>
@@ -444,6 +448,7 @@
                                         <connections>
                                             <outlet property="backColorView" destination="fxi-7H-a9P" id="LIt-jK-UiQ"/>
                                             <outlet property="countDownLabel" destination="lua-an-h5a" id="ksv-jV-VC3"/>
+                                            <outlet property="infoLabel" destination="a4X-mP-Ih2" id="zvd-Op-raV"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SellingBuyCountCell" id="LhN-Ig-i2A" customClass="SellingBuyCountCell" customModule="iOSStar" customModuleProvider="target">

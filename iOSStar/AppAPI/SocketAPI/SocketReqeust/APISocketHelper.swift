@@ -123,7 +123,6 @@ class APISocketHelper:NSObject, GCDAsyncSocketDelegate,SocketHelper {
         UserDefaults.standard.removeObject(forKey:"phone")
         UserDefaults.standard.removeObject(forKey: "token")
         if let tabBarVC = UIApplication.shared.keyWindow?.rootViewController  as? UITabBarController {
-            tabBarVC.selectedIndex = 0
         }
     }
     deinit {

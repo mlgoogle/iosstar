@@ -21,4 +21,11 @@ class SellingBuyCountCell: SellingBaseCell {
 
     }
 
+    override func setPanicModel(model: PanicBuyInfoModel?) {
+        guard model != nil else {
+            return
+        }
+        
+        countTextField.placeholder = "当前最多能购买\(model!.publish_last_time)秒"
+    }
 }
