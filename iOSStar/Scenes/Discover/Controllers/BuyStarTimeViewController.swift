@@ -107,62 +107,25 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StarCardView.className(), for: indexPath)
         if let card = cell as? StarCardView {
+            
             card.setStarModel(starModel: dataSouce![indexPath.row])
         }
          return cell
     }
-    
-    func commentCircle() {
-        
-    }
-    
-    func approveCircle() {
 
-    }
-    func requestCirCleList() {
-    
-
-        let model = SendCircleRequestModel()
-        AppAPIHelper.circleAPI().sendCircle(requestModel: model, complete: { (response) in
-            
-            
-            
-        }) { (error) in
-            
-            
-        }
-    }
-    
-    func transferFormat(model:CircleListModel) -> [Any] {
-        
-        
-        
-        var list = [Any]()
-        
-        for approve in model.approve_list {
-            
-        }
-        
-        return list
-    }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-
-//        commentCircle()
-//        approveCircle()
-        requestCirCleList()
-//        let starModel = dataSouce![indexPath.row]
-//
-//        var segueString = "ToSelling"
-//        switch starModel.pushlish_type {
-//        case 2:
-//            segueString = "ToIntroduce"
-//        default:
-//            break
-//        }
-//
-//        performSegue(withIdentifier: segueString, sender: indexPath)
+        
+        let starModel = dataSouce![indexPath.row]
+        var segueString = "ToSelling"
+        switch starModel.pushlish_type {
+        case 2:
+            segueString = "ToIntroduce"
+        default:
+            break
+        }
+        performSegue(withIdentifier: segueString, sender: indexPath)
 
     }
 }
