@@ -115,21 +115,20 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
 
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
-        
-        let starModel = dataSouce![indexPath.row]
-//        var segueString = "ToSelling"
-        var segueString = "StarNewsVC"
-        switch starModel.pushlish_type {
-        case 1:
-            segueString = StarNewsVC.className()
-        case 2:
-            segueString = "ToIntroduce"
-        default:
-            break
+        if checkLogin(){
+            let starModel = dataSouce![indexPath.row]
+            //        var segueString = "ToSelling"
+            var segueString = "StarNewsVC"
+            switch starModel.pushlish_type {
+            case 1:
+                segueString = "ToSelling"
+            case 2:
+                segueString = "ToIntroduce"
+            default:
+                segueString = StarNewsVC.className()
+                break
+            }
+            performSegue(withIdentifier: segueString, sender: indexPath)
         }
-        performSegue(withIdentifier: segueString, sender: indexPath)
-
     }
 }
