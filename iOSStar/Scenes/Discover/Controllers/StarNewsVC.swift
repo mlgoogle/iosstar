@@ -292,8 +292,29 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
             let keyboardVC = KeyboardInputViewController()
             keyboardVC.modalPresentationStyle = .custom
             keyboardVC.modalTransitionStyle = .crossDissolve
-            keyboardVC.sendMessage = { (message) in
-                
+            keyboardVC.sendMessage = { [weak self](message) in
+                let param = CommentCircleModel()
+                param.content = message as! String
+                param.star_code = model.symbol
+                param.circle_id = model.circle_id
+                param.direction = 2
+                AppAPIHelper.circleAPI().commentCircle(requestModel: param, complete: { (response) in
+                    if let result = response as? ResultModel{
+                        if result.result == 1{
+                            SVProgressHUD.showSuccessMessage(SuccessMessage: "回复成功", ForDuration: 2, completion: {
+                                let comment = CircleCommentModel()
+                                comment.uid = Int((StarUserModel.getCurrentUser()?.userinfo?.id)!)
+                                comment.user_name = (StarUserModel.getCurrentUser()?.userinfo?.agentName)!
+                                comment.direction = 2
+                                comment.priority = 0
+                                comment.content = message as! String
+                                model.comment_list.append(comment)
+                                tableView.reloadData()
+                            })
+                        }
+                    }
+            
+                }, error: self?.errorBlockFunc())
             }
             present(keyboardVC, animated: true, completion: nil)
         default:
