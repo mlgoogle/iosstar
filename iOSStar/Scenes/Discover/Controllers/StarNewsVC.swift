@@ -72,15 +72,15 @@ class ThumbupCell: OEZTableViewCell {
         if let model = data as? CircleListModel{
             var approveName = ""
             for approve in model.approve_list{
-                approveName = "\(approveName),\(approve.user_name)"
+                approveName += "\(approve.user_name),"
             }
-            thumbupNames.text = approveName
             //计算文案高度
             let contentAttribute = NSMutableAttributedString.init(string: approveName)
             contentAttribute.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14), range: NSRange.init(location: 0, length: approveName.length()))
-            let size  = CGSize.init(width: thumbupNames.frame.width , height: CGFloat.greatestFiniteMagnitude)
+            let size  = CGSize.init(width: thumbupNames.frame.width-40 , height: CGFloat.greatestFiniteMagnitude)
             let layout = YYTextLayout.init(containerSize: size, text: contentAttribute)
             thumbUpHeight.constant = (layout?.textBoundingSize.height)!
+            thumbupNames.attributedText = contentAttribute
         }
     }
 }
@@ -95,15 +95,35 @@ class CommentCell: OEZTableViewCell {
         commentLabel.isUserInteractionEnabled = true
         commentLabel.textParser = YParser.share()
     }
-    override func update(_ data: Any!) {
-        if let model = data as? CircleCommentModel{
-            commentLabel.text = "\(model.user_name):\(model.content)"
+    func update(_ data: Any!, index:IndexPath) {
+        if let listModel = data as? CircleListModel{
+            let model = listModel.comment_list[index.row-2]
+            var comment = "\(model.user_name):\(model.content)"
+            if model.direction == 1{
+                comment = "\(listModel.symbol_name)回复\(model.user_name):\(model.content)"
+            }
+            if model.direction == 2{
+                comment = "\(model.user_name)回复\(listModel.symbol_name):\(model.content)"
+            }
             //计算文案高度
-            let contentAttribute = NSMutableAttributedString.init(string: commentLabel.text!)
-            contentAttribute.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14), range: NSRange.init(location: 0, length: commentLabel.text!.length()))
+            let contentAttribute = NSMutableAttributedString.init(string: comment)
+            contentAttribute.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14), range: NSRange.init(location: 0, length: comment.length()))
             let size  = CGSize.init(width: commentLabel.frame.width , height: CGFloat.greatestFiniteMagnitude)
             let layout = YYTextLayout.init(containerSize: size, text: contentAttribute)
             commentHeight.constant = (layout?.textBoundingSize.height)!
+            if model.direction == 0 {
+                contentAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(rgbHex: 0x0092ca), range: NSRange.init(location: 0, length: model.user_name.length()))
+            }
+            if model.direction == 1{
+                contentAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(rgbHex: 0x8c0808), range: NSRange.init(location: 0, length: listModel.symbol_name.length()))
+                contentAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(rgbHex: 0x0092ca), range: NSRange.init(location: listModel.symbol_name.length()+2, length: model.user_name.length()))
+                
+            }
+            if model.direction == 2{
+                contentAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(rgbHex: 0x8c0808), range: NSRange.init(location: model.user_name.length()+2, length: listModel.symbol_name.length()))
+                contentAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(rgbHex: 0x0092ca), range: NSRange.init(location: 0, length: model.user_name.length()))
+            }
+            commentLabel.attributedText = contentAttribute
         }
     }
     func replyGestureTapped(_ gesture: UITapGestureRecognizer){
@@ -146,7 +166,6 @@ class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let model = tableData[section] as? CircleListModel{
-            print(model.comment_list.count)
             return model.comment_list.count+(model.approve_list.count > 0 ? 2:1)
         }
         return 0
@@ -169,7 +188,7 @@ class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CommentCell.className()) as? CommentCell
-        cell?.update(model.comment_list[indexPath.row - 2])
+        cell?.update(model, index:indexPath)
         return cell!
         
     }
@@ -217,6 +236,8 @@ class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
             }, error: errorBlockFunc())
             break
         case cellAction.comment.rawValue:
+            
+            
             let keyboardVC = KeyboardInputViewController()
             keyboardVC.modalPresentationStyle = .custom
             keyboardVC.modalTransitionStyle = .crossDissolve
@@ -231,6 +252,10 @@ class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
             }
             present(keyboardVC, animated: true, completion: nil)
         case cellAction.reply.rawValue:
+            let commentModel = model.comment_list[indexPath.row-2]
+            if commentModel.direction != 1{
+                return
+            }
             let keyboardVC = KeyboardInputViewController()
             keyboardVC.modalPresentationStyle = .custom
             keyboardVC.modalTransitionStyle = .crossDissolve
