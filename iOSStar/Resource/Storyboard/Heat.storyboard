@@ -223,7 +223,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lqf-uY-mQI">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JaX-AH-C44">
                                     <size key="itemSize" width="103" height="97"/>
                                     <size key="headerReferenceSize" width="50" height="181"/>
@@ -238,16 +238,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="103" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kct-9s-RZb">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kct-9s-RZb">
                                                     <rect key="frame" x="0.0" y="0.0" width="103" height="103"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="kct-9s-RZb" secondAttribute="height" multiplier="103:103" id="be7-jn-VG7"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfS-jV-mqn">
-                                                    <rect key="frame" x="45" y="103" width="13" height="16"/>
+                                                    <rect key="frame" x="45" y="108" width="13" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -257,9 +262,14 @@
                                             <constraint firstItem="kct-9s-RZb" firstAttribute="leading" secondItem="Uc4-iV-xV7" secondAttribute="leading" id="1fV-ta-RBq"/>
                                             <constraint firstItem="hfS-jV-mqn" firstAttribute="centerX" secondItem="Uc4-iV-xV7" secondAttribute="centerX" id="7xU-BY-FeU"/>
                                             <constraint firstAttribute="trailing" secondItem="kct-9s-RZb" secondAttribute="trailing" id="MAi-vS-Coe"/>
-                                            <constraint firstItem="hfS-jV-mqn" firstAttribute="top" secondItem="kct-9s-RZb" secondAttribute="bottom" id="Xhh-bM-U0s"/>
+                                            <constraint firstItem="hfS-jV-mqn" firstAttribute="top" secondItem="kct-9s-RZb" secondAttribute="bottom" constant="5" id="Xhh-bM-U0s"/>
                                             <constraint firstItem="kct-9s-RZb" firstAttribute="top" secondItem="Uc4-iV-xV7" secondAttribute="top" id="aVO-u0-Pxv"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius ">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="nameLb" destination="hfS-jV-mqn" id="uZo-8S-L91"/>
                                             <outlet property="starImg" destination="kct-9s-RZb" id="zU9-Rs-tAW"/>
@@ -269,7 +279,23 @@
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderView" id="T8Q-Fd-V7m">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="181"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="1" green="0.14480854552469136" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="明星列表" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYp-3g-VjN">
+                                            <rect key="frame" x="0.0" y="150" width="375" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="1Rn-Yi-ONc"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="LYp-3g-VjN" firstAttribute="leading" secondItem="T8Q-Fd-V7m" secondAttribute="leading" id="Ta3-Rt-X0E"/>
+                                        <constraint firstAttribute="trailing" secondItem="LYp-3g-VjN" secondAttribute="trailing" id="VrW-rU-vOK"/>
+                                        <constraint firstAttribute="bottom" secondItem="LYp-3g-VjN" secondAttribute="bottom" constant="10" id="srZ-6P-2qT"/>
+                                    </constraints>
                                 </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="mDA-wh-6Y6" id="c8T-Lr-LIO"/>
