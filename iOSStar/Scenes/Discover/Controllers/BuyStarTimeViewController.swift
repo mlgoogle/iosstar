@@ -117,6 +117,7 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         
+        
         let starModel = dataSouce![indexPath.row]
 //        var segueString = "ToSelling"
         var segueString = "StarNewsVC"

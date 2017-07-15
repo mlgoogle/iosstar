@@ -8,6 +8,8 @@
 
 import UIKit
 import YYText
+import SVProgressHUD
+
 class NewsCell: OEZTableViewCell {
     @IBOutlet var iconImage: UIImageView!
     @IBOutlet var nameLabel: UILabel!
@@ -25,6 +27,7 @@ class NewsCell: OEZTableViewCell {
         showBtnTapped(showBtn)
         thumbUpBtn.setImage(UIImage.imageWith(AppConst.iconFontName.thumbIcon.rawValue, fontSize: CGSize.init(width: 16, height: 16), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.closeColor.rawValue)), for: .normal)
         CommentBtn.setImage(UIImage.imageWith(AppConst.iconFontName.commentIcon.rawValue, fontSize: CGSize.init(width: 16, height: 16), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.closeColor.rawValue)), for: .normal)
+        newsLabel.textParser = YParser.share()
     }
     override func update(_ data: Any!) {
         if let model = data as? CircleListModel{
@@ -32,11 +35,15 @@ class NewsCell: OEZTableViewCell {
             iconImage.kf.setImage(with: URL.init(string: model.head_url), placeholder: userIcon)
             nameLabel.text =  model.symbol_name
             newsLabel.text = model.content
-            
+            //新闻图片占位图
             let newsPlace = UIImage.imageWith(AppConst.iconFontName.newsPlaceHolder.rawValue, fontSize: newsPic.frame.size, fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue))
             newsPic.kf.setImage(with: URL.init(string: model.pic_url), placeholder: newsPlace)
-            
-            contentHeight.constant = newsLabel.height
+            //计算文案高度
+            let contentAttribute = NSMutableAttributedString.init(string: model.content)
+            contentAttribute.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14), range: NSRange.init(location: 0, length: model.content.length()))
+            let size  = CGSize.init(width: newsLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)
+            let layout = YYTextLayout.init(containerSize: size, text: contentAttribute)
+            contentHeight.constant = (layout?.textBoundingSize.height)!
         }
     }
     
@@ -68,8 +75,12 @@ class ThumbupCell: OEZTableViewCell {
                 approveName = "\(approveName),\(approve.user_name)"
             }
             thumbupNames.text = approveName
-            
-            thumbUpHeight.constant = thumbupNames.height 
+            //计算文案高度
+            let contentAttribute = NSMutableAttributedString.init(string: approveName)
+            contentAttribute.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14), range: NSRange.init(location: 0, length: approveName.length()))
+            let size  = CGSize.init(width: thumbupNames.frame.width , height: CGFloat.greatestFiniteMagnitude)
+            let layout = YYTextLayout.init(containerSize: size, text: contentAttribute)
+            thumbUpHeight.constant = (layout?.textBoundingSize.height)!
         }
     }
 }
@@ -82,12 +93,18 @@ class CommentCell: OEZTableViewCell {
         let replyGesture = UITapGestureRecognizer.init(target: self, action: #selector(replyGestureTapped(_:)))
         commentLabel.addGestureRecognizer(replyGesture)
         commentLabel.isUserInteractionEnabled = true
+        commentLabel.textParser = YParser.share()
     }
     override func update(_ data: Any!) {
         if let model = data as? CircleCommentModel{
             commentLabel.text = "\(model.user_name):\(model.content)"
+            //计算文案高度
+            let contentAttribute = NSMutableAttributedString.init(string: commentLabel.text!)
+            contentAttribute.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14), range: NSRange.init(location: 0, length: commentLabel.text!.length()))
+            let size  = CGSize.init(width: commentLabel.frame.width , height: CGFloat.greatestFiniteMagnitude)
+            let layout = YYTextLayout.init(containerSize: size, text: contentAttribute)
+            commentHeight.constant = (layout?.textBoundingSize.height)!
         }
-        commentHeight.constant = commentLabel.height
     }
     func replyGestureTapped(_ gesture: UITapGestureRecognizer){
         didSelectRowAction(102, data: "")
@@ -116,7 +133,7 @@ class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
 //        param.pos = Int64(pageIndex)*Int64(10)
         AppAPIHelper.circleAPI().requestCircleList(requestModel: param, complete: { [weak self](result) in
             if let data = result as? [CircleListModel]{
-                self?.tableData = data
+                self?.tableData += data
                 self?.tableView.reloadData()
             }
             self?.endRefreshing()
@@ -152,9 +169,7 @@ class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CommentCell.className()) as? CommentCell
-        if let commentModel = model.comment_list[indexPath.row - 2] as? CircleCommentModel{
-            cell?.update(commentModel)
-        }
+        cell?.update(model.comment_list[indexPath.row - 2])
         return cell!
         
     }
@@ -174,13 +189,31 @@ class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!) {
-        let model = tableData[indexPath.row]
+        let model = tableData[indexPath.section]
         switch action {
         case cellAction.thumbUp.rawValue:
-            print("点赞")
+            for approve in model.approve_list{
+                if approve.uid == (StarUserModel.getCurrentUser()?.userinfo?.id)!{
+                    SVProgressHUD.showWainningMessage(WainningMessage: "您已经点赞过了", ForDuration: 2, completion: nil)
+                    return
+                }
+            }
+            
             let param = ApproveCircleModel()
-            AppAPIHelper.circleAPI().approveCircle(requestModel: param, complete: { (result) in
-                print(result)
+            param.star_code = model.symbol
+            param.circle_id = model.circle_id
+            AppAPIHelper.circleAPI().approveCircle(requestModel: param, complete: { (response) in
+                if let result = response as? ResultModel{
+                    if result.result == 1{
+                        SVProgressHUD.showSuccessMessage(SuccessMessage: "点赞成功", ForDuration: 2, completion: { 
+                            let user = ApproveModel()
+                            user.uid = (StarUserModel.getCurrentUser()?.userinfo?.id)!
+                            user.user_name = (StarUserModel.getCurrentUser()?.userinfo?.agentName)!
+                            model.approve_list.append(user)
+                            tableView.reloadRows(at: [indexPath], with: .automatic)
+                        })
+                    }
+                }
             }, error: errorBlockFunc())
             break
         case cellAction.comment.rawValue:
@@ -193,7 +226,7 @@ class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
                 param.star_code = model.symbol
                 param.circle_id = model.circle_id
                 AppAPIHelper.circleAPI().commentCircle(requestModel: param, complete: { (result) in
-                    print(result)
+                    
                 }, error: self?.errorBlockFunc())
             }
             present(keyboardVC, animated: true, completion: nil)
@@ -201,8 +234,8 @@ class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
             let keyboardVC = KeyboardInputViewController()
             keyboardVC.modalPresentationStyle = .custom
             keyboardVC.modalTransitionStyle = .crossDissolve
-            keyboardVC.sendMessage = { [weak self] (message) in
-                print(message)
+            keyboardVC.sendMessage = { (message) in
+                
             }
             present(keyboardVC, animated: true, completion: nil)
         default:

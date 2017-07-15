@@ -105,6 +105,21 @@ class BaseSocketAPI: NSObject {
             
         }, error: error)
     }
-    
+
+    /**
+     请求接口 数据listKey字段解析成model实体数组
+     
+     - parameter packet:     请求包
+     - parameter listName:   列表字段名
+     - parameter modelClass: 要解析填充的model类class
+     - parameter complete:   成功回调 返回modelClass的model实体数组
+     - parameter error:       失败回调
+     */
+    func startModelsRequest(_ packet: SocketDataPacket, listKey:String, modelClass: AnyClass, complete: CompleteBlock?, error: ErrorBlock?) {
+        SocketRequestManage.shared.startJsonRequest(packet, complete: {  (response) in
+            let respoonseObject = (response as? SocketJsonResponse)?.responseModels(modelClass: modelClass, listKey: listKey)
+            complete?(respoonseObject)
+        }, error: error)
+    }
 
 }
