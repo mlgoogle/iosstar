@@ -236,8 +236,6 @@ class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
             }, error: errorBlockFunc())
             break
         case cellAction.comment.rawValue:
-            
-            
             let keyboardVC = KeyboardInputViewController()
             keyboardVC.modalPresentationStyle = .custom
             keyboardVC.modalTransitionStyle = .crossDissolve
@@ -246,8 +244,22 @@ class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
                 param.content = message as! String
                 param.star_code = model.symbol
                 param.circle_id = model.circle_id
-                AppAPIHelper.circleAPI().commentCircle(requestModel: param, complete: { (result) in
-                    
+                AppAPIHelper.circleAPI().commentCircle(requestModel: param, complete: { (response) in
+                    if let result = response as? ResultModel{
+                        if result.result == 1{
+                            SVProgressHUD.showSuccessMessage(SuccessMessage: "评论成功", ForDuration: 2, completion: {
+                                let comment = CircleCommentModel()
+                                comment.uid = Int((StarUserModel.getCurrentUser()?.userinfo?.id)!)
+                                comment.user_name = (StarUserModel.getCurrentUser()?.userinfo?.agentName)!
+                                comment.direction = 0
+                                comment.priority = 0
+                                comment.content = message as! String
+                                model.comment_list.append(comment)
+//                                tableView.reloadRows(at: [indexPath], with: .automatic)
+                                tableView.reloadData()
+                            })
+                        }
+                    }
                 }, error: self?.errorBlockFunc())
             }
             present(keyboardVC, animated: true, completion: nil)
