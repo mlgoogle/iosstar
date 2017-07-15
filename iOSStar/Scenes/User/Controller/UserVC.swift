@@ -131,8 +131,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
             iconImageView = cell.iconImageView
             buyStarCountLabel = cell.buyStarLabel
             message = cell.message
-//            let img = UIImage.imageWith("#xe60e",fontSize: CGSize.init(),fontColor: UIColor.blue)
-//            self.message.setImage(img, for: .normal)
+            self.message.setImage(UIImage.imageWith(AppConst.iconFontName.showIcon.rawValue, fontSize: CGSize.init(width: 22, height: 17), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.linkColor.rawValue)), for: .normal)
            return cell
         }else if indexPath.section == 2{
             
