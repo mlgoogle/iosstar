@@ -9,6 +9,7 @@
 import UIKit
 import YYText
 import SVProgressHUD
+import MJRefresh
 
 class NewsCell: OEZTableViewCell {
     @IBOutlet var iconImage: UIImageView!
@@ -131,7 +132,7 @@ class CommentCell: OEZTableViewCell {
     }
 }
 
-class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
+class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
     
     var tableData: [CircleListModel] = []
     
@@ -140,6 +141,13 @@ class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
         title = "发现明星"
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            self.requestCycleData(0)
+        })
+        tableView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {
+            self.requestCycleData(self.tableData.count)
+        })
+        requestCycleData(0)
     }
     
     enum cellAction: Int {
@@ -148,15 +156,28 @@ class StarNewsVC: BasePageListTableViewController, OEZTableViewDelegate {
         case reply = 102
     }
     
-    override func didRequest(_ pageIndex: Int) {
+    func endRefresh() {
+        if tableView.mj_header.state == .refreshing {
+            tableView.mj_header.endRefreshing()
+        }
+        if tableView.mj_footer.state == .refreshing {
+            tableView.mj_footer.endRefreshing()
+        }
+    }
+    
+    func requestCycleData(_ position: Int) {
         let param = CircleListRequestModel()
-//        param.pos = Int64(pageIndex)*Int64(10)
+        param.pos = Int64(position)
         AppAPIHelper.circleAPI().requestCircleList(requestModel: param, complete: { [weak self](result) in
             if let data = result as? [CircleListModel]{
-                self?.tableData += data
+                if position == 0{
+                    self?.tableData = data
+                }else{
+                    self?.tableData += data
+                }
                 self?.tableView.reloadData()
             }
-            self?.endRefreshing()
+            self?.endRefresh()
         }, error: errorBlockFunc())
     }
     
