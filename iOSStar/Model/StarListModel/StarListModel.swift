@@ -55,6 +55,23 @@ class StartModel: Object {
         
         
     }
+    static func getallStartName(complete: CompleteBlock?){
+        
+        var data = [StartModel]()
+        let realm = try! Realm()
+        let user = realm.objects(StartModel.self)
+        if user.count != 0{
+            
+            for list in user{
+             data.append(list)
+            }
+            complete?(data as AnyObject)
+        }else{
+            complete?(nil)
+        }
+        
+        
+    }
     
     
 }

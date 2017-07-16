@@ -111,7 +111,7 @@ class OrderStarItem: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        serviceTypeButton.isUserInteractionEnabled = false
+//        serviceTypeButton.isUserInteractionEnabled = false
     }
     
     override func layoutSubviews() {

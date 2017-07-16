@@ -31,10 +31,10 @@ target 'iOSStar' do
     pod 'UMengUShare/UI'
     pod 'UMengUShare/Social/ReducedSina'
     pod 'GTSDK'
-    pod 'UMengAnalytics-NO-IDFA'
     pod 'YYText'
-    target 'IOSStarTests' do
-        inherit! :search_paths
-    end
+    pod 'BarrageRenderer', '2.0.1'
+    pod 'MLEmojiLabel', '1.0.0'
+    pod 'UMengAnalytics-NO-IDFA'
+    
 end
 # Uncomment this line to define a global platform for your project
