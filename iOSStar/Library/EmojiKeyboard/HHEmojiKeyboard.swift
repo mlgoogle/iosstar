@@ -38,7 +38,7 @@ protocol HHEmojiKeyboardDelegate:NSObjectProtocol {
 
 class HHEmojiKeyboard: UICollectionView,UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate {
      /// 数据源
-    var dataArr:[[String]]!
+    var dataArr:NSArray!
      /// 是否显示删除按钮
     var delete:Bool = false
      /// 协议
@@ -53,6 +53,7 @@ class HHEmojiKeyboard: UICollectionView,UICollectionViewDelegate,UICollectionVie
             return pageEmojiCount
         }
     }
+    var sections = 0
     
     /**
      构造方法
@@ -64,7 +65,7 @@ class HHEmojiKeyboard: UICollectionView,UICollectionViewDelegate,UICollectionVie
      
      - returns: HHEmojiKeyboard实例
      */
-    init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout ,stringArr arr:[String]!,isShowDelete delete:Bool) {
+    init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout ,stringArr arr:NSArray!,isShowDelete delete:Bool) {
         super.init(frame: frame, collectionViewLayout: layout)
         self.register(HHEmojiKeyboardCell.self, forCellWithReuseIdentifier: "HHEmojiKeyboardCell")
         self.register(HHImageKeyboardCell.self, forCellWithReuseIdentifier: "HHImageKeyboardCell")
@@ -73,7 +74,7 @@ class HHEmojiKeyboard: UICollectionView,UICollectionViewDelegate,UICollectionVie
         self.delegate = self
         self.showsHorizontalScrollIndicator = false
         self.delete = delete
-        self.grouping(arr)
+        self.dataArr = arr
     }
     
     /**
@@ -86,7 +87,7 @@ class HHEmojiKeyboard: UICollectionView,UICollectionViewDelegate,UICollectionVie
      
      - returns: HHEmojiKeyboard实例
      */
-    init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout ,groupingArr arr:[[String]]!,isShowDelete delete:Bool){
+    init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout ,groupingArr arr:NSArray!,isShowDelete delete:Bool){
         super.init(frame: frame, collectionViewLayout: layout)
         self.register(HHEmojiKeyboardCell.self, forCellWithReuseIdentifier: "HHEmojiKeyboardCell")
         self.register(HHImageKeyboardCell.self, forCellWithReuseIdentifier: "HHImageKeyboardCell")
@@ -108,37 +109,61 @@ class HHEmojiKeyboard: UICollectionView,UICollectionViewDelegate,UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        if indexPath.row == self.pageEmojiCount - 1 && self.delete{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HHImageKeyboardCell", for: indexPath) as!  HHImageKeyboardCell
-            cell.imgView.image = UIImage(named: "aio_face_delete")
-            return cell
-        }else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HHEmojiKeyboardCell", for: indexPath) as!  HHEmojiKeyboardCell
-            if self.dataArr[indexPath.section].count > indexPath.row {
-                cell.emojiLabel.text = self.dataArr[indexPath.section][indexPath.row]
-            }else{
-                cell.emojiLabel.text = ""
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HHImageKeyboardCell", for: indexPath) as!  HHImageKeyboardCell
+        let emojiIndex = indexPath.section * pageEmojiCount + indexPath.row
+        if emojiIndex < dataArr.count{
+            if let emojiDic = dataArr[emojiIndex] as? NSDictionary{
+                if let imageName = emojiDic["file"] as? String{
+                    let emojiImage = getEmojiImage(imageName)
+                    cell.imgView.image = emojiImage
+                }
             }
-            return cell
         }
+        return cell
+    }
+    
+    func getEmojiImage(_ imageName: String) -> UIImage?{
+        if let bundlePath = Bundle.main.path(forResource: "NIMKitEmoticon", ofType: "bundle"){
+            let imageStr = NSString.init(string: imageName)
+            let resultImage = imageStr.substring(to: imageName.length() - 4 ).appending("@2x.png")
+            if let path = Bundle.init(path: bundlePath)?.path(forResource: resultImage, ofType: nil, inDirectory: "Emoji"){
+                return UIImage.init(contentsOfFile: path)
+            }
+            
+        }
+        return nil
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int{
-        return self.dataArr.count
+//        return self.dataArr.count
+        let oldSections = dataArr.count/pageEmojiCount
+        sections = dataArr.count%pageEmojiCount == 0 ? oldSections : oldSections + 1
+        return sections
     }
     
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+//        if let delegate = self.emojiKeyboardDelegate {
+//            if let cell = collectionView.cellForItem(at: indexPath){
+//                if cell.isKind(of: HHEmojiKeyboardCell.self){
+//                    if let content = (cell as! HHEmojiKeyboardCell).emojiLabel.text {
+//                        if content.characters.count > 0{
+//                            delegate.emojiKeyboard(self, didSelectEmoji: content)
+//                        }
+//                    }
+//                }else if cell.isKind(of: HHImageKeyboardCell.self){
+//                    delegate.emojiKeyboardDidSelectDelete(self)
+//                }
+//            }
+//        }
         if let delegate = self.emojiKeyboardDelegate {
-            if let cell = collectionView.cellForItem(at: indexPath){
-                if cell.isKind(of: HHEmojiKeyboardCell.self){
-                    if let content = (cell as! HHEmojiKeyboardCell).emojiLabel.text {
-                        if content.characters.count > 0{
-                            delegate.emojiKeyboard(self, didSelectEmoji: content)
-                        }
+            let emojiIndex = indexPath.section * pageEmojiCount + indexPath.row
+            if emojiIndex < dataArr.count{
+                if let emojiDic = dataArr[emojiIndex] as? NSDictionary{
+                    if let imageTag = emojiDic["tag"] as? String{
+                        delegate.emojiKeyboard(self, didSelectEmoji: imageTag)
                     }
-                }else if cell.isKind(of: HHImageKeyboardCell.self){
-                    delegate.emojiKeyboardDidSelectDelete(self)
                 }
             }
         }
@@ -180,28 +205,28 @@ class HHEmojiKeyboard: UICollectionView,UICollectionViewDelegate,UICollectionVie
         }
     }
     // MARK: - 分组
-    func grouping(_ arr:[String]!){
-        var pageEmojiCount = self.pageEmojiCount
-        if self.delete {
-            pageEmojiCount = pageEmojiCount! - 1
-        }
-        
-        var pageNumber:Int = arr.count / pageEmojiCount!
-        if arr.count%pageEmojiCount! > 0 {
-            pageNumber += 1
-        }
-        self.dataArr = []
-        var emojis:[String] = []
-        
-        for i in 0..<pageNumber {
-            emojis.removeAll()
-            for j in 0..<pageEmojiCount! {
-                if i*pageEmojiCount! + j >= arr.count {
-                    break
-                }
-                emojis.append(arr[i*pageEmojiCount!+j])
-            }
-            self.dataArr.append(emojis)
-        }
+    func grouping(_ arr:NSArray!){
+//        var pageEmojiCount = self.pageEmojiCount
+//        if self.delete {
+//            pageEmojiCount = pageEmojiCount! - 1
+//        }
+//        
+//        var pageNumber:Int = arr.count / pageEmojiCount!
+//        if arr.count%pageEmojiCount! > 0 {
+//            pageNumber += 1
+//        }
+//        self.dataArr = []
+//        var emojis:NSMutableArray = []
+//        
+//        for i in 0..<pageNumber {
+//    
+//            for j in 0..<pageEmojiCount! {
+//                if i*pageEmojiCount! + j >= arr.count {
+//                    break
+//                }
+//                
+//            }
+////            self.dataArr.append(emojis)
+//        }
     }
 }

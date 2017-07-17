@@ -10,7 +10,6 @@ import UIKit
 import RealmSwift
 import Realm.RLMSchema
 
-
 class SocketResponse {
     fileprivate var body:SocketDataPacket?
     var statusCode:Int {
@@ -117,6 +116,6 @@ class SocketJsonResponse: SocketResponse {
         }
         return nil;
     }
-    
+   
 }
 

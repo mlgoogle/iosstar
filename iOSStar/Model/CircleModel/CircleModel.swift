@@ -35,3 +35,7 @@ class SendCircleResultModel: Object {
     dynamic var circle_id = 0
 }
 
+class ResultModel: BaseModel{
+    var result = 0
+    
+}

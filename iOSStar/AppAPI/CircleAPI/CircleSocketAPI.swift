@@ -17,17 +17,20 @@ class CircleSocketAPI: BaseSocketAPI, CircleAPI{
     //评论动态
     func commentCircle(requestModel:CommentCircleModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .commentCircle, model: requestModel)
-        startResultIntRequest(packet, complete: complete, error: error)
+//        startResultIntRequest(packet, complete: complete, error: error)
+        startModelRequest(packet, modelClass: ResultModel.self, complete: complete, error: error)
     }
     func starCommentCircle(requestModel:CommentCircleModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .starComment, model: requestModel)
-        startResultIntRequest(packet, complete: complete, error: error)
+//        startResultIntRequest(packet, complete: complete, error: error)
+        startModelRequest(packet, modelClass: ResultModel.self, complete: complete, error: error)
     }
 
     //点赞动态
     func approveCircle(requestModel:ApproveCircleModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .approveCircle, model: requestModel)
-        startResultIntRequest(packet, complete: complete, error: error)
+//        startResultIntRequest(packet, complete: complete, error: error)
+        startModelRequest(packet, modelClass: ResultModel.self, complete: complete, error: error)
     }
     //发送动态
     func sendCircle(requestModel:SendCircleRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
@@ -39,6 +42,7 @@ class CircleSocketAPI: BaseSocketAPI, CircleAPI{
     func deleteCircle(requestModel:DeleteCircle, complete: CompleteBlock?, error: ErrorBlock?) {
         
         let packet = SocketDataPacket(opcode: .deleteCircle, model: requestModel)
-        startResultIntRequest(packet, complete: complete, error: error)
+//        startResultIntRequest(packet, complete: complete, error: error)
+        startModelRequest(packet, modelClass: ResultModel.self, complete: complete, error: error)
     }
 }
