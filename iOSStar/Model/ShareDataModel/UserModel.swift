@@ -82,3 +82,8 @@ class AliPayResultModel: Object {
     dynamic var orderinfo = ""
     dynamic var rid = ""
 }
+
+class ConfigReusltValue: Object {
+    
+    dynamic var param_value = ""
+}

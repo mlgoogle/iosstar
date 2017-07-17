@@ -20,17 +20,11 @@ class MarketFansCell: UITableViewCell {
         price_lb.textColor = UIColor.init(hexString: AppConst.Color.orange)
         // Initialization code
     }
-    func setOrderFans(model:OrderFansListModel,isBuy:Bool,index:Int) {
-        var headerUrl = ""
-        var name = ""
-        if isBuy {
-            headerUrl = (model.buy_user!.headUrl)
-            name = model.buy_user!.nickname
-        } else {
-            headerUrl = model.sell_user!.headUrl
-            name = model.sell_user!.nickname
-        }
-        dateLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(model.trades!.openTime, format: "MM-dd HH:mm:ss")
+    func setOrderFans(model:FansListModel,isBuy:Bool,index:Int) {
+        let headerUrl = model.user?.headUrl ?? ""
+        let name = model.user?.nickname ?? ""
+        
+        dateLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.trades!.positionTime), format: "MM-DD hh:mm:ss")
         iconImaageView.kf.setImage(with: URL(string: headerUrl),placeholder:UIImage.init(named: "\(index%8+1)") )
         
         nameLabel.text = name

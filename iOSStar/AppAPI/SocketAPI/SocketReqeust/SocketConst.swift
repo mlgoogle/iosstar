@@ -177,7 +177,7 @@ class SocketConst: NSObject {
         case commentCircle = 15011
         //明星回复评论
         case starComment = 15013
-        
+        case configRequst = 10033
     }
     enum type:UInt8 {
         case error  = 0

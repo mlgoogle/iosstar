@@ -80,7 +80,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="柳岩（900004）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTO-eQ-s9k">
-                                                    <rect key="frame" x="125" y="35" width="140" height="18"/>
+                                                    <rect key="frame" x="125" y="25" width="140" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="Dwb-KV-m9Y"/>
                                                     </constraints>
@@ -89,22 +89,37 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前总持有 100 秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjB-2g-wOm">
-                                                    <rect key="frame" x="125" y="83" width="141" height="17"/>
+                                                    <rect key="frame" x="125" y="53" width="117" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="CRM-VG-yUM"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lss-v8-O6D">
+                                                    <rect key="frame" x="125" y="75" width="109" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="9JS-DM-Zgg"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <state key="normal" title="进入拍卖排行榜&gt;">
+                                                        <color key="titleColor" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="showEntrust:" destination="FTn-fW-sCn" eventType="touchUpInside" id="TNY-Q7-xjn"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="n4Z-8J-4UV" firstAttribute="top" secondItem="4no-iP-zQL" secondAttribute="top" constant="25" id="Ckb-t4-fFe"/>
                                                 <constraint firstItem="jjB-2g-wOm" firstAttribute="leading" secondItem="MTO-eQ-s9k" secondAttribute="leading" id="DUe-gx-kEk"/>
                                                 <constraint firstItem="MTO-eQ-s9k" firstAttribute="leading" secondItem="n4Z-8J-4UV" secondAttribute="trailing" constant="20" id="Fgb-wg-2f9"/>
                                                 <constraint firstItem="n4Z-8J-4UV" firstAttribute="leading" secondItem="4no-iP-zQL" secondAttribute="leading" constant="25" id="H8i-3j-joz"/>
-                                                <constraint firstItem="MTO-eQ-s9k" firstAttribute="top" secondItem="4no-iP-zQL" secondAttribute="top" constant="35" id="U9a-JM-0MU"/>
-                                                <constraint firstItem="jjB-2g-wOm" firstAttribute="top" secondItem="MTO-eQ-s9k" secondAttribute="bottom" constant="30" id="xnF-hX-okM"/>
+                                                <constraint firstItem="MTO-eQ-s9k" firstAttribute="top" secondItem="4no-iP-zQL" secondAttribute="top" constant="25" id="U9a-JM-0MU"/>
+                                                <constraint firstItem="lss-v8-O6D" firstAttribute="leading" secondItem="jjB-2g-wOm" secondAttribute="leading" id="c5u-bi-FeD"/>
+                                                <constraint firstItem="lss-v8-O6D" firstAttribute="top" secondItem="jjB-2g-wOm" secondAttribute="bottom" constant="5" id="kC4-bP-xWW"/>
+                                                <constraint firstItem="jjB-2g-wOm" firstAttribute="top" secondItem="MTO-eQ-s9k" secondAttribute="bottom" constant="10" id="xnF-hX-okM"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

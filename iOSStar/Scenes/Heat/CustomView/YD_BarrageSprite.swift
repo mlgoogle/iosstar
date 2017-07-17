@@ -13,7 +13,7 @@ class YD_BarrageSprite: BarrageWalkSprite {
 
     override init() {
         super.init()
-        trackNumber = 5
+        trackNumber = 4
         setValue("SpriteView", forKey: "viewClassName")
     }
     func estimateActiveTime() -> CGFloat {

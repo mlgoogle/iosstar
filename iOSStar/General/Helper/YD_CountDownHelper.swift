@@ -33,19 +33,28 @@ class YD_CountDownHelper: NSObject {
     
     var marketInfoRefresh:CompleteBlock?
     
+    var barrageRefresh:CompleteBlock?
 
     //行情刷新轮询标记
     var marketIdentifier = 0
     //行情刷新轮询标记最大值
     private var maxCount = 3
-    
+    var indexIdentifier = 0
+    private var maxIndex = 2
     
     func countDown() {
         //倒计时
         if countDownRefresh != nil {
             countDownRefresh!(nil)
         }
-        
+        indexIdentifier += 1
+        if indexIdentifier == maxIndex {
+            if barrageRefresh != nil {
+                barrageRefresh!(nil)
+            }
+            indexIdentifier = 0
+        }
+
         //行情数据 多秒刷新
         marketIdentifier += 1
         if marketIdentifier == maxCount {
@@ -57,6 +66,7 @@ class YD_CountDownHelper: NSObject {
     
     
     func marketRefresh() {
+        
         if auctionRefresh != nil {
             auctionRefresh!(nil)
         }

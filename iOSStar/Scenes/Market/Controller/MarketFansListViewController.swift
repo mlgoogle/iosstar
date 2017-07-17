@@ -13,15 +13,16 @@ class MarketFansListViewController: MarketBaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var index:Int = 0
-    var fansList:[OrderFansListModel]?
+    var fansList:[FansListModel]?
     var isBuy = true
-    
+    var buySell = 1
     var isRefresh = true
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         scrollView = tableView
         tableView.bounces = true
-        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 450))
         tableView.register(NoDataCell.self, forCellReuseIdentifier: NoDataCell.className())
         tableView.register(FansListHeaderView.self, forHeaderFooterViewReuseIdentifier: "FansListHeaderView")
         automaticallyAdjustsScrollViewInsets = false
@@ -32,6 +33,7 @@ class MarketFansListViewController: MarketBaseViewController {
             
         })
         tableView.mj_footer = footer
+        title = "委托排行榜"
     }
     
     func endRefres(count:Int) {
@@ -42,15 +44,21 @@ class MarketFansListViewController: MarketBaseViewController {
     }
     
     func requestFansList() {
+
+        
         guard starCode != nil else {
             return
         }
         let requestModel = FanListRequestModel()
-        requestModel.buySell = 0
+        requestModel.buySell = Int32(buySell)
         requestModel.symbol = starCode!
-        requestModel.start = Int32(fansList?.count ?? 0)
-        AppAPIHelper.marketAPI().requestOrderFansList(requestModel: requestModel, complete: { (response) in
-            if let models = response as? [OrderFansListModel]{
+        if isRefresh  {
+            requestModel.start = 1
+        } else {
+            requestModel.start = Int32(fansList?.count ?? 0)
+        }
+        AppAPIHelper.marketAPI().requestEntrustFansList(requestModel: requestModel, complete: { (response) in
+            if let models = response as? [FansListModel]{
                 
                 if self.isRefresh {
                     self.fansList = models
@@ -62,7 +70,10 @@ class MarketFansListViewController: MarketBaseViewController {
             }
         }) { (error) in
             self.endRefres(count:1)
+
         }
+
+  
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -74,9 +85,9 @@ extension MarketFansListViewController:UITableViewDelegate, UITableViewDataSourc
     func selectAtIndex(index: Int) {
         self.index = index
         if index == 0 {
-            isBuy = true
+            buySell = 1
         } else {
-            isBuy = false
+            buySell = -1
         }
 
         isRefresh = true

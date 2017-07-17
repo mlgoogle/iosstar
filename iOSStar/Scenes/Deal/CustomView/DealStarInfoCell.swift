@@ -8,14 +8,18 @@
 
 import UIKit
 
+
 class DealStarInfoCell: UITableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var positionLabel: UILabel!
-
+    var delegate:ShowEntrustDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    @IBAction func showEntrust(_ sender: Any) {
+        delegate?.show()
     }
 
     
@@ -30,7 +34,9 @@ class DealStarInfoCell: UITableViewCell {
     }
     
     func setCount(count:Int) {
-        positionLabel.text = "当前总持有\(count)秒"
+    
+        let text = "当前总持有\(count)秒"
+        positionLabel.setAttributeText(text:text,firstFont:14, secondFont:20, firstColor:UIColor(hexString:"333333"), secondColor:UIColor(hexString:"FB9938"), range:NSRange(location: 5, length: text.length() - 6))
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

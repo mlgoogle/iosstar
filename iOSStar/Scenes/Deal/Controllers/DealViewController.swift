@@ -51,7 +51,6 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
     }
     func addSubViews() {
         let identifiers = ["BuyOrSellViewController","BuyOrSellViewController","BuyYetViewController","AllOrderViewController","DealDetailViewController"]
-        
         let stroyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
         var views = [UIView]()
         for (index,identifier) in identifiers.enumerated() {

@@ -40,6 +40,22 @@ class BuyStarTimeViewController: UIViewController {
         collectionView.backgroundView = backView
         collectionView.register(StarCardView.self, forCellWithReuseIdentifier: StarCardView.className())
     }
+    
+    func requestConfigData() {
+        AppAPIHelper.user().configRequest(param_code: "HOME_LAST_PIC", complete: { (response) in
+            if let model = response as? ConfigReusltValue {
+                let starModel = StarSortListModel()
+                starModel.home_pic = model.param_value
+                starModel.pushlish_type = 4
+                if self.dataSouce != nil {
+                    self.dataSouce?.append(starModel)
+                }
+            }
+            
+        }) { (error) in
+            
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -54,6 +70,7 @@ class BuyStarTimeViewController: UIViewController {
             if let models = response as? [StarSortListModel]{
                 self.dataSouce = models
                 self.collectionView.reloadData()
+                self.requestConfigData()
                 self.perform(#selector(self.replaceBackImage(index:)), with: nil, afterDelay: 0.5)
                 
             }
@@ -126,6 +143,11 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
                 segueString = "ToSelling"
             case 2:
                 segueString = "ToIntroduce"
+            case 3:
+                segueString = "ToSelling"
+
+            case 4:
+                segueString = StarNewsVC.className()
             default:
                 segueString = StarNewsVC.className()
                 break

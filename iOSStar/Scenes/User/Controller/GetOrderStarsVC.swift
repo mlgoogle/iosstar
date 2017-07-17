@@ -138,7 +138,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
         //约见
         if action == 4 {
          let model = self.dataSource?[indexPath.section] as! StarInfoModel
-         let modeldata = MarketListModel()
+         let modeldata = StarSortListModel()
             modeldata.name = model.starname
             modeldata.symbol = model.starcode
             let story = UIStoryboard.init(name: "Market", bundle: nil)

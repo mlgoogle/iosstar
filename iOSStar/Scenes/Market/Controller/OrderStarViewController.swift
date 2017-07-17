@@ -126,7 +126,7 @@ class StarDataCell: UITableViewCell {
     }
     
     // 设置明星信息
-    func setStarInfo(model:MarketListModel) {
+    func setStarInfo(model:StarSortListModel) {
         
         nameLabel.text = String.init(format: "%@ (%@)", model.name,model.symbol)
         iconImageView.kf.setImage(with: URL(string: model.pic))
@@ -142,7 +142,7 @@ class StarDataCell: UITableViewCell {
 class OrderStarViewController: UIViewController {
 
     // MarketDetailViewController 传过来的模型
-    var starInfo:MarketListModel?
+    var starInfo:StarSortListModel?
 
     var starModelInfo:BannerDetaiStarModel?
     
