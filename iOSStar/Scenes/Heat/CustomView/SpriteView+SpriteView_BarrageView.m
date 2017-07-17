@@ -17,17 +17,17 @@
 - (void)configureWithParams:(NSDictionary *)params
 {
     NSString *url = params[@"imageUrl"];
-
-
-
-    
-
-    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:  [NSURL URLWithString:url] options:SDWebImageDownloaderHighPriority progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL: [NSURL URLWithString:url] options:SDWebImageDownloaderHighPriority progress:nil completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
         self.imageView.image = image;
     }];
     NSString *name = params[@"name"];
  
-    self.titleLabel.text = name;
+    NSNumber *price = params[@"price"];
+    NSNumber *buySell = params[@"buySell"];
     
+    self.titleLabel.text = [NSString stringWithFormat:@"%@%@: %.2f",name, [buySell integerValue] == 1 ? @"求购":@"转让", [price floatValue]];
+    
+    CGRect rect = [self.titleLabel.text boundingRectWithSize:CGSizeMake(0, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.titleLabel.font} context:nil];
+    self.titleLabel.width = rect.size.width;
 }
 @end

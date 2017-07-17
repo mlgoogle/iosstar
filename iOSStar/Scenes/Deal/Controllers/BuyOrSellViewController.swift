@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 class BuyOrSellViewController: DealBaseViewController {
-    var identifiers = ["DealStarInfoCell","DealMarketCell","DealOrderInfoCell","DealHintCell"]
+    var identifiers = ["DealStarInfoCell","DealMarketCell","DealOrderInfoCell"]
     var rowHeights = [137, 188,133,82]
 
     var infos:[String] = ["转让价格","转让数量"]
@@ -56,7 +56,20 @@ class BuyOrSellViewController: DealBaseViewController {
         }
     }
     
-    
+    func requetTotalCount() {
+        guard starListModel != nil else {
+            return
+        }
+        AppAPIHelper.marketAPI().requestTotalCount(starCode: starListModel!.symbol, complete: { (response) in
+            if let model = response as? StarTotalCountModel {
+                self.count = Int(model.star_time)
+            }
+            
+        }) { (error) in
+            
+            
+        }
+    }
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -132,27 +145,25 @@ class BuyOrSellViewController: DealBaseViewController {
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
             }
         }) { (error) in
-    
-        
-            
+
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
         if let vc = segue.destination as? ShowEntrustListViewController {
-            
             vc.starCode = starListModel?.symbol
         }
-        
     }
 }
 
 extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, OrderInfoChangeDelegate,ShowEntrustDelegate{
     
     func show() {
-        performSegue(withIdentifier: "ToEntrust", sender: nil)
-        
+
+        let storyBoard = UIStoryboard(name: "Market", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "MarketFansListViewController") as? MarketFansListViewController
+        vc?.starCode = starListModel?.symbol
+        navigationController?.pushViewController(vc!, animated: true)
     
     }
     
@@ -186,6 +197,7 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
         switch indexPath.row {
         case 0:
             if let infoCell = cell as? DealStarInfoCell{
+                infoCell.delegate = self
                 infoCell.setupData(model:starListModel)
                 infoCell.setCount(count:positionCount)
             }

@@ -49,6 +49,14 @@ class SellingViewController: UIViewController {
     }
     
     func setPriceWithPrice(price:Double) {
+
+        guard starModel != nil else {
+            return
+        }
+        if starModel!.pushlish_type == 4 {
+            sureBuyButton.backgroundColor = UIColor.gray
+            sureBuyButton.isUserInteractionEnabled = false
+        }
         let priceString = String(format: "%.2f", price)
         let text = "合计: ￥\(priceString)"
         
@@ -60,6 +68,7 @@ class SellingViewController: UIViewController {
         guard starModel != nil else {
             return
         }
+        
         let requestModel = BuyRemainingTimeRequestModel()
         requestModel.symbol = starModel!.symbol
         AppAPIHelper.discoverAPI().requestBuyRemainingTime(requestModel: requestModel, complete: { (response) in

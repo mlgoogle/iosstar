@@ -1358,13 +1358,13 @@
 		6EFE79CB1ECC01B80096470D /* ImageMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageMenuCell.swift; sourceTree = "<group>"; };
 		6EFE79D51ECC3AD50096470D /* MarketDetailSubViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailSubViewCell.swift; sourceTree = "<group>"; };
 		6EFE79DF1ECC49160096470D /* MarketDetaiBaseInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetaiBaseInfoViewController.swift; sourceTree = "<group>"; };
-		6EFE79E11ECC49570096470D /* MarketFansListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketFansListViewController.swift; sourceTree = "<group>"; };
+		6EFE79E11ECC49570096470D /* MarketFansListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarketFansListViewController.swift; path = ../../Market/Controller/MarketFansListViewController.swift; sourceTree = "<group>"; };
 		6EFE79E31ECC49710096470D /* MarketAuctionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketAuctionViewController.swift; sourceTree = "<group>"; };
 		6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketCommentViewController.swift; sourceTree = "<group>"; };
 		6EFF56D31F137B82003895EB /* SellingBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellingBaseCell.swift; sourceTree = "<group>"; };
 		6EFF56D61F1473B8003895EB /* Heat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Heat.storyboard; sourceTree = "<group>"; };
 		6EFF56DA1F147447003895EB /* Exchange.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
-		6EFF56DB1F147447003895EB /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Market.storyboard; sourceTree = "<group>"; };
+		6EFF56DB1F147447003895EB /* Market.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Market.storyboard; path = ../Deprecated/0.9.0StoryBoard/Market.storyboard; sourceTree = "<group>"; };
 		6EFF56DC1F147447003895EB /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		6EFF56E51F1476CF003895EB /* HeatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatListViewController.swift; sourceTree = "<group>"; };
 		6EFF56E71F147890003895EB /* HeatListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatListCell.swift; sourceTree = "<group>"; };
@@ -2442,7 +2442,6 @@
 				6EFE79C71ECBE1970096470D /* OrderStarViewController.swift */,
 				6EFE79DF1ECC49160096470D /* MarketDetaiBaseInfoViewController.swift */,
 				6EFE79E51ECC49810096470D /* MarketCommentViewController.swift */,
-				6EFE79E11ECC49570096470D /* MarketFansListViewController.swift */,
 				6EFE79E31ECC49710096470D /* MarketAuctionViewController.swift */,
 				6E1B56F61ECFD54D00A014AE /* MarketBaseViewController.swift */,
 			);
@@ -2491,6 +2490,7 @@
 			isa = PBXGroup;
 			children = (
 				6E1B57041ED305F600A014AE /* DealViewController.swift */,
+				6EFE79E11ECC49570096470D /* MarketFansListViewController.swift */,
 				6E1B57021ED2EDEA00A014AE /* BuyOrSellViewController.swift */,
 				6E1B57061ED3CB1400A014AE /* BuyYetViewController.swift */,
 				6E1B57081ED3CB4100A014AE /* AllOrderViewController.swift */,
@@ -2681,7 +2681,6 @@
 			isa = PBXGroup;
 			children = (
 				6EFF56DA1F147447003895EB /* Exchange.storyboard */,
-				6EFF56DB1F147447003895EB /* Market.storyboard */,
 				6EFF56DC1F147447003895EB /* News.storyboard */,
 			);
 			path = 0.9.0StoryBoard;
@@ -2698,8 +2697,6 @@
 		6EFF56E11F147679003895EB /* 0.9.0 */ = {
 			isa = PBXGroup;
 			children = (
-				A03D3C511EA86A6300F85308 /* Exchange */,
-				A03D3C4F1EA86A6300F85308 /* Market */,
 				A03D3C4D1EA86A6300F85308 /* News */,
 			);
 			path = 0.9.0;
@@ -4186,6 +4183,8 @@
 			isa = PBXGroup;
 			children = (
 				6EFF56E01F147679003895EB /* DeprecatedScenes */,
+				A03D3C4F1EA86A6300F85308 /* Market */,
+				A03D3C511EA86A6300F85308 /* Exchange */,
 				6EFF56E21F1476B8003895EB /* Heat */,
 				6E2CC4541F0DD9A800281559 /* Discover */,
 				A04CF0761ED6CB6800B93D28 /* User */,
@@ -4344,6 +4343,7 @@
 		A07238B31EA76F3500E755DB /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				6EFF56DB1F147447003895EB /* Market.storyboard */,
 				6E2CC4521F0DD96700281559 /* Discover.storyboard */,
 				6EFF56D61F1473B8003895EB /* Heat.storyboard */,
 				A07238B61EA76F4D00E755DB /* Deal.storyboard */,
@@ -6326,7 +6326,7 @@
 					"$(PROJECT_DIR)/Pods/Crashlytics/iOS",
 				);
 				INFOPLIST_FILE = IOSStarTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6366,7 +6366,7 @@
 					"$(PROJECT_DIR)/Pods/Crashlytics/iOS",
 				);
 				INFOPLIST_FILE = IOSStarTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

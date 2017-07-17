@@ -198,5 +198,9 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         startModelRequest(packet, modelClass: WithdrawListModel
             .self, complete: complete, error: error)
     }
-   
+    func configRequest(param_code:String, complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .configRequst, dict: ["param_code":param_code as AnyObject])
+        startModelRequest(packet, modelClass: ConfigReusltValue.self, complete: complete, error: error)
+    }
+
 }

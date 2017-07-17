@@ -82,4 +82,6 @@ protocol UserApi {
     func withDraw(requestModel:WithDrawrequestModel, complete: CompleteBlock?, error: ErrorBlock?)
     func withDrawList(requestModel:CreditListRequetModel, complete: CompleteBlock?, error: ErrorBlock?)
     
+    func configRequest(param_code:String, complete: CompleteBlock?, error: ErrorBlock?)
+    
 }

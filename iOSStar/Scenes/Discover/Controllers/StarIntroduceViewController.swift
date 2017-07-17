@@ -104,12 +104,19 @@ class StarIntroduceViewController: UIViewController {
         
         let vc = storyBoard.instantiateViewController(withIdentifier: "HeatDetailViewController") as! HeatDetailViewController
         
-        
+        vc.starListModel = starModel
         navigationController?.pushViewController(vc, animated: true)
     }
 
     @IBAction func appointmentAction(_ sender: Any) {
         
+        
+        let storyBoard = UIStoryboard(name: "Market", bundle: nil)
+        
+        let vc = storyBoard.instantiateViewController(withIdentifier: "OrderStarViewController") as! OrderStarViewController
+        vc.starInfo = starModel
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }

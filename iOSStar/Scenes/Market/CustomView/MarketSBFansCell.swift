@@ -21,17 +21,11 @@ class MarketSBFansCell: UITableViewCell {
     }
 
     
-    func setOrderFans(model:OrderFansListModel,isBuy:Bool) {
-        var headerUrl = ""
-        var name = ""
-        if isBuy {
-            headerUrl = (model.buy_user!.headUrl)
-            name = model.buy_user!.nickname
-        } else {
-            headerUrl = model.sell_user!.headUrl
-            name = model.sell_user!.nickname
-        }
-        dateLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(model.trades!.openTime, format: "MM-DD hh:mm:ss")
+    func setOrderFans(model:FansListModel,isBuy:Bool) {
+        let headerUrl = model.user?.headUrl ?? ""
+        let name = model.user?.nickname ?? ""
+   
+        dateLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.trades!.positionTime), format: "MM-DD hh:mm:ss")
 
         iconImageView.kf.setImage(with: URL(string: headerUrl),placeholder:UIImage.init(named: "1"))
         nameLabel.text = name

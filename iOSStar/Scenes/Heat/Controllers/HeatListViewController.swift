@@ -17,7 +17,7 @@ class HeatListViewController: UITableViewController {
 
         configImageNames()
         requestStar()
-        
+        setupNav()
     }
     
     func requestStar() {
@@ -57,7 +57,14 @@ class HeatListViewController: UITableViewController {
         cell.setBackImage(imageName: (imageNames?[indexPath.row % 10])!)
         return cell
     }
-    
+    func setupNav() {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named:"white_back"), for: .normal)
+        button.tintColor = UIColor.white
+        button.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        let item = UIBarButtonItem(customView: button)
+        navigationItem.backBarButtonItem = item
+    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
@@ -73,9 +80,10 @@ class HeatListViewController: UITableViewController {
         if segue.identifier == "ToDeal" {
             let indexPath = sender as! IndexPath
             if let vc = segue.destination as? HeatDetailViewController {
-                
+                vc.imageName = imageNames![indexPath.row]
                 vc.starListModel = dataSource![indexPath.row]
             }
+            
         }
     }
 
