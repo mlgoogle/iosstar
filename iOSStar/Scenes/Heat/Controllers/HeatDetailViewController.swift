@@ -196,12 +196,13 @@ class HeatDetailViewController: UIViewController {
     }
 
     func pushToDealPage(index:Int) {
-        let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
-        
-        if let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as? DealViewController {
-            vc.index = index
-            vc.starListModel = starListModel
-            navigationController?.pushViewController(vc, animated: true)
+        if checkLogin() {
+            let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
+            if let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as? DealViewController {
+                vc.index = index
+                vc.starListModel = starListModel
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }
         
     }
