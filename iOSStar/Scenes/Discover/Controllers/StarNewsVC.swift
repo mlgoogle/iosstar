@@ -30,6 +30,7 @@ class NewsCell: OEZTableViewCell {
         CommentBtn.setImage(UIImage.imageWith(AppConst.iconFontName.commentIcon.rawValue, fontSize: CGSize.init(width: 16, height: 16), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.closeColor.rawValue)), for: .normal)
         newsLabel.textParser = YParser.share()
     }
+    
     override func update(_ data: Any!) {
         if let model = data as? CircleListModel{
             let userIcon = UIImage.imageWith(AppConst.iconFontName.userPlaceHolder.rawValue, fontSize: iconImage.frame.size, fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue))
@@ -69,6 +70,7 @@ class ThumbupCell: OEZTableViewCell {
     override func awakeFromNib() {
         iconImage.image = UIImage.imageWith(AppConst.iconFontName.thumpUpIcon.rawValue, fontSize: iconImage.frame.size, fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue))
     }
+    
     override func update(_ data: Any!) {
         if let model = data as? CircleListModel{
             var approveName = ""
@@ -96,6 +98,7 @@ class CommentCell: OEZTableViewCell {
         commentLabel.isUserInteractionEnabled = true
         commentLabel.textParser = YParser.share()
     }
+    
     func update(_ data: Any!, index:IndexPath) {
         if let listModel = data as? CircleListModel{
             let model = listModel.comment_list[index.row-2]
@@ -127,6 +130,7 @@ class CommentCell: OEZTableViewCell {
             commentLabel.attributedText = contentAttribute
         }
     }
+    
     func replyGestureTapped(_ gesture: UITapGestureRecognizer){
         didSelectRowAction(102, data: "")
     }

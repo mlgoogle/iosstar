@@ -33,8 +33,10 @@ struct SocketPacketHead {
 #import <AlipaySDK/AlipaySDK.h> 
 #import "RSADataSigner.h"
 #import "Order.h"
-
+#import <BarrageRenderer/BarrageRenderer.h>
 #import <UMMobClick/MobClick.h>
+#import "BarrageWalkImageTextSprite.h"
 #import "GeTuiSdk.h"
+#import "BarrageWalkImageTextSprite.h"
 // #import "GeTuiExtSdk.h"
 
