@@ -105,6 +105,7 @@ class BaseSocketAPI: NSObject {
             
         }, error: error)
     }
+
     /**
      请求接口 数据listKey字段解析成model实体数组
      
@@ -120,4 +121,5 @@ class BaseSocketAPI: NSObject {
             complete?(respoonseObject)
         }, error: error)
     }
+
 }

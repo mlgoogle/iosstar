@@ -18,6 +18,7 @@ protocol CircleAPI {
     func sendCircle(requestModel:SendCircleRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
     
     func deleteCircle(requestModel:DeleteCircle, complete: CompleteBlock?, error: ErrorBlock?)
+    
     func starCommentCircle(requestModel:CommentCircleModel,complete: CompleteBlock?, error: ErrorBlock?)
 
 }

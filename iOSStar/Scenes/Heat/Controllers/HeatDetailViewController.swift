@@ -33,14 +33,13 @@ class HeatDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        navBarBgAlpha = 0.0
+        navigationController?.navigationBar.tintColor = UIColor(hexString: AppConst.Color.main)
 
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
