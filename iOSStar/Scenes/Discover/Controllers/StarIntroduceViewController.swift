@@ -8,7 +8,7 @@
 
 import UIKit
 import MWPhotoBrowser
-
+import SVProgressHUD
 class StarIntroduceViewController: UIViewController {
 
 
@@ -101,22 +101,43 @@ class StarIntroduceViewController: UIViewController {
     @IBAction func askToBuy(_ sender: Any) {
         
         let storyBoard = UIStoryboard(name: "Heat", bundle: nil)
-        
         let vc = storyBoard.instantiateViewController(withIdentifier: "HeatDetailViewController") as! HeatDetailViewController
-        
         vc.starListModel = starModel
         navigationController?.pushViewController(vc, animated: true)
     }
 
     @IBAction func appointmentAction(_ sender: Any) {
-        
-        
         let storyBoard = UIStoryboard(name: "Market", bundle: nil)
-        
         let vc = storyBoard.instantiateViewController(withIdentifier: "OrderStarViewController") as! OrderStarViewController
         vc.starInfo = starModel
-        
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    func requestPositionCount() {
+        guard starModel != nil else {
+            return
+        }
+        
+        let r = PositionCountRequestModel()
+        r.starcode = starModel!.symbol
+        AppAPIHelper.marketAPI().requestPositionCount(requestModel: r, complete: { (response) in
+            if let model = response as? PositionCountModel {
+                if model.star_time > 0 {
+                    let session = NIMSession(self.starDetailModel?.acc_id ?? "", type: .P2P)
+                    let vc = YDSSessionViewController(session: session)
+                    vc?.starcode = self.starModel?.symbol ?? ""
+                    self.navigationController?.pushViewController(vc!, animated: true)
+                } else {
+                    
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "未持有该明星时间", ForDuration: 1.0, completion: nil)
+                    
+                }
+                
+            }
+        }) { (error) in
+            SVProgressHUD.showErrorMessage(ErrorMessage: "未持有该明星时间", ForDuration: 1.0, completion: nil)
+        }
     }
 
 }
@@ -127,13 +148,8 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     }
     
     func chat() {
-        
-        let session = NIMSession(starDetailModel?.acc_id ?? "", type: .P2P)
-        let vc = YDSSessionViewController(session: session)
-        vc?.starcode = starModel?.symbol ?? ""
-        
-        navigationController?.pushViewController(vc!, animated: true)
-        
+
+        requestPositionCount()
     }
 
 
