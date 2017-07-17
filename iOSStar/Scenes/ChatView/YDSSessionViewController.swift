@@ -24,6 +24,8 @@ class YDSSessionViewController: NTESSessionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ShareDataModel.share().voiceSwitch = true
+        navigationController?.setNavigationBarHidden(false, animated: true)
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {

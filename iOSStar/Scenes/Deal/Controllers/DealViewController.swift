@@ -15,8 +15,7 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
         return view
     }()
     var menuView:YD_VMenuView?
-    var starListModel:MarketListModel?
-    var realTimeData:RealTimeModel?
+    var starListModel:StarSortListModel?
     var index = 0
     var totalCount = 0
     override func viewDidLoad() {
@@ -62,9 +61,8 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
             }
             vc.totalCount = totalCount
             vc.starListModel = starListModel
-            vc.realTimeData = realTimeData
             views.append(vc.view)
-            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 64, width: kScreenWidth, height: backView.frame.size.height - 64)
+            vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: backView.frame.size.height - 64)
             addChildViewController(vc)
         }
         backView.setSubViews(customSubViews: views)

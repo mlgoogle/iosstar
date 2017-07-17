@@ -25,21 +25,23 @@ class StarIntroduceViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: PubInfoHeaderView.className())
         appointmentButton.layer.shadowColor = UIColor(hexString: "cccccc").cgColor
         appointmentButton.layer.shadowOffset = CGSize(width: 1, height: 1)
         appointmentButton.layer.shadowRadius = 1
         appointmentButton.layer.shadowOpacity = 0.5
         requestStarDetailInfo()
+
+
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
-
+        self.navBarBgAlpha = 0.0
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
 
     }
 
@@ -97,9 +99,17 @@ class StarIntroduceViewController: UIViewController {
         
     }
     @IBAction func askToBuy(_ sender: Any) {
+        
+        let storyBoard = UIStoryboard(name: "Heat", bundle: nil)
+        
+        let vc = storyBoard.instantiateViewController(withIdentifier: "HeatDetailViewController") as! HeatDetailViewController
+        
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     @IBAction func appointmentAction(_ sender: Any) {
+        
     }
 
 }
@@ -111,16 +121,15 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     
     func chat() {
         
+        let session = NIMSession(starDetailModel?.acc_id ?? "", type: .P2P)
+        let vc = YDSSessionViewController(session: session)
+        vc?.starcode = starModel?.symbol ?? ""
+        
+        navigationController?.pushViewController(vc!, animated: true)
         
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > 25 {
-            navigationController?.setNavigationBarHidden(false, animated: true)
-        } else {
-            navigationController?.setNavigationBarHidden(true, animated: true)
-        }
-    }
+
     func numberOfPhotos(in photoBrowser: MWPhotoBrowser!) -> UInt {
         return 1
     }
@@ -180,10 +189,11 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         switch indexPath.section {
         case 0:
             if let introCell = cell as? StarIntroduceCell {
+                introCell.delegate = self
                 guard starDetailModel != nil else {
                     return cell
                 }
-                introCell.delegate = self
+     
                 introCell.setData(model: starDetailModel!)
             }
         case 1:
@@ -202,4 +212,8 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         }
         return cell
     }
+    
+
 }
+
+

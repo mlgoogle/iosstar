@@ -46,6 +46,8 @@ class BuyStarTimeViewController: UIViewController {
     }
 
     func requestStarList() {
+        
+        
         let requestModel = StarSortListRequestModel()
         AppAPIHelper.discoverAPI().requestScrollStarList(requestModel: requestModel, complete: { (response) in
             
@@ -113,8 +115,8 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
          return cell
     }
 
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
         if checkLogin(){
             let starModel = dataSouce![indexPath.row]
             //        var segueString = "ToSelling"
