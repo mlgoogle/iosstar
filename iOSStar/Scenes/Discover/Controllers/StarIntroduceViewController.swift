@@ -133,7 +133,6 @@ class StarIntroduceViewController: UIViewController {
                     SVProgressHUD.showErrorMessage(ErrorMessage: "未持有该明星时间", ForDuration: 1.0, completion: nil)
                     
                 }
-                
             }
         }) { (error) in
             SVProgressHUD.showErrorMessage(ErrorMessage: "未持有该明星时间", ForDuration: 1.0, completion: nil)
