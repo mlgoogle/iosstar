@@ -60,14 +60,24 @@ class HeatListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.performSegue(withIdentifier: "ToDeal", sender: nil)
+        
+        
+        self.performSegue(withIdentifier: "ToDeal", sender: indexPath)
         
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToDeal" {
+            let indexPath = sender as! IndexPath
+            if let vc = segue.destination as? HeatDetailViewController {
+                
+                vc.starListModel = dataSource![indexPath.row]
+            }
+        }
+    }
 
 
 

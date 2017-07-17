@@ -28,6 +28,7 @@ class StarIntroduceCell: UITableViewCell {
 
     }
 
+
     @IBAction func backActiom(_ sender: Any) {
         delegate?.back()
     }

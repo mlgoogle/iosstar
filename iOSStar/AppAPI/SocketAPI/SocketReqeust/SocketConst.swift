@@ -108,6 +108,7 @@ class SocketConst: NSObject {
         //获取拍卖时间
         case auctionStatus = 5005
         
+        case allOrder = 6021
         //确认订单
         case sureOrder = 5007
         

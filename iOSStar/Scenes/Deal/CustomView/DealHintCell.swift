@@ -8,8 +8,12 @@
 
 import UIKit
 
+protocol ShowEntrustDelegate {
+    func show()
+}
 class DealHintCell: UITableViewCell {
 
+    var delegate:ShowEntrustDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +25,8 @@ class DealHintCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func showEntrust(_ sender: Any) {
+        
+        delegate?.show()
+    }
 }

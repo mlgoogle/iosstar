@@ -97,9 +97,11 @@ class StarIntroduceViewController: UIViewController {
         
     }
     @IBAction func askToBuy(_ sender: Any) {
+        
     }
 
     @IBAction func appointmentAction(_ sender: Any) {
+        
     }
 
 }
@@ -111,6 +113,10 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     
     func chat() {
         
+        let session = NIMSession(starDetailModel?.acc_id ?? "", type: .P2P)
+        let vc = YDSSessionViewController(session: session)
+        vc?.starcode = starModel?.symbol ?? ""
+        self.navigationController?.pushViewController(vc!, animated: true)
         
     }
 

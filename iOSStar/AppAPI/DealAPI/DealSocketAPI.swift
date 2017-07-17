@@ -10,6 +10,11 @@
 import Foundation
 class DealSocketAPI: BaseSocketAPI, DealAPI{
     
+    func allOrder(requestModel:DealRecordRequestModel,OPCode:SocketConst.OPCode,complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .allOrder, model: requestModel)
+        startModelsRequest(packet, listName: "ordersList", modelClass: OrderListModel.self, complete: complete, error: error)
+
+    }
     //发起委托
     func buyOrSell(requestModel:BuyOrSellRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .buyOrSell, model: requestModel)

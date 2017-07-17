@@ -11,7 +11,7 @@ import RealmSwift
 
 class StarSortListModel: Object {
     
-    dynamic var wid:Int64 = 0
+    dynamic var wid = ""
     dynamic var name = ""
     dynamic var pic = ""
     dynamic var home_pic = ""

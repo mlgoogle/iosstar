@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 class BuyOrSellViewController: DealBaseViewController {
-    var identifiers = ["DealStarInfoCell","DealMarketCell","DealOrderInfoCell"]
+    var identifiers = ["DealStarInfoCell","DealMarketCell","DealOrderInfoCell","DealHintCell"]
     var rowHeights = [137, 188,133,82]
 
     var infos:[String] = ["转让价格","转让数量"]
@@ -123,6 +123,7 @@ class BuyOrSellViewController: DealBaseViewController {
         guard starListModel != nil else {
             return
         }
+        
         let r = PositionCountRequestModel()
         r.starcode = starListModel!.symbol
         AppAPIHelper.marketAPI().requestPositionCount(requestModel: r, complete: { (response) in
@@ -131,14 +132,29 @@ class BuyOrSellViewController: DealBaseViewController {
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
             }
         }) { (error) in
-            
+    
+        
             
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+        if let vc = segue.destination as? ShowEntrustListViewController {
+            
+            vc.starCode = starListModel?.symbol
+        }
+        
+    }
 }
 
-extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, OrderInfoChangeDelegate{ 
+extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, OrderInfoChangeDelegate,ShowEntrustDelegate{
     
+    func show() {
+        performSegue(withIdentifier: "ToEntrust", sender: nil)
+        
+    
+    }
     
     func priceDidChange(totalPrice: Double, count: Int, price: Double) {
         let priceString = String(format: "%.2f", totalPrice)
@@ -187,6 +203,10 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
                 }
                 orderCell.price = price
                 orderCell.setPriceAndCount(price:price, count:count)
+            }
+        case 3:
+            if let showCell = cell as? DealHintCell {
+                showCell.delegate = self
             }
         default:
             break   

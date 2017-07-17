@@ -17,5 +17,5 @@ protocol DealAPI {
     func cancelOrderRequest(requestModel:CancelOrderRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
     func requestEntrustList(requestModel:DealRecordRequestModel,OPCode:SocketConst.OPCode,complete: CompleteBlock?, error: ErrorBlock?)
     func requestOrderList(requestModel:OrderRecordRequestModel,OPCode:SocketConst.OPCode,complete: CompleteBlock?, error: ErrorBlock?)
-    
+    func allOrder(requestModel:DealRecordRequestModel,OPCode:SocketConst.OPCode,complete: CompleteBlock?, error: ErrorBlock?)
 }
