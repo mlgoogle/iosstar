@@ -139,15 +139,12 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
             //        var segueString = "ToSelling"
             var segueString = "StarNewsVC"
             switch starModel.pushlish_type {
-            case 1:
+            case 0:
                 segueString = "ToSelling"
             case 2:
                 segueString = "ToIntroduce"
-            case 3:
+            case 1:
                 segueString = "ToSelling"
-
-            case 4:
-                segueString = StarNewsVC.className()
             default:
                 segueString = StarNewsVC.className()
                 break

@@ -14,7 +14,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YAj-2Q-WWI" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QC8-Ep-amw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QC8-Ep-amw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -287,12 +287,16 @@
                                             <constraint firstItem="KKM-HR-jJk" firstAttribute="centerX" secondItem="0Zb-v0-YLF" secondAttribute="centerX" id="1tJ-6D-AXI"/>
                                             <constraint firstItem="VAQ-42-P1m" firstAttribute="centerX" secondItem="KKM-HR-jJk" secondAttribute="centerX" id="2zh-QD-Vde"/>
                                             <constraint firstItem="KKM-HR-jJk" firstAttribute="top" secondItem="0Zb-v0-YLF" secondAttribute="bottom" constant="30" id="3kf-d6-obW"/>
+                                            <constraint firstItem="jBe-Bi-OIm" firstAttribute="leading" secondItem="KrJ-zF-V3o" secondAttribute="leading" id="8iD-CH-TE7"/>
+                                            <constraint firstAttribute="trailing" secondItem="jBe-Bi-OIm" secondAttribute="trailing" id="AfQ-RP-BUW"/>
                                             <constraint firstItem="aLl-eR-u27" firstAttribute="top" secondItem="q63-0L-hUP" secondAttribute="bottom" constant="20" id="Jax-Vh-6tE"/>
                                             <constraint firstItem="jBe-Bi-OIm" firstAttribute="top" secondItem="KrJ-zF-V3o" secondAttribute="top" id="LMM-bP-ZYG"/>
+                                            <constraint firstItem="jBe-Bi-OIm" firstAttribute="top" secondItem="KrJ-zF-V3o" secondAttribute="top" id="LZE-bM-GCA"/>
                                             <constraint firstItem="0Zb-v0-YLF" firstAttribute="leading" secondItem="jBe-Bi-OIm" secondAttribute="leading" id="Lie-eb-kI5"/>
                                             <constraint firstItem="aLl-eR-u27" firstAttribute="leading" secondItem="REG-4x-Y3S" secondAttribute="trailing" constant="37" id="TYh-7K-nBC"/>
                                             <constraint firstItem="0Zb-v0-YLF" firstAttribute="top" secondItem="KrJ-zF-V3o" secondAttribute="top" constant="84" id="U13-iL-x7l"/>
                                             <constraint firstItem="q63-0L-hUP" firstAttribute="top" secondItem="VAQ-42-P1m" secondAttribute="bottom" constant="20" id="UzI-mF-KKx"/>
+                                            <constraint firstAttribute="bottom" secondItem="jBe-Bi-OIm" secondAttribute="bottom" id="WLG-R7-jOH"/>
                                             <constraint firstItem="q63-0L-hUP" firstAttribute="centerX" secondItem="VAQ-42-P1m" secondAttribute="centerX" id="X3Y-V5-GFT"/>
                                             <constraint firstItem="0Zb-v0-YLF" firstAttribute="leading" secondItem="KrJ-zF-V3o" secondAttribute="leading" id="Zg5-ds-eXD"/>
                                             <constraint firstAttribute="height" constant="667" id="lPc-mp-lIb"/>
