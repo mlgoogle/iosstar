@@ -69,7 +69,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
     func walkTextSpriteDescriptorWithDirection(direction:UInt,data : BarrageListModel) -> BarrageDescriptor{
         
         let descriptor:BarrageDescriptor = BarrageDescriptor()
-        descriptor.spriteName = NSStringFromClass(YD_BarrageSprite.self)
+        descriptor.spriteName = NSStringFromClass(BarrageWalkTextSprite.self)
         
         let attachment = NSTextAttachment()
         imgView.sd_setImage(with: URL.init(string: data.head_url))
