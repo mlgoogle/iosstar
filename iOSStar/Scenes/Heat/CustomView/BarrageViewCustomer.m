@@ -20,7 +20,7 @@
         
         [self addSubview:self.backView];
      
-        
+        self.frame = CGRectMake(0, 0, 300, 40);
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 5, 100, 20)];
         self.titleLabel.text = @"哈哈哈哈";
         self.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -40,6 +40,12 @@
      
     }
     return self;
+}
+- (CGSize)size{
+
+    CGSize size = CGSizeMake(200, 100);
+    return size;
+
 }
 
 @end

@@ -19,7 +19,10 @@ class HeatListViewController: UITableViewController {
         requestStar()
         setupNav()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.HideLine()
+    }
     func requestStar() {
         
         let requestModel = StarSortListRequestModel()

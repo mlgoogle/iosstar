@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="My8-fP-YK9">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="My8-fP-YK9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -81,7 +81,7 @@
                                 <rect key="frame" x="0.0" y="-44" width="375" height="711"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="140" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6z6-Hx-nhP">
-                                        <rect key="frame" x="0.0" y="24" width="375" height="637"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="661"/>
                                         <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarIntroduceCell" rowHeight="170" id="aRs-SG-bQm" customClass="StarIntroduceCell" customModule="iOSStar" customModuleProvider="target">
@@ -258,10 +258,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="EzQ-r0-HYk" secondAttribute="bottom" id="3hK-zy-DER"/>
                                     <constraint firstAttribute="trailing" secondItem="EzQ-r0-HYk" secondAttribute="trailing" id="LbZ-gR-66w"/>
-                                    <constraint firstAttribute="bottom" secondItem="EzQ-r0-HYk" secondAttribute="bottom" id="TkT-JV-0zZ"/>
                                     <constraint firstAttribute="trailing" secondItem="6z6-Hx-nhP" secondAttribute="trailing" id="VNE-xg-ArA"/>
-                                    <constraint firstItem="6z6-Hx-nhP" firstAttribute="top" secondItem="Sl5-zC-Des" secondAttribute="top" constant="24" id="WxR-8z-zWe"/>
+                                    <constraint firstItem="6z6-Hx-nhP" firstAttribute="top" secondItem="Sl5-zC-Des" secondAttribute="top" id="WxR-8z-zWe"/>
                                     <constraint firstAttribute="bottom" secondItem="6z6-Hx-nhP" secondAttribute="bottom" constant="50" id="cPK-nq-qhY"/>
                                     <constraint firstItem="6z6-Hx-nhP" firstAttribute="leading" secondItem="Sl5-zC-Des" secondAttribute="leading" id="djO-vx-IXP"/>
                                     <constraint firstItem="EzQ-r0-HYk" firstAttribute="leading" secondItem="Sl5-zC-Des" secondAttribute="leading" id="qsD-YZ-T7b"/>
@@ -273,6 +273,7 @@
                             <constraint firstItem="b4s-af-cyz" firstAttribute="top" secondItem="Sl5-zC-Des" secondAttribute="bottom" id="7rP-wJ-Pxb"/>
                             <constraint firstItem="Sl5-zC-Des" firstAttribute="leading" secondItem="cAT-om-pye" secondAttribute="leading" id="g7n-2R-nRo"/>
                             <constraint firstItem="Sl5-zC-Des" firstAttribute="top" secondItem="ytc-eP-67D" secondAttribute="bottom" constant="-64" id="u7o-KY-TU2"/>
+                            <constraint firstAttribute="bottom" secondItem="Sl5-zC-Des" secondAttribute="bottom" id="w8Y-jS-ti4"/>
                             <constraint firstAttribute="trailing" secondItem="Sl5-zC-Des" secondAttribute="trailing" id="y6e-X8-5du"/>
                         </constraints>
                     </view>
@@ -800,7 +801,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="My8-fP-YK9" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iiF-iI-esP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iiF-iI-esP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
