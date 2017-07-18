@@ -17,6 +17,13 @@ extension UINavigationBar {
         let navigationBarImageView = hairlineImageViewInNavigationBar(view: self)
         navigationBarImageView!.isHidden = false
     }
+    func HideLine(){
+        self.setBackgroundImage(UIImage(), for: .default)
+
+        
+        self.shadowImage = UIImage()
+
+    }
     private func hairlineImageViewInNavigationBar(view: UIView) -> UIImageView? {
         if view.isKind(of: UIImageView.classForCoder()) && view.bounds.height <= 1.0 {
             return (view as! UIImageView)
@@ -24,6 +31,7 @@ extension UINavigationBar {
         let subviews = (view.subviews as [UIView])
         for subview: UIView in subviews {
             if let imageView: UIImageView = hairlineImageViewInNavigationBar(view: subview) {
+                
                 return imageView
             }
         }

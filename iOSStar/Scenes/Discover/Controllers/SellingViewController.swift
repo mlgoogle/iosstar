@@ -114,9 +114,9 @@ class SellingViewController: UIViewController {
             
             
             
-            
+          
         }) { (error) in
-            
+           
         }
     }
 }

@@ -43,15 +43,17 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
     // MARK: loadView
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "粉丝榜"
+        title = "跳蚤市场"
         setupInit()
         buildDanMu()
         initdata()
-//        customer()
-        self.navigationController?.navigationBar.shadowImage = UIImage.init()
+
         // Do any additional setup after loading the view.
     }
-    //Mark :创建renderer
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.HideLine()
+    }    //Mark :创建renderer
     func buildDanMu() {
         self.renderer = BarrageRenderer.init()
         self.renderer.canvasMargin = UIEdgeInsetsMake( 5, 0,50, 0)

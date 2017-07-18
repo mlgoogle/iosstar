@@ -60,7 +60,7 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
         
          NotificationCenter.default.addObserver(self, selector: #selector(textViewNotifitionAction), name: NSNotification.Name.UITextViewTextDidChange, object: nil);
     }
-    
+   
     // 限制不超过200字
     func textViewNotifitionAction(userInfo:NSNotification){
         let textVStr = feedBack.text as NSString;
@@ -194,13 +194,7 @@ class OrderStarViewController: UIViewController {
     
     // cityPickerView选择的Componentow (市)
     var selectComponent = 0
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
-    override func viewDidLoad() {
+     override func viewDidLoad() {
         
         super.viewDidLoad()
 
@@ -229,6 +223,10 @@ class OrderStarViewController: UIViewController {
         // 接收约见类型发出的通知
         NotificationCenter.default.addObserver(self, selector: #selector(chooseServiceType(_:)), name:
             Notification.Name(rawValue:AppConst.chooseServiceTypeSuccess), object: nil)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.HideLine()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
