@@ -217,7 +217,7 @@
                                         <rect key="frame" x="0.0" y="661" width="375" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onD-89-VOI">
-                                                <rect key="frame" x="188" y="0.0" width="187" height="50"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
                                                 <color key="backgroundColor" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="UrS-Mn-0R9"/>
@@ -230,7 +230,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egb-L8-sGb">
-                                                <rect key="frame" x="0.0" y="0.0" width="188" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
                                                 <color key="backgroundColor" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="49j-SY-OmV"/>
@@ -246,7 +246,6 @@
                                         <color key="backgroundColor" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="onD-89-VOI" secondAttribute="trailing" id="0yT-es-Wd7"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="DUU-Ke-Ge7"/>
                                             <constraint firstAttribute="bottom" secondItem="Egb-L8-sGb" secondAttribute="bottom" id="Ovq-tt-YgW"/>
                                             <constraint firstItem="onD-89-VOI" firstAttribute="width" secondItem="Egb-L8-sGb" secondAttribute="width" id="UjV-sY-eAr"/>
                                             <constraint firstAttribute="bottom" secondItem="onD-89-VOI" secondAttribute="bottom" id="hn9-lL-6rl"/>
@@ -801,7 +800,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="My8-fP-YK9" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iiF-iI-esP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iiF-iI-esP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
