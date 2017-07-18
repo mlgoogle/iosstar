@@ -90,6 +90,7 @@ class BankCardListRequestModel: MarketBaseModel {
 class UnbindCardListRequestModel: MarketBaseModel {
     var cardNo = "1001"
 }
+
 class BindCardListRequestModel: MarketBaseModel {
     var symbol = "1001"
     var account = "1001"

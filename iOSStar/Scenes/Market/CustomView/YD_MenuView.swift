@@ -99,7 +99,15 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
             self.lineView.center = CGPoint(x: (cell?.center.x)!, y: self.lineView.center.y)
         }
     }
-    
+    func reloadCollection(indexPath:IndexPath) {
+        menuCollectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        let cell = menuCollectionView?.cellForItem(at: indexPath)
+        guard cell != nil else {
+            return
+        }
+        menuCollectionView?.reloadData()
+        selectIndexPath = indexPath
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemData == nil ? 0 : itemData!.count
     }

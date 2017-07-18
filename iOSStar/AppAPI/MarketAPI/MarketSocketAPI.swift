@@ -141,6 +141,12 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         let packet = SocketDataPacket(opcode:.starTotalTime, parameters: ["starcode":starCode])
         startModelRequest(packet, modelClass: StarTotalCountModel.self, complete: complete, error: error)
     }
+    func requstBuyBarrageList(requestModel:HeatBarrageModel,complete: CompleteBlock?, error: ErrorBlock?){
+        let packet = SocketDataPacket(opcode: .barrage, model: requestModel)
+        
+        startModelRequest(packet, modelClass: BarrageInfo.self, complete: complete, error: error)
+    
+    }
 
 
 }

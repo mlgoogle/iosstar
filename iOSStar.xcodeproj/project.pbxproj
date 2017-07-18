@@ -82,7 +82,6 @@
 		6E4F03ED1F10CF410003D51F /* SellingTipsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03EC1F10CF410003D51F /* SellingTipsCell.swift */; };
 		6E4F03F31F10D73B0003D51F /* DiscoverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03F21F10D73B0003D51F /* DiscoverAPI.swift */; };
 		6E4F03F51F10D75D0003D51F /* DiscoverSocketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03F41F10D75D0003D51F /* DiscoverSocketAPI.swift */; };
-		6E4F03F81F10D9130003D51F /* DiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03F71F10D9130003D51F /* DiscoverModel.swift */; };
 		6E54EE0F1ED566F100E14EC3 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54EE0E1ED566F100E14EC3 /* UIView+Extension.swift */; };
 		6E54EE131ED5A13B00E14EC3 /* YD_DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54EE121ED5A13B00E14EC3 /* YD_DatePickerViewController.swift */; };
 		6E54EE171ED70DDE00E14EC3 /* MarketDetailCommentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E54EE161ED70DDE00E14EC3 /* MarketDetailCommentHeaderView.swift */; };
@@ -95,7 +94,10 @@
 		6E62C7BD1EF8B2BE0053FE1E /* AuctionTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62C7BC1EF8B2BE0053FE1E /* AuctionTimeCell.swift */; };
 		6E62C7BF1EF8B3060053FE1E /* AuctionPositionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62C7BE1EF8B3060053FE1E /* AuctionPositionInfoCell.swift */; };
 		6E62C7C11EF8B3370053FE1E /* AuctionProgreseeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E62C7C01EF8B3370053FE1E /* AuctionProgreseeCell.swift */; };
-		6E6A22501F1314CF00C5F838 /* DiscoverRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6A224F1F1314CF00C5F838 /* DiscoverRequestModel.swift */; };
+		6E73B8AB1F1DBDD6002901FC /* RechargeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E73B8AA1F1DBDD6002901FC /* RechargeListModel.swift */; };
+		6E73B8B01F1DBDDF002901FC /* BarrageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E73B8AD1F1DBDDF002901FC /* BarrageInfo.swift */; };
+		6E73B8B11F1DBDDF002901FC /* DiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E73B8AE1F1DBDDF002901FC /* DiscoverModel.swift */; };
+		6E73B8B21F1DBDDF002901FC /* DiscoverRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E73B8AF1F1DBDDF002901FC /* DiscoverRequestModel.swift */; };
 		6E7A1F6B1EE579E9007BF6D8 /* YD_MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F6A1EE579E9007BF6D8 /* YD_MenuView.swift */; };
 		6E7A1F6D1EE652E4007BF6D8 /* MarketDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F6C1EE652E4007BF6D8 /* MarketDetailHeaderView.swift */; };
 		6E7A1F701EE6DC22007BF6D8 /* NoDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F6F1EE6DC22007BF6D8 /* NoDataCell.swift */; };
@@ -453,7 +455,6 @@
 		A03D3FF71EA86A6600F85308 /* NTESUserUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3ED71EA86A6400F85308 /* NTESUserUtil.m */; };
 		A03D3FF81EA86A6600F85308 /* NTESPinyinConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDA1EA86A6400F85308 /* NTESPinyinConverter.m */; };
 		A03D3FF91EA86A6600F85308 /* NTESSpellingCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */; };
-		A03F96A31ED7FF3800FC78D4 /* RechargeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03F96A21ED7FF3800FC78D4 /* RechargeListModel.swift */; };
 		A04CF0921ED6CB6800B93D28 /* BindingBankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF0791ED6CB6800B93D28 /* BindingBankCardVC.swift */; };
 		A04CF0931ED6CB6800B93D28 /* TipBindVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF07A1ED6CB6800B93D28 /* TipBindVC.swift */; };
 		A04CF0941ED6CB6800B93D28 /* AccountInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CF07C1ED6CB6800B93D28 /* AccountInfoVC.swift */; };
@@ -605,13 +606,10 @@
 		A0B49C651F14D0DA0058042E /* SocketRequestManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFD1EB973F10023093A /* SocketRequestManage.swift */; };
 		A0B49C661F14D0DA0058042E /* SocketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF3AFE1EB973F10023093A /* SocketResponse.swift */; };
 		A0B49C671F14D0DA0058042E /* AppAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E120F8B1EB966F4004E1E33 /* AppAPIHelper.swift */; };
-		A0B49C681F14D0DA0058042E /* DiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03F71F10D9130003D51F /* DiscoverModel.swift */; };
-		A0B49C691F14D0DA0058042E /* DiscoverRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6A224F1F1314CF00C5F838 /* DiscoverRequestModel.swift */; };
 		A0B49C6A1F14D0DA0058042E /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1E8A861EFB98BE001B2D7B /* LoginModel.swift */; };
 		A0B49C6B1F14D0DA0058042E /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1E8A881EFB9A08001B2D7B /* LoginRequestModel.swift */; };
 		A0B49C6C1F14D0DA0058042E /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F751EE96C7E007BF6D8 /* DealModel.swift */; };
 		A0B49C6D1F14D0DA0058042E /* DealRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7A1F771EE96C8B007BF6D8 /* DealRequestModel.swift */; };
-		A0B49C6E1F14D0DA0058042E /* RechargeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03F96A21ED7FF3800FC78D4 /* RechargeListModel.swift */; };
 		A0B49C6F1F14D0DA0058042E /* MarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA46941EC5AEAA0004F942 /* MarketModel.swift */; };
 		A0B49C701F14D0DA0058042E /* MarketRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B01EDEE9DD00DC9643 /* MarketRequestModel.swift */; };
 		A0B49C711F14D0DA0058042E /* ServiceTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8F1F21EF0EADC0044A70F /* ServiceTypeModel.swift */; };
@@ -1306,7 +1304,6 @@
 		6E4F03EC1F10CF410003D51F /* SellingTipsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellingTipsCell.swift; sourceTree = "<group>"; };
 		6E4F03F21F10D73B0003D51F /* DiscoverAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverAPI.swift; sourceTree = "<group>"; };
 		6E4F03F41F10D75D0003D51F /* DiscoverSocketAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverSocketAPI.swift; sourceTree = "<group>"; };
-		6E4F03F71F10D9130003D51F /* DiscoverModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverModel.swift; sourceTree = "<group>"; };
 		6E54EE0E1ED566F100E14EC3 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		6E54EE121ED5A13B00E14EC3 /* YD_DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YD_DatePickerViewController.swift; sourceTree = "<group>"; };
 		6E54EE161ED70DDE00E14EC3 /* MarketDetailCommentHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailCommentHeaderView.swift; sourceTree = "<group>"; };
@@ -1319,7 +1316,10 @@
 		6E62C7BC1EF8B2BE0053FE1E /* AuctionTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuctionTimeCell.swift; sourceTree = "<group>"; };
 		6E62C7BE1EF8B3060053FE1E /* AuctionPositionInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuctionPositionInfoCell.swift; sourceTree = "<group>"; };
 		6E62C7C01EF8B3370053FE1E /* AuctionProgreseeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuctionProgreseeCell.swift; sourceTree = "<group>"; };
-		6E6A224F1F1314CF00C5F838 /* DiscoverRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverRequestModel.swift; sourceTree = "<group>"; };
+		6E73B8AA1F1DBDD6002901FC /* RechargeListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeListModel.swift; sourceTree = "<group>"; };
+		6E73B8AD1F1DBDDF002901FC /* BarrageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarrageInfo.swift; sourceTree = "<group>"; };
+		6E73B8AE1F1DBDDF002901FC /* DiscoverModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverModel.swift; sourceTree = "<group>"; };
+		6E73B8AF1F1DBDDF002901FC /* DiscoverRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverRequestModel.swift; sourceTree = "<group>"; };
 		6E7A1F6A1EE579E9007BF6D8 /* YD_MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YD_MenuView.swift; path = ../../Scenes/Market/CustomView/YD_MenuView.swift; sourceTree = "<group>"; };
 		6E7A1F6C1EE652E4007BF6D8 /* MarketDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketDetailHeaderView.swift; sourceTree = "<group>"; };
 		6E7A1F6F1EE6DC22007BF6D8 /* NoDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataCell.swift; sourceTree = "<group>"; };
@@ -1941,7 +1941,6 @@
 		A03D3EDA1EA86A6400F85308 /* NTESPinyinConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESPinyinConverter.m; sourceTree = "<group>"; };
 		A03D3EDB1EA86A6400F85308 /* NTESSpellingCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESSpellingCenter.h; sourceTree = "<group>"; };
 		A03D3EDC1EA86A6400F85308 /* NTESSpellingCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESSpellingCenter.m; sourceTree = "<group>"; };
-		A03F96A21ED7FF3800FC78D4 /* RechargeListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeListModel.swift; sourceTree = "<group>"; };
 		A04CF0791ED6CB6800B93D28 /* BindingBankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingBankCardVC.swift; sourceTree = "<group>"; };
 		A04CF07A1ED6CB6800B93D28 /* TipBindVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipBindVC.swift; path = ../bankCard/TipBindVC.swift; sourceTree = "<group>"; };
 		A04CF07C1ED6CB6800B93D28 /* AccountInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountInfoVC.swift; sourceTree = "<group>"; };
@@ -2579,16 +2578,6 @@
 			path = DisCoverAPI;
 			sourceTree = "<group>";
 		};
-		6E4F03F61F10D7AC0003D51F /* DiscoverModel */ = {
-			isa = PBXGroup;
-			children = (
-				6E4F03F71F10D9130003D51F /* DiscoverModel.swift */,
-				6E6A224F1F1314CF00C5F838 /* DiscoverRequestModel.swift */,
-			);
-			name = DiscoverModel;
-			path = iOSStar/Model/DiscoverModel;
-			sourceTree = SOURCE_ROOT;
-		};
 		6E61D85B1F1654A90002B6F2 /* CircleAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -2606,6 +2595,26 @@
 			);
 			name = CircleModel;
 			path = iOSStar/Model/CircleModel;
+			sourceTree = SOURCE_ROOT;
+		};
+		6E73B8A91F1DBDD6002901FC /* RechargeListModel */ = {
+			isa = PBXGroup;
+			children = (
+				6E73B8AA1F1DBDD6002901FC /* RechargeListModel.swift */,
+			);
+			name = RechargeListModel;
+			path = iOSStar/Model/RechargeListModel;
+			sourceTree = SOURCE_ROOT;
+		};
+		6E73B8AC1F1DBDDF002901FC /* DiscoverModel */ = {
+			isa = PBXGroup;
+			children = (
+				6E73B8AD1F1DBDDF002901FC /* BarrageInfo.swift */,
+				6E73B8AE1F1DBDDF002901FC /* DiscoverModel.swift */,
+				6E73B8AF1F1DBDDF002901FC /* DiscoverRequestModel.swift */,
+			);
+			name = DiscoverModel;
+			path = iOSStar/Model/DiscoverModel;
 			sourceTree = SOURCE_ROOT;
 		};
 		6E7A1F6E1EE6DB02007BF6D8 /* CustomView */ = {
@@ -2764,11 +2773,11 @@
 		A001A96F1EAD9F5A00752F1A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6E73B8AC1F1DBDDF002901FC /* DiscoverModel */,
+				6E73B8A91F1DBDD6002901FC /* RechargeListModel */,
 				6E61D8601F165B060002B6F2 /* CircleModel */,
-				6E4F03F61F10D7AC0003D51F /* DiscoverModel */,
 				8E1E8A851EFB987D001B2D7B /* LoginModel */,
 				6E7A1F741EE96C75007BF6D8 /* DealModel */,
-				A03F96A11ED7FF2900FC78D4 /* RechargeListModel */,
 				6EDA46931EC5AE9E0004F942 /* MarketModel */,
 				6E0C6B091EC4513900D9C2BC /* NewsModel */,
 				A0504F811EC44733008F4182 /* StarListModel */,
@@ -4061,14 +4070,6 @@
 			path = Spelling;
 			sourceTree = "<group>";
 		};
-		A03F96A11ED7FF2900FC78D4 /* RechargeListModel */ = {
-			isa = PBXGroup;
-			children = (
-				A03F96A21ED7FF3800FC78D4 /* RechargeListModel.swift */,
-			);
-			name = RechargeListModel;
-			sourceTree = "<group>";
-		};
 		A04CF0761ED6CB6800B93D28 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -5046,6 +5047,7 @@
 				A03D3F561EA86A6500F85308 /* NIMKitFileLocationHelper.m in Sources */,
 				6E6027841EC9916C001FBAA6 /* MarketDetailViewController.swift in Sources */,
 				6E1B56F71ECFD54E00A014AE /* MarketBaseViewController.swift in Sources */,
+				6E73B8AB1F1DBDD6002901FC /* RechargeListModel.swift in Sources */,
 				A03D3FD81EA86A6500F85308 /* NTESAboutViewController.m in Sources */,
 				A03D3F801EA86A6500F85308 /* NTESChatroomSegmentedControl.m in Sources */,
 				6EA6B81C1F1B5AC9007762B2 /* HeatDetailViewController.swift in Sources */,
@@ -5122,6 +5124,7 @@
 				A03D3FAF1EA86A6500F85308 /* NTESFilePreViewController.m in Sources */,
 				6E9F31F11ED91258008B12A5 /* RedBackItemViewController.swift in Sources */,
 				A03D3FE81EA86A6500F85308 /* NTESSettingSwitcherCell.m in Sources */,
+				6E73B8B21F1DBDDF002901FC /* DiscoverRequestModel.swift in Sources */,
 				A03D3FEB1EA86A6500F85308 /* NTESDemoService.m in Sources */,
 				6E1B57091ED3CB4100A014AE /* AllOrderViewController.swift in Sources */,
 				6E16165E1EAF322F00D95CB6 /* NewsNavigationView.swift in Sources */,
@@ -5368,6 +5371,7 @@
 				A03D3EEF1EA86A6400F85308 /* NSString+NIMKit.m in Sources */,
 				A0EF3B0D1EB973F10023093A /* APISocketHelper.swift in Sources */,
 				6E0E01E61EEE6B0C0087093D /* DealBaseViewController.swift in Sources */,
+				6E73B8B01F1DBDDF002901FC /* BarrageInfo.swift in Sources */,
 				A03D3FB71EA86A6500F85308 /* NTESSessionRemoteHistoryViewController.m in Sources */,
 				A04CF09B1ED6CB6800B93D28 /* SettingVC.swift in Sources */,
 				A03D3FC91EA86A6500F85308 /* NTESListHeader.m in Sources */,
@@ -5389,7 +5393,6 @@
 				A03D3FF51EA86A6600F85308 /* NTESSessionUtil.m in Sources */,
 				A03D3F241EA86A6400F85308 /* NIMTipContentConfig.m in Sources */,
 				6ECAA1AD1ECD75DB000FBED7 /* MaketBannerCell.swift in Sources */,
-				6E6A22501F1314CF00C5F838 /* DiscoverRequestModel.swift in Sources */,
 				A03D3F041EA86A6400F85308 /* NIMGroupedDataCollection.m in Sources */,
 				A03D3F201EA86A6400F85308 /* NIMImageContentConfig.m in Sources */,
 				6EFFC21C1EF381640041A3BD /* PositionStarCell.swift in Sources */,
@@ -5400,7 +5403,7 @@
 				A03D3FAA1EA86A6500F85308 /* NTESSessionSnapchatContentView.m in Sources */,
 				A07DF7CC1EC072B700C2254E /* UserApi.swift in Sources */,
 				A03D3FCA1EA86A6500F85308 /* NTESMutiClientsHeaderView.m in Sources */,
-				6E4F03F81F10D9130003D51F /* DiscoverModel.swift in Sources */,
+				6E73B8B11F1DBDDF002901FC /* DiscoverModel.swift in Sources */,
 				A03D3F5C1EA86A6500F85308 /* UINavigationController+Swizzling.m in Sources */,
 				6E1B57131ED40AEE00A014AE /* DealPropertyCell.swift in Sources */,
 				A072389A1EA76AA300E755DB /* BaseTabBarController.swift in Sources */,
@@ -5410,7 +5413,6 @@
 				8E1E8A841EFB95B6001B2D7B /* JoinVC.swift in Sources */,
 				6E16166C1EB0960E00D95CB6 /* MarketViewController.swift in Sources */,
 				A03D3F6D1EA86A6500F85308 /* NTESJionTeamViewController.m in Sources */,
-				A03F96A31ED7FF3800FC78D4 /* RechargeListModel.swift in Sources */,
 				6E0C6B081EC43ABF00D9C2BC /* NewsSocketAPI.swift in Sources */,
 				A03D3F321EA86A6400F85308 /* NIMSessionTableAdapter.m in Sources */,
 				A072389C1EA76AA300E755DB /* AppConst.swift in Sources */,
@@ -5455,13 +5457,10 @@
 				A0B49C651F14D0DA0058042E /* SocketRequestManage.swift in Sources */,
 				A0B49C661F14D0DA0058042E /* SocketResponse.swift in Sources */,
 				A0B49C671F14D0DA0058042E /* AppAPIHelper.swift in Sources */,
-				A0B49C681F14D0DA0058042E /* DiscoverModel.swift in Sources */,
-				A0B49C691F14D0DA0058042E /* DiscoverRequestModel.swift in Sources */,
 				A0B49C6A1F14D0DA0058042E /* LoginModel.swift in Sources */,
 				A0B49C6B1F14D0DA0058042E /* LoginRequestModel.swift in Sources */,
 				A0B49C6C1F14D0DA0058042E /* DealModel.swift in Sources */,
 				A0B49C6D1F14D0DA0058042E /* DealRequestModel.swift in Sources */,
-				A0B49C6E1F14D0DA0058042E /* RechargeListModel.swift in Sources */,
 				A0B49C6F1F14D0DA0058042E /* MarketModel.swift in Sources */,
 				A0B49C701F14D0DA0058042E /* MarketRequestModel.swift in Sources */,
 				A0B49C711F14D0DA0058042E /* ServiceTypeModel.swift in Sources */,

@@ -70,6 +70,9 @@ class DealDetailViewController: DealBaseViewController ,DealScrollViewScrollDele
     //backViewDelegate
     func scrollToIndex(index: Int) {
         menuView?.selected(index: index)
+        let indexPath = IndexPath(item: index, section: 0)
+
+         menuView?.reloadCollection(indexPath:indexPath)
     }
     
 
