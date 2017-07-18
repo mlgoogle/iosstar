@@ -21,8 +21,8 @@ class HeatDetailViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var jobLabel: UILabel!
     @IBOutlet weak var iconImageVie: UIImageView!
-    
-    
+    //
+    @IBOutlet weak var width: NSLayoutConstraint!
     let test = true
     var statusModel:AuctionStatusModel?
     var imageName = "starList_back0"
@@ -42,6 +42,7 @@ class HeatDetailViewController: UIViewController {
         view.addSubview(renderer.view)
         backImageVIew.clipsToBounds = true
         setData()
+       
         setupNav()
         buyButton.layer.cornerRadius = 25
         sellButton.layer.cornerRadius = 25

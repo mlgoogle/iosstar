@@ -29,14 +29,15 @@ struct SocketPacketHead {
     UInt64 session_id ;
     UInt32 request_id ;
 };
+
 #import "NTESCustomAttachmentDecoder.h"
 #import <AlipaySDK/AlipaySDK.h> 
 #import "RSADataSigner.h"
 #import "Order.h"
+
 #import <BarrageRenderer/BarrageRenderer.h>
 #import <UMMobClick/MobClick.h>
-#import "BarrageWalkImageTextSprite.h"
 #import "GeTuiSdk.h"
-#import "BarrageWalkImageTextSprite.h"
+//#import "BarrageWalkImageTextSprite.h"
 // #import "GeTuiExtSdk.h"
 

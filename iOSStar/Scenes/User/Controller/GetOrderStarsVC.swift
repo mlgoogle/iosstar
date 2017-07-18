@@ -11,7 +11,9 @@ import MJRefresh
 
 class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegate {
     @IBOutlet var nodaView: UIView!
+    //选中 当前选择的cell
     var seleNumber = 10000000
+    //当前未选择的cell
     var unseleNumber = 10000000
     var domeet = true
     @IBOutlet var ownSecond: UIButton!
@@ -19,7 +21,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
          ownSecond.backgroundColor = UIColor.init(hexString: "333333")
-        title = "我预约的明星"
+         title = "我预约的明星"
         self.nodaView.isHidden = true
        
     }
@@ -32,6 +34,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
             self.dataSource?.removeAll()
             self.tableView.reloadData()
         }
+        //约见的明细
         if domeet{
             let requestModel = StarMailListRequestModel()
             requestModel.status = 1
@@ -56,10 +59,10 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
                     self.nodaView.isHidden = true
                 }
             }
-        }else{
-        
+        }
+       //约见的情况
+        else{
             let requestModel = StarMailOrderListRequestModel()
-          
             requestModel.pos = (pageIndex - 1) * 10
             AppAPIHelper.user().requestOrderStarMailList(requestModel: requestModel, complete: { (result) in
                 let Model  = result as! OrderStarListModel
@@ -174,14 +177,14 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
         }
         
     }
-    
+     // MARK: -button点击事件
+     //选中的状态
     @IBAction func orderStatus(_ sender: Any) {
         domeet = false
         seleNumber = 10000000
          unseleNumber = 10000000
          self.nodaView.isHidden = false
          self.tableView.reloadData()
-//         pageIndex = 1
         self.didRequest(1)
         ownSecond.backgroundColor = UIColor.clear
         orderStatus.backgroundColor = UIColor.init(hexString: "333333")
@@ -190,9 +193,8 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
          domeet = true
          seleNumber = 10000000
          unseleNumber = 10000000
-       
          self.nodaView.isHidden = false
-      self.tableView.reloadData()
+         self.tableView.reloadData()
          self.didRequest(1)
         orderStatus.backgroundColor = UIColor.clear
         ownSecond.backgroundColor = UIColor.init(hexString: "333333")
