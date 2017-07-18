@@ -15,7 +15,7 @@ class FooterView: UICollectionReusableView {
     
 }
 import BarrageRenderer
-let leftConstant = 15
+let leftConstant =  (kScreenWidth >= 375 ? ((kScreenWidth/375.0 ) * 18) : 15)
 class OrderItem: UICollectionViewCell {
     
     @IBOutlet var nameLb: UILabel!
@@ -74,6 +74,8 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         let attachment = NSTextAttachment()
         imgView.sd_setImage(with: URL.init(string: data.head_url))
         let imgage = imgView.image
+        imgView.clipsToBounds = true
+        imgView.layer.cornerRadius = 10
         
         
         if (imgage != nil){
@@ -82,7 +84,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         
              attachment.image = UIImage.init(named: "avatar_team")
         }
-        attachment.bounds = CGRect.init(x: 0, y: -3, width: 20, height: 20)
+        attachment.bounds = CGRect.init(x: 0, y: -3, width: 18, height: 18)
         let type = data.order_type  == 1 ? "求购" : "转让"
         let name = "  " + data.user_name + type + "\(data.order_num)" + "秒" + "," + "\(data.order_price)" + "秒" + "   "
         let length = 2 + data.user_name.length()

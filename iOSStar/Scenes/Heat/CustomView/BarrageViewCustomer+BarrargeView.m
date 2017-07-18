@@ -34,4 +34,11 @@
     self.titleLabel.attributedText = params[@"attrbuited"];
     
 }
+- (CGSize)size{
+    
+    CGSize size = CGSizeMake(200, 100);
+    return size;
+    
+}
+
 @end
