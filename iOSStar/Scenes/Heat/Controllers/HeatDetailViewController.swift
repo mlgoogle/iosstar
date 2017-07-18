@@ -42,7 +42,7 @@ class HeatDetailViewController: UIViewController {
         view.addSubview(renderer.view)
         backImageVIew.clipsToBounds = true
         setData()
-       
+        width.constant = kScreenWidth
         setupNav()
         buyButton.layer.cornerRadius = 25
         sellButton.layer.cornerRadius = 25
@@ -114,7 +114,7 @@ class HeatDetailViewController: UIViewController {
     }
 
     @IBAction func fleaMarket(_ sender: Any) {
-        
+        self.performSegue(withIdentifier: "pushbarr", sender: nil)
     }
 
     func back() {
