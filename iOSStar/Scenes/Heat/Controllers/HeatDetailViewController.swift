@@ -75,8 +75,6 @@ class HeatDetailViewController: UIViewController {
         requestFansList(buySell:1)
         requestFansList(buySell:-1)
 
-        YD_CountDownHelper.shared.start()
-        renderer.start()
         ballImageView.alpha = 0.5
 
     }
@@ -110,6 +108,9 @@ class HeatDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         navBarBgAlpha = 0.0
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white];
+        
+        YD_CountDownHelper.shared.start()
+        renderer.start()
    
     }
 
@@ -122,6 +123,9 @@ class HeatDetailViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        YD_CountDownHelper.shared.pause()
+        renderer.pause()
           navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor(hexString: AppConst.Color.main)];
     }
 

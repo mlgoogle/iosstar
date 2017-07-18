@@ -54,7 +54,6 @@ class YD_BarrageSprite: BarrageWalkSprite {
         var leastActiveTimeStrip = 0 //最小时间的行
         var leastActiveSpriteStrip = 0 //最小网格的行
         for i in 0...stripNum {
-            
             let stripFrom = CGFloat(i) * stripHeight
             var lastDistanceAllOut = true
             for sprite in synclasticSprites {
