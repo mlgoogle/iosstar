@@ -90,7 +90,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         let type = data.order_type  == 1 ? "求购" : "转让"
         let name = "  " + data.user_name + type + "\(data.order_num)" + "秒" + "," + "\(data.order_price)" + "秒" + "   "
         let length = 2 + data.user_name.length()
-        let color = data.order_type  == 1 ? UIColor.init(hexString: "CB4232") : UIColor.init(hexString: "000000")
+        let color = data.order_type  == 1 ? UIColor.init(hexString: "CB4232") : UIColor.init(hexString: "333333")
         let attributed = NSMutableAttributedString.init(string: name)
         attributed.addAttribute(NSForegroundColorAttributeName, value: color!, range: NSRange.init(location: length, length: 2))
         attributed.insert(NSAttributedString.init(attachment: attachment), at: 1)
@@ -100,7 +100,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         descriptor.params["fontSize"] = 15
         descriptor.params["cornerRadius"] = 5
         descriptor.params["textColor"] = UIColor.white
-        descriptor.params["speed"] = Int(arc4random()%100) + 50
+        descriptor.params["speed"] = Int(arc4random()%50) + 50
         descriptor.params["direction"] = direction
         return descriptor
     }

@@ -30,10 +30,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
     }
     override func didRequest(_ pageIndex: Int) {
         
-        if pageIndex == 1{
-            self.dataSource?.removeAll()
-            self.tableView.reloadData()
-        }
+       
         //约见的明细
         if domeet{
             let requestModel = StarMailListRequestModel()
@@ -181,9 +178,11 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
      //选中的状态
     @IBAction func orderStatus(_ sender: Any) {
         domeet = false
-        seleNumber = 10000000
+         seleNumber = 10000000
          unseleNumber = 10000000
          self.nodaView.isHidden = false
+        self.dataSource?.removeAll()
+        self.tableView.reloadData()
          self.tableView.reloadData()
         self.didRequest(1)
         ownSecond.backgroundColor = UIColor.clear
@@ -194,6 +193,8 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
          seleNumber = 10000000
          unseleNumber = 10000000
          self.nodaView.isHidden = false
+        self.dataSource?.removeAll()
+        self.tableView.reloadData()
          self.tableView.reloadData()
          self.didRequest(1)
         orderStatus.backgroundColor = UIColor.clear
