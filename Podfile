@@ -35,7 +35,7 @@ target 'iOSStar' do
     pod 'BarrageRenderer’, ‘2.0.1’
     pod 'MLEmojiLabel', '1.0.0'
     pod 'UMengAnalytics-NO-IDFA'
-    target 'IOSStarTests' do
+    target 'iOSStarTest' do
         inherit! :search_paths
     end
 end

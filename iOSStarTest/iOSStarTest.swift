@@ -1,15 +1,14 @@
 //
-//  iOSStarTests.swift
-//  iOSStarTests
+//  iOSStarTest.swift
+//  iOSStarTest
 //
-//  Created by mu on 2017/7/14.
+//  Created by mu on 2017/7/19.
 //  Copyright © 2017年 YunDian. All rights reserved.
 //
 
 import XCTest
-@testable import
-iOSStar
-class iOSStarTests: XCTestCase {
+@testable import iOSStar
+class iOSStarTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -21,11 +20,10 @@ class iOSStarTests: XCTestCase {
         super.tearDown()
     }
     
-    //emoji测试
-    func testEmoji(){
-         
+    func testExample() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
     
     func testPerformanceExample() {
         // This is an example of a performance test case.

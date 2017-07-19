@@ -39,8 +39,9 @@ class JoinVC: UIViewController, UITextViewDelegate ,UIGestureRecognizerDelegate{
     func join() {
 //        ShareDataModel.share().registerModel.memberId = toalFieldText.text!
 //        ShareDataModel.share().registerModel.agentId = middleFieldText.text!
-        ShareDataModel.share().registerModel.recommend = littleFieldText.text!
-        ShareDataModel.share().registerModel.sub_agentId = littleFieldText.text!
+//        ShareDataModel.share().registerModel.recommend = littleFieldText.text!
+        ShareDataModel.share().registerModel.channel = littleFieldText.text!
+//        ShareDataModel.share().registerModel.sub_agentId = littleFieldText.text!
         if checkTextFieldEmpty([littleFieldText]){
             AppAPIHelper.login().regist(model: ShareDataModel.share().registerModel, complete: { [weak self](result)  in
                 if let response = result {
@@ -60,7 +61,8 @@ class JoinVC: UIViewController, UITextViewDelegate ,UIGestureRecognizerDelegate{
     func wxJoin() {
 //        ShareDataModel.share().wxregisterModel.memberId = toalFieldText.text!
 //        ShareDataModel.share().wxregisterModel.agentId = middleFieldText.text!
-        ShareDataModel.share().wxregisterModel.recommend = littleFieldText.text!
+        ShareDataModel.share().wxregisterModel.channel = littleFieldText.text!
+//        ShareDataModel.share().wxregisterModel.recommend = littleFieldText.text!
 //        ShareDataModel.share().wxregisterModel.sub_agentId = toalFieldText.text!
         AppAPIHelper.login().BindWeichat(model: ShareDataModel.share().wxregisterModel, complete: { (result)  in
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
