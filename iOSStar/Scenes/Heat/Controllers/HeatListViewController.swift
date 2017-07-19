@@ -83,7 +83,7 @@ class HeatListViewController: UITableViewController {
         if segue.identifier == "ToDeal" {
             let indexPath = sender as! IndexPath
             if let vc = segue.destination as? HeatDetailViewController {
-                vc.imageName = imageNames![indexPath.row]
+                vc.imageName = imageNames![indexPath.row % 10]
                 vc.starListModel = dataSource![indexPath.row]
             }
             
