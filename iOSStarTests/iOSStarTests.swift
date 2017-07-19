@@ -7,8 +7,9 @@
 //
 
 import XCTest
-@testable import
-iOSStar
+@testable import iOSStar
+@testable import Realm
+@testable import RealmSwift
 class iOSStarTests: XCTestCase {
     
     override func setUp() {

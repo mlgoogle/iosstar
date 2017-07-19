@@ -104,6 +104,10 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         descriptor.params["direction"] = direction
         return descriptor
     }
+    deinit {
+        timer?.invalidate()
+        renderer.stop()
+    }
     // MARK: 数据请求
     func initdata(){
         

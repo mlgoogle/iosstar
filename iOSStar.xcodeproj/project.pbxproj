@@ -183,9 +183,9 @@
 		A00790871F1EEDD400B3163D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A00790861F1EEDD400B3163D /* Images.xcassets */; };
 		A007947A1F1F2EA800B3163D /* AlipaySDK.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = A00794791F1F2EA800B3163D /* AlipaySDK.bundle */; };
 		A007947C1F1F2FF500B3163D /* M80AttributedLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A007947B1F1F2FF500B3163D /* M80AttributedLabel.framework */; };
-		A00794991F1F3D2400B3163D /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B48E091F14B6D30058042E /* Object.swift */; };
 		A007949C1F1F3DBB00B3163D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A007949A1F1F3DBB00B3163D /* Realm.framework */; };
 		A007949D1F1F3DBB00B3163D /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A007949B1F1F3DBB00B3163D /* RealmSwift.framework */; };
+		A00794A01F1F549D00B3163D /* IOSStarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B48DC61F14A01E0058042E /* IOSStarTests.swift */; };
 		A00DDE071F0C89A000DBF17E /* BankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DDE061F0C89A000DBF17E /* BankCardVC.swift */; };
 		A0155E101EA8C9760047B95B /* RegistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0155E0F1EA8C9760047B95B /* RegistVC.swift */; };
 		A02BDED41F19C654008D8760 /* BarrageWalkImageTextSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = A02BDED31F19C654008D8760 /* BarrageWalkImageTextSprite.m */; };
@@ -805,8 +805,6 @@
 		A00790861F1EEDD400B3163D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = iOSSTar/Resource/image/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		A00794791F1F2EA800B3163D /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AlipaySDK.bundle; path = Pods/AliPay/AlipaySDK.bundle; sourceTree = "<group>"; };
 		A007947B1F1F2FF500B3163D /* M80AttributedLabel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = M80AttributedLabel.framework; path = "../../../Library/Developer/Xcode/DerivedData/iOSStar-egsrjjmynkonnkghjxhzhugkqayi/Build/Products/Debug-iphonesimulator/M80AttributedLabel/M80AttributedLabel.framework"; sourceTree = "<group>"; };
-		A00794841F1F35FF00B3163D /* iOSTests1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTests1.swift; sourceTree = "<group>"; };
-		A00794861F1F35FF00B3163D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A007949A1F1F3DBB00B3163D /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "../../../Library/Developer/Xcode/DerivedData/iOSStar-egsrjjmynkonnkghjxhzhugkqayi/Build/Products/Debug-iphonesimulator/Realm/Realm.framework"; sourceTree = "<group>"; };
 		A007949B1F1F3DBB00B3163D /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../../Library/Developer/Xcode/DerivedData/iOSStar-egsrjjmynkonnkghjxhzhugkqayi/Build/Products/Debug-iphonesimulator/RealmSwift/RealmSwift.framework"; sourceTree = "<group>"; };
 		A00DDE061F0C89A000DBF17E /* BankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardVC.swift; sourceTree = "<group>"; };
@@ -2220,15 +2218,6 @@
 			path = ShareDataModel;
 			sourceTree = "<group>";
 		};
-		A00794831F1F35FF00B3163D /* iOSTests1 */ = {
-			isa = PBXGroup;
-			children = (
-				A00794841F1F35FF00B3163D /* iOSTests1.swift */,
-				A00794861F1F35FF00B3163D /* Info.plist */,
-			);
-			path = iOSTests1;
-			sourceTree = "<group>";
-		};
 		A0155E0C1EA8C9220047B95B /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -3578,7 +3567,6 @@
 			children = (
 				A072384C1EA768AD00E755DB /* iOSStar */,
 				A0B48DC51F14A01E0058042E /* IOSStarTests */,
-				A00794831F1F35FF00B3163D /* iOSTests1 */,
 				A072384B1EA768AD00E755DB /* Products */,
 				56F7911E6B6B9C2FD9F7E114 /* Pods */,
 				514D3E8AF1A3675B9BA8BCD7 /* Frameworks */,
@@ -4870,7 +4858,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A00794991F1F3D2400B3163D /* Object.swift in Sources */,
+				A00794A01F1F549D00B3163D /* IOSStarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

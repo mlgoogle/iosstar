@@ -36,12 +36,10 @@ target 'iOSStar' do
     pod 'MLEmojiLabel', '1.0.0'
     pod 'UMengAnalytics-NO-IDFA'
     target 'IOSStarTests' do
+         pod 'Realm/Headers'
         inherit! :search_paths
         
     end
-    target 'iOSTests1' do
-        inherit! :search_paths
-        
-    end
+  
 end
 # Uncomment this line to define a global platform for your project
