@@ -183,7 +183,6 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
          self.nodaView.isHidden = false
         self.dataSource?.removeAll()
         self.tableView.reloadData()
-         self.tableView.reloadData()
         self.didRequest(1)
         ownSecond.backgroundColor = UIColor.clear
         orderStatus.backgroundColor = UIColor.init(hexString: "333333")
@@ -195,7 +194,6 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
          self.nodaView.isHidden = false
         self.dataSource?.removeAll()
         self.tableView.reloadData()
-         self.tableView.reloadData()
          self.didRequest(1)
         orderStatus.backgroundColor = UIColor.clear
         ownSecond.backgroundColor = UIColor.init(hexString: "333333")
