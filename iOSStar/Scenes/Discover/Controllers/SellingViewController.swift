@@ -112,11 +112,9 @@ class SellingViewController: UIViewController {
         
         AppAPIHelper.discoverAPI().buyStarTime(requestModel: requestModel, complete: { (response) in
             
-            
-            
-          
         }) { (error) in
            
+            
         }
     }
 }

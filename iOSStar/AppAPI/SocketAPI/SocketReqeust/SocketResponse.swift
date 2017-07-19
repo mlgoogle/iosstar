@@ -111,8 +111,8 @@ class SocketJsonResponse: SocketResponse {
     
     func responseResult() -> Int? {
         let dict = responseJsonObject() as? [String:AnyObject]
-        if dict != nil && dict!["result_"] != nil {
-            return dict!["result_"] as? Int;
+        if dict != nil && dict!["result"] != nil {
+            return dict!["result"] as? Int;
         }
         return nil;
     }
