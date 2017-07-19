@@ -11,6 +11,15 @@ import SVProgressHUD
 
 class SettingVC: BaseTableViewController {
 
+    @IBOutlet var buyRoleCell: UITableViewCell!
+    @IBOutlet weak var logoutCell: UITableViewCell!
+    @IBOutlet weak var resetBuyPwdCell: UITableViewCell!
+    @IBOutlet weak var resetLoginCell: UITableViewCell!
+    @IBOutlet weak var cacheCell: UITableViewCell!
+    @IBOutlet weak var aboutUsCell: UITableViewCell!
+    @IBOutlet weak var lawCell: UITableViewCell!
+    
+    
     var needPwd : Int = 2
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,68 +42,62 @@ class SettingVC: BaseTableViewController {
         let view = UIView.init()
         view.backgroundColor = UIColor.colorFromRGB(0xFAFAFA)
         self.tableView.tableFooterView = view
-//        let number = fileSizeOfCache()
         cache.text =  "\(fileSizeOfCache())" + "M"
        
     }
     
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        
-//        if section == 0 {
-//            
-//            return 21.0
-//        } else {
-//            return 0.01
-//        }
-//        
-//    }
-    
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.tableView.deselectRow(at: indexPath, animated: false)
-        
-        if indexPath.row == 5 {
+        if let cell = tableView.cellForRow(at: indexPath){
+            if cell == logoutCell {
+                logout()
+            }
             
-            logout()
-            
-            // userLogout()
-            // _ = self.navigationController?.popToRootViewController(animated: true)
-        }
-        if indexPath.row == 3 {
-            let story = UIStoryboard.init(name: "Login", bundle: nil)
-            let vc = story.instantiateViewController(withIdentifier: "ForgotPwdVC")
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-       
-        if indexPath.row == 0{
-            let vc = BaseWebVC()
-            vc.loadRequest = "http://122.144.169.219:3389/transaction"
-            vc.navtitle = "买卖规则"
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        if indexPath.row == 2{
-          cleanCacheAlert()
-          cache.text =  "\(fileSizeOfCache())" + "M"
-
-        }
-        if indexPath.row == 1{
-            let vc = BaseWebVC()
-            print(fileSizeOfCache())
-            vc.loadRequest = "http://122.144.169.219:3389/aboutStar"
-            vc.navtitle = "关于我们"
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        if indexPath.row == 4 {
-            // 未设置交易密码
-            if self.needPwd == 1 {
-                SVProgressHUD.showErrorMessage(ErrorMessage: "您未设置交易密码，请设置", ForDuration: 5.0, completion: {
-                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
-                    self.navigationController?.pushViewController(vc, animated: true )
-                })
-            } else {
-                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResetTradePassVC")
+            if cell == resetLoginCell {
+                let story = UIStoryboard.init(name: "Login", bundle: nil)
+                let vc = story.instantiateViewController(withIdentifier: "ForgotPwdVC")
                 self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            if cell == buyRoleCell {
+                let vc = BaseWebVC()
+                vc.loadRequest = "http://122.144.169.219:3389/transaction"
+                vc.navtitle = "买卖规则"
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            if cell == cacheCell {
+                cleanCacheAlert()
+                cache.text =  "\(fileSizeOfCache())" + "M"
+                
+            }
+            
+            if cell == aboutUsCell {
+                let vc = BaseWebVC()
+                vc.loadRequest = "http://122.144.169.219:3389/aboutStar"
+                vc.navtitle = "关于我们"
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            if cell == lawCell {
+                let vc = BaseWebVC()
+                vc.loadRequest = "http://122.144.169.219:3389/law"
+                vc.navtitle = "法律说明"
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            if cell == resetBuyPwdCell{
+                // 未设置交易密码
+                if self.needPwd == 1 {
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "您未设置交易密码，请设置", ForDuration: 5.0, completion: {
+                        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
+                        self.navigationController?.pushViewController(vc, animated: true )
+                    })
+                } else {
+                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ResetTradePassVC")
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
     }

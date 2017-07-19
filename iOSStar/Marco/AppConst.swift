@@ -104,7 +104,7 @@ class AppConst {
         #if true  //是否测试环境
         //139.224.34.22
         static let TcpServerIP:String = "139.224.34.22";
-        static let TcpServerPort:UInt16 = 16006
+        static let TcpServerPort:UInt16 = 16060
         static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
         static let TcpServerIP:String = "api.star.smartdata-x.com";
@@ -114,6 +114,7 @@ class AppConst {
         static let TimeoutSec:UInt16 = 10
         static let qiniuHost = "http://ofr5nvpm7.bkt.clouddn.com/"
     }
+    
     class Text {
         static let deviceToken = "deviceToken"
         static let PhoneFormatErr = "请输入正确的手机号"
@@ -150,7 +151,6 @@ class AppConst {
     }
     
     enum RegisterIdentifier:String {
-        
         case MarketDetailMenuView = "MarketDetailMenuView"
         case PubInfoHeaderView = "PubInfoHeaderView"
         case MaketBannerCell = "MaketBannerCell"
@@ -166,6 +166,7 @@ class AppConst {
         case newsToDeatail = "newsToDeatail"
         case showPubPage = "showPubPage"
     }
+    
     enum DealType:Int {
         case buy = 1
         case sell = -1
@@ -201,7 +202,8 @@ class AppConst {
         case askToBuy
         //更多
         case more
-     }
+    }
+    
     class WechatKey {
         static let Scope = "snsapi_userinfo"
         static let State = "wpstate"
@@ -211,6 +213,7 @@ class AppConst {
         static let ErrorCode = "ErrorCode"
         static let wechetUserInfo = "https://api.weixin.qq.com/sns/userinfo"
     }
+    
     class aliPay {
         static let aliPayCode = "aliPayCode"
     }
