@@ -17,14 +17,14 @@ class BuyStarTimeViewController: UIViewController {
         let view = UIView(frame: self.collectionView.frame)
         let effect = UIBlurEffect(style: .light)
         let effectView = UIVisualEffectView(effect: effect)
-        effectView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        effectView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: view.frame.size.height)
         view.addSubview(effectView)
         return view
     }()
     lazy var backImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "138415562044.jpg"))
+        let imageView = UIImageView(image: UIImage(named: "blank"))
         imageView.frame = CGRect(x: 50, y: 50
-            , width: self.collectionView.frame.size.width - 100, height: self.collectionView.frame.size.height - 240)
+            , width: kScreenWidth - 100, height: kScreenHeight - 240)
 
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -49,6 +49,7 @@ class BuyStarTimeViewController: UIViewController {
                 starModel.pushlish_type = 4
                 if self.dataSouce != nil {
                     self.dataSouce?.append(starModel)
+                    self.collectionView.reloadData()
                 }
             }
             

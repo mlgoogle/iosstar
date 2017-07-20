@@ -41,21 +41,24 @@ class JoinVC: UIViewController, UITextViewDelegate ,UIGestureRecognizerDelegate{
 //        ShareDataModel.share().registerModel.agentId = middleFieldText.text!
 //        ShareDataModel.share().registerModel.recommend = littleFieldText.text!
         ShareDataModel.share().registerModel.channel = littleFieldText.text!
-//        ShareDataModel.share().registerModel.sub_agentId = littleFieldText.text!
-        if checkTextFieldEmpty([littleFieldText]){
-            AppAPIHelper.login().regist(model: ShareDataModel.share().registerModel, complete: { [weak self](result)  in
-                if let response = result {
-                    if response["result"] as! Int == 1 {
-                        SVProgressHUD.showSuccessMessage(SuccessMessage: "注册成功", ForDuration: 2.0, completion: {
-                            self?.resultBlock!(doStateClick.doLogin as AnyObject)
-                        })
-                    }
+        AppAPIHelper.login().regist(model: ShareDataModel.share().registerModel, complete: { [weak self](result)  in
+            if let response = result {
+                if response["result"] as! Int == 1 {
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "注册成功", ForDuration: 2.0, completion: {
+                        self?.resultBlock!(doStateClick.doLogin as AnyObject)
+                    })
                 }
-            }) { (error) in
-                self.didRequestError(error)
-//                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
             }
+        }) { (error) in
+            self.didRequestError(error)
         }
+//        ShareDataModel.share().registerModel.sub_agentId = littleFieldText.text!
+//        if checkTextFieldEmpty([littleFieldText]){
+//           
+//              
+////                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+//           
+//        }
     }
     //微信绑定
     func wxJoin() {

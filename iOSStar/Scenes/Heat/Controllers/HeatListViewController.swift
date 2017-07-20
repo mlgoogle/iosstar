@@ -8,9 +8,9 @@
 
 import UIKit
 
-class HeatListViewController: UITableViewController {
+class HeatListViewController: BasePageListTableViewController {
     var imageNames:[String]?
-    var dataSource:[StarSortListModel]?
+//    var dataSource:[StarSortListModel]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,18 +23,24 @@ class HeatListViewController: UITableViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.HideLine()
     }
-    func requestStar() {
-        
+    override func didRequest(_ pageIndex: Int) {
         let requestModel = StarSortListRequestModel()
+         requestModel.pos = Int64((pageIndex - 1) * 10)
+        requestModel.count = 10
         AppAPIHelper.discoverAPI().requestStarList(requestModel: requestModel, complete: { (response) in
             if let models = response as? [StarSortListModel] {
-                self.dataSource = models
+              
+               self.didRequestComplete(models as AnyObject )
                 self.tableView.reloadData()
             }
             
         }) { (error) in
-            
+            self.didRequestComplete(nil )
         }
+    }
+    func requestStar() {
+        
+      
         
     }
     @IBAction func searchAction(_ sender: Any) {
@@ -83,8 +89,10 @@ class HeatListViewController: UITableViewController {
         if segue.identifier == "ToDeal" {
             let indexPath = sender as! IndexPath
             if let vc = segue.destination as? HeatDetailViewController {
+
                 vc.imageName = imageNames![indexPath.row % 10]
-                vc.starListModel = dataSource![indexPath.row]
+                vc.starListModel = dataSource![indexPath.row] as? StarSortListModel
+
             }
             
         }
