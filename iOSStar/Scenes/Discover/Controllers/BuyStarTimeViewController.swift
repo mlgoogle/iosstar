@@ -49,6 +49,7 @@ class BuyStarTimeViewController: UIViewController {
                 starModel.pushlish_type = 4
                 if self.dataSouce != nil {
                     self.dataSouce?.append(starModel)
+                    self.collectionView.reloadData()
                 }
             }
             

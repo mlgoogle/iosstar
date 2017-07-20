@@ -29,8 +29,8 @@ class SellingCountDownCell: UITableViewCell {
     func setRemainingTime(count:Int) {
         if count < 0 || count == 0{
         
-            infoLabel.text = "12313123"
-            countDownLabel.text = "不在发售时间"
+            infoLabel.text = "-----"
+            countDownLabel.text = "-----"
         } else {
              infoLabel.text = "距离结束还有"
              countDownLabel.text = YD_CountDownHelper.shared.getTextWithTimeCount(timeCount: count)

@@ -26,12 +26,15 @@ class StarIntroduceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = self.starModel?.name
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: PubInfoHeaderView.className())
         appointmentButton.layer.shadowColor = UIColor(hexString: "cccccc").cgColor
         appointmentButton.layer.shadowOffset = CGSize(width: 1, height: 1)
         appointmentButton.layer.shadowRadius = 1
+        tableView.estimatedRowHeight = 20
         appointmentButton.layer.shadowOpacity = 0.5
         requestStarDetailInfo()
+        requestExperience()
 
 
 
@@ -189,7 +192,9 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             header?.contentView.backgroundColor = UIColor(hexString: "fafafa")
             return header
         } else {
-            return UIView()
+            let view = UIView()
+            view.backgroundColor = UIColor.init(hexString: "fafafa")
+            return view
         }
         
         
@@ -204,6 +209,9 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         return 1
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 1{
+            return UITableViewAutomaticDimension
+        }
         return CGFloat(sectionHeights[indexPath.section])
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

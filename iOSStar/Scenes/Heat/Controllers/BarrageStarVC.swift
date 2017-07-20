@@ -155,7 +155,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         footer.isAutomaticallyRefresh = false
         footer.setTitle("下拉显示更多...", for: .idle)
         footer.stateLabel.textColor = UIColor.init(hexString: "666666")
-        self.collectView!.mj_footer = footer
+//        self.collectView!.mj_footer = footer
         footer.stateLabel.font =  UIFont.systemFont(ofSize: 14)
         self.collectView.showsVerticalScrollIndicator = false
         self.collectView.showsHorizontalScrollIndicator = false
