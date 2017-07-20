@@ -14,7 +14,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YAj-2Q-WWI" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QC8-Ep-amw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QC8-Ep-amw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -90,7 +90,7 @@
                                                         <constraint firstItem="qVm-zf-71W" firstAttribute="top" secondItem="4Vk-AZ-2so" secondAttribute="top" id="nVJ-Mb-3LE"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="138415562044.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="gqi-Sl-mqO">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="138415562044.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="gqi-Sl-mqO">
                                                     <rect key="frame" x="25" y="25" width="80" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="80" id="RTF-kB-PIB"/>
@@ -215,7 +215,7 @@
                                                             <constraint firstItem="8UL-55-S2e" firstAttribute="leading" secondItem="KK8-is-Zt6" secondAttribute="leading" id="zFS-Yo-Hkj"/>
                                                         </constraints>
                                                     </view>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="138415562044.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qAi-Vt-gVE">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="138415562044.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="qAi-Vt-gVE">
                                                         <rect key="frame" x="25" y="25" width="80" height="80"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="A1S-3c-lKU"/>
