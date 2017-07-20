@@ -15,6 +15,7 @@ class StarCardView: UICollectionViewCell {
     lazy var showImageView:UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true   
+
         
         imageView.image = UIImage(named: "blank")
         imageView.contentMode = .scaleAspectFill
@@ -97,7 +98,9 @@ class StarCardView: UICollectionViewCell {
     }
     
     func setStarModel(starModel:StarSortListModel) {
-        
+        guard starModel.home_pic != nil else {
+            return
+        }
         KingfisherManager.shared.downloader.downloadImage(with: URL(string: starModel.home_pic)!, options: nil, progressBlock: nil) { (image, error, url, data) in
             if image != nil {
                 self.showImageView.image = image
