@@ -57,7 +57,6 @@ class AppConst {
     }
     
     class Color {
-
         static let main = "921224"
         static let orange = "FB9938"
         static let up = "CB4232"
@@ -107,9 +106,9 @@ class AppConst {
         static let TcpServerPort:UInt16 = 16060
         static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
-        static let TcpServerIP:String = "api.star.smartdata-x.com";
+        static let TcpServerIP:String = "122.144.169.214";
         static let TcpServerPort:UInt16 = 16006
-        static let HttpHostUrl:String = "api.star.smartdata-x.com";
+        static let HttpHostUrl:String = "122.144.169.214";
         #endif
         static let TimeoutSec:UInt16 = 10
         static let qiniuHost = "http://ofr5nvpm7.bkt.clouddn.com/"
@@ -127,7 +126,6 @@ class AppConst {
         static let RegisterPhoneError = "输入的手机号已注册"
         static let numberReg = "^(?!0(\\d|\\.0+$|$))\\d+(\\.\\d{1,2})?$"
     }
-    
     
     enum Action:UInt {
         case callPhone = 10001
@@ -182,6 +180,7 @@ class AppConst {
         case down = 0
         case up = 1
     }
+    
     enum DealDetailType:UInt16 {
         //当日成交
         case todayComplete = 6007

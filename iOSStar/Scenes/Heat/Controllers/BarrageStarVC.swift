@@ -113,7 +113,9 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         requestModel.count = 50
         AppAPIHelper.marketAPI().requstBuyBarrageList(requestModel: requestModel, complete: { [weak self](result) in
             if let model = result as? BarrageInfo{
-                
+                if model.barrage_info == nil{
+                    return
+                }
                 self?.allData = model.barrage_info
                 self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self ?? BarrageStarVC(), selector: #selector(self?.autoSenderBarrage), userInfo: nil, repeats: true)
                 self?.renderer.start()
