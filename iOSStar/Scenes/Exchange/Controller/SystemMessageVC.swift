@@ -190,7 +190,7 @@ class SystemMessageVC: BasePageListTableViewController {
         let  data = self.dataSource?[indexPath.row] as! OrderListModel
         if (data.handle == 0) {
             if ((data.buyUid == StarUserModel.getCurrentUser()?.userinfo?.id && data.buyHandle == 0) || (data.sellUid == StarUserModel.getCurrentUser()?.userinfo?.id && data.sellHandle == 0) ){
-                let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易", preferredStyle:.alert)
+                let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易,请仔细阅读设置中的法律说明", preferredStyle:.alert)
                 // 设置2个UIAlertAction
                 let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
                     self.doorder(data, true)
@@ -212,7 +212,7 @@ class SystemMessageVC: BasePageListTableViewController {
             
             }
           else  if ((data.buyUid == StarUserModel.getCurrentUser()?.userinfo?.id && data.sellHandle == 0) || (data.sellUid == StarUserModel.getCurrentUser()?.userinfo?.id && data.sellHandle == 0)){
-                let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易", preferredStyle:.alert)
+                let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易,请仔细阅读设置中的法律说明", preferredStyle:.alert)
                 // 设置2个UIAlertAction
                 let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
                     self.doorder(data, true)

@@ -89,8 +89,10 @@ class HeatListViewController: BasePageListTableViewController {
         if segue.identifier == "ToDeal" {
             let indexPath = sender as! IndexPath
             if let vc = segue.destination as? HeatDetailViewController {
-                vc.imageName = imageNames![indexPath.row]
-                vc.starListModel = dataSource![indexPath.row] as! StarSortListModel
+
+                vc.imageName = imageNames![indexPath.row % 10]
+                vc.starListModel = dataSource![indexPath.row] as? StarSortListModel
+
             }
             
         }
