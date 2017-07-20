@@ -90,7 +90,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         let type = data.order_type  == 1 ? "求购" : "转让"
         let name = "  " + data.user_name + type + "\(data.order_num)" + "秒" + "," + "\(data.order_price)" + "秒" + "   "
         let length = 2 + data.user_name.length()
-        let color = data.order_type  == 1 ? UIColor.init(hexString: "CB4232") : UIColor.init(hexString: "000000")
+        let color = data.order_type  == 1 ? UIColor.init(hexString: "CB4232") : UIColor.init(hexString: "333333")
         let attributed = NSMutableAttributedString.init(string: name)
         attributed.addAttribute(NSForegroundColorAttributeName, value: color!, range: NSRange.init(location: length, length: 2))
         attributed.insert(NSAttributedString.init(attachment: attachment), at: 1)
@@ -100,9 +100,13 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         descriptor.params["fontSize"] = 15
         descriptor.params["cornerRadius"] = 5
         descriptor.params["textColor"] = UIColor.white
-        descriptor.params["speed"] = Int(arc4random()%100) + 50
+        descriptor.params["speed"] = Int(arc4random()%50) + 50
         descriptor.params["direction"] = direction
         return descriptor
+    }
+    deinit {
+        timer?.invalidate()
+        renderer.stop()
     }
     // MARK: 数据请求
     func initdata(){
@@ -112,11 +116,13 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         requestModel.pos = 0
         requestModel.count = 50
         AppAPIHelper.marketAPI().requstBuyBarrageList(requestModel: requestModel, complete: { [weak self](result) in
-            if let model = result as? BarrageInfo{
-                
-                self?.allData = model.barrage_info
-                self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self ?? BarrageStarVC(), selector: #selector(self?.autoSenderBarrage), userInfo: nil, repeats: true)
-                self?.renderer.start()
+            if let model = result as? BarrageInfo {
+                if (model.barrage_info) != nil{
+                    self?.allData = model.barrage_info!
+                    self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self ?? BarrageStarVC(), selector: #selector(self?.autoSenderBarrage), userInfo: nil, repeats: true)
+                    self?.renderer.start()
+                }
+               
             }
             
         }) { (error) in
@@ -149,7 +155,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         footer.isAutomaticallyRefresh = false
         footer.setTitle("下拉显示更多...", for: .idle)
         footer.stateLabel.textColor = UIColor.init(hexString: "666666")
-        self.collectView!.mj_footer = footer
+//        self.collectView!.mj_footer = footer
         footer.stateLabel.font =  UIFont.systemFont(ofSize: 14)
         self.collectView.showsVerticalScrollIndicator = false
         self.collectView.showsHorizontalScrollIndicator = false

@@ -23,7 +23,7 @@ class RegisterRequestModel: BaseModel {
     var recommend = "11"
     var timestamp = "11"
     var sub_agentId = "1111"
-    var channel = ""
+    var channel = "  "
 }
 
 class WXRegisterRequestModel: BaseModel {

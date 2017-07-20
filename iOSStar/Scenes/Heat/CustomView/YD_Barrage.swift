@@ -11,7 +11,7 @@ import BarrageRenderer
 class YD_Barrage: BarrageWalkSprite {
     override init() {
         super.init()
-        trackNumber = 4
+        trackNumber = 5
         setValue("UILabel", forKey: "viewClassName")
     }
 }

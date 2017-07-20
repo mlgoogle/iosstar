@@ -7,7 +7,10 @@
 //
 
 import UIKit
-
+class HeatBarrageModel: BaseModel {
+    var pos = 0
+    var count = 0
+}
 class BarrageListModel: NSObject {
     var order_type: Int64 = 0         //1.转让 2.求购
     var order_num: Int64 = 0          // 数量
@@ -18,7 +21,7 @@ class BarrageListModel: NSObject {
 }
 class BarrageInfo: BaseModel {
     
-    var barrage_info : [BarrageListModel]!
+    var barrage_info : [BarrageListModel]?
     
     class func barrage_infoModelClass() ->AnyClass {
         return  BarrageListModel.classForCoder()
@@ -26,7 +29,4 @@ class BarrageInfo: BaseModel {
     
     
 }
-class HeatBarrageModel: MarketBaseModel {
-    var pos = 0
-    var count = 0
-}
+
