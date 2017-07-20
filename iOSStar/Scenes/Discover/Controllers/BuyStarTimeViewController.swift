@@ -115,7 +115,7 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
-        let index = Int(scrollView.contentOffset.x - 6) / 287
+        let index = Int(scrollView.contentOffset.x - 6) / Int(kScreenWidth - 88)
         replaceBackImage(index: index)
     }
     

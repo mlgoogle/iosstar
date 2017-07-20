@@ -107,7 +107,7 @@ class AppConst {
         static let TcpServerPort:UInt16 = 16060
         static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
-        static let TcpServerIP:String = "api.star.smartdata-x.com";
+        static let TcpServerIP:String = "122.144.169.214";
         static let TcpServerPort:UInt16 = 16006
         static let HttpHostUrl:String = "api.star.smartdata-x.com";
         #endif
