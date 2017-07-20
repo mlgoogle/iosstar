@@ -23,6 +23,7 @@ class RegisterRequestModel: BaseModel {
     var recommend = "11"
     var timestamp = "11"
     var sub_agentId = "1111"
+    var channel = ""
 }
 
 class WXRegisterRequestModel: BaseModel {
@@ -39,6 +40,7 @@ class WXRegisterRequestModel: BaseModel {
     var sub_agentId = ""
     var deviceId = ""
     var vCode = ""
+    var channel = ""
 }
 
 class WeChatLoginRequestModel: BaseModel {

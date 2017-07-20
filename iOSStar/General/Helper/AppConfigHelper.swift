@@ -248,7 +248,6 @@ class AppConfigHelper: NSObject {
             }
         }
         Realm.Configuration.defaultConfiguration = config
-        
         _ = try! Realm()
         
     }

@@ -123,7 +123,9 @@ class SellingViewController: UIViewController {
                 }
             }
         }) { (error) in
-           
+            SVProgressHUD.showErrorMessage(ErrorMessage: "交易失败", ForDuration: 1, completion: {
+                
+            })
             
         }
     }
