@@ -15,7 +15,6 @@ class StarCardView: UICollectionViewCell {
     lazy var showImageView:UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true   
-        
         imageView.image = UIImage(named: "138415562044.jpg")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true

@@ -50,6 +50,7 @@ class BuyStarTimeViewController: UIViewController {
                 if self.dataSouce != nil {
                     self.dataSouce?.append(starModel)
                 }
+                self.collectionView.reloadData()
             }
             
         }) { (error) in
@@ -62,7 +63,6 @@ class BuyStarTimeViewController: UIViewController {
     }
 
     func requestStarList() {
-        
         
         let requestModel = StarSortListRequestModel()
         AppAPIHelper.discoverAPI().requestScrollStarList(requestModel: requestModel, complete: { (response) in
