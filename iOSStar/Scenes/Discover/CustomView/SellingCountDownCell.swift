@@ -33,7 +33,7 @@ class SellingCountDownCell: UITableViewCell {
             countDownLabel.text = "不在发售时间"
         } else {
              infoLabel.text = "距离结束还有"
-            countDownLabel.text = YD_CountDownHelper.shared.getTextWithTimeCount(timeCount: count)
+             countDownLabel.text = YD_CountDownHelper.shared.getTextWithTimeCount(timeCount: count)
         }
         infoLabel.setNeedsDisplay()
         countDownLabel.setNeedsDisplay()

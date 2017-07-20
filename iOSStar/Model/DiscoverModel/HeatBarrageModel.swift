@@ -21,7 +21,7 @@ class BarrageListModel: NSObject {
 }
 class BarrageInfo: BaseModel {
     
-    var barrage_info : [BarrageListModel]!
+    var barrage_info : [BarrageListModel]?
     
     class func barrage_infoModelClass() ->AnyClass {
         return  BarrageListModel.classForCoder()

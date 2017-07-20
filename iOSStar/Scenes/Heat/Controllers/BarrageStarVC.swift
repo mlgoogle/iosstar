@@ -116,11 +116,13 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         requestModel.pos = 0
         requestModel.count = 50
         AppAPIHelper.marketAPI().requstBuyBarrageList(requestModel: requestModel, complete: { [weak self](result) in
-            if let model = result as? BarrageInfo{
-                
-                self?.allData = model.barrage_info
-                self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self ?? BarrageStarVC(), selector: #selector(self?.autoSenderBarrage), userInfo: nil, repeats: true)
-                self?.renderer.start()
+            if let model = result as? BarrageInfo {
+                if (model.barrage_info) != nil{
+                    self?.allData = model.barrage_info!
+                    self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self ?? BarrageStarVC(), selector: #selector(self?.autoSenderBarrage), userInfo: nil, repeats: true)
+                    self?.renderer.start()
+                }
+               
             }
             
         }) { (error) in
