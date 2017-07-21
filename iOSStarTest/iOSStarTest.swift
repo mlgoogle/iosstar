@@ -349,6 +349,7 @@ class iOSStarTest: XCTestCase {
             waitForExpectations(timeout: 15, handler: nil)
         })
     }
+    
     // 预约粉丝列表
     func testOrderStarMailList() {
         ytimeTest("testOrderStarMailList", handle: { _ in
