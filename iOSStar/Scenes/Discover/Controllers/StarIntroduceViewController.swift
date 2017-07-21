@@ -145,6 +145,14 @@ class StarIntroduceViewController: UIViewController {
 }
 extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource,MenuViewDelegate, MWPhotoBrowserDelegate, UIScrollViewDelegate, PopVCDelegate{
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 170 {
+            self.navBarBgAlpha = 1.0
+        } else {
+            self.navBarBgAlpha = 0.0
+            
+        }
+    }
     func back() {
         _ = navigationController?.popViewController(animated: true)
     }
