@@ -107,7 +107,6 @@ class StarCardView: UICollectionViewCell {
                 self.backImage = image
             }
             
-            
         }
 
         
