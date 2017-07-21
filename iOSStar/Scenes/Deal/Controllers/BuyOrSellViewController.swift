@@ -37,8 +37,10 @@ class BuyOrSellViewController: DealBaseViewController {
         if realTimeData != nil {
             let price = String(format: "%.2f", realTimeData!.currentPrice)
             priceDidChange(totalPrice: Double(price)! * Double(600), count: 600, price: Double(price)!)
+        } else {
+            requestRealTime()
         }
-        requestPositionCount()
+       requestPositionCount()
     }
     func registerNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -78,7 +80,7 @@ class BuyOrSellViewController: DealBaseViewController {
     }
     
     @IBAction func buyOrSellAction(_ sender: Any) {
-        
+
         guard starListModel != nil else {
             return
         }
@@ -104,16 +106,7 @@ class BuyOrSellViewController: DealBaseViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        YD_CountDownHelper.shared.marketTimeLineRefresh = nil
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        YD_CountDownHelper.shared.marketTimeLineRefresh = { [weak self] (result)in
-            self?.requestRealTime()
-        }
-    }
+
     func requestRealTime() {
         let requestModel = RealTimeRequestModel()
         let syModel = SymbolInfo()
@@ -129,6 +122,8 @@ class BuyOrSellViewController: DealBaseViewController {
                 self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
             }
         }) { (error) in
+            
+            
         }
     }
     
