@@ -91,9 +91,9 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
     // 刷新是否显示红点
     func refreshSessionBadge() {
         if self.sessionUnreadCount == 0 {
-            self.tabBar.hideBadgeOnItemIndex(index: 2)
+//            self.tabBar.hideBadgeOnItemIndex(index: 2)
         } else {
-            self.tabBar.showshowBadgeOnItemIndex(index: 2)
+//            self.tabBar.showshowBadgeOnItemIndex(index: 2)
         }
     }
     

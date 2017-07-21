@@ -110,6 +110,7 @@ class BuyOrSellViewController: DealBaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    
         YD_CountDownHelper.shared.marketTimeLineRefresh = { [weak self] (result)in
             self?.requestRealTime()
         }

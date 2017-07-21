@@ -25,6 +25,10 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
         backView.delegate = self
         addSubViews()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.HideLine()
+    }
     func setupMenuView() {
         navigationController?.navigationBar.setBackgroundImage(UIColor.white.imageWithColor(), for: .default)
         let layout = UICollectionViewFlowLayout()
