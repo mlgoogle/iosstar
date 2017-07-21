@@ -19,8 +19,7 @@ extension UINavigationBar {
     }
     func HideLine(){
         self.setBackgroundImage(UIImage(), for: .default)
-
-        
+        self.isTranslucent = false
         self.shadowImage = UIImage()
 
     }

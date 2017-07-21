@@ -111,7 +111,7 @@ class OrderStarItem: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        serviceTypeButton.isUserInteractionEnabled = false
+        serviceTypeButton.isUserInteractionEnabled = false
     }
     
     override func layoutSubviews() {
@@ -166,6 +166,9 @@ class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionV
     
     override func layoutSubviews() {
         super.layoutSubviews()
+    }
+    @IBAction func add(_ sender: Any) {
+  
     }
     // MRAK: -布局UI
     func setupInit() {
