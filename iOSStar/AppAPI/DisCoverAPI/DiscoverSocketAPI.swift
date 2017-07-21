@@ -17,7 +17,7 @@ class DiscoverSocketAPI:BaseSocketAPI, DiscoverAPI{
     //抢购明星列表
     func requestScrollStarList(requestModel:StarSortListRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .starScrollList, model: requestModel)
-        startModelsRequest(packet, listName: "symbol_info", modelClass: StarSortListModel.self, complete: complete, error: error)
+        startModelRequest(packet, modelClass: DiscoverListModel.self, complete: complete, error: error)
     }
     //请求剩余时间
     func requestBuyRemainingTime(requestModel:BuyRemainingTimeRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {

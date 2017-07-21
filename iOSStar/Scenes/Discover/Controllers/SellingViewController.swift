@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class SellingViewController: UIViewController {
     @IBOutlet weak var sureBuyButton: UIButton!
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -17,7 +17,7 @@ class SellingViewController: UIViewController {
     var remainingTime = 0
     
     var starInfoModel:PanicBuyInfoModel?
-    
+    var countTf = UITextField()
     var starModel:StarSortListModel?
     var sectionHeights = [200, 70, 50, 65, 60, 50]
     var identifiers = [SellingIntroCell.className(), SellingTimeAndCountCell.className(), SellingCountDownCell.className(), SellingBuyCountCell.className(), SellingPriceCell.className(), SellingTipsCell.className()]
@@ -105,15 +105,38 @@ class SellingViewController: UIViewController {
         guard starModel != nil else {
             return
         }
+        guard countTf.text != "" else {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入购买数量", ForDuration: 1, completion: nil)
+            return
+        }
+        if ( Int64.init(countTf.text!)!) == 0 {
+           SVProgressHUD.showErrorMessage(ErrorMessage: "购买数量大于0", ForDuration: 1, completion: nil)
+        }
+        else if ( ( Int64.init(countTf.text!)!) > (starInfoModel?.publish_last_time)!){
+            SVProgressHUD.showErrorMessage(ErrorMessage: "最多购买"  + "\(String(describing: starInfoModel?.publish_last_time))" + "秒", ForDuration: 1, completion: nil)
+
+        }
+        
         let requestModel = BuyStarTimeRequestModel()
-        requestModel.amount = 10
-        requestModel.price = 1.01
+  
+        requestModel.amount = Int64.init(countTf.text!)!
+        requestModel.price = (self.starInfoModel?.publish_price)!
         requestModel.symbol = starModel!.symbol
         
         AppAPIHelper.discoverAPI().buyStarTime(requestModel: requestModel, complete: { (response) in
-            
+            if let result = response?["result"] as? Int{
+                if result == 1{
+                   SVProgressHUD.showSuccessMessage(SuccessMessage: "购买成功", ForDuration: 1, completion: { 
+                    self.navigationController?.popViewController(animated: true)
+                   })
+                 }else{
+                  SVProgressHUD.showErrorMessage(ErrorMessage: "交易失败", ForDuration: 1, completion: nil)
+                }
+            }else{
+              SVProgressHUD.showErrorMessage(ErrorMessage: "交易失败", ForDuration: 1, completion: nil)
+            }
         }) { (error) in
-           
+            SVProgressHUD.showErrorMessage(ErrorMessage: "交易失败", ForDuration: 1, completion: nil)
             
         }
     }
@@ -158,6 +181,7 @@ extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITe
         case 3:
             if let buyCountCell = cell as? SellingBuyCountCell {
                 buyCountCell.countTextField.delegate = self
+                countTf = buyCountCell.countTextField
                 buyCountCell.countTextField.addTarget(self, action: #selector(countChange(sender:)), for: .editingDidEnd)
               
             }
