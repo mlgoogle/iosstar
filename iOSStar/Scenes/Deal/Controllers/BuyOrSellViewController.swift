@@ -41,6 +41,7 @@ class BuyOrSellViewController: DealBaseViewController {
             requestRealTime()
         }
        requestPositionCount()
+     requetTotalCount()
     }
     func registerNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
