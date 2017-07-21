@@ -14,25 +14,26 @@ class OrderItemButton : UIButton {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.imageView?.contentMode = .center
-        self.imageView?.contentMode = .scaleAspectFit
-        self.titleLabel?.textAlignment = .center
+        isUserInteractionEnabled = false
+        imageView?.contentMode = .center
+        imageView?.contentMode = .scaleAspectFit
+        titleLabel?.textAlignment = .center
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         
         // 调整图片的位置
-        self.imageView?.centerX = self.width * 0.5
-        self.imageView?.y = 0
-        self.imageView?.height = self.height * 0.75
+        imageView?.centerX = width * 0.5
+        imageView?.y = 0
+        imageView?.height = height * 0.75
+        
         
         // 调整文字的位置
-        self.titleLabel?.x = 0;
-        self.titleLabel?.width = self.width;
-        self.titleLabel?.y = (self.imageView?.height)!
-        self.titleLabel?.height = self.height - (self.imageView?.height)!
+        titleLabel?.x = 0;
+        titleLabel?.width = width;
+        titleLabel?.y = (imageView?.height)!
+        titleLabel?.height = height - (imageView?.height)!
     }
 }
 
@@ -77,6 +78,7 @@ class CustomLayout: UICollectionViewFlowLayout {
     }
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        
         let itemCount = collectionView!.numberOfItems(inSection: 0)
         for i in 0..<itemCount {
             let attr = layoutAttributesForItem(at: IndexPath(item: i, section: 0))
@@ -160,8 +162,8 @@ class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionV
     }
     
     func setStarServiceType(serviceModel:[ServiceTypeModel]?) {
-        self.serviceTypeModel = serviceModel
-        self.orderStartCollectionView.reloadData()
+        serviceTypeModel = serviceModel
+        orderStartCollectionView.reloadData()
     }
     
     override func layoutSubviews() {
@@ -177,12 +179,12 @@ class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionV
         let layout = CustomLayout()
         layout.dataSource = self
         layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        self.orderStartCollectionView.collectionViewLayout = layout
+        orderStartCollectionView.collectionViewLayout = layout
         layout.scrollDirection = .horizontal
         
-        self.orderStartCollectionView.showsVerticalScrollIndicator = false
-        self.orderStartCollectionView.showsHorizontalScrollIndicator = false
-        self.orderStartCollectionView.isPagingEnabled = true
+        orderStartCollectionView.showsVerticalScrollIndicator = false
+        orderStartCollectionView.showsHorizontalScrollIndicator = false
+        orderStartCollectionView.isPagingEnabled = true
         
     }
     
@@ -217,11 +219,11 @@ class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionV
         
         let cell =  collectionView.cellForItem(at: indexPath) as! OrderStarItem
         // 记录
-        self.ordercell?.serviceTypeButton.isSelected = false
+        ordercell?.serviceTypeButton.isSelected = false
         
         cell.serviceTypeButton.isSelected = true
         
-        self.ordercell = cell
+        ordercell = cell
         
         
         if self.serviceTypeModel?.count ?? 0 == 0 {
