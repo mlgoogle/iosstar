@@ -36,12 +36,9 @@ class HeatListViewController: UITableViewController {
 
     
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.HideLine()
-    }
-     override func didRequest(_ pageIndex: Int) {
-        Index = 1
+
+    override func didRequest(_ pageIndex: Int) {
+
         let requestModel = StarSortListRequestModel()
          requestModel.pos = Int64((Index - 1) * 10)
         requestModel.count = 10
@@ -70,7 +67,6 @@ class HeatListViewController: UITableViewController {
         requestModel.count = 10
         AppAPIHelper.discoverAPI().requestStarList(requestModel: requestModel, complete: { (response) in
             if let models = response as? [StarSortListModel] {
-                
                 self.tableView.mj_footer.endRefreshing()
                 self.dataSource?.append(contentsOf: models)
                 self.tableView.reloadData()

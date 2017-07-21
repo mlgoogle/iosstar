@@ -130,8 +130,8 @@ extension UINavigationController {
         let valueForKey = barBackgroundView.value(forKey:)
         
         if let shadowView = valueForKey("_shadowView") as? UIView {
-            shadowView.alpha = alpha
-            shadowView.isHidden = alpha == 0
+//            shadowView.alpha = 0
+            shadowView.isHidden = true
         }
         
         if navigationBar.isTranslucent {
