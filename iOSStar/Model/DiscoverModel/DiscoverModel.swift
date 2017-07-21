@@ -9,20 +9,29 @@
 import Foundation
 import RealmSwift
 
-class StarSortListModel: Object {
+
+class DiscoverListModel:BaseModel{
     
-    dynamic var wid = ""
-    dynamic var name = ""
-    dynamic var pic = ""
-    dynamic var home_pic = ""
-    dynamic var home_button_pic = ""
-    dynamic var symbol = ""
-    dynamic var currentPrice = 0.0
-    dynamic var priceTime:Int64 = 0
-    dynamic var sysTime:Int64 = 0
-    dynamic var change = 0.0
-    dynamic var pchg = 0.0
-    dynamic var pushlish_type = 0
+    var symbol_info:[StarSortListModel]?
+    var home_last_pic = ""
+    class func symbol_infoModelClass() ->AnyClass {
+        return  StarSortListModel.classForCoder()
+    }
+}
+class StarSortListModel: BaseModel {
+    
+     var wid = ""
+     var name = ""
+     var pic = ""
+     var home_pic = ""
+     var home_button_pic = ""
+     var symbol = ""
+     var currentPrice = 0.0
+     var priceTime:Int64 = 0
+     var sysTime:Int64 = 0
+     var change = 0.0
+     var pchg = 0.0
+     var pushlish_type = 0
 }
 class BuyRemainingTimeModel: Object {
     dynamic var symbol = ""

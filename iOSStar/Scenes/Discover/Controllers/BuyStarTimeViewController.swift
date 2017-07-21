@@ -51,6 +51,7 @@ class BuyStarTimeViewController: UIViewController {
                     self.dataSouce?.append(starModel)
                     self.collectionView.reloadData()
                 }
+                self.collectionView.reloadData()
             }
             
         }) { (error) in
@@ -64,14 +65,19 @@ class BuyStarTimeViewController: UIViewController {
 
     func requestStarList() {
         
-        
         let requestModel = StarSortListRequestModel()
+        
+
         AppAPIHelper.discoverAPI().requestScrollStarList(requestModel: requestModel, complete: { (response) in
             
-            if let models = response as? [StarSortListModel]{
-                self.dataSouce = models
+            if let model = response as? DiscoverListModel{
+                self.dataSouce = model.symbol_info
+                let starModel = StarSortListModel()
+                starModel.home_pic = model.home_last_pic
+                starModel.pushlish_type = -1
+                self.dataSouce?.append(starModel)
                 self.collectionView.reloadData()
-                self.requestConfigData()
+                //self.requestConfigData()
                 self.perform(#selector(self.replaceBackImage(index:)), with: nil, afterDelay: 0.5)
                 
             }
