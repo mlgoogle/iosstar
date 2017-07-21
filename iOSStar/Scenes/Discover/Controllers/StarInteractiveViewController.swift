@@ -16,6 +16,7 @@ class StarInteractiveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.register(NoDataCell.self, forCellReuseIdentifier: "NoDataCell")
         configImageNames()
         requestStar()
     }
@@ -57,12 +58,18 @@ class StarInteractiveViewController: UIViewController {
 }
 extension StarInteractiveViewController:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
+        
+        return self.dataSource == nil ? UIScreen.main.bounds.size.height - 150 : 130
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.count ?? 0
+        return dataSource?.count ?? 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if self.dataSource == nil{
+         let cell = tableView.dequeueReusableCell(withIdentifier: NoDataCell.className(), for: indexPath) as! NoDataCell
+            cell.imageView?.image = UIImage.init(named: "nodata")
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: StarInfoCell.className(), for: indexPath) as! StarInfoCell
         cell.setStarModel(starModel:dataSource![indexPath.row])
         cell.setBackImage(imageName: (imageNames?[indexPath.row % 10])!)
