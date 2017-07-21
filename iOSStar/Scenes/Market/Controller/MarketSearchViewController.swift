@@ -31,10 +31,7 @@ class MarketSearchViewController: UIViewController , UITextFieldDelegate{
         searchTextField.addTarget(self , action:#selector(textfiledchange(_:)), for: .editingChanged)
         searchTextField.delegate = self
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.HideLine()
-    }
+
     func textfiledchange(_ textField: UITextField){
         
         if textField.text == "" {

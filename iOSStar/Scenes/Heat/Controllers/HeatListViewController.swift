@@ -19,10 +19,7 @@ class HeatListViewController: BasePageListTableViewController {
         requestStar()
         setupNav()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.HideLine()
-    }
+
     override func didRequest(_ pageIndex: Int) {
         let requestModel = StarSortListRequestModel()
          requestModel.pos = Int64((pageIndex - 1) * 10)
