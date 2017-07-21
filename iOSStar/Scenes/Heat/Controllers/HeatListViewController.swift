@@ -7,41 +7,80 @@
 //
 
 import UIKit
-
-class HeatListViewController: BasePageListTableViewController {
+import MJRefresh
+class HeatListViewController: UITableViewController {
     var imageNames:[String]?
-//    var dataSource:[StarSortListModel]?
-
+    var dataSource:[StarSortListModel]?
+    let header = MJRefreshNormalHeader()
+    let footer = MJRefreshAutoNormalFooter()
+    var Index = 1
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.register(NoDataCell.self, forCellReuseIdentifier: "NoDataCell")
+        tableView.reloadData()
         configImageNames()
-        requestStar()
         setupNav()
+        inittableview()
+    }
+    func inittableview(){
+    
+        Index = 1
+      
+        header.setRefreshingTarget(self, refreshingAction: #selector(didRequest(_:)))
+        self.tableView!.mj_header = header
+        self.tableView.mj_header.beginRefreshing()
+        
+        footer.setRefreshingTarget(self, refreshingAction: #selector(didRequestMore(_:)))
+        self.tableView!.mj_footer = footer
+
+    
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.HideLine()
     }
-    override func didRequest(_ pageIndex: Int) {
+     override func didRequest(_ pageIndex: Int) {
+        Index = 1
         let requestModel = StarSortListRequestModel()
-         requestModel.pos = Int64((pageIndex - 1) * 10)
+         requestModel.pos = Int64((Index - 1) * 10)
         requestModel.count = 10
         AppAPIHelper.discoverAPI().requestStarList(requestModel: requestModel, complete: { (response) in
             if let models = response as? [StarSortListModel] {
               
-               self.didRequestComplete(models as AnyObject )
+                self.tableView.mj_header.endRefreshing()
+                self.dataSource = models
                 self.tableView.reloadData()
+              
+               
             }
             
         }) { (error) in
-            self.didRequestComplete(nil )
+            
+            self.tableView.mj_header.endRefreshing()
+            self.tableView.mj_footer.endRefreshing()
+            self.tableView.reloadData()
         }
     }
-    func requestStar() {
+    
+    func didRequestMore(_ pageIndex: Int) {
+        Index = Index + 1
+        let requestModel = StarSortListRequestModel()
+        requestModel.pos = Int64((Index - 1) * 10)
+        requestModel.count = 10
+        AppAPIHelper.discoverAPI().requestStarList(requestModel: requestModel, complete: { (response) in
+            if let models = response as? [StarSortListModel] {
+                
+                self.tableView.mj_footer.endRefreshing()
+                self.dataSource?.append(contentsOf: models)
+                self.tableView.reloadData()
         
-      
-        
+            }
+            
+        }) { (error) in
+            self.tableView.mj_footer.endRefreshing()
+            self.tableView.reloadData()
+        }
     }
     @IBAction func searchAction(_ sender: Any) {
         let stroyBoard = UIStoryboard(name: AppConst.StoryBoardName.Markt.rawValue, bundle: nil)
@@ -55,12 +94,18 @@ class HeatListViewController: BasePageListTableViewController {
         }
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
+        return self.dataSource == nil ? UIScreen.main.bounds.size.height - 150 : 130
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource?.count ?? 0
+        return dataSource?.count ?? 1
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if self.dataSource == nil{
+            let cell = tableView.dequeueReusableCell(withIdentifier: NoDataCell.className(), for: indexPath) as! NoDataCell
+            cell.imageView?.image = UIImage.init(named: "nodata")
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: HeatListCell.className(), for: indexPath) as! HeatListCell
         cell.update(dataSource![indexPath.row])
         cell.setBackImage(imageName: (imageNames?[indexPath.row % 10])!)
@@ -91,8 +136,7 @@ class HeatListViewController: BasePageListTableViewController {
             if let vc = segue.destination as? HeatDetailViewController {
 
                 vc.imageName = imageNames![indexPath.row % 10]
-                vc.starListModel = dataSource![indexPath.row] as? StarSortListModel
-
+                vc.starListModel = dataSource![indexPath.row]
             }
             
         }

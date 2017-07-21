@@ -64,6 +64,10 @@ class SellingViewController: UIViewController {
         
         totalPriceLabel.setNeedsDisplay()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.HideLine()
+    }
     func requestRemainTime() {
         guard starModel != nil else {
             return
