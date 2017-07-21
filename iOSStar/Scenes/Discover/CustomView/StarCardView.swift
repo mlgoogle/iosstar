@@ -102,12 +102,10 @@ class StarCardView: UICollectionViewCell {
             return
         }
         
-        KingfisherManager.shared.downloader.downloadImage(with: URL(string: starModel.home_pic)!, options: nil, progressBlock: nil) { (image, error, url, data) in
+        showImageView.kf.setImage(with: URL(string: starModel.home_pic)!, placeholder: UIImage(named: "blank"), options: nil, progressBlock: nil) { (image, error, cacheType, url) in
             if image != nil {
-                self.showImageView.image = image
                 self.backImage = image
             }
-            
             
         }
 

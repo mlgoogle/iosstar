@@ -15,6 +15,7 @@ class StarIntroduceViewController: UIViewController {
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var appointmentButton: UIButton!
 
+    var index = 0
     var starModel:StarSortListModel?
     var sectionHeights = [170, 18, 140]
     var identifers = [StarIntroduceCell.className(), MarketExperienceCell.className(), StarPhotoCell.className()]
@@ -145,6 +146,14 @@ class StarIntroduceViewController: UIViewController {
 }
 extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource,MenuViewDelegate, MWPhotoBrowserDelegate, UIScrollViewDelegate, PopVCDelegate{
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 170 {
+            self.navBarBgAlpha = 1.0
+        } else {
+            self.navBarBgAlpha = 0.0
+            
+        }
+    }
     func back() {
         _ = navigationController?.popViewController(animated: true)
     }
@@ -159,11 +168,12 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         return 1
     }
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
-        let photo = MWPhoto(url:URL(string: images[Int(index)]))
+        let photo = MWPhoto(url:URL(string: images[Int(self.index)]))
         return photo
     }
 
     func menuViewDidSelect(indexPath: IndexPath) {
+        index = indexPath.item
         let vc = PhotoBrowserVC(delegate: self)
         present(vc!, animated: true, completion: nil)
     }
