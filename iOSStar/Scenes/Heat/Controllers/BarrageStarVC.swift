@@ -50,10 +50,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
 
         // Do any additional setup after loading the view.
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.HideLine()
-    }    //Mark :创建renderer
+  //Mark :创建renderer
     func buildDanMu() {
         self.renderer = BarrageRenderer.init()
         self.renderer.canvasMargin = UIEdgeInsetsMake( 5, 0,50, 0)

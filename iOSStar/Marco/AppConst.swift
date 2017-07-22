@@ -99,7 +99,8 @@ class AppConst {
     }
     
     class Network {
-        #if false  //是否测试环境
+        #if false
+        //是否测试环境
         //139.224.34.22
         //122.144.169.214
         static let TcpServerIP:String = "139.224.34.22";

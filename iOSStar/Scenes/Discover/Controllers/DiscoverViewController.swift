@@ -40,10 +40,7 @@ class DiscoverViewController: UIViewController, MenuViewDelegate{
         view.addSubview(scrollView)
         addChildViewControllers()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.HideLine()
-    }
+
     func addChildViewControllers() {
         let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Discover.rawValue, bundle: nil)
         let identifiers = [BuyStarTimeViewController.className(), StarInteractiveViewController.className()]

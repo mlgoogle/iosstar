@@ -34,7 +34,7 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
         
         let storyboardNames = ["Discover","Heat","User"]
         let titles = ["发现明星","明星热度","个人中心"]
-        let iconName = ["Exchange","Market","User"]
+        let iconName = ["Discover","Heat","User"]
         for (index, name) in storyboardNames.enumerated() {
             let storyboard = UIStoryboard.init(name: name, bundle: nil)
             let controller = storyboard.instantiateInitialViewController()
@@ -91,9 +91,9 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
     // 刷新是否显示红点
     func refreshSessionBadge() {
         if self.sessionUnreadCount == 0 {
-            self.tabBar.hideBadgeOnItemIndex(index: 2)
+//            self.tabBar.hideBadgeOnItemIndex(index: 2)
         } else {
-            self.tabBar.showshowBadgeOnItemIndex(index: 2)
+//            self.tabBar.showshowBadgeOnItemIndex(index: 2)
         }
     }
     

@@ -37,8 +37,11 @@ class BuyOrSellViewController: DealBaseViewController {
         if realTimeData != nil {
             let price = String(format: "%.2f", realTimeData!.currentPrice)
             priceDidChange(totalPrice: Double(price)! * Double(600), count: 600, price: Double(price)!)
+        } else {
+            requestRealTime()
         }
-        requestPositionCount()
+       requestPositionCount()
+       requetTotalCount()
     }
     
     
@@ -65,7 +68,7 @@ class BuyOrSellViewController: DealBaseViewController {
         }
         AppAPIHelper.marketAPI().requestTotalCount(starCode: starListModel!.symbol, complete: { (response) in
             if let model = response as? StarTotalCountModel {
-                self.count = Int(model.star_time)
+                self.totalCount = Int(model.star_time)
             }
             
         }) { (error) in
@@ -81,6 +84,7 @@ class BuyOrSellViewController: DealBaseViewController {
     }
     
     @IBAction func buyOrSellAction(_ sender: Any) {
+
         
         guard starListModel != nil else {
             return
@@ -108,6 +112,7 @@ class BuyOrSellViewController: DealBaseViewController {
         
     }
     
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         YD_CountDownHelper.shared.marketTimeLineRefresh = nil
@@ -119,6 +124,7 @@ class BuyOrSellViewController: DealBaseViewController {
             self?.requestRealTime()
         }
     }
+
     func requestRealTime() {
         let requestModel = RealTimeRequestModel()
         let syModel = SymbolInfo()
@@ -134,6 +140,8 @@ class BuyOrSellViewController: DealBaseViewController {
                 self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
             }
         }) { (error) in
+            
+            
         }
     }
     

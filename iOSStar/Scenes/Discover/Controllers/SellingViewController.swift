@@ -64,6 +64,10 @@ class SellingViewController: UIViewController {
         
         totalPriceLabel.setNeedsDisplay()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.HideLine()
+    }
     func requestRemainTime() {
         guard starModel != nil else {
             return
@@ -124,10 +128,10 @@ class SellingViewController: UIViewController {
         requestModel.symbol = starModel!.symbol
         
         AppAPIHelper.discoverAPI().buyStarTime(requestModel: requestModel, complete: { (response) in
-            if let result = response?["result"] as? Int{
+            if let result = response as? Int{
                 if result == 1{
                    SVProgressHUD.showSuccessMessage(SuccessMessage: "购买成功", ForDuration: 1, completion: { 
-                    self.navigationController?.popViewController(animated: true)
+                     _ = self.navigationController?.popViewController(animated: true)
                    })
                  }else{
                   SVProgressHUD.showErrorMessage(ErrorMessage: "交易失败", ForDuration: 1, completion: nil)
