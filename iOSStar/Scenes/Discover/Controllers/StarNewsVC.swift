@@ -254,7 +254,8 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
                             user.uid = (StarUserModel.getCurrentUser()?.userinfo?.id)!
                             user.user_name = (StarUserModel.getCurrentUser()?.userinfo?.agentName)!
                             model.approve_list.append(user)
-                            tableView.reloadRows(at: [indexPath], with: .automatic)
+//                            tableView.reloadRows(at: [indexPath], with: .automatic)
+                            tableView.reloadData()
                         })
                     }
                 }
