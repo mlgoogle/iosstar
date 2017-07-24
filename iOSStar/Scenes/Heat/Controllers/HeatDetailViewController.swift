@@ -118,7 +118,11 @@ class HeatDetailViewController: UIViewController {
     }
 
     @IBAction func fleaMarket(_ sender: Any) {
-        self.performSegue(withIdentifier: "pushbarr", sender: nil)
+        if checkLogin(){
+             self.performSegue(withIdentifier: "pushbarr", sender: nil)
+        }
+        
+       
     }
 
     func back() {
@@ -196,12 +200,27 @@ class HeatDetailViewController: UIViewController {
         }
     }
     @IBAction func buyAction(_ sender: Any) {
-        pushToDealPage(index: 0)
+        if checkLogin(){
+         pushToDealPage(index: 0)
+        }
+       
         
-    }
-
+    }//
+    
     @IBAction func sellAction(_ sender: Any) {
-        pushToDealPage(index: 1)
+        if checkLogin(){
+             pushToDealPage(index: 1)
+        }
+       
+    }
+    @IBAction func doPushStarDeatil(_ sender: Any) {
+       
+        if checkLogin(){
+            let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
+            introVC.starModel = starListModel
+            self.navigationController?.pushViewController(introVC, animated: true)
+        }
+        
     }
 
     func pushToDealPage(index:Int) {

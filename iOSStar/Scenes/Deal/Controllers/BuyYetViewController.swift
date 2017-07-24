@@ -19,6 +19,7 @@ class BuyYetViewController: DealBaseViewController {
     var identifiers = ["DealTitleMenuCell", NoDataCell.className()]
 //    var titles = ["名称/市值（元）","持有/可转（秒）","现价/成本（秒）","盈亏（元）"]
     var titles = ["名称","代码","数量",""]
+    
 //    var sectionHeights:[CGFloat] = [100.0, 38, 80.0]
     var sectionHeights:[CGFloat] = [38, 80.0]
 
@@ -100,6 +101,7 @@ extension BuyYetViewController:UITableViewDelegate, UITableViewDataSource {
         case 0:
             let proCell = cell as! DealTitleMenuCell
             proCell.setTitles(titles:titles)
+            
         case 1:
             if let nodataCell = cell as? NoDataCell {
                 nodataCell.setImageAndTitle(image: UIImage(named: "nodata_record"), title: "当前没有相关记录")

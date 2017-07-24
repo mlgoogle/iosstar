@@ -224,15 +224,26 @@
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="i2B-hc-es5"/>
                                                         </constraints>
                                                     </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fxw-vE-cVy">
+                                                        <rect key="frame" x="25" y="25" width="80" height="80"/>
+                                                        <state key="normal" title=""/>
+                                                        <connections>
+                                                            <action selector="doPushStarDeatil:" destination="epr-7o-9bp" eventType="touchUpInside" id="pPc-9a-eAv"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="Fxw-vE-cVy" firstAttribute="leading" secondItem="qAi-Vt-gVE" secondAttribute="leading" id="745-fx-mag"/>
                                                     <constraint firstAttribute="trailing" secondItem="KK8-is-Zt6" secondAttribute="trailing" constant="12" id="9gY-g6-4Mh"/>
                                                     <constraint firstItem="KK8-is-Zt6" firstAttribute="leading" secondItem="0Zb-v0-YLF" secondAttribute="leading" constant="12" id="Rfz-e2-A7R"/>
+                                                    <constraint firstItem="Fxw-vE-cVy" firstAttribute="bottom" secondItem="qAi-Vt-gVE" secondAttribute="bottom" id="Tfl-JE-fii"/>
                                                     <constraint firstAttribute="height" constant="130" id="VVT-hQ-59i"/>
                                                     <constraint firstItem="KK8-is-Zt6" firstAttribute="top" secondItem="0Zb-v0-YLF" secondAttribute="top" constant="50" id="dXz-ey-qWn"/>
+                                                    <constraint firstItem="Fxw-vE-cVy" firstAttribute="trailing" secondItem="qAi-Vt-gVE" secondAttribute="trailing" id="fkz-pX-mAm"/>
                                                     <constraint firstItem="qAi-Vt-gVE" firstAttribute="leading" secondItem="0Zb-v0-YLF" secondAttribute="leading" constant="25" id="fnc-Jt-Pqg"/>
                                                     <constraint firstItem="qAi-Vt-gVE" firstAttribute="top" secondItem="0Zb-v0-YLF" secondAttribute="top" constant="25" id="r2h-D3-ZyG"/>
+                                                    <constraint firstItem="Fxw-vE-cVy" firstAttribute="top" secondItem="qAi-Vt-gVE" secondAttribute="top" id="ygO-Vm-Eyn"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLl-eR-u27">
