@@ -224,10 +224,7 @@ class OrderStarViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(chooseServiceType(_:)), name:
             Notification.Name(rawValue:AppConst.chooseServiceTypeSuccess), object: nil)
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.HideLine()
-    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
