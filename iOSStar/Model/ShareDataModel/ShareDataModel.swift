@@ -27,6 +27,7 @@ class ShareDataModel: NSObject {
     var controlSwitch: Bool = true
     var buttonExtOnceSwitch = true
     var voiceSwitch = false
+    var selectStarCode = ""
     var baseTabbarC: BaseTabBarController?
 }
 class OrderInformation: NSObject {
@@ -37,6 +38,4 @@ class OrderInformation: NSObject {
      var orderStatus : String =   ""
      var orderInfomation : String =   ""
      var ordertitlename : String =   "订单详情"
-    
-    
 }

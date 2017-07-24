@@ -171,72 +171,54 @@ class SystemMessageVC: BasePageListTableViewController {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        if self.needPwd == 1 {
-            let alertVc = AlertViewController()
-            alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-                                
-                                titleLabelText: "开通支付",
-                                subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购明星时间，转让明星时间，\n和明星在‘星聊’中聊天，并且还能约见明星。",
-                                completeButtonTitle: "我 知 道 了") {[weak alertVc] (completeButton) in
-                                    alertVc?.dismissAlertVc()
-                                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
-                                    self.navigationController?.pushViewController(vc, animated: true )
-                                    return
-            }
-            return
-        }
-        else
-        {
+//        if self.needPwd == 1 {
+//            let alertVc = AlertViewController()
+//            alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
+//                                
+//                                titleLabelText: "开通支付",
+//                                subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购明星时间，转让明星时间，\n和明星在‘星聊’中聊天，并且还能约见明星。",
+//                                completeButtonTitle: "我 知 道 了") {[weak alertVc] (completeButton) in
+//                                    alertVc?.dismissAlertVc()
+//                                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
+//                                    self.navigationController?.pushViewController(vc, animated: true )
+//                                    return
+//            }
+//            return
+//        }
+//        else
+//        {
         let  data = self.dataSource?[indexPath.row] as! OrderListModel
         if (data.handle == 0) {
             if ((data.buyUid == StarUserModel.getCurrentUser()?.userinfo?.id && data.buyHandle == 0) || (data.sellUid == StarUserModel.getCurrentUser()?.userinfo?.id && data.sellHandle == 0) ){
                 let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易,请仔细阅读设置中的法律说明", preferredStyle:.alert)
-                // 设置2个UIAlertAction
                 let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
                     self.doorder(data, true)
                 }
                 let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
-                    self.showView(data, false)
+                    self.doorder(data, false)
+                    
                 }
-                // 添加
                 alertController.addAction(cancelAction)
                 alertController.addAction(completeAction)
-                // 弹出
                 self.present(alertController, animated: true, completion: nil)
             }
-            //
-        }
-         else if (data.handle == 1) {
+        }else if (data.handle == 1) {
             
             if ((data.buyUid == StarUserModel.getCurrentUser()?.userinfo?.id && data.buyHandle == 1  && data.sellHandle == 0) || (data.sellUid == StarUserModel.getCurrentUser()?.userinfo?.id && data.sellHandle == 1 && data.buyHandle == 0)){
             
-            }
-          else  if ((data.buyUid == StarUserModel.getCurrentUser()?.userinfo?.id && data.sellHandle == 0) || (data.sellUid == StarUserModel.getCurrentUser()?.userinfo?.id && data.sellHandle == 0)){
+            }else  if ((data.buyUid == StarUserModel.getCurrentUser()?.userinfo?.id && data.sellHandle == 0) || (data.sellUid == StarUserModel.getCurrentUser()?.userinfo?.id && data.sellHandle == 0)){
                 let alertController = UIAlertController(title: "交易提醒", message: "点击确认进行交易,请仔细阅读设置中的法律说明", preferredStyle:.alert)
-                // 设置2个UIAlertAction
                 let cancelAction = UIAlertAction(title: "取消", style:.default) { (UIAlertAction) in
                     self.doorder(data, true)
                 }
                 let completeAction = UIAlertAction(title: "确定", style:.default) { (UIAlertAction) in
-                    self.showView(data, false)
+//                    self.doorder(data, false)
                     
                 }
-                        // 添加
                 alertController.addAction(cancelAction)
                 alertController.addAction(completeAction)
-                // 弹出
                 self.present(alertController, animated: true, completion: nil)
-                
-                
             }
-            //
-        }
-        else if (data.handle == 2){
-            
-        }
-        else{
-
-        }
         }
     }
 
@@ -277,7 +259,7 @@ class SystemMessageVC: BasePageListTableViewController {
                     }
                 }
             }, error: { (error ) in
-                  self.didRequest(1)
+                self.didRequest(1)
                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"]  as! String, ForDuration: 2, completion: nil )
             })
         }else{
@@ -285,10 +267,9 @@ class SystemMessageVC: BasePageListTableViewController {
             sure.orderId = order.orderId
             sure.positionId = order.positionId
             AppAPIHelper.dealAPI().sureOrderRequest(requestModel: sure, complete: { (result) in
-               
                 if let object = result as? [String : Any]  {
                 
-                      self.didRequest(1)
+                    self.didRequest(1)
                     if let status = object["status"] as? Int{
                         if status == 0{
                                self.didRequest(1)
@@ -297,7 +278,7 @@ class SystemMessageVC: BasePageListTableViewController {
                     }
                 }
             }, error: { (error) in
-                  self.didRequest(1)
+                self.didRequest(1)
                 SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2, completion: nil )
             })
         }

@@ -14,6 +14,12 @@ class CircleSocketAPI: BaseSocketAPI, CircleAPI{
         let packet = SocketDataPacket(opcode: .circleList, model: requestModel)
         startModelsRequest(packet, listKey: "circle_list", modelClass: CircleListModel.self, complete: complete, error: error)
     }
+    //朋友圈
+    func requestStarCircleList(requestModel:CircleListRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
+        let opcode = requestModel.star_code.length() > 0 ? SocketConst.OPCode.starCircle : SocketConst.OPCode.circleList
+        let packet = SocketDataPacket(opcode: opcode, model: requestModel)
+        startModelsRequest(packet, listKey: "circle_list", modelClass: CircleListModel.self, complete: complete, error: error)
+    }
     //评论动态
     func commentCircle(requestModel:CommentCircleModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .commentCircle, model: requestModel)

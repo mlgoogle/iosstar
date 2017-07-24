@@ -23,7 +23,7 @@ class HeatDetailViewController: UIViewController {
     @IBOutlet weak var iconImageVie: UIImageView!
     //
     @IBOutlet weak var width: NSLayoutConstraint!
-    let test = true
+    let test = false
     var statusModel:AuctionStatusModel?
     var imageName = "starList_back0"
     var starListModel:StarSortListModel?
@@ -66,6 +66,9 @@ class HeatDetailViewController: UIViewController {
             } else {
                 self.ballImageView.alpha = 1.0
 
+            }
+            if fans == nil{
+                return
             }
             self.renderer.receive(self.walkTextSpriteDescriptorWithDirection(direction: 0, data: fans!))
         }
