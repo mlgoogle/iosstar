@@ -119,9 +119,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
                     self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self ?? BarrageStarVC(), selector: #selector(self?.autoSenderBarrage), userInfo: nil, repeats: true)
                     self?.renderer.start()
                 }
-               
             }
-            
         }) { (error) in
             
         }
