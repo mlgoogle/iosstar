@@ -11,16 +11,13 @@ import SVProgressHUD
 class BuyOrSellViewController: DealBaseViewController {
     var identifiers = ["DealStarInfoCell","DealMarketCell","DealOrderInfoCell"]
     var rowHeights = [137, 188,133,82]
-
     var infos:[String] = ["转让价格","转让数量"]
     var count = 600
     var price = 0.0
+    
     @IBOutlet weak var tableView: UITableView!
-
     @IBOutlet weak var orderPriceLabel: UILabel!
-    
     @IBOutlet weak var buyOrSellButton: UIButton!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,11 +48,13 @@ class BuyOrSellViewController: DealBaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
     }
+    
     func keyboardWillShow(notification: NSNotification?) {
         UIView.animate(withDuration: 0.5) {
             self.view.frame = CGRect(x: self.view.frame.origin.x, y: -100, width: self.view.frame.size.width, height: self.view.frame.size.height)
         }
     }
+    
     func keyboardWillHide(notification: NSNotification?) {
         UIView.animate(withDuration: 0.5) {
             self.view.frame = CGRect(x: self.view.frame.origin.x, y: 64, width: self.view.frame.size.width, height: self.view.frame.size.height)
@@ -76,9 +75,11 @@ class BuyOrSellViewController: DealBaseViewController {
             
         }
     }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -193,19 +194,19 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
         }
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         view.endEditing(true)
         view.y = 0
     }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        
-    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(rowHeights[indexPath.row])
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return identifiers.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifiers[indexPath.row], for: indexPath)
         

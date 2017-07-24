@@ -122,7 +122,6 @@ class SellingViewController: UIViewController {
         }
         
         let requestModel = BuyStarTimeRequestModel()
-  
         requestModel.amount = Int64.init(countTf.text!)!
         requestModel.price = (self.starInfoModel?.publish_price)!
         requestModel.symbol = starModel!.symbol

@@ -21,6 +21,7 @@ class BuyStarTimeViewController: UIViewController {
         view.addSubview(effectView)
         return view
     }()
+    
     lazy var backImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "blank"))
         imageView.frame = CGRect(x: 50, y: 50
@@ -30,6 +31,7 @@ class BuyStarTimeViewController: UIViewController {
         imageView.clipsToBounds = true
         return imageView
     }()
+    
     var dataSouce:[StarSortListModel]?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,8 +118,6 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
     func replaceBackImage(index:Int = 0) {
         
         let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? StarCardView
-        
-        
         backImageView.image = cell?.backImage
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

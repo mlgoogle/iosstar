@@ -8,7 +8,7 @@
 
 import Foundation
 class CircleListRequestModel: BaseModel {
-    
+    var star_code = ""
     var pos:Int64 = 0
     var count:Int32 = 10
 }

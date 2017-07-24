@@ -78,9 +78,14 @@ extension StarInteractiveViewController:UITableViewDelegate, UITableViewDataSour
         cell.setBackImage(imageName: (imageNames?[indexPath.row % 10])!)
         return cell
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if dataSource == nil || dataSource?.count == 0{
+            return
+        }
+        if let model: StarSortListModel = dataSource![indexPath.row] as? StarSortListModel{
+            ShareDataModel.share().selectStarCode = model.symbol
+            performSegue(withIdentifier: StarNewsVC.className(), sender: indexPath)
+        }
         
-        performSegue(withIdentifier: "InterToIntroduce", sender: indexPath)
     }
 }
