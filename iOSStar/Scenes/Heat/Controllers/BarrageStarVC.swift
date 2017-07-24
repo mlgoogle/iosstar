@@ -186,6 +186,16 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         return view
     }
   
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let model = StarSortListModel()
+        let data = self.dataArry[indexPath.row]
+           model.symbol = data.code
+           model.name = data.name
+         let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
+         introVC.starModel = model
+         self.navigationController?.pushViewController(introVC, animated: true)
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
         return self.dataArry.count
