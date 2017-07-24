@@ -34,6 +34,7 @@ class StarSortListModel: BaseModel {
      var pushlish_type = 0
 }
 class BuyRemainingTimeModel: Object {
+    
     dynamic var symbol = ""
     dynamic var remainingTime:Int64 = 0
 }

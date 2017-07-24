@@ -21,5 +21,6 @@ protocol CircleAPI {
     
     func starCommentCircle(requestModel:CommentCircleModel,complete: CompleteBlock?, error: ErrorBlock?)
 
+    func requestStarCircleList(requestModel:CircleListRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
 }
 
