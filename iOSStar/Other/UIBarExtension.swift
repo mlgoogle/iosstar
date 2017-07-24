@@ -18,9 +18,9 @@ extension UINavigationBar {
         navigationBarImageView!.isHidden = false
     }
     func HideLine(){
-        self.setBackgroundImage(UIImage(), for: .default)
-        self.isTranslucent = false
-        self.shadowImage = UIImage()
+//        self.setBackgroundImage(UIImage(), for: .default)
+//        self.isTranslucent = false
+//        self.shadowImage = UIImage()
 
     }
     private func hairlineImageViewInNavigationBar(view: UIView) -> UIImageView? {
