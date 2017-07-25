@@ -42,6 +42,8 @@ class DealDetailViewController: DealBaseViewController ,DealScrollViewScrollDele
         menuView?.itemData = titles as [AnyObject]?
         menuView?.reloadData()
         menuView?.delegate = self
+        menuView?.isSelectZoom = true
+        menuView?.isShowLineView = true
         view.addSubview(menuView!)
     }
     func addSubViews() {
