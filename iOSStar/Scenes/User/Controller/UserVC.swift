@@ -36,7 +36,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
 //        titltArry = ["我的钱包","我约的明星","客服中心","常见问题","通用设置"]
-        titltArry = ["我的钱包","我预约的明星","客服中心","通用设置"]
+        titltArry = ["交易明细","我的钱包","我预约的明星","客服中心","通用设置"]
         self.tableView.reloadData()
      
         LoginYunxin()
@@ -108,7 +108,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
 
      override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return section == 0 ? 1 : (section == 1 ? 4 : (section == 2 ? 1 : (section == 3 ? 1 : 3 ) ))
+        return section == 0 ? 1 : (section == 1 ? 5 : (section == 2 ? 1 : (section == 3 ? 1 : 3 ) ))
     }
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 2 ? 20 : (section == 3 ? 20 : 0.001)
@@ -166,22 +166,29 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
             }
             
         }
+        //AllOrderViewController
         if indexPath.section == 1{
-        
-            //GetOrderStarsVC 我的钱包
             if indexPath.row == 0{
+                
+                let vc = UIStoryboard.init(name: "Deal", bundle: nil).instantiateViewController(withIdentifier: "AllOrderViewController") as! AllOrderViewController
+                vc.showNav  = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+
+            //GetOrderStarsVC 我的钱包
+            if indexPath.row == 1{
                 
                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "WealthVC")
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             //GetOrderStarsVC 预约明星列表
-            if indexPath.row == 1{
+            if indexPath.row == 2{
                 
                 toReservationStar()
 
             }
             //CustomerServiceVC
-            if indexPath.row == 2{
+            if indexPath.row == 3{
                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "CustomerServiceVC")
                 self.navigationController?.pushViewController(vc, animated: true)
             }
@@ -192,7 +199,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
 //                vc.navtitle = "常见问题"
 //                self.navigationController?.pushViewController(vc, animated: true)
 //            }
-            if indexPath.row == 3 {
+            if indexPath.row == 4 {
                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "SettingVC")
                 self.navigationController?.pushViewController(vc, animated: true)
             }
