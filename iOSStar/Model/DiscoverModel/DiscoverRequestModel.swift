@@ -19,6 +19,10 @@ class StarScrollListRequestModel: MarketBaseModel {
     var aType:Int64 = 4
 }
 
+class StarRealtimeRequestModel: StarScrollListRequestModel{
+    var starcode = ""
+}
+
 class BuyRemainingTimeRequestModel: BaseModel {
 
     var uid:Int64 = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0

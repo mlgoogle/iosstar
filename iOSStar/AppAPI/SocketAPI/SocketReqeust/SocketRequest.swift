@@ -24,10 +24,11 @@ class SocketRequest {
             }
         }
         let key:String = String(format: "%d", code);
+        var message = "unknown"
         if errorDict?.object(forKey: key) != nil {
-            return errorDict!.object(forKey: key) as! String
+             message = errorDict!.object(forKey: key) as! String
         }
-        return "Unknown";
+        return AppConst.isMock ? "\(key):\(message)" : message;
     }
 
     

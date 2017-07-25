@@ -104,12 +104,12 @@ class BuyOrSellViewController: DealBaseViewController {
         
         AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: { (response) in
             SVProgressHUD.dismiss()
-            _ = self.navigationController?.popViewController(animated: true)
+//            _ = self.navigationController?.popViewController(animated: true)
             SVProgressHUD.showSuccessMessage(SuccessMessage: "挂单成功", ForDuration: 1.5, completion: nil)
             let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
             if let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as? DealViewController {
                 vc.index = 3
-               
+                vc.refreshSelect()
                 vc.starListModel = self.starListModel
                self.navigationController?.pushViewController(vc, animated: true)
             }

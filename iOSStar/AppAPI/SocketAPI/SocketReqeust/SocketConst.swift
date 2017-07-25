@@ -49,15 +49,12 @@ class SocketConst: NSObject {
         case starInfo = 11005
         //资讯列表
         case newsInfo = 10013
-       
         // banner
         case banners = 10015
         //行情分类
         case marketType = 11001
-
         //搜索
         case searchStar = 13001
-
         //搜索
         case weixinpay = 7033
         case alipay = 7049
@@ -69,21 +66,17 @@ class SocketConst: NSObject {
         case authentication = 3021
         //分类明星
         case marketStar = 11003
-        
-
         //添加自选
         case addOptinal = 11015
         case realName = 7045
         //评论列表
         case commetList = 10017
-        
         //明星经历
         case starExperience = 11009
         //明星成就
         case starAchive = 11011
-        
+        //明星信息
         case newsStarInfo = 10001
-        
         // 明星服务类型
         case starServiceType = 10019
         // 订购明星服务
@@ -97,6 +90,8 @@ class SocketConst: NSObject {
         //明星列表
         case starList = 4007
         case starScrollList = 4009
+        //明星实时价格
+        case starRealtime = 4011
         //发送评论
         case sendComment = 12001
         //评论列表
@@ -107,17 +102,14 @@ class SocketConst: NSObject {
         case receiveMatching = 5101
         //获取拍卖时间
         case auctionStatus = 5005
-        
+        //所有订单
         case allOrder = 6021
         //确认订单
         case sureOrder = 5007
-        
         //取消订单
         case cancelOrder = 5009
-        
         //双方确认后结果推送
         case orderResult = 5102
-        
         //当天委托
         case todayEntrust = 6001
         //历史委托
@@ -140,7 +132,6 @@ class SocketConst: NSObject {
         case starTotalTime = 10027
         //获取版本更新信息
         case update = 3033
-        
         //更新devicetoken
         case updateDeviceToken = 3035
         case bankcardList = 8003
@@ -159,13 +150,10 @@ class SocketConst: NSObject {
         case panicBuyStarInfo = 14003
         //明星介绍页详情
         case starDetailInfo = 10031
-        
         //抢购明星时间
         case panicBuy = 14005
-        
         //朋友圈
         case circleList = 15001
-        
         //某个明星的朋友圈
         case starCircle = 15003
         //发布朋友圈
@@ -180,6 +168,7 @@ class SocketConst: NSObject {
         case starComment = 15013
         case configRequst = 10033
     }
+    
     enum type:UInt8 {
         case error  = 0
         case wp     = 1

@@ -73,6 +73,7 @@ class HeatDetailViewController: UIViewController {
         
         initCountDownBlock()
         requestAuctionSattus()
+        requestStarPrice()
         ballImageView.alpha = 0.5
     }
     
@@ -105,6 +106,19 @@ class HeatDetailViewController: UIViewController {
                 } else {
                     self.fansList?.append(contentsOf: models)
                 }
+            }
+        }, error: errorBlockFunc())
+    }
+    
+    func requestStarPrice() {
+        guard starListModel != nil else {
+            return
+        }
+        let param = StarRealtimeRequestModel()
+        param.starcode = starListModel!.symbol
+        AppAPIHelper.marketAPI().requestStarRealTime(requestModel: param, complete: { [weak self](result) in
+            if let model = result as? StarSortListModel{
+                self?.priceLabel.text = "\(model.currentPrice)"
             }
         }, error: errorBlockFunc())
     }

@@ -31,7 +31,7 @@ func isPassWord(pwd: String) ->Bool {
 class AppConst {
     static let DefaultPageSize = 15
     static let UMAppkey = "584a3eb345297d271600127e"
-    static let isMock = false
+    static let isMock = true
     static let sha256Key = "t1@s#df!"
     static let pid = 1002
     static let frozeCode = -101
@@ -104,7 +104,7 @@ class AppConst {
         //139.224.34.22
         //122.144.169.214
         static let TcpServerIP:String = "139.224.34.22";
-        static let TcpServerPort:UInt16 = 16006
+        static let TcpServerPort:UInt16 = 16060
         static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
         static let TcpServerIP:String = "122.144.169.214";
