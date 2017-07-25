@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,7 +26,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cam-tG-PS1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2546" y="293"/>
+            <point key="canvasLocation" x="2607" y="194"/>
         </scene>
         <!--Buy Or Sell View Controller-->
         <scene sceneID="ptb-dO-Xgv">
@@ -699,7 +696,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MwB-yJ-RzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5444" y="151.57421289355324"/>
+            <point key="canvasLocation" x="5479" y="194"/>
         </scene>
         <!--Show Entrust List View Controller-->
         <scene sceneID="bY6-ch-T5P">
@@ -821,7 +818,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qe7-gU-Sq4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5300" y="869"/>
+            <point key="canvasLocation" x="4492" y="977"/>
         </scene>
         <!--All Order View Controller-->
         <scene sceneID="pif-cJ-x3a">
@@ -1031,7 +1028,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="44c-PA-8IG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6380" y="135.38230884557723"/>
+            <point key="canvasLocation" x="6390" y="194"/>
         </scene>
         <!--Detail Commen View Controller-->
         <scene sceneID="88C-vY-v0N">
@@ -1364,7 +1361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBt-lK-Fml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7172" y="230.73463268365819"/>
+            <point key="canvasLocation" x="7268" y="194"/>
         </scene>
         <!--Deal Detail View Controller-->
         <scene sceneID="7tZ-il-XWJ">
@@ -1400,14 +1397,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcC-Xx-PmV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1616.8" y="583.3583208395803"/>
+            <point key="canvasLocation" x="1265" y="194"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gxc-PS-MKQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5RR-hx-khM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="T3V-av-IRf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T3V-av-IRf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
