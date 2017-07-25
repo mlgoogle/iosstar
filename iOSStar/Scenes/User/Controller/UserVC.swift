@@ -192,13 +192,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "CustomerServiceVC")
                 self.navigationController?.pushViewController(vc, animated: true)
             }
-            //CustomerServiceVC 客服中心
-//            if indexPath.row == 3{
-//                let vc = BaseWebVC()
-//                vc.loadRequest = "http://www.baidu.com"
-//                vc.navtitle = "常见问题"
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            }
+          
             if indexPath.row == 4 {
                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "SettingVC")
                 self.navigationController?.pushViewController(vc, animated: true)
