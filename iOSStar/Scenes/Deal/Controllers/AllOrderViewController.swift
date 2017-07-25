@@ -15,9 +15,17 @@ class AllOrderViewController: DealBaseViewController {
     @IBOutlet weak var tableView: UITableView!
     var titles = ["名称/代码","委托量","价格","类型/状态"]
     var orderData:[EntrustListModel]?
-
+    var showNav = false
     var header:MJRefreshNormalHeader?
     var footer:MJRefreshAutoFooter?
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if showNav{
+            self.navigationController?.setNavigationBarHidden(false, animated: false)
+            title = "交易明细"
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(NoDataCell.self, forCellReuseIdentifier: NoDataCell.className())
