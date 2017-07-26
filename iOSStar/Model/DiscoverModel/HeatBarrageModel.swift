@@ -23,10 +23,10 @@ class BarrageListModel: NSObject {
 }
 class BarrageInfo: BaseModel {
     
-    var barrage_info : [BarrageListModel]?
+    var positionsList : [FansListModel]?
     
-    class func barrage_infoModelClass() ->AnyClass {
-        return  BarrageListModel.classForCoder()
+    class func positionsListModelClass() ->AnyClass {
+        return  FansListModel.classForCoder()
     }
 }
 

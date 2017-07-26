@@ -34,7 +34,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
     var footerLb = UILabel()
     var imgView = UIImageView()
     var timer : Timer?
-    var allData = [BarrageListModel]()
+    var allData = [FansListModel]()
     var index = 0
     //定义一个mjrefrshfooter
     let footer = MJRefreshAutoNormalFooter()
@@ -65,13 +65,13 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         renderer.receive(walkTextSpriteDescriptorWithDirection(direction: BarrageWalkDirection.R2L.rawValue, data: allData[index]))
     }
     //Mark :数据加载
-    func walkTextSpriteDescriptorWithDirection(direction:UInt,data : BarrageListModel) -> BarrageDescriptor{
+    func walkTextSpriteDescriptorWithDirection(direction:UInt,data : FansListModel) -> BarrageDescriptor{
         
         let descriptor:BarrageDescriptor = BarrageDescriptor()
         descriptor.spriteName = NSStringFromClass(YD_Barrage.self)
         
         let attachment = NSTextAttachment()
-        imgView.sd_setImage(with: URL.init(string: data.head_url))
+        imgView.sd_setImage(with: URL.init(string: (data.user?.headUrl)!))
         let imgage = imgView.image
         imgView.clipsToBounds = true
         imgView.layer.cornerRadius = 10
@@ -84,12 +84,14 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
              attachment.image = UIImage.init(named: "avatar_team")
         }
         attachment.bounds = CGRect.init(x: 0, y: -3, width: 18, height: 18)
-        let type = data.order_type  == 1 ? "求购" : "转让"
-        let name = "  " + data.user_name + type + "\(data.order_num)" + "秒" + "," + "\(data.order_price)" + "秒" + "   "
-        let length = 2 + data.user_name.length()
-        let color = data.order_type  == 1 ? UIColor.init(hexString: "CB4232") : UIColor.init(hexString: "333333")
+        let type = data.trades?.buySell  == 1 ? "求购" : "转让"
+        let openPrice = String.init(format: "%.2f", (data.trades?.openPrice)!)
+         let name = "  "
+//        let name = "  " + data.user?.nickname + type + "\(data.trades?.amount)" + " 秒 " + " ," + openPrice + " 秒 " + "   "
+//        let length = 2 + (data.user?.nickname.length())!
+//        let color = data.trades?.buySell  == 1 ? UIColor.init(hexString: "CB4232") : UIColor.init(hexString: "333333")
         let attributed = NSMutableAttributedString.init(string: name)
-        attributed.addAttribute(NSForegroundColorAttributeName, value: color!, range: NSRange.init(location: length, length: 2))
+//        attributed.addAttribute(NSForegroundColorAttributeName, value: color!, range: NSRange.init(location: length, length: 2))
         attributed.insert(NSAttributedString.init(attachment: attachment), at: 1)
         descriptor.params["attributedText"] = attributed;
         descriptor.params["backgroundColor"] = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
@@ -114,8 +116,8 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         requestModel.count = 50
         AppAPIHelper.marketAPI().requstBuyBarrageList(requestModel: requestModel, complete: { [weak self](result) in
             if let model = result as? BarrageInfo {
-                if (model.barrage_info) != nil{
-                    self?.allData = model.barrage_info!
+                if (model.positionsList) != nil{
+                    self?.allData = model.positionsList!
                     self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self ?? BarrageStarVC(), selector: #selector(self?.autoSenderBarrage), userInfo: nil, repeats: true)
                     self?.renderer.start()
                 }
