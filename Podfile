@@ -33,7 +33,7 @@ target 'iOSStar' do
     pod 'GTSDK'
     pod 'YYText'
     pod 'BarrageRenderer’, ‘2.0.1’
-    pod 'MLEmojiLabel', '1.0.0'
+  
     pod 'UMengAnalytics-NO-IDFA'
 
     target 'iOSStarTest' do
