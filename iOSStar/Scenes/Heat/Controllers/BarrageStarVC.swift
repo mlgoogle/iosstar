@@ -86,11 +86,12 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         attachment.bounds = CGRect.init(x: 0, y: -3, width: 18, height: 18)
         let type = data.trades?.buySell  == 1 ? "求购" : "转让"
         let openPrice = String.init(format: "%.2f", (data.trades?.openPrice)!)
-        let name = "  " + data.user?.nickname + type + "\(data.trades?.amount)" + "秒" + "," + openPrice + "/秒" + "   "
-        let length = 2 + (data.user?.nickname.length())!
-        let color = data.trades?.buySell  == 1 ? UIColor.init(hexString: "CB4232") : UIColor.init(hexString: "333333")
+         let name = "  "
+//        let name = "  " + data.user?.nickname + type + "\(data.trades?.amount)" + " 秒 " + " ," + openPrice + " 秒 " + "   "
+//        let length = 2 + (data.user?.nickname.length())!
+//        let color = data.trades?.buySell  == 1 ? UIColor.init(hexString: "CB4232") : UIColor.init(hexString: "333333")
         let attributed = NSMutableAttributedString.init(string: name)
-        attributed.addAttribute(NSForegroundColorAttributeName, value: color!, range: NSRange.init(location: length, length: 2))
+//        attributed.addAttribute(NSForegroundColorAttributeName, value: color!, range: NSRange.init(location: length, length: 2))
         attributed.insert(NSAttributedString.init(attachment: attachment), at: 1)
         descriptor.params["attributedText"] = attributed;
         descriptor.params["backgroundColor"] = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
@@ -117,7 +118,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
             if let model = result as? BarrageInfo {
                 if (model.positionsList) != nil{
                     self?.allData = model.positionsList!
-//                    self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self ?? BarrageStarVC(), selector: #selector(self?.autoSenderBarrage), userInfo: nil, repeats: true)
+                    self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self ?? BarrageStarVC(), selector: #selector(self?.autoSenderBarrage), userInfo: nil, repeats: true)
                     self?.renderer.start()
                 }
             }
