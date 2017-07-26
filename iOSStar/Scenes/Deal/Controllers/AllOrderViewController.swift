@@ -16,6 +16,7 @@ class AllOrderViewController: DealBaseViewController {
     var titles = ["名称/代码","委托量","价格","类型/状态"]
     var orderData:[EntrustListModel]?
     var showNav = false
+    var index : Int = 1
     var header:MJRefreshNormalHeader?
     var footer:MJRefreshAutoFooter?
     override func viewWillAppear(_ animated: Bool) {
@@ -32,15 +33,19 @@ class AllOrderViewController: DealBaseViewController {
         
         header = MJRefreshNormalHeader(refreshingBlock: {
             
+            self.index = 1
             self.requestOrder(isRefresh: true)
         })
         
         footer = MJRefreshAutoFooter(refreshingBlock: {
+            self.index = self.index + 1
             self.requestOrder(isRefresh: false)
+            
         })
         tableView.mj_header = header
         tableView.mj_footer = footer
-        requestOrder(isRefresh: true)
+        header?.beginRefreshing()
+//        requestOrder(isRefresh: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +61,7 @@ class AllOrderViewController: DealBaseViewController {
     }
     func requestOrder(isRefresh:Bool) {
         let requestModel = DealRecordRequestModel()
+        requestModel.start = Int32((index - 1) * 10)
         AppAPIHelper.dealAPI().requestEntrustList(requestModel: requestModel, OPCode: .historyEntrust, complete: { (response) in
             self.endRefresh()
 

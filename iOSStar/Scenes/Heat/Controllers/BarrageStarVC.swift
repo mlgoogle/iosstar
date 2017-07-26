@@ -140,8 +140,23 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         StartModel.getallStartName { [weak self](result) in
             
             if let model =  result as? [StartModel]{
-                self?.dataArry = model
-                self?.collectView.reloadData()
+                if model.count == 0{
+                    let requestModel = GetAllStarInfoModel()
+                    
+                    AppAPIHelper.user().requestAllStarInfo(requestModel: requestModel, complete: { (result) in
+                        print(NSHomeDirectory())
+                        if let model = result as? [StartModel]{
+                            self?.dataArry = model
+                            self?.collectView.reloadData()
+                        }
+                    }) { (error) in
+                        
+                    }
+                }else{
+                    self?.dataArry = model
+                    self?.collectView.reloadData()
+                }
+              
             }
         }
         
