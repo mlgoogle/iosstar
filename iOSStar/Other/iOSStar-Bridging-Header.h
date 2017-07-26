@@ -4,12 +4,13 @@
 
 #import <CommonCrypto/CommonDigest.h>
 #import <NIMSDK/NIMSDK.h>
-#import "NTESSessionViewController.h"
-#import "Global.h"
-#import "NSString+NTES.h"
-#import "NTESCellLayoutConfig.h"
-#import "NTESSDKConfigDelegate.h"
+//#import "NTESSessionViewController.h"
+//#import "Global.h"
+//#import "NSString+NTES.h"
+//#import "NTESCellLayoutConfig.h"
+//#import "NTESSDKConfigDelegate.h"
 #import "WechatAuthSDK.h"
+#import "NIMKit.h"
 #import "WXApi.h"
 #import "WXApiObject.h"
 #import <UMSocialCore/UMSocialCore.h>
@@ -30,8 +31,8 @@ struct SocketPacketHead {
     UInt32 request_id ;
 };
 
-#import "NTESCustomAttachmentDecoder.h"
-#import <AlipaySDK/AlipaySDK.h> 
+//#import "NTESCustomAttachmentDecoder.h"
+#import <AlipaySDK/AlipaySDK.h>
 #import "RSADataSigner.h"
 #import "Order.h"
 

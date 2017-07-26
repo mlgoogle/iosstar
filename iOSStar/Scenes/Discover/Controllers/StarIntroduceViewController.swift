@@ -128,6 +128,7 @@ class StarIntroduceViewController: UIViewController {
         AppAPIHelper.marketAPI().requestPositionCount(requestModel: r, complete: { (response) in
             if let model = response as? PositionCountModel {
                 if model.star_time > 0 {
+                    
                     let session = NIMSession(self.starDetailModel?.acc_id ?? "", type: .P2P)
                     let vc = YDSSessionViewController(session: session)
                     vc?.starcode = self.starModel?.symbol ?? ""

@@ -21,7 +21,7 @@ import Alamofire
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDelegate,UNUserNotificationCenterDelegate{
     var window: UIWindow?
-    var sdkConfigDelegate: NTESSDKConfigDelegate?
+
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -31,14 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
 //        Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
         
         UIApplication.shared.applicationIconBadgeNumber = 0
-        
-        sdkConfigDelegate = NTESSDKConfigDelegate.init()
-        NIMSDKConfig.shared().delegate = sdkConfigDelegate
-        NIMSDKConfig.shared().shouldSyncUnreadCount = true
-        AppConfigHelper.shared().setupNIMSDK(sdkConfigDelegate:sdkConfigDelegate)
+        AppConfigHelper.shared().setupNIMSDK()
         AppConfigHelper.shared().setupUMSDK()
-        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
-        NIMCustomObject.registerCustomDecoder(NTESCustomAttachmentDecoder())
         WXApi.registerApp("wx9dc39aec13ee3158")
         
         AppConfigHelper.shared().setupRealmConfig()
