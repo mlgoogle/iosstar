@@ -33,12 +33,9 @@ target 'iOSStar' do
     pod 'GTSDK'
     pod 'YYText'
     pod 'BarrageRenderer’, ‘2.0.1’
-  
     pod 'UMengAnalytics-NO-IDFA'
-
     target 'iOSStarTest' do
         inherit! :search_paths
-        
     end
   
 end

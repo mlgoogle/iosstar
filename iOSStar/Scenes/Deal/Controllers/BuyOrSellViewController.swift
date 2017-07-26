@@ -101,15 +101,15 @@ class BuyOrSellViewController: DealBaseViewController {
         model.symbol = starListModel!.symbol
         model.price = price
         model.amount = count
-        
         AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: {[weak self] (response) in
             SVProgressHUD.showSuccessMessage(SuccessMessage: "挂单成功", ForDuration: 2, completion: nil)
-            let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
-            if let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as? DealViewController {
-                vc.index = 3
-               
-                vc.starListModel = self.starListModel
-               self.navigationController?.pushViewController(vc, animated: true)
+            DispatchQueue.main.async {
+                let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
+                if let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as? DealViewController {
+                    vc.index = 3
+                    vc.starListModel = self?.starListModel
+                    vc.refreshSelect()
+                }
             }
         }) { (error) in
             SVProgressHUD.dismiss()
