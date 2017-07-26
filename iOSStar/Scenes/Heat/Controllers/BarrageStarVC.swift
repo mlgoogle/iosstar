@@ -142,7 +142,6 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
             if let model =  result as? [StartModel]{
                 if model.count == 0{
                     let requestModel = GetAllStarInfoModel()
-                    
                     AppAPIHelper.user().requestAllStarInfo(requestModel: requestModel, complete: { (result) in
                         print(NSHomeDirectory())
                         if let model = result as? [StartModel]{
