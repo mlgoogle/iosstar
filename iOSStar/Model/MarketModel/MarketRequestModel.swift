@@ -66,6 +66,7 @@ class FanListRequestModel: MarketBaseModel {
     var symbol = "1001"
     var buySell:Int32 = 1
     var start:Int32 = 0
+    var star_code = "1001"
     var count:Int64 = 10
 }
 

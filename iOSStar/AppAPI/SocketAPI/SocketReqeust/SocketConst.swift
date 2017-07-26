@@ -103,7 +103,7 @@ class SocketConst: NSObject {
         //获取拍卖时间
         case auctionStatus = 5005
         //所有订单
-        case allOrder = 6021
+        case allOrder = 6029
         //确认订单
         case sureOrder = 5007
         //取消订单
@@ -119,13 +119,13 @@ class SocketConst: NSObject {
         //历史交易
         case historyOrder = 6009
         //委托粉丝榜粉丝榜
-        case fansList = 6011
+        case fansList = 6021
         case getalllist = 10029
         //订单粉丝榜
         case orderFansList = 6015
         //持有明星时间
         case positionCount = 10025
-        case barrage = 10035
+        case barrage = 6023
         //拍卖买卖占比
         case buySellPercent = 6017
         //获取明星总时间
