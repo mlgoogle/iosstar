@@ -149,12 +149,12 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
        }
         //聊天
         if action == 5 {
-            let model = self.dataSource?[indexPath.section] as! StarInfoModel
-            let session = NIMSession( model.faccid, type: .P2P)
-            let vc = YDSSessionViewController(session: session)
-            vc?.starcode = model.starcode
-            self.navigationController?.pushViewController(vc!, animated: true)
-            self.tableView.reloadSections(IndexSet(integer: unseleNumber), with: .fade)
+//            let model = self.dataSource?[indexPath.section] as! StarInfoModel
+//            let session = NIMSession( model.faccid, type: .P2P)
+//            let vc = YDSSessionViewController(session: session)
+//            vc?.starcode = model.starcode
+//            self.navigationController?.pushViewController(vc!, animated: true)
+//            self.tableView.reloadSections(IndexSet(integer: unseleNumber), with: .fade)
             return
         }
         if unseleNumber != 10000000{

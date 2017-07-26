@@ -13,7 +13,7 @@ target 'iOSStar' do
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'SnapKit'
-    pod 'NIMSDK', '~> 3.5.5'
+    pod 'NIMSDK_LITE', '~> 4.0.0'
     pod 'CocoaLumberjack', '~> 2.0.0-rc2'
     pod 'SDWebImage', '3.8.2'
     pod 'M80AttributedLabel', '~> 1.5.0'
@@ -43,3 +43,4 @@ target 'iOSStar' do
   
 end
 # Uncomment this line to define a global platform for your project
+

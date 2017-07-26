@@ -140,7 +140,6 @@ class SocketConst: NSObject {
         case starTotalTime = 10027
         //获取版本更新信息
         case update = 3033
-        
         //更新devicetoken
         case updateDeviceToken = 3035
         case bankcardList = 8003

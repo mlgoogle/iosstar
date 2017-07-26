@@ -105,17 +105,18 @@ class AppConfigHelper: NSObject {
         }
     }
      // MARK: - 网易云信
-    func setupNIMSDK(sdkConfigDelegate:NTESSDKConfigDelegate?) {
+    func setupNIMSDK() {
         // //在注册 NIMSDK appKey 之前先进行配置信息的注册，如是否使用新路径,是否要忽略某些通知，是否需要多端同步未读数
-        setupReceiveOrderResult()
-        setupReceiveMatching()
-        NIMSDKConfig.shared().delegate = sdkConfigDelegate
-        NIMSDKConfig.shared().shouldSyncUnreadCount = true//0d0f4b452de9695f91b0e4dc949d54cc
+//        setupReceiveOrderResult()
+//        setupReceiveMatching()
+//        NIMSDKConfig.shared().delegate = sdkConfigDelegate
+//        NIMSDKConfig.shared().shouldSyncUnreadCount = true//0d0f4b452de9695f91b0e4dc949d54cc
         //9c3a406f233dea0d355c6458fb0171b8
-        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
-        NIMKit.shared().registerLayoutConfig(NTESCellLayoutConfig.self)
-        
-        NIMCustomObject.registerCustomDecoder(NTESCustomAttachmentDecoder.init())
+//        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
+//        NIMKit.shared().registerLayoutConfig(NTESCellLayoutConfig.self)
+//        NIMCustomObject.registerCustomDecoder(NTESCustomAttachmentDecoder.init())
+        let option = NIMSDKOption.init(appKey: "9c3a406f233dea0d355c6458fb0171b8")
+        NIMSDK.shared().register(with: option)
         
     }
     
