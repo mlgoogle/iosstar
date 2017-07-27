@@ -42,10 +42,7 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
         btn.setBackgroundImage(UIImage.init(named: "back"), for: UIControlState.normal )
     
         btn.addTarget(self, action: #selector(popself), for: UIControlEvents.touchUpInside)
-        
-
-      
-        
+          
         let barItem : UIBarButtonItem = UIBarButtonItem.init(customView: btn)
 
         btn.frame = CGRect.init(x: 0, y: 13, width: 9, height: 17)

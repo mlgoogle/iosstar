@@ -66,21 +66,18 @@ class SocketJsonResponse: SocketResponse {
         if body?.data?.count == 0  {
             return nil
         }
-        
-        if _jsonOjbect == nil  {
-            
-            do{
-                #if false
-                 var json = String(data: body!.data!, encoding: .utf8)
-                json = json == nil ? "" : json;
-//                debugPrint("\(body!.operate_code) \(body!.data_length) json\(json!)")
-                #endif
-                
-                _jsonOjbect = try JSONSerialization.jsonObject(with: body!.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject?
-            }catch let error as Error! {
-                var json = String(data: body!.data!, encoding: .utf8)
-                json = json == nil ? "" : json;
-                 debugPrint("解析json\(json!) \(error) ")
+        var json = String(data: body!.data!, encoding: .utf8)
+        json = json == nil ? "" : json
+        if json!.length() > 0{
+            let resultJson = json?.removeUnescapedCharacter()
+            if let data = resultJson?.data(using: .utf8){
+                if _jsonOjbect == nil  {
+                    do{
+                        _jsonOjbect = try JSONSerialization.jsonObject(with: data, options: []) as AnyObject?
+                    }catch let error as Error! {
+                        debugPrint("解析json\(json!) \(error) ")
+                    }
+                }
             }
         }
         return _jsonOjbect
