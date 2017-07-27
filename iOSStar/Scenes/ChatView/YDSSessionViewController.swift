@@ -11,7 +11,6 @@ import UIKit
 class YDSSessionViewController: NIMSessionViewController {
     var isbool : Bool = false
     var starcode = ""
-    var starInfo = StarInfoModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = UIColor.init(hexString: "FAFAFA")
