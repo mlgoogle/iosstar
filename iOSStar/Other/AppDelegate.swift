@@ -11,6 +11,7 @@ import Fabric
 import Crashlytics
 import UserNotifications
 import RealmSwift
+
 // 个推信息
 // let kGtAppId:String = "STxLopLZK0AFPvAcnu7o67"
 // let kGtAppKey:String = "SIbhyImzug9sjKteFtLrj8"
@@ -25,10 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-//        let config = BugoutConfig.default()
-//        config?.enabledShakeFeedback = false
-//        config?.enabledMonitorException = false
-//        Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
+        let config = BugoutConfig.default()
+        config?.enabledShakeFeedback = false
+        config?.enabledMonitorException = false
+        Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
         
         UIApplication.shared.applicationIconBadgeNumber = 0
         AppConfigHelper.shared().setupNIMSDK()
