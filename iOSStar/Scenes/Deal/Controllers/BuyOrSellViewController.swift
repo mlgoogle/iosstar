@@ -103,13 +103,16 @@ class BuyOrSellViewController: DealBaseViewController {
         model.amount = count
         AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: {[weak self] (response) in
             SVProgressHUD.showSuccessMessage(SuccessMessage: "挂单成功", ForDuration: 2, completion: nil)
+            
             DispatchQueue.main.async {
-                let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
-                if let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as? DealViewController {
-                    vc.index = 3
-                    vc.starListModel = self?.starListModel
-                    vc.refreshSelect()
-                }
+//                let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
+//                if let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as? DealViewController {
+//                    vc.index = 3
+//                    vc.starListModel = self?.starListModel
+//                    vc.refreshSelect()
+//                }
+                let index = 3
+                self?.indexBlock!(index as AnyObject)
             }
         }) { (error) in
             SVProgressHUD.dismiss()
