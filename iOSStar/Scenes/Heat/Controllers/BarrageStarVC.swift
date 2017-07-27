@@ -84,7 +84,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         attachment.bounds = CGRect.init(x: 0, y: -3, width: 18, height: 18)
         let type = data.trades?.buySell  == 1 ? "求购" : "转让"
         let openPrice = String.init(format: "%.2f", (data.trades?.openPrice)!)
-        let name = "  \(data.user!.nickname)\(type)\(data.trades!.amount)秒,\(openPrice)秒    "
+        let name = "  \(data.user!.nickname)\(type)\(data.trades!.amount)秒,\(openPrice)    "
         let length = 2 + (data.user?.nickname.length())!
         let color = data.trades?.buySell == 1 ? UIColor.init(hexString: "CB4232") : UIColor.init(hexString: "333333")
         let attributed = NSMutableAttributedString.init(string: name)

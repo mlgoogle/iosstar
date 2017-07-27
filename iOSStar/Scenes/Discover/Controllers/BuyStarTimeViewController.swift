@@ -153,6 +153,7 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
             case 1:
                 segueString = "ToSelling"
             default:
+                ShareDataModel.share().selectStarCode = ""
                 segueString = StarNewsVC.className()
                 break
             }
