@@ -11,17 +11,36 @@ import UIKit
 class YDSSessionViewController: NIMSessionViewController {
     var isbool : Bool = false
     var starcode = ""
+    var starInfo = StarInfoModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = UIColor.init(hexString: "FAFAFA")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.creatRightBarButtonItem(title: "星聊须知", target: self, action: #selector(rightButtonClick))
+        setupNavbar()
+    }
+    
+    func setupNavbar(){
+        navigationItem.rightBarButtonItem = UIBarButtonItem.creatRightBarButtonItem(title: "星聊须知", target: self, action: #selector(rightButtonClick))
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.imageWith("\u{e61a}", fontSize: CGSize.init(width: 22, height: 22), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)), style: .plain, target: self, action: #selector(leftItemTapped))
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)
+        navigationItem.leftItemsSupplementBackButton = false
+        titleLabel.text = starcode
+        titleLabel.textColor = UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)
+    }
+    
+    func leftItemTapped() {
+        if (navigationController?.viewControllers.count)! > 1 {
+           _ = navigationController?.popViewController(animated: true)
+        }else{
+            dismissController()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ShareDataModel.share().voiceSwitch = true
         navigationController?.setNavigationBarHidden(false, animated: true)
-
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -39,19 +58,16 @@ class YDSSessionViewController: NIMSessionViewController {
     override func send(_ message: NIMMessage!) {
 
         if let phone = UserDefaults.standard.object(forKey: "phone") as? String {
-          
             let requestModel = ReduceTimeModel()
             requestModel.starcode = starcode
             requestModel.phone = phone
             requestModel.deduct_amount = 1
             AppAPIHelper.user().reduceTime(requestModel: requestModel, complete: { (response) in
                 super.send(message)
-
-            }, error: { (error) in
-                super.send(message)
-                
-            })
-
+            }, error:errorBlockFunc())
         }
     }
+    
+    
+
 }
