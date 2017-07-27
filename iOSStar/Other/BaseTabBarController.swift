@@ -99,7 +99,13 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
         
-        if tabBarController.selectedIndex == 2 {
+        if let nav : UINavigationController = tabBarController.selectedViewController as? UINavigationController{
+            if nav.viewControllers.count > 0{
+                _ = nav.popToRootViewController(animated: true)
+            }
+        }
+
+            if tabBarController.selectedIndex == 2 {
 
             if  checkLogin(){
             
