@@ -72,6 +72,8 @@ class HeatDetailViewController: UIViewController {
         }
         
         initCountDownBlock()
+        requestFansList(buySell:-1)
+
         requestAuctionSattus()
         requestStarPrice()
         ballImageView.alpha = 0.5

@@ -16,6 +16,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
     //当前未选择的cell
     var unseleNumber = 10000000
     var domeet = true
+    var doRealm = false
     @IBOutlet var ownSecond: UIButton!
     @IBOutlet var orderStatus: UIButton!
     override func viewDidLoad() {
@@ -25,12 +26,16 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
         self.nodaView.isHidden = true
        
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.getRealmStatus()
+        
+    }
     override func isSections() -> Bool {
         return true
     }
     override func didRequest(_ pageIndex: Int) {
-        
-       
         //约见的明细
         if domeet{
             let requestModel = StarMailListRequestModel()
@@ -94,11 +99,23 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
         
         return 65
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    func getRealmStatus(){
+          self.getUserRealmInfo { (result) in
+                if let model = result{
+                let object =  model as! [String : AnyObject]
+              
+                if object["realname"] as! String == ""{
+                  self.doRealm = true
+                } else {
+                  self.doRealm = false
+                }
+
+                }
+        }
     }
-  
+
+
+//  
   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -137,25 +154,57 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
    func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!) {
         //约见
         if action == 4 {
-         let model = self.dataSource?[indexPath.section] as! StarInfoModel
-         let modeldata = StarSortListModel()
-            modeldata.name = model.starname
-            modeldata.symbol = model.starcode
-            let story = UIStoryboard.init(name: "Market", bundle: nil)
-            let vc = story.instantiateViewController(withIdentifier: "OrderStarViewController") as! OrderStarViewController
-            vc.starInfo = modeldata
-            self.navigationController?.pushViewController(vc, animated: true)
-            return
+            
+            
+            if !doRealm{
+                        let alertVc = AlertViewController()
+                        alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
+                                            titleLabelText: "您还没有身份验证",
+                                            subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
+                                            completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
+                                                alertVc?.dismissAlertVc()
+                
+                                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
+                                                self.navigationController?.pushViewController(vc, animated: true )
+                                                return
+                        }
+            }else{
+                let model = self.dataSource?[indexPath.section] as! StarInfoModel
+                let modeldata = StarSortListModel()
+                modeldata.name = model.starname
+                modeldata.symbol = model.starcode
+                let story = UIStoryboard.init(name: "Market", bundle: nil)
+                let vc = story.instantiateViewController(withIdentifier: "OrderStarViewController") as! OrderStarViewController
+                vc.starInfo = modeldata
+                self.navigationController?.pushViewController(vc, animated: true)
+                return
+            }
+        
        }
         //聊天
         if action == 5 {
-//            let model = self.dataSource?[indexPath.section] as! StarInfoModel
-//            let session = NIMSession( model.faccid, type: .P2P)
-//            let vc = YDSSessionViewController(session: session)
-//            vc?.starcode = model.starcode
-//            self.navigationController?.pushViewController(vc!, animated: true)
-//            self.tableView.reloadSections(IndexSet(integer: unseleNumber), with: .fade)
-            return
+            if !doRealm{
+                let alertVc = AlertViewController()
+                alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
+                                    titleLabelText: "您还没有身份验证",
+                                    subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
+                                    completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
+                                        alertVc?.dismissAlertVc()
+                                        
+                                        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
+                                        self.navigationController?.pushViewController(vc, animated: true )
+                                        return
+                }
+            }else{
+                let model = self.dataSource?[indexPath.section] as! StarInfoModel
+                let session = NIMSession( model.faccid, type: .P2P)
+                let vc = YDSSessionViewController(session: session)
+                vc?.starcode = model.starcode
+                self.navigationController?.pushViewController(vc!, animated: true)
+                self.tableView.reloadSections(IndexSet(integer: unseleNumber), with: .fade)
+                return
+            }
+           
         }
         if unseleNumber != 10000000{
              self.tableView.reloadSections(IndexSet(integer: unseleNumber), with: .fade)

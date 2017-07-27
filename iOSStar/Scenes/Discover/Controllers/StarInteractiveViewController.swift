@@ -7,18 +7,26 @@
 //
 
 import UIKit
-
+import MJRefresh
 class StarInteractiveViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var dataSource:[StarSortListModel]?
     var imageNames:[String]?
+      let header = MJRefreshNormalHeader()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+      
+        header.setRefreshingTarget(self, refreshingAction: #selector(requestStar))
+        self.tableView!.mj_header = header
+        self.tableView.mj_header.beginRefreshing()
 
         tableView.register(NoDataCell.self, forCellReuseIdentifier: "NoDataCell")
         configImageNames()
-        requestStar()
+//        requestStar()
     }
     
     func configImageNames()  {
@@ -33,12 +41,14 @@ class StarInteractiveViewController: UIViewController {
         let requestModel = StarSortListRequestModel()
         AppAPIHelper.discoverAPI().requestStarList(requestModel: requestModel, complete: { (response) in
             if let models = response as? [StarSortListModel] {
+                 self.header.endRefreshing()
                 self.dataSource = models
                 self.tableView.reloadData()
             }
+             self.header.endRefreshing()
             
         }) { (error) in
-            
+            self.header.endRefreshing()
         }
         
     }
