@@ -38,13 +38,14 @@ class YDSSessionViewController: NIMSessionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ShareDataModel.share().voiceSwitch = true
-        navigationController?.setNavigationBarHidden(false, animated: true)
+//        navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.isTranslucent = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         ShareDataModel.share().voiceSwitch = false
+         navigationController?.navigationBar.isTranslucent = false
     }
     
     func rightButtonClick() {

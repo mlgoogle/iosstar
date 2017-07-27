@@ -156,7 +156,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
         if action == 4 {
             
             
-            if !doRealm{
+            if doRealm{
                         let alertVc = AlertViewController()
                         alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
                                             titleLabelText: "您还没有身份验证",
@@ -183,7 +183,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
        }
         //聊天
         if action == 5 {
-            if !doRealm{
+            if doRealm{
                 let alertVc = AlertViewController()
                 alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
                                     titleLabelText: "您还没有身份验证",

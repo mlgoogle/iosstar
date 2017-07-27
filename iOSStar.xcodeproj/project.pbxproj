@@ -408,6 +408,7 @@
 		A0C9D6751EAE102300FC438D /* video_chat_tip_receiver.aac in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D6681EAE102300FC438D /* video_chat_tip_receiver.aac */; };
 		A0C9D6761EAE102300FC438D /* video_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D6691EAE102300FC438D /* video_chat_tip_sender.aac */; };
 		A0C9D6771EAE102300FC438D /* video_connect_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D66A1EAE102300FC438D /* video_connect_chat_tip_sender.aac */; };
+		A0DF80941F29E64700119B5C /* Bugout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A089C71B1EE65B3B00371024 /* Bugout.framework */; };
 		A0E703161F1DDF2700284BCA /* BarrageViewCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E703131F1DDF2700284BCA /* BarrageViewCustomer.m */; };
 		A0E703171F1DDF2700284BCA /* BarrageViewCustomer+BarrargeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E703151F1DDF2700284BCA /* BarrageViewCustomer+BarrargeView.m */; };
 		A0E703191F1DDF3500284BCA /* YD_Barrage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E703181F1DDF3500284BCA /* YD_Barrage.swift */; };
@@ -1179,6 +1180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0DF80941F29E64700119B5C /* Bugout.framework in Frameworks */,
 				8ED3278A1F2977040034544E /* VideoToolbox.framework in Frameworks */,
 				8ED327891F2976F00034544E /* AudioToolbox.framework in Frameworks */,
 				8ED327881F2976DE0034544E /* CoreMedia.framework in Frameworks */,
@@ -3727,6 +3729,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iOSStar/Marco",
+					"$(PROJECT_DIR)/iOSSTar/Library",
 				);
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
 					"$(inherited)",
@@ -3791,6 +3794,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iOSStar/Marco",
+					"$(PROJECT_DIR)/iOSSTar/Library",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
