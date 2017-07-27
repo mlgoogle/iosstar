@@ -127,6 +127,7 @@ class CommentCell: OEZTableViewCell {
                 contentAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(rgbHex: 0x8c0808), range: NSRange.init(location: model.user_name.length()+2, length: listModel.symbol_name.length()))
                 contentAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(rgbHex: 0x0092ca), range: NSRange.init(location: 0, length: model.user_name.length()))
             }
+            
             commentLabel.attributedText = contentAttribute
         }
     }
@@ -138,11 +139,14 @@ class CommentCell: OEZTableViewCell {
 
 class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
     
+    @IBOutlet var dismissBtn: UIButton!
+    @IBOutlet var headerView: UIView!
     var tableData: [CircleListModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "发现明星"
+        dismissBtn.setImage(UIImage.imageWith("\u{e62b}", fontSize: CGSize.init(width: 22, height: 22), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)), for: .normal)
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
@@ -196,6 +200,21 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
         }
         return 0
     }
+    
+    func showWarning() {
+        let alertVC = UIAlertController.init(title: "付费确认", message: "点赞/评论/回复将会消耗您一秒的时间", preferredStyle: .alert)
+        let sureAction = UIAlertAction.init(title: "确认", style: .default, handler: nil)
+        alertVC.addAction(sureAction)
+        present(alertVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func dismissBtnTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 1, animations: { [weak self] (animation) in
+            self?.headerView.height = 0
+            self?.tableView.reloadData()
+        })
+    }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
