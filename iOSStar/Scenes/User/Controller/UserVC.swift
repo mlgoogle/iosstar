@@ -207,27 +207,10 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
     
     // MARK: -我预约的明星
     func toReservationStar() {
-        self.getUserRealmInfo { (result) in
-            if let model = result{
-                let object =  model as! [String : AnyObject]
-                let alertVc = AlertViewController()
-                if object["realname"] as! String == ""{
-                    alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-                                        titleLabelText: "您还没有身份验证",
-                                        subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
-                                        completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
-                                            alertVc?.dismissAlertVc()
-                                            
-                                            let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
-                                            self.navigationController?.pushViewController(vc, animated: true )
-                                            return
-                    }
-                } else {
-                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "GetOrderStarsVC")
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-            }
-        }
+        
+        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "GetOrderStarsVC")
+        self.navigationController?.pushViewController(vc, animated: true)
+       
     }
 
     //MARK: 输入邀请码

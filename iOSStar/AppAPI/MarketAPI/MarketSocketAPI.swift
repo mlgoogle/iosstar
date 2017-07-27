@@ -22,13 +22,9 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         let packet = SocketDataPacket(opcode: .searchStar, model: requestModel, type:.search)
         startModelsRequest(packet, listName: "starsinfo", modelClass: SearchResultModel.self, complete: complete, error: error)
     }
-    
-
     //单个分类明星列表
     func requestStarList(requestModel:StarListRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
-
         let packet = SocketDataPacket(opcode: .starList, model: requestModel)
-
         startModelsRequest(packet, listName: "symbol_info", modelClass: MarketListModel.self, complete: complete, error: error)
     }
     //自选明星
@@ -74,6 +70,11 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         let packet = SocketDataPacket(opcode: .realTime, model: requestModel)
         startModelsRequest(packet, listName: "priceinfo", modelClass: RealTimeModel.self, complete: complete, error: error)
     }
+    //获取明星实时价格
+    func requestStarRealTime(requestModel:StarRealtimeRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .starRealtime, model: requestModel)
+        startModelRequest(packet, modelClass: StarSortListModel.self, complete: complete, error: error)
+    }
     //获取分时图
     func requestTimeLine(requestModel:TimeLineRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .timeLine, model: requestModel)
@@ -101,16 +102,13 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
     func requestStarServiceType(starcode: String, complete: CompleteBlock?, error: ErrorBlock?) {
         
         let parameters:[String:Any] = [SocketConst.Key.starcode : starcode]
-        
         let packet = SocketDataPacket(opcode: .starServiceType, parameters: parameters)
-        
         startModelsRequest(packet, listName: "list", modelClass: ServiceTypeModel.self, complete: complete, error: error)
     }
+    
     // 订购明星服务
     func requestBuyStarService(requestModel: ServiceTypeRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
-        
         let packet = SocketDataPacket(opcode: .buyStarService, model: requestModel)
-
         startRequest(packet, complete: complete, error: error)
     }
 

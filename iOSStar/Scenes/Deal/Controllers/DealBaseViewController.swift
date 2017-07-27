@@ -13,6 +13,7 @@ class DealBaseViewController: UIViewController {
     var realTimeData:RealTimeModel?
     var positionCount = 0
     var totalCount = 0
+    var indexBlock: CompleteBlock?
     
     var dealType:AppConst.DealType = AppConst.DealType.sell
     override func viewDidLoad() {
