@@ -32,13 +32,8 @@ class APISocketHelper:NSObject, GCDAsyncSocketDelegate,SocketHelper {
             if !socket!.isConnected {
                 var host = ""
                 var port: UInt16 = 0
-                if AppConst.isMock{
-                    host = AppConst.Network.TcpServerIP
-                    port = AppConst.Network.TcpServerPort
-                }else{
-                    host = AppConst.Network.TcpServerIP
-                    port = AppConst.Network.TcpServerPort
-                }
+                host = AppConst.Network.TcpServerIP
+                port = AppConst.Network.TcpServerPort
                 try socket?.connect(toHost: host, onPort: port, withTimeout: 5)
             }
         } catch GCDAsyncSocketError.closedError {

@@ -71,6 +71,12 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
             vc.starListModel = starListModel
             views.append(vc.view)
             vc.view.frame = CGRect(x: CGFloat(index) * kScreenWidth, y: 0, width: kScreenWidth, height: backView.frame.size.height - 64)
+            vc.indexBlock = { [weak self](param) in
+                if let index = param as? Int{
+                    self?.index = index
+                    self?.refreshSelect()
+                }
+            }
             addChildViewController(vc)
         }
         backView.setSubViews(customSubViews: views)
