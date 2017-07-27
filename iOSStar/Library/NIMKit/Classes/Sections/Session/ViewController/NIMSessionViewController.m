@@ -76,10 +76,10 @@
 - (void)setupNav
 {
     [self setUpTitleView];
-    NIMCustomLeftBarView *leftBarView = [[NIMCustomLeftBarView alloc] init];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBarView];
-    self.navigationItem.leftBarButtonItem = leftItem;
-    self.navigationItem.leftItemsSupplementBackButton = YES;
+//    NIMCustomLeftBarView *leftBarView = [[NIMCustomLeftBarView alloc] init];
+//    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBarView];
+//    self.navigationItem.leftBarButtonItem = leftItem;
+//    self.navigationItem.leftItemsSupplementBackButton = YES;
 }
 
 - (void)setupTableView
