@@ -22,12 +22,13 @@ class MarketSearchViewController: UIViewController , UITextFieldDelegate{
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
         backView.layer.cornerRadius = 1
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
-        label.text = "搜索"
+//        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
+        title = "搜索"
         //
-        label.font = UIFont.systemFont(ofSize: 17)
-        label.textColor = UIColor(hexString: AppConst.Color.main)
-        navigationItem.titleView = label
+//        title = "搜索"
+//        label.font = UIFont.systemFont(ofSize: 17)
+//        label.textColor = UIColor(hexString: AppConst.Color.main)
+//        navigationItem.titleView = label
         searchTextField.addTarget(self , action:#selector(textfiledchange(_:)), for: .editingChanged)
         searchTextField.delegate = self
     }
