@@ -130,11 +130,12 @@ class OrderStarItem: UICollectionViewCell {
             serviceTypeButton.setImage(UIImage(named: "kefu_QQ"), for: .normal)
         } else {
             serviceTypeButton.kf.setImage(with: URL(string: serviceTypeModel.url1),for: .normal)
+            serviceTypeButton.kf.setImage(with: URL(string: serviceTypeModel.url1),for: .selected)
         }
         if serviceTypeModel.url2 == "" {
             serviceTypeButton.setImage(UIImage(named: "kefu_weixin"), for: .selected)
         } else {
-            serviceTypeButton.kf.setImage(with: URL(string: serviceTypeModel.url1),for: .selected)
+         
             serviceTypeButton.kf.setImage(with: URL(string: serviceTypeModel.url2),for: .normal)
         }
         
