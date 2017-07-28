@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j9j-xh-Qc8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j9j-xh-Qc8">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1164,13 +1165,14 @@
                                                         </connections>
                                                     </button>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weixin_login" translatesAutoresizingMaskIntoConstraints="NO" id="2rW-Lz-2GL">
-                                                        <rect key="frame" x="91" y="319" width="25" height="20"/>
+                                                        <rect key="frame" x="91" y="319" width="25" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="25" id="Fdz-nw-Po4"/>
+                                                            <constraint firstAttribute="height" constant="22" id="M6i-L7-qHh"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNO-hc-lay">
-                                                        <rect key="frame" x="122" y="322" width="50" height="15"/>
+                                                        <rect key="frame" x="122" y="323" width="50" height="15"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1183,7 +1185,6 @@
                                                     <constraint firstItem="AYO-Aq-OHu" firstAttribute="leading" secondItem="l57-Hb-DPU" secondAttribute="leading" constant="15" id="5ko-LN-daC"/>
                                                     <constraint firstItem="K9S-nd-Ta7" firstAttribute="top" secondItem="ySp-1H-Thk" secondAttribute="bottom" constant="19" id="6fh-fN-Ncr"/>
                                                     <constraint firstAttribute="trailing" secondItem="J2A-F6-aUw" secondAttribute="trailing" constant="19" id="7sk-eV-nSS"/>
-                                                    <constraint firstItem="NPL-Td-WuB" firstAttribute="top" secondItem="2rW-Lz-2GL" secondAttribute="bottom" constant="17" id="862-lf-Ujw"/>
                                                     <constraint firstItem="AYO-Aq-OHu" firstAttribute="top" secondItem="rFB-vl-dkE" secondAttribute="bottom" constant="12" id="9dM-9X-pyx"/>
                                                     <constraint firstItem="KcC-wa-n5C" firstAttribute="top" secondItem="ySp-1H-Thk" secondAttribute="bottom" constant="35" id="AiL-o4-NSO"/>
                                                     <constraint firstItem="ySp-1H-Thk" firstAttribute="top" secondItem="uZj-bu-dIG" secondAttribute="bottom" constant="13" id="C4I-Fw-4Jf"/>
