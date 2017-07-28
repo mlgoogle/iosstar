@@ -17,6 +17,8 @@ class CircleListModel: Object {
     dynamic var create_time:Int64 = 0
     dynamic var content = ""
     dynamic var pic_url = ""
+    dynamic var approve_dec_time = 0
+    dynamic var comment_dec_time = 0
     let approve_list = List<ApproveModel>()
     let comment_list = List<CircleCommentModel>()
 }
