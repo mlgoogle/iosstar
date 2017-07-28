@@ -256,6 +256,9 @@ class OrderStarViewController: UIViewController {
             attributedString.addAttributes(attrsM, range: NSMakeRange(0, 5))
             self.priceLabel.attributedText = attributedString
             
+            orderPalace.text = serviceType.meet_city
+            datePickerView.minimumDate = Date.yt_convertDateStrToDate(serviceTypeModel.startdate, format: "yyyy-MM-dd")
+            datePickerView.maximumDate = Date.yt_convertDateStrToDate(serviceTypeModel.enddate, format: "yyyy-MM-dd")
             // self.priceLabel.text = String.init(format:"即将消耗: %@秒",serviceType.price)
         }
     }
@@ -282,15 +285,12 @@ class OrderStarViewController: UIViewController {
             starCode = (starInfo?.symbol)!
         }
         AppAPIHelper.marketAPI().requestStarServiceType(starcode: starCode, complete: { (response) in
-            
             if let models = response as? [ServiceTypeModel] {
-                
                 self.serviceModel = models
                 self.tableView.reloadData()
             }
         }) { (error) in
             self.didRequestError(error)
-//            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
         }
     }
     
@@ -434,9 +434,9 @@ extension OrderStarViewController {
         datePickerView.datePickerMode = .date
         
         // 一个月之后的时间
-        let oneDay : TimeInterval = 24 * 60 * 60 * 1
-        let afterAMonth = NSDate.init(timeIntervalSinceNow: oneDay * 31)
-        datePickerView.minimumDate = afterAMonth as Date
+//        let oneDay : TimeInterval = 24 * 60 * 60 * 1
+//        let afterAMonth = NSDate.init(timeIntervalSinceNow: oneDay * 31)
+//        datePickerView.minimumDate = afterAMonth as Date
         
         // 确定按钮
         let sure : UIButton = UIButton.init(frame: CGRect.init(x: 0,
@@ -479,34 +479,38 @@ extension OrderStarViewController {
         
         // 获取选择时间的字符串
         let time = Date.yt_convertDateToStr(datePickerView.date, format: "yyyy-MM-dd")
-        // 现在时间的字符串
-        let nowTime = Date.yt_convertDateToStr(NSDate() as Date, format: "yyyy-MM-dd")
-    
-        // print("选择的时间=\(time) , 现在的时间=\(nowTime)")
-        
-        // 选择的时间
-        let chooseDate = datePickerView.date
-        
-        // nowDate
-        let nowDate = NSDate() as Date
-
-        let compsMonth = Calendar.current.dateComponents([.month], from: nowDate, to: chooseDate)
-        
-        // print("===\(String(describing: compsMonth.month))")
-        
-        // 只能选择一个月之后的时间
-        if compsMonth.month! >= 1 {
-            orderTime.text = time
-            inputDateTextField.resignFirstResponder()
-        } else {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "请至少提前一个月约见", ForDuration: 2.0, completion: nil)
-            inputDateTextField.resignFirstResponder()
-            orderTime.text = ""
-            return
-
-            
-        }
-        
+        orderTime.text = time
+        inputDateTextField.resignFirstResponder()
+//        // 获取选择时间的字符串
+//        let time = Date.yt_convertDateToStr(datePickerView.date, format: "yyyy-MM-dd")
+//        // 现在时间的字符串
+//        let nowTime = Date.yt_convertDateToStr(NSDate() as Date, format: "yyyy-MM-dd")
+//    
+//        // print("选择的时间=\(time) , 现在的时间=\(nowTime)")
+//        
+//        // 选择的时间
+//        let chooseDate = datePickerView.date
+//        
+//        // nowDate
+//        let nowDate = NSDate() as Date
+//
+//        let compsMonth = Calendar.current.dateComponents([.month], from: nowDate, to: chooseDate)
+//        
+//        // print("===\(String(describing: compsMonth.month))")
+//        
+//        // 只能选择一个月之后的时间
+//        if compsMonth.month! >= 1 {
+//            orderTime.text = time
+//            inputDateTextField.resignFirstResponder()
+//        } else {
+//            SVProgressHUD.showErrorMessage(ErrorMessage: "请至少提前一个月约见", ForDuration: 2.0, completion: nil)
+//            inputDateTextField.resignFirstResponder()
+//            orderTime.text = ""
+//            return
+//
+//            
+//        }
+//        
         // 只能选择大于今天的时间[
 //        if chooseDate.timeIntervalSince(NSDate() as Date) <= 0 {
 //            
@@ -686,8 +690,6 @@ extension OrderStarViewController {
     
     fileprivate func setupNav() {
         setCustomTitle(title: "约见名人")
-      
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "share"), style: .done, target: self, action: #selector(rightButtonItemClick(_ :)))
     }
 }
 
@@ -796,8 +798,6 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate,Fee
         baseWebVc.loadRequest = "http://122.144.169.219:3389/meet"
         baseWebVc.navtitle = "约见规则"
         self.navigationController?.pushViewController(baseWebVc, animated: true)
-//        SVProgressHUD.showSuccessMessage(SuccessMessage: "等一个H5页面", ForDuration: 2.0, completion: nil)
-//        return
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -808,8 +808,8 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate,Fee
         }
         
         if indexPath.row == 3 {
-            
-            inputCityTextField.becomeFirstResponder()
+            return
+//            inputCityTextField.becomeFirstResponder()
         }
     }
     

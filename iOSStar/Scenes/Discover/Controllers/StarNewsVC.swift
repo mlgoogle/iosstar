@@ -46,6 +46,8 @@ class NewsCell: OEZTableViewCell {
             let size  = CGSize.init(width: newsLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)
             let layout = YYTextLayout.init(containerSize: size, text: contentAttribute)
             contentHeight.constant = (layout?.textBoundingSize.height)!
+            thumbUpBtn.setTitle("点赞(\(model.approve_dec_time)秒)", for: .normal)
+            CommentBtn.setTitle("评论(\(model.comment_dec_time)秒)", for: .normal)
         }
     }
     
