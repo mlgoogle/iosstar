@@ -13,7 +13,7 @@
         <!--Deal View Controller-->
         <scene sceneID="WQh-e4-JtU">
             <objects>
-                <viewController storyboardIdentifier="DealViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uwW-Kx-oql" customClass="DealViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DealViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uwW-Kx-oql" customClass="DealViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tzB-He-DGe"/>
                         <viewControllerLayoutGuide type="bottom" id="LII-3j-nav"/>
@@ -1367,7 +1367,7 @@
         <!--Deal Detail View Controller-->
         <scene sceneID="7tZ-il-XWJ">
             <objects>
-                <viewController storyboardIdentifier="DealDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jOZ-6d-DuJ" customClass="DealDetailViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DealDetailViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jOZ-6d-DuJ" customClass="DealDetailViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E8B-im-Enc"/>
                         <viewControllerLayoutGuide type="bottom" id="u9y-go-Fq6"/>
@@ -1387,7 +1387,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lZT-k9-eNh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uUc-BT-dWh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uUc-BT-dWh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1405,7 +1405,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5RR-hx-khM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T3V-av-IRf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="T3V-av-IRf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

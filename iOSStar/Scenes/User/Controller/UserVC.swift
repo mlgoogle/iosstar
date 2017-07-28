@@ -170,7 +170,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         if indexPath.section == 1{
             if indexPath.row == 0{
                 
-                let vc = UIStoryboard.init(name: "Deal", bundle: nil).instantiateViewController(withIdentifier: "AllOrderViewController") as! AllOrderViewController
+                let vc = UIStoryboard.init(name: "Deal", bundle: nil).instantiateViewController(withIdentifier: "DealDetailViewController") as! DealDetailViewController
                 vc.showNav  = true
                 self.navigationController?.pushViewController(vc, animated: true)
             }

@@ -15,7 +15,15 @@ class DealDetailViewController: DealBaseViewController ,DealScrollViewScrollDele
     }()
 
     var menuView:YD_VMenuView?
-
+    var showNav = false
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if showNav{
+            self.navigationController?.setNavigationBarHidden(false, animated: false)
+            title = "交易明细"
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMenuView()

@@ -1058,7 +1058,7 @@ class iOSStarTest: XCTestCase {
     }
     func testregistWYIM() {
         ytimeTest("registWYIM", handle: { _ in
-            let exceptOption = expectation(description: "重置登录密码")
+            let exceptOption = expectation(description: "注册网易云信")
             let param = RegisterWYIMRequestModel()
             AppAPIHelper.login().registWYIM(model: param, complete: { (result) in
                 
