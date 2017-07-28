@@ -3,7 +3,7 @@
 //
 
 #import <CommonCrypto/CommonDigest.h>
-#import <NIMSDK/NIMSDK.h>
+//#import <NIMSDK/NIMSDK.h>
 //#import "NTESSessionViewController.h"
 //#import "Global.h"
 //#import "NSString+NTES.h"
