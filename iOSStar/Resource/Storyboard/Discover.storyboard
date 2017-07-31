@@ -220,7 +220,7 @@
                                         <rect key="frame" x="0.0" y="661" width="375" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onD-89-VOI">
-                                                <rect key="frame" x="188" y="0.0" width="187" height="50"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
                                                 <color key="backgroundColor" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="UrS-Mn-0R9"/>
@@ -233,7 +233,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egb-L8-sGb">
-                                                <rect key="frame" x="0.0" y="0.0" width="188" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
                                                 <color key="backgroundColor" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="49j-SY-OmV"/>
@@ -774,7 +774,7 @@
             </objects>
             <point key="canvasLocation" x="2533.5999999999999" y="-46.326836581709152"/>
         </scene>
-        <!--星享-->
+        <!--星享时光-->
         <scene sceneID="61a-X6-S6V">
             <objects>
                 <viewController id="nEJ-SN-kHm" customClass="DiscoverViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
@@ -787,7 +787,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="星享" id="zuJ-B8-WbT">
+                    <navigationItem key="navigationItem" title="星享时光" id="zuJ-B8-WbT">
                         <barButtonItem key="rightBarButtonItem" image="market_search" id="flR-A1-eHX">
                             <color key="tintColor" red="0.5490196078431373" green="0.031372549019607843" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -805,7 +805,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="My8-fP-YK9" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iiF-iI-esP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iiF-iI-esP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1077,14 +1077,14 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="44" id="GH9-3j-6G8" customClass="CommentCell" customModule="iOSStar" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="452" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GH9-3j-6G8" id="cTg-uI-8tJ">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="GH9-3j-6G8" id="cTg-uI-8tJ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0e8-yv-2ad">
+                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0e8-yv-2ad">
                                             <rect key="frame" x="64" y="0.0" width="295" height="44"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H44-mi-dyv" customClass="YYLabel">
+                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H44-mi-dyv" customClass="YYLabel">
                                                     <rect key="frame" x="8" y="0.0" width="279" height="36"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -1103,7 +1103,7 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="H44-mi-dyv" firstAttribute="top" secondItem="0e8-yv-2ad" secondAttribute="top" id="7KR-6f-jH3"/>
+                                                <constraint firstItem="H44-mi-dyv" firstAttribute="top" secondItem="0e8-yv-2ad" secondAttribute="top" constant="4" id="7KR-6f-jH3"/>
                                                 <constraint firstAttribute="trailing" secondItem="H44-mi-dyv" secondAttribute="trailing" constant="8" id="p2U-I8-8sU"/>
                                                 <constraint firstItem="H44-mi-dyv" firstAttribute="leading" secondItem="0e8-yv-2ad" secondAttribute="leading" constant="8" id="rul-sD-oVe"/>
                                                 <constraint firstAttribute="bottom" secondItem="H44-mi-dyv" secondAttribute="bottom" constant="8" id="uV7-Gk-Qr5"/>
@@ -1145,7 +1145,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TeJ-5y-TeH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2967" y="713"/>
+            <point key="canvasLocation" x="2965.5999999999999" y="712.89355322338838"/>
         </scene>
     </scenes>
     <resources>

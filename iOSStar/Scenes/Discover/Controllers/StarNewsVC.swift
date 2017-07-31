@@ -10,6 +10,7 @@ import UIKit
 import YYText
 import SVProgressHUD
 import MJRefresh
+import Kingfisher
 
 class NewsCell: OEZTableViewCell {
     @IBOutlet var iconImage: UIImageView!
@@ -143,12 +144,13 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
     
     @IBOutlet var dismissBtn: UIButton!
     @IBOutlet var headerView: UIView!
+    
     var tableData: [CircleListModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "发现明星"
-        dismissBtn.setImage(UIImage.imageWith("\u{e62b}", fontSize: CGSize.init(width: 22, height: 22), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)), for: .normal)
+        dismissBtn.setImage(UIImage.imageWith(AppConst.iconFontName.closeIcon.rawValue, fontSize: CGSize.init(width: 22, height: 22), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)), for: .normal)
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
@@ -158,6 +160,20 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
             self.requestCycleData(self.tableData.count)
         })
         requestCycleData(0)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        KingfisherManager.shared.cache.clearMemoryCache()
+        KingfisherManager.shared.cache.clearDiskCache()
+        tableView = nil
+
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        KingfisherManager.shared.cache.clearMemoryCache()
+        KingfisherManager.shared.cache.clearDiskCache()
     }
     
     enum cellAction: Int {
@@ -190,6 +206,10 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
             }
             self?.endRefresh()
         }, error: errorBlockFunc())
+    }
+    
+    func caclulateCellHeight(_ models: [CircleListModel]){
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -253,6 +273,12 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
     
     override func isSections() -> Bool {
         return true
+    }
+    
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        KingfisherManager.shared.cache.clearDiskCache()
+        KingfisherManager.shared.cache.clearMemoryCache()
     }
     
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!) {

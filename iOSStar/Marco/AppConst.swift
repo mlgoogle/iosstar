@@ -87,19 +87,20 @@ class AppConst {
     
     enum iconFontName: String {
         case backItem = "\u{e61a}"
-        case closeIcon = "\u{e62b}"
+        case closeIcon = "\u{e63e}"
         case newsIcon = "\u{e629}"
-        case userPlaceHolder = "\u{e60d}"
+        case userPlaceHolder = "\u{e62b}"
         case thumpUpIcon = "\u{e624}"
-        case newsPlaceHolder = "\u{e603}"
-        case addIcon = "\u{e606}"
+        case newsPlaceHolder = "\u{e62a}"
+        case addIcon = "\u{e611}"
         case commentIcon = "\u{e635}"
         case thumbIcon = "\u{e62f}"
-        case showIcon = "\u{e628}"
+        case showIcon = "\u{e665}"
+        case handleIcon = "\u{e663}"
     }
     
     class Network {
-        #if true
+        #if false
         //是否测试环境
         //139.224.34.22
         //122.144.169.214

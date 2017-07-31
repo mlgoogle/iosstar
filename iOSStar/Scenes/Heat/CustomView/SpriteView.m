@@ -24,7 +24,7 @@
         [self addSubview:backView];
         NSArray *colorArray = [NSArray arrayWithObjects:[UIColor colorWithHexString:string], [UIColor clearColor], nil];
         self.colorView = [[GradualColorView alloc] initWithFrame:CGRectMake(30, 10, 60, 20) percent:1.0 completeColors:colorArray backColor:[UIColor clearColor]];
-        self.colorView.realWidth = 140;
+        self.colorView.realWidth = 200;
         self.colorView.isShowImage = false;
         [backView addSubview:self.colorView];
         [self.colorView addGradualColorLayerWithIsRound:true];

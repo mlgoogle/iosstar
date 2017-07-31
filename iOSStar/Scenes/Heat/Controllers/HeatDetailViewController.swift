@@ -89,6 +89,7 @@ class HeatDetailViewController: UIViewController {
         descriptor.params["isSell"] = data.trades?.buySell
         descriptor.params["speed"] = Int(arc4random()%30) + 50
         descriptor.params["direction"] = direction
+        descriptor.params["amount"] = data.trades?.amount
         return descriptor
     }
 
