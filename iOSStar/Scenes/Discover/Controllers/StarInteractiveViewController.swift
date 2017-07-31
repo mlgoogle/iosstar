@@ -65,6 +65,12 @@ class StarInteractiveViewController: UIViewController {
                     introVC.starModel = model
                 }
             }
+            if segue.identifier == "StarNewsVC" {
+                if let introVC = vc as? StarNewsVC {
+                    introVC.starModel = model
+                }
+            }
+            
         }
     }
 
@@ -92,10 +98,13 @@ extension StarInteractiveViewController:UITableViewDelegate, UITableViewDataSour
         if dataSource == nil || dataSource?.count == 0{
             return
         }
-        if let model: StarSortListModel = dataSource![indexPath.row] as? StarSortListModel{
-            ShareDataModel.share().selectStarCode = model.symbol
-            performSegue(withIdentifier: StarNewsVC.className(), sender: indexPath)
+        if checkLogin(){
+            if let model: StarSortListModel = dataSource![indexPath.row] as? StarSortListModel{
+                ShareDataModel.share().selectStarCode = model.symbol
+                performSegue(withIdentifier: StarNewsVC.className(), sender: indexPath)
+            }
         }
+       
         
     }
 }

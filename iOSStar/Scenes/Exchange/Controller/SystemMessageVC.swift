@@ -53,7 +53,7 @@ class MessageCell:  OEZTableViewCell{
                 colorString = AppConst.Color.orange
             } else {
                 title = "订单生成"
-                title = "333333"
+                colorString = "333333"
             }
         } else if model.handle == -1{
             title = "订单取消"
