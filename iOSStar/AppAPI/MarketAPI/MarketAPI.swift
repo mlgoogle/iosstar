@@ -24,6 +24,7 @@ protocol MarketAPI {
     func requestStarServiceType(starcode:String,complete: CompleteBlock?, error: ErrorBlock?)
     func requestBuyStarService(requestModel:ServiceTypeRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
     func requestEntrustFansList(requestModel:FanListRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
+    func requestBarrEntrustFansList(requestModel:FanListRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
     func requestOrderFansList(requestModel:FanListRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
     func requestPositionCount(requestModel:PositionCountRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
     func requstBuySellPercent(requestModel:BuySellPercentRequest,complete: CompleteBlock?, error: ErrorBlock?)

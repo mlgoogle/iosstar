@@ -54,7 +54,7 @@ class StarIntroduceViewController: UIViewController {
             view.title = (starDetailModel?.star_name)! + "(正在星享时光 出售TA的时间)"
             view.Image = headerImg.image
             view.descr = model.experience
-            view.webpageUrl = "http://www.baidu.com"
+            view.webpageUrl = "https://fir.im/ios/tapi.smartdata-x.com"
             view.shareViewController(viewController: self)
         }
        

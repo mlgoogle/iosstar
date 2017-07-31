@@ -102,7 +102,7 @@ class HeatDetailViewController: UIViewController {
         let requestModel = FanListRequestModel()
         requestModel.buySell = buySell
         requestModel.star_code = starListModel!.symbol
-        AppAPIHelper.marketAPI().requestEntrustFansList(requestModel: requestModel, complete: { (response) in
+        AppAPIHelper.marketAPI().requestBarrEntrustFansList(requestModel: requestModel, complete: { (response) in
             if let models = response as? [FansListModel]{
                 if self.fansList == nil {
                     self.fansList = models
