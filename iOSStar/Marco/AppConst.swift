@@ -104,12 +104,12 @@ class AppConst {
         //139.224.34.22
         //122.144.169.214
         static let TcpServerIP:String = "139.224.34.22";
-        static let TcpServerPort:UInt16 = 16010
+        static let TcpServerPort:UInt16 = 16006
         static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
-        static let TcpServerIP:String = "122.144.169.214";
+        static let TcpServerIP:String = "tapi.smartdata-x.com";
         static let TcpServerPort:UInt16 = 16006
-        static let HttpHostUrl:String = "122.144.169.214";
+        static let HttpHostUrl:String = "tapi.smartdata-x.com";
         #endif
         static let TimeoutSec:UInt16 = 10
         static let qiniuHost = "http://ofr5nvpm7.bkt.clouddn.com/"
