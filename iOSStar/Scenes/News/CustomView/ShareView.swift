@@ -19,6 +19,7 @@ class ShareView: UIView {
     var webpageUrl : String?
     //require:分享的图片
     var thumbImage : String?
+    var Image : UIImage?
     var typeArrM = [UMSocialPlatformType.sina,UMSocialPlatformType.wechatSession,UMSocialPlatformType.wechatTimeLine,UMSocialPlatformType.QQ,UMSocialPlatformType.qzone]
     
     func shareViewController(viewController :UIViewController)  {
@@ -42,7 +43,8 @@ class ShareView: UIView {
         let shareObject = UMShareWebpageObject()
                     shareObject.title = title
                     shareObject.descr = descr
-                    shareObject.thumbImage = UIImage.init(named: thumbImage!)
+                    shareObject.thumbImage = Image
+        //                    shareObject.thumbImage = UIImage.init(named: thumbImage!)
                     shareObject.webpageUrl = webpageUrl
           messageObject.shareObject = shareObject
           self.exit()

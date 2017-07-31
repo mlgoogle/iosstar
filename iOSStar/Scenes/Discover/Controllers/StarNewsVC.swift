@@ -143,11 +143,15 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
     
     @IBOutlet var dismissBtn: UIButton!
     @IBOutlet var headerView: UIView!
+    var iconImage: UIImageView!
+    var starModel:StarSortListModel?
     var tableData: [CircleListModel] = []
-    
+    var expericences:[ExperienceModel]?
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "发现明星"
+        getexperience()
         dismissBtn.setImage(UIImage.imageWith("\u{e62b}", fontSize: CGSize.init(width: 22, height: 22), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)), for: .normal)
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -157,7 +161,39 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
         tableView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {
             self.requestCycleData(self.tableData.count)
         })
+        if ShareDataModel.share().selectStarCode != ""{
+            let share = UIButton.init(type: .custom)
+            //        share.setTitle("分享", for: .normal)
+            iconImage = UIImageView.init()
+            share.setImage(UIImage.init(named: "star_share"), for: .normal)
+            share.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
+            share.addTarget(self, action: #selector(sharetothird), for: .touchUpInside)
+            let item = UIBarButtonItem.init(customView: share)
+            self.navigationItem.rightBarButtonItem = item
+            iconImage.kf.setImage(with: URL.init(string: (starModel?.pic)!), placeholder: nil)
+          
+        }
+        
+//
         requestCycleData(0)
+      
+        
+    }
+    func sharetothird(){
+        
+        if let model = expericences?[0]{
+            
+            
+            let view : ShareView = Bundle.main.loadNibNamed("ShareView", owner: self, options: nil)?.last as! ShareView
+            
+            view.title = (starModel?.name)! + "(正在星享时光 出售TA的时间)"
+            view.Image = iconImage.image
+            view.descr = model.experience
+            view.webpageUrl = "http://www.baidu.com"
+            view.shareViewController(viewController: self)
+            
+        }
+        
     }
     
     enum cellAction: Int {
@@ -195,6 +231,16 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return tableData.count
     }
+     func getexperience(){
+        AppAPIHelper.marketAPI().requestStarExperience(code: ShareDataModel.share().selectStarCode, complete: { (response) in
+            if let models =  response as? [ExperienceModel] {
+                self.expericences = models
+              
+            }
+        }) { (error) in
+            
+        }
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let model = tableData[section] as? CircleListModel{
@@ -224,6 +270,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
         
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell.className()) as? NewsCell
+          
             cell?.update(model)
             return cell!
         }
