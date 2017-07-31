@@ -120,6 +120,8 @@ class SocketConst: NSObject {
         case historyOrder = 6009
         //委托粉丝榜粉丝榜
         case fansList = 6021
+        //委托粉丝榜粉丝榜
+        case requestfansList = 6025
         case getalllist = 10029
         //订单粉丝榜
         case orderFansList = 6015

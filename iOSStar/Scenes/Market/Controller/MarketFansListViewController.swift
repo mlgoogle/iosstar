@@ -17,6 +17,7 @@ class MarketFansListViewController: MarketBaseViewController {
     var isBuy = true
     var buySell = 1
     var isRefresh = true
+    var header: MJRefreshHeader?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,8 +33,34 @@ class MarketFansListViewController: MarketBaseViewController {
             self.requestFansList()
             
         })
+        
+        header?.setRefreshingTarget(self , refreshingAction: #selector(headerrefresh))
+        
+    
         tableView.mj_footer = footer
+        tableView.mj_header = header
         title = "委托排行榜"
+    }
+    func headerrefresh(){
+        guard starCode != nil else {
+            return
+        }
+        let requestModel = FanListRequestModel()
+        requestModel.buySell = Int32(buySell)
+        requestModel.symbol = starCode!
+            requestModel.start = 1
+        AppAPIHelper.marketAPI().requestEntrustFansList(requestModel: requestModel, complete: { (response) in
+            if let models = response as? [FansListModel]{
+                
+                self.fansList = models
+                self.header?.endRefreshing()
+                self.tableView.reloadData()
+            }
+        }) { (error) in
+            self.endRefres(count:1)
+            
+        }
+
     }
     
     func endRefres(count:Int) {
