@@ -175,11 +175,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
             iconImage.kf.setImage(with: URL.init(string: (starModel?.pic)!), placeholder: nil)
           
         }
-        
-//
         requestCycleData(0)
-      
-        
     }
     func sharetothird(){
         

@@ -37,7 +37,7 @@ class UpdateVC: UIViewController {
             return
         }
         if AppConfigHelper.shared().updateModel!.isForceUpdate == 0 {
-            UIApplication.shared.openURL(URL.init(string: "https://itunes.apple.com/us/app/%E8%88%AA%E6%8A%95%E5%AE%9D/id1238069410?l=zh&ls=1&mt=8")!)
+            UIApplication.shared.openURL(URL.init(string: "https://fir.im/ios/tapi.smartdata-x.com")!)
             return
         }
         dismissController()
