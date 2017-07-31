@@ -35,8 +35,10 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        titltArry = ["我的钱包","我约的明星","客服中心","常见问题","通用设置"]
         titltArry = ["交易明细","我的钱包","我预约的明星","客服中心","通用设置"]
         self.tableView.reloadData()
+     
         LoginYunxin()
         NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccess(_:)), name: Notification.Name(rawValue:AppConst.loginSuccess), object: nil)
         NIMSDK.shared().systemNotificationManager.add(self)
@@ -53,10 +55,9 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
     }
     
     func LoginSuccessNotice() {
+        
         NIMSDK.shared().systemNotificationManager.add(self)
         NIMSDK.shared().conversationManager.add(self)
-        LoginYunxin()
-       
         self.sessionUnreadCount = NIMSDK.shared().conversationManager.allUnreadCount()
         AppAPIHelper.user().requestBuyStarCount(complete: { (result) in
             
@@ -300,6 +301,7 @@ extension UserVC{
     
     func LoginYunxin(){
         
+        //        SVProgressHUD.showErrorMessage(ErrorMessage: "失败", ForDuration: 2.0, completion: nil)
         if checkLogin(){
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
         registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as? String  ?? "123"

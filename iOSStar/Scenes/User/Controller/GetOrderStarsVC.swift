@@ -113,10 +113,6 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
                 }
         }
     }
-
-
-//  
-  
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -135,10 +131,13 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
         if domeet{
             let model = self.dataSource?[indexPath.section] as! StarInfoModel
             cell.update(model)
+            cell.dodetail.tag = indexPath.section
+            cell.dodetail.addTarget(self , action: #selector(dostarDetail(_:)), for: .touchUpInside)
             cell.chatButton.transform = CGAffineTransform(rotationAngle: CGFloat(0));
             if seleNumber == indexPath.section{
             cell.chatButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi));
             }
+        
             if unseleNumber == indexPath.section{
             cell.chatButton.transform = CGAffineTransform(rotationAngle: CGFloat(0));
             }
@@ -147,10 +146,13 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
             let cell = tableView.dequeueReusableCell(withIdentifier: "ContactListCell") as! ContactListCell
             let model = self.dataSource?[indexPath.section] as! OrderStarListInfoModel
                     cell.update(model)
+            cell.doStarDeatil.tag = indexPath.section
+            cell.doStarDeatil.addTarget(self , action: #selector(dostar(_:)), for: .touchUpInside)
             cell.chatButton.isUserInteractionEnabled = false
             return cell
         }
     }
+    
    func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!) {
         //约见
         if action == 4 {
@@ -222,6 +224,29 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
             unseleNumber = indexPath.section
         }
         
+    }
+    //MARK:- 进入明星详细资料
+    func dostarDetail(_ sender : UIButton){
+        
+        let starListModel = StarSortListModel()
+        let model = self.dataSource?[sender.tag] as! StarInfoModel
+        starListModel.symbol = model.starcode
+        starListModel.name = model.starname
+        let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
+        introVC.starModel = starListModel
+        
+        self.navigationController?.pushViewController(introVC, animated: true)
+    }
+    func dostar(_ sender : UIButton){
+        
+        let starListModel = StarSortListModel()
+        let model = self.dataSource?[sender.tag] as! OrderStarListInfoModel
+        starListModel.symbol = model.star_code
+        starListModel.name = model.star_name
+        let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
+        introVC.starModel = starListModel
+        
+        self.navigationController?.pushViewController(introVC, animated: true)
     }
      // MARK: -button点击事件
      //选中的状态
