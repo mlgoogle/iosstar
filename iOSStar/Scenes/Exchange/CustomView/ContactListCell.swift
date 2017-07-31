@@ -9,6 +9,7 @@
 import UIKit
 class GetOrderStarsVCCell : OEZTableViewCell{
  
+    @IBOutlet var dodetail: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -58,6 +59,7 @@ class GetOrderStarsVCCell : OEZTableViewCell{
 class ContactListCell: OEZTableViewCell {
 
     //工作
+    @IBOutlet var doStarDeatil: UIButton!
     @IBOutlet weak var jobLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!

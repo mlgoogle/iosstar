@@ -282,6 +282,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
                 UserDefaults.standard.synchronize()
                 NIMSDK.shared().loginManager.login((self?.phoneTf.text!)!, token: (self?.passTf.text!)!, completion: { (error) in
                     if (error != nil){
+                        
                             self?.dismissController()
                     }
                 })

@@ -254,7 +254,7 @@ class AppConfigHelper: NSObject {
     }
     
     func setupReceiveMatching() {
-        
+        //#246
         AppAPIHelper.dealAPI().setReceiveMatching { (response) in
             
             if let model = response as? ReceiveMacthingModel{

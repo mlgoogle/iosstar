@@ -16,6 +16,7 @@ class StarIntroduceViewController: UIViewController {
     @IBOutlet weak var appointmentButton: UIButton!
 
     var index = 0
+    var headerImg = UIImageView()
     var starModel:StarSortListModel?
     var sectionHeights = [170, 18, 140]
     var identifers = [StarIntroduceCell.className(), MarketExperienceCell.className(), StarPhotoCell.className()]
@@ -27,6 +28,7 @@ class StarIntroduceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navBarBgAlpha = 0.0
         title = self.starModel?.name
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: PubInfoHeaderView.className())
         appointmentButton.layer.shadowColor = UIColor(hexString: "cccccc").cgColor
@@ -36,13 +38,31 @@ class StarIntroduceViewController: UIViewController {
         appointmentButton.layer.shadowOpacity = 0.5
         requestStarDetailInfo()
         requestExperience()
+        let share = UIButton.init(type: .custom)
+        share.setImage(UIImage.init(named: "star_share"), for: .normal)
+        share.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
+        share.addTarget(self, action: #selector(sharetothird), for: .touchUpInside)
+        let item = UIBarButtonItem.init(customView: share)
+        self.navigationItem.rightBarButtonItem = item
 
 
 
     }
+    func sharetothird(){
+        if let model = expericences?[0]{
+            let view : ShareView = Bundle.main.loadNibNamed("ShareView", owner: self, options: nil)?.last as! ShareView
+            view.title = (starDetailModel?.star_name)! + "(正在星享时光 出售TA的时间)"
+            view.Image = headerImg.image
+            view.descr = model.experience
+            view.webpageUrl = "http://www.baidu.com"
+            view.shareViewController(viewController: self)
+        }
+       
+    
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navBarBgAlpha = 0.0
+      
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -236,6 +256,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
                 }
      
                 introCell.setData(model: starDetailModel!)
+                headerImg = introCell.iconImageView
             }
         case 1:
             if let expericencesCell = cell as? MarketExperienceCell {

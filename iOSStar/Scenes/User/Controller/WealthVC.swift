@@ -26,7 +26,9 @@ class HeaderCell: UITableViewCell {
 }
 
 class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource,CustomeAlertViewDelegate {
+    // 判断是否需要设置交易密码
     var needPwd : Int = 2
+    // 判断是否需要设置交易密码
     var setPwd : Bool = true
     var  market_cap : UILabel?
     var total_amt : UILabel?
@@ -53,6 +55,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Custo
             }
         }
     }
+     //MARK: 返回
     @IBAction func doBack(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
@@ -82,11 +85,6 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Custo
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RechareCell")
                 return cell!
             }
-            //            if indexPath.row == 1{
-            //                let cell = tableView.dequeueReusableCell(withIdentifier: "WithDrawCell")
-            //                return cell!
-            //            }
-            //            return cell
             
         }
         
@@ -177,6 +175,7 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Custo
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 0 ? 0.0001 : (section == 2 ? 0.001 : 20)
     }
+    //MARK: 初始化alertView
     @IBAction func showAlert(_ sender: Any) {
         
         let customer : CustomeShowBankView = CustomeShowBankView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height + 40))
