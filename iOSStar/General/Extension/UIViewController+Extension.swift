@@ -29,7 +29,7 @@ extension UIViewController {
             
         }
     }
-    
+
     
     func didRequestError(_ error:NSError) {
         if error.code == -11011 {
@@ -47,13 +47,14 @@ extension UIViewController {
     }
     
     func showUpdateInfo() {
-        let homeStoryboard = UIStoryboard.init(name: "User", bundle: nil)
-        let controller = homeStoryboard.instantiateViewController(withIdentifier: UpdateVC.className()) as! UpdateVC
-        controller.modalPresentationStyle = .custom
-        controller.modalTransitionStyle = .crossDissolve
-        present(controller, animated: true, completion: {
-        })
-        
+        if AppConfigHelper.shared().checkUpdate() {
+            let homeStoryboard = UIStoryboard.init(name: "User", bundle: nil)
+            let controller = homeStoryboard.instantiateViewController(withIdentifier: UpdateVC.className()) as! UpdateVC
+            controller.modalPresentationStyle = .custom
+            controller.modalTransitionStyle = .crossDissolve
+            present(controller, animated: true, completion: {
+            })
+        }
     }
     //检查是否已登录
     func checkLogin() -> Bool {

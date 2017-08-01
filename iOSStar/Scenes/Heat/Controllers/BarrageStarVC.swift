@@ -188,7 +188,10 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderView", for: indexPath)
         headerview = view
-        //        if (add){
+        if let image = UIImage.init(named: "dealBack"){
+            headerview.backgroundColor = UIColor.init(patternImage:image)
+            renderer.view.backgroundColor = UIColor.init(patternImage:image)
+        }
         headerview.addSubview(renderer.view)
         return view
     }

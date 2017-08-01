@@ -16,7 +16,7 @@ class StarSortListRequestModel: StarScrollListRequestModel {
     
 }
 class StarScrollListRequestModel: MarketBaseModel {
-    var aType:Int64 = 4
+    var aType:Int64 = 5
 }
 
 class StarRealtimeRequestModel: StarScrollListRequestModel{

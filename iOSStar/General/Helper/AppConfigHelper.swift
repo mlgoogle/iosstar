@@ -18,22 +18,47 @@ class AppConfigHelper: NSObject {
     
 
     var dealResult:[Int32 : String] = [-1 : "订单取消", 0 : "扣费成功", -2 : "转让方持有时间不足", -3 : "求购方金币不足", 2 : "交易成功"]
-
     var updateModel:UpdateParam?
+    
     lazy var alertView: TradingAlertView = {
         let alertView = Bundle.main.loadNibNamed("TradingAlertView", owner: nil, options: nil)?.first as! TradingAlertView
         alertView.str = "匹配成功提醒：范冰冰（808080）匹配成功，请到系统消息中查看，点击查看。"
         return alertView
     }()
+    
     private static var helper = AppConfigHelper()
     class func shared() -> AppConfigHelper {
         return helper
     }
     
-    func getstart(){
     
-        let requestModel = GetAllStarInfoModel()
+    func registerServers() {
+        updateUpdateInfo()
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        setupNIMSDK()
+        setupUMSDK()
+        WXApi.registerApp("wx9dc39aec13ee3158")
+        setupBugout()
+        setupRealmConfig()
+        updateUpdateInfo()
+        setupReceiveOrderResult()
+        registerUMAnalytics()
+        getstart()
+        login()
 
+    }
+    
+    //MARK: - Bugout
+    func setupBugout() {
+        let config = BugoutConfig.default()
+        config?.enabledShakeFeedback = false
+        config?.enabledMonitorException = false
+        Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
+    }
+    
+    //MARK: - 初始化明星信息
+    func getstart(){
+        let requestModel = GetAllStarInfoModel()
         AppAPIHelper.user().requestAllStarInfo(requestModel: requestModel, complete: { (result) in
             print(NSHomeDirectory())
             if let model = result as? [StartModel]{
@@ -47,8 +72,9 @@ class AppConfigHelper: NSObject {
         }) { (error) in
             
         }
-        
     }
+    
+    //MARK: - 校验token登录
     func login(){
         if  UserDefaults.standard.object(forKey: "phone") as? String == nil {
             return
@@ -76,24 +102,14 @@ class AppConfigHelper: NSObject {
     }
     
     func LoginYunxin(){
-
-//        SVProgressHUD.showErrorMessage(ErrorMessage: "失败", ForDuration: 2.0, completion: nil)
-
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
         registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as? String  ?? "123"
         registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as? String ?? "123"
         registerWYIMRequestModel.uid = Int(StarUserModel.getCurrentUser()?.id ?? 0)
-        
-        print( "====  \(registerWYIMRequestModel)" )
-        
         AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { (result) in
             if let datadic = result as? Dictionary<String,String> {
-                
-                print("datadic====   \(datadic)")
-                
                 let phone = UserDefaults.standard.object(forKey: "phone") as! String
                 let token = (datadic["token_value"]!)
-
                 NIMSDK.shared().loginManager.login(phone, token: token, completion: { (error) in
                     if (error == nil) {
                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
@@ -104,7 +120,8 @@ class AppConfigHelper: NSObject {
             
         }
     }
-     // MARK: - 网易云信
+    
+    // MARK: - 网易云信
     func setupNIMSDK() {
         // //在注册 NIMSDK appKey 之前先进行配置信息的注册，如是否使用新路径,是否要忽略某些通知，是否需要多端同步未读数
 //        setupReceiveOrderResult()
@@ -224,6 +241,7 @@ class AppConfigHelper: NSObject {
         AppAPIHelper.user().updateDeviceToken(requestModel: requestModel, complete: nil, error: nil)
     }
     
+    //MARK: - Realm数据库
     func setupRealmConfig() {
         var config = Realm.Configuration()
         config.fileURL =  config.fileURL!.deletingLastPathComponent()
@@ -253,6 +271,7 @@ class AppConfigHelper: NSObject {
         
     }
     
+    //MARK: - 初始化匹配
     func setupReceiveMatching() {
         //#246
         AppAPIHelper.dealAPI().setReceiveMatching { (response) in
@@ -303,7 +322,6 @@ class AppConfigHelper: NSObject {
     }
     
     
-    // 模拟本地推送通知的方法
     func AlertlocalNotify() {
         if UIApplication.shared.applicationState == .background {
             self.localNotify(body: "可以看见吗", userInfo: nil)
@@ -328,11 +346,12 @@ class AppConfigHelper: NSObject {
         
     }
 
-    //查询是否有新版本更新
+    //MARK: - 查询是否有新版本更新
     func updateUpdateInfo() {
-        AppAPIHelper.user().update(type: 1, complete: { (response) in
+        AppAPIHelper.user().update(type: 0, complete: { (response) in
             if let model = response as? UpdateParam {
                 self.updateModel = model
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NoticeKey.checkUpdte.rawValue), object: nil)
             }
             
         }) { (error) in

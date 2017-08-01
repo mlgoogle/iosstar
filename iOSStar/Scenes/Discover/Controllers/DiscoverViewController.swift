@@ -19,11 +19,24 @@ class DiscoverViewController: UIViewController, MenuViewDelegate{
         return scrollView
     }()
     var menuView:YD_VMenuView?
+    
+    //MARK: - LiftCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isStatusBarHidden = false
         initMenuView()
+        NotificationCenter.default.addObserver(self, selector: #selector(showUpdateInfo), name: NSNotification.Name(rawValue: AppConst.NoticeKey.checkUpdte.rawValue), object: nil)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func initMenuView() {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: kScreenWidth / 2, height: 40)

@@ -10,6 +10,7 @@ import UIKit
 import YYText
 import SVProgressHUD
 import MJRefresh
+import Kingfisher
 
 class NewsCell: OEZTableViewCell {
     @IBOutlet var iconImage: UIImageView!
@@ -75,6 +76,12 @@ class ThumbupCell: OEZTableViewCell {
     
     override func update(_ data: Any!) {
         if let model = data as? CircleListModel{
+            if model.approve_list.count == 0{
+                contentView.alpha = 0
+                thumbUpHeight.constant = 0
+                return
+            }
+            contentView.alpha = 1
             var approveName = ""
             for approve in model.approve_list{
                 approveName += "\(approve.user_name),"
@@ -143,6 +150,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
     
     @IBOutlet var dismissBtn: UIButton!
     @IBOutlet var headerView: UIView!
+
     var iconImage: UIImageView!
     var starModel:StarSortListModel?
     var tableData: [CircleListModel] = []
@@ -151,8 +159,8 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "发现明星"
+        dismissBtn.setImage(UIImage.imageWith(AppConst.iconFontName.closeIcon.rawValue, fontSize: CGSize.init(width: 22, height: 22), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)), for: .normal)
         getexperience()
-        dismissBtn.setImage(UIImage.imageWith("\u{e62b}", fontSize: CGSize.init(width: 22, height: 22), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)), for: .normal)
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
@@ -173,11 +181,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
             iconImage.kf.setImage(with: URL.init(string: (starModel?.pic)!), placeholder: nil)
           
         }
-        
-//
         requestCycleData(0)
-      
-        
     }
     func sharetothird(){
         
@@ -189,11 +193,25 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
             view.title = (starModel?.name)! + "(正在星享时光 出售TA的时间)"
             view.Image = iconImage.image
             view.descr = model.experience
-            view.webpageUrl = "https://fir.im/ios/tapi.smartdata-x.com"
+            view.webpageUrl = "https://fir.im/starShareUser"
             view.shareViewController(viewController: self)
             
         }
         
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        KingfisherManager.shared.cache.clearMemoryCache()
+        KingfisherManager.shared.cache.clearDiskCache()
+        tableView = nil
+
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        KingfisherManager.shared.cache.clearMemoryCache()
+        KingfisherManager.shared.cache.clearDiskCache()
     }
     
     enum cellAction: Int {
@@ -226,6 +244,10 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
             }
             self?.endRefresh()
         }, error: errorBlockFunc())
+    }
+    
+    func caclulateCellHeight(_ models: [CircleListModel]){
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -300,6 +322,11 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
     
     override func isSections() -> Bool {
         return true
+    }
+    
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
     }
     
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!) {

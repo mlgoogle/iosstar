@@ -21,6 +21,13 @@ class CircleListModel: Object {
     dynamic var comment_dec_time = 0
     let approve_list = List<ApproveModel>()
     let comment_list = List<CircleCommentModel>()
+//    var headerHeight: CGFloat = 0
+//    var thumbUpHeight: CGFloat = 0
+//    var commentsHeight: [CGFloat] = []
+//
+//    func caclulateHeight() {
+//        
+//    }
 }
 class ApproveModel: Object {
     dynamic var user_name = ""
@@ -32,6 +39,11 @@ class CircleCommentModel: Object {
     dynamic var direction = 0
     dynamic var content = ""
     dynamic var priority = 0
+    
+//    func calculateHeight() -> [CGFloat] {
+//        
+//        return []
+//    }
 }
 class SendCircleResultModel: Object {
     dynamic var circle_id = 0

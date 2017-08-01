@@ -26,28 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let config = BugoutConfig.default()
-        config?.enabledShakeFeedback = false
-        config?.enabledMonitorException = false
-        Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
-        
-        UIApplication.shared.applicationIconBadgeNumber = 0
-        AppConfigHelper.shared().setupNIMSDK()
-        AppConfigHelper.shared().setupUMSDK()
-        WXApi.registerApp("wx9dc39aec13ee3158")
-        
-        AppConfigHelper.shared().setupRealmConfig()
-        AppConfigHelper.shared().updateUpdateInfo()
-        AppConfigHelper.shared().setupReceiveOrderResult()
-        AppConfigHelper.shared().registerUMAnalytics()
+        AppConfigHelper.shared().registerServers()
         
         // 个推
         AppConfigHelper.shared().setupGeTuiSDK(sdkDelegate: self)
-        AppConfigHelper.shared().getstart()
-        
-        // 登录
-        AppConfigHelper.shared().login()
-        
         UIApplication.shared.statusBarStyle = .default
 
         return true
@@ -59,10 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        
-        // 模拟程序进入后台的本地通知推送
-        // print("进入后台")
-        // AppConfigHelper.shared().AlertlocalNotify()
 
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -78,10 +56,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         }
          return true
     }
+    
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
         WXApi.handleOpen(url, delegate: self)
         return true
     }
+    
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         if (url.host == "safepay") {
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (result) in
