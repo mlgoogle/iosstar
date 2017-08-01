@@ -355,20 +355,29 @@
                                                         <constraint firstAttribute="height" constant="60" id="xJf-Je-qcV"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tK-lL-rnp">
+                                                    <rect key="frame" x="25" y="82" width="60" height="60"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="kCF-fc-Bty" firstAttribute="leading" secondItem="8sS-ys-gtm" secondAttribute="leading" constant="25" id="3CK-Ax-w3e"/>
+                                                <constraint firstItem="kCF-fc-Bty" firstAttribute="top" secondItem="3tK-lL-rnp" secondAttribute="top" id="AIq-hi-LjX"/>
                                                 <constraint firstItem="Qoz-Wu-Ged" firstAttribute="leading" secondItem="8sS-ys-gtm" secondAttribute="leading" id="DiM-Zy-pfQ"/>
                                                 <constraint firstItem="Qoz-Wu-Ged" firstAttribute="top" secondItem="8sS-ys-gtm" secondAttribute="top" id="Rhu-s6-isx"/>
                                                 <constraint firstAttribute="bottom" secondItem="kCF-fc-Bty" secondAttribute="bottom" constant="15" id="ZSN-99-Q07"/>
                                                 <constraint firstItem="lwL-Dq-tvV" firstAttribute="leading" secondItem="kCF-fc-Bty" secondAttribute="trailing" id="Zic-jP-neR"/>
+                                                <constraint firstItem="kCF-fc-Bty" firstAttribute="trailing" secondItem="3tK-lL-rnp" secondAttribute="trailing" id="bdg-IT-cCN"/>
                                                 <constraint firstAttribute="bottom" secondItem="Qoz-Wu-Ged" secondAttribute="bottom" id="egj-jx-a5M"/>
                                                 <constraint firstAttribute="trailing" secondItem="Qoz-Wu-Ged" secondAttribute="trailing" id="fFh-H4-9Uq"/>
+                                                <constraint firstItem="kCF-fc-Bty" firstAttribute="bottom" secondItem="3tK-lL-rnp" secondAttribute="bottom" id="g1t-Tk-Bni"/>
                                                 <constraint firstItem="lwL-Dq-tvV" firstAttribute="centerY" secondItem="kCF-fc-Bty" secondAttribute="centerY" id="nYx-5N-h3c"/>
+                                                <constraint firstItem="kCF-fc-Bty" firstAttribute="leading" secondItem="3tK-lL-rnp" secondAttribute="leading" id="oVT-YT-OaC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="backImageView" destination="Qoz-Wu-Ged" id="TXu-tI-Tg7"/>
+                                            <outlet property="doDetail" destination="3tK-lL-rnp" id="ZUZ-42-zUB"/>
                                             <outlet property="iconImageView" destination="kCF-fc-Bty" id="cfx-Yk-WBO"/>
                                             <outlet property="jobLabel" destination="MDX-m1-hwT" id="mru-Mr-LR3"/>
                                             <outlet property="nickNameLabel" destination="79t-DW-BR0" id="jOs-Yk-asc"/>
@@ -652,7 +661,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDN-45-hpu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1402" y="714"/>
+            <point key="canvasLocation" x="1400.8" y="713.79310344827593"/>
         </scene>
         <!--Star Interactive View Controller-->
         <scene sceneID="j2d-7l-o1m">
