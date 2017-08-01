@@ -12,6 +12,7 @@ class SellingIntroCell: SellingBaseCell {
 
     @IBOutlet weak var jobLabel: UILabel!
     @IBOutlet weak var nickNameLabel: UILabel!
+    @IBOutlet weak var doDetail: UIButton!
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var iconImageView: UIImageView!
     override func awakeFromNib() {

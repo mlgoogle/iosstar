@@ -143,6 +143,13 @@ class SellingViewController: UIViewController {
             
         }
     }
+    func dodetail(){
+        let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
+        introVC.starModel = starModel
+        self.navigationController?.pushViewController(introVC, animated: true)
+
+        
+    }
 }
 
 extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIScrollViewDelegate{
@@ -181,6 +188,10 @@ extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITe
             if let countDownCell = cell as? SellingCountDownCell {
                 countDownCell.setRemainingTime(count:remainingTime)
             }
+        case 0:
+            if let introCell = cell as? SellingIntroCell {
+                introCell.doDetail.addTarget(self , action: #selector(dodetail), for: .touchUpInside)
+            }
         case 3:
             if let buyCountCell = cell as? SellingBuyCountCell {
                 buyCountCell.countTextField.delegate = self
@@ -200,5 +211,6 @@ extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITe
         }
         return cell
     }
+    
     
 }

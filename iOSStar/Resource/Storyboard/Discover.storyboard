@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="My8-fP-YK9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="My8-fP-YK9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -86,7 +86,7 @@
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarIntroduceCell" rowHeight="170" id="aRs-SG-bQm" customClass="StarIntroduceCell" customModule="iOSStar" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="56" width="375" height="170"/>
+                                                <rect key="frame" x="0.0" y="55.5" width="375" height="170"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aRs-SG-bQm" id="Q22-87-IyD">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
@@ -176,7 +176,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketExperienceCell" rowHeight="21" id="USb-Pt-76y" customClass="MarketExperienceCell" customModule="iOSStar" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="226" width="375" height="21"/>
+                                                <rect key="frame" x="0.0" y="225.5" width="375" height="21"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="USb-Pt-76y" id="Cxy-Jx-Zpi">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
@@ -202,7 +202,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarPhotoCell" rowHeight="140" id="Gxi-Bv-Lwb" customClass="StarPhotoCell" customModule="iOSStar" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="247" width="375" height="140"/>
+                                                <rect key="frame" x="0.0" y="246.5" width="375" height="140"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gxi-Bv-Lwb" id="L8z-qw-HH5">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
@@ -355,20 +355,28 @@
                                                         <constraint firstAttribute="height" constant="60" id="xJf-Je-qcV"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tK-lL-rnp">
+                                                    <rect key="frame" x="25" y="82" width="60" height="60"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="kCF-fc-Bty" firstAttribute="leading" secondItem="8sS-ys-gtm" secondAttribute="leading" constant="25" id="3CK-Ax-w3e"/>
+                                                <constraint firstItem="kCF-fc-Bty" firstAttribute="top" secondItem="3tK-lL-rnp" secondAttribute="top" id="AIq-hi-LjX"/>
                                                 <constraint firstItem="Qoz-Wu-Ged" firstAttribute="leading" secondItem="8sS-ys-gtm" secondAttribute="leading" id="DiM-Zy-pfQ"/>
                                                 <constraint firstItem="Qoz-Wu-Ged" firstAttribute="top" secondItem="8sS-ys-gtm" secondAttribute="top" id="Rhu-s6-isx"/>
                                                 <constraint firstAttribute="bottom" secondItem="kCF-fc-Bty" secondAttribute="bottom" constant="15" id="ZSN-99-Q07"/>
                                                 <constraint firstItem="lwL-Dq-tvV" firstAttribute="leading" secondItem="kCF-fc-Bty" secondAttribute="trailing" id="Zic-jP-neR"/>
+                                                <constraint firstItem="kCF-fc-Bty" firstAttribute="trailing" secondItem="3tK-lL-rnp" secondAttribute="trailing" id="bdg-IT-cCN"/>
                                                 <constraint firstAttribute="bottom" secondItem="Qoz-Wu-Ged" secondAttribute="bottom" id="egj-jx-a5M"/>
                                                 <constraint firstAttribute="trailing" secondItem="Qoz-Wu-Ged" secondAttribute="trailing" id="fFh-H4-9Uq"/>
+                                                <constraint firstItem="kCF-fc-Bty" firstAttribute="bottom" secondItem="3tK-lL-rnp" secondAttribute="bottom" id="g1t-Tk-Bni"/>
                                                 <constraint firstItem="lwL-Dq-tvV" firstAttribute="centerY" secondItem="kCF-fc-Bty" secondAttribute="centerY" id="nYx-5N-h3c"/>
+                                                <constraint firstItem="kCF-fc-Bty" firstAttribute="leading" secondItem="3tK-lL-rnp" secondAttribute="leading" id="oVT-YT-OaC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="backImageView" destination="Qoz-Wu-Ged" id="TXu-tI-Tg7"/>
+                                            <outlet property="doDetail" destination="3tK-lL-rnp" id="ZUZ-42-zUB"/>
                                             <outlet property="iconImageView" destination="kCF-fc-Bty" id="cfx-Yk-WBO"/>
                                             <outlet property="jobLabel" destination="MDX-m1-hwT" id="mru-Mr-LR3"/>
                                             <outlet property="nickNameLabel" destination="79t-DW-BR0" id="jOs-Yk-asc"/>
@@ -652,7 +660,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDN-45-hpu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1402" y="714"/>
+            <point key="canvasLocation" x="1400.8" y="713.79310344827593"/>
         </scene>
         <!--Star Interactive View Controller-->
         <scene sceneID="j2d-7l-o1m">
@@ -1081,10 +1089,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0e8-yv-2ad">
+                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0e8-yv-2ad">
                                             <rect key="frame" x="64" y="0.0" width="295" height="44"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H44-mi-dyv" customClass="YYLabel">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H44-mi-dyv" customClass="YYLabel">
                                                     <rect key="frame" x="8" y="0.0" width="279" height="36"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
