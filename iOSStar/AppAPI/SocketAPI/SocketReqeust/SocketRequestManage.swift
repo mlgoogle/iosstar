@@ -68,11 +68,15 @@ class SocketRequestManage: NSObject {
         if packet.operate_code == SocketConst.OPCode.timeLine.rawValue + 1{
             socketReqeust = timelineRequest
         }else if packet.operate_code == SocketConst.OPCode.receiveMatching.rawValue {
-            let response:SocketJsonResponse = SocketJsonResponse(packet:packet)           
-            self.receiveMatching!(response)
+            let response:SocketJsonResponse = SocketJsonResponse(packet:packet)
+            if receiveMatching != nil{
+                receiveMatching!(response)
+            }
         }else if packet.operate_code == SocketConst.OPCode.orderResult.rawValue{
             let response:SocketJsonResponse = SocketJsonResponse(packet:packet)
-            self.receiveOrderResult!(response)
+            if receiveOrderResult != nil{
+                receiveOrderResult!(response)
+            }
         }else if packet.operate_code == SocketConst.OPCode.onlyLogin.rawValue{
             stop()
             NotificationCenter.default.post(name: Notification.Name.init(rawValue: AppConst.NoticeKey.onlyLogin.rawValue), object: nil, userInfo: nil)
