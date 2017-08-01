@@ -87,18 +87,28 @@ class BuyOrSellViewController: DealBaseViewController {
     @IBAction func buyOrSellAction(_ sender: Any) {
 
         
-        guard starListModel != nil else {
+        if starListModel == nil  {
             return
         }
+
         guard price != 0.0 else{
             SVProgressHUD.showErrorMessage(ErrorMessage: "输入价格大于0", ForDuration: 1.5, completion: nil)
             return
         }
-        guard count < totalCount || count == totalCount else {
+     
 
-            SVProgressHUD.showErrorMessage(ErrorMessage: "转让/求购数量不能超过总发行量", ForDuration: 1.5, completion: nil)
+        if count > totalCount && dealType == AppConst.DealType.buy{
+            SVProgressHUD.showErrorMessage(ErrorMessage: "求购数量不能超过总发行量", ForDuration: 1.5, completion: nil)
+
             return
         }
+        
+        if count > positionCount && dealType == AppConst.DealType.sell{
+            SVProgressHUD.showErrorMessage(ErrorMessage: "转让数量不能超过当前总持有量", ForDuration: 1.5, completion: nil)
+            return
+        }
+        
+
         SVProgressHUD.show()
         let model = BuyOrSellRequestModel()
         model.buySell = dealType.rawValue
@@ -107,14 +117,7 @@ class BuyOrSellViewController: DealBaseViewController {
         model.amount = count
         AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: {[weak self] (response) in
             SVProgressHUD.showSuccessMessage(SuccessMessage: "挂单成功", ForDuration: 2, completion: nil)
-            
             DispatchQueue.main.async {
-//                let storyBoard = UIStoryboard(name: AppConst.StoryBoardName.Deal.rawValue, bundle: nil)
-//                if let vc = storyBoard.instantiateViewController(withIdentifier: "DealViewController") as? DealViewController {
-//                    vc.index = 3
-//                    vc.starListModel = self?.starListModel
-//                    vc.refreshSelect()
-//                }
                 let index = 3
                 self?.indexBlock!(index as AnyObject)
             }

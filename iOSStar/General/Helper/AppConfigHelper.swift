@@ -40,6 +40,8 @@ class AppConfigHelper: NSObject {
         WXApi.registerApp("wx9dc39aec13ee3158")
         setupBugout()
         setupRealmConfig()
+        setupReceiveOrderResult()
+        setupReceiveMatching()
         updateUpdateInfo()
         setupReceiveOrderResult()
         registerUMAnalytics()
@@ -124,8 +126,6 @@ class AppConfigHelper: NSObject {
     // MARK: - 网易云信
     func setupNIMSDK() {
         // //在注册 NIMSDK appKey 之前先进行配置信息的注册，如是否使用新路径,是否要忽略某些通知，是否需要多端同步未读数
-//        setupReceiveOrderResult()
-//        setupReceiveMatching()
 //        NIMSDKConfig.shared().delegate = sdkConfigDelegate
 //        NIMSDKConfig.shared().shouldSyncUnreadCount = true//0d0f4b452de9695f91b0e4dc949d54cc
         //9c3a406f233dea0d355c6458fb0171b8
