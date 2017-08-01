@@ -87,6 +87,7 @@ class MarketFansListViewController: MarketBaseViewController {
         AppAPIHelper.marketAPI().requestEntrustFansList(requestModel: requestModel, complete: { (response) in
             if let models = response as? [FansListModel]{
                 
+               
                 if self.isRefresh {
                     self.fansList = models
                 } else {
@@ -116,7 +117,10 @@ extension MarketFansListViewController:UITableViewDelegate, UITableViewDataSourc
         } else {
             buySell = -1
         }
-
+        if (self.fansList?.count != nil){
+            self.fansList = nil
+        }
+        tableView.reloadData()
         isRefresh = true
         requestFansList()
          //doSomething

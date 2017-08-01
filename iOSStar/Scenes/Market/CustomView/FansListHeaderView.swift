@@ -120,9 +120,9 @@ class FansListHeaderView: UITableViewHeaderFooterView {
     func selectAtIndex(sender:UIButton) {
         let index = sender.tag - 2222
         
-        if index == currentSelectIndex {
-            return
-        }
+//        if index == currentSelectIndex {
+//            return
+//        }
         currentSelectIndex = index
 
         var x:CGFloat = 0.0
