@@ -62,7 +62,18 @@ class StarIntroduceViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-      
+        if let _ = UserDefaults.standard.value(forKey: AppConst.guideKey.StarIntroduce.rawValue) as? String {
+            
+        }else{
+            showGuideVC(.StarIntroduce, handle: { (vc)in
+                if let guideVC = vc as? GuideVC{
+                    if guideVC.guideType == AppConst.guideKey.StarIntroduce{
+                        guideVC.dismiss(animated: true, completion:nil)
+                        UserDefaults.standard.set("ok", forKey: AppConst.guideKey.StarIntroduce.rawValue)
+                    }
+                }
+            })
+        }
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

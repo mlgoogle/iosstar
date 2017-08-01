@@ -68,6 +68,30 @@ class DiscoverViewController: UIViewController, MenuViewDelegate{
         UIView.animate(withDuration: 0.3) { 
             self.scrollView.contentOffset = CGPoint(x: CGFloat(indexPath.row) * kScreenWidth, y: 0)
         }
+       
+        if indexPath.row == 1{
+            if let _ = UserDefaults.standard.value(forKey: AppConst.guideKey.upDown.rawValue) as? String {
+                
+            }else{
+                showGuideVC(.upDown, handle: { (vc)in
+                    if let guideVC = vc as? GuideVC{
+                        if guideVC.guideType == AppConst.guideKey.upDown{
+                            guideVC.setGuideContent(.starsNews)
+                            return
+                        }
+                        if guideVC.guideType == AppConst.guideKey.starsNews{
+                            guideVC.setGuideContent(.starSearch)
+                            return
+                        }
+                        if guideVC.guideType == AppConst.guideKey.starSearch{
+                            guideVC.dismiss(animated: true, completion:nil)
+                            UserDefaults.standard.set("ok", forKey: AppConst.guideKey.upDown.rawValue)
+                            return
+                        }
+                    }
+                })
+            }
+        }
     }
     @IBAction func searchAction(_ sender: Any) {
         let stroyBoard = UIStoryboard(name: AppConst.StoryBoardName.Markt.rawValue, bundle: nil)

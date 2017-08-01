@@ -25,6 +25,22 @@ class HeatListViewController: UITableViewController {
         inittableview()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let _ = UserDefaults.standard.value(forKey: AppConst.guideKey.joinToBuy.rawValue) as? String {
+            
+        }else{
+            showGuideVC(.joinToBuy, handle: { (vc)in
+                if let guideVC = vc as? GuideVC{
+                    if guideVC.guideType == AppConst.guideKey.joinToBuy{
+                        guideVC.dismiss(animated: true, completion:nil)
+                        UserDefaults.standard.set("ok", forKey: AppConst.guideKey.joinToBuy.rawValue)
+                    }
+                }
+            })
+        }
+    }
+    
     func setupNav() {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named:"white_back"), for: .normal)
