@@ -53,7 +53,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
 
         LoginSuccessNotice()
     }
-    
+     // MARK:- 已购明星数量
     func LoginSuccessNotice() {
         
         NIMSDK.shared().systemNotificationManager.add(self)
@@ -100,7 +100,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
     }
         
 
-    // MARK: Table view data source
+    // MARK:- Table view data source
      override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 4
@@ -205,7 +205,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         
     }
     
-    // MARK: -我预约的明星
+    // MARK:- 我预约的明星
     func toReservationStar() {
         
         let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "GetOrderStarsVC")
@@ -213,7 +213,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
        
     }
 
-    //MARK: 输入邀请码
+    //MARK:- 输入邀请码
     func showAlertView(){
     
         let alertview : UIAlertController = UIAlertController.init(title: "请输入邀请码", message: "", preferredStyle: UIAlertControllerStyle.alert)
