@@ -15,7 +15,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YAj-2Q-WWI" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QC8-Ep-amw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QC8-Ep-amw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -198,14 +198,6 @@
                                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fxw-vE-cVy">
-                                                                <rect key="frame" x="81" y="-17" width="80" height="80"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" title=""/>
-                                                                <connections>
-                                                                    <action selector="doPushStarDeatil:" destination="epr-7o-9bp" eventType="touchUpInside" id="pPc-9a-eAv"/>
-                                                                </connections>
-                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -233,6 +225,13 @@
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="i2B-hc-es5"/>
                                                         </constraints>
                                                     </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fxw-vE-cVy">
+                                                        <rect key="frame" x="25" y="25" width="80" height="80"/>
+                                                        <state key="normal" title=""/>
+                                                        <connections>
+                                                            <action selector="doPushStarDeatil:" destination="epr-7o-9bp" eventType="touchUpInside" id="pPc-9a-eAv"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -240,8 +239,12 @@
                                                     <constraint firstItem="KK8-is-Zt6" firstAttribute="leading" secondItem="0Zb-v0-YLF" secondAttribute="leading" constant="12" id="Rfz-e2-A7R"/>
                                                     <constraint firstAttribute="height" constant="130" id="VVT-hQ-59i"/>
                                                     <constraint firstItem="KK8-is-Zt6" firstAttribute="top" secondItem="0Zb-v0-YLF" secondAttribute="top" constant="50" id="dXz-ey-qWn"/>
+                                                    <constraint firstItem="Fxw-vE-cVy" firstAttribute="centerX" secondItem="qAi-Vt-gVE" secondAttribute="centerX" id="etX-ii-fZk"/>
                                                     <constraint firstItem="qAi-Vt-gVE" firstAttribute="leading" secondItem="0Zb-v0-YLF" secondAttribute="leading" constant="25" id="fnc-Jt-Pqg"/>
+                                                    <constraint firstItem="Fxw-vE-cVy" firstAttribute="centerY" secondItem="qAi-Vt-gVE" secondAttribute="centerY" id="gdS-8i-79e"/>
+                                                    <constraint firstItem="Fxw-vE-cVy" firstAttribute="width" secondItem="qAi-Vt-gVE" secondAttribute="width" id="guM-eI-6yv"/>
                                                     <constraint firstItem="qAi-Vt-gVE" firstAttribute="top" secondItem="0Zb-v0-YLF" secondAttribute="top" constant="25" id="r2h-D3-ZyG"/>
+                                                    <constraint firstItem="Fxw-vE-cVy" firstAttribute="height" secondItem="qAi-Vt-gVE" secondAttribute="height" id="wrF-Jx-zyk"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLl-eR-u27">

@@ -76,6 +76,12 @@ class ThumbupCell: OEZTableViewCell {
     
     override func update(_ data: Any!) {
         if let model = data as? CircleListModel{
+            if model.approve_list.count == 0{
+                contentView.alpha = 0
+                thumbUpHeight.constant = 0
+                return
+            }
+            contentView.alpha = 1
             var approveName = ""
             for approve in model.approve_list{
                 approveName += "\(approve.user_name),"
@@ -187,7 +193,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
             view.title = (starModel?.name)! + "(正在星享时光 出售TA的时间)"
             view.Image = iconImage.image
             view.descr = model.experience
-            view.webpageUrl = "https://fir.im/ios/tapi.smartdata-x.com"
+            view.webpageUrl = "https://fir.im/starShareUser"
             view.shareViewController(viewController: self)
             
         }
@@ -320,8 +326,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
     
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        KingfisherManager.shared.cache.clearDiskCache()
-        KingfisherManager.shared.cache.clearMemoryCache()
+        
     }
     
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!) {

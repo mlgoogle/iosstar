@@ -121,7 +121,7 @@ class HeatDetailViewController: UIViewController {
         param.starcode = starListModel!.symbol
         AppAPIHelper.marketAPI().requestStarRealTime(requestModel: param, complete: { [weak self](result) in
             if let model = result as? StarSortListModel{
-                self?.priceLabel.text = "\(model.currentPrice)"
+                self?.priceLabel.text =  String.init(format: "%.2f", model.currentPrice)
             }
         }, error: errorBlockFunc())
     }
