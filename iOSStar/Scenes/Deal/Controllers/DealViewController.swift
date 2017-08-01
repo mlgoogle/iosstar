@@ -31,7 +31,7 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        menuView?.selected(index: index)
+        refreshSelect()
     }
     
     func setupMenuView() {
