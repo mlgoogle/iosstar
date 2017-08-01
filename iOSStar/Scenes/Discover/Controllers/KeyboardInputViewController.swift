@@ -57,7 +57,8 @@ class YInputToolbar: UIView{
     }()
     
     lazy var emothionBtn: UIButton = {
-        let btn = UIButton.init(type: UIButtonType.contactAdd)
+        let btn = UIButton.init(type: UIButtonType.custom)
+        btn.setImage(YParser.getEmojiImage("emoji_00.png"), for: .normal)
         btn.frame = CGRect.init(x: self.sendBtn.frame.minX - 44 , y: 8, width: 44-16, height: 44-16)
         return btn
     }()

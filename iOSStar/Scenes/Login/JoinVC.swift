@@ -13,12 +13,12 @@ import SVProgressHUD
 class JoinVC: UIViewController, UITextViewDelegate ,UIGestureRecognizerDelegate{
     @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var joinBtn: UIButton!
-  
     @IBOutlet weak var littleFieldText: UITextField!
     @IBOutlet weak var joinScrollView: UIScrollView!
     @IBOutlet weak var joinView: UIView!
     @IBOutlet weak var joinBgView: UIView!
     @IBOutlet weak var bgHeight: NSLayoutConstraint!
+    
     //定义block来判断选择哪个试图
     var resultBlock: CompleteBlock?
 
@@ -37,9 +37,6 @@ class JoinVC: UIViewController, UITextViewDelegate ,UIGestureRecognizerDelegate{
     }
     //注册
     func join() {
-//        ShareDataModel.share().registerModel.memberId = toalFieldText.text!
-//        ShareDataModel.share().registerModel.agentId = middleFieldText.text!
-//        ShareDataModel.share().registerModel.recommend = littleFieldText.text!
         ShareDataModel.share().registerModel.channel = littleFieldText.text!
         AppAPIHelper.login().regist(model: ShareDataModel.share().registerModel, complete: { [weak self](result)  in
             if let response = result {
@@ -52,21 +49,10 @@ class JoinVC: UIViewController, UITextViewDelegate ,UIGestureRecognizerDelegate{
         }) { (error) in
             self.didRequestError(error)
         }
-//        ShareDataModel.share().registerModel.sub_agentId = littleFieldText.text!
-//        if checkTextFieldEmpty([littleFieldText]){
-//           
-//              
-////                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-//           
-//        }
     }
     //微信绑定
     func wxJoin() {
-//        ShareDataModel.share().wxregisterModel.memberId = toalFieldText.text!
-//        ShareDataModel.share().wxregisterModel.agentId = middleFieldText.text!
         ShareDataModel.share().wxregisterModel.channel = littleFieldText.text!
-//        ShareDataModel.share().wxregisterModel.recommend = littleFieldText.text!
-//        ShareDataModel.share().wxregisterModel.sub_agentId = toalFieldText.text!
         AppAPIHelper.login().BindWeichat(model: ShareDataModel.share().wxregisterModel, complete: { (result)  in
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
             

@@ -89,6 +89,7 @@ class HeatDetailViewController: UIViewController {
         descriptor.params["isSell"] = data.trades?.buySell
         descriptor.params["speed"] = Int(arc4random()%30) + 50
         descriptor.params["direction"] = direction
+        descriptor.params["amount"] = data.trades?.amount
         return descriptor
     }
 
@@ -120,7 +121,7 @@ class HeatDetailViewController: UIViewController {
         param.starcode = starListModel!.symbol
         AppAPIHelper.marketAPI().requestStarRealTime(requestModel: param, complete: { [weak self](result) in
             if let model = result as? StarSortListModel{
-                self?.priceLabel.text = "\(model.currentPrice)"
+                self?.priceLabel.text =  String.init(format: "%.2f", model.currentPrice)
             }
         }, error: errorBlockFunc())
     }

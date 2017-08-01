@@ -21,11 +21,10 @@
         self.imageView.image = image;
     }];
     NSString *name = params[@"name"];
- 
     NSNumber *price = params[@"price"];
     NSNumber *buySell = params[@"buySell"];
-    
-    self.titleLabel.text = [NSString stringWithFormat:@"%@%@: %.2f",name, [buySell integerValue] == 1 ? @"求购":@"转让", [price floatValue]];
+    NSNumber *count = params[@"amount"];
+    self.titleLabel.text = [NSString stringWithFormat:@"%@%@%d秒, %.2f元/秒",name, [buySell integerValue] == 1 ? @"求购":@"转让", [count intValue], [price floatValue]];
     
     CGRect rect = [self.titleLabel.text boundingRectWithSize:CGSizeMake(0, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.titleLabel.font} context:nil];
     self.titleLabel.width = rect.size.width;
