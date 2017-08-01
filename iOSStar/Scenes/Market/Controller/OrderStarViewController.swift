@@ -305,10 +305,10 @@ class OrderStarViewController: UIViewController {
             SVProgressHUD.showErrorMessage(ErrorMessage: "请选择时间", ForDuration: 2.0, completion: nil)
             return
         }
-        if orderPalace.text?.length() == 0 {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "请选择城市", ForDuration: 2.0, completion: nil)
-            return
-        }
+//        if orderPalace.text?.length() == 0 {
+//            SVProgressHUD.showErrorMessage(ErrorMessage: "请选择城市", ForDuration: 2.0, completion: nil)
+//            return
+//        }
         if feedBack.text.length() == 0 {
             SVProgressHUD.showErrorMessage(ErrorMessage: "备注信息不能为空,且不超过200字", ForDuration: 2.0, completion: nil)
             return
