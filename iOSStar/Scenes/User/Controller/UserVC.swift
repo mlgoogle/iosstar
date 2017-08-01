@@ -53,7 +53,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
 
         LoginSuccessNotice()
     }
-    
+     // MARK:- 已购明星数量
     func LoginSuccessNotice() {
         
         NIMSDK.shared().systemNotificationManager.add(self)

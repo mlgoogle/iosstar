@@ -90,6 +90,10 @@ class BuyOrSellViewController: DealBaseViewController {
         guard starListModel != nil else {
             return
         }
+        guard price != 0.0 else{
+            SVProgressHUD.showErrorMessage(ErrorMessage: "输入价格大于0", ForDuration: 1.5, completion: nil)
+            return
+        }
         guard count < totalCount || count == totalCount else {
 
             SVProgressHUD.showErrorMessage(ErrorMessage: "转让/求购数量不能超过总发行量", ForDuration: 1.5, completion: nil)
