@@ -32,10 +32,8 @@ class HeatListViewController: UITableViewController {
         }else{
             showGuideVC(.joinToBuy, handle: { (vc)in
                 if let guideVC = vc as? GuideVC{
-                    if guideVC.guideType == AppConst.guideKey.joinToBuy{
-                        guideVC.dismiss(animated: true, completion:nil)
-                        UserDefaults.standard.set("ok", forKey: AppConst.guideKey.joinToBuy.rawValue)
-                    }
+                    guideVC.dismiss(animated: true, completion:nil)
+                    UserDefaults.standard.set("ok", forKey: AppConst.guideKey.joinToBuy.rawValue)
                 }
             })
         }

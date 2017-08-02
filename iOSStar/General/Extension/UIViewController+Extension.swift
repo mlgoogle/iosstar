@@ -104,7 +104,7 @@ extension UIViewController {
     
     // 显示引导视图控制器
     func showGuideVC(_ guideType:AppConst.guideKey, handle:CompleteBlock?) {
-        return 
+        
         let vc = GuideVC()
         vc.modalPresentationStyle = .custom
         vc.modalTransitionStyle = .crossDissolve
