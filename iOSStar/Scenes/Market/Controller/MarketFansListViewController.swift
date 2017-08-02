@@ -13,7 +13,6 @@ class MarketFansListViewController: MarketBaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var index:Int = 0
-    var page:Int = 1
     var fansList:[FansListModel]?
     var isBuy = true
     var buySell = 1
@@ -81,11 +80,9 @@ class MarketFansListViewController: MarketBaseViewController {
         requestModel.buySell = Int32(buySell)
         requestModel.symbol = starCode!
         if isRefresh  {
-            page = 1
-            requestModel.start = Int32(page)
+            requestModel.start = 1
         } else {
-            page = page + 1
-            requestModel.start = Int32((page - 1)*10)
+            requestModel.start = Int32(fansList?.count ?? 0)
         }
         AppAPIHelper.marketAPI().requestEntrustFansList(requestModel: requestModel, complete: { (response) in
             if let models = response as? [FansListModel]{
