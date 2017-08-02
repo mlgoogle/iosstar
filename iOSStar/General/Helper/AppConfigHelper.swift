@@ -137,7 +137,7 @@ class AppConfigHelper: NSObject {
         
     }
     
-    // MARK: -个推
+    // MARK: - 个推
     func setupGeTuiSDK(sdkDelegate : AppDelegate)  {
         
         // [ GTSdk ]：是否允许APP后台运行
@@ -231,9 +231,9 @@ class AppConfigHelper: NSObject {
     func setupUMSDK() {
         UMSocialManager.default().openLog(true)
         UMSocialManager.default().umSocialAppkey = "5944e976c62dca4b80001e50"
-        UMSocialManager.default().setPlaform(UMSocialPlatformType.wechatSession, appKey: "wx9dc39aec13ee3158", appSecret: "a12a88f2c4596b2726dd4ba7623bc27e", redirectURL: "www.baidu.com")
-        UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "3921700954", appSecret: "04b48b094faeb16683c32669824ebdad", redirectURL: "www.baidu.com")
-        UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1106199654", appSecret: nil, redirectURL: "www.baidu.com")
+        UMSocialManager.default().setPlaform(UMSocialPlatformType.wechatSession, appKey: "wx9dc39aec13ee3158", appSecret: "a12a88f2c4596b2726dd4ba7623bc27e", redirectURL: "https://fir.im/starShareUser")
+        UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "3921700954", appSecret: "04b48b094faeb16683c32669824ebdad", redirectURL: "https://fir.im/starShareUser")
+        UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1106222927", appSecret: "KEYi4oyzQ7QTfUhNkcE", redirectURL: "https://fir.im/starShareUser")
 
     }
     func updateDeviceToken() {
@@ -336,7 +336,7 @@ class AppConfigHelper: NSObject {
         localNotify.timeZone = NSTimeZone.default
         localNotify.soundName = UILocalNotificationDefaultSoundName
         if #available(iOS 8.2, *) {
-            localNotify.alertTitle = "星悦"
+            localNotify.alertTitle = "星享时光"
         } else {
             // Fallback on earlier versions
         }

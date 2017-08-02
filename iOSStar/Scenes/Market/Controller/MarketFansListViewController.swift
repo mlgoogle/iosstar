@@ -13,7 +13,7 @@ class MarketFansListViewController: MarketBaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var index:Int = 0
-    var pageIndex:Int = 1
+//    var pageIndex:Int = 1
     var fansList:[FansListModel]?
     var isBuy = true
     var buySell = 1
