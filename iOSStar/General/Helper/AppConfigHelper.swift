@@ -231,7 +231,7 @@ class AppConfigHelper: NSObject {
     func setupUMSDK() {
         UMSocialManager.default().openLog(true)
         UMSocialManager.default().umSocialAppkey = "5944e976c62dca4b80001e50"
-        UMSocialManager.default().setPlaform(UMSocialPlatformType.wechatSession, appKey: "wx9dc39aec13ee3158", appSecret: "a12a88f2c4596b2726dd4ba7623bc27e", redirectURL: "https://fir.im/starShareUser")
+        UMSocialManager.default().setPlaform(UMSocialPlatformType.wechatSession, appKey: "wxa75d31be7fcb762f", appSecret: "edd6e7ea7293049951b563dbc803ebea", redirectURL: "https://fir.im/starShareUser")
         UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "3921700954", appSecret: "04b48b094faeb16683c32669824ebdad", redirectURL: "https://fir.im/starShareUser")
         UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1106222927", appSecret: "KEYi4oyzQ7QTfUhNkcE", redirectURL: "https://fir.im/starShareUser")
 

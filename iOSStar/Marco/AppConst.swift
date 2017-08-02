@@ -108,6 +108,7 @@ class AppConst {
         case starsNews = "starsNews"
         case timeBusiness = "timeBusiness.jpg"
         case upDown = "upDown.jpg"
+        case feedBack = "feedBack"
     }
     
     class Network {

@@ -124,7 +124,6 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
     func modfyNickname(requestModel: ModifyNicknameModel, complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .modifyNickname, model: requestModel)
         startRequest(packet, complete: complete, error: error)
-
     }
 
     

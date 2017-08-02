@@ -92,7 +92,6 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         }
         let requestModel = ModifyNicknameModel()
         requestModel.nickname = nickName.text!
-
         AppAPIHelper.user().modfyNickname(requestModel: requestModel, complete: { (result) in
             // result = 1 成功  result = 0 失败
             if let responseData = result {
