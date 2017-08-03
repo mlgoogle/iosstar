@@ -352,7 +352,7 @@ class AppConfigHelper: NSObject {
             if let model = response as? UpdateParam {
                 self.updateModel = model
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NoticeKey.checkUpdte.rawValue), object: nil)
-            }
+            } 
             
         }) { (error) in
             
