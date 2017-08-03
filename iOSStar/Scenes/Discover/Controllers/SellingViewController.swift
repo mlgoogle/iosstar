@@ -114,10 +114,12 @@ class SellingViewController: UIViewController {
             return
         }
         if ( Int64.init(countTf.text!)!) == 0 {
-           SVProgressHUD.showErrorMessage(ErrorMessage: "购买数量大于0", ForDuration: 1, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "购买数量大于0", ForDuration: 1, completion: nil)
+            return
         }
         else if ( ( Int64.init(countTf.text!)!) > (starInfoModel?.publish_last_time)!){
-            SVProgressHUD.showErrorMessage(ErrorMessage: "最多购买"  + "\(String(describing: starInfoModel?.publish_last_time))" + "秒", ForDuration: 1, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "最多购买"  + "\(String(describing: starInfoModel!.publish_last_time))" + "秒", ForDuration: 1, completion: nil)
+            return
 
         }
         

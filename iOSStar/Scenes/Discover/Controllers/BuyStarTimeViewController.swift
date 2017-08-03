@@ -45,13 +45,17 @@ class BuyStarTimeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let _ = UserDefaults.standard.value(forKey: AppConst.guideKey.leftRight.rawValue) as? String {
+        if let _ = UserDefaults.standard.value(forKey: AppConst.guideKey.feedBack.rawValue) as? String {
             
         }else{
-            showGuideVC(.leftRight, handle: { (vc)in
+            showGuideVC(.feedBack, handle: { (vc)in
                 if let guideVC = vc as? GuideVC{
+                    if guideVC.guideType == AppConst.guideKey.feedBack{
+                        guideVC.setGuideContent(.leftRight)
+                        return
+                    }
                     guideVC.dismiss(animated: true, completion: nil)
-                    UserDefaults.standard.set("ok", forKey: AppConst.guideKey.leftRight.rawValue)
+                    UserDefaults.standard.set("ok", forKey: AppConst.guideKey.feedBack.rawValue)
                 }
             })
         }

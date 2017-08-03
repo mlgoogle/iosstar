@@ -68,7 +68,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         if userInfoData?.nick_name == "" {
             let nameUid = StarUserModel.getCurrentUser()?.userinfo?.id
             let stringUid = String.init(format: "%d", nameUid!)
-            nickName.text = "星悦用户" + stringUid
+            nickName.text = "星享时光用户" + stringUid
         } else {
             nickName.text = userInfoData?.nick_name
         }
@@ -92,7 +92,6 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         }
         let requestModel = ModifyNicknameModel()
         requestModel.nickname = nickName.text!
-
         AppAPIHelper.user().modfyNickname(requestModel: requestModel, complete: { (result) in
             // result = 1 成功  result = 0 失败
             if let responseData = result {
