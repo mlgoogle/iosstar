@@ -41,6 +41,7 @@ class AppConst {
     static let chooseServiceTypeSuccess = "chooseServiceTypeSuccess"
     static let valueStarCode = "valueStarCode"
     static let getStarService = "getStarService"
+    static let imageTokenUrl = "http://122.144.169.219:3378/imageToken"
  
     enum KVOKey: String {
         case selectProduct = "selectProduct"
