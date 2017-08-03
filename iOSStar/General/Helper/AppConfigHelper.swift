@@ -53,8 +53,8 @@ class AppConfigHelper: NSObject {
     //MARK: - Bugout
     func setupBugout() {
         let config = BugoutConfig.default()
-        config?.enabledShakeFeedback = false
-        config?.enabledMonitorException = false
+        config?.enabledShakeFeedback = true
+        config?.enabledMonitorException = true
         Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
     }
     

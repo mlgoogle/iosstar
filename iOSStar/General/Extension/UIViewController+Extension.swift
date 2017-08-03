@@ -71,7 +71,10 @@ extension UIViewController {
             return true
         }
     }
-      //登录网易云信
+    
+    
+    
+    //登录网易云信
     func doYunxin(complete: CompleteBlock?){
 
         if UserDefaults.standard.object(forKey: "phone") as? String != nil {
@@ -97,6 +100,19 @@ extension UIViewController {
             })
         }
     }
+    
+    
+    // 显示引导视图控制器
+    func showGuideVC(_ guideType:AppConst.guideKey, handle:CompleteBlock?) {
+        
+        let vc = GuideVC()
+        vc.modalPresentationStyle = .custom
+        vc.modalTransitionStyle = .crossDissolve
+        vc.handleBlock = handle
+        vc.setGuideContent(guideType)
+        present(vc, animated: true, completion: nil)
+    }
+    
     //退出登录
     func userLogout() {
         if let tabbar = UIApplication.shared.windows[0].rootViewController as? BaseTabBarController{

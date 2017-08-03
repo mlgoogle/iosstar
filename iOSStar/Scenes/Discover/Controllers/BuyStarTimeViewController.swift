@@ -43,6 +43,20 @@ class BuyStarTimeViewController: UIViewController {
         collectionView.register(StarCardView.self, forCellWithReuseIdentifier: StarCardView.className())
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let _ = UserDefaults.standard.value(forKey: AppConst.guideKey.leftRight.rawValue) as? String {
+            
+        }else{
+            showGuideVC(.leftRight, handle: { (vc)in
+                if let guideVC = vc as? GuideVC{
+                    guideVC.dismiss(animated: true, completion: nil)
+                    UserDefaults.standard.set("ok", forKey: AppConst.guideKey.leftRight.rawValue)
+                }
+            })
+        }
+    }
+    
     func requestConfigData() {
         AppAPIHelper.user().configRequest(param_code: "HOME_LAST_PIC", complete: { (response) in
             if let model = response as? ConfigReusltValue {

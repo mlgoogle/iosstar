@@ -100,6 +100,16 @@ class AppConst {
         case handleIcon = "\u{e663}"
     }
     
+    enum guideKey: String {
+        case joinToBuy = "joinToBuy.jpg"
+        case leftRight = "leftRight.jpg"
+        case StarIntroduce = "StarIntroduce.jpg"
+        case starSearch = "starSearch.jpg"
+        case starsNews = "starsNews"
+        case timeBusiness = "timeBusiness.jpg"
+        case upDown = "upDown.jpg"
+    }
+    
     class Network {
         #if false
         //是否测试环境

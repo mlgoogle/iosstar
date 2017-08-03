@@ -29,6 +29,11 @@ class StarInteractiveViewController: UIViewController {
 //        requestStar()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
     func configImageNames()  {
         imageNames = []
         for index in 0...10 {
