@@ -48,7 +48,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         NIMSDK.shared().systemNotificationManager.add(self)
         NIMSDK.shared().conversationManager.add(self)
         self.sessionUnreadCount = NIMSDK.shared().conversationManager.allUnreadCount()
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccessNotice), name: Notification.Name(rawValue:AppConst.loginSuccessNotice), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginNotice), name: Notification.Name(rawValue:AppConst.loginSuccessNotice), object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +56,11 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         self.navigationController?.setNavigationBarHidden(true, animated: true)
 
         LoginSuccessNotice()
+    }
+    func LoginNotice(){
+     self.LoginYunxin()
+         LoginSuccessNotice()
+        
     }
      // MARK:- 已购明星数量
     func LoginSuccessNotice() {
@@ -95,7 +100,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
                 } else  {
                     self.nickNameLabel?.text = model.nick_name
                 }
-                
+                UserDefaults.standard.setValue(model.head_url, forKeyPath: "head_url")
                 self.iconImageView?.kf.setImage(with: URL(string: model.head_url), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
                 self.tableView.reloadData()
                 
