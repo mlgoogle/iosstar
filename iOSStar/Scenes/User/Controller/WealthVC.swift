@@ -23,6 +23,7 @@ class HeaderCell: UITableViewCell {
     @IBOutlet weak var buyStarLabel: UILabel!
     // Icon
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet var doinvite: UIButton!
 }
 
 class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource,CustomeAlertViewDelegate {

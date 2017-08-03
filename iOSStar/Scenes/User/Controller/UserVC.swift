@@ -22,6 +22,10 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
     var  account : UILabel?
     // 昵称
     var  nickNameLabel : UILabel?
+    // 累计收益
+    var  Accumulated : UILabel?
+    // 成功邀请
+    var invitation : UILabel?
     // icon
     var iconImageView : UIImageView?
     // 已购明星数量
@@ -111,14 +115,14 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         return section == 0 ? 1 : (section == 1 ? 5 : (section == 2 ? 1 : (section == 3 ? 1 : 3 ) ))
     }
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 2 ? 20 : (section == 3 ? 20 : 0.001)
+        return section == 2 ? 20 : (section == 3 ? 20 : (section == 1 ? 10 : 0.0001))
       
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
          return  0.01
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 260: 44
+        return indexPath.section == 0 ? 340: 44
     }
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -131,6 +135,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
             iconImageView = cell.iconImageView
             buyStarCountLabel = cell.buyStarLabel
             message = cell.message
+            cell.doinvite.addTarget(self, action: #selector(showQrcode), for: .touchUpInside)
             refreshSessionBadge()
            return cell
         }else if indexPath.section == 2{
@@ -153,6 +158,15 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         }
       
 
+    }
+    func showQrcode(){
+    
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QrcodeVC") as? QrcodeVC
+        vc?.modalPresentationStyle = .custom
+        vc?.urlStr = "http://www.zhongyuliying.com/"
+        vc?.modalTransitionStyle = .crossDissolve
+        present(vc!, animated: true, completion: nil)
+        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0{

@@ -56,6 +56,10 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
         super.viewDidLoad()
         self.title = "重置密码"
         //监听键盘弹起 来改变输入址
+        if UserDefaults.standard.object(forKey: "phone") as? String != nil {
+            phoneTf.text  = UserDefaults.standard.object(forKey: "phone") as? String
+            phoneTf.isUserInteractionEnabled = false
+        }
         NotificationCenter.default.addObserver(self , selector: #selector(valueChange(_:)), name:NSNotification.Name.UITextFieldTextDidChange, object: first_input)
         NotificationCenter.default.addObserver(self , selector: #selector(valueChange(_:)), name:NSNotification.Name.UITextFieldTextDidChange, object: phoneTf)
         NotificationCenter.default.addObserver(self , selector: #selector(valueChange(_:)), name:NSNotification.Name.UITextFieldTextDidChange, object: codeTf)
