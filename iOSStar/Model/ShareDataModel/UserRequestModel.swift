@@ -82,6 +82,7 @@ class TokenLoginRequestModel: MarketBaseModel {
 }
 
 class ModifyNicknameModel: MarketBaseModel {
+    var uid:Int64 = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
     var nickname = ""
 }
 

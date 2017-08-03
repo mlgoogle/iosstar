@@ -91,7 +91,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
                 if model.nick_name == "" {
                     let nameUid = StarUserModel.getCurrentUser()?.userinfo?.id
                     let stringUid = String.init(format: "%d", nameUid!)
-                    self.nickNameLabel?.text = "星悦用户" + stringUid
+                    self.nickNameLabel?.text = "星享时光用户" + stringUid
                 } else  {
                     self.nickNameLabel?.text = model.nick_name
                 }
@@ -135,6 +135,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
             iconImageView = cell.iconImageView
             buyStarCountLabel = cell.buyStarLabel
             message = cell.message
+            cell.doinvite.addTarget(self, action: #selector(showQrcode), for: .touchUpInside)
             refreshSessionBadge()
            return cell
         }else if indexPath.section == 2{
@@ -157,6 +158,15 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         }
       
 
+    }
+    func showQrcode(){
+    
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "QrcodeVC") as? QrcodeVC
+        vc?.modalPresentationStyle = .custom
+        vc?.urlStr = "http://www.zhongyuliying.com/"
+        vc?.modalTransitionStyle = .crossDissolve
+        present(vc!, animated: true, completion: nil)
+        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0{
