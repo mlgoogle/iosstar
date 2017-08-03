@@ -66,8 +66,10 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "重置交易密码"
-        self.phoneTf.text = UserDefaults.standard.object(forKey: SocketConst.Key.phone) as? String
-        self.phoneTf.isUserInteractionEnabled = true
+        if UserDefaults.standard.object(forKey: "phone") as? String != nil {
+            phoneTf.text  = UserDefaults.standard.object(forKey: "phone") as? String
+            phoneTf.isUserInteractionEnabled = false
+        }
         //监听键盘弹起 来改变输入址
         first_input.delegate = self
         second_input.delegate = self

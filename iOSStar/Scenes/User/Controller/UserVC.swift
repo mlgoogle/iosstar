@@ -111,14 +111,14 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         return section == 0 ? 1 : (section == 1 ? 5 : (section == 2 ? 1 : (section == 3 ? 1 : 3 ) ))
     }
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 2 ? 20 : (section == 3 ? 20 : 0.001)
+        return section == 2 ? 20 : (section == 3 ? 20 : 10)
       
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
          return  0.01
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 260: 44
+        return indexPath.section == 0 ? 340: 44
     }
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

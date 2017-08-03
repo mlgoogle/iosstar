@@ -37,8 +37,8 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         initAlertController()
         initImagePickerController()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "保存", style: .done, target: self, action: #selector(rightItmeClick))
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(hexString: AppConst.Color.main)
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "保存", style: .done, target: self, action: #selector(rightItmeClick))
+//        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(hexString: AppConst.Color.main)
 
         
         self.getUserRealmInfo { (result) in
