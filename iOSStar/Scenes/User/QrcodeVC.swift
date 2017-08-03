@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class QrcodeVC: UIViewController {
 
     @IBOutlet var Qrcode: UIImageView!
@@ -15,10 +15,11 @@ class QrcodeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "我的二维码"
-       
+        
         Qrcode.image = UIImage.qrcodeImage(urlStr)
         // Do any additional setup after loading the view.
     }
+    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,15 +33,26 @@ class QrcodeVC: UIViewController {
         self.dismissController()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func saveImageToPhoneLib(_ sender: UIButton) {
+        let actionController = UIAlertController.init(title: "保存图片", message: "保存图片到相册", preferredStyle: .alert)
+        let cancelAlter = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
+        actionController.addAction(cancelAlter)
+        let sureAction = UIAlertAction.init(title: "确认", style: .default, handler: { [weak self](result) in
+            SVProgressHUD.showProgressMessage(ProgressMessage: "保存中")
+            UIImageWriteToSavedPhotosAlbum((self?.Qrcode.image)!, self, #selector(self?.savedOK(image:didFinishSavingWithError:contextInfo:)), nil)
+        })
+        actionController.addAction(sureAction)
+        present(actionController, animated: true, completion: nil)
     }
-    */
 
+
+    func savedOK(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
+        SVProgressHUD.dismiss()
+        if error != nil {
+            SVProgressHUD.showErrorMessage(ErrorMessage: error!.localizedDescription, ForDuration: 1.5, completion: nil)
+            return
+        }
+        SVProgressHUD.showSuccessMessage(SuccessMessage: "保存成功", ForDuration: 1.5, completion: nil)
+        
+    }
 }
