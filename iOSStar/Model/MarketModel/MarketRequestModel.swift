@@ -12,6 +12,7 @@ import Foundation
 class MarketBaseModel: BaseModel {
     
     var id:Int64 = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
+    
     var token =  StarUserModel.getCurrentUser()?.token ?? ""
 }
 
