@@ -37,8 +37,8 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         initAlertController()
         initImagePickerController()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "保存", style: .done, target: self, action: #selector(rightItmeClick))
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(hexString: AppConst.Color.main)
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "保存", style: .done, target: self, action: #selector(rightItmeClick))
+//        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(hexString: AppConst.Color.main)
 
         
         self.getUserRealmInfo { (result) in
@@ -82,39 +82,6 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
 //        self.nickName.text = (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
         // self.nickName.text = phonetext
     }
-    
-    // 保存名称
-    func rightItmeClick() {
-        // 修改昵称
-        if nickName.text?.length() == 0 || (nickName.text?.length())! >= 15 {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "昵称不合法", ForDuration: 2.0, completion: nil)
-            return
-        }
-        let requestModel = ModifyNicknameModel()
-        requestModel.nickname = nickName.text!
-        AppAPIHelper.user().modfyNickname(requestModel: requestModel, complete: { (result) in
-            // result = 1 成功  result = 0 失败
-            if let responseData = result {
-                if responseData["result"] as! Int == 1 {
-                    SVProgressHUD.showSuccessMessage(SuccessMessage: "保存成功!", ForDuration: 2.0, completion: { 
-                        _ = self.navigationController?.popViewController(animated: true)
-                    })
-                } else {
-                    SVProgressHUD.showSuccessMessage(SuccessMessage: "修改失败,请稍后再试!", ForDuration: 2.0, completion:nil)
-                }
-            }
-        }) { (error) in
-            
-            print(error)
-            self.didRequestError(error)
-//            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-        }
-    }
-    
-    
-    
-    
-
    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
@@ -202,7 +169,57 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
     func imagePickerControllerDidCancel(_ picker:UIImagePickerController){
         picker.dismiss(animated:true, completion:nil)
     }
+    @IBAction func didchanggeNikename(_ sender: Any) {
+        changeNikemane()
+    }
 
+    func changeNikemane(){
+        let alertVC = UIAlertController(title: "请输入昵称", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        // 2 带输入框
+        alertVC.addTextField {
+            (textField: UITextField!) -> Void in
+            textField.placeholder = "请输入昵称"
+            textField.textAlignment = .center
+        }
+        // 3 命令（样式：退出Cancel，警告Destructive-按钮标题为红色，默认Default）
+        let alertActionCancel = UIAlertAction(title: "取消", style: .default, handler: nil)
+        let alertActionOK = UIAlertAction(title: "确定", style: .default, handler: {
+            action in
+           
+        
+            let username = alertVC.textFields!.first! as UITextField
+            
+            if username.text?.length() == 0 || (username.text?.length())! >= 15 {
+                SVProgressHUD.showErrorMessage(ErrorMessage: "昵称不合法", ForDuration: 2.0, completion: nil)
+                return
+            }
+            let requestModel = ModifyNicknameModel()
+            requestModel.nickname = username.text!
+            AppAPIHelper.user().modfyNickname(requestModel: requestModel, complete: { [weak self](result) in
+                // result = 1 成功  result = 0 失败
+                if let responseData = result {
+                    if responseData["result"] as! Int == 1 {
+                        self?.nickName.text = username.text
+                        SVProgressHUD.showSuccessMessage(SuccessMessage: "保存成功!", ForDuration: 2.0, completion: {
+                           
+                        })
+                    } else {
+                        SVProgressHUD.showSuccessMessage(SuccessMessage: "修改失败,请稍后再试!", ForDuration: 2.0, completion:nil)
+                    }
+                }
+            }) { (error) in
+                
+            
+                self.didRequestError(error)
+            }
+          
+           
+        })
+        alertVC.addAction(alertActionCancel)
+        alertVC.addAction(alertActionOK)  
+        self.present(alertVC, animated: true, completion: nil)
+
+    }
 
 }
 
