@@ -295,6 +295,7 @@
 		8E4C4D491F17528F0002EABF /* HHEmojiManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C4D411F17528F0002EABF /* HHEmojiManage.swift */; };
 		8E4C4D4A1F17528F0002EABF /* HHImageKeyboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C4D421F17528F0002EABF /* HHImageKeyboardCell.swift */; };
 		8E73BEB61F2ED6DC008E21EC /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E73BEB51F2ED6DC008E21EC /* iconfont.ttf */; };
+		8E73BF671F307010008E21EC /* GuideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E73BF661F307010008E21EC /* GuideVC.swift */; };
 		8E9D05E21F010A4F00A9F852 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D05E11F010A4F00A9F852 /* UIButton+Extension.swift */; };
 		8ED327881F2976DE0034544E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31511EA8469900F85308 /* CoreMedia.framework */; };
 		8ED327891F2976F00034544E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31531EA846A100F85308 /* AudioToolbox.framework */; };
@@ -876,6 +877,7 @@
 		8E4C4D411F17528F0002EABF /* HHEmojiManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHEmojiManage.swift; sourceTree = "<group>"; };
 		8E4C4D421F17528F0002EABF /* HHImageKeyboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHImageKeyboardCell.swift; sourceTree = "<group>"; };
 		8E73BEB51F2ED6DC008E21EC /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
+		8E73BF661F307010008E21EC /* GuideVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideVC.swift; sourceTree = "<group>"; };
 		8E9D05E11F010A4F00A9F852 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		8EF14BC71F26F0C800551DA1 /* Deal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Deal.storyboard; sourceTree = "<group>"; };
 		A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareDataModel.swift; sourceTree = "<group>"; };
@@ -1476,6 +1478,7 @@
 				6E2CC4621F0DEA8C00281559 /* StarInteractiveViewController.swift */,
 				6E2CC4801F0F8C9B00281559 /* StarIntroduceViewController.swift */,
 				6E4F03E01F10C9870003D51F /* SellingViewController.swift */,
+				8E73BF661F307010008E21EC /* GuideVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -3453,6 +3456,7 @@
 				A0EF3B1B1EB9778F0023093A /* BaseSocketAPI.swift in Sources */,
 				6EFE79E21ECC49570096470D /* MarketFansListViewController.swift in Sources */,
 				8E3979F71F28587800847CCB /* NIMSessionNotificationContentView.m in Sources */,
+				8E73BF671F307010008E21EC /* GuideVC.swift in Sources */,
 				A04CF0A11ED6CB6800B93D28 /* WithdrawalVC.swift in Sources */,
 				8E3979DC1F28587800847CCB /* NIMLocationContentConfig.m in Sources */,
 				6E1B56FB1ED2745400A014AE /* YD_SwipHeaderView.swift in Sources */,

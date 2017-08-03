@@ -134,7 +134,21 @@ class HeatDetailViewController: UIViewController {
         requestFansList(buySell:-1)
         YD_CountDownHelper.shared.start()
         renderer.start()
-   
+        
+        if let _ = UserDefaults.standard.value(forKey: AppConst.guideKey.timeBusiness.rawValue) as? String {
+            
+        }else{
+            showGuideVC(.timeBusiness, handle: { (vc)in
+                if let guideVC = vc as? GuideVC{
+                    if guideVC.guideType == AppConst.guideKey.timeBusiness{
+                        guideVC.dismiss(animated: true, completion:nil)
+                        UserDefaults.standard.set("ok", forKey: AppConst.guideKey.timeBusiness.rawValue)
+                        return
+                    }
+                    
+                }
+            })
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
