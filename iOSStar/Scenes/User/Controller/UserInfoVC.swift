@@ -59,7 +59,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         
         }
 
-        let  phonetext  = (UserDefaults.standard.object(forKey: "phone") as! String)
+        if let  phonetext  = (UserDefaults.standard.object(forKey: "phone") as? String){
       
         let index = phonetext.index(phonetext.startIndex, offsetBy: 3)
         let index1 = phonetext.index(phonetext.endIndex, offsetBy: -4)
@@ -72,7 +72,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         } else {
             nickName.text = userInfoData?.nick_name
         }
-        
+        }
     
        var headUrl = ""
         if userInfoData != nil {
