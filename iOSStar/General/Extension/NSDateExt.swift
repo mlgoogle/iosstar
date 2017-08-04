@@ -39,7 +39,7 @@ extension Date{
      *  字符串转日期
      */
     static func yt_convertDateStrToDate(_ dateStr: String, format: String) -> Date {
-        if dateStr == "0000-00-00 00:00:00" {
+        if dateStr == "0000-00-00" || dateStr.length() == 0{
             return Date()
         }
         let formatter = DateFormatter.init()

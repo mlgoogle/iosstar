@@ -41,6 +41,7 @@ class AppConst {
     static let chooseServiceTypeSuccess = "chooseServiceTypeSuccess"
     static let valueStarCode = "valueStarCode"
     static let getStarService = "getStarService"
+    static let imageTokenUrl = "http://122.144.169.219:3378/imageToken"
  
     enum KVOKey: String {
         case selectProduct = "selectProduct"
@@ -112,11 +113,13 @@ class AppConst {
     }
     
     class Network {
-        #if true
+        #if false
         //是否测试环境
         //139.224.34.22
         //122.144.169.214
-        static let TcpServerIP:String = "139.224.34.22";
+
+        static let TcpServerIP:String = "122.144.169.214";
+
         static let TcpServerPort:UInt16 = 16006
         static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
@@ -221,8 +224,8 @@ class AppConst {
         static let Scope = "snsapi_userinfo"
         static let State = "wpstate"
         static let AccessTokenUrl = "https://api.weixin.qq.com/sns/oauth2/access_token"
-        static let Appid = "wx9dc39aec13ee3158"
-        static let Secret = "a12a88f2c4596b2726dd4ba7623bc27e"
+        static let Appid = "wxa75d31be7fcb762f"
+        static let Secret = "edd6e7ea7293049951b563dbc803ebea"
         static let ErrorCode = "ErrorCode"
         static let wechetUserInfo = "https://api.weixin.qq.com/sns/userinfo"
     }

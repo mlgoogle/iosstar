@@ -895,7 +895,7 @@
 		A03A46CC1EEF997B00EAB8B1 /* InputPassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPassVC.swift; sourceTree = "<group>"; };
 		A03A46CE1EEFD5BA00EAB8B1 /* Order.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Order.storyboard; path = iOSSTar/Resource/Storyboard/Order.storyboard; sourceTree = SOURCE_ROOT; };
 		A03B41EF1EF266FC00BDC68C /* RechargeCollectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeCollectView.swift; sourceTree = "<group>"; };
-		A03CCC3B1F32F28A00B1961F /* QrcodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrcodeVC.swift; sourceTree = "<group>"; };
+		A03CCC3B1F32F28A00B1961F /* QrcodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QrcodeVC.swift; path = ../QrcodeVC.swift; sourceTree = "<group>"; };
 		A03D314D1EA8465000F85308 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A03D314F1EA8466500F85308 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A03D31511EA8469900F85308 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -2321,7 +2321,6 @@
 				A04CF07B1ED6CB6800B93D28 /* Controller */,
 				A04CF0881ED6CB6800B93D28 /* recharge */,
 				A04CF08B1ED6CB6800B93D28 /* View */,
-				A03CCC3B1F32F28A00B1961F /* QrcodeVC.swift */,
 			);
 			name = User;
 			path = iOSSTar/Scenes/User;
@@ -2338,6 +2337,7 @@
 		A04CF07B1ED6CB6800B93D28 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A03CCC3B1F32F28A00B1961F /* QrcodeVC.swift */,
 				A02D07A71F0C9AC300BC43D9 /* WithDrawaListVC.swift */,
 				A00DDE061F0C89A000DBF17E /* BankCardVC.swift */,
 				A04CF07A1ED6CB6800B93D28 /* TipBindVC.swift */,

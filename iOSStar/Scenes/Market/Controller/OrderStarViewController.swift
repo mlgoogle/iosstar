@@ -306,7 +306,7 @@ class OrderStarViewController: UIViewController {
             return
         }
         if orderPalace.text?.length() == 0 {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "请选择城市", ForDuration: 2.0, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "明星尚未选择约见城市，请耐心等待", ForDuration: 2.0, completion: nil)
             return
         }
         if feedBack.text.length() == 0 {

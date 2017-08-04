@@ -51,13 +51,13 @@ class BuyOrSellViewController: DealBaseViewController {
     
     func keyboardWillShow(notification: NSNotification?) {
         UIView.animate(withDuration: 0.5) {
-            self.view.frame = CGRect(x: self.view.frame.origin.x, y: -100, width: self.view.frame.size.width, height: self.view.frame.size.height)
+            self.view.frame = CGRect(x: self.view.frame.origin.x, y: -150, width: self.view.frame.size.width, height: self.view.frame.size.height)
         }
     }
     
     func keyboardWillHide(notification: NSNotification?) {
         UIView.animate(withDuration: 0.5) {
-            self.view.frame = CGRect(x: self.view.frame.origin.x, y: 64, width: self.view.frame.size.width, height: self.view.frame.size.height)
+            self.view.frame = CGRect(x: self.view.frame.origin.x, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         }
     }
     
@@ -210,7 +210,7 @@ extension BuyOrSellViewController:UITableViewDelegate, UITableViewDataSource, UI
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         view.endEditing(true)
-        view.y = 0
+//        view.y = 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

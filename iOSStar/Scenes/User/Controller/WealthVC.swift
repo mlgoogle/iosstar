@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+
 class HeaderCell: UITableViewCell {
     
     @IBOutlet var message: UIButton!
@@ -127,9 +129,13 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Custo
                 }
             }
         }
+        
+    
+    
         if indexPath.section == 2 {
         //WithdrawalVC
-            
+            SVProgressHUD.showWainningMessage(WainningMessage: "攻城狮努力中，敬请期待", ForDuration: 1, completion: nil)
+            return
             if self.needPwd == 1{
                 let alertVc = AlertViewController()
                 alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
