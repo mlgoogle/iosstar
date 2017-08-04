@@ -2776,9 +2776,10 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TeT-hS-6wn">
                                                             <rect key="frame" x="266" y="32" width="27" height="21"/>
-                                                            <constraints>
+                                     <constraints>
                                                                 <constraint firstAttribute="width" constant="27" id="5L5-W8-7Bc"/>
                                                                 <constraint firstAttribute="height" constant="21" id="gEq-uG-8gK"/>
                                                             </constraints>
@@ -2826,6 +2827,8 @@
                                             <outlet property="iconImageView" destination="rLj-B3-Ohu" id="Oob-ym-tCi"/>
                                             <outlet property="message" destination="uQU-AJ-AoB" id="fqn-tl-WZp"/>
                                             <outlet property="nickNameLabel" destination="EnC-VG-Jk9" id="QuE-Jf-jf8"/>
+                                            <outlet property="total_amount" destination="I0X-SW-CNI" id="WlS-hj-PIt"/>
+                                            <outlet property="total_num" destination="hQC-Py-hy6" id="Lbb-LV-PUQ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="titleCell" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="titleCell" rowHeight="50" id="v1W-ng-Seo" customClass="TitleCell" customModule="iOSStar">
@@ -2835,9 +2838,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="我约的明星" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKc-Lb-dq9">
-                                                    <rect key="frame" x="17" y="11" width="172" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我约的明星" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKc-Lb-dq9">
+                                                    <rect key="frame" x="17" y="0.0" width="66.5" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2855,6 +2857,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="tXa-f7-coS" secondAttribute="trailing" constant="-33" id="1Lb-cQ-YNV"/>
+                                                <constraint firstItem="QKc-Lb-dq9" firstAttribute="leading" secondItem="QGU-cV-FTW" secondAttribute="leading" constant="17" id="4uz-aQ-r9j"/>
+                                                <constraint firstItem="QKc-Lb-dq9" firstAttribute="top" secondItem="QGU-cV-FTW" secondAttribute="top" id="7cW-NU-Ipy"/>
+                                                <constraint firstAttribute="bottom" secondItem="QKc-Lb-dq9" secondAttribute="bottom" constant="-0.5" id="Ife-uD-NOA"/>
                                                 <constraint firstItem="tXa-f7-coS" firstAttribute="leading" secondItem="QGU-cV-FTW" secondAttribute="leading" constant="15" id="mNd-br-Qqc"/>
                                                 <constraint firstAttribute="bottom" secondItem="tXa-f7-coS" secondAttribute="bottom" id="tWv-Rc-Avh"/>
                                             </constraints>

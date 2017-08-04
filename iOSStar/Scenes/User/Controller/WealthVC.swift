@@ -22,8 +22,10 @@ class HeaderCell: UITableViewCell {
     // 昵称
     @IBOutlet weak var nickNameLabel: UILabel!
     // 已购明细数量
+    @IBOutlet var total_amount: UILabel!
     @IBOutlet weak var buyStarLabel: UILabel!
     // Icon
+    @IBOutlet var total_num: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet var doinvite: UIButton!
 }

@@ -84,4 +84,7 @@ protocol UserApi {
     
     func configRequest(param_code:String, complete: CompleteBlock?, error: ErrorBlock?)
     
+    func getcommission( requestModel:CommissionModelequestModel,complete: CompleteBlock?, error: ErrorBlock?)
+    
+    
 }
