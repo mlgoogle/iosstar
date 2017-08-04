@@ -254,17 +254,7 @@ class AppConfigHelper: NSObject {
         config.migrationBlock = { migration, oldSchemaVersion in
             
             if oldSchemaVersion < 4 {
-                
-                migration.enumerateObjects(ofType: EntrustListModel.className(), { (oldObject, newObject) in
-                    newObject!["pchg"] = 0.0
-                })
-                migration.enumerateObjects(ofType: WeChatPayResultModel.className(), { (oldObject, newObject) in
-                    newObject!["rid"] = ""
-                })
-                migration.enumerateObjects(ofType: StarUserModel.className(), { (oldObject, newObject) in
-                    newObject!["token_time"] = 0
-                })
-    
+
                 
             }
         }
