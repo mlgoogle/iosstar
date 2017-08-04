@@ -133,20 +133,10 @@ CGRect NIMKit_CGRectWithCenterAndSize(CGPoint center, CGSize size){
     {
         from = message.from;
     }
-  
-    if([[NSUserDefaults standardUserDefaults] objectForKey:@"head_url"] != nil){
-        NSURL *url =  [NSURL URLWithString:[[NSUserDefaults standardUserDefaults] objectForKey:@"head_url"]] ;
-           NIMKitInfo *info = [[NIMKit sharedKit] infoByUser:from option:option];
-        
-        [self nim_setImageWithURL:url placeholderImage:info.avatarImage];
-    }else{
-        NIMKitInfo *info = [[NIMKit sharedKit] infoByUser:from option:option];
-        NSURL *url = info.avatarUrlString ? [NSURL URLWithString:info.avatarUrlString] : nil;
-        
-        [self nim_setImageWithURL:url placeholderImage:info.avatarImage];
-    }
-  
-   
+    NIMKitInfo *info = [[NIMKit sharedKit] infoByUser:from option:option];
+//    NSURL *url = info.avatarUrlString ? [NSURL URLWithString:info.avatarUrlString] : nil;
+     NSURL *url =  [NSURL URLWithString:@"http://ofr5nvpm7.bkt.clouddn.com/head.png"] ;
+    [self nim_setImageWithURL:url placeholderImage:info.avatarImage];
 }
 
 @end

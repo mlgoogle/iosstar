@@ -8,9 +8,10 @@
 
 import UIKit
 
-class YDSSessionViewController: NIMSessionViewController {
+class YDSSessionViewController: NIMSessionViewController ,UIScrollViewDelegate{
     var isbool : Bool = false
     var starcode = ""
+    var starname = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = UIColor.init(hexString: "FAFAFA")
@@ -22,8 +23,13 @@ class YDSSessionViewController: NIMSessionViewController {
         navigationItem.leftBarButtonItem = nil
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.imageWith("\u{e61a}", fontSize: CGSize.init(width: 22, height: 22), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)), style: .plain, target: self, action: #selector(leftItemTapped))
         navigationItem.leftBarButtonItem?.tintColor = UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)
+        if starname != "" {
+         titleLabel.text = starname
+        }else{
+         titleLabel.text = starcode
+        }
         navigationItem.leftItemsSupplementBackButton = false
-        titleLabel.text = starcode
+       
         titleLabel.textColor = UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)
     }
     
@@ -53,6 +59,14 @@ class YDSSessionViewController: NIMSessionViewController {
         vc.loadRequest = "http://122.144.169.219:3389/talk"
         vc.navtitle = "星聊须知"
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 170 {
+            self.navBarBgAlpha = 1.0
+        } else {
+            self.navBarBgAlpha = 0.0
+            
+        }
     }
     
     override func send(_ message: NIMMessage!) {

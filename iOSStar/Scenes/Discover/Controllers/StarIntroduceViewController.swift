@@ -162,7 +162,10 @@ class StarIntroduceViewController: UIViewController {
                     
                     let session = NIMSession(self.starDetailModel?.acc_id ?? "", type: .P2P)
                     let vc = YDSSessionViewController(session: session)
+                    
                     vc?.starcode = self.starModel?.symbol ?? ""
+                    
+                    vc?.starname = (self.starDetailModel?.star_name)!
                     self.navigationController?.pushViewController(vc!, animated: true)
                 } else {
                     

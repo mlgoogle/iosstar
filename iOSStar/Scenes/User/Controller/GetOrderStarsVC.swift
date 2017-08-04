@@ -202,6 +202,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
                 let session = NIMSession( model.faccid, type: .P2P)
                 let vc = YDSSessionViewController(session: session)
                 vc?.starcode = model.starcode
+                vc?.starname = model.starname
                 self.navigationController?.pushViewController(vc!, animated: true)
                 self.tableView.reloadSections(IndexSet(integer: unseleNumber), with: .fade)
                 return
