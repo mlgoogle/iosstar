@@ -8,10 +8,73 @@
 
 import Foundation
 //import Qiniu
-
+import Qiniu
+import Alamofire
 
 extension UIImage{
 
+    
+    
+    /**
+     七牛上传图片
+     
+     - parameter image:     图片
+     - parameter imageName: 图片名
+     - parameter complete:  图片完成Block
+     */
+    class func qiniuUploadImage(image: UIImage, imageName: String, complete: CompleteBlock?, error: ErrorBlock?) {
+        
+        //0,将图片存到沙盒中
+        let filePath = cacheImage(image, imageName: imageName)
+        //1,获取图片
+        Alamofire.request(AppConst.imageTokenUrl, method: .get).responseJSON { (resultObject) in
+            if let result: NSDictionary = resultObject.result.value as? NSDictionary{
+                let token = result.value(forKey: "imageToken") as! String
+                //2,上传图片
+                let timestamp = NSDate().timeIntervalSince1970
+                let key = "\(imageName)\(Int(timestamp)).png"
+                let qiniuManager = QNUploadManager()
+                qiniuManager?.putFile(filePath, key: key, token: token, complete: { (info, key, resp) in
+                    if complete == nil{
+                        return
+                    }
+                    if resp == nil {
+                        complete!(nil)
+                        return
+                    }
+                    //3,返回URL
+                    let respDic: NSDictionary? = resp as NSDictionary?
+                    let value:String? = respDic!.value(forKey: "key") as? String
+                    let imageUrl = AppConst.Network.qiniuHost+value!
+                    complete!(imageUrl as AnyObject?)
+                }, option: nil)
+            }
+        }
+    }
+    
+    /**
+     缓存图片
+     
+     - parameter image:     图片
+     - parameter imageName: 图片名
+     - returns: 图片沙盒路径
+     */
+    class func cacheImage(_ image: UIImage ,imageName: String) -> String {
+        let data = UIImageJPEGRepresentation(image, 0.5)
+        let homeDirectory = NSHomeDirectory()
+        let documentPath = homeDirectory + "/Documents/"
+        let fileManager: FileManager = FileManager.default
+        do {
+            try fileManager.createDirectory(atPath: documentPath, withIntermediateDirectories: true, attributes: nil)
+        }
+        catch _ {
+        }
+        let key = "\(imageName).png"
+        fileManager.createFile(atPath: documentPath + key, contents: data, attributes: nil)
+        //得到选择后沙盒中图片的完整路径
+        let filePath: String = String(format: "%@%@", documentPath, key)
+        return filePath
+    }
     
     
     class func imageFromUIView(_ view: UIView) -> UIImage {
