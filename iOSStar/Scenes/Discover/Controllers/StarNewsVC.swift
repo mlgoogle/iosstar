@@ -11,6 +11,7 @@ import YYText
 import SVProgressHUD
 import MJRefresh
 import Kingfisher
+import MWPhotoBrowser
 
 class NewsCell: OEZTableViewCell {
     @IBOutlet var iconImage: UIImageView!
@@ -24,12 +25,17 @@ class NewsCell: OEZTableViewCell {
     @IBOutlet weak var showView: UIView!
     @IBOutlet weak var contentHeight: NSLayoutConstraint!
     
+    var newsPicUrl = ""
+    
     override func awakeFromNib() {
+        newsPic.isUserInteractionEnabled = true
         showBtn.setImage(UIImage.imageWith(AppConst.iconFontName.showIcon.rawValue, fontSize: CGSize.init(width: 22, height: 17), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.linkColor.rawValue)), for: .normal)
         showBtnTapped(showBtn)
         thumbUpBtn.setImage(UIImage.imageWith(AppConst.iconFontName.thumbIcon.rawValue, fontSize: CGSize.init(width: 16, height: 16), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.closeColor.rawValue)), for: .normal)
         CommentBtn.setImage(UIImage.imageWith(AppConst.iconFontName.commentIcon.rawValue, fontSize: CGSize.init(width: 16, height: 16), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.closeColor.rawValue)), for: .normal)
         newsLabel.textParser = YParser.share()
+        let showPicGesture = UITapGestureRecognizer.init(target: self, action: #selector(showPicGestureTapped(_:)))
+        newsPic.addGestureRecognizer(showPicGesture)
     }
     
     override func update(_ data: Any!) {
@@ -41,6 +47,7 @@ class NewsCell: OEZTableViewCell {
             //新闻图片占位图
             let newsPlace = UIImage.imageWith(AppConst.iconFontName.newsPlaceHolder.rawValue, fontSize: newsPic.frame.size, fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue))
             newsPic.kf.setImage(with: URL.init(string: model.pic_url), placeholder: newsPlace)
+            newsPicUrl = model.pic_url
             //计算文案高度
             let contentAttribute = NSMutableAttributedString.init(string: model.content)
             contentAttribute.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14), range: NSRange.init(location: 0, length: model.content.length()))
@@ -62,6 +69,11 @@ class NewsCell: OEZTableViewCell {
     @IBAction func thumbUpOrCommentBtnTapped(_ sender: UIButton) {
         didSelectRowAction(UInt(sender.tag))
         showBtnTapped(showBtn)
+    }
+    
+    func showPicGestureTapped(_ gesture: UITapGestureRecognizer) {
+        didSelectRowAction(UInt(103))
+        didSelectRowAction(UInt(103), data: newsPicUrl)
     }
 }
 
@@ -146,7 +158,7 @@ class CommentCell: OEZTableViewCell {
     }
 }
 
-class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
+class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserDelegate {
     
     @IBOutlet var dismissBtn: UIButton!
     @IBOutlet var headerView: UIView!
@@ -155,7 +167,8 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
     var starModel:StarSortListModel?
     var tableData: [CircleListModel] = []
     var expericences:[ExperienceModel]?
-   
+    var newsPicUrl = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "发现明星"
@@ -186,10 +199,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
     func sharetothird(){
         
         if let model = expericences?[0]{
-            
-            
             let view : ShareView = Bundle.main.loadNibNamed("ShareView", owner: self, options: nil)?.last as! ShareView
-            
             view.title = (starModel?.name)! + "(正在星享时光 出售TA的时间)"
             view.Image = iconImage.image
             view.descr = model.experience
@@ -198,14 +208,6 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
             
         }
         
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        KingfisherManager.shared.cache.clearMemoryCache()
-        KingfisherManager.shared.cache.clearDiskCache()
-        tableView = nil
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -218,6 +220,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
         case thumbUp = 100
         case comment = 101
         case reply = 102
+        case showPic = 103
     }
     
     func endRefresh() {
@@ -418,9 +421,23 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate {
                 }, error: self?.errorBlockFunc())
             }
             present(keyboardVC, animated: true, completion: nil)
+        case cellAction.showPic.rawValue:
+            if let url = data as? String{
+                newsPicUrl = url
+                let vc = PhotoBrowserVC(delegate: self)
+                present(vc!, animated: true, completion: nil)
+            }
         default:
             print("")
         }
         
+    }
+    
+    func numberOfPhotos(in photoBrowser: MWPhotoBrowser!) -> UInt {
+        return 1
+    }
+    func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
+        let photo = MWPhoto(url:URL(string: newsPicUrl))
+        return photo
     }
 }

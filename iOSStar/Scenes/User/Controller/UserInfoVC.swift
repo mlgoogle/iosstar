@@ -22,7 +22,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
     @IBOutlet weak var realname: UILabel!
     
     var userInfoData : UserInfoModel?
-    
+    var imageUrl = ""
     var uploadAlertController:UIAlertController!
     var imagePickerController:UIImagePickerController!
     override func viewDidLoad() {
@@ -159,9 +159,14 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         //当选择的类型是图片
         if type=="public.image"
         {
-
-            let img = info[UIImagePickerControllerOriginalImage]as?UIImage
-            self.headerImg.image = img
+            if let img = info[UIImagePickerControllerOriginalImage] as? UIImage{
+                self.headerImg.image = img
+                UIImage.qiniuUploadImage(image: img, imageName: "Cycle", complete: { [weak self] (result) in
+                    if let qiniuUrl = result as? String{
+                        self?.imageUrl = qiniuUrl
+                    }
+                }, error: nil)
+            }
             picker.dismiss(animated:true, completion:nil)
         }
     }
