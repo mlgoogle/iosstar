@@ -14,8 +14,6 @@ class GuideVC: UIViewController {
     private lazy var contentBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.frame = self.view.frame
-        btn.backgroundColor = UIColor.black
-        btn.alpha = 0.5
         btn.addTarget(self, action:#selector(contentBtnTapped(_:)), for: .touchUpInside)
         return btn
     }()

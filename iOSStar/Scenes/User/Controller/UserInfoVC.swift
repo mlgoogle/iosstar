@@ -21,7 +21,6 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
     // 真实姓名
     @IBOutlet weak var realname: UILabel!
     
-    
     var userInfoData : UserInfoModel?
     
     var uploadAlertController:UIAlertController!

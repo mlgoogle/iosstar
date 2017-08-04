@@ -28,7 +28,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
     var  payView : SelectPayType!
     var  rechargeMoney : Double = 0.00
     var  bgview : UIView!
-    var  paytype  = Int()
+    var  paytype  = 1
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -165,7 +165,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         return section == 0 ? 0.001 : 10
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+        return
         if indexPath.section == 0 {
             inputMoney.resignFirstResponder()
             tableView.isScrollEnabled = false
