@@ -100,9 +100,8 @@ extension MarketSearchViewController:UITableViewDelegate, UITableViewDataSource 
         let vc = storyBoard.instantiateViewController(withIdentifier: "HeatDetailViewController") as! HeatDetailViewController
         let starModel = StarSortListModel()
         let model = dataArry[indexPath.row]
-
         starModel.name = model.name
-        starModel.symbol = model.wid
+        starModel.symbol = model.symbol
         starModel.pic = model.pic
         vc.starListModel = starModel
         navigationController?.pushViewController(vc, animated: true)
