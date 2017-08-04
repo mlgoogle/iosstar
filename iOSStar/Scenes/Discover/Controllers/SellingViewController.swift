@@ -122,29 +122,9 @@ class SellingViewController: UIViewController {
             return
 
         }
+        tradePass()
         
-        let requestModel = BuyStarTimeRequestModel()
-        requestModel.amount = Int64.init(countTf.text!)!
-        requestModel.price = (self.starInfoModel?.publish_price)!
-        requestModel.symbol = starModel!.symbol
-        
-        AppAPIHelper.discoverAPI().buyStarTime(requestModel: requestModel, complete: { (response) in
-            if let result = response as? Int{
-                if result == 1{
-                   SVProgressHUD.showSuccessMessage(SuccessMessage: "购买成功", ForDuration: 1, completion: { 
-                     _ = self.navigationController?.popViewController(animated: true)
-                   })
-                 }else{
-                  SVProgressHUD.showErrorMessage(ErrorMessage: "交易失败", ForDuration: 1, completion: nil)
-                }
-            }else{
-              SVProgressHUD.showErrorMessage(ErrorMessage: "交易失败", ForDuration: 1, completion: nil)
-            }
-        }) { (error) in
-            self.didRequestError(error)
-//            SVProgressHUD.showErrorMessage(ErrorMessage: "交易失败", ForDuration: 1, completion: nil)
-            
-        }
+       
     }
     func dodetail(){
         let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
@@ -214,6 +194,66 @@ extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITe
         }
         return cell
     }
+    func tradePass(){
     
-    
+        let model = OrderInformation()
+        model.orderStatus = "购买"
+        model.orderInfomation = String.init(format: "%@ (%@)秒", (self.starInfoModel?.star_name)! ,(countTf.text)!)
+        model.orderPrice =  String.init(format: "%.2f/秒", (self.starInfoModel?.publish_price)!)
+        
+        //将值传给 sharedatemodel
+        ShareDataModel.share().orderInfo = model
+        let storyboard = UIStoryboard.init(name: "Order", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController() as!  UINavigationController
+        
+        
+        let rootvc = controller.viewControllers[0] as! ContainPayVC
+        
+        rootvc.showAll = false
+        
+        rootvc.resultBlock = { (result) in
+            
+            if result is String{
+                SVProgressHUD.showSuccessMessage(SuccessMessage: "密码校验成功", ForDuration: 0.5, completion: {
+                   self.dosell()
+                    controller.dismissController()
+                    
+                })
+                
+            }
+            else{
+                SVProgressHUD.showErrorMessage(ErrorMessage:  "购买已取消", ForDuration: 2, completion: nil)
+            }
+        }
+        controller.modalPresentationStyle = .custom
+        controller.modalTransitionStyle = .crossDissolve
+        self.present(controller, animated: true, completion: nil)
+        
+    }
+    func dosell(){
+        let requestModel = BuyStarTimeRequestModel()
+        requestModel.amount = Int64.init(countTf.text!)!
+        requestModel.price = (self.starInfoModel?.publish_price)!
+        requestModel.symbol = starModel!.symbol
+        
+        AppAPIHelper.discoverAPI().buyStarTime(requestModel: requestModel, complete: { (response) in
+            if let result = response as? Int{
+                if result == 1{
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "购买成功", ForDuration: 1, completion: {
+                        _ = self.navigationController?.popViewController(animated: true)
+                    })
+                }else{
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "交易失败", ForDuration: 1, completion: nil)
+                }
+            }else{
+                SVProgressHUD.showErrorMessage(ErrorMessage: "交易失败", ForDuration: 1, completion: nil)
+            }
+        }) { (error) in
+            self.didRequestError(error)
+            //            SVProgressHUD.showErrorMessage(ErrorMessage: "交易失败", ForDuration: 1, completion: nil)
+            
+        }
+    }
+
+
 }
