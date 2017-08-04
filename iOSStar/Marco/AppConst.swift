@@ -222,8 +222,8 @@ class AppConst {
         static let Scope = "snsapi_userinfo"
         static let State = "wpstate"
         static let AccessTokenUrl = "https://api.weixin.qq.com/sns/oauth2/access_token"
-        static let Appid = "wx9dc39aec13ee3158"
-        static let Secret = "a12a88f2c4596b2726dd4ba7623bc27e"
+        static let Appid = "wxa75d31be7fcb762f"
+        static let Secret = "edd6e7ea7293049951b563dbc803ebea"
         static let ErrorCode = "ErrorCode"
         static let wechetUserInfo = "https://api.weixin.qq.com/sns/userinfo"
     }

@@ -813,7 +813,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="My8-fP-YK9" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iiF-iI-esP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iiF-iI-esP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -904,7 +904,7 @@
                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hgw-38-myT">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hgw-38-myT">
                                             <rect key="frame" x="64" y="114" width="295" height="160"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="160" id="pvO-LW-s0O"/>
