@@ -1270,20 +1270,37 @@
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="xx" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="86x-bC-Ugd">
-                                                    <rect key="frame" x="348" y="7" width="19" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="xx" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="86x-bC-Ugd">
+                                                    <rect key="frame" x="182" y="7" width="185" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="185" id="Ssx-cA-3X3"/>
+                                                    </constraints>
                                                     <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZ1-LM-QRc">
+                                                    <rect key="frame" x="182" y="9" width="185" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="TtQ-Ry-wSv"/>
+                                                        <constraint firstAttribute="width" constant="185" id="xoL-7h-BRa"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="didchanggeNikename:" destination="2rC-ev-DTV" eventType="touchUpInside" id="7xG-Wr-KS9"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="eZ1-LM-QRc" secondAttribute="bottom" constant="4.5" id="Akx-ii-HKQ"/>
                                                 <constraint firstAttribute="bottom" secondItem="aTB-DL-DSe" secondAttribute="bottom" constant="10.5" id="CLE-1V-NaD"/>
                                                 <constraint firstAttribute="bottom" secondItem="86x-bC-Ugd" secondAttribute="bottom" constant="6.5" id="Rvz-Ul-qNV"/>
                                                 <constraint firstAttribute="trailing" secondItem="86x-bC-Ugd" secondAttribute="trailing" constant="8" id="aqH-l1-6X7"/>
                                                 <constraint firstItem="aTB-DL-DSe" firstAttribute="leading" secondItem="2Lh-ka-ojy" secondAttribute="leading" constant="15" id="clf-Gz-LIE"/>
                                                 <constraint firstItem="86x-bC-Ugd" firstAttribute="top" secondItem="2Lh-ka-ojy" secondAttribute="top" constant="7" id="iUp-Iv-1ql"/>
                                                 <constraint firstItem="aTB-DL-DSe" firstAttribute="top" secondItem="2Lh-ka-ojy" secondAttribute="top" constant="12" id="kHF-id-LRp"/>
+                                                <constraint firstAttribute="trailing" secondItem="eZ1-LM-QRc" secondAttribute="trailing" constant="8" id="tGY-d4-qMh"/>
+                                                <constraint firstAttribute="trailing" secondItem="86x-bC-Ugd" secondAttribute="trailing" constant="8" id="tGq-sb-QAO"/>
+                                                <constraint firstItem="eZ1-LM-QRc" firstAttribute="top" secondItem="2Lh-ka-ojy" secondAttribute="top" constant="9" id="y9H-vo-AuG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -2720,14 +2737,15 @@
                                                             <color key="textColor" red="0.5554082989692688" green="0.073571436107158661" blue="0.091656573116779327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uj-4m-HJZ">
-                                                            <rect key="frame" x="133" y="57" width="110" height="30"/>
+
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uj-4m-HJZ">
+                                                            <rect key="frame" x="123" y="57" width="130" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="aGq-KR-wra"/>
-                                                                <constraint firstAttribute="width" constant="110" id="qCM-TU-uiP"/>
+                                                                <constraint firstAttribute="width" constant="130" id="qCM-TU-uiP"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                            <state key="normal" title="发送邀请链接">
+                                                            <state key="normal" title="  发送邀请链接" image="share">
                                                                 <color key="titleColor" red="0.74113768339999997" green="0.73691505189999995" blue="0.75751966240000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
@@ -3634,7 +3652,8 @@
                                                     <rect key="frame" x="21" y="20" width="333" height="548"/>
                                                     <string key="text">       在使用本系统的所有功能之前，请您务必仔细阅读并透彻理解本声明。您可以选择不使用本系统，但如果您使用本系统，您的使用行为将被视为对本声明全部内容的认可。
                                  
-       免责声明： 鉴于本系统使用非人工检索/分析方式，无法确定您输入的条件进行是否合法，所以本系统对检索/分析出的结果不承担责任。如果因以本系统的检索/分析结果作为任何商业行为或者学术研究的依据而产生不良后果，本系统不承担任何法律责任。  　　 
+       免责声明： 鉴于本系统使用非人工检索/分析方式，无法确定您输入的条件进行是否合法，所以本系统对检索/分析出的结果不承担责任。如果因以本系统的检索/分析结果作为任何商业行为或者学术研究的依据而产生不良后果，本系统不承担任何法律责任。
+ 　　 
        关于隐私权： 访问者在本系统注册时提供的一些个人资料，本系统除您本人同意外不会将用户的任何资料以任何方式泄露给第三方。当政府部门、司法机关等依照法定程序要求本系统披露个人资料时，本系统将根据执法单位之要求或为公共安全之目的提供个人资料，在此情况下的披露，本系统不承担任何责任。</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -4003,6 +4022,7 @@
         <image name="nodata_record" width="200" height="186"/>
         <image name="pulldown" width="16" height="9"/>
         <image name="select" width="28" height="28"/>
+        <image name="share" width="14" height="14"/>
         <image name="unselect" width="28" height="28"/>
         <image name="visible.png" width="26" height="16"/>
         <image name="wallet_chongzhi" width="22" height="22"/>
