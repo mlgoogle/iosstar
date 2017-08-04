@@ -134,7 +134,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
             AppAPIHelper.login().CheckRegister(model: checkRegisterRequestModel, complete: {[weak self] (checkRegistResult) in
                 if let checkRegistResponse = checkRegistResult {
                     if let result = checkRegistResponse["result"] as? Int {
-                        if result == 1 {
+                        if result == 1 && ShareDataModel.share().isweichaLogin == false{
                             SVProgressHUD.showErrorMessage(ErrorMessage: "该用户已注册,请登录", ForDuration: 2.0, completion: nil)
                             self?.vaildCodeBtn.isEnabled = true
                         } else {
