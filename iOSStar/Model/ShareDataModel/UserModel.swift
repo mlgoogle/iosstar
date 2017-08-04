@@ -87,3 +87,18 @@ class ConfigReusltValue: Object {
     
     dynamic var param_value = ""
 }
+
+class CommissionModel: Object {
+    
+    dynamic var result = 1
+    dynamic var total_num = 0
+    dynamic var total_amount = 0.0
+}
+//ROMOTION
+class PromotionModel: Object {
+    
+    dynamic var param_value = ""
+    
+}
+
+

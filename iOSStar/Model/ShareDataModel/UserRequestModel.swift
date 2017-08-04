@@ -119,10 +119,20 @@ class WithDrawrequestModel: UserBaseModel {
     var price = 0.0
 //    var withdrawPwd = "123"
    }
+
+//CommissionModel
+class CommissionModelequestModel: UserBaseModel {
+    var uid : Int64 = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
+}
+
 class WithDrawListrequestModel: UserBaseModel {
     var status = 0
     var start = 0
     var count = 0
     var startPos = 0
+}
+class PromotionurlModel: UserBaseModel {
+  
+    var param_code = ""
 }
 

@@ -141,6 +141,7 @@ class SocketConst: NSObject {
         case bindCard = 8005
         case withdraw = 7057
         case withdrawlist = 6019
+        case commissionModel = 3037
         case bankinfo = 8009
         //单点登录
         case onlyLogin = 3040

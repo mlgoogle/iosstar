@@ -201,5 +201,11 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         let packet = SocketDataPacket(opcode: .configRequst, dict: ["param_code":param_code as AnyObject])
         startModelRequest(packet, modelClass: ConfigReusltValue.self, complete: complete, error: error)
     }
-
+    func getcommission( requestModel:CommissionModelequestModel,complete: CompleteBlock?, error: ErrorBlock?){
+        let packet = SocketDataPacket(opcode: .commissionModel, model: requestModel)
+        startModelRequest(packet, modelClass: CommissionModel
+            .self, complete: complete, error: error)
+    
+    }
+    
 }
