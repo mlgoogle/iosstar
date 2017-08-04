@@ -30,7 +30,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
     var iconImageView : UIImageView?
     // 已购明星数量
     var buyStarCountLabel : UILabel?
-    
+    var PromotionUrl = ""
     // 名字数组
     var titltArry = [""]
     //messagebtn
@@ -49,6 +49,17 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         NIMSDK.shared().conversationManager.add(self)
         self.sessionUnreadCount = NIMSDK.shared().conversationManager.allUnreadCount()
         NotificationCenter.default.addObserver(self, selector: #selector(LoginNotice), name: Notification.Name(rawValue:AppConst.loginSuccessNotice), object: nil)
+        
+        
+     
+        AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in
+            if let model = response as? ConfigReusltValue {
+              self.PromotionUrl = model.param_value
+            }
+            
+        }) { (error) in
+            
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +69,15 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         LoginSuccessNotice()
     }
     func LoginNotice(){
+        
+        AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in
+            if let model = response as? ConfigReusltValue {
+               self.PromotionUrl = model.param_value
+            }
+            
+        }) { (error) in
+            
+        }
      self.LoginYunxin()
          LoginSuccessNotice()
         
@@ -82,6 +102,25 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         }) { (error) in
             
         }
+        
+        let model = CommissionModelequestModel()
+        
+        AppAPIHelper.user().getcommission(requestModel: model, complete: { (result) in
+            if let model = result {
+                let objectModle = model as! CommissionModel
+                if  objectModle.result == 1{
+                    self.Accumulated?.text = "\(objectModle.total_amount)"
+                    self.invitation?.text = "\(objectModle.total_num)"
+                } else {
+                  
+                }
+            }
+
+        }) { (errro) in
+            
+        }
+        
+      
         updateUserInfo()
     }
     
@@ -120,14 +159,14 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         return section == 0 ? 1 : (section == 1 ? 5 : (section == 2 ? 1 : (section == 3 ? 1 : 3 ) ))
     }
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 2 ? 20 : (section == 3 ? 20 : (section == 1 ? 10 : 0.0001))
+        return section == 2 ? 10 : (section == 3 ? 10 : (section == 1 ? 10 : 0.0001))
       
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
          return  0.01
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 340: 44
+        return indexPath.section == 0 ? 340: 40
     }
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -142,6 +181,8 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
             message = cell.message
             cell.doinvite.addTarget(self, action: #selector(showQrcode), for: .touchUpInside)
             refreshSessionBadge()
+            invitation =    cell.total_num
+            Accumulated =    cell.total_amount
            return cell
         }else if indexPath.section == 2{
             
@@ -168,7 +209,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
     
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "QrcodeVC") as? QrcodeVC
         vc?.modalPresentationStyle = .custom
-        vc?.urlStr = "http://www.zhongyuliying.com/"
+        vc?.urlStr = PromotionUrl
         vc?.modalTransitionStyle = .crossDissolve
         present(vc!, animated: true, completion: nil)
         
