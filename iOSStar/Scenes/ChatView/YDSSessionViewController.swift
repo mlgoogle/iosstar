@@ -28,7 +28,6 @@ class YDSSessionViewController: NIMSessionViewController ,UIScrollViewDelegate{
         }else{
          titleLabel.text = starcode
         }
-        title = "123"
         navigationItem.leftItemsSupplementBackButton = false
        
         titleLabel.textColor = UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)
