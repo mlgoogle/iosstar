@@ -87,7 +87,7 @@ extension UIViewController {
                 let datatic = result as? Dictionary<String,String>
                 if let response = datatic {
                     NIMSDK.shared().loginManager.login(phoneNum, token: (response["token_value"])!, completion: { (error) in
-                        if (error != nil){
+                        if (error == nil){
                              NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
                         }
                         complete?(true as AnyObject)

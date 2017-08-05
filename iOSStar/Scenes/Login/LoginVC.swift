@@ -161,7 +161,9 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
                         self?.uid = Int(datadic!.userinfo!.id)
                         UserDefaults.standard.synchronize()
-                        self?.LoginYunxin()
+//                        self?.LoginYunxin()
+                        self?.dismissController()
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
                         StarUserModel.upateUserInfo(userObject: datadic!)
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
                         AppConfigHelper.shared().updateDeviceToken()
@@ -176,28 +178,28 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
         }
     }
     
-    //MARK:- 网易云登录
-    func LoginYunxin(){
-        let registerWYIMRequestModel = RegisterWYIMRequestModel()
-        registerWYIMRequestModel.name_value = phone.text!
-        registerWYIMRequestModel.phone = phone.text!
-        registerWYIMRequestModel.uid = self.uid
-        AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: {[weak self] (result) in
-            if let datadic = result as? Dictionary<String,String> {
-                UserDefaults.standard.set(self?.phone.text, forKey: "phone")
-                UserDefaults.standard.set((datadic["token_value"])!, forKey: "tokenvalue")
-                UserDefaults.standard.synchronize()
-                NIMSDK.shared().loginManager.login((self?.phone.text!)!, token: (self?.phone.text!)!, completion: { (error) in
-                    if(error != nil) {
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
-                        self?.dismissController()
-                    }
-                })
-            }
-        }) { (error) in
-        print(error)
-        }
-    }
+//    //MARK:- 网易云登录
+//    func LoginYunxin(){
+//        let registerWYIMRequestModel = RegisterWYIMRequestModel()
+//        registerWYIMRequestModel.name_value = phone.text!
+//        registerWYIMRequestModel.phone = phone.text!
+//        registerWYIMRequestModel.uid = self.uid
+//        AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: {[weak self] (result) in
+//            if let datadic = result as? Dictionary<String,String> {
+//                UserDefaults.standard.set(self?.phone.text, forKey: "phone")
+//                UserDefaults.standard.set((datadic["token_value"])!, forKey: "tokenvalue")
+//                UserDefaults.standard.synchronize()
+//                NIMSDK.shared().loginManager.login((self?.phone.text!)!, token: (self?.phone.text!)!, completion: { (error) in
+//                    if(error == nil) {
+//                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
+//                        self?.dismissController()
+//                    }
+//                })
+//            }
+//        }) { (error) in
+//        print(error)
+//        }
+//    }
   
     //MARK:-   微信登录
     @IBAction func wechatLogin(_ sender: Any) {
