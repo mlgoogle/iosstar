@@ -33,6 +33,6 @@ class StarInfoCell: UITableViewCell {
         let url = URL(string: starModel.pic)
         iconImageView.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         starNameLabel.text = starModel.name
-        
+        starIntroLabel.text = starModel.work
     }
 }

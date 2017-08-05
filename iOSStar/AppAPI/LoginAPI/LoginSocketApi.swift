@@ -163,7 +163,7 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
     // 注册网易云(模型)
     func registWYIM(model: RegisterWYIMRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
         let packet : SocketDataPacket = SocketDataPacket.init(opcode: .registWY, model: model)
-        startRequest(packet, complete: complete, error: error)
+        startModelRequest(packet, modelClass: WYIMModel.self, complete: complete, error: error)
     }
 
     

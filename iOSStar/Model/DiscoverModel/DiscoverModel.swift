@@ -32,6 +32,7 @@ class StarSortListModel: BaseModel {
      var change = 0.0
      var pchg = 0.0
      var pushlish_type = 0
+     var work = ""
 }
 class BuyRemainingTimeModel: Object {
     
@@ -50,6 +51,7 @@ class PanicBuyInfoModel: Object {
     dynamic var publish_last_time:Int64 = 0
     dynamic var publish_begin_time:Int64 = 0
     dynamic var publish_end_time:Int64 = 0
+    dynamic var work = ""
 }
 
 class StarIntroduceResult: Object {
@@ -66,6 +68,7 @@ class StarDetaiInfoModel: Object {
     dynamic var portray2 = ""
     dynamic var portray3 = ""
     dynamic var portray4 = ""
-    dynamic var acc_id = ""    
+    dynamic var acc_id = ""
+    dynamic var work = ""
 }
 

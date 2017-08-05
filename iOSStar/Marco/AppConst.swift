@@ -42,6 +42,7 @@ class AppConst {
     static let valueStarCode = "valueStarCode"
     static let getStarService = "getStarService"
     static let imageTokenUrl = "http://122.144.169.219:3378/imageToken"
+    static let meetCityDefault = "杭州"
  
     enum KVOKey: String {
         case selectProduct = "selectProduct"
@@ -55,6 +56,7 @@ class AppConst {
         case onlyLogin = "onlyLogin"
         case frozeUser = "frozeUser"
         case checkUpdte = "checkUpdate"
+        case WYIMLoginSuccess = "WYIMLoginSuccess"
     }
     
     class Color {
@@ -246,4 +248,11 @@ class AppConst {
 
     }
     
+    enum UserDefaultKey: String {
+        case uid = "uid"
+        case phone = "phone"
+        case token = "token"
+        case tokenTime = "token_time"
+        case token_value = "token_value"
+    }
 }

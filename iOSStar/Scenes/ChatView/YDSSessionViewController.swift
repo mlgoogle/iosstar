@@ -14,7 +14,6 @@ class YDSSessionViewController: NIMSessionViewController ,UIScrollViewDelegate{
     var starname = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.backgroundColor = UIColor.init(hexString: "FAFAFA")
         setupNavbar()
     }
     

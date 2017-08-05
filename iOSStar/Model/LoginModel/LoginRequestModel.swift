@@ -67,9 +67,9 @@ class RegisterWYIMRequestModel : BaseModel {
     var uid  = 0
     var phone = ""
     var memberId = 1001
-    var agentId = "186681261"
-    var recommend = "3tewe"
-    var timeStamp = 100088888
+    var agentId = ""
+    var recommend = ""
+    var timeStamp = Date.nowTimestemp()
 }
 
 
