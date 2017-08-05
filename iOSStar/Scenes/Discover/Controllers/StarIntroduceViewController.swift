@@ -29,7 +29,7 @@ class StarIntroduceViewController: UIViewController {
         super.viewDidLoad()
 
         self.navBarBgAlpha = 0.0
-        title = self.starModel?.name
+      
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: PubInfoHeaderView.className())
         appointmentButton.layer.shadowColor = UIColor(hexString: "cccccc").cgColor
         appointmentButton.layer.shadowOffset = CGSize(width: 1, height: 1)
@@ -184,8 +184,10 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > 170 {
             self.navBarBgAlpha = 1.0
+              title = self.starModel?.name
         } else {
             self.navBarBgAlpha = 0.0
+              title =   ""
             
         }
     }
