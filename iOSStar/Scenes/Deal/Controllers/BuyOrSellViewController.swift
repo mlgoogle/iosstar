@@ -99,14 +99,13 @@ class BuyOrSellViewController: DealBaseViewController {
 
         if count > totalCount && dealType == AppConst.DealType.buy{
             SVProgressHUD.showErrorMessage(ErrorMessage: "求购数量不能超过总发行量", ForDuration: 1.5, completion: nil)
-
             return
         }
         
-        if count > positionCount && dealType == AppConst.DealType.sell{
-            SVProgressHUD.showErrorMessage(ErrorMessage: "转让数量不能超过当前总持有量", ForDuration: 1.5, completion: nil)
-            return
-        }
+//        if count > positionCount && dealType == AppConst.DealType.sell{
+//            SVProgressHUD.showErrorMessage(ErrorMessage: "转让数量不能超过当前总持有量", ForDuration: 1.5, completion: nil)
+//            return
+//        }
         
 
         SVProgressHUD.show()

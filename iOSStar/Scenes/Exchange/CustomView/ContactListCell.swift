@@ -129,11 +129,9 @@ class ContactListCell: OEZTableViewCell {
             cellModel = model
             if (nameLabel != nil){
                 nameLabel.text = model.starname
-                jobLabel.text =  "演员"
+                jobLabel.text =  model.work
                 chatButton.setTitle("聊一聊", for: .normal)
                 
-            }else{
-                jobLabel.text =  "11000000"
             }
             
         }

@@ -89,11 +89,15 @@ class ThumbupCell: OEZTableViewCell {
     override func update(_ data: Any!) {
         if let model = data as? CircleListModel{
             if model.approve_list.count == 0{
-                contentView.alpha = 0
+                
+                iconImage.alpha = 0
+                thumbupNames.alpha = 0
                 thumbUpHeight.constant = 0
                 return
             }
-            contentView.alpha = 1
+            iconImage.alpha = 1
+            thumbupNames.alpha = 1
+
             var approveName = ""
             for approve in model.approve_list{
                 approveName += "\(approve.user_name),"
@@ -269,7 +273,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let model = tableData[section] as? CircleListModel{
-            return model.comment_list.count+(model.approve_list.count > 0 ? 2:1)
+            return model.comment_list.count + 2
         }
         return 0
     }
