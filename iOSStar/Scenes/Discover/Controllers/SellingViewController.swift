@@ -12,7 +12,7 @@ class SellingViewController: UIViewController {
     @IBOutlet weak var sureBuyButton: UIButton!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
+    var needPwd: Int = 0
     //倒计时剩余时间
     var remainingTime = 0
     
@@ -67,6 +67,13 @@ class SellingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.HideLine()
+        self.getUserInfo { (result) in
+            if let response = result{
+                let object = response as! UserInfoModel
+              
+                self.needPwd = object.is_setpwd
+            }
+        }
     }
     func requestRemainTime() {
         guard starModel != nil else {
@@ -196,6 +203,23 @@ extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITe
     }
     func tradePass(){
     
+        
+        if self.needPwd == 1{
+            let alertVc = AlertViewController()
+            alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
+                                
+                                titleLabelText: "开通支付",
+                                subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购明星时间，转让明星时间，\n和明星在‘星聊’中聊天，并且还能约见明星。",
+                                completeButtonTitle: "我 知 道 了") {[weak alertVc] (completeButton) in
+                                    alertVc?.dismissAlertVc()
+                                    
+                                    
+                                    let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "TradePassWordVC")
+                                    self.navigationController?.pushViewController(vc, animated: true )
+                                    return
+            }
+        }else{
+        
         let model = OrderInformation()
         model.orderStatus = "购买"
         model.orderInfomation = String.init(format: "%@ (%@)秒", (self.starInfoModel?.star_name)! ,(countTf.text)!)
@@ -228,7 +252,7 @@ extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITe
         controller.modalPresentationStyle = .custom
         controller.modalTransitionStyle = .crossDissolve
         self.present(controller, animated: true, completion: nil)
-        
+        }
     }
     func dosell(){
         let requestModel = BuyStarTimeRequestModel()
