@@ -18,7 +18,6 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
         super.viewDidLoad()
         title = "名人通讯录"
         nodaView.isHidden = true
-        onlogin()
         tableView.backgroundColor = UIColor.clear
     
     }
@@ -41,6 +40,10 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
         
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        didRequest(0)
+    }
     
     override func didRequest(_ pageIndex: Int) {
         let requestModel = StarMailListRequestModel()

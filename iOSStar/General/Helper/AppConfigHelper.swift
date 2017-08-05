@@ -114,17 +114,6 @@ class AppConfigHelper: NSObject {
         registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as? String ?? "123"
         registerWYIMRequestModel.uid = Int(StarUserModel.getCurrentUser()?.id ?? 0)
         AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { (response) in
-//            if let datadic = result as? Dictionary<String,String> {
-//                let phone = UserDefaults.standard.object(forKey: "phone") as! String
-//                let token = (datadic["token_value"]!)
-//                NIMSDK.shared().loginManager.login(phone, token: token, completion: { (error) in
-//                    if (error == nil) {
-//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
-//                    }else{
-//                        print(error)
-//                    }
-//                })
-//            }
             if let objects = response as? WYIMModel {
                 
                 UserDefaults.standard.set(objects.token_value, forKey: AppConst.UserDefaultKey.token_value.rawValue)
