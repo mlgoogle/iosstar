@@ -67,7 +67,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         
         AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in
             if let model = response as? ConfigReusltValue {
-                self.PromotionUrl = model.param_value
+                self.PromotionUrl = String.init(format: "%@?uid=%d", model.param_value,(StarUserModel.getCurrentUser()?.id ?? 0)!)
             }
         },error:nil)
         LoginYunxin()
