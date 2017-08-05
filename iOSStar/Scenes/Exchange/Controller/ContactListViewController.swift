@@ -76,6 +76,7 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
         let session = NIMSession(starInfoModel.faccid, type: .P2P)
         let vc = YDSSessionViewController.init(session: session)
         vc?.starcode = starInfoModel.starcode
+        vc?.starname = starInfoModel.starname
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
