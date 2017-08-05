@@ -11,7 +11,7 @@ import UIKit
 class YDSSessionViewController: NIMSessionViewController ,UIScrollViewDelegate{
     var isbool : Bool = false
     var starcode = ""
-    var starname = ""
+    var starname = "123 "
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = UIColor.init(hexString: "FAFAFA")
@@ -28,6 +28,7 @@ class YDSSessionViewController: NIMSessionViewController ,UIScrollViewDelegate{
         }else{
          titleLabel.text = starcode
         }
+        title = "123"
         navigationItem.leftItemsSupplementBackButton = false
        
         titleLabel.textColor = UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)
