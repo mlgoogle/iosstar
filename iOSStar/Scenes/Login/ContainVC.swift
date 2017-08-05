@@ -54,9 +54,6 @@ class ContainVC: UIViewController {
                     UserDefaults.standard.set(response.userinfo?.phone, forKey: "phone")
                     UserDefaults.standard.set(response.token, forKey: "token")
                     StarUserModel.upateUserInfo(userObject: response)
-//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo:nil)
-                    self?.doYunxin(complete: { (result) in
-                    })
                     self?.dismissController()
                 }
             }
@@ -129,7 +126,6 @@ class ContainVC: UIViewController {
         jvc.view.frame = CGRect.init(x:  vc.view.frame.size.width*2, y: -10, width: vc.view.frame.size.width, height: ((self.scrollView?.frame.size.height)!+10))
         jvc.resultBlock = { [weak self](result) in
             self?.scrollView?.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
-//            rvc.LoginYunxin()
         }
         self.addChildViewController(jvc)
         

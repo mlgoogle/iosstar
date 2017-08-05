@@ -15,7 +15,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YAj-2Q-WWI" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QC8-Ep-amw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QC8-Ep-amw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -91,7 +91,7 @@
                                                         <constraint firstItem="qVm-zf-71W" firstAttribute="top" secondItem="4Vk-AZ-2so" secondAttribute="top" id="nVJ-Mb-3LE"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="138415562044.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="gqi-Sl-mqO">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gqi-Sl-mqO">
                                                     <rect key="frame" x="25" y="25" width="80" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="80" id="RTF-kB-PIB"/>
@@ -481,7 +481,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="138415562044.jpg" width="400" height="379"/>
         <image name="bg.png" width="706" height="326"/>
         <image name="dealBack" width="375" height="667"/>
         <image name="deal_ball" width="287" height="198"/>

@@ -11,3 +11,8 @@ import UIKit
 class LoginModel: BaseModel {
 
 }
+
+class WYIMModel: BaseModel {
+    var result_value = ""
+    var token_value = ""
+}

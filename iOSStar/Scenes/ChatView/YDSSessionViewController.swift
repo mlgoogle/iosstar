@@ -11,10 +11,9 @@ import UIKit
 class YDSSessionViewController: NIMSessionViewController ,UIScrollViewDelegate{
     var isbool : Bool = false
     var starcode = ""
-    var starname = "123 "
+    var starname = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.backgroundColor = UIColor.init(hexString: "FAFAFA")
         setupNavbar()
     }
     

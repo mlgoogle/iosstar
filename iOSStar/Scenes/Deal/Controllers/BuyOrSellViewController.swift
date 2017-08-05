@@ -116,11 +116,12 @@ class BuyOrSellViewController: DealBaseViewController {
         model.price = price
         model.amount = count
         AppAPIHelper.dealAPI().buyOrSell(requestModel: model, complete: {[weak self] (response) in
-            SVProgressHUD.showSuccessMessage(SuccessMessage: "挂单成功", ForDuration: 2, completion: nil)
-            DispatchQueue.main.async {
-                let index = 3
-                self?.indexBlock!(index as AnyObject)
-            }
+            SVProgressHUD.showSuccessMessage(SuccessMessage: "挂单成功", ForDuration: 2, completion: {
+                DispatchQueue.main.async {
+                    let index = 3
+                    self?.indexBlock!(index as AnyObject)
+                }
+            })
         }) { (error) in
             SVProgressHUD.dismiss()
         }

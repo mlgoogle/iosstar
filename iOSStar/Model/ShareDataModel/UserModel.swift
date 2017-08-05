@@ -38,9 +38,7 @@ class StarUserModel: Object {
             UserDefaults.standard.setValue( model.userinfo?.id, forKey: SocketConst.Key.uid)
             let realm = try! Realm()
             try! realm.write {
-                
                 realm.add(model, update: true)
-                
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
             }
         }

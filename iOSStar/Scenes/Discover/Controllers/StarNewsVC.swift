@@ -203,7 +203,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
             view.title = (starModel?.name)! + "(正在星享时光 出售TA的时间)"
             view.Image = iconImage.image
             view.descr = model.experience
-            view.webpageUrl = "https://fir.im/starShareUser"
+            view.webpageUrl = "https://fir.im/starShareUser?uid=\(StarUserModel.getCurrentUser()?.userinfo?.id ?? 0)"
             view.shareViewController(viewController: self)
             
         }

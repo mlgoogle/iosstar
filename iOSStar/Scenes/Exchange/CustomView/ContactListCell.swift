@@ -62,6 +62,7 @@ class ContactListCell: OEZTableViewCell {
     @IBOutlet var doStarDeatil: UIButton!
     @IBOutlet weak var jobLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var unreadLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var iconImageView: UIImageView!
 
@@ -92,6 +93,8 @@ class ContactListCell: OEZTableViewCell {
         
         guard data != nil else{return}
         if  let model = data as? StarInfoModel{
+            unreadLabel.text = "  \(model.unreadCount)  "
+            unreadLabel.isHidden = model.unreadCount == 0
             StartModel.getStartName(startCode: model.starcode) { (response) in
                 if let star = response as? StartModel {
                     self.iconImageView.kf.setImage(with: URL(string: star.pic_url))
@@ -132,6 +135,7 @@ class ContactListCell: OEZTableViewCell {
             }else{
                 jobLabel.text =  "11000000"
             }
+            
         }
         else{
             if  let model = data as? OrderStarListInfoModel{

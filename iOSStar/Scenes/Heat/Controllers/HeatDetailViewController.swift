@@ -200,6 +200,7 @@ class HeatDetailViewController: UIViewController {
         priceLabel.text = String(format: "%.2f", starListModel?.currentPrice ?? 0)
         iconImageVie.kf.setImage(with: URL(string: starListModel?.pic ?? ""), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         nameLabel.text = starListModel?.name
+        jobLabel.text = starListModel?.work
     }
     
     func refreshSatus() {
