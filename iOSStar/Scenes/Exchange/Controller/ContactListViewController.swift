@@ -20,6 +20,7 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
         nodaView.isHidden = true
         onlogin()
         tableView.backgroundColor = UIColor.clear
+    
     }
     
     func onlogin(){
