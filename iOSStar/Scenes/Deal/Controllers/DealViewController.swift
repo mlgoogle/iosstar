@@ -56,7 +56,10 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
     
     func refreshSelect() {
         menuView?.selected(index: index)
+        
         backView.moveToIndex(index: index)
+        
+        
     }
     func addSubViews() {
         let identifiers = ["BuyOrSellViewController","BuyOrSellViewController","BuyYetViewController","AllOrderViewController","DealDetailViewController"]
@@ -74,6 +77,11 @@ class DealViewController: RedBackItemViewController,DealScrollViewScrollDelegate
             vc.indexBlock = { [weak self](param) in
                 if let index = param as? Int{
                     self?.index = index
+                    if index == 3{
+                        if (vc.isKind(of: AllOrderViewController.self)){
+                        
+                        }
+                    }
                     self?.refreshSelect()
                 }
             }

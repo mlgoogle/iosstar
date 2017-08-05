@@ -176,7 +176,13 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
             })
         }
     }
-    
+    @IBAction func law(_ sender: Any) {
+        let vc = BaseWebVC()
+        vc.loadRequest = "http://122.144.169.219:3389/law"
+        vc.navtitle = "法律说明"
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
     //MARK:-   微信登录
     @IBAction func wechatLogin(_ sender: Any) {
         let req = SendAuthReq.init()

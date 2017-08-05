@@ -118,6 +118,7 @@ class BuyOrSellViewController: DealBaseViewController {
             SVProgressHUD.showSuccessMessage(SuccessMessage: "挂单成功", ForDuration: 2, completion: {
                 DispatchQueue.main.async {
                     let index = 3
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "sellScucess"), object: nil, userInfo:nil)
                     self?.indexBlock!(index as AnyObject)
                 }
             })

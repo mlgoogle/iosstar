@@ -25,10 +25,15 @@ class AllOrderViewController: DealBaseViewController {
             self.navigationController?.setNavigationBarHidden(false, animated: false)
             title = "交易明细"
         }
-        
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()//NSNotification.Name(rawValue: "sellScucess")
+//        NSNotification.default.
+        
+      NotificationCenter.default.addObserver(self, selector: #selector(sellScucess(_:)), name: Notification.Name(rawValue:"sellScucess"), object: nil)
         tableView.register(NoDataCell.self, forCellReuseIdentifier: NoDataCell.className())
         
         header = MJRefreshNormalHeader(refreshingBlock: {
@@ -82,6 +87,11 @@ class AllOrderViewController: DealBaseViewController {
 
         }
 
+    }
+    
+    func sellScucess(_ LoginSuccess : NSNotification){
+    
+     header?.beginRefreshing()
     }
 }
 
