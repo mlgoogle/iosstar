@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactListViewController: BaseCustomPageListTableViewController, OEZTableViewDelegate {
+class ContactListViewController: BaseCustomPageListTableViewController, OEZTableViewDelegate, NIMConversationManagerDelegate ,NIMLoginManagerDelegate{
     
     @IBOutlet var nodaView: UIView!
     // 网络请求判断是否实名认证
@@ -19,11 +19,12 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
         title = "名人通讯录"
         nodaView.isHidden = true
         tableView.backgroundColor = UIColor.clear
-    
+        
     }
     
     func onlogin(){
-        
+        NIMSDK.shared().conversationManager.add(self)
+        NIMSDK.shared().loginManager.add(self)
         if NIMSDK.shared().conversationManager.allUnreadCount() != 0 {
             if NIMSDK.shared().conversationManager.allUnreadCount() >= 99 {
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem.creatBarButtonItem(title: "99+", target: self, action: #selector(self.unReadCountClick))
@@ -111,6 +112,13 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
             vc?.starname = starInfoModel.starname
             self.navigationController?.pushViewController(vc!, animated: true)
         }
+    }
+    
+    func didUpdate(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
+        didRequest(0)
+    }
+    func onKick(_ code: NIMKickReason, clientType: NIMLoginClientType) {
+        userLogout()
     }
 }
 
