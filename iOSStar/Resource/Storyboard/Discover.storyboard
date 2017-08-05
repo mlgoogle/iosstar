@@ -98,7 +98,7 @@
                                                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kefu_center" translatesAutoresizingMaskIntoConstraints="NO" id="q4K-cu-nTd">
                                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
                                                                 </imageView>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="138415562044.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="yub-eW-ZHW">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yub-eW-ZHW">
                                                                     <rect key="frame" x="25" y="92" width="60" height="60"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="60" id="Aiy-9w-6f3"/>
@@ -316,7 +316,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kefu_center" translatesAutoresizingMaskIntoConstraints="NO" id="Qoz-Wu-Ged">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="138415562044.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kCF-fc-Bty">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kCF-fc-Bty">
                                                     <rect key="frame" x="25" y="82" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="WVz-0O-WYc"/>
@@ -694,8 +694,8 @@
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="E4e-Ay-J9E">
                                                                     <rect key="frame" x="0.0" y="0.0" width="351" height="80"/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="刘诗诗" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHY-XE-joG">
-                                                                    <rect key="frame" x="125" y="15" width="49" height="16"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHY-XE-joG">
+                                                                    <rect key="frame" x="125" y="15" width="45" height="16"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="16" id="Hxd-u0-g7o"/>
                                                                     </constraints>
@@ -703,7 +703,7 @@
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="演员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQV-fy-GtK">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POSITION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQV-fy-GtK">
                                                                     <rect key="frame" x="125" y="43" width="191" height="15"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -724,7 +724,7 @@
                                                                 <constraint firstAttribute="trailing" secondItem="uQV-fy-GtK" secondAttribute="trailing" constant="35" id="rZ1-e3-HtO"/>
                                                             </constraints>
                                                         </view>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="138415562044.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="OjW-01-MCH">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OjW-01-MCH">
                                                             <rect key="frame" x="25" y="25" width="80" height="80"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="80" id="SWR-Mn-cXo"/>
@@ -1157,7 +1157,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="138415562044.jpg" width="400" height="379"/>
         <image name="bg.png" width="706" height="326"/>
         <image name="intro_chat" width="22" height="19"/>
         <image name="kefu_center" width="373" height="160"/>

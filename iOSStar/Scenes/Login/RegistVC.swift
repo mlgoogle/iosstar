@@ -265,33 +265,6 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
         self.resultBlock!(doStateClick.doResetPwd as AnyObject)
     }
     
-    //MARK:- 网易云登录
-    func LoginYunxin(){
-        
-        let registerWYIMRequestModel = RegisterWYIMRequestModel()
-        registerWYIMRequestModel.name_value = phoneTf.text!
-        registerWYIMRequestModel.phone = phoneTf.text!
-        
-        registerWYIMRequestModel.uid = Int(StarUserModel.getCurrentUser()?.id ?? 0)
-//        registerWYIMRequestModel.accid_value = phoneTf.text!
-        AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { [weak self](result) in
-            if let datadic = result as? Dictionary<String,String> {
-//            if let _ = datadic {
-                UserDefaults.standard.set(self?.phoneTf.text, forKey: "phone")
-                UserDefaults.standard.set((datadic["token_value"])!, forKey: "tokenvalue")
-                UserDefaults.standard.synchronize()
-                NIMSDK.shared().loginManager.login((self?.phoneTf.text!)!, token: (self?.passTf.text!)!, completion: { (error) in
-                    if (error != nil){
-                        
-                            self?.dismissController()
-                    }
-                })
-            }
-        }) { (error) in
-            
-        }
-    }
-    
     @IBAction func didMiss(_ sender: Any) {
         let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
         let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController

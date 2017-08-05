@@ -23,17 +23,18 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
     }
     
     func onlogin(){
-       self.doYunxin { (resut) in
+        
         if NIMSDK.shared().conversationManager.allUnreadCount() != 0 {
             if NIMSDK.shared().conversationManager.allUnreadCount() >= 99 {
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem.creatBarButtonItem(title: "99+", target: self, action: #selector(self.unReadCountClick))
             } else {
                 let strCount = String.init(format: "%d", NIMSDK.shared().conversationManager.allUnreadCount())
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem.creatBarButtonItem(title: strCount, target: nil, action: #selector(self.unReadCountClick))
-                }
             }
         }
     }
+
+
     
     func unReadCountClick () {
         

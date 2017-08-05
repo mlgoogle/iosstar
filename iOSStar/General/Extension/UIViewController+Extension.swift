@@ -25,9 +25,7 @@ extension UIViewController {
     }
     func LoginSuccess(){
         
-        self.doYunxin { (result) in
-            
-        }
+      
     }
 
     
@@ -74,33 +72,7 @@ extension UIViewController {
     
     
     
-    //登录网易云信
-    func doYunxin(complete: CompleteBlock?){
 
-        if UserDefaults.standard.object(forKey: "phone") as? String != nil {
-            let phoneNum = (UserDefaults.standard.object(forKey: "phone") as? String)!
-            let registerWYIMRequestModel = RegisterWYIMRequestModel()
-            registerWYIMRequestModel.name_value = phoneNum
-            registerWYIMRequestModel.phone = phoneNum
-            registerWYIMRequestModel.uid =  Int(StarUserModel.getCurrentUser()?.id ?? 0)
-            AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { (result) in
-                let datatic = result as? Dictionary<String,String>
-                if let response = datatic {
-                    NIMSDK.shared().loginManager.login(phoneNum, token: (response["token_value"])!, completion: { (error) in
-                        if (error != nil){
-                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
-                        }
-                        complete?(true as AnyObject)
-                    })
-                    UserDefaults.standard.set((response["token_value"])!, forKey: "tokenvalue")
-                    UserDefaults.standard.synchronize()
-                }
-            }, error: { (error) in
-                
-            })
-        }
-    }
-    
     
     // 显示引导视图控制器
     func showGuideVC(_ guideType:AppConst.guideKey, handle:CompleteBlock?) {

@@ -161,9 +161,10 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
                         UserDefaults.standard.set(self?.phone.text, forKey: "tokenvalue")
                         self?.uid = Int(datadic!.userinfo!.id)
                         UserDefaults.standard.synchronize()
-                        AppConfigHelper.shared().LoginYunxin()
+                        self?.dismissController()
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
                         StarUserModel.upateUserInfo(userObject: datadic!)
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
+//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
                         AppConfigHelper.shared().updateDeviceToken()
 
                     }
@@ -176,34 +177,6 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
         }
     }
     
-    func LoginToYunxin() {
-        
-        let requestModel = RegisterWYIMRequestModel()
-        requestModel.name_value = self.phone.text!
-        requestModel.phone = self.phone.text!
-        requestModel.uid = self.uid
-        
-        AppAPIHelper.login().registWYIM(model: requestModel, complete: {[weak self] (response) in
-            
-            if let objects = response as? WYIMModel {
-                
-                UserDefaults.standard.set(objects.token_value, forKey: AppConst.UserDefaultKey.token_value.rawValue)
-                UserDefaults.standard.synchronize()
-                let phoneNum = self?.phone.text!
-                let token_value = objects.token_value
-                NIMSDK.shared().loginManager.login(phoneNum!, token: token_value, completion: { (error) in
-                    if error == nil {
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue:AppConst.NoticeKey.WYIMLoginSuccess.rawValue), object: nil, userInfo: nil)
-                        self?.dismissController()
-                    }else{
-                        print(error)
-                    }
-                })
-            }
-        }, error:{ (error) in
-            print(error)
-        })
-    }
     //MARK:-   微信登录
     @IBAction func wechatLogin(_ sender: Any) {
         let req = SendAuthReq.init()

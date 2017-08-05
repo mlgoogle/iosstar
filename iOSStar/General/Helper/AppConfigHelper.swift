@@ -82,18 +82,15 @@ class AppConfigHelper: NSObject {
             return
         }
         let requestModel = TokenLoginRequestModel()
-        AppAPIHelper.user().tokenLogin(requestModel: requestModel, complete: { (result) in
+        AppAPIHelper.user().tokenLogin(requestModel: requestModel, complete: { [weak self](result) in
             if let model = result as? StarUserModel {
                 StarUserModel.upateUserInfo(userObject: model)
                 UserDefaults.standard.set(model.userinfo?.phone, forKey: "phone")
-                self.updateDeviceToken()
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
-
+                self?.updateDeviceToken()
                 UserDefaults.standard.synchronize()
-                self.LoginYunxin()
+                self?.LoginYunxin()
             }
         }) { (error ) in
-            
             if let phoneString = UserDefaults.standard.object(forKey: "phone") as? String {
                 UserDefaults.standard.set(phoneString, forKey: "lastLogin")
             }
@@ -103,38 +100,47 @@ class AppConfigHelper: NSObject {
         
     }
     
+
+    
+    // MARK: - 网易云信
+    func setupNIMSDK() {
+        NIMSDKConfig.shared().shouldSyncUnreadCount = true
+        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
+    }
+    
     func LoginYunxin(){
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
         registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as? String  ?? "123"
         registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as? String ?? "123"
         registerWYIMRequestModel.uid = Int(StarUserModel.getCurrentUser()?.id ?? 0)
-        AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { (result) in
-            if let datadic = result as? Dictionary<String,String> {
-                let phone = UserDefaults.standard.object(forKey: "phone") as! String
-                let token = (datadic["token_value"]!)
-                NIMSDK.shared().loginManager.login(phone, token: token, completion: { (error) in
-                    if (error == nil) {
-                       NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
+        AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { (response) in
+//            if let datadic = result as? Dictionary<String,String> {
+//                let phone = UserDefaults.standard.object(forKey: "phone") as! String
+//                let token = (datadic["token_value"]!)
+//                NIMSDK.shared().loginManager.login(phone, token: token, completion: { (error) in
+//                    if (error == nil) {
+//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
+//                    }else{
+//                        print(error)
+//                    }
+//                })
+//            }
+            if let objects = response as? WYIMModel {
+                
+                UserDefaults.standard.set(objects.token_value, forKey: AppConst.UserDefaultKey.token_value.rawValue)
+                UserDefaults.standard.synchronize()
+                let phoneNum = UserDefaults.standard.object(forKey: "phone") as! String
+                let token_value = objects.token_value
+                
+                NIMSDK.shared().loginManager.login(phoneNum, token: token_value, completion: { (error) in
+                    if error == nil {
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
+                    }else{
+                        print(error)
                     }
-            })
-          }
-        }) { (error) in
-            
-        }
-    }
-    
-    // MARK: - 网易云信
-    func setupNIMSDK() {
-        // //在注册 NIMSDK appKey 之前先进行配置信息的注册，如是否使用新路径,是否要忽略某些通知，是否需要多端同步未读数
-//        NIMSDKConfig.shared().delegate = sdkConfigDelegate
-//        NIMSDKConfig.shared().shouldSyncUnreadCount = true//0d0f4b452de9695f91b0e4dc949d54cc
-        //9c3a406f233dea0d355c6458fb0171b8
-//        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
-//        NIMKit.shared().registerLayoutConfig(NTESCellLayoutConfig.self)
-//        NIMCustomObject.registerCustomDecoder(NTESCustomAttachmentDecoder.init())
-        NIMSDKConfig.shared().shouldSyncUnreadCount = true
-        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
-        
+                })
+            }
+        }, error:nil)
     }
     
     // MARK: - 个推
