@@ -28,6 +28,7 @@ class SellingIntroCell: SellingBaseCell {
         nickNameLabel.text = model?.star_name
         backImageView.kf.setImage(with: URL(string: model!.back_pic_url), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         iconImageView.kf.setImage(with: URL(string: model!.head_url), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        jobLabel.text = model?.work
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

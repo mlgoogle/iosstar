@@ -86,6 +86,7 @@ class StarInfoModel: NSObject {
     var starname : String = ""
     var uid : Int64 = 0
     var accid : String = ""
+    var unreadCount = 0
  
 }
 class OrderStarListInfoModel: NSObject {

@@ -19,6 +19,7 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
         title = "名人通讯录"
         nodaView.isHidden = true
         onlogin()
+        tableView.backgroundColor = UIColor.clear
     }
     
     func onlogin(){
@@ -37,22 +38,29 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
     func unReadCountClick () {
         
     }
+
     
     override func didRequest(_ pageIndex: Int) {
         let requestModel = StarMailListRequestModel()
         requestModel.status = 1
         requestModel.startPos = (pageIndex - 1) * 10
         
-        AppAPIHelper.user().requestStarMailList(requestModel: requestModel, complete: { (result) in
-            if  let Model  = result as? StarListModel{
-                self.didRequestComplete( Model.depositsinfo as AnyObject)
-                if self.dataSource?.count == 0{
-                    self.nodaView.isHidden = false
-                }else{
-                    self.nodaView.isHidden = true
-                    self.nodaView.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+        AppAPIHelper.user().requestStarMailList(requestModel: requestModel, complete: { [weak self](result) in
+            if  let model  = result as? StarListModel{
+                let unreadCountDic = self?.getUnreadDic()
+                for info in model.depositsinfo!{
+                    if let unreadCount = unreadCountDic?[info.faccid]{
+                        info.unreadCount = unreadCount
+                    }
                 }
-                self.tableView.reloadData()
+                self?.didRequestComplete( model.depositsinfo as AnyObject)
+                if self?.dataSource?.count == 0{
+                    self?.nodaView.isHidden = false
+                }else{
+                    self?.nodaView.isHidden = true
+                    self?.nodaView.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+                }
+                self?.tableView.reloadData()
             }
         }) { (error) in
             self.didRequestComplete(nil)
@@ -65,6 +73,18 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
         }
 
 
+    }
+    
+    func getUnreadDic() ->  [String: Int]{
+        var sessionIdDic: [String: Int] = [:]
+        if let sessions = NIMSDK.shared().conversationManager.allRecentSessions(){
+            for session in sessions{
+                if let sessionId = session.session?.sessionId{
+                    sessionIdDic[sessionId] = session.unreadCount
+                }
+            }
+        }
+        return sessionIdDic
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

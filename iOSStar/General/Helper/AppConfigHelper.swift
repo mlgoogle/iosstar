@@ -132,8 +132,8 @@ class AppConfigHelper: NSObject {
 //        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
 //        NIMKit.shared().registerLayoutConfig(NTESCellLayoutConfig.self)
 //        NIMCustomObject.registerCustomDecoder(NTESCustomAttachmentDecoder.init())
-        let option = NIMSDKOption.init(appKey: "9c3a406f233dea0d355c6458fb0171b8")
-        NIMSDK.shared().register(with: option)
+        NIMSDKConfig.shared().shouldSyncUnreadCount = true
+        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
         
     }
     
@@ -248,13 +248,19 @@ class AppConfigHelper: NSObject {
         var config = Realm.Configuration()
         config.fileURL =  config.fileURL!.deletingLastPathComponent()
             .appendingPathComponent("\("starShare").realm")
-        config.schemaVersion = 4
+        config.schemaVersion = 5
         
         //数据库迁移操作
         config.migrationBlock = { migration, oldSchemaVersion in
             
-            if oldSchemaVersion < 4 {
-
+            if oldSchemaVersion < 5 {
+                
+                migration.enumerateObjects(ofType: PanicBuyInfoModel.className(), { (oldObject, newObject) in
+                    newObject!["wrok"] = ""
+                })
+                migration.enumerateObjects(ofType: StarDetaiInfoModel.className(), { (oldObject, newObject) in
+                    newObject!["wrok"] = ""
+                })
                 
             }
         }

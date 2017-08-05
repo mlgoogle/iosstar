@@ -256,7 +256,7 @@ class OrderStarViewController: UIViewController {
             attributedString.addAttributes(attrsM, range: NSMakeRange(0, 5))
             self.priceLabel.attributedText = attributedString
             
-            orderPalace.text = serviceType.meet_city
+            orderPalace.text = serviceType.meet_city.length() == 0 ? AppConst.meetCityDefault : serviceType.meet_city
             datePickerView.minimumDate = Date.yt_convertDateStrToDate(serviceTypeModel.startdate, format: "yyyy-MM-dd")
             datePickerView.maximumDate = Date.yt_convertDateStrToDate(serviceTypeModel.enddate, format: "yyyy-MM-dd")
             // self.priceLabel.text = String.init(format:"即将消耗: %@秒",serviceType.price)

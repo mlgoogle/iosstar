@@ -86,7 +86,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         let openPrice = String.init(format: "%.2f", (data.trades?.openPrice)!)
         let name = "  \(data.user!.nickname)\(type)\(data.trades!.amount)秒,\(openPrice)元/秒    "
         let length = 2 + (data.user?.nickname.length())!
-        let color = data.trades?.buySell == 1 ? UIColor.init(hexString: "CB4232") : UIColor.init(hexString: "ffffff")
+        let color =  UIColor.init(hexString: "CB4232")//data.trades?.buySell == 1 ? UIColor.init(hexString: "CB4232") : UIColor.init(hexString: "ffffff")
         let attributed = NSMutableAttributedString.init(string: name)
         attributed.addAttribute(NSForegroundColorAttributeName, value: color!, range: NSRange.init(location: length, length: 2))
         attributed.insert(NSAttributedString.init(attachment: attachment), at: 1)
@@ -188,7 +188,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderView", for: indexPath)
         headerview = view
-        if let image = UIImage.init(named: "dealBack"){
+        if let image = UIImage.init(named: "starsBg"){
             headerview.backgroundColor = UIColor.init(patternImage:image)
             renderer.view.backgroundColor = UIColor.init(patternImage:image)
         }
