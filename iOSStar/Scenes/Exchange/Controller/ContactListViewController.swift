@@ -71,7 +71,7 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //StarInfoModel
+
         let starInfoModel = self.dataSource?[indexPath.row] as! StarInfoModel
         let session = NIMSession(starInfoModel.faccid, type: .P2P)
         let vc = YDSSessionViewController.init(session: session)
