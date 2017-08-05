@@ -90,13 +90,11 @@ class ThumbupCell: OEZTableViewCell {
         if let model = data as? CircleListModel{
             if model.approve_list.count == 0{
                 
-                iconImage.alpha = 0
-                thumbupNames.alpha = 0
+                contentView.alpha = 0
                 thumbUpHeight.constant = 0
                 return
             }
-            iconImage.alpha = 1
-            thumbupNames.alpha = 1
+            contentView.alpha = 1
 
             var approveName = ""
             for approve in model.approve_list{
