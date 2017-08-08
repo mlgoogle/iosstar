@@ -45,13 +45,11 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccess(_:)), name: Notification.Name(rawValue:AppConst.loginSuccess), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginNotice), name: Notification.Name(rawValue:AppConst.loginSuccessNotice), object: nil)
-        
         AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in
             if let model = response as? ConfigReusltValue {
                 self.PromotionUrl = String.init(format: "%@?uid=%d", model.param_value,(StarUserModel.getCurrentUser()?.id ?? 0)!)
                 
             }
-            
         }) { (error) in
             
         }
@@ -63,6 +61,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         
         LoginSuccessNotice()
     }
+    //MARK:- 登录成功进行邀请码请求
     func LoginNotice(){
         
         AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in
