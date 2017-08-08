@@ -141,6 +141,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
                             SVProgressHUD.showProgressMessage(ProgressMessage: "")
                             let sendVerificationCodeRequestModel = SendVerificationCodeRequestModel()
                             sendVerificationCodeRequestModel.phone = (self?.phoneTf.text!)!
+                            sendVerificationCodeRequestModel.type = 0
                             AppAPIHelper.login().SendVerificationCode(model: sendVerificationCodeRequestModel, complete: { [weak self] (result) in
                                 SVProgressHUD.dismiss()
                                 self?.vaildCodeBtn.isEnabled = true

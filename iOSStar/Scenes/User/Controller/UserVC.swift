@@ -63,6 +63,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         
         LoginSuccessNotice()
     }
+    
     func LoginNotice(){
         
         AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in

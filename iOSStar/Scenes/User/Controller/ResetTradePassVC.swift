@@ -140,6 +140,7 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
                         SVProgressHUD.showProgressMessage(ProgressMessage: "")
                         let sendVerificationCodeRequestModel = SendVerificationCodeRequestModel()
                         sendVerificationCodeRequestModel.phone = (self?.phoneTf.text!)!
+                        sendVerificationCodeRequestModel.type = 2
                         AppAPIHelper.login().SendVerificationCode(model: sendVerificationCodeRequestModel, complete: {[weak self] (result) in
                             SVProgressHUD.dismiss()
                             self?.vaildCodeBtn.isEnabled = true
