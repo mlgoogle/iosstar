@@ -45,11 +45,13 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccess(_:)), name: Notification.Name(rawValue:AppConst.loginSuccess), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginNotice), name: Notification.Name(rawValue:AppConst.loginSuccessNotice), object: nil)
+        
         AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in
             if let model = response as? ConfigReusltValue {
                 self.PromotionUrl = String.init(format: "%@?uid=%d", model.param_value,(StarUserModel.getCurrentUser()?.id ?? 0)!)
                 
             }
+            
         }) { (error) in
             
         }
@@ -61,7 +63,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         
         LoginSuccessNotice()
     }
-    //MARK:- 登录成功进行邀请码请求
+    
     func LoginNotice(){
         
         AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in
@@ -196,7 +198,6 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         
         
     }
-    
     func showQrcode(){
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "QrcodeVC") as? QrcodeVC
@@ -206,7 +207,56 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         present(vc!, animated: true, completion: nil)
         
     }
-   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0{
+            //进入个人中心
+            if indexPath.row == 0{
+                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "UserInfoVC")
+                // (UserInfoVC as! vc).us = self.responseData
+                let userInfoVc = vc as! UserInfoVC
+                userInfoVc.userInfoData = self.responseData
+                self.navigationController?.pushViewController(userInfoVc, animated: true)
+            }
+            
+        }
+        //AllOrderViewController
+        if indexPath.section == 1{
+            if indexPath.row == 0{
+                
+                let vc = UIStoryboard.init(name: "Deal", bundle: nil).instantiateViewController(withIdentifier: "DealDetailViewController") as! DealDetailViewController
+                vc.showNav  = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            //GetOrderStarsVC 我的钱包
+            if indexPath.row == 1{
+                
+                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "WealthVC")
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            //GetOrderStarsVC 预约明星列表
+            if indexPath.row == 2{
+                
+                toReservationStar()
+                
+            }
+            //CustomerServiceVC
+            if indexPath.row == 3{
+                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "CustomerServiceVC")
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            if indexPath.row == 4 {
+                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "SettingVC")
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+        if indexPath.section == 2{
+            
+            showAlertView()
+        }
+        
+    }
     
     // MARK:- 我预约的明星
     func toReservationStar() {
