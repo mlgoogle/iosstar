@@ -272,5 +272,20 @@ extension UIViewController {
                                 return
         }
     }
+    func showbankCard(){
+        let alertVc = AlertViewController()
+        alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
+                            titleLabelText: "您还没有绑定银行卡",
+                            
+                            subTitleText: "您需要银行卡进行明星时间交易",
+                            completeButtonTitle: "开 始 绑 定") {[weak alertVc] (completeButton) in
+                                alertVc?.dismissAlertVc()
+                                
+                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "BindingBankCardVC")
+                                self.navigationController?.pushViewController(vc, animated: true )
+                                return
+        }
+
+    }
 }
 
