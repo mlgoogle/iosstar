@@ -165,7 +165,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
                 let modeldata = StarSortListModel()
                 
                 StartModel.getStartName(startCode: model.starcode) { (response) in
-                   let star = response as? StartModel
+                    if let star = response as? StartModel{
                     modeldata.pic = star?.pic_url ?? 0
                     modeldata.name = model.starname
                     modeldata.symbol = model.starcode
@@ -175,6 +175,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
                     
                     self.navigationController?.pushViewController(vc, animated: true)
                     return
+                    }
                 }
               
             }
