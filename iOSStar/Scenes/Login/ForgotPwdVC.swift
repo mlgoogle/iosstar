@@ -80,40 +80,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
     }
     //MARK: 发送验证码
     @IBAction func sendVaildCode(_ sender: Any) {
-//        if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
-//            self.vaildCodeBtn.isEnabled = false
-//            // 校验用户是否注册
-//            AppAPIHelper.login().checkRegist(phone: self.phoneTf.text!, complete: {[weak self] (checkRegistResult) in
-//                if let checkRegistResponse = checkRegistResult {
-//                    if checkRegistResponse["result"] as! Int == 0 {
-//                        SVProgressHUD.showErrorMessage(ErrorMessage: "该用户未注册!!!", ForDuration: 2.0, completion: nil)
-//                        self?.vaildCodeBtn.isEnabled = true
-//                        return
-//                    } else {
-//                        // 已注册 发验证码
-//                        SVProgressHUD.showProgressMessage(ProgressMessage: "")
-        
-//                        AppAPIHelper.login().SendCode(phone: (self?.phoneTf.text)!, complete: { [weak self] (result) in
-//                            SVProgressHUD.dismiss()
-//                            self?.vaildCodeBtn.isEnabled = true
-//                            if let response = result {
-//                                if response["result"] as! Int == 1 {
-//                                    self?.timer = Timer.scheduledTimer(timeInterval: 1,target:self!,selector: #selector(self?.updatecodeBtnTitle),userInfo: nil,repeats: true)
-//                                    self?.timeStamp = String.init(format: "%ld", response["timeStamp"] as!  Int)
-//                                    self?.vToken = String.init(format: "%@", response["vToken"] as! String)
-//                                }
-//                            }
-//                        }, error: { (error) in
-//                            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-//                            self?.vaildCodeBtn.isEnabled = true
-//                        })
-//                    }
-//                }
-//            }, error: { (error) in
-//                SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-//                self.vaildCodeBtn.isEnabled = true
-//            })
-//        }
+
         if checkTextFieldEmpty([phoneTf]) && isTelNumber(num: phoneTf.text!) {
             self.vaildCodeBtn.isEnabled = false
             let checkRegisterRequestModel = CheckRegisterRequestModel()
@@ -128,6 +95,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
                         SVProgressHUD.showProgressMessage(ProgressMessage: "")
                         let sendVerificationCodeRequestModel = SendVerificationCodeRequestModel()
                         sendVerificationCodeRequestModel.phone = (self?.phoneTf.text)!
+                        sendVerificationCodeRequestModel.type = 1
                         AppAPIHelper.login().SendVerificationCode(model: sendVerificationCodeRequestModel, complete: {[weak self] (result) in
                             SVProgressHUD.dismiss()
                             self?.vaildCodeBtn.isEnabled = true
@@ -188,18 +156,20 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
             return
         }
 
-        AppAPIHelper.login().ResetPassWd(phone: self.phoneTf.text!, pwd: (self.first_input.text?.md5_string())!, complete: { (result)  in
+        // #274
+        let model = ResetPassWdRequestModel()
+        model.phone = self.phoneTf.text!
+        model.pwd = self.first_input.text!.md5_string()
+        AppAPIHelper.login().ResetPasswd(model: model, complete: { (result)  in
             if let response = result{
                 if response["result"] as! Int == 1{
                     // 重置成功
-                    SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功", ForDuration: 2.0, completion: { 
-                      _ =  self.navigationController?.popViewController(animated: true)
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "重置成功", ForDuration: 2.0, completion: {
+                        _ =  self.navigationController?.popViewController(animated: true)
                     })
                 }
             }
-        }) { (error) in
-            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
-        }
+        }, error: errorBlockFunc())
     }
     
     

@@ -49,8 +49,6 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
     }
     
     func didAdd(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
-
-//       self.tabBar.showshowBadgeOnItemIndex(index: 2)
          self.sessionUnreadCount = totalUnreadCount
          self.refreshSessionBadge()
     }
@@ -58,18 +56,15 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
     func didUpdate(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
          self.sessionUnreadCount = totalUnreadCount
          self.refreshSessionBadge()
-//         self.tabBar.showshowBadgeOnItemIndex(index: 2)
     }
     
     func didRemove(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
-        // self.tabBar.hideBadgeOnItemIndex(index: 2)
         self.sessionUnreadCount = totalUnreadCount;
         self.refreshSessionBadge()
         
     }
     
     func allMessagesDeleted() {
-        // self.tabBar.hideBadgeOnItemIndex(index: 2)
         self.sessionUnreadCount = 0
         self.refreshSessionBadge()
     }
@@ -79,21 +74,15 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
         NIMSDK.shared().systemNotificationManager.add(self)
         NIMSDK.shared().conversationManager.add(self)
         self.sessionUnreadCount = NIMSDK.shared().conversationManager.allUnreadCount()
-//        if NIMSDK.shared().conversationManager.allUnreadCount() != 0 {
-//            self.tabBar.showshowBadgeOnItemIndex(index: 2)
-//        } else {
-//            self.tabBar.hideBadgeOnItemIndex(index: 2)
-//        }
-        print("未读消息条数====\(self.sessionUnreadCount)")
         self.refreshSessionBadge()
     }
     
     // 刷新是否显示红点
     func refreshSessionBadge() {
         if self.sessionUnreadCount == 0 {
-//            self.tabBar.hideBadgeOnItemIndex(index: 2)
+            self.tabBar.hideBadgeOnItemIndex(index: 2)
         } else {
-//            self.tabBar.showshowBadgeOnItemIndex(index: 2)
+            self.tabBar.showshowBadgeOnItemIndex(index: 2)
         }
     }
     

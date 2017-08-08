@@ -37,7 +37,7 @@ class BuyOrSellViewController: DealBaseViewController {
         } else {
             requestRealTime()
         }
-       requestPositionCount()
+//       requestPositionCount()
        requetTotalCount()
     }
     
@@ -61,19 +61,29 @@ class BuyOrSellViewController: DealBaseViewController {
         }
     }
     
+    
     func requetTotalCount() {
         guard starListModel != nil else {
             return
         }
-        AppAPIHelper.marketAPI().requestTotalCount(starCode: starListModel!.symbol, complete: { (response) in
-            if let model = response as? StarTotalCountModel {
-                self.totalCount = Int(model.star_time)
+        let param = MiuCountRequestModel()
+        param.star_code = starListModel!.symbol
+        AppAPIHelper.dealAPI().requestMiuCount(requestModel: param, complete: { [weak self](response)in
+            if let model = response as? MiuResponeModel {
+                self?.totalCount = model.star_own_time
+                self?.positionCount = model.user_star_time
+                self?.tableView.reloadData()
             }
-            
-        }) { (error) in
-            
-            
-        }
+        }, error: nil)
+//        tAPI().requestTotalCount(starCode: starListModel!.symbol, complete: { (response) in
+//            if let model = response as? StarTotalCountModel {
+//                self.totalCount = Int(model.star_time)
+//            }
+//            
+//        }) { (error) in
+//            
+//            
+//        }
     }
     
     deinit {
@@ -102,10 +112,10 @@ class BuyOrSellViewController: DealBaseViewController {
             return
         }
         
-//        if count > positionCount && dealType == AppConst.DealType.sell{
-//            SVProgressHUD.showErrorMessage(ErrorMessage: "转让数量不能超过当前总持有量", ForDuration: 1.5, completion: nil)
-//            return
-//        }
+        if count > positionCount && dealType == AppConst.DealType.sell{
+            SVProgressHUD.showErrorMessage(ErrorMessage: "转让数量不能超过当前总持有量", ForDuration: 1.5, completion: nil)
+            return
+        }
         
 
         SVProgressHUD.show()

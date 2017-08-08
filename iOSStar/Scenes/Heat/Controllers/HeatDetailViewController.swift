@@ -110,7 +110,7 @@ class HeatDetailViewController: UIViewController {
                     self.fansList?.append(contentsOf: models)
                 }
             }
-        }, error: errorBlockFunc())
+        }, error: nil)
     }
     
     func requestStarPrice() {
@@ -123,7 +123,7 @@ class HeatDetailViewController: UIViewController {
             if let model = result as? StarSortListModel{
                 self?.priceLabel.text =  String.init(format: "%.2f", model.currentPrice)
             }
-        }, error: errorBlockFunc())
+        }, error: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -190,7 +190,7 @@ class HeatDetailViewController: UIViewController {
                 self.statusModel = model
                 self.refreshSatus()
             }
-        }, error: errorBlockFunc())
+        }, error: nil)
     }
     
     func setData() {

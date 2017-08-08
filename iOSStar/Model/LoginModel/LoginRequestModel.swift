@@ -19,10 +19,10 @@ class RegisterRequestModel: BaseModel {
     var phone = ""
     var pwd = ""
     var memberId = ""
-    var agentId = "11"
-    var recommend = "11"
-    var timestamp = "11"
-    var sub_agentId = "1111"
+    var agentId = ""
+    var recommend = ""
+    var timestamp = ""
+    var sub_agentId = ""
     var channel = "  "
 }
 
@@ -50,10 +50,12 @@ class WeChatLoginRequestModel: BaseModel {
 
 class CheckRegisterRequestModel: BaseModel {
     var phone = ""
+    var type = 0
 }
 
 class SendVerificationCodeRequestModel: BaseModel {
     var phone = ""
+    var type = 0
 }
 
 class ResetPassWdRequestModel: BaseModel {

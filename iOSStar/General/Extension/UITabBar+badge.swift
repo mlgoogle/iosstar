@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let TabbarItemNums = 4.0
+let TabbarItemNums = 3.0
 
 extension UITabBar {
  

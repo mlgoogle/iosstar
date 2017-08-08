@@ -13,21 +13,21 @@ class CircleListRequestModel: BaseModel {
     var count:Int32 = 10
 }
 class ApproveCircleModel: BaseModel {
-    var star_code = "1001"
-    var circle_id:Int64 = 10001
+    var star_code = ""
+    var circle_id:Int64 = 0
     var uid:Int64 = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
 }
 class CommentCircleModel: ApproveCircleModel {
     var direction = 0
-    var content = "111111111"
+    var content = ""
     
 }
 class SendCircleRequestModel: BaseModel {
-    var star_code = "1001"
-    var content = "d隧道掘进机爱迪生的卡死了；打开了；奥斯卡了；奥斯卡；懒得看洒了；的卡萨；离苦得乐；萨克的；拉斯柯达；拉卡死了；打卡；塑料颗粒；打开了"
-    var picurl = "http://p3.img.cctvpic.com/nettv/newgame/2011/0519/20110519071618926.jpg"
+    var star_code = ""
+    var content = ""
+    var picurl = ""
 }
 class DeleteCircle: BaseModel {
-    dynamic var star_code = "1001"
+    dynamic var star_code = ""
     dynamic var circle_id = 0
 }

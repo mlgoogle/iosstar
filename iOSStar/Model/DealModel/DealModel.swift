@@ -12,11 +12,11 @@ import RealmSwift
 
 class EntrustSuccessModel: Object {
     dynamic var amount = 0
-    dynamic var buySell = 2
-    dynamic var id = 132
-    dynamic var openPrice = 13.0
+    dynamic var buySell = 0
+    dynamic var id = 0
+    dynamic var openPrice = 0.0
     dynamic var positionId:Int64 = 0
-    dynamic var positionTime:Int64 = 1496920841
+    dynamic var positionTime:Int64 = 0
     dynamic var symbol = ""
 }
 
@@ -24,9 +24,9 @@ class ReceiveMacthingModel: Object {
     dynamic var buyUid = 0
     dynamic var sellUid = 0
     dynamic var openPositionTime:Int64 = 0
-    dynamic var openPrice:Double = 1.00
-    dynamic var orderId:Int64 = 2371231398736937636
-    dynamic var symbol = "1001"
+    dynamic var openPrice:Double = 0.0
+    dynamic var orderId:Int64 = 0
+    dynamic var symbol = ""
     dynamic var amount = 0
     override static func primaryKey() -> String?{
         return "orderId"
@@ -61,7 +61,7 @@ class EntrustListModel: Object {
     dynamic var amount:Int64 = 0
     dynamic var buySell = AppConst.DealType.buy.rawValue
     dynamic var handle:Int32 = AppConst.OrderStatus.pending.rawValue
-    dynamic var id:Int64 = 142
+    dynamic var id:Int64 = 0
     dynamic var openCharge:Double = 0.0
     dynamic var openPrice:Double = 0.0
     dynamic var positionId:Int64 = 0

@@ -170,6 +170,8 @@ class SocketConst: NSObject {
         //明星回复评论
         case starComment = 15013
         case configRequst = 10033
+        //交易时间
+        case miuCount = 10037
     }
     
     enum type:UInt8 {
