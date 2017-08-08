@@ -159,44 +159,32 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
             
             
             if doRealm{
-                        let alertVc = AlertViewController()
-                        alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-                                            titleLabelText: "您还没有身份验证",
-                                            subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
-                                            completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
-                                                alertVc?.dismissAlertVc()
-                
-                                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
-                                                self.navigationController?.pushViewController(vc, animated: true )
-                                                return
-                        }
+                        showRealname()
             }else{
                 let model = self.dataSource?[indexPath.section] as! StarInfoModel
                 let modeldata = StarSortListModel()
-                modeldata.name = model.starname
-                modeldata.symbol = model.starcode
-                let story = UIStoryboard.init(name: "Market", bundle: nil)
-                let vc = story.instantiateViewController(withIdentifier: "OrderStarViewController") as! OrderStarViewController
-                vc.starInfo = modeldata
-                self.navigationController?.pushViewController(vc, animated: true)
-                return
+                
+                StartModel.getStartName(startCode: model.starcode) { (response) in
+                    if let star = response as? StartModel{
+                    modeldata.pic = star?.pic_url ?? 0
+                    modeldata.name = model.starname
+                    modeldata.symbol = model.starcode
+                    let story = UIStoryboard.init(name: "Market", bundle: nil)
+                    let vc = story.instantiateViewController(withIdentifier: "OrderStarViewController") as! OrderStarViewController
+                    vc.starInfo = modeldata
+                    
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    return
+                    }
+                }
+              
             }
         
        }
         //聊天
         if action == 5 {
             if doRealm{
-                let alertVc = AlertViewController()
-                alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-                                    titleLabelText: "您还没有身份验证",
-                                    subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
-                                    completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
-                                        alertVc?.dismissAlertVc()
-                                        
-                                        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
-                                        self.navigationController?.pushViewController(vc, animated: true )
-                                        return
-                }
+               showRealname()
             }else{
                 let model = self.dataSource?[indexPath.section] as! StarInfoModel
                 let session = NIMSession( model.faccid, type: .P2P)
@@ -228,15 +216,20 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
     }
     //MARK:- 进入明星详细资料
     func dostarDetail(_ sender : UIButton){
-        
-        let starListModel = StarSortListModel()
         let model = self.dataSource?[sender.tag] as! StarInfoModel
-        starListModel.symbol = model.starcode
-        starListModel.name = model.starname
-        let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
-        introVC.starModel = starListModel
-        
-        self.navigationController?.pushViewController(introVC, animated: true)
+        StartModel.getStartName(startCode: model.starcode) { (response) in
+             let star = response as? StartModel
+             let starListModel = StarSortListModel()
+            
+            starListModel.symbol = model.starcode
+            starListModel.name = model.starname
+            starListModel.pic  = (star?.pic_url)!
+            let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
+            introVC.starModel = starListModel
+            
+            self.navigationController?.pushViewController(introVC, animated: true)
+        }
+       
     }
     func dostar(_ sender : UIButton){
         

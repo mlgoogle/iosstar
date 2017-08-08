@@ -58,14 +58,13 @@ class BindingBankCardVC: UITableViewController {
                                                                 self?.timeStamp = String.init(format: "%ld", response["timeStamp"] as!  Int)
                                                                 self?.vToken = String.init(format: "%@", response["vToken"] as! String)
                     }
-                }
+                  }
                 }, error: { (error) in
                     self.didRequestError(error)
                     
                     self.SendCode.isEnabled = true
             })
         }
-        
     }
     //MARK:-   更新秒数
     func updatecodeBtnTitle() {
@@ -92,28 +91,17 @@ class BindingBankCardVC: UITableViewController {
             if string.md5_string() != self.vToken{
                 SVProgressHUD.showErrorMessage(ErrorMessage: "验证码错误", ForDuration: 1.0, completion: nil)
                 return
-                    
-          
             }
-            
             let model = BindCardListRequestModel()
             model.bankUsername = name.text!
             model.account = cardNum.text!
             AppAPIHelper.user().bindcard(requestModel: model, complete: { [weak self](result) in
-                
-                SVProgressHUD.showSuccessMessage(SuccessMessage: "绑定成功", ForDuration: 1, completion: { 
+              SVProgressHUD.showSuccessMessage(SuccessMessage: "绑定成功", ForDuration: 1, completion: {
                    self?.navigationController?.popViewController(animated: true)
                 })
             }, error: { (error) in
                 self.didRequestError(error)
             })
-      
-            
         }
-    
-       
     }
-    
- 
-    
 }

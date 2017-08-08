@@ -35,11 +35,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         title = "个人信息"
         initAlertController()
         initImagePickerController()
-        
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "保存", style: .done, target: self, action: #selector(rightItmeClick))
-//        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(hexString: AppConst.Color.main)
 
-        
         self.getUserRealmInfo { (result) in
             if let model = result{
 
