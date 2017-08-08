@@ -262,20 +262,7 @@ extension MarketDetailViewController:UIScrollViewDelegate, MenuViewDelegate, Bot
                 let object =  model as! [String : AnyObject]
                 let alertVc = AlertViewController()
                 if object["realname"] as! String == ""{
-                    
-                    alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-                                        titleLabelText: "您还没有身份验证",
-                                        
-                                        subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
-                                        
-                                        completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
-                                            alertVc?.dismissAlertVc()
-                                            
-                                            let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
-                                            self.navigationController?.pushViewController(vc, animated: true )
-                                            return
-                    }
-                    
+                   self.showRealname()
                 }else {
                     
                     self.performSegue(withIdentifier: "meetFans", sender: nil)

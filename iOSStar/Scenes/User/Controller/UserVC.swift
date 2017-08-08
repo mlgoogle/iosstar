@@ -196,6 +196,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         
         
     }
+    
     func showQrcode(){
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "QrcodeVC") as? QrcodeVC
@@ -205,56 +206,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         present(vc!, animated: true, completion: nil)
         
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0{
-            //进入个人中心
-            if indexPath.row == 0{
-                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "UserInfoVC")
-                // (UserInfoVC as! vc).us = self.responseData
-                let userInfoVc = vc as! UserInfoVC
-                userInfoVc.userInfoData = self.responseData
-                self.navigationController?.pushViewController(userInfoVc, animated: true)
-            }
-            
-        }
-        //AllOrderViewController
-        if indexPath.section == 1{
-            if indexPath.row == 0{
-                
-                let vc = UIStoryboard.init(name: "Deal", bundle: nil).instantiateViewController(withIdentifier: "DealDetailViewController") as! DealDetailViewController
-                vc.showNav  = true
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-            
-            //GetOrderStarsVC 我的钱包
-            if indexPath.row == 1{
-                
-                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "WealthVC")
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-            //GetOrderStarsVC 预约明星列表
-            if indexPath.row == 2{
-                
-                toReservationStar()
-                
-            }
-            //CustomerServiceVC
-            if indexPath.row == 3{
-                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "CustomerServiceVC")
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-            
-            if indexPath.row == 4 {
-                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "SettingVC")
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-        }
-        if indexPath.section == 2{
-            
-            showAlertView()
-        }
-        
-    }
+   
     
     // MARK:- 我预约的明星
     func toReservationStar() {

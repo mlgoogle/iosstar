@@ -159,17 +159,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
             
             
             if doRealm{
-                        let alertVc = AlertViewController()
-                        alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-                                            titleLabelText: "您还没有身份验证",
-                                            subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
-                                            completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
-                                                alertVc?.dismissAlertVc()
-                
-                                                let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
-                                                self.navigationController?.pushViewController(vc, animated: true )
-                                                return
-                        }
+                        showRealname()
             }else{
                 let model = self.dataSource?[indexPath.section] as! StarInfoModel
                 let modeldata = StarSortListModel()
@@ -186,17 +176,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
         //聊天
         if action == 5 {
             if doRealm{
-                let alertVc = AlertViewController()
-                alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
-                                    titleLabelText: "您还没有身份验证",
-                                    subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
-                                    completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
-                                        alertVc?.dismissAlertVc()
-                                        
-                                        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "VaildNameVC")
-                                        self.navigationController?.pushViewController(vc, animated: true )
-                                        return
-                }
+               showRealname()
             }else{
                 let model = self.dataSource?[indexPath.section] as! StarInfoModel
                 let session = NIMSession( model.faccid, type: .P2P)
