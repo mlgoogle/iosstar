@@ -48,6 +48,7 @@ class BindingBankCardVC: UITableViewController {
         if checkTextFieldEmpty([phone]) && isTelNumber(num: phone.text!) {
             let sendVerificationCodeRequestModel = SendVerificationCodeRequestModel()
             sendVerificationCodeRequestModel.phone = (self.phone.text!)
+            sendVerificationCodeRequestModel.type = 3
             AppAPIHelper.login().SendVerificationCode(model: sendVerificationCodeRequestModel, complete: { [weak self] (result) in
                 SVProgressHUD.dismiss()
                 self?.SendCode.isEnabled = true

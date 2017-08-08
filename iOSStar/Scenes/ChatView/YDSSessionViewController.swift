@@ -29,7 +29,7 @@ class YDSSessionViewController: NIMSessionViewController ,UIScrollViewDelegate{
         }
         navigationItem.leftItemsSupplementBackButton = false
        
-        titleLabel.textColor = UIColor.black
+        titleLabel.textColor = UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)
     }
     
     func leftItemTapped() {
@@ -43,6 +43,7 @@ class YDSSessionViewController: NIMSessionViewController ,UIScrollViewDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ShareDataModel.share().voiceSwitch = true
+//        navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.isTranslucent = true
     }
     
