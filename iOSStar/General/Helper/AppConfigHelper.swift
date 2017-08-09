@@ -37,7 +37,7 @@ class AppConfigHelper: NSObject {
         UIApplication.shared.applicationIconBadgeNumber = 0
         setupNIMSDK()
         setupUMSDK()
-        WXApi.registerApp("wxa75d31be7fcb762f")
+        WXApi.registerApp(AppConst.WechatKey.Appid)
         setupBugout()
         setupRealmConfig()
         setupReceiveOrderResult()
@@ -114,17 +114,6 @@ class AppConfigHelper: NSObject {
         registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as? String ?? "123"
         registerWYIMRequestModel.uid = Int(StarUserModel.getCurrentUser()?.id ?? 0)
         AppAPIHelper.login().registWYIM(model: registerWYIMRequestModel, complete: { (response) in
-//            if let datadic = result as? Dictionary<String,String> {
-//                let phone = UserDefaults.standard.object(forKey: "phone") as! String
-//                let token = (datadic["token_value"]!)
-//                NIMSDK.shared().loginManager.login(phone, token: token, completion: { (error) in
-//                    if (error == nil) {
-//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
-//                    }else{
-//                        print(error)
-//                    }
-//                })
-//            }
             if let objects = response as? WYIMModel {
                 
                 UserDefaults.standard.set(objects.token_value, forKey: AppConst.UserDefaultKey.token_value.rawValue)
@@ -219,8 +208,8 @@ class AppConfigHelper: NSObject {
         UMSocialManager.default().share(to: type, messageObject: messageObject, currentViewController: viewControlller) { (data, error) in
 
         }
-        
     }
+    
     func registerUMAnalytics() {
         MobClick.setCrashReportEnabled(false)
         UMAnalyticsConfig.sharedInstance().appKey = "595ce5814ad1562ed6000348"
@@ -239,11 +228,10 @@ class AppConfigHelper: NSObject {
         UMSocialManager.default().umSocialAppkey = "5944e976c62dca4b80001e50"
 
         UMSocialManager.default().setPlaform(UMSocialPlatformType.wechatSession, appKey: "wxa75d31be7fcb762f", appSecret: "edd6e7ea7293049951b563dbc803ebea", redirectURL: "https://fir.im/starShareUser")
-        UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "3921700954", appSecret: "04b48b094faeb16683c32669824ebdad", redirectURL: "https://fir.im/starShareUser")
+        UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "2747515847", appSecret: "52b1aee2857ba7846e27618ee1a13015", redirectURL: "https://fir.im/starShareUser")
         UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1106222927", appSecret: "KEYi4oyzQ7QTfUhNkcE", redirectURL: "https://fir.im/starShareUser")
-
-
     }
+    
     func updateDeviceToken() {
         let requestModel = UpdateDeviceTokenModel()
         AppAPIHelper.user().updateDeviceToken(requestModel: requestModel, complete: nil, error: nil)

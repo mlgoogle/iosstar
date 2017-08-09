@@ -21,11 +21,11 @@ class RealTimeRequestModel:MarketBaseModel {
     var symbolInfos = [SymbolInfo]()
 }
 class SymbolInfo: BaseModel {
-    var symbol = "1011650450024"
+    var symbol = ""
     var aType = 5
 }
 class TimeLineRequestModel: MarketBaseModel {
-    var symbol = "1011650450024"
+    var symbol = ""
     var aType = 5
 }
 
@@ -41,14 +41,14 @@ class StarListRequestModel: MarketBaseModel {
 class SendCommentModel: BaseModel {
     var symbol = ""
     var fans_id =  "\(StarUserModel.getCurrentUser()?.userinfo?.id ?? 0)"
-    var nick_name = StarUserModel.getCurrentUser()?.userinfo?.agentName ?? "星享时光用户"
+    var nick_name = StarUserModel.getCurrentUser()?.userinfo?.agentName ?? ""
     var comments = ""
     
-    var head_url = StarUserModel.getCurrentUser()?.userinfo?.avatar_Large ?? "http://tva1.sinaimg.cn/crop.0.0.512.512.180/686fe7e0jw8f114yfoiqkj20e80e8glw.jpg"
+    var head_url = StarUserModel.getCurrentUser()?.userinfo?.avatar_Large ?? ""
 }
 
 class CommentListRequestModel: BaseModel {
-    var symbol = "1001"
+    var symbol = ""
     var token = StarUserModel.getCurrentUser()?.token ?? ""
     var startPos = 0
     var count = 10
@@ -59,15 +59,15 @@ class MarketSearhModel: MarketBaseModel {
 }
 
 class AuctionStatusRequestModel: MarketBaseModel {
-    var symbol = "1001"
+    var symbol = ""
     
 }
 
 class FanListRequestModel: MarketBaseModel {
-    var symbol = "1001"
+    var symbol = ""
     var buySell:Int32 = 1
     var start:Int32 = 0
-    var star_code = "1001"
+    var star_code = ""
     var count:Int64 = 10
 }
 
@@ -75,27 +75,27 @@ class PositionCountRequestModel: BaseModel {
 
      var uid:Int64 = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
     
-     var starcode = "1001"
+     var starcode = ""
     
 }
 
 class BuySellPercentRequest: MarketBaseModel {
     
-     var symbol = "1001"
+     var symbol = ""
 }
 class EntrustCountRequestModel: MarketBaseModel {
-    var symbol = "1001"
+    var symbol = ""
 }
 class BankCardListRequestModel: MarketBaseModel {
-    var cardNo = "1001"
+    var cardNo = ""
 }
 class UnbindCardListRequestModel: MarketBaseModel {
-    var cardNo = "1001"
+    var cardNo = ""
 }
 
 class BindCardListRequestModel: MarketBaseModel {
-    var symbol = "1001"
-    var account = "1001"
-    var bankUsername = "1001"
+    var symbol = ""
+    var account = ""
+    var bankUsername = ""
 }
 

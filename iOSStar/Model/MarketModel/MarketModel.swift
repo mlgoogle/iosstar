@@ -120,7 +120,7 @@ class SearchResultModel: Object {
 class AuctionStatusModel: Object {
     dynamic var remainingTime:Int64 = 0
     dynamic var status = false
-    dynamic var symbol = "1001"
+    dynamic var symbol = ""
 }
 class FansListModel: Object {
     
@@ -161,8 +161,8 @@ class BuyOrSellFansModel: Object {
 }
 
 class OrderTradesModel: Object {
-    dynamic var amount = 21
-    dynamic var buyUid = 152
+    dynamic var amount = 0
+    dynamic var buyUid = 0
     dynamic var closeTime = 0
     dynamic var grossProfit = 0
     dynamic var handle = 0
@@ -185,7 +185,7 @@ class BuySellCountModel: Object {
     dynamic var sellCount = 0
     dynamic var buyTime = 0
     dynamic var sellTime = 0
-    dynamic var symbol = "1001"
+    dynamic var symbol = ""
 }
 
 

@@ -122,6 +122,15 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
             
         }
         
+        let requestStarsModel = GetAllStarInfoModel()
+        AppAPIHelper.user().requestAllStarInfo(requestModel: requestStarsModel, complete: { [weak self](result) in
+            if let model = result as? [StartModel]{
+                self?.dataArry = model
+                self?.collectView.reloadData()
+            }
+        }) { (error) in
+            
+        }
     }
     // MARK: 自定义布局
     func setupInit() {
@@ -135,28 +144,6 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         
         self.collectView.collectionViewLayout = layout
         layout.scrollDirection = .vertical
-        StartModel.getallStartName { [weak self](result) in
-            
-            if let model =  result as? [StartModel]{
-                if model.count == 0{
-                    let requestModel = GetAllStarInfoModel()
-                    AppAPIHelper.user().requestAllStarInfo(requestModel: requestModel, complete: { (result) in
-                        print(NSHomeDirectory())
-                        if let model = result as? [StartModel]{
-                            self?.dataArry = model
-                            self?.collectView.reloadData()
-                        }
-                    }) { (error) in
-                        
-                    }
-                }else{
-                    self?.dataArry = model
-                    self?.collectView.reloadData()
-                }
-              
-            }
-        }
-        
         footer.setRefreshingTarget(self, refreshingAction: #selector(loadItemData))
         //是否自动加载（默认为true，即表格滑到底部就自动加载）
         footer.isAutomaticallyRefresh = false
