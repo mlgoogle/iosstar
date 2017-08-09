@@ -72,3 +72,8 @@ class StarDetaiInfoModel: Object {
     dynamic var work = ""
 }
 
+class MiuResponeModel: BaseModel{
+    var star_own_time = 0
+    var user_star_time = 0
+}
+

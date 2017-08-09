@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactListViewController: BaseCustomPageListTableViewController, OEZTableViewDelegate {
+class ContactListViewController: BaseCustomPageListTableViewController, OEZTableViewDelegate, NIMConversationManagerDelegate ,NIMLoginManagerDelegate{
     
     @IBOutlet var nodaView: UIView!
     // 网络请求判断是否实名认证
@@ -18,29 +18,19 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
         super.viewDidLoad()
         title = "名人通讯录"
         nodaView.isHidden = true
-        onlogin()
         tableView.backgroundColor = UIColor.clear
-    
+        onlogin()
     }
     
     func onlogin(){
-        
-        if NIMSDK.shared().conversationManager.allUnreadCount() != 0 {
-            if NIMSDK.shared().conversationManager.allUnreadCount() >= 99 {
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem.creatBarButtonItem(title: "99+", target: self, action: #selector(self.unReadCountClick))
-            } else {
-                let strCount = String.init(format: "%d", NIMSDK.shared().conversationManager.allUnreadCount())
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem.creatBarButtonItem(title: strCount, target: nil, action: #selector(self.unReadCountClick))
-            }
-        }
+        NIMSDK.shared().conversationManager.add(self)
+        NIMSDK.shared().loginManager.add(self)
     }
 
-
-    
-    func unReadCountClick () {
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        didRequest(0)
     }
-
     
     override func didRequest(_ pageIndex: Int) {
         let requestModel = StarMailListRequestModel()
@@ -109,6 +99,13 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
             vc?.starname = starInfoModel.starname
             self.navigationController?.pushViewController(vc!, animated: true)
         }
+    }
+    
+    func didUpdate(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
+        didRequest(0)
+    }
+    func onKick(_ code: NIMKickReason, clientType: NIMLoginClientType) {
+        userLogout()
     }
 }
 

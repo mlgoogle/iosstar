@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         AppConfigHelper.shared().registerServers()
-        
         // 个推
         AppConfigHelper.shared().setupGeTuiSDK(sdkDelegate: self)
         UIApplication.shared.statusBarStyle = .default
@@ -162,10 +161,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         token = token.replacingOccurrences(of: " ", with: "")
     
         UserDefaults.standard.setValue(token, forKey: AppConst.Text.deviceToken)
+        print(token)
         // [ GTSdk ]：向个推服务器注册deviceToken
         GeTuiSdk.registerDeviceToken(token);
         
-            }
+    }
     
     /** 远程通知注册失败委托 */
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

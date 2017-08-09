@@ -102,12 +102,15 @@ class SellingViewController: UIViewController {
     
             if let model = response as? PanicBuyInfoModel {
                 self.starInfoModel = model
-
+                if let workStr = self.starModel?.work {
+                    self.starInfoModel?.work = workStr
+                }
                 self.tableView.reloadData()
             }
         }) { (error) in
             
         }
+        
         
     }
 

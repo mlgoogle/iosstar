@@ -127,7 +127,7 @@ class StarDataCell: UITableViewCell {
     
     // 设置明星信息
     func setStarInfo(model:StarSortListModel) {
-        
+        bkImageView.kf.setImage(with: URL(string: model.home_pic))
         nameLabel.text = String.init(format: "%@ (%@)", model.name,model.symbol)
         iconImageView.kf.setImage(with: URL(string: model.pic))
     }
@@ -207,13 +207,10 @@ class OrderStarViewController: UIViewController {
         initCityPickerView()
         // 时间
         initDatePickerView()
-        
         // 明星数据
         requestStarInfos()
-        
         // 获取明星服务
         requestStarServiceTypeInfo()
-        
         // 确定约见事件
         completeButton.addTarget(self, action: #selector(completeClick(_:)), for: .touchUpInside)
         

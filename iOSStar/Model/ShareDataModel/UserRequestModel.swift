@@ -88,8 +88,8 @@ class ModifyNicknameModel: MarketBaseModel {
 
 class GetAllStarInfoModel: BaseModel {
     
-    var phone = "1123"
-    var code = "123"
+    var phone = ""
+    var code = ""
     var all = 1
 }
 class AliPayRequestModel: MarketBaseModel {

@@ -165,7 +165,6 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         return section == 0 ? 0.001 : 10
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        return
         if indexPath.section == 0 {
             inputMoney.resignFirstResponder()
             tableView.isScrollEnabled = false

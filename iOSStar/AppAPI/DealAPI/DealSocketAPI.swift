@@ -74,4 +74,9 @@ class DealSocketAPI: BaseSocketAPI, DealAPI{
         let packet = SocketDataPacket(opcode: OPCode, model: requestModel)
         startModelsRequest(packet, listName: "ordersList", modelClass: OrderListModel.self, complete: complete, error: error)
     }
+    
+    func requestMiuCount(requestModel:MiuCountRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
+        let packet = SocketDataPacket(opcode: .miuCount, model: requestModel)
+        startModelRequest(packet, modelClass: MiuResponeModel.self, complete: complete, error: error)
+    }
 }

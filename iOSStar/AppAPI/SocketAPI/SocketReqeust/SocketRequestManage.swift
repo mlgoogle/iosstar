@@ -95,9 +95,7 @@ class SocketRequestManage: NSObject {
             return
         }
         if ( statusCode < 0) && packet.data?.count != 0 {
-            
             socketReqeust?.onError(statusCode)
-            
         } else {
             socketReqeust?.onComplete(response)
         }
