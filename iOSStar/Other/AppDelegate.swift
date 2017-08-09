@@ -159,12 +159,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         let deviceToken_ns = NSData.init(data: deviceToken);    // 转换成NSData类型
         var token = deviceToken_ns.description.trimmingCharacters(in: CharacterSet(charactersIn: "<>"));
         token = token.replacingOccurrences(of: " ", with: "")
-    
         UserDefaults.standard.setValue(token, forKey: AppConst.Text.deviceToken)
         print(token)
         // [ GTSdk ]：向个推服务器注册deviceToken
         GeTuiSdk.registerDeviceToken(token);
-        
+        // 向云信服务注册deviceToken
+        NIMSDK.shared().updateApnsToken(deviceToken)
     }
     
     /** 远程通知注册失败委托 */

@@ -101,14 +101,16 @@ class AppConfigHelper: NSObject {
     }
     
 
+
     
     // MARK: - 网易云信
     func setupNIMSDK() {
         NIMSDKConfig.shared().shouldSyncUnreadCount = true
-        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
+        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "starShareDev")
     }
     
     func LoginYunxin(){
+        
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
         registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as? String  ?? "123"
         registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as? String ?? "123"

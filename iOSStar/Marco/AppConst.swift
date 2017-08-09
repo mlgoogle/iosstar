@@ -115,7 +115,7 @@ class AppConst {
     }
     
     class Network {
-        #if true
+        #if isMock
         //是否测试环境
         //139.224.34.22
         //122.144.169.214
