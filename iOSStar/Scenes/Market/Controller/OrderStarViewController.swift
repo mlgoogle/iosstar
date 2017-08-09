@@ -801,6 +801,11 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate,Fee
         
         if indexPath.row == 2 {
             
+            if serviceTypeModel == nil{
+              SVProgressHUD.showErrorMessage(ErrorMessage: "请选择约见类型", ForDuration: 1, completion: nil)
+                return
+            }
+            
             inputDateTextField.becomeFirstResponder()
         }
         

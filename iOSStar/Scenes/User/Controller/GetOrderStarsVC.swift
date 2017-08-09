@@ -172,6 +172,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
                         let story = UIStoryboard.init(name: "Market", bundle: nil)
                         let vc = story.instantiateViewController(withIdentifier: "OrderStarViewController") as! OrderStarViewController
                         vc.starInfo = modeldata
+                        
                         self.navigationController?.pushViewController(vc, animated: true)
                         return
                     }
