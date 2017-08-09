@@ -227,7 +227,7 @@ extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITe
         model.orderStatus = "购买"
         model.orderInfomation = String.init(format: "%@ (%@)秒", (self.starInfoModel?.star_name)! ,(countTf.text)!)
         model.orderPrice =  String.init(format: "%.2f/秒", (self.starInfoModel?.publish_price)!)
-        
+        model.ordertitlename = "订单详情"
         //将值传给 sharedatemodel
         ShareDataModel.share().orderInfo = model
         let storyboard = UIStoryboard.init(name: "Order", bundle: nil)

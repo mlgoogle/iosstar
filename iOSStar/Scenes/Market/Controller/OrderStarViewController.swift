@@ -343,7 +343,7 @@ class OrderStarViewController: UIViewController {
                             model.orderInfomation = String.init(format: "%@ (%@)", (self.starInfo?.name)! ,(self.starInfo?.symbol)!)
                         }
                         model.orderPrice = "\(self.serviceTypeModel.price)秒"
-                        
+                        model.ordertitlename = "约见"
                         //将值传给 sharedatemodel
                         ShareDataModel.share().orderInfo = model
                         let storyboard = UIStoryboard.init(name: "Order", bundle: nil)
