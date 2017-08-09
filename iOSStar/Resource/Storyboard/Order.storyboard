@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -268,7 +269,7 @@
         <scene sceneID="XxE-rq-WLK">
             <objects>
                 <navigationController storyboardIdentifier="Input" id="nJa-kE-3yi" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hBn-iU-bKZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hBn-iU-bKZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -284,7 +285,7 @@
         <scene sceneID="s4Z-1Z-2ud">
             <objects>
                 <navigationController storyboardIdentifier="Order" automaticallyAdjustsScrollViewInsets="NO" id="GMK-AT-XFo" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NDQ-Ml-uok">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NDQ-Ml-uok">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

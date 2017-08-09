@@ -38,7 +38,6 @@ class SurePayOrderVC: UIViewController {
      
      orderStatus.text = ShareDataModel.share().orderInfo?.orderStatus
      orderInfoMation.text = ShareDataModel.share().orderInfo?.orderInfomation
-        
     }
     @IBAction func close(_ sender: Any) {
          resultBlock?(doStateClick.close as AnyObject)
