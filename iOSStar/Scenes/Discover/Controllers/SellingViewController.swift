@@ -45,7 +45,8 @@ class SellingViewController: UIViewController {
         YD_CountDownHelper.shared.start()
     }
     deinit {
-        YD_CountDownHelper.shared.countDownRefresh = nil    
+        YD_CountDownHelper.shared.countDownRefresh = nil
+         ShareDataModel.share().orderInfo =  nil
     }
     
     func setPriceWithPrice(price:Double) {
@@ -222,6 +223,7 @@ extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITe
         
         let model = OrderInformation()
         model.orderStatus = "购买"
+        model.ordertitlename = "订单详情"
         model.orderInfomation = String.init(format: "%@ (%@)秒", (self.starInfoModel?.star_name)! ,(countTf.text)!)
         model.orderPrice =  String.init(format: "%.2f/秒", (self.starInfoModel?.publish_price)!)
         

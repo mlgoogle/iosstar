@@ -24,7 +24,7 @@ class SurePayAllOrderVC: UIViewController {
         sure.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
         orderAllPrice.text = ShareDataModel.share().orderInfo?.orderPrice
         
-        
+        name.text = ShareDataModel.share().orderInfo?.ordertitlename ?? "约见"
         
         orderStatus.text = ShareDataModel.share().orderInfo?.orderStatus
         orderInfoMation.text = ShareDataModel.share().orderInfo?.orderInfomation
