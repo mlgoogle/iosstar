@@ -65,6 +65,7 @@ class StarIntroduceViewController: UIViewController {
             vc?.titlestr = (starDetailModel?.star_name)! + "(正在星享时光 出售TA的时间)"
             vc?.Image = headerImg.image
             vc?.descr = model.experience
+            vc?.work = (starDetailModel?.work)!
             vc?.star_code = (starDetailModel?.star_code)!
             vc?.name = (starDetailModel?.star_name)!
             vc?.webpageUrl = "https://fir.im/starShareUser?uid=\(StarUserModel.getCurrentUser()?.userinfo?.id ?? 0)"

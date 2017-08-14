@@ -19,6 +19,7 @@ class ShareVC: UIViewController {
     var name : String = ""
     var descr : String = ""
     var star_code : String = ""
+    var work : String = ""
     var webpageUrl : String = ""
     var PromotionUrl : String = ""
      var typeArrM = [UMSocialPlatformType.wechatSession,UMSocialPlatformType.wechatTimeLine,UMSocialPlatformType.sina,UMSocialPlatformType.QQ,UMSocialPlatformType.qzone]
@@ -27,6 +28,7 @@ class ShareVC: UIViewController {
         starName.text = name
         starImg.image = Image
         getPromotionUrl()
+        starWork.text = work
         
         // Do any additional setup after loading the view.
     }
