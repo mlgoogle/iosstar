@@ -1,5 +1,5 @@
 //
-//  UpdateVC.swift
+//  NewVC.swift
 //  wp
 //
 //  Created by mu on 2017/5/11.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UpdateVC: UIViewController {
+class NewVC: UIViewController {
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var versionLabel: UILabel!
@@ -28,7 +28,7 @@ class UpdateVC: UIViewController {
         timeLabel.text = "发布时间:\(AppConfigHelper.shared().updateModel!.newAppReleaseTime)"
         versionLabel.text = "版本:\(AppConfigHelper.shared().updateModel!.newAppVersionName)"
         mLabel.text = "大小:\(AppConfigHelper.shared().updateModel!.newAppSize)M"
-        contentLabel.text = "1.修复第一次审核bug\\n2.修复聊天bug\\n3.UI调整"//AppConfigHelper.shared().updateModel!.newAppUpdateDesc
+        contentLabel.text = AppConfigHelper.shared().updateModel!.newAppUpdateDesc
     }
 
     //确认

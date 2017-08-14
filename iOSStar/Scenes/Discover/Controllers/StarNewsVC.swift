@@ -23,7 +23,6 @@ class NewsCell: OEZTableViewCell {
     @IBOutlet weak var thumbUpBtn: UIButton!
     @IBOutlet weak var CommentBtn: UIButton!
     @IBOutlet weak var showView: UIView!
-    @IBOutlet weak var contentHeight: NSLayoutConstraint!
     
     var newsPicUrl = ""
     
@@ -44,16 +43,8 @@ class NewsCell: OEZTableViewCell {
             iconImage.kf.setImage(with: URL.init(string: model.head_url), placeholder: userIcon)
             nameLabel.text =  model.symbol_name
             newsLabel.text = model.content
-            //新闻图片占位图
-            let newsPlace = UIImage.imageWith(AppConst.iconFontName.newsPlaceHolder.rawValue, fontSize: newsPic.frame.size, fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue))
-            newsPic.kf.setImage(with: URL.init(string: model.pic_url), placeholder: newsPlace)
+            newsPic.kf.setImage(with: URL.init(string: model.pic_url), placeholder: nil)
             newsPicUrl = model.pic_url
-            //计算文案高度
-            let contentAttribute = NSMutableAttributedString.init(string: model.content)
-            contentAttribute.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14), range: NSRange.init(location: 0, length: model.content.length()))
-            let size  = CGSize.init(width: newsLabel.frame.width, height: CGFloat.greatestFiniteMagnitude)
-            let layout = YYTextLayout.init(containerSize: size, text: contentAttribute)
-            contentHeight.constant = (layout?.textBoundingSize.height)!
             thumbUpBtn.setTitle("点赞(\(model.approve_dec_time)秒)", for: .normal)
             CommentBtn.setTitle("评论(\(model.comment_dec_time)秒)", for: .normal)
         }
@@ -80,7 +71,6 @@ class NewsCell: OEZTableViewCell {
 class ThumbupCell: OEZTableViewCell {
     @IBOutlet var iconImage: UIImageView!
     @IBOutlet var thumbupNames: UILabel!
-    @IBOutlet weak var thumbUpHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         iconImage.image = UIImage.imageWith(AppConst.iconFontName.thumpUpIcon.rawValue, fontSize: iconImage.frame.size, fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue))
@@ -88,25 +78,8 @@ class ThumbupCell: OEZTableViewCell {
     
     override func update(_ data: Any!) {
         if let model = data as? CircleListModel{
-            if model.approve_list.count == 0{
-                
-                contentView.alpha = 0
-                thumbUpHeight.constant = 0
-                return
-            }
-            contentView.alpha = 1
-
-            var approveName = ""
-            for approve in model.approve_list{
-                approveName += "\(approve.user_name),"
-            }
-            //计算文案高度
-            let contentAttribute = NSMutableAttributedString.init(string: approveName)
-            contentAttribute.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14), range: NSRange.init(location: 0, length: approveName.length()))
-            let size  = CGSize.init(width: thumbupNames.frame.width-40 , height: CGFloat.greatestFiniteMagnitude)
-            let layout = YYTextLayout.init(containerSize: size, text: contentAttribute)
-            thumbUpHeight.constant = (layout?.textBoundingSize.height)!
-            thumbupNames.attributedText = contentAttribute
+            contentView.isHidden = model.approve_list.count == 0
+            thumbupNames.text = model.approveName
         }
     }
 }
@@ -132,12 +105,8 @@ class CommentCell: OEZTableViewCell {
             if model.direction == 2{
                 comment = "\(model.user_name)回复\(listModel.symbol_name):\(model.content)"
             }
-            //计算文案高度
             let contentAttribute = NSMutableAttributedString.init(string: comment)
             contentAttribute.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14), range: NSRange.init(location: 0, length: comment.length()))
-            let size  = CGSize.init(width: commentLabel.frame.width , height: CGFloat.greatestFiniteMagnitude)
-            let layout = YYTextLayout.init(containerSize: size, text: contentAttribute)
-            commentHeight.constant = (layout?.textBoundingSize.height)!
             if model.direction == 0 {
                 contentAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(rgbHex: 0x0092ca), range: NSRange.init(location: 0, length: model.user_name.length()))
             }
@@ -176,8 +145,6 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
         title = "发现明星"
         dismissBtn.setImage(UIImage.imageWith(AppConst.iconFontName.closeIcon.rawValue, fontSize: CGSize.init(width: 22, height: 22), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)), for: .normal)
         getexperience()
-        tableView.estimatedRowHeight = 44
-        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             self.requestCycleData(0)
         })
@@ -215,7 +182,6 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         KingfisherManager.shared.cache.clearMemoryCache()
-        KingfisherManager.shared.cache.clearDiskCache()
     }
     
     enum cellAction: Int {
@@ -240,6 +206,9 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
         param.star_code = ShareDataModel.share().selectStarCode
         AppAPIHelper.circleAPI().requestStarCircleList(requestModel: param, complete: { [weak self](result) in
             if let data = result as? [CircleListModel]{
+                for model in data{
+                    model.caclulateHeight()
+                }
                 if position == 0{
                     self?.tableData = data
                 }else{
@@ -325,6 +294,26 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let model = tableData[indexPath.section]
+        
+        if indexPath.row == 0{
+            return model.headerHeight
+        }
+        
+        if indexPath.row == 1{
+            return model.thumbUpHeight
+        }
+        
+        
+        if let commentModel = model.comment_list[indexPath.row - 2] as? CircleCommentModel{
+            return commentModel.circleHeight
+        }
+        
+        return 0
+        
+    }
+    
     override func isSections() -> Bool {
         return true
     }
@@ -356,7 +345,8 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
                             user.uid = (StarUserModel.getCurrentUser()?.userinfo?.id)!
                             user.user_name = (StarUserModel.getCurrentUser()?.userinfo?.agentName)!
                             model.approve_list.append(user)
-                            tableView.reloadData()
+                            model.caclulateHeight()
+                            tableView.reloadRows(at: [indexPath], with: .automatic)
                         })
                     }
                 }
@@ -381,6 +371,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
                                 comment.direction = 0
                                 comment.priority = 0
                                 comment.content = message as! String
+                                comment.calculateHeight()
                                 model.comment_list.append(comment)
 //                                tableView.reloadRows(at: [indexPath], with: .automatic)
                                 tableView.reloadData()

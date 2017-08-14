@@ -142,6 +142,9 @@ class StarIntroduceViewController: UIViewController {
     }
 
     @IBAction func appointmentAction(_ sender: Any) {
+        if starDetailModel == nil{
+            return
+        }
         let storyBoard = UIStoryboard(name: "Market", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "OrderStarViewController") as! OrderStarViewController
         starModel?.home_pic = (starDetailModel?.back_pic)!
