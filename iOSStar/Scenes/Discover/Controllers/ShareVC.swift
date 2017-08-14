@@ -19,10 +19,13 @@ class ShareVC: UIViewController {
     var typeArrM = [UMSocialPlatformType.wechatSession,UMSocialPlatformType.wechatTimeLine,UMSocialPlatformType.sina,UMSocialPlatformType.QQ,UMSocialPlatformType.qzone]
     override func viewDidLoad() {
         super.viewDidLoad()
-        starName.text = share.name
-        starImg.image = share.Image
-        getPromotionUrl()
-        starWork.text = share.work
+        if let sharedata = share{
+            starName.text = sharedata.name
+            starImg.image = sharedata.Image
+            getPromotionUrl()
+            starWork.text = sharedata.work
+        }
+        
         
         // Do any additional setup after loading the view.
     }
@@ -50,11 +53,15 @@ class ShareVC: UIViewController {
             let messageObject = UMSocialMessageObject()
             
             let shareObject = UMShareWebpageObject()
-            shareObject.title = share.titlestr
-            shareObject.descr = share.descr
-            shareObject.thumbImage = share.Image
-            shareObject.webpageUrl = share.webpageUrl
-            messageObject.shareObject = shareObject
+            if let shareData = share{
+                shareObject.descr = shareData.descr
+                shareObject.thumbImage = shareData.Image
+                shareObject.webpageUrl = shareData.webpageUrl
+                messageObject.shareObject = shareObject
+                shareObject.title = shareData.titlestr
+            }
+            
+            
             UMSocialManager.default().share(to: self.typeArrM[btn.tag  - 100 - 1], messageObject: messageObject, currentViewController: nil) {
                 (data , error) in
             }
