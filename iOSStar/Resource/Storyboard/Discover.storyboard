@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="My8-fP-YK9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="My8-fP-YK9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -82,7 +82,7 @@
                                 <rect key="frame" x="0.0" y="-44" width="375" height="711"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="140" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="6z6-Hx-nhP">
-                                        <rect key="frame" x="0.0" y="24" width="375" height="637"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="661"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarIntroduceCell" rowHeight="170" id="aRs-SG-bQm" customClass="StarIntroduceCell" customModule="iOSStar" customModuleProvider="target">
@@ -264,7 +264,7 @@
                                     <constraint firstAttribute="bottom" secondItem="EzQ-r0-HYk" secondAttribute="bottom" id="3hK-zy-DER"/>
                                     <constraint firstAttribute="trailing" secondItem="EzQ-r0-HYk" secondAttribute="trailing" id="LbZ-gR-66w"/>
                                     <constraint firstAttribute="trailing" secondItem="6z6-Hx-nhP" secondAttribute="trailing" id="VNE-xg-ArA"/>
-                                    <constraint firstItem="6z6-Hx-nhP" firstAttribute="top" secondItem="Sl5-zC-Des" secondAttribute="top" constant="24" id="WxR-8z-zWe"/>
+                                    <constraint firstItem="6z6-Hx-nhP" firstAttribute="top" secondItem="Sl5-zC-Des" secondAttribute="top" id="WxR-8z-zWe"/>
                                     <constraint firstAttribute="bottom" secondItem="6z6-Hx-nhP" secondAttribute="bottom" constant="50" id="cPK-nq-qhY"/>
                                     <constraint firstItem="6z6-Hx-nhP" firstAttribute="leading" secondItem="Sl5-zC-Des" secondAttribute="leading" id="djO-vx-IXP"/>
                                     <constraint firstItem="EzQ-r0-HYk" firstAttribute="leading" secondItem="Sl5-zC-Des" secondAttribute="leading" id="qsD-YZ-T7b"/>
@@ -813,7 +813,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="My8-fP-YK9" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iiF-iI-esP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iiF-iI-esP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -853,8 +853,8 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWH-75-0OQ">
-                                            <rect key="frame" x="273" y="-4" width="44" height="48"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWH-75-0OQ">
+                                            <rect key="frame" x="299" y="0.0" width="44" height="48"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="44" id="rD0-gG-AqK"/>
                                             </constraints>
@@ -1089,10 +1089,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0e8-yv-2ad">
+                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0e8-yv-2ad">
                                             <rect key="frame" x="64" y="0.0" width="295" height="44"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H44-mi-dyv" customClass="YYLabel">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H44-mi-dyv" customClass="YYLabel">
                                                     <rect key="frame" x="8" y="0.0" width="279" height="36"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
