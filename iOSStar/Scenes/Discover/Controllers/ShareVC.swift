@@ -9,14 +9,14 @@
 import UIKit
 
 class ShareVC: UIViewController {
-
+    
     @IBOutlet var starWork: UILabel!
     @IBOutlet var starName: UILabel!
     @IBOutlet var starImg: UIImageView!
     var share : Share!
-   
+    
     var PromotionUrl : String = ""
-     var typeArrM = [UMSocialPlatformType.wechatSession,UMSocialPlatformType.wechatTimeLine,UMSocialPlatformType.sina,UMSocialPlatformType.QQ,UMSocialPlatformType.qzone]
+    var typeArrM = [UMSocialPlatformType.wechatSession,UMSocialPlatformType.wechatTimeLine,UMSocialPlatformType.sina,UMSocialPlatformType.QQ,UMSocialPlatformType.qzone]
     override func viewDidLoad() {
         super.viewDidLoad()
         starName.text = share.name
@@ -30,7 +30,6 @@ class ShareVC: UIViewController {
         AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in
             if let model = response as? ConfigReusltValue {
                 self.PromotionUrl = String.init(format: "%@?uid=%d&star_code=%@", model.param_value,(StarUserModel.getCurrentUser()?.id ?? 0)!,self.share.star_code)
-                
             }
             
         }) { (error) in
@@ -44,9 +43,9 @@ class ShareVC: UIViewController {
         let btn = sender as! UIButton
         switch btn.tag {
         case 100:
-         sharetoquecode()
-          break
-       
+            sharetoquecode()
+            break
+            
         default :
             let messageObject = UMSocialMessageObject()
             
@@ -54,44 +53,32 @@ class ShareVC: UIViewController {
             shareObject.title = share.titlestr
             shareObject.descr = share.descr
             shareObject.thumbImage = share.Image
-            //                    shareObject.thumbImage = UIImage.init(named: thumbImage!)
             shareObject.webpageUrl = share.webpageUrl
             messageObject.shareObject = shareObject
-            
             UMSocialManager.default().share(to: self.typeArrM[btn.tag  - 100 - 1], messageObject: messageObject, currentViewController: nil) {
                 (data , error) in
             }
-             self.dismissController()
+            self.dismissController()
             break
             
         }
     }
-
+    
     func sharetoquecode(){
         
-      
-        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "QrcodeVC") as? QrcodeVC
-        vc?.modalPresentationStyle = .custom
-        vc?.urlStr = self.PromotionUrl
-        vc?.img = share.Image
-        vc?.modalTransitionStyle = .crossDissolve
-        present(vc!, animated: true, completion: nil)
-    
+        if let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "QrcodeVC") as? QrcodeVC{
+            vc.modalPresentationStyle = .custom
+            vc.urlStr = self.PromotionUrl
+            vc.img = share.Image
+            vc.modalTransitionStyle = .crossDissolve
+            present(vc, animated: true, completion: nil)
+            
+        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
