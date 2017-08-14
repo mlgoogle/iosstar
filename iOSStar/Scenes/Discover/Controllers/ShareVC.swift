@@ -18,6 +18,7 @@ class ShareVC: UIViewController {
     var Image : UIImage!
     var name : String = ""
     var descr : String = ""
+    var star_code : String = ""
     var webpageUrl : String = ""
     var PromotionUrl : String = ""
      var typeArrM = [UMSocialPlatformType.wechatSession,UMSocialPlatformType.wechatTimeLine,UMSocialPlatformType.sina,UMSocialPlatformType.QQ,UMSocialPlatformType.qzone]
@@ -32,7 +33,7 @@ class ShareVC: UIViewController {
     func getPromotionUrl(){
         AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in
             if let model = response as? ConfigReusltValue {
-                self.PromotionUrl = String.init(format: "%@?uid=%d", model.param_value,(StarUserModel.getCurrentUser()?.id ?? 0)!)
+                self.PromotionUrl = String.init(format: "%@?uid=%d&star_code=%@", model.param_value,(StarUserModel.getCurrentUser()?.id ?? 0)!,self.star_code)
                 
             }
             

@@ -13,6 +13,7 @@ class QrcodeVC: UIViewController {
     @IBOutlet var Qrcode: UIImageView!
     @IBOutlet var header: UIImageView!
     var urlStr : String = "123"
+   
     var img : UIImage!
     override func viewDidLoad() {
         super.viewDidLoad()
