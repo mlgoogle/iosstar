@@ -59,16 +59,17 @@ class StarIntroduceViewController: UIViewController {
 //            
 //            
             
-            
+            let share  = Share()
             let vc = UIStoryboard.init(name: "Market", bundle: nil).instantiateViewController(withIdentifier: "ShareVC") as? ShareVC
             vc?.modalPresentationStyle = .custom
-            vc?.titlestr = (starDetailModel?.star_name)! + "(正在星享时光 出售TA的时间)"
-            vc?.Image = headerImg.image
-            vc?.descr = model.experience
-            vc?.work = (starDetailModel?.work)!
-            vc?.star_code = (starDetailModel?.star_code)!
-            vc?.name = (starDetailModel?.star_name)!
-            vc?.webpageUrl = "https://fir.im/starShareUser?uid=\(StarUserModel.getCurrentUser()?.userinfo?.id ?? 0)"
+            share.titlestr = (starDetailModel?.star_name)! + "(正在星享时光 出售TA的时间)"
+            share.Image = headerImg.image
+            share.descr = model.experience
+            share.work = (starDetailModel?.work)!
+            share.star_code = (starDetailModel?.star_code)!
+            share.name = (starDetailModel?.star_name)!
+            vc?.share = share
+            share.webpageUrl = "https://fir.im/starShareUser?uid=\(StarUserModel.getCurrentUser()?.userinfo?.id ?? 0)"
             vc?.modalTransitionStyle = .crossDissolve
             present(vc!, animated: true, completion: nil)
         }

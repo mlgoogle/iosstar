@@ -13,29 +13,23 @@ class ShareVC: UIViewController {
     @IBOutlet var starWork: UILabel!
     @IBOutlet var starName: UILabel!
     @IBOutlet var starImg: UIImageView!
-    
-    var titlestr : String = ""
-    var Image : UIImage!
-    var name : String = ""
-    var descr : String = ""
-    var star_code : String = ""
-    var work : String = ""
-    var webpageUrl : String = ""
+    var share : Share!
+   
     var PromotionUrl : String = ""
      var typeArrM = [UMSocialPlatformType.wechatSession,UMSocialPlatformType.wechatTimeLine,UMSocialPlatformType.sina,UMSocialPlatformType.QQ,UMSocialPlatformType.qzone]
     override func viewDidLoad() {
         super.viewDidLoad()
-        starName.text = name
-        starImg.image = Image
+        starName.text = share.name
+        starImg.image = share.Image
         getPromotionUrl()
-        starWork.text = work
+        starWork.text = share.work
         
         // Do any additional setup after loading the view.
     }
     func getPromotionUrl(){
         AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in
             if let model = response as? ConfigReusltValue {
-                self.PromotionUrl = String.init(format: "%@?uid=%d&star_code=%@", model.param_value,(StarUserModel.getCurrentUser()?.id ?? 0)!,self.star_code)
+                self.PromotionUrl = String.init(format: "%@?uid=%d&star_code=%@", model.param_value,(StarUserModel.getCurrentUser()?.id ?? 0)!,share.star_code)
                 
             }
             
@@ -57,11 +51,11 @@ class ShareVC: UIViewController {
             let messageObject = UMSocialMessageObject()
             
             let shareObject = UMShareWebpageObject()
-            shareObject.title = titlestr
-            shareObject.descr = self.descr
-            shareObject.thumbImage = self.Image
+            shareObject.title = share.titlestr
+            shareObject.descr = share.descr
+            shareObject.thumbImage = share.Image
             //                    shareObject.thumbImage = UIImage.init(named: thumbImage!)
-            shareObject.webpageUrl = webpageUrl
+            shareObject.webpageUrl = share.webpageUrl
             messageObject.shareObject = shareObject
             
             UMSocialManager.default().share(to: self.typeArrM[btn.tag  - 100 - 1], messageObject: messageObject, currentViewController: nil) {
@@ -79,7 +73,7 @@ class ShareVC: UIViewController {
         let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "QrcodeVC") as? QrcodeVC
         vc?.modalPresentationStyle = .custom
         vc?.urlStr = self.PromotionUrl
-        vc?.img = self.Image
+        vc?.img = share.Image
         vc?.modalTransitionStyle = .crossDissolve
         present(vc!, animated: true, completion: nil)
     
