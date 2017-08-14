@@ -47,7 +47,7 @@ extension UIViewController {
     func showUpdateInfo() {
         if AppConfigHelper.shared().checkUpdate() {
             let homeStoryboard = UIStoryboard.init(name: "User", bundle: nil)
-            let controller = homeStoryboard.instantiateViewController(withIdentifier: UpdateVC.className()) as! UpdateVC
+            let controller = homeStoryboard.instantiateViewController(withIdentifier: NewVC.className()) as! NewVC
             controller.modalPresentationStyle = .custom
             controller.modalTransitionStyle = .crossDissolve
             present(controller, animated: true, completion: {

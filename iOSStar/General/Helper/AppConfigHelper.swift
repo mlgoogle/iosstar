@@ -101,14 +101,16 @@ class AppConfigHelper: NSObject {
     }
     
 
+
     
     // MARK: - 网易云信
     func setupNIMSDK() {
         NIMSDKConfig.shared().shouldSyncUnreadCount = true
-        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
+        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "starShareDev")
     }
     
     func LoginYunxin(){
+        
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
         registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as? String  ?? "123"
         registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as? String ?? "123"
@@ -146,7 +148,6 @@ class AppConfigHelper: NSObject {
         
         // [ GTSdk ]：使用APPID/APPKEY/APPSECRENT启动个推
         GeTuiSdk.start(withAppId: kGtAppId, appKey: kGtAppKey, appSecret: kGtAppSecret, delegate: sdkDelegate)
-        
         // 注册APNs - custom method - 开发者自定义的方法
         self.registerRemoteNotification(sdkDelegate: sdkDelegate)
         

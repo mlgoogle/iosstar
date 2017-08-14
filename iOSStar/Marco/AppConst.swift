@@ -31,7 +31,7 @@ func isPassWord(pwd: String) ->Bool {
 class AppConst {
     static let DefaultPageSize = 15
     static let UMAppkey = "584a3eb345297d271600127e"
-    static let isMock = false
+    static let isMock = true
     static let sha256Key = "t1@s#df!"
     static let pid = 1002
     static let frozeCode = -101
@@ -115,7 +115,7 @@ class AppConst {
     }
     
     class Network {
-        #if true
+        #if false
         //是否测试环境
         //139.224.34.22
         //122.144.169.214
