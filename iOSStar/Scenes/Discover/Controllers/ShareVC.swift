@@ -29,7 +29,7 @@ class ShareVC: UIViewController {
     func getPromotionUrl(){
         AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in
             if let model = response as? ConfigReusltValue {
-                self.PromotionUrl = String.init(format: "%@?uid=%d&star_code=%@", model.param_value,(StarUserModel.getCurrentUser()?.id ?? 0)!,share.star_code)
+                self.PromotionUrl = String.init(format: "%@?uid=%d&star_code=%@", model.param_value,(StarUserModel.getCurrentUser()?.id ?? 0)!,self.share.star_code)
                 
             }
             
