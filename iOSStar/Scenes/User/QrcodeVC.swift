@@ -11,13 +11,16 @@ import SVProgressHUD
 class QrcodeVC: UIViewController {
 
     @IBOutlet var Qrcode: UIImageView!
+    @IBOutlet var header: UIImageView!
     var urlStr : String = "123"
+   
+    var img : UIImage!
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "我的二维码"
         
         Qrcode.image = UIImage.qrcodeImage(urlStr)
-        // Do any additional setup after loading the view.
+       header.image = img
     }
     
 

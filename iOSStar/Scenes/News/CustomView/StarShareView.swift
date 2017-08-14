@@ -7,8 +7,8 @@
 //
 
 import UIKit
-class ShareView: UIView {
-
+class StarShareView: UIView {
+    
     var shareView : UIView = UIView()
     var  tabbar : UITabBarController?
     //require:分享的标题
@@ -30,6 +30,9 @@ class ShareView: UIView {
         let tapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(exit))
         shareView.addSubview(self)
         self.frame = CGRect.init(x: 0, y: self.shareView.bounds.size.height, width: UIScreen.main.bounds.size.width, height: self.frame.size.height)
+        UIView.animate(withDuration: 0.3) {
+            self.frame = CGRect.init(x: 0, y: self.shareView.bounds.size.height-self.frame.size.height, width: UIScreen.main.bounds.size.width, height: self.frame.size.height)
+        }
         shareView.addGestureRecognizer(tapGestureRecognizer)
     }
     @IBAction func shareToPlatForm(_ sender: Any) {
@@ -38,25 +41,25 @@ class ShareView: UIView {
         let messageObject = UMSocialMessageObject()
         
         let shareObject = UMShareWebpageObject()
-                    shareObject.title = title
-                    shareObject.descr = descr
-                    shareObject.thumbImage = Image
+        shareObject.title = title
+        shareObject.descr = descr
+        shareObject.thumbImage = Image
         //                    shareObject.thumbImage = UIImage.init(named: thumbImage!)
-                    shareObject.webpageUrl = webpageUrl
-          messageObject.shareObject = shareObject
-          self.exit()
+        shareObject.webpageUrl = webpageUrl
+        messageObject.shareObject = shareObject
+        self.exit()
         UMSocialManager.default().share(to: typeArrM[btn.tag  - 100], messageObject: messageObject, currentViewController: nil) {
             (data , error) in
         }
     }
     func exit(){
-        UIView.animate(withDuration: 0.3, animations: { 
+        UIView.animate(withDuration: 0.3, animations: {
             self.frame = CGRect.init(x: 0, y: self.shareView.bounds.size.height, width: UIScreen.main.bounds.size.width, height: self.frame.size.height)
         }) { (date) in
-              self.shareView.removeFromSuperview()
+            self.shareView.removeFromSuperview()
         }
-   
-      
+        
+        
     }
     
     

@@ -35,8 +35,12 @@ target 'iOSStar' do
     pod 'BarrageRenderer’, ‘2.0.1’
     pod 'UMengAnalytics-NO-IDFA'
     pod 'Qiniu'
+<<<<<<< HEAD
+    pod 'PLPlayerKit'
+=======
     #pod 'PLShortVideoKit'
     #pod 'PLPlayerKit'
+>>>>>>> master/master
     target 'iOSStarTest' do
         inherit! :search_paths
     end
