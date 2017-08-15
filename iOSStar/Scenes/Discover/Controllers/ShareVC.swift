@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShareVC: UIViewController {
+class ShareVC: UIViewController ,QrcodeVCdelegate{
     
     @IBOutlet var starWork: UILabel!
     @IBOutlet var starName: UILabel!
@@ -25,9 +25,13 @@ class ShareVC: UIViewController {
             getPromotionUrl()
             starWork.text = sharedata.work
         }
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(didmiss(_:)), name:
+            Notification.Name(rawValue:AppConst.didmiss), object: nil)
         
         // Do any additional setup after loading the view.
+    }
+    func didmiss(_ notification :Notification ){
+      self.dismissController()
     }
     func getPromotionUrl(){
         AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in
@@ -70,6 +74,9 @@ class ShareVC: UIViewController {
             
         }
     }
+    func close(){
+         self.dismissController()
+    }
     
     func sharetoquecode(){
         
@@ -77,6 +84,7 @@ class ShareVC: UIViewController {
             vc.modalPresentationStyle = .custom
             vc.urlStr = self.PromotionUrl
             vc.img = share.Image
+            vc.delegate = self 
             vc.modalTransitionStyle = .crossDissolve
             present(vc, animated: true, completion: nil)
             

@@ -347,6 +347,8 @@
 		A05A3D4A1EEA464800476481 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05A3D491EEA464800476481 /* UIViewController+Extension.swift */; };
 		A05ADE001EFA6979003D69ED /* SurePayAllOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05ADDFF1EFA6979003D69ED /* SurePayAllOrderVC.swift */; };
 		A0675F921EDA78FC00147B3B /* StatementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0675F911EDA78FC00147B3B /* StatementVC.swift */; };
+		A070DBA71F4280650042CE51 /* AskQuestionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A070DBA61F4280650042CE51 /* AskQuestionsVC.swift */; };
+		A070DBA91F4296E00042CE51 /* StarCirCleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A070DBA81F4296E00042CE51 /* StarCirCleCell.swift */; };
 		A07238991EA76AA300E755DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07238771EA76AA300E755DB /* AppDelegate.swift */; };
 		A072389A1EA76AA300E755DB /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07238781EA76AA300E755DB /* BaseTabBarController.swift */; };
 		A072389B1EA76AA300E755DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072387A1EA76AA300E755DB /* ViewController.swift */; };
@@ -936,6 +938,8 @@
 		A05A3D491EEA464800476481 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extension.swift"; path = "iOSSTar/General/Extension/UIViewController+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		A05ADDFF1EFA6979003D69ED /* SurePayAllOrderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurePayAllOrderVC.swift; sourceTree = "<group>"; };
 		A0675F911EDA78FC00147B3B /* StatementVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatementVC.swift; sourceTree = "<group>"; };
+		A070DBA61F4280650042CE51 /* AskQuestionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskQuestionsVC.swift; sourceTree = "<group>"; };
+		A070DBA81F4296E00042CE51 /* StarCirCleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarCirCleCell.swift; sourceTree = "<group>"; };
 		A072384A1EA768AD00E755DB /* iOSStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A07238751EA76AA300E755DB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A07238771EA76AA300E755DB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1494,6 +1498,7 @@
 				6E4F03E01F10C9870003D51F /* SellingViewController.swift */,
 				8E73BF661F307010008E21EC /* GuideVC.swift */,
 				A0020E571F41491F00890FC5 /* ShareVC.swift */,
+				A070DBA61F4280650042CE51 /* AskQuestionsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1514,6 +1519,7 @@
 				6E4F03EA1F10CF310003D51F /* SellingPriceCell.swift */,
 				6E4F03EC1F10CF410003D51F /* SellingTipsCell.swift */,
 				6EFF56D31F137B82003895EB /* SellingBaseCell.swift */,
+				A070DBA81F4296E00042CE51 /* StarCirCleCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -3502,6 +3508,7 @@
 				6ECAA1A71ECD7527000FBED7 /* MarketCommentCell.swift in Sources */,
 				6E1B57171ED40F5300A014AE /* DealStarInfoCell.swift in Sources */,
 				6E2CC46B1F0F19BB00281559 /* StarInfoCell.swift in Sources */,
+				A070DBA71F4280650042CE51 /* AskQuestionsVC.swift in Sources */,
 				8E397A0D1F28587800847CCB /* NIMTeamAnnouncementListCell.m in Sources */,
 				A0E703191F1DDF3500284BCA /* YD_Barrage.swift in Sources */,
 				8E3979FC1F28587800847CCB /* NIMLocationViewController.m in Sources */,
@@ -3517,6 +3524,7 @@
 				8E3979EC1F28587800847CCB /* NIMSessionLayoutImpl.m in Sources */,
 				6E4F03ED1F10CF410003D51F /* SellingTipsCell.swift in Sources */,
 				8E397A0B1F28587800847CCB /* NIMTeamMemberListViewController.m in Sources */,
+				A070DBA91F4296E00042CE51 /* StarCirCleCell.swift in Sources */,
 				6EFE79CC1ECC01B80096470D /* ImageMenuCell.swift in Sources */,
 				A001A9721EAD9F8D00752F1A /* ShareDataModel.swift in Sources */,
 				A02D07AA1F0CCAC100BC43D9 /* BankCard.swift in Sources */,
