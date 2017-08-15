@@ -104,6 +104,39 @@ extension Date{
         return   weekday == 0 ? "周日" : weekDays[weekday+1] as! String
     }
     
+    /**
+     *  时间间隔字符串： 刚刚（一分钟内），几分钟前（一小时内），几小时前（一天内），几天前（一月内），几月前（一年内）
+     */
+    static func marginDateStr(_ timestamp: Int) -> String{
+        let now = Int(Date.nowTimestemp())
+        let margin  = now - timestamp
+        if margin < 60 {
+            return "刚刚"
+        }
+        
+        let marginMiu = margin / 60
+        if marginMiu < 60{
+            return "\(marginMiu+1)分钟前"
+        }
+        
+        let marginHour = margin / 3600
+        if marginHour <  24{
+            return "\(marginHour+1)小时前"
+        }
+        
+        
+        let marginDay = margin / (60*60*24)
+        if marginDay < 30 {
+            return "\(marginDay+1)天前"
+        }
+        
+        
+        
+        let date = Date.init(timeIntervalSince1970: TimeInterval(timestamp))
+        let dateFmt = DateFormatter()
+        dateFmt.dateFormat = "yyyy-MM-dd"
+        return dateFmt.string(from: date)
+    }
     
     /**
      *  获取当前月份

@@ -130,11 +130,7 @@ class BuyStarTimeViewController: UIViewController {
 
 extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionViewDelegate {
     
-
-
-    
     func replaceBackImage(index:Int = 0) {
-        
         let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? StarCardView
         backImageView.image = cell?.backImage
     }
@@ -151,7 +147,6 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StarCardView.className(), for: indexPath)
         if let card = cell as? StarCardView {
-            
             card.setStarModel(starModel: dataSouce![indexPath.row])
         }
          return cell
