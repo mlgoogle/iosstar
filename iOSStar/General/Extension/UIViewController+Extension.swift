@@ -44,16 +44,16 @@ extension UIViewController {
         SVProgressHUD.show(withStatus: status)
     }
     
-    func showUpdateInfo() {
-        if AppConfigHelper.shared().checkUpdate() {
-            let homeStoryboard = UIStoryboard.init(name: "User", bundle: nil)
-            let controller = homeStoryboard.instantiateViewController(withIdentifier: NewVC.className()) as! NewVC
-            controller.modalPresentationStyle = .custom
-            controller.modalTransitionStyle = .crossDissolve
-            present(controller, animated: true, completion: {
-            })
-        }
-    }
+//    func showUpdateInfo() {
+//        if AppConfigHelper.shared().checkUpdate() {
+//            let homeStoryboard = UIStoryboard.init(name: "User", bundle: nil)
+//            let controller = homeStoryboard.instantiateViewController(withIdentifier: NewVC.className()) as! NewVC
+//            controller.modalPresentationStyle = .custom
+//            controller.modalTransitionStyle = .crossDissolve
+//            present(controller, animated: true, completion: {
+//            })
+//        }
+//    }
     //检查是否已登录
     func checkLogin() -> Bool {
         

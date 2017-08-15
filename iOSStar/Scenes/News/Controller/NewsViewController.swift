@@ -34,9 +34,9 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
         if !hasCheck {
             if AppConfigHelper.shared().updateModel != nil {
                 hasCheck = true
-                if AppConfigHelper.shared().checkUpdate() {
-                    showUpdateInfo()
-                }
+//                if AppConfigHelper.shared().checkUpdate() {
+//                    showUpdateInfo()
+//                }
             }
         }
         scrollViewDidScroll(tableView)

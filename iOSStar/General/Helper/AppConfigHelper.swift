@@ -355,18 +355,18 @@ class AppConfigHelper: NSObject {
         }
     }
     
-    func checkUpdate() -> Bool {
-        let versionCode = Bundle.main.infoDictionary![AppConst.BundleInfo.CFBundleVersion.rawValue] as! String
-        if updateModel == nil {
-            return false
-        }
-        if  Double(versionCode) != nil {
-            if updateModel!.newAppVersionCode >  Double(versionCode)! {
-                return true
-            }
-        }
-        return false
-    }
+//    func checkUpdate() -> Bool {
+//        let versionCode = Bundle.main.infoDictionary![AppConst.BundleInfo.CFBundleVersion.rawValue] as! String
+//        if updateModel == nil {
+//            return false
+//        }
+//        if  Double(versionCode) != nil {
+//            if updateModel!.newAppVersionCode >  Double(versionCode)! {
+//                return true
+//            }
+//        }
+//        return false
+//    }
 
 
     
