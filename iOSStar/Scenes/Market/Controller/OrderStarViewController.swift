@@ -58,7 +58,7 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
         tipsTextView.isScrollEnabled = false
         tipsTextView.isUserInteractionEnabled = true
         
-         NotificationCenter.default.addObserver(self, selector: #selector(textViewNotifitionAction), name: NSNotification.Name.UITextViewTextDidChange, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(textViewNotifitionAction), name: NSNotification.Name.UITextViewTextDidChange, object: nil);
     }
    
     // 限制不超过200字

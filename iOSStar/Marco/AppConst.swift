@@ -43,6 +43,7 @@ class AppConst {
     static let getStarService = "getStarService"
     static let imageTokenUrl = "http://122.144.169.219:3378/imageToken"
     static let meetCityDefault = "杭州"
+    static let didmiss = "杭州"
  
     enum KVOKey: String {
         case selectProduct = "selectProduct"

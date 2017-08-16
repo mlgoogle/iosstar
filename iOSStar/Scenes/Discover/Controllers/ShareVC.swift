@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShareVC: UIViewController {
+class ShareVC: UIViewController ,QrcodeVCdelegate{
     
     @IBOutlet var starWork: UILabel!
     @IBOutlet var starName: UILabel!
@@ -25,9 +25,18 @@ class ShareVC: UIViewController {
             getPromotionUrl()
             starWork.text = sharedata.work
         }
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(didmiss(_:)), name:
+            Notification.Name(rawValue:AppConst.didmiss), object: nil)
         
         // Do any additional setup after loading the view.
+    }
+    
+    deinit {
+      NotificationCenter.default.removeObserver(self) 
+    }
+    func didmiss(_ notification :Notification ){
+        self.presentedViewController?.dismiss(animated: true, completion: nil)
+//      self.dismissController()
     }
     func getPromotionUrl(){
         AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in
@@ -70,15 +79,24 @@ class ShareVC: UIViewController {
             
         }
     }
+    func close(){
+         self.dismissController()
+    }
     
     func sharetoquecode(){
+         self.dismissController()
+        let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
+        let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
         
         if let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "QrcodeVC") as? QrcodeVC{
             vc.modalPresentationStyle = .custom
             vc.urlStr = self.PromotionUrl
             vc.img = share.Image
+            vc.delegate = self 
             vc.modalTransitionStyle = .crossDissolve
-            present(vc, animated: true, completion: nil)
+            tabar.present(vc, animated: true, completion: {
+            })
+            
             
         }
         
