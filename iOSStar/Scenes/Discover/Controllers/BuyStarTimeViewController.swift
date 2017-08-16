@@ -164,7 +164,11 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
             case 2:
                 segueString = "ToIntroduce"
             case 1:
-                segueString = "ToSelling"
+                if let dealVC = UIStoryboard.init(name: "Heat", bundle: nil).instantiateViewController(withIdentifier: HeatDetailViewController.className()) as? HeatDetailViewController{
+                    let model = dataSouce?[indexPath.row]
+                    dealVC.starListModel = model
+                    _ = navigationController?.pushViewController(dealVC, animated: true)
+                }
             default:
                 ShareDataModel.share().selectStarCode = ""
                 segueString = StarNewsVC.className()

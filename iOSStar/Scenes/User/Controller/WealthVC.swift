@@ -121,8 +121,8 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Custo
     
         if indexPath.section == 2 {
         //WithdrawalVC
-            SVProgressHUD.showWainningMessage(WainningMessage: "攻城狮努力中，敬请期待", ForDuration: 1, completion: nil)
-            return
+//            SVProgressHUD.showWainningMessage(WainningMessage: "攻城狮努力中，敬请期待", ForDuration: 1, completion: nil)
+//            return
             if self.needPwd == 1{
               showopenPay()
             }
