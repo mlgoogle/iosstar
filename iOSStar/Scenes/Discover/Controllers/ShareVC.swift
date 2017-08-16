@@ -30,8 +30,13 @@ class ShareVC: UIViewController ,QrcodeVCdelegate{
         
         // Do any additional setup after loading the view.
     }
+    
+    deinit {
+      NotificationCenter.default.removeObserver(self) 
+    }
     func didmiss(_ notification :Notification ){
-      self.dismissController()
+        self.presentedViewController?.dismiss(animated: true, completion: nil)
+//      self.dismissController()
     }
     func getPromotionUrl(){
         AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in
@@ -79,6 +84,9 @@ class ShareVC: UIViewController ,QrcodeVCdelegate{
     }
     
     func sharetoquecode(){
+         self.dismissController()
+        let win  : UIWindow = ((UIApplication.shared.delegate?.window)!)!
+        let tabar  : BaseTabBarController = win.rootViewController as! BaseTabBarController
         
         if let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "QrcodeVC") as? QrcodeVC{
             vc.modalPresentationStyle = .custom
@@ -86,7 +94,9 @@ class ShareVC: UIViewController ,QrcodeVCdelegate{
             vc.img = share.Image
             vc.delegate = self 
             vc.modalTransitionStyle = .crossDissolve
-            present(vc, animated: true, completion: nil)
+            tabar.present(vc, animated: true, completion: {
+            })
+            
             
         }
         

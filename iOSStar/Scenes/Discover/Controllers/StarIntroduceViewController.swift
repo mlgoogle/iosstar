@@ -78,6 +78,7 @@ class StarIntroduceViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         if let _ = UserDefaults.standard.value(forKey: AppConst.guideKey.StarIntroduce.rawValue) as? String {
             
         }else{
@@ -376,7 +377,9 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func voice(){
-        
+        //TakeMovieVC
+        let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "TakeMovieVC") as! TakeMovieVC
+        self.navigationController?.pushViewController(vc, animated: true)
     }
      func staractive(){
         

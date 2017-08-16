@@ -42,7 +42,8 @@ class QrcodeVC: UIViewController {
     @IBAction func didmiss(_ sender: Any) {
       NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.didmiss), object: nil , userInfo: nil)
 //       self.dismissController()
-         //self.dismissController()
+         self.dismissController()
+//       self.presentedViewController?.dismissController()
     }
     
     @IBAction func saveImageToPhoneLib(_ sender: UIButton) {
