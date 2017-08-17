@@ -157,6 +157,8 @@
 		8DE849421EE7D10500D31B1C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE849411EE7D10500D31B1C /* AdSupport.framework */; };
 		8DE8F1F31EF0EADC0044A70F /* ServiceTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8F1F21EF0EADC0044A70F /* ServiceTypeModel.swift */; };
 		8DED0E581EEA907A00C10B3E /* CanCopyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DED0E571EEA907A00C10B3E /* CanCopyLabel.swift */; };
+		8E0285CA1F4445B20088A9B8 /* VoiceQuestionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0285C91F4445B20088A9B8 /* VoiceQuestionVC.swift */; };
+		8E0285CC1F445B890088A9B8 /* VoiceHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0285CB1F445B890088A9B8 /* VoiceHistoryVC.swift */; };
 		8E1E8A841EFB95B6001B2D7B /* JoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1E8A831EFB95B6001B2D7B /* JoinVC.swift */; };
 		8E1E8A871EFB98BE001B2D7B /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1E8A861EFB98BE001B2D7B /* LoginModel.swift */; };
 		8E1E8A891EFB9A08001B2D7B /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1E8A881EFB9A08001B2D7B /* LoginRequestModel.swift */; };
@@ -306,6 +308,8 @@
 		A01408A61F26D1B600AA4190 /* BarrageWalkImageTextSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = A01408A51F26D1B600AA4190 /* BarrageWalkImageTextSprite.m */; };
 		A0155E071EA8ABF20047B95B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0155E061EA8ABF20047B95B /* Images.xcassets */; };
 		A0155E101EA8C9760047B95B /* RegistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0155E0F1EA8C9760047B95B /* RegistVC.swift */; };
+		A02354121F43E1EB0090C12F /* OProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02354111F43E1EB0090C12F /* OProgressView.swift */; };
+		A02354141F442B460090C12F /* PlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02354131F442B460090C12F /* PlayVC.swift */; };
 		A02D07A81F0C9AC300BC43D9 /* WithDrawaListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02D07A71F0C9AC300BC43D9 /* WithDrawaListVC.swift */; };
 		A02D07AA1F0CCAC100BC43D9 /* BankCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02D07A91F0CCAC100BC43D9 /* BankCard.swift */; };
 		A03A46C71EEF71F800EAB8B1 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A46C61EEF71F800EAB8B1 /* UserInfoModel.swift */; };
@@ -409,6 +413,10 @@
 		A0C9D6761EAE102300FC438D /* video_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D6691EAE102300FC438D /* video_chat_tip_sender.aac */; };
 		A0C9D6771EAE102300FC438D /* video_connect_chat_tip_sender.aac in Resources */ = {isa = PBXBuildFile; fileRef = A0C9D66A1EAE102300FC438D /* video_connect_chat_tip_sender.aac */; };
 		A0DF80941F29E64700119B5C /* Bugout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A089C71B1EE65B3B00371024 /* Bugout.framework */; };
+		A0E6548E1F42F6FB002B85BE /* StarCirCleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E6548D1F42F6FB002B85BE /* StarCirCleCell.swift */; };
+		A0E654911F42F71B002B85BE /* AskQuestionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E6548F1F42F71B002B85BE /* AskQuestionsVC.swift */; };
+		A0E654921F42F71B002B85BE /* ShareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E654901F42F71B002B85BE /* ShareVC.swift */; };
+		A0E654941F42F8F7002B85BE /* TakeMovieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E654931F42F8F7002B85BE /* TakeMovieVC.swift */; };
 		A0E703161F1DDF2700284BCA /* BarrageViewCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E703131F1DDF2700284BCA /* BarrageViewCustomer.m */; };
 		A0E703171F1DDF2700284BCA /* BarrageViewCustomer+BarrargeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E703151F1DDF2700284BCA /* BarrageViewCustomer+BarrargeView.m */; };
 		A0E703191F1DDF3500284BCA /* YD_Barrage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E703181F1DDF3500284BCA /* YD_Barrage.swift */; };
@@ -605,6 +613,8 @@
 		8DE849431EE7D20300D31B1C /* iOSStar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSStar.entitlements; sourceTree = "<group>"; };
 		8DE8F1F21EF0EADC0044A70F /* ServiceTypeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTypeModel.swift; sourceTree = "<group>"; };
 		8DED0E571EEA907A00C10B3E /* CanCopyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanCopyLabel.swift; sourceTree = "<group>"; };
+		8E0285C91F4445B20088A9B8 /* VoiceQuestionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceQuestionVC.swift; sourceTree = "<group>"; };
+		8E0285CB1F445B890088A9B8 /* VoiceHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceHistoryVC.swift; sourceTree = "<group>"; };
 		8E1E8A831EFB95B6001B2D7B /* JoinVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinVC.swift; path = iOSStar/Scenes/Login/JoinVC.swift; sourceTree = SOURCE_ROOT; };
 		8E1E8A861EFB98BE001B2D7B /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		8E1E8A881EFB9A08001B2D7B /* LoginRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequestModel.swift; sourceTree = "<group>"; };
@@ -887,6 +897,8 @@
 		A01408A51F26D1B600AA4190 /* BarrageWalkImageTextSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BarrageWalkImageTextSprite.m; path = iOSSTar/Scenes/Heat/CustomView/BarrageWalkImageTextSprite.m; sourceTree = SOURCE_ROOT; };
 		A0155E061EA8ABF20047B95B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A0155E0F1EA8C9760047B95B /* RegistVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistVC.swift; sourceTree = "<group>"; };
+		A02354111F43E1EB0090C12F /* OProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OProgressView.swift; sourceTree = "<group>"; };
+		A02354131F442B460090C12F /* PlayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayVC.swift; path = ../CustomView/PlayVC.swift; sourceTree = "<group>"; };
 		A02D07A71F0C9AC300BC43D9 /* WithDrawaListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithDrawaListVC.swift; sourceTree = "<group>"; };
 		A02D07A91F0CCAC100BC43D9 /* BankCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCard.swift; sourceTree = "<group>"; };
 		A03A46C61EEF71F800EAB8B1 /* UserInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
@@ -1140,6 +1152,10 @@
 		A0C9D6681EAE102300FC438D /* video_chat_tip_receiver.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_receiver.aac; sourceTree = "<group>"; };
 		A0C9D6691EAE102300FC438D /* video_chat_tip_sender.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_chat_tip_sender.aac; sourceTree = "<group>"; };
 		A0C9D66A1EAE102300FC438D /* video_connect_chat_tip_sender.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = video_connect_chat_tip_sender.aac; sourceTree = "<group>"; };
+		A0E6548D1F42F6FB002B85BE /* StarCirCleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarCirCleCell.swift; path = iOSSTar/Scenes/Discover/CustomView/StarCirCleCell.swift; sourceTree = SOURCE_ROOT; };
+		A0E6548F1F42F71B002B85BE /* AskQuestionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AskQuestionsVC.swift; path = iOSSTar/Scenes/Discover/Controllers/AskQuestionsVC.swift; sourceTree = SOURCE_ROOT; };
+		A0E654901F42F71B002B85BE /* ShareVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShareVC.swift; path = iOSSTar/Scenes/Discover/Controllers/ShareVC.swift; sourceTree = SOURCE_ROOT; };
+		A0E654931F42F8F7002B85BE /* TakeMovieVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeMovieVC.swift; sourceTree = "<group>"; };
 		A0E703121F1DDF2700284BCA /* BarrageViewCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BarrageViewCustomer.h; path = iOSSTar/Scenes/Heat/CustomView/BarrageViewCustomer.h; sourceTree = SOURCE_ROOT; };
 		A0E703131F1DDF2700284BCA /* BarrageViewCustomer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BarrageViewCustomer.m; path = iOSSTar/Scenes/Heat/CustomView/BarrageViewCustomer.m; sourceTree = SOURCE_ROOT; };
 		A0E703141F1DDF2700284BCA /* BarrageViewCustomer+BarrargeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BarrageViewCustomer+BarrargeView.h"; path = "iOSSTar/Scenes/Heat/CustomView/BarrageViewCustomer+BarrargeView.h"; sourceTree = SOURCE_ROOT; };
@@ -1473,6 +1489,9 @@
 		6E2CC4551F0DD9A800281559 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A02354131F442B460090C12F /* PlayVC.swift */,
+				A0E6548F1F42F71B002B85BE /* AskQuestionsVC.swift */,
+				A0E654901F42F71B002B85BE /* ShareVC.swift */,
 				8E4C4D321F174F720002EABF /* KeyboardInputViewController.swift */,
 				8E4C4D331F174F720002EABF /* StarNewsVC.swift */,
 				6E2CC45E1F0DEA3000281559 /* DiscoverViewController.swift */,
@@ -1481,6 +1500,9 @@
 				6E2CC4801F0F8C9B00281559 /* StarIntroduceViewController.swift */,
 				6E4F03E01F10C9870003D51F /* SellingViewController.swift */,
 				8E73BF661F307010008E21EC /* GuideVC.swift */,
+				A0E654931F42F8F7002B85BE /* TakeMovieVC.swift */,
+				8E0285C91F4445B20088A9B8 /* VoiceQuestionVC.swift */,
+				8E0285CB1F445B890088A9B8 /* VoiceHistoryVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1488,6 +1510,8 @@
 		6E2CC4561F0DD9A800281559 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				A02354111F43E1EB0090C12F /* OProgressView.swift */,
+				A0E6548D1F42F6FB002B85BE /* StarCirCleCell.swift */,
 				6E2CC4641F0E0E3200281559 /* StarCardView.swift */,
 				6E2CC46A1F0F19BB00281559 /* StarInfoCell.swift */,
 				6E2CC4681F0E2E6000281559 /* StarCardLayout.swift */,
@@ -3215,6 +3239,7 @@
 				8E397A011F28587800847CCB /* NIMCardMemberItem.m in Sources */,
 				8DAC7E2F1EE26455001AD3EF /* UserRequestModel.swift in Sources */,
 				A04CF0A81ED6CBB900B93D28 /* VaildNameVC.swift in Sources */,
+				A02354121F43E1EB0090C12F /* OProgressView.swift in Sources */,
 				8E397A031F28587800847CCB /* NIMTeamCardRowItem.m in Sources */,
 				6E2D43B71EDFB61100DC9643 /* BannerDetailInfoCell.swift in Sources */,
 				8E397A111F28587800847CCB /* NIMTimePickerView.m in Sources */,
@@ -3264,6 +3289,7 @@
 				A04CF0921ED6CB6800B93D28 /* BindingBankCardVC.swift in Sources */,
 				A084BB4F1ED5793500DFC868 /* TableViewHelper.swift in Sources */,
 				6EBF590C1EC6EB75003F67B4 /* MarketSocketAPI.swift in Sources */,
+				A0E654941F42F8F7002B85BE /* TakeMovieVC.swift in Sources */,
 				8E397A041F28587800847CCB /* NIMTeamInfoData.m in Sources */,
 				8E3979C11F28587800847CCB /* NIMContactDataItem.m in Sources */,
 				8E3979F11F28587800847CCB /* NIMSessionAudioContentView.m in Sources */,
@@ -3314,6 +3340,7 @@
 				6E16165E1EAF322F00D95CB6 /* NewsNavigationView.swift in Sources */,
 				8E4C4D391F1750AB0002EABF /* UIImage+Extension.swift in Sources */,
 				6E1B570F1ED40A2800A014AE /* DealTitleMenuCell.swift in Sources */,
+				A0E654911F42F71B002B85BE /* AskQuestionsVC.swift in Sources */,
 				8E397A161F28587800847CCB /* NIMKitUtil.m in Sources */,
 				6EBE0A011F10894B0042D8B1 /* PhotoBrowserVC.swift in Sources */,
 				6E1616591EAF1F4C00D95CB6 /* NewsViewController.swift in Sources */,
@@ -3351,6 +3378,7 @@
 				6E2CC45F1F0DEA3000281559 /* DiscoverViewController.swift in Sources */,
 				6E192DEE1EC2B9AB00915D08 /* SearchResultCell.swift in Sources */,
 				A04CF0991ED6CB6800B93D28 /* MoneyDetailList.swift in Sources */,
+				A0E6548E1F42F6FB002B85BE /* StarCirCleCell.swift in Sources */,
 				8E3979E41F28587800847CCB /* NIMKitLocationPoint.m in Sources */,
 				A0A667ED1EC2B71C00612510 /* YDSSessionViewController.swift in Sources */,
 				A04CF0941ED6CB6800B93D28 /* AccountInfoVC.swift in Sources */,
@@ -3433,6 +3461,7 @@
 				6E16165C1EAF2EF100D95CB6 /* NewsDetailViewController.swift in Sources */,
 				A05ADE001EFA6979003D69ED /* SurePayAllOrderVC.swift in Sources */,
 				8E3979EC1F28587800847CCB /* NIMSessionLayoutImpl.m in Sources */,
+				A02354141F442B460090C12F /* PlayVC.swift in Sources */,
 				6E4F03ED1F10CF410003D51F /* SellingTipsCell.swift in Sources */,
 				8E397A0B1F28587800847CCB /* NIMTeamMemberListViewController.m in Sources */,
 				6EFE79CC1ECC01B80096470D /* ImageMenuCell.swift in Sources */,
@@ -3454,6 +3483,8 @@
 				8DE8F1F31EF0EADC0044A70F /* ServiceTypeModel.swift in Sources */,
 				A0EF3B191EB975B10023093A /* SocketConst.swift in Sources */,
 				8D61054D1EFA254800170760 /* UIBarButtonItem+Category.swift in Sources */,
+				8E0285CA1F4445B20088A9B8 /* VoiceQuestionVC.swift in Sources */,
+				A0E654921F42F71B002B85BE /* ShareVC.swift in Sources */,
 				8E3979B31F28587800847CCB /* NIMKitSwitcherCell.m in Sources */,
 				8E3979F31F28587800847CCB /* NIMSessionImageContentView.m in Sources */,
 				6EDA46951EC5AEAA0004F942 /* MarketModel.swift in Sources */,
@@ -3514,6 +3545,7 @@
 				6E2D43B31EDEEED400DC9643 /* YD_CountDownHelper.swift in Sources */,
 				8E1E8A841EFB95B6001B2D7B /* JoinVC.swift in Sources */,
 				8E3979CB1F28587800847CCB /* NIMInputEmoticonContainerView.m in Sources */,
+				8E0285CC1F445B890088A9B8 /* VoiceHistoryVC.swift in Sources */,
 				8E3979BC1F28587800847CCB /* NIMMemberGroupView.m in Sources */,
 				6E16166C1EB0960E00D95CB6 /* MarketViewController.swift in Sources */,
 				8E3979F81F28587800847CCB /* NIMSessionRobotContentView.m in Sources */,

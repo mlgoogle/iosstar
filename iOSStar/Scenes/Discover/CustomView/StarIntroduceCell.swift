@@ -12,11 +12,13 @@ protocol PopVCDelegate {
     
     func back()
     func chat()
+    func share()
 }
 
 class StarIntroduceCell: UITableViewCell {
     @IBOutlet weak var jobLabel: UILabel!
 
+    @IBOutlet var share: UIButton!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var backImageView: UIImageView!
@@ -28,6 +30,9 @@ class StarIntroduceCell: UITableViewCell {
 
     }
 
+    @IBAction func shareClick(_ sender: Any) {
+        delegate?.share()
+    }
 
     @IBAction func backActiom(_ sender: Any) {
         delegate?.back()

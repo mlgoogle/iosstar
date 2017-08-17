@@ -8,16 +8,26 @@
 
 import UIKit
 import SVProgressHUD
+
+protocol QrcodeVCdelegate {
+    
+    func close()
+    
+    
+}
 class QrcodeVC: UIViewController {
 
     @IBOutlet var Qrcode: UIImageView!
+    @IBOutlet var header: UIImageView!
     var urlStr : String = "123"
+    var delegate:QrcodeVCdelegate?
+    var img : UIImage!
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "我的二维码"
         
         Qrcode.image = UIImage.qrcodeImage(urlStr)
-        // Do any additional setup after loading the view.
+        header.image = img
     }
     
 
@@ -30,7 +40,10 @@ class QrcodeVC: UIViewController {
        
     }
     @IBAction func didmiss(_ sender: Any) {
-        self.dismissController()
+      NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.didmiss), object: nil , userInfo: nil)
+//       self.dismissController()
+         self.dismissController()
+//       self.presentedViewController?.dismissController()
     }
     
     @IBAction func saveImageToPhoneLib(_ sender: UIButton) {

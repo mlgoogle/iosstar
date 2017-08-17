@@ -7,13 +7,32 @@
 //
 
 import UIKit
+protocol MarketExperienceCellDelegate {
+    
+    func showMore()
+    func Packup()
+    
+}
 
 class MarketExperienceCell: UITableViewCell {
 
+    @IBOutlet var showHeight: NSLayoutConstraint!
+    @IBOutlet var show: UIButton!
+    var delegate:MarketExperienceCellDelegate?
     @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
+    }
+    @IBAction func showMore(_ sender: Any) {
+       let btn = sender as! UIButton
+        if btn.titleLabel?.text  == "点击收起"{
+          delegate?.Packup()
+        }else{
+          delegate?.showMore()
+        }
+      
     }
 
     func setTitle(title:String) {

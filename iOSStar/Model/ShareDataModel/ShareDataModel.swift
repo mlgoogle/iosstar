@@ -39,3 +39,14 @@ class OrderInformation: NSObject {
      var orderInfomation : String =   ""
      var ordertitlename : String =   "订单详情"
 }
+class Share: NSObject {
+    
+    var titlestr : String = ""
+    var Image : UIImage!
+    var name : String = ""
+    var descr : String = ""
+    var star_code : String = ""
+    var work : String = ""
+    var webpageUrl : String = ""
+    var PromotionUrl : String = ""
+}

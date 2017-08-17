@@ -43,6 +43,7 @@ class AppConst {
     static let getStarService = "getStarService"
     static let imageTokenUrl = "http://122.144.169.219:3378/imageToken"
     static let meetCityDefault = "杭州"
+    static let didmiss = "杭州"
  
     enum KVOKey: String {
         case selectProduct = "selectProduct"
@@ -120,7 +121,7 @@ class AppConst {
         //139.224.34.22
         //122.144.169.214
         static let TcpServerIP:String = "139.224.34.22";
-        static let TcpServerPort:UInt16 = 16060
+        static let TcpServerPort:UInt16 = 16006
         static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
         static let TcpServerIP:String = "tapi.smartdata-x.com";
