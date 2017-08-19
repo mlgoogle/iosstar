@@ -18,8 +18,8 @@ class StarIntroduceViewController: UIViewController {
     var index = 0
     var headerImg = UIImageView()
     var starModel:StarSortListModel?
-    var sectionHeights = [170,18 , 300, 140]
-    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(), StarCirCleCell.className(), StarPhotoCell.className()]
+    var sectionHeights = [170,18 , 120, 220 , 140]
+    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(), StarCirCleCell.className(), StarDynamicCell.className() ,StarPhotoCell.className()]
     var images:[String] = []
     var starDetailModel:StarDetaiInfoModel?
     var expericences:[ExperienceModel]?
@@ -200,7 +200,7 @@ class StarIntroduceViewController: UIViewController {
     }
     
 }
-extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource,MenuViewDelegate, MWPhotoBrowserDelegate, UIScrollViewDelegate, PopVCDelegate,MarketExperienceCellDelegate,StarCirCleCellDelegate{
+extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource,MenuViewDelegate, MWPhotoBrowserDelegate, UIScrollViewDelegate, PopVCDelegate,MarketExperienceCellDelegate,StarCirCleCellDelegate,StarDynamicCellDelegate{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > 170 {
@@ -249,8 +249,10 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         case 1:
             return 70
         case 2:
-            return 70
+            return 0.001
         case 3:
+            return 70
+        case 4:
             return 70
         default:
             return 0.01
@@ -275,17 +277,23 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             
         }
         else  if  section == 2 {
-            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as? PubInfoHeaderView
-            header?.setTitle(title:"明星互动")
-            header?.contentView.backgroundColor = UIColor(hexString: "fafafa")
-            return header
+            let view = UIView()
+            view.backgroundColor = UIColor.init(hexString: "fafafa")
+            return view
         }
-      else  if  section == 3 {
+      else  if  section == 4 {
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as? PubInfoHeaderView
             header?.setTitle(title:"个人写真")
             header?.contentView.backgroundColor = UIColor(hexString: "fafafa")
             return header
-        }else {
+        }
+        else  if  section == 3 {
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as? PubInfoHeaderView
+            header?.setTitle(title:"最新动态")
+            header?.contentView.backgroundColor = UIColor(hexString: "fafafa")
+            return header
+        }
+        else {
             let view = UIView()
             view.backgroundColor = UIColor.init(hexString: "fafafa")
             return view
@@ -361,9 +369,16 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         case 2:
             if let StarCirCle = cell as? StarCirCleCell {
                 StarCirCle.delegate = self
+                StarCirCle.backgroundColor = UIColor.clear
 //                photoCell.setImageUrls(images: images, delegate:self)
             }
+            
         case 3:
+            if let photoCell = cell as? StarDynamicCell {
+//                photoCell.setImageUrls(images: images, delegate:self)
+                photoCell.delegate = self
+            }
+        case 4:
             if let photoCell = cell as? StarPhotoCell {
                 photoCell.setImageUrls(images: images, delegate:self)
             }
@@ -373,19 +388,30 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         return cell
     }
     func starask(){
-        let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "AskQuestionsVC") as! AskQuestionsVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VideoQuestionsVC.className()) as? VideoQuestionsVC{
+            vc.starModel = starModel!
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     func voice(){
-        //TakeMovieVC
-        let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "TakeMovieVC") as! TakeMovieVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VoiceQuestionVC") as? VoiceQuestionVC{
+            vc.starModel = starModel!
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
      func staractive(){
         
+        //TakeMovieVC
+        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: StarNewsVC.className()) as? StarNewsVC{
+            //TakeMovieVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
-
     
+    func starask(_select: Int) {
+        print(_select)
+    }
 }
 
 

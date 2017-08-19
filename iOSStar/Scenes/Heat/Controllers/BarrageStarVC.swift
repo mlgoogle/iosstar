@@ -187,8 +187,8 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         
         let model = StarSortListModel()
         let data = self.dataArry[indexPath.row]
-           model.symbol = data.code
-           model.name = data.name
+        model.symbol = data.code
+        model.name = data.name
          let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
          introVC.starModel = model
          self.navigationController?.pushViewController(introVC, animated: true)

@@ -243,18 +243,21 @@ class AppConfigHelper: NSObject {
         var config = Realm.Configuration()
         config.fileURL =  config.fileURL!.deletingLastPathComponent()
             .appendingPathComponent("\("starShare").realm")
-        config.schemaVersion = 5
+        config.schemaVersion = 6
         
         //数据库迁移操作
         config.migrationBlock = { migration, oldSchemaVersion in
             
-            if oldSchemaVersion < 5 {
+            if oldSchemaVersion < 6 {
                 
-                migration.enumerateObjects(ofType: PanicBuyInfoModel.className(), { (oldObject, newObject) in
-                    newObject!["wrok"] = ""
+                migration.enumerateObjects(ofType: CircleListModel.className(), { (oldObject, newObject) in
+                    newObject!["headerHeight"] = 0
+                    newObject!["thumbUpHeight"] = 0
+                    newObject!["approveName"] = ""
                 })
-                migration.enumerateObjects(ofType: StarDetaiInfoModel.className(), { (oldObject, newObject) in
-                    newObject!["wrok"] = ""
+                migration.enumerateObjects(ofType: CircleCommentModel.className(), { (oldObject, newObject) in
+                    newObject!["symbol_name"] = ""
+                    newObject!["circleHeight"] = 0
                 })
                 
             }

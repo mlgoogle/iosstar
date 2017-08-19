@@ -14,12 +14,15 @@ class AskQuestionsVC: UIViewController ,UITextViewDelegate{
     @IBOutlet var inputText: UITextView!
     @IBOutlet var placeHolder: UILabel!
     @IBOutlet var textNumber: UILabel!
+    @IBOutlet weak var videoBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "像提TA问"
         navright()
-       
     }
+    
+    
     func navright(){
         let share = UIButton.init(type: .custom)
         share.frame = CGRect.init(x: 0, y: 0, width: 70, height: 30)
@@ -42,36 +45,29 @@ class AskQuestionsVC: UIViewController ,UITextViewDelegate{
             placeHolder.isHidden = true
         }
     }
+    
     // 限制不超过200字
     func textViewNotifitionAction(userInfo:NSNotification){
         let textVStr = inputText.text as NSString;
         
         if (textVStr.length > 100) {
-//            SVProgressHUD.showErrorMessage(ErrorMessage: "备注信息不超过100字", ForDuration: 2.0, completion: nil)
             inputText.resignFirstResponder()
             return
         }else{
-        textNumber.text = "\(textVStr.length)/100"
+            textNumber.text = "\(textVStr.length)/100"
         }
         
     }
+    
+    @IBAction func videoBtnTapped(_ sender: UIButton) {
+        //TakeMovieVC
+        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: TakeMovieVC.className()) as? TakeMovieVC{
+            //TakeMovieVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     func publish(){
         
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

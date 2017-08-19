@@ -134,17 +134,17 @@ class WithdrawalVC: BaseTableViewController,UITextFieldDelegate {
                     controller.dismissController()
                    let requestmodel = WithDrawrequestModel()
                     requestmodel.price = Double.init(self.inputMoney.text!)!
-                    
+                    SVProgressHUD.showProgressMessage(ProgressMessage: "提现中...")
                     AppAPIHelper.user().withDraw(requestModel: requestmodel, complete: { (result) in
                         if let datamodel =  result as? WithDrawResultModel{
                             if datamodel.result == 1 {
                             SVProgressHUD.showSuccessMessage(SuccessMessage: "提现成功", ForDuration: 1, completion: {
-                                self.navigationController?.popViewController(animated: true)
+                                _ = self.navigationController?.popViewController(animated: true)
                             })
                             }
                         }
                     }, error: { (error ) in
-                        
+                        SVProgressHUD.dismiss()
                     })
                 })
                

@@ -47,6 +47,7 @@ class NewsCell: OEZTableViewCell {
             newsPicUrl = model.pic_url
             thumbUpBtn.setTitle("点赞(\(model.approve_dec_time)秒)", for: .normal)
             CommentBtn.setTitle("评论(\(model.comment_dec_time)秒)", for: .normal)
+            timeLabel.text = Date.marginDateStr(Int(model.create_time))
         }
     }
     
@@ -220,9 +221,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
         }, error: errorBlockFunc())
     }
     
-    func caclulateCellHeight(_ models: [CircleListModel]){
-        
-    }
+   
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return tableData.count
@@ -239,10 +238,8 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let model = tableData[section] as? CircleListModel{
-            return model.comment_list.count + 2
-        }
-        return 0
+        let model = tableData[section]
+        return model.comment_list.count + 2
     }
     
     func showWarning() {
