@@ -28,6 +28,8 @@ class QrcodeVC: UIViewController {
         
         Qrcode.image = UIImage.qrcodeImage(urlStr)
         header.image = img
+        
+        
     }
     
 

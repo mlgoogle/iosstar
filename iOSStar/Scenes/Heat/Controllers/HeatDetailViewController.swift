@@ -55,7 +55,7 @@ class HeatDetailViewController: UIViewController {
             } else if self.test {
                 fans = FansListModel()
                 let user = FansInfoModel()
-                user.nickname = "hahhah"
+                user.nickname = ""
                 user.headUrl = "http://tva2.sinaimg.cn/crop.0.0.180.180.180/71bf6552jw1e8qgp5bmzyj2050050aa8.jpg"
                 fans?.user = user
                 let tra = FansTradesModel()
@@ -73,7 +73,6 @@ class HeatDetailViewController: UIViewController {
         
         initCountDownBlock()
         requestFansList(buySell:-1)
-
         requestAuctionSattus()
         requestStarPrice()
         ballImageView.alpha = 0.5
