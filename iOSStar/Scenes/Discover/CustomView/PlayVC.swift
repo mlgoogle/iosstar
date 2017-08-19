@@ -16,6 +16,7 @@ class PlayVC: UIViewController {
     var groupLb : UILabel?
     var totaltime : CGFloat = 0
     var timer : Timer?
+    var start : UIButton?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -45,18 +46,49 @@ class PlayVC: UIViewController {
         share.setTitleColor(UIColor.init(hexString: AppConst.Color.main), for: .normal)
 //        share.addTarget(self, action: #selector(publish), for: .touchUpInside)
         self.view.addSubview(share)
+        
+        start = UIButton.init(type: .custom)
+        start?.frame = CGRect.init(x:view.center.x - 35, y: view.center.y, width: 70, height: 70)
+        start?.setTitle("播放", for: .normal)
+        start?.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        start?.backgroundColor = UIColor.white
+        start?.setTitleColor(UIColor.init(hexString: AppConst.Color.main), for: .normal)
+        //        share.addTarget(self, action: #selector(publish), for: .touchUpInside)
+        self.view.addSubview(start!)
+        start?.addTarget(self , action: #selector(dobegain), for: .touchUpInside)
+        start?.isHidden = true
+    
+    }
+    func dobegain(){
+        self.shortVideoRecorder?.player.setItemBy(asset)
+        self.shortVideoRecorder?.player.play()
+        groupLb?.frame = CGRect.init(x: 20, y: 30, width: 0 , height: 5)
+        totaltime = 0
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateGrogress), userInfo: nil, repeats: true)
+        
+         start?.isHidden  = true
+
+        
     
     }
     func updateGrogress(){
     
         
         if let total = self.settings?["PLSDurationKey"] as? CGFloat{
-         let progress = (UIScreen.main.bounds.size.width - 40) / total
+         let progress = (kScreenWidth - 40) / total
             if (totaltime < total){
                 totaltime = totaltime + 0.1
-                groupLb?.frame = CGRect.init(x: 20, y: 30, width: totaltime * progress , height: 5)
+                if (totaltime * progress > (kScreenWidth - 40)){
+                 groupLb?.frame = CGRect.init(x: 20, y: 30, width: kScreenWidth - 40 , height: 5)
+                }else{
+                 groupLb?.frame = CGRect.init(x: 20, y: 30, width: totaltime * progress , height: 5)
+                
+                }
+               
             }else{
             timer?.invalidate()
+//            self.shortVideoRecorder?.player.pause()
+            start?.isHidden = false
             }
             
         }
