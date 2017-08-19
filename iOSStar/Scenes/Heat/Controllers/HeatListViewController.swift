@@ -15,9 +15,10 @@ class HeatListViewController: UITableViewController {
     let footer = MJRefreshAutoNormalFooter()
     var Index = 1
     
+    @IBOutlet weak var rightButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        rightButton.tintColor = UIColor(hexString: AppConst.Color.main)
         tableView.register(NoDataCell.self, forCellReuseIdentifier: "NoDataCell")
         tableView.reloadData()
         configImageNames()

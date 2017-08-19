@@ -60,11 +60,13 @@ class AppConst {
     }
     
     class Color {
-        static let main = "921224"
+        //921224
+        static let main = "185CA5"
         static let orange = "FB9938"
         static let up = "CB4232"
         static let down = "18B03F"
         static let titleColor = "8C0808"
+        static let getCode = "3598DB"
         static let background = "background"
         static let auxiliary = "auxiliary"
         static let lightBlue = "lightBlue"
