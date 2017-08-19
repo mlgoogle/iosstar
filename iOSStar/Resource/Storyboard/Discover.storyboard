@@ -232,15 +232,15 @@
                                                     <outlet property="titleLabel" destination="uUT-m0-lhy" id="PeQ-RT-OW6"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarCirCleCell" rowHeight="120" id="37A-kF-dIP" customClass="StarCirCleCell" customModule="iOSStar">
-                                                <rect key="frame" x="0.0" y="260.5" width="375" height="120"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarCirCleCell" rowHeight="348" id="37A-kF-dIP" customClass="StarCirCleCell" customModule="iOSStar">
+                                                <rect key="frame" x="0.0" y="260.5" width="375" height="348"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="37A-kF-dIP" id="43l-KT-GJE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="348"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QE-Mv-c2l">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="348"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hEd-5m-RoC">
                                                                     <rect key="frame" x="21" y="17" width="95" height="88"/>
@@ -311,6 +311,31 @@
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </view>
+                                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JfO-8h-aUL">
+                                                                    <rect key="frame" x="21" y="130" width="333" height="128"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jbu-he-oRe">
+                                                                        <size key="itemSize" width="50" height="50"/>
+                                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                    </collectionViewFlowLayout>
+                                                                    <cells>
+                                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectViewCell" id="oFr-hh-Ghc">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                            </view>
+                                                                        </collectionViewCell>
+                                                                    </cells>
+                                                                    <connections>
+                                                                        <outlet property="dataSource" destination="37A-kF-dIP" id="Sf5-sb-Llo"/>
+                                                                        <outlet property="delegate" destination="37A-kF-dIP" id="iNG-Z8-xzw"/>
+                                                                    </connections>
+                                                                </collectionView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </view>
@@ -322,9 +347,12 @@
                                                         <constraint firstAttribute="bottom" secondItem="1QE-Mv-c2l" secondAttribute="bottom" id="khq-qc-oDN"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="collectView" destination="JfO-8h-aUL" id="otz-mm-aje"/>
+                                                </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarPhotoCell" rowHeight="140" id="Gxi-Bv-Lwb" customClass="StarPhotoCell" customModule="iOSStar" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="380.5" width="375" height="140"/>
+                                                <rect key="frame" x="0.0" y="608.5" width="375" height="140"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gxi-Bv-Lwb" id="L8z-qw-HH5">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
@@ -953,7 +981,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="My8-fP-YK9" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iiF-iI-esP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iiF-iI-esP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1303,8 +1331,9 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="HVH-06-fVP"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="140" id="aSY-J6-z7R"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
                                             <outlet property="delegate" destination="yBz-Hb-ADT" id="Ypm-wC-bj3"/>
@@ -1316,7 +1345,7 @@
                                             <constraint firstAttribute="height" constant="21" id="A9h-1K-Cmr"/>
                                             <constraint firstAttribute="width" constant="79" id="c9U-Q0-L5h"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1329,9 +1358,11 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="输入你的问题，可选择公开或者私密，公开提问能呗其他用户所见" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esu-V4-Bvg">
-                                        <rect key="frame" x="26" y="15" width="323" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入你的问题，可选择公开或者私密，公开提问能呗其他用户所见" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esu-V4-Bvg">
+                                        <rect key="frame" x="18" y="10" width="338" height="31.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31.5" id="p7O-M5-Gzt"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.78823529410000004" green="0.78823529410000004" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1339,7 +1370,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="esu-V4-Bvg" firstAttribute="leading" secondItem="8IA-YP-L4S" secondAttribute="leading" constant="5" id="3Kz-17-JqP"/>
                                     <constraint firstItem="SGJ-wX-f0m" firstAttribute="top" secondItem="8IA-YP-L4S" secondAttribute="bottom" constant="28" id="5fd-cB-Aza"/>
+                                    <constraint firstItem="esu-V4-Bvg" firstAttribute="trailing" secondItem="8IA-YP-L4S" secondAttribute="trailing" constant="-6" id="7dq-Dv-g2W"/>
                                     <constraint firstItem="ReI-4t-qsK" firstAttribute="top" secondItem="8IA-YP-L4S" secondAttribute="bottom" constant="10" id="9jS-Qq-gGs"/>
                                     <constraint firstItem="8IA-YP-L4S" firstAttribute="top" secondItem="MUI-OI-gGF" secondAttribute="top" constant="8" id="By6-Yk-gu2"/>
                                     <constraint firstAttribute="height" constant="250" id="Edl-mD-B4f"/>
@@ -1348,6 +1381,7 @@
                                     <constraint firstItem="8IA-YP-L4S" firstAttribute="leading" secondItem="MUI-OI-gGF" secondAttribute="leading" constant="13" id="SIi-07-HEI"/>
                                     <constraint firstAttribute="trailing" secondItem="8IA-YP-L4S" secondAttribute="trailing" constant="13" id="lwa-gP-1sw"/>
                                     <constraint firstAttribute="bottom" secondItem="SGJ-wX-f0m" secondAttribute="bottom" constant="14" id="tvZ-j7-3PS"/>
+                                    <constraint firstItem="esu-V4-Bvg" firstAttribute="top" secondItem="8IA-YP-L4S" secondAttribute="top" constant="2" id="xzY-QW-TaS"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tips:当前提问需要花费100秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1a-Mw-L35">
@@ -1412,7 +1446,7 @@
         <image name="share" width="14" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mdQ-qm-uAf"/>
-        <segue reference="Lqw-yH-W5Q"/>
+        <segue reference="9oy-qd-fDe"/>
+        <segue reference="x3L-pE-8CD"/>
     </inferredMetricsTieBreakers>
 </document>
