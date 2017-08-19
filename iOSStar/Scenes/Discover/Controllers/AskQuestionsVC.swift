@@ -45,7 +45,10 @@ class AskQuestionsVC: UIViewController ,UITextViewDelegate{
             placeHolder.isHidden = true
         }
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     // 限制不超过200字
     func textViewNotifitionAction(userInfo:NSNotification){
         let textVStr = inputText.text as NSString;
