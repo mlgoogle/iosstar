@@ -373,20 +373,25 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         return cell
     }
     func starask(){
-        let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "AskQuestionsVC") as! AskQuestionsVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VideoQuestionsVC.className()) as? VideoQuestionsVC{
+            vc.starModel = starModel!
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     func voice(){
-        //TakeMovieVC
-        let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "TakeMovieVC") as! TakeMovieVC
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-     func staractive(){
+        
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VoiceQuestionVC") as? VoiceQuestionVC{
             vc.starModel = starModel!
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+     func staractive(){
         
+        //TakeMovieVC
+        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: StarNewsVC.className()) as? StarNewsVC{
+            //TakeMovieVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 

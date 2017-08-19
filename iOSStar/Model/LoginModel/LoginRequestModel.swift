@@ -13,6 +13,10 @@ class LoginRequestModel: BaseModel {
     var phone = ""
     var pwd = ""
     var deviceId = ""
+    var isp = ""
+    var area = ""
+    var isp_id = 0
+    var area_id = 0
 }
 
 class RegisterRequestModel: BaseModel {

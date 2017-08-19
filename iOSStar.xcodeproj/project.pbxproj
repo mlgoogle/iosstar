@@ -303,6 +303,10 @@
 		8ED3278A1F2977040034544E /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31551EA846AC00F85308 /* VideoToolbox.framework */; };
 		8EE915411F4152C000C53884 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE915401F4152C000C53884 /* User.storyboard */; };
 		8EF14BC81F26F0C800551DA1 /* Deal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EF14BC71F26F0C800551DA1 /* Deal.storyboard */; };
+		8EFC7DF01F453D15004FFE3C /* VoiceAskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC7DEF1F453D15004FFE3C /* VoiceAskVC.swift */; };
+		8EFC7DF21F4576A1004FFE3C /* PLPlayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC7DF11F4576A1004FFE3C /* PLPlayerHelper.swift */; };
+		8EFC7DF41F46D073004FFE3C /* VideoQuestionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC7DF31F46D073004FFE3C /* VideoQuestionsVC.swift */; };
+		8EFC7DF61F47D9CD004FFE3C /* VideoHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC7DF51F47D9CD004FFE3C /* VideoHistoryVC.swift */; };
 		A001A9721EAD9F8D00752F1A /* ShareDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */; };
 		A00DDE071F0C89A000DBF17E /* BankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DDE061F0C89A000DBF17E /* BankCardVC.swift */; };
 		A01408A61F26D1B600AA4190 /* BarrageWalkImageTextSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = A01408A51F26D1B600AA4190 /* BarrageWalkImageTextSprite.m */; };
@@ -891,6 +895,10 @@
 		8E9D05E11F010A4F00A9F852 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		8EE915401F4152C000C53884 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		8EF14BC71F26F0C800551DA1 /* Deal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Deal.storyboard; sourceTree = "<group>"; };
+		8EFC7DEF1F453D15004FFE3C /* VoiceAskVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceAskVC.swift; sourceTree = "<group>"; };
+		8EFC7DF11F4576A1004FFE3C /* PLPlayerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLPlayerHelper.swift; sourceTree = "<group>"; };
+		8EFC7DF31F46D073004FFE3C /* VideoQuestionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoQuestionsVC.swift; sourceTree = "<group>"; };
+		8EFC7DF51F47D9CD004FFE3C /* VideoHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoHistoryVC.swift; sourceTree = "<group>"; };
 		A001A9711EAD9F8D00752F1A /* ShareDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareDataModel.swift; sourceTree = "<group>"; };
 		A00DDE061F0C89A000DBF17E /* BankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardVC.swift; sourceTree = "<group>"; };
 		A01408A41F26D1B600AA4190 /* BarrageWalkImageTextSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BarrageWalkImageTextSprite.h; path = iOSSTar/Scenes/Heat/CustomView/BarrageWalkImageTextSprite.h; sourceTree = SOURCE_ROOT; };
@@ -1503,6 +1511,9 @@
 				A0E654931F42F8F7002B85BE /* TakeMovieVC.swift */,
 				8E0285C91F4445B20088A9B8 /* VoiceQuestionVC.swift */,
 				8E0285CB1F445B890088A9B8 /* VoiceHistoryVC.swift */,
+				8EFC7DEF1F453D15004FFE3C /* VoiceAskVC.swift */,
+				8EFC7DF31F46D073004FFE3C /* VideoQuestionsVC.swift */,
+				8EFC7DF51F47D9CD004FFE3C /* VideoHistoryVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1613,6 +1624,7 @@
 			children = (
 				6E2D43B21EDEEED400DC9643 /* YD_CountDownHelper.swift */,
 				6E9F31EE1ED85B04008B12A5 /* AppConfigHelper.swift */,
+				8EFC7DF11F4576A1004FFE3C /* PLPlayerHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -3217,6 +3229,7 @@
 				6E1B570B1ED3CBA800A014AE /* DealDetailViewController.swift in Sources */,
 				6EA6B8141F1B52EC007762B2 /* YD_BarrageSprite.swift in Sources */,
 				8E3979E11F28587800847CCB /* NIMUnsupportContentConfig.m in Sources */,
+				8EFC7DF61F47D9CD004FFE3C /* VideoHistoryVC.swift in Sources */,
 				6EFE79891ECAEF3B0096470D /* MarketDetailCell.swift in Sources */,
 				A07238991EA76AA300E755DB /* AppDelegate.swift in Sources */,
 				8E3979AC1F28587800847CCB /* UIImage+NIMKit.m in Sources */,
@@ -3315,6 +3328,7 @@
 				8E397A151F28587800847CCB /* NIMKitTimerHolder.m in Sources */,
 				6ECAA1A91ECD7560000FBED7 /* MarketInfoCell.swift in Sources */,
 				8E4C4D341F174F720002EABF /* KeyboardInputViewController.swift in Sources */,
+				8EFC7DF01F453D15004FFE3C /* VoiceAskVC.swift in Sources */,
 				8E4C4D471F17528F0002EABF /* HHEmojiKeyboard.swift in Sources */,
 				A0EF3B121EB973F10023093A /* SocketRequestManage.swift in Sources */,
 				8E397A181F28587800847CCB /* NIMKitRobotTemplate.m in Sources */,
@@ -3326,6 +3340,7 @@
 				6E1B57111ED40A7700A014AE /* DealDoubleRowCell.swift in Sources */,
 				8E397A091F28587800847CCB /* NIMTeamAnnouncementListViewController.m in Sources */,
 				8E3979DF1F28587800847CCB /* NIMTextContentConfig.m in Sources */,
+				8EFC7DF21F4576A1004FFE3C /* PLPlayerHelper.swift in Sources */,
 				A04CF09C1ED6CB6800B93D28 /* TradePassWordVC.swift in Sources */,
 				6E1B571D1ED40FE100A014AE /* DealHintCell.swift in Sources */,
 				A084BB511ED57FAF00DFC868 /* BaseTableViewController.swift in Sources */,
@@ -3542,6 +3557,7 @@
 				A072389A1EA76AA300E755DB /* BaseTabBarController.swift in Sources */,
 				6E2CC4631F0DEA8C00281559 /* StarInteractiveViewController.swift in Sources */,
 				8E397A121F28587800847CCB /* NIMKitDevice.m in Sources */,
+				8EFC7DF41F46D073004FFE3C /* VideoQuestionsVC.swift in Sources */,
 				6E2D43B31EDEEED400DC9643 /* YD_CountDownHelper.swift in Sources */,
 				8E1E8A841EFB95B6001B2D7B /* JoinVC.swift in Sources */,
 				8E3979CB1F28587800847CCB /* NIMInputEmoticonContainerView.m in Sources */,

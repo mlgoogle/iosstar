@@ -19,9 +19,7 @@ class VoiceQuestionCell: OEZTableViewCell{
     @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {
-        voiceBtn.setImage(UIImage.imageWith("\u{e64f}", fontSize: CGSize.init(width: 16, height: 26), fontColor: UIColor.init(rgbHex: 0x666666)), for: .normal)
         iconImage.image = UIImage.imageWith("\u{e655}", fontSize: CGSize.init(width: 26, height: 26), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue))
-        voiceIcon.image = UIImage.imageWith("\u{e628}", fontSize: CGSize.init(width: 18, height: 18), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue))
     }
     
     override func update(_ data: Any!) {
@@ -34,7 +32,6 @@ class VoiceQuestionCell: OEZTableViewCell{
 class VoiceQuestionVC: BasePageListTableViewController {
 
     var starModel: StarSortListModel = StarSortListModel()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +49,7 @@ class VoiceQuestionVC: BasePageListTableViewController {
     func rightItemTapped(_ sender: Any) {
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VoiceHistoryVC.className()) as? VoiceHistoryVC{
             vc.starModel = starModel
-            self.navigationController?.pushViewController(vc, animated: true)
+            _ = self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -77,6 +74,14 @@ class VoiceQuestionVC: BasePageListTableViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 64
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let urlStr = "rtmp://live.hkstv.hk.lxdns.com/live/hks"
+        let url = URL.init(string: urlStr)
+        PLPlayerHelper.shared().player.play(with: url)
+        PLPlayerHelper.shared().player.play()
+//        PLPlayerHelper.shared().avplayNewUrl(urlStr)
+    }
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footer = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: 64))
@@ -92,6 +97,8 @@ class VoiceQuestionVC: BasePageListTableViewController {
     }
     
     func footerBtnTapped(_ sender: UIButton) {
-        print("找他定制")
+        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VoiceAskVC.className()) as? VoiceAskVC{
+            _ = navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }

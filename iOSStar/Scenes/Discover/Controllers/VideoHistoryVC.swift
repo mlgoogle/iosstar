@@ -1,23 +1,28 @@
 //
-//  VoiceHistoryVC.swift
+//  VideoHistoryVC.swift
 //  iOSStar
 //
-//  Created by mu on 2017/8/16.
+//  Created by mu on 2017/8/19.
 //  Copyright © 2017年 YunDian. All rights reserved.
 //
 
 import UIKit
 
-class VoiceHistoryCell: OEZTableViewCell {
-
-    @IBOutlet weak var voiceBtn: UIButton!
-    @IBOutlet weak var voiceIcon: UIImageView!
+class VideoHistoryCell: OEZTableViewCell {
+    
     @IBOutlet weak var voiceCountLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var seeAskLabel: UILabel!
+    @IBOutlet weak var seeAnsLabel: UILabel!
     
     
     override func awakeFromNib() {
+        let seeAskTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(seeAskTapGestureTapped(_:)))
+        contentLabel.addGestureRecognizer(seeAskTapGesture)
+        
+        let seeAnwTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(seeAnsTapGestureTapped(_:)))
+        contentLabel.addGestureRecognizer(seeAnwTapGesture)
     }
     
     override func update(_ data: Any!) {
@@ -25,9 +30,18 @@ class VoiceHistoryCell: OEZTableViewCell {
             contentLabel.text = tempTitle
         }
     }
+    
+    func seeAskTapGestureTapped(_ gesture: UITapGestureRecognizer) {
+        didSelectRowAction(1, data: nil)
+    }
+    
+    func seeAnsTapGestureTapped(_ gesture: UITapGestureRecognizer) {
+        didSelectRowAction(2, data: nil)
+    }
 }
 
-class VoiceHistoryVC: BasePageListTableViewController {
+
+class VideoHistoryVC: BasePageListTableViewController {
 
     @IBOutlet weak var titlesView: UIView!
     @IBOutlet weak var closeButton: UIButton!
@@ -37,7 +51,7 @@ class VoiceHistoryVC: BasePageListTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "历史定制"
+        title = "历史提问"
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         titleViewButtonAction(openButton)
@@ -56,7 +70,7 @@ class VoiceHistoryVC: BasePageListTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellIdentifierForRowAtIndexPath indexPath: IndexPath) -> String? {
-        return VoiceQuestionCell.className()
+        return VideoHistoryCell.className()
     }
-
+    
 }
