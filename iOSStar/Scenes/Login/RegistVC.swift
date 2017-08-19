@@ -53,7 +53,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     }
     
     func initUI(){
-        
+        vaildCodeBtn.backgroundColor = UIColor(hexString: AppConst.Color.getCode)
         codeTf.keyboardType =  .numberPad
         registeredButton.backgroundColor = UIColor.init(hexString: AppConst.Color.main)
         hava_account.titleLabel?.setAttributeText(text: "已有账户 现在注册", firstFont: 14, secondFont: 14, firstColor: UIColor.init(hexString: "999999"), secondColor: UIColor.init(hexString: AppConst.Color.main), range: NSRange(location: 5, length: 4))

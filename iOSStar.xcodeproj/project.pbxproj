@@ -70,7 +70,7 @@
 		6E2D43B31EDEEED400DC9643 /* YD_CountDownHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B21EDEEED400DC9643 /* YD_CountDownHelper.swift */; };
 		6E2D43B51EDFB5E100DC9643 /* BannerDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B41EDFB5E100DC9643 /* BannerDetailImageCell.swift */; };
 		6E2D43B71EDFB61100DC9643 /* BannerDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B61EDFB61100DC9643 /* BannerDetailInfoCell.swift */; };
-		6E3170751EF7A12700BA637F /* UpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3170741EF7A12700BA637F /* UpdateVC.swift */; };
+		6E3170751EF7A12700BA637F /* NewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3170741EF7A12700BA637F /* NewVC.swift */; };
 		6E4F03E11F10C9870003D51F /* SellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03E01F10C9870003D51F /* SellingViewController.swift */; };
 		6E4F03E31F10CED40003D51F /* SellingIntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03E21F10CED40003D51F /* SellingIntroCell.swift */; };
 		6E4F03E51F10CEF80003D51F /* SellingTimeAndCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03E41F10CEF80003D51F /* SellingTimeAndCountCell.swift */; };
@@ -510,7 +510,7 @@
 		6E2D43B21EDEEED400DC9643 /* YD_CountDownHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YD_CountDownHelper.swift; sourceTree = "<group>"; };
 		6E2D43B41EDFB5E100DC9643 /* BannerDetailImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerDetailImageCell.swift; sourceTree = "<group>"; };
 		6E2D43B61EDFB61100DC9643 /* BannerDetailInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerDetailInfoCell.swift; sourceTree = "<group>"; };
-		6E3170741EF7A12700BA637F /* UpdateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateVC.swift; sourceTree = "<group>"; };
+		6E3170741EF7A12700BA637F /* NewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewVC.swift; sourceTree = "<group>"; };
 		6E4F03E01F10C9870003D51F /* SellingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellingViewController.swift; sourceTree = "<group>"; };
 		6E4F03E21F10CED40003D51F /* SellingIntroCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellingIntroCell.swift; sourceTree = "<group>"; };
 		6E4F03E41F10CEF80003D51F /* SellingTimeAndCountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellingTimeAndCountCell.swift; sourceTree = "<group>"; };
@@ -2475,7 +2475,7 @@
 		A07238761EA76AA300E755DB /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				6E3170741EF7A12700BA637F /* UpdateVC.swift */,
+				6E3170741EF7A12700BA637F /* NewVC.swift */,
 				A07238771EA76AA300E755DB /* AppDelegate.swift */,
 				A072387A1EA76AA300E755DB /* ViewController.swift */,
 				6EC3301B1EA84C78005C8DF9 /* iOSStar-Bridging-Header.h */,
@@ -3497,7 +3497,7 @@
 				8E3979D31F28587800847CCB /* NIMKitInfo.m in Sources */,
 				8E3979B61F28587800847CCB /* NIMAvatarImageView.m in Sources */,
 				6E62C7BD1EF8B2BE0053FE1E /* AuctionTimeCell.swift in Sources */,
-				6E3170751EF7A12700BA637F /* UpdateVC.swift in Sources */,
+				6E3170751EF7A12700BA637F /* NewVC.swift in Sources */,
 				6E2D43B51EDFB5E100DC9643 /* BannerDetailImageCell.swift in Sources */,
 				6ECAA1AD1ECD75DB000FBED7 /* MaketBannerCell.swift in Sources */,
 				6EFFC21C1EF381640041A3BD /* PositionStarCell.swift in Sources */,
@@ -3720,7 +3720,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = iOSStar/iOSStar.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: yong ming lu (96YGS7NXK5)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yong ming lu (FD5S65ADL4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yong ming lu (FD5S65ADL4)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 96YGS7NXK5;
@@ -3767,7 +3767,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cloudTop.starshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6024d9ff-ca73-4be2-8355-3996922a6fcc";
+				PROVISIONING_PROFILE = "ca23b46f-5048-4e91-806e-149fe162b31b";
 				PROVISIONING_PROFILE_SPECIFIER = starShareDevelop;
 				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "iOSStar-Swift.h";

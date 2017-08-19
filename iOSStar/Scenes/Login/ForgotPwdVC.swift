@@ -55,6 +55,7 @@ class ForgotPwdVC: UITableViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "重置密码"
+        vaildCodeBtn.backgroundColor = UIColor(hexString:AppConst.Color.getCode)
         //监听键盘弹起 来改变输入址
         if UserDefaults.standard.object(forKey: "phone") as? String != nil {
             phoneTf.text  = UserDefaults.standard.object(forKey: "phone") as? String
