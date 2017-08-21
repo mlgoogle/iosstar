@@ -29,7 +29,10 @@ class ShareDataModel: NSObject {
     var voiceSwitch = false
     var selectStarCode = ""
     var baseTabbarC: BaseTabBarController?
+    var netInfo: NetModel = NetModel()
+    var qiniuHeader = "http://out9d2vy4.bkt.clouddn.com/"
 }
+
 class OrderInformation: NSObject {
     
      var orderAllPrice : String =   ""
@@ -39,6 +42,7 @@ class OrderInformation: NSObject {
      var orderInfomation : String =   ""
      var ordertitlename : String =   "订单详情"
 }
+
 class Share: NSObject {
     
     var titlestr : String = ""

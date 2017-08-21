@@ -9,6 +9,8 @@ import UIKit
 import UserNotifications
 import SVProgressHUD
 import RealmSwift
+import Alamofire
+
 // 个推信息
 let kGtAppId:String = "j6hP8vFv4Q8juUqTmnPPy6"
 let kGtAppKey:String = "5Tb2US9CEg8RsqqYlamnP1"
@@ -47,6 +49,7 @@ class AppConfigHelper: NSObject {
         registerUMAnalytics()
         getstart()
         login()
+        QiniuTool.shared().getIPAdrees()
 
     }
     
@@ -368,7 +371,7 @@ class AppConfigHelper: NSObject {
         return false
     }
 
-
+    
     
     
 }

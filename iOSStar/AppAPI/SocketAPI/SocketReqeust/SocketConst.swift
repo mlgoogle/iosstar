@@ -172,6 +172,8 @@ class SocketConst: NSObject {
         case configRequst = 10033
         //交易时间
         case miuCount = 10037
+        //七牛URL链接头
+        case qiniuHttp = 4015
     }
     
     enum type:UInt8 {
