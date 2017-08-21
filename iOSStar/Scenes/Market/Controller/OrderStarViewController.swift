@@ -47,11 +47,11 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
         let attributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 12.0),
                           NSForegroundColorAttributeName:UIColor.colorFromRGB(0x999999)]
         let tipsAttrs  = NSMutableAttributedString(string: contentStr as String, attributes: attributes)
-        let attrs = [NSForegroundColorAttributeName:UIColor.colorFromRGB(0x8C0808)]
+        let attrs = [NSForegroundColorAttributeName:UIColor(hexString: AppConst.Color.main)]
         tipsAttrs.addAttributes(attrs, range: NSMakeRange(NSString(string:contentStr).length - 6, 6))
         let range = contentStr.range(of: "《约见规则》", options: .regularExpression, range: NSMakeRange(0,contentStr.length))
         tipsAttrs.addAttribute(NSLinkAttributeName, value: "frist://", range: range)
-        tipsTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.colorFromRGB(0x8C0808)]
+        tipsTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor(hexString: AppConst.Color.main)]
         tipsTextView.attributedText = tipsAttrs
         tipsTextView.delegate = self
         tipsTextView.isEditable = false
@@ -197,7 +197,7 @@ class OrderStarViewController: UIViewController {
      override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        completeButton.backgroundColor = UIColor(hexString: AppConst.Color.main)
         tableView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0)
         tableView.showsVerticalScrollIndicator = false
         

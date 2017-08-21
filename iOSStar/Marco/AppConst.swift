@@ -67,6 +67,13 @@ class AppConst {
         static let down = "18B03F"
         static let titleColor = "8C0808"
         static let getCode = "3598DB"
+        
+        static let lightAction = "3598DB"//FB9938
+        static let darkAction = "185CA5"//FB9938
+        
+        static let lightTitle = "ffffff"
+        static let money = "FB9938"//8C0808
+        
         static let background = "background"
         static let auxiliary = "auxiliary"
         static let lightBlue = "lightBlue"
