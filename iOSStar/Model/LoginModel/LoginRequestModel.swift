@@ -13,10 +13,10 @@ class LoginRequestModel: BaseModel {
     var phone = ""
     var pwd = ""
     var deviceId = ""
-    var isp = ""
-    var area = ""
-    var isp_id = 0
-    var area_id = 0
+    var isp = ShareDataModel.share().netInfo.isp
+    var area = ShareDataModel.share().netInfo.area
+    var isp_id = ShareDataModel.share().netInfo.isp_id
+    var area_id = ShareDataModel.share().netInfo.area_id
 }
 
 class RegisterRequestModel: BaseModel {
