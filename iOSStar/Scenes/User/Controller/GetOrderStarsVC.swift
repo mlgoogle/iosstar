@@ -166,7 +166,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
                 
                 StartModel.getStartName(startCode: model.starcode) { (response) in
                     if let star = response as? StartModel{
-                        modeldata.pic = star.pic_url
+                        modeldata.pic_tail = star.pic_url_tail
                         modeldata.name = model.starname
                         modeldata.symbol = model.starcode
                         let story = UIStoryboard.init(name: "Market", bundle: nil)
@@ -223,7 +223,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
             
             starListModel.symbol = model.starcode
             starListModel.name = model.starname
-            starListModel.pic  = (star?.pic_url)!
+            starListModel.pic_tail  = (star?.pic_url_tail)!
             let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
             introVC.starModel = starListModel
             

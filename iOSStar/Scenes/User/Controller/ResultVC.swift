@@ -72,14 +72,14 @@ class ResultVC: UITableViewController {
         } else if model.recharge_type == 1 {
             
             var starName = ""
-            var pic_url = ""
+            var pic_url_tail = ""
             StartModel.getStartName(startCode: model.transaction_id, complete: { (star) in
                 if let starModel = star as? StartModel {
                     starName = starModel.name
-                    pic_url = starModel.pic_url
+                    pic_url_tail = starModel.pic_url_tail
                 }
             })
-            img.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + pic_url))
+            img.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + pic_url_tail))
             titleInfo.text = starName
             money.text = "-" + String.init(format: "%d秒", Int(model.amount))
             status.text = "约见"
@@ -88,14 +88,14 @@ class ResultVC: UITableViewController {
         } else {
             
             var starName = ""
-            var pic_url = ""
+            var pic_url_tail = ""
             StartModel.getStartName(startCode: model.transaction_id, complete: { (star) in
                 if let starModel = star as? StartModel {
                     starName = starModel.name
-                    pic_url = starModel.pic_url
+                    pic_url_tail = starModel.pic_url_tail
                 }
             })
-            img.kf.setImage(with:URL(string:ShareDataModel.share().qiniuHeader + pic_url))
+            img.kf.setImage(with:URL(string:ShareDataModel.share().qiniuHeader + pic_url_tail))
             titleInfo.text = starName
             money.text = "-" + String.init(format: "%d秒", Int(model.amount))
             status.text = "星聊"

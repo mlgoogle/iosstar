@@ -98,11 +98,11 @@ class StarCardView: UICollectionViewCell {
     }
     
     func setStarModel(starModel:StarSortListModel) {
-        guard URL(string:ShareDataModel.share().qiniuHeader + starModel.home_pic) != nil else {
+        guard URL(string:ShareDataModel.share().qiniuHeader + starModel.home_pic_tail) != nil else {
             return
         }
         
-        showImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + starModel.home_pic)!, placeholder: UIImage(named: "blank"), options: nil, progressBlock: nil) { (image, error, cacheType, url) in
+        showImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + starModel.home_pic_tail)!, placeholder: UIImage(named: "blank"), options: nil, progressBlock: nil) { (image, error, cacheType, url) in
             if image != nil {
                 self.backImage = image
             }

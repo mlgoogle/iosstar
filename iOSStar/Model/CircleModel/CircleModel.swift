@@ -14,7 +14,7 @@ import YYText
 class CircleListModel: Object {
     dynamic var symbol = ""
     dynamic var symbol_name = ""
-    dynamic var head_url = ""
+    dynamic var head_url_tail = ""
     dynamic var circle_id:Int64 = 0
     dynamic var create_time:Int64 = 0
     dynamic var content = ""

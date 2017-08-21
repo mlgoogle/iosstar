@@ -65,7 +65,7 @@ class BuyStarTimeViewController: UIViewController {
         AppAPIHelper.user().configRequest(param_code: "HOME_LAST_PIC", complete: { (response) in
             if let model = response as? ConfigReusltValue {
                 let starModel = StarSortListModel()
-                starModel.home_pic = model.param_value
+                starModel.home_pic_tail = model.param_value
                 starModel.pushlish_type = 4
                 if self.dataSouce != nil {
                     self.dataSouce?.append(starModel)
@@ -93,7 +93,7 @@ class BuyStarTimeViewController: UIViewController {
             if let model = response as? DiscoverListModel{
                 self.dataSouce = model.symbol_info
                 let starModel = StarSortListModel()
-                starModel.home_pic = model.home_last_pic
+                starModel.home_pic_tail = model.home_last_pic
                 starModel.pushlish_type = -1
                 self.dataSouce?.append(starModel)
                 self.collectionView.reloadData()
