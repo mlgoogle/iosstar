@@ -71,7 +71,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         descriptor.spriteName = NSStringFromClass(YD_Barrage.self)
         
         let attachment = NSTextAttachment()
-        imgView.sd_setImage(with: URL.init(string: (data.user?.headUrl)!))
+        imgView.sd_setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   (data.user?.headUrl)!))
         let imgage = imgView.image
         imgView.clipsToBounds = true
         imgView.layer.cornerRadius = 10

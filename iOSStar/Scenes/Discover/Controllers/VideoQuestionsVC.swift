@@ -86,7 +86,7 @@ class VideoQuestionsVC: BasePageListTableViewController {
         
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let urlStr = "rtmp://live.hkstv.hk.lxdns.com/live/hks"
-            let url = URL.init(string: urlStr)
+            let url = URL(string:ShareDataModel.share().qiniuHeader +   urlStr)
             PLPlayerHelper.shared().player.play(with: url)
             PLPlayerHelper.shared().player.play()
         }

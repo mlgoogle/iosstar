@@ -37,7 +37,7 @@ class PLPlayerHelper: NSObject, PLPlayerDelegate {
     }
  
     func avplayNewUrl(_ urlStr: String)  {
-        let item = AVPlayerItem.init(url: URL.init(string: urlStr)!)
+        let item = AVPlayerItem.init(url: URL(string:ShareDataModel.share().qiniuHeader +   urlStr)!)
         avPlayer.replaceCurrentItem(with: item)
         avPlayer.play()
     }

@@ -37,7 +37,7 @@ class NewVC: UIViewController {
             return
         }
         if AppConfigHelper.shared().updateModel!.isForceUpdate == 0 {
-            UIApplication.shared.openURL(URL.init(string: "https://fir.im/starShareUser")!)
+            UIApplication.shared.openURL(URL(string:ShareDataModel.share().qiniuHeader +   "https://fir.im/starShareUser")!)
             return
         }
         dismissController()
