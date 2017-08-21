@@ -45,7 +45,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
     func setIcon() {
         var string = ""
         if starModel != nil {
-            string = starModel!.pic
+            string = starModel!.pic_tail
         } else {
             return
         }

@@ -40,7 +40,7 @@ class NewsCell: OEZTableViewCell {
     override func update(_ data: Any!) {
         if let model = data as? CircleListModel{
             let userIcon = UIImage.imageWith(AppConst.iconFontName.userPlaceHolder.rawValue, fontSize: iconImage.frame.size, fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue))
-            iconImage.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   model.head_url), placeholder: userIcon)
+            iconImage.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   model.head_url_tail), placeholder: userIcon)
             nameLabel.text =  model.symbol_name
             newsLabel.text = model.content
             newsPic.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   model.pic_url), placeholder: nil)
@@ -161,7 +161,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
             share.addTarget(self, action: #selector(sharetothird), for: .touchUpInside)
             let item = UIBarButtonItem.init(customView: share)
             self.navigationItem.rightBarButtonItem = item
-            iconImage.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   (starModel?.pic)!), placeholder: nil)
+            iconImage.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   (starModel?.pic_tail)!), placeholder: nil)
           
         }
         requestCycleData(0)

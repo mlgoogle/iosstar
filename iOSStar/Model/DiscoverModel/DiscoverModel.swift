@@ -22,9 +22,9 @@ class StarSortListModel: BaseModel {
     
      var wid = ""
      var name = ""
-     var pic = ""
-     var home_pic = ""
-     var home_button_pic = ""
+     var pic_tail = ""
+     var home_pic_tail = ""
+     var home_button_pic_tail = ""
      var symbol = ""
      var currentPrice = 0.0
      var priceTime:Int64 = 0
@@ -41,10 +41,10 @@ class BuyRemainingTimeModel: Object {
 }
 class PanicBuyInfoModel: Object {
     dynamic var publish_price = 0.0
-    dynamic var back_pic_url = ""
+    dynamic var back_pic_url_tail = ""
     dynamic var star_code = ""
     dynamic var star_name = ""
-    dynamic var head_url = ""
+    dynamic var head_url_tail = ""
     dynamic var star_type:Int64 = 0
     dynamic var publish_type:Int64 = 0
     dynamic var publish_time:Int64 = 0
@@ -62,8 +62,8 @@ class StarDetaiInfoModel: Object {
     dynamic var star_code = ""
     dynamic var star_name = ""
     dynamic var star_tpye:Int64 = 0
-    dynamic var head_url = ""
-    dynamic var back_pic = ""
+    dynamic var head_url_tail = ""
+    dynamic var back_pic_tail = ""
     dynamic var portray1 = ""
     dynamic var portray2 = ""
     dynamic var portray3 = ""

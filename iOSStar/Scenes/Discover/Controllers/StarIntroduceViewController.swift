@@ -157,7 +157,7 @@ class StarIntroduceViewController: UIViewController {
         }
         let storyBoard = UIStoryboard(name: "Market", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "OrderStarViewController") as! OrderStarViewController
-        starModel?.home_pic = (starDetailModel?.back_pic)!
+        starModel?.home_pic_tail = (starDetailModel?.back_pic_tail)!
         vc.starInfo = starModel
         navigationController?.pushViewController(vc, animated: true)
     }

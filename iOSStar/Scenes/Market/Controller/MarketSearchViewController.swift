@@ -97,7 +97,7 @@ extension MarketSearchViewController:UITableViewDelegate, UITableViewDataSource 
         let model = dataArry[indexPath.row]
         starModel.name = model.name
         starModel.symbol = model.symbol
-        starModel.pic = model.pic
+        starModel.pic_tail = model.pic_tail
         vc.starListModel = starModel
         navigationController?.pushViewController(vc, animated: true)
 

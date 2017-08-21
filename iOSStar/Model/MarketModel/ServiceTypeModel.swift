@@ -16,10 +16,10 @@ class ServiceTypeModel: Object {
     dynamic var mid : Int64 = 0
     
     // 明星服务选中图片
-    dynamic var url1 : String = ""
+    dynamic var url1_tail : String = ""
     
     // 明星服务未选中图片
-    dynamic var url2 : String = ""
+    dynamic var url2_tail : String = ""
     
     // 服务名称
     dynamic var name : String = ""

@@ -24,7 +24,7 @@ class OrderItem: UICollectionViewCell {
     func updata(_ data : AnyObject){
         if let response = data as? StartModel{
             nameLb.text = response.name
-            self.starImg.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + response.pic_url))
+            self.starImg.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + response.pic_url_tail))
         }
     }
 }
@@ -71,7 +71,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         descriptor.spriteName = NSStringFromClass(YD_Barrage.self)
         
         let attachment = NSTextAttachment()
-        imgView.sd_setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   (data.user?.headUrl)!))
+        imgView.sd_setImage(with: URL.init(string: (data.user?.headUrl)!))
         let imgage = imgView.image
         imgView.clipsToBounds = true
         imgView.layer.cornerRadius = 10
