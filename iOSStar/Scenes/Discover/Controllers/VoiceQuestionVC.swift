@@ -43,7 +43,7 @@ class VoiceQuestionVC: BasePageListTableViewController {
 
     func initNav() {
         let rightItem = UIBarButtonItem.init(title: "历史定制", style: .plain, target: self, action: #selector(rightItemTapped(_:)))
-        title  =   "语音定制"
+//        title  =   "语音定制"
         navigationItem.rightBarButtonItem = rightItem
     }
     
