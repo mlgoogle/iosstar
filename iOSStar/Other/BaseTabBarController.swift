@@ -86,7 +86,7 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
-        
+        qiniuHelper.shared().getIPAdrees()
         if let nav : UINavigationController = tabBarController.selectedViewController as? UINavigationController{
             if nav.viewControllers.count > 0{
                 _ = nav.popToRootViewController(animated: true)
