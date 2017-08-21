@@ -90,12 +90,16 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate{
     func didsure(){
         let asset : AVAsset = self.shortVideoRecorder!.assetRepresentingAllFiles()
  
-        let outputSettings = ["PLSStartTimeKey" : NSNumber.init(value: 0),"PLSDurationKey" : self.shortVideoRecorder?.getTotalDuration()] as [String : Any]
-        let vc = PlayVC()
-        vc.asset = asset
-        vc.settings = outputSettings as [String : AnyObject]
-        self.navigationController?.pushViewController(vc, animated: true)
-    
+        let outputSettings = ["PLSStartTimeKey" : NSNumber.init(value: 0),"PLSDurationKey" : self.shortVideoRecorder?.getTotalDuration() ?? 123] as [String : Any]
+       
+        // 
+        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: PlayVC.className()) as? PlayVC{
+            vc.asset = asset
+            vc.settings = outputSettings as [String : AnyObject]
+            self.navigationController?.pushViewController(vc, animated: true)
+
+        }
+      
     }
     
     func switchbtn(){
