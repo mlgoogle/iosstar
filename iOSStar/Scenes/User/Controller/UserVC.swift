@@ -1,3 +1,4 @@
+
 //
 //  UserVC.swift
 //  iOSStar
@@ -127,7 +128,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
                     self.nickNameLabel?.text = model.nick_name
                 }
                 UserDefaults.standard.setValue(model.head_url, forKeyPath: "head_url")
-                self.iconImageView?.kf.setImage(with: URL(string: model.head_url), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
+                self.iconImageView?.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.head_url), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
                 self.tableView.reloadData()
                 
             }

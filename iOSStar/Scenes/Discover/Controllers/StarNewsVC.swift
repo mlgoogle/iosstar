@@ -427,7 +427,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
         return 1
     }
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
-        let photo = MWPhoto(url:URL(string: newsPicUrl))
+        let photo = MWPhoto(url:URL(string:ShareDataModel.share().qiniuHeader + newsPicUrl))
         return photo
     }
 }
