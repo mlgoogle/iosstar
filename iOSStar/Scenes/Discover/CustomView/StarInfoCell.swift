@@ -30,7 +30,7 @@ class StarInfoCell: UITableViewCell {
     }
     func setStarModel(starModel:StarSortListModel) {
         
-        let url = URL(string: starModel.pic)
+        let url = URL(string:qiniuHelper.shared().qiniuHeader +  starModel.pic)
         iconImageView.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         starNameLabel.text = starModel.name
         starIntroLabel.text = starModel.work

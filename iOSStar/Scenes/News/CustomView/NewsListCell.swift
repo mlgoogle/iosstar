@@ -24,7 +24,7 @@ class NewsListCell: UITableViewCell {
             return
         }
         
-        newsImageView.kf.setImage(with: URL(string: data.showpic_url), placeholder: UIImage(named:"8"), options: nil, progressBlock: nil, completionHandler: nil)
+        newsImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  data.showpic_url), placeholder: UIImage(named:"8"), options: nil, progressBlock: nil, completionHandler: nil)
 
         
     }

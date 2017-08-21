@@ -28,6 +28,10 @@ class HeaderCell: UITableViewCell {
     @IBOutlet var total_num: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet var doinvite: UIButton!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
 }
 
 class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource,CustomeAlertViewDelegate {

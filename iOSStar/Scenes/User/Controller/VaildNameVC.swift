@@ -15,6 +15,7 @@ class VaildNameVC:  BaseTableViewController {
     @IBOutlet weak var card: UITextField!
     //姓名
     @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var commitButton: UIButton!
     
     var needPwd : Int = 2
     
@@ -26,7 +27,7 @@ class VaildNameVC:  BaseTableViewController {
         super.viewDidLoad()
         title = "实名认证"
         selectBtn.isSelected = true
-        
+        commitButton.backgroundColor = UIColor(hexString: AppConst.Color.main)
         self.getUserInfo { (result) in
             if let response = result{
                 let object = response as! UserInfoModel

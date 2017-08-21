@@ -104,7 +104,7 @@ class SubViewItemCell: UITableViewCell {
     
     func setupData(model:MarketListModel) {
 
-        iconImageView.kf.setImage(with: URL(string: model.pic), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        iconImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  model.pic), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         nameLabel.text = model.name
         codeLabel.text = model.symbol
         priceLabel.text = String(format: "%.2f", model.currentPrice)

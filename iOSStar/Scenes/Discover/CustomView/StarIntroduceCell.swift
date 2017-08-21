@@ -44,8 +44,8 @@ class StarIntroduceCell: UITableViewCell {
     func setData(model:StarDetaiInfoModel) {
         nameLabel.text = model.star_name
         
-        backImageView.kf.setImage(with: URL(string: model.back_pic), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
-        iconImageView.kf.setImage(with: URL(string: model.head_url), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        backImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  model.back_pic), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        iconImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  model.head_url), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         jobLabel.text = model.work
         
     }

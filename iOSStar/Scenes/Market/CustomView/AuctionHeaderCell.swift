@@ -108,7 +108,7 @@ class AuctionHeaderCell: UITableViewCell {
     }
     func setImageUrl(url:String)  {
     
-        showImageView.kf.setImage(with: URL(string: url))
+        showImageView.kf.setImage(with: URL(string: qiniuHelper.shared().qiniuHeader + url))
     }
     
     func setPositionCountModel(model:PositionCountModel?, starCode:String?, starName:String?) {

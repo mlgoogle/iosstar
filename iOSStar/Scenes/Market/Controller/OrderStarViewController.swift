@@ -47,11 +47,11 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
         let attributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 12.0),
                           NSForegroundColorAttributeName:UIColor.colorFromRGB(0x999999)]
         let tipsAttrs  = NSMutableAttributedString(string: contentStr as String, attributes: attributes)
-        let attrs = [NSForegroundColorAttributeName:UIColor.colorFromRGB(0x8C0808)]
+        let attrs = [NSForegroundColorAttributeName:UIColor(hexString: AppConst.Color.main)]
         tipsAttrs.addAttributes(attrs, range: NSMakeRange(NSString(string:contentStr).length - 6, 6))
         let range = contentStr.range(of: "《约见规则》", options: .regularExpression, range: NSMakeRange(0,contentStr.length))
         tipsAttrs.addAttribute(NSLinkAttributeName, value: "frist://", range: range)
-        tipsTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.colorFromRGB(0x8C0808)]
+        tipsTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor(hexString: AppConst.Color.main)]
         tipsTextView.attributedText = tipsAttrs
         tipsTextView.delegate = self
         tipsTextView.isEditable = false
@@ -127,13 +127,13 @@ class StarDataCell: UITableViewCell {
     
     // 设置明星信息
     func setStarInfo(model:StarSortListModel) {
-        bkImageView.kf.setImage(with: URL(string: model.home_pic))
+        bkImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  model.home_pic))
         nameLabel.text = String.init(format: "%@ (%@)", model.name,model.symbol)
-        iconImageView.kf.setImage(with: URL(string: model.pic))
+        iconImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  model.pic))
     }
     // 设置明星信息
     func setStarModelInfo(model:BannerDetaiStarModel) {
-        bkImageView.kf.setImage(with: URL(string: model.pic_url))
+        bkImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  model.pic_url))
         describeLabel.text = model.introduction
     }
 }
@@ -197,7 +197,7 @@ class OrderStarViewController: UIViewController {
      override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        completeButton.backgroundColor = UIColor(hexString: AppConst.Color.main)
         tableView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0)
         tableView.showsVerticalScrollIndicator = false
         

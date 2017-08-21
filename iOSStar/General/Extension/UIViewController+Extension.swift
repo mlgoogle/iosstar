@@ -125,7 +125,7 @@ extension UIViewController {
     func didActionTel(_ telPhone:String) {
         let alert = UIAlertController.init(title: "呼叫", message: telPhone, preferredStyle: .alert)
         let ensure = UIAlertAction.init(title: "确定", style: .default, handler: { (action: UIAlertAction) in
-            UIApplication.shared.openURL(URL(string: "tel://\(telPhone)")!)
+            UIApplication.shared.openURL(URL(string:qiniuHelper.shared().qiniuHeader +  "tel://\(telPhone)")!)
         })
         let cancel = UIAlertAction.init(title: "取消", style: .cancel, handler: { (action: UIAlertAction) in
             

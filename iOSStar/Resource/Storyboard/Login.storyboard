@@ -288,7 +288,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4l-eN-tLq">
-                                                        <rect key="frame" x="51" y="355.5" width="15" height="15"/>
+                                                        <rect key="frame" x="51" y="356" width="15" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="15" id="8xh-fU-xAO"/>
                                                             <constraint firstAttribute="height" constant="15" id="Vo3-mD-0xj"/>
@@ -539,7 +539,7 @@
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <state key="normal" title="获取验证码">
-                                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1306,7 +1306,7 @@
                                                                 </fragment>
                                                                 <fragment content="现在登录">
                                                                     <attributes>
-                                                                        <color key="NSColor" red="0.5490196078431373" green="0.031372549019607843" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="NSColor" red="0.094117647058823528" green="0.36078431372549019" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <font key="NSFont" size="12" name=".PingFangSC-Regular"/>
                                                                     </attributes>
                                                                 </fragment>
@@ -1523,6 +1523,6 @@
         <image name="close.png" width="82" height="81"/>
         <image name="select" width="28" height="28"/>
         <image name="visible.png" width="26" height="16"/>
-        <image name="weixin_login" width="48" height="39"/>
+        <image name="weixin_login" width="24" height="19"/>
     </resources>
 </document>

@@ -31,11 +31,13 @@ class StarIntroduceViewController: UIViewController {
         self.navBarBgAlpha = 0.0
       
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: PubInfoHeaderView.className())
-        appointmentButton.layer.shadowColor = UIColor(hexString: "cccccc").cgColor
-        appointmentButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-        appointmentButton.layer.shadowRadius = 1
-        tableView.estimatedRowHeight = 20
-        appointmentButton.layer.shadowOpacity = 0.5
+        appointmentButton.backgroundColor = UIColor(hexString: AppConst.Color.lightAction)
+        buyButton.backgroundColor = UIColor(hexString: AppConst.Color.darkAction)
+//        appointmentButton.layer.shadowColor = UIColor(hexString: "cccccc").cgColor
+//        appointmentButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+//        appointmentButton.layer.shadowRadius = 1
+//        tableView.estimatedRowHeight = 20
+//        appointmentButton.layer.shadowOpacity = 0.5
         requestStarDetailInfo()
         requestExperience()
         let share = UIButton.init(type: .custom)
@@ -43,6 +45,7 @@ class StarIntroduceViewController: UIViewController {
         share.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
         share.addTarget(self, action: #selector(sharetothird), for: .touchUpInside)
         let item = UIBarButtonItem.init(customView: share)
+        item.tintColor = UIColor(hexString: AppConst.Color.main)
         self.navigationItem.rightBarButtonItem = item
 
 
@@ -209,7 +212,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         return 1
     }
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
-        let photo = MWPhoto(url:URL(string: images[Int(self.index)]))
+        let photo = MWPhoto(url:URL(string:qiniuHelper.shared().qiniuHeader +  images[Int(self.index)]))
         return photo
     }
 
