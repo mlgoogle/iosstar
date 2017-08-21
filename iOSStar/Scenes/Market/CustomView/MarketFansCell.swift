@@ -25,7 +25,7 @@ class MarketFansCell: UITableViewCell {
         let name = model.user?.nickname ?? ""
         
         dateLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.trades!.positionTime), format: "MM-DD hh:mm:ss")
-        iconImaageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + headerUrl),placeholder:UIImage.init(named: "\(index%8+1)") )
+        iconImaageView.kf.setImage(with: URL(string: headerUrl),placeholder:UIImage.init(named: "\(index%8+1)") )
         
         nameLabel.text = name
         topLabel.text = String.init(format: "%.2d", index + 1)
