@@ -18,7 +18,7 @@ class AuctionImageViewCell: UITableViewCell {
 
     
     func setImageUrl(url:String) {
-        showImageView.kf.setImage(with: URL(string: url), placeholder: UIImage(named: "nodata_banner"), options: nil, progressBlock: nil, completionHandler: nil)
+        showImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  url), placeholder: UIImage(named: "nodata_banner"), options: nil, progressBlock: nil, completionHandler: nil)
         
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

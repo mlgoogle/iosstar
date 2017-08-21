@@ -27,7 +27,7 @@ class MarketSBFansCell: UITableViewCell {
    
         dateLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.trades!.positionTime), format: "MM-DD hh:mm:ss")
 
-        iconImageView.kf.setImage(with: URL(string: headerUrl),placeholder:UIImage.init(named: "1"))
+        iconImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  headerUrl),placeholder:UIImage.init(named: "1"))
         nameLabel.text = name
         price.text = String(format: "%.2f元/秒", model.trades!.openPrice)
         

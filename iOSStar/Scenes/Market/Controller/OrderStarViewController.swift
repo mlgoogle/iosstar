@@ -127,13 +127,13 @@ class StarDataCell: UITableViewCell {
     
     // 设置明星信息
     func setStarInfo(model:StarSortListModel) {
-        bkImageView.kf.setImage(with: URL(string: model.home_pic))
+        bkImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  model.home_pic))
         nameLabel.text = String.init(format: "%@ (%@)", model.name,model.symbol)
-        iconImageView.kf.setImage(with: URL(string: model.pic))
+        iconImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  model.pic))
     }
     // 设置明星信息
     func setStarModelInfo(model:BannerDetaiStarModel) {
-        bkImageView.kf.setImage(with: URL(string: model.pic_url))
+        bkImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  model.pic_url))
         describeLabel.text = model.introduction
     }
 }

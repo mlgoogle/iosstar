@@ -49,7 +49,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         } else {
             return
         }
-        let url = URL(string: string)
+        let url = URL(string:qiniuHelper.shared().qiniuHeader +  string)
         iconImageView.kf.setImage(with: url)
     }
     

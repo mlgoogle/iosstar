@@ -24,7 +24,7 @@ class OrderItem: UICollectionViewCell {
     func updata(_ data : AnyObject){
         if let response = data as? StartModel{
             nameLb.text = response.name
-            self.starImg.kf.setImage(with: URL(string: response.pic_url))
+            self.starImg.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  response.pic_url))
         }
     }
 }

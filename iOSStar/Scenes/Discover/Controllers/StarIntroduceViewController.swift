@@ -212,7 +212,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         return 1
     }
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
-        let photo = MWPhoto(url:URL(string: images[Int(self.index)]))
+        let photo = MWPhoto(url:URL(string:qiniuHelper.shared().qiniuHeader +  images[Int(self.index)]))
         return photo
     }
 
