@@ -18,9 +18,9 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     @IBOutlet weak var rcontentView: UIView!
     
     @IBOutlet var left: NSLayoutConstraint!
-    
+    @IBOutlet weak var thirdLoginLabel: UILabel!
     @IBOutlet var hava_account: UIButton!
-    
+    @IBOutlet weak var wechatBtn: UIButton!
     @IBOutlet weak var registeredButton: UIButton!
     //时间戳
     var timeStamp =  ""
@@ -48,8 +48,6 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-    
-        
     }
     
     func initUI(){
@@ -71,6 +69,13 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
         rbackView.addGestureRecognizer(rbackViewTap)
         
         ShareDataModel.share().addObserver(self, forKeyPath: "isweichaLogin", options: .new, context: nil)
+        
+        if WXApi.isWXAppInstalled(){
+            wechatLogoImageView.alpha = 1
+            wechatLoginLabel.alpha = 1
+            wechatBtn.isEnabled = true
+            thirdLoginLabel.alpha =  1
+        }
         
     }
     

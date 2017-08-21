@@ -86,7 +86,7 @@
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarIntroduceCell" rowHeight="170" id="aRs-SG-bQm" customClass="StarIntroduceCell" customModule="iOSStar" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="55.5" width="375" height="170"/>
+                                                <rect key="frame" x="0.0" y="56" width="375" height="170"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aRs-SG-bQm" id="Q22-87-IyD">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
@@ -105,8 +105,8 @@
                                                                         <constraint firstAttribute="height" constant="60" id="N0M-1G-Rg3"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="著名演员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xmq-wn-Xtf">
-                                                                    <rect key="frame" x="96" y="137" width="58" height="14"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POSITION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xmq-wn-Xtf">
+                                                                    <rect key="frame" x="96" y="137" width="65" height="14"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="14" id="v9l-pe-qgu"/>
                                                                     </constraints>
@@ -114,8 +114,8 @@
                                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="刘诗诗" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unZ-49-43j">
-                                                                    <rect key="frame" x="96" y="108" width="49" height="15"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unZ-49-43j">
+                                                                    <rect key="frame" x="96" y="108" width="45" height="15"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="15" id="ydl-B9-8op"/>
                                                                     </constraints>
@@ -176,7 +176,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketExperienceCell" rowHeight="21" id="USb-Pt-76y" customClass="MarketExperienceCell" customModule="iOSStar" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="225.5" width="375" height="21"/>
+                                                <rect key="frame" x="0.0" y="226" width="375" height="21"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="USb-Pt-76y" id="Cxy-Jx-Zpi">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
@@ -202,7 +202,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarPhotoCell" rowHeight="140" id="Gxi-Bv-Lwb" customClass="StarPhotoCell" customModule="iOSStar" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="246.5" width="375" height="140"/>
+                                                <rect key="frame" x="0.0" y="247" width="375" height="140"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gxi-Bv-Lwb" id="L8z-qw-HH5">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
@@ -813,7 +813,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="My8-fP-YK9" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iiF-iI-esP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iiF-iI-esP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -853,8 +853,8 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWH-75-0OQ">
-                                            <rect key="frame" x="273" y="-4" width="44" height="48"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWH-75-0OQ">
+                                            <rect key="frame" x="299" y="0.0" width="44" height="48"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="44" id="rD0-gG-AqK"/>
                                             </constraints>
@@ -966,9 +966,6 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRO-6V-pD1" customClass="YYLabel">
                                             <rect key="frame" x="64" y="67" width="287" height="39"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="39" id="o4v-it-g6j"/>
-                                            </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="text" value="感谢这些天辛苦的你们[憧憬]孙婷和覃西[微笑]你们真美。"/>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="textColor">
@@ -1010,7 +1007,6 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="CommentBtn" destination="JFb-Z2-tEg" id="67o-6J-BRG"/>
-                                    <outlet property="contentHeight" destination="o4v-it-g6j" id="Gjc-bW-xT5"/>
                                     <outlet property="iconImage" destination="RMP-sT-lS9" id="ouG-UK-1UT"/>
                                     <outlet property="nameLabel" destination="QYw-kP-Bgv" id="SiS-Kr-NV0"/>
                                     <outlet property="newsLabel" destination="ZRO-6V-pD1" id="jMU-xh-HuC"/>
@@ -1032,17 +1028,14 @@
                                             <rect key="frame" x="64" y="0.0" width="295" height="44"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2yB-cK-Cca">
-                                                    <rect key="frame" x="9" y="9" width="12" height="12"/>
+                                                    <rect key="frame" x="9" y="16" width="12" height="12"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="12" id="5IB-zW-W09"/>
                                                         <constraint firstAttribute="height" constant="12" id="iBg-Ky-jxM"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户A，用户B，用户C，用户D，用户E，用户F ……" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egC-lW-JxY">
-                                                    <rect key="frame" x="33" y="9" width="262" height="25"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="E1d-oM-dHJ"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="33" y="10" width="262" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.57254901960000004" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1058,13 +1051,13 @@
                                             <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="egC-lW-JxY" firstAttribute="leading" secondItem="2yB-cK-Cca" secondAttribute="trailing" constant="12" id="1jy-Xc-PBD"/>
-                                                <constraint firstItem="egC-lW-JxY" firstAttribute="top" secondItem="2yB-cK-Cca" secondAttribute="top" id="4Dk-TW-YCu"/>
                                                 <constraint firstAttribute="bottom" secondItem="egC-lW-JxY" secondAttribute="bottom" constant="10" id="4HR-hF-Ahi"/>
-                                                <constraint firstItem="2yB-cK-Cca" firstAttribute="top" secondItem="fN1-bU-zbz" secondAttribute="top" constant="9" id="9hz-nh-qbn"/>
                                                 <constraint firstAttribute="trailing" secondItem="7yz-zN-SL7" secondAttribute="trailing" id="HSU-ne-9Ab"/>
                                                 <constraint firstItem="2yB-cK-Cca" firstAttribute="leading" secondItem="fN1-bU-zbz" secondAttribute="leading" constant="9" id="HTj-DJ-EGY"/>
+                                                <constraint firstItem="2yB-cK-Cca" firstAttribute="centerY" secondItem="fN1-bU-zbz" secondAttribute="centerY" id="JsA-Yz-T5V"/>
                                                 <constraint firstAttribute="bottom" secondItem="7yz-zN-SL7" secondAttribute="bottom" id="YEX-ov-evu"/>
                                                 <constraint firstAttribute="trailing" secondItem="egC-lW-JxY" secondAttribute="trailing" id="YZ5-qe-tfZ"/>
+                                                <constraint firstItem="egC-lW-JxY" firstAttribute="top" secondItem="fN1-bU-zbz" secondAttribute="top" constant="10" id="ZVr-hm-xWZ"/>
                                                 <constraint firstItem="7yz-zN-SL7" firstAttribute="leading" secondItem="2yB-cK-Cca" secondAttribute="trailing" id="esl-jT-PvN"/>
                                             </constraints>
                                         </view>
@@ -1078,26 +1071,22 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="iconImage" destination="2yB-cK-Cca" id="XqR-aZ-tfA"/>
-                                    <outlet property="thumbUpHeight" destination="E1d-oM-dHJ" id="uDH-gZ-qUa"/>
                                     <outlet property="thumbupNames" destination="egC-lW-JxY" id="Jir-Yo-gIX"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="44" id="GH9-3j-6G8" customClass="CommentCell" customModule="iOSStar" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="452" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="GH9-3j-6G8" id="cTg-uI-8tJ">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GH9-3j-6G8" id="cTg-uI-8tJ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0e8-yv-2ad">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0e8-yv-2ad">
                                             <rect key="frame" x="64" y="0.0" width="295" height="44"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H44-mi-dyv" customClass="YYLabel">
-                                                    <rect key="frame" x="8" y="0.0" width="279" height="36"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H44-mi-dyv" customClass="YYLabel">
+                                                    <rect key="frame" x="8" y="4" width="279" height="32"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="36" id="h0G-cJ-Os1"/>
-                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="text" value=" 呵呵[微笑]谁能帮我把他们俩的脸都 p成杨幂的。"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="numberOfLines">
@@ -1135,7 +1124,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="commentHeight" destination="h0G-cJ-Os1" id="deJ-OF-0bA"/>
                                     <outlet property="commentLabel" destination="H44-mi-dyv" id="vil-qc-gAs"/>
                                 </connections>
                             </tableViewCell>

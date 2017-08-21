@@ -13,24 +13,21 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
 
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var contentView: UIView!
-    //定义block来判断选择哪个试图
-     var resultBlock: CompleteBlock?
-    //左边距
     @IBOutlet var left: NSLayoutConstraint!
-    //右边距
     @IBOutlet weak var height: NSLayoutConstraint!
     @IBOutlet var right: NSLayoutConstraint!
-     //上边距
     @IBOutlet var top: NSLayoutConstraint!
     @IBOutlet weak var width: NSLayoutConstraint!
-   
     @IBOutlet var loginBtn: UIButton!
-    var uid : Int = 0
-    
-    // 登录密码
     @IBOutlet weak var passPwd: UITextField!
-    // 手机号
     @IBOutlet weak var phone: UITextField!
+    @IBOutlet weak var wechatBtn: UIButton!
+    @IBOutlet weak var wechatLabel: UILabel!
+    @IBOutlet weak var wechatImage: UIImageView!
+    @IBOutlet weak var thirdLoginLabel: UILabel!
+    
+    var uid : Int = 0
+    var resultBlock: CompleteBlock?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +69,13 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
         print(self.top.constant)
         self.left.constant = UIScreen.main.bounds.size.width/320.0 * 30
         self.right.constant = UIScreen.main.bounds.size.width/320.0 * 30
+        
+        if WXApi.isWXAppInstalled(){
+            wechatBtn.isEnabled = true
+            wechatLabel.alpha = 1
+            wechatImage.alpha = 1
+            thirdLoginLabel.alpha = 1
+        }
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {

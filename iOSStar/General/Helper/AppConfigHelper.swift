@@ -101,14 +101,16 @@ class AppConfigHelper: NSObject {
     }
     
 
+
     
     // MARK: - 网易云信
     func setupNIMSDK() {
         NIMSDKConfig.shared().shouldSyncUnreadCount = true
-        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "")
+        NIMSDK.shared().register(withAppID: "9c3a406f233dea0d355c6458fb0171b8", cerName: "starShareDev")
     }
     
     func LoginYunxin(){
+        
         let registerWYIMRequestModel = RegisterWYIMRequestModel()
         registerWYIMRequestModel.name_value = UserDefaults.standard.object(forKey: "phone") as? String  ?? "123"
         registerWYIMRequestModel.phone = UserDefaults.standard.object(forKey: "phone") as? String ?? "123"
@@ -146,7 +148,6 @@ class AppConfigHelper: NSObject {
         
         // [ GTSdk ]：使用APPID/APPKEY/APPSECRENT启动个推
         GeTuiSdk.start(withAppId: kGtAppId, appKey: kGtAppKey, appSecret: kGtAppSecret, delegate: sdkDelegate)
-        
         // 注册APNs - custom method - 开发者自定义的方法
         self.registerRemoteNotification(sdkDelegate: sdkDelegate)
         
@@ -242,18 +243,21 @@ class AppConfigHelper: NSObject {
         var config = Realm.Configuration()
         config.fileURL =  config.fileURL!.deletingLastPathComponent()
             .appendingPathComponent("\("starShare").realm")
-        config.schemaVersion = 5
+        config.schemaVersion = 6
         
         //数据库迁移操作
         config.migrationBlock = { migration, oldSchemaVersion in
             
-            if oldSchemaVersion < 5 {
+            if oldSchemaVersion < 6 {
                 
-                migration.enumerateObjects(ofType: PanicBuyInfoModel.className(), { (oldObject, newObject) in
-                    newObject!["wrok"] = ""
+                migration.enumerateObjects(ofType: CircleListModel.className(), { (oldObject, newObject) in
+                    newObject!["headerHeight"] = 0
+                    newObject!["thumbUpHeight"] = 0
+                    newObject!["approveName"] = ""
                 })
-                migration.enumerateObjects(ofType: StarDetaiInfoModel.className(), { (oldObject, newObject) in
-                    newObject!["wrok"] = ""
+                migration.enumerateObjects(ofType: CircleCommentModel.className(), { (oldObject, newObject) in
+                    newObject!["symbol_name"] = ""
+                    newObject!["circleHeight"] = 0
                 })
                 
             }
@@ -351,18 +355,18 @@ class AppConfigHelper: NSObject {
         }
     }
     
-    func checkUpdate() -> Bool {
-        let versionCode = Bundle.main.infoDictionary![AppConst.BundleInfo.CFBundleVersion.rawValue] as! String
-        if updateModel == nil {
-            return false
-        }
-        if  Double(versionCode) != nil {
-            if updateModel!.newAppVersionCode >  Double(versionCode)! {
-                return true
-            }
-        }
-        return false
-    }
+//    func checkUpdate() -> Bool {
+//        let versionCode = Bundle.main.infoDictionary![AppConst.BundleInfo.CFBundleVersion.rawValue] as! String
+//        if updateModel == nil {
+//            return false
+//        }
+//        if  Double(versionCode) != nil {
+//            if updateModel!.newAppVersionCode >  Double(versionCode)! {
+//                return true
+//            }
+//        }
+//        return false
+//    }
 
 
     

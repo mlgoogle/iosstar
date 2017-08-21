@@ -25,7 +25,7 @@ class DiscoverViewController: UIViewController, MenuViewDelegate{
         super.viewDidLoad()
         UIApplication.shared.isStatusBarHidden = false
         initMenuView()
-        NotificationCenter.default.addObserver(self, selector: #selector(showUpdateInfo), name: NSNotification.Name(rawValue: AppConst.NoticeKey.checkUpdte.rawValue), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(showUpdateInfo), name: NSNotification.Name(rawValue: AppConst.NoticeKey.checkUpdte.rawValue), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
