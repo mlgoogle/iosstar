@@ -283,6 +283,7 @@
 		8E3B55911F1F6A7F00282A85 /* UShareUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491C41F14C2B80058042E /* UShareUI.framework */; };
 		8E3B55921F1F6AD100282A85 /* OEZCommSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EF3B161EB974D80023093A /* OEZCommSDK.framework */; };
 		8E3B55941F1F6B2800282A85 /* UMMobClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491B11F14C2B80058042E /* UMMobClick.framework */; };
+		8E3FB8A81F4A8F920060C2ED /* qiniuHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3FB8A71F4A8F920060C2ED /* qiniuHelper.swift */; };
 		8E4C4D341F174F720002EABF /* KeyboardInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C4D321F174F720002EABF /* KeyboardInputViewController.swift */; };
 		8E4C4D351F174F720002EABF /* StarNewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C4D331F174F720002EABF /* StarNewsVC.swift */; };
 		8E4C4D391F1750AB0002EABF /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C4D381F1750AB0002EABF /* UIImage+Extension.swift */; };
@@ -865,6 +866,7 @@
 		8E3B558B1F1F690400282A85 /* libevent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libevent.a; sourceTree = "<group>"; };
 		8E3B558C1F1F690400282A85 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		8E3B558D1F1F690400282A85 /* NIMSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NIMSDK.framework; sourceTree = "<group>"; };
+		8E3FB8A71F4A8F920060C2ED /* qiniuHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = qiniuHelper.swift; sourceTree = "<group>"; };
 		8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4C4D321F174F720002EABF /* KeyboardInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInputViewController.swift; sourceTree = "<group>"; };
 		8E4C4D331F174F720002EABF /* StarNewsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarNewsVC.swift; sourceTree = "<group>"; };
@@ -1589,6 +1591,7 @@
 			children = (
 				6E2D43B21EDEEED400DC9643 /* YD_CountDownHelper.swift */,
 				6E9F31EE1ED85B04008B12A5 /* AppConfigHelper.swift */,
+				8E3FB8A71F4A8F920060C2ED /* qiniuHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -3408,6 +3411,7 @@
 				A08A9BB51EA99547009E6B2B /* ForgotPwdVC.swift in Sources */,
 				8D1660631EF157D50077C377 /* ServiceTypeRequestModel.swift in Sources */,
 				8E3979C21F28587800847CCB /* NIMContactPickedView.m in Sources */,
+				8E3FB8A81F4A8F920060C2ED /* qiniuHelper.swift in Sources */,
 				8E3979AA1F28587800847CCB /* NSDictionary+NIMKit.m in Sources */,
 				8E3979B41F28587800847CCB /* NIMKitUIConfig.m in Sources */,
 				8E397A131F28587800847CCB /* NIMKitFileLocationHelper.m in Sources */,

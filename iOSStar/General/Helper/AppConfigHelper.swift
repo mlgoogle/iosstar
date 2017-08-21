@@ -33,6 +33,7 @@ class AppConfigHelper: NSObject {
     
     
     func registerServers() {
+        qiniuHelper.shared().getIPAdrees()
         updateUpdateInfo()
         UIApplication.shared.applicationIconBadgeNumber = 0
         setupNIMSDK()
