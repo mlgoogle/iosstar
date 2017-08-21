@@ -43,7 +43,7 @@ class VoiceQuestionVC: BasePageListTableViewController {
 
     func initNav() {
         let rightItem = UIBarButtonItem.init(title: "历史定制", style: .plain, target: self, action: #selector(rightItemTapped(_:)))
-        title  =   "语音定制"
+//        title  =   "语音定制"
         navigationItem.rightBarButtonItem = rightItem
     }
     
@@ -78,7 +78,7 @@ class VoiceQuestionVC: BasePageListTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let urlStr = "rtmp://live.hkstv.hk.lxdns.com/live/hks"
-        let url = URL.init(string: urlStr)
+        let url = URL(string:ShareDataModel.share().qiniuHeader +   urlStr)
         PLPlayerHelper.shared().player.play(with: url)
         PLPlayerHelper.shared().player.play()
 //        PLPlayerHelper.shared().avplayNewUrl(urlStr)

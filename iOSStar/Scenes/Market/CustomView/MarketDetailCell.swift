@@ -1,3 +1,4 @@
+
 //
 //  MarketDetailCell.swift
 //  iOSStar
@@ -38,11 +39,11 @@ class MarketDetailCell: UITableViewCell,ChartViewDelegate{
     }
 
     func setStarModel(starModel:MarketListModel) {
-        iconImageView.kf.setImage(with: URL(string: starModel.pic))
+        iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + starModel.pic))
     }
     
     func setBannerModel(bannerModel:BannerDetaiStarModel) {
-        iconImageView.kf.setImage(with: URL(string: bannerModel.head_url))
+        iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + bannerModel.head_url))
 
         
     }

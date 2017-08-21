@@ -40,10 +40,10 @@ class NewsCell: OEZTableViewCell {
     override func update(_ data: Any!) {
         if let model = data as? CircleListModel{
             let userIcon = UIImage.imageWith(AppConst.iconFontName.userPlaceHolder.rawValue, fontSize: iconImage.frame.size, fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue))
-            iconImage.kf.setImage(with: URL.init(string: model.head_url), placeholder: userIcon)
+            iconImage.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   model.head_url), placeholder: userIcon)
             nameLabel.text =  model.symbol_name
             newsLabel.text = model.content
-            newsPic.kf.setImage(with: URL.init(string: model.pic_url), placeholder: nil)
+            newsPic.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   model.pic_url), placeholder: nil)
             newsPicUrl = model.pic_url
             thumbUpBtn.setTitle("点赞(\(model.approve_dec_time)秒)", for: .normal)
             CommentBtn.setTitle("评论(\(model.comment_dec_time)秒)", for: .normal)
@@ -161,7 +161,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
             share.addTarget(self, action: #selector(sharetothird), for: .touchUpInside)
             let item = UIBarButtonItem.init(customView: share)
             self.navigationItem.rightBarButtonItem = item
-            iconImage.kf.setImage(with: URL.init(string: (starModel?.pic)!), placeholder: nil)
+            iconImage.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   (starModel?.pic)!), placeholder: nil)
           
         }
         requestCycleData(0)
@@ -427,7 +427,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
         return 1
     }
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
-        let photo = MWPhoto(url:URL(string: newsPicUrl))
+        let photo = MWPhoto(url:URL(string:ShareDataModel.share().qiniuHeader + newsPicUrl))
         return photo
     }
 }

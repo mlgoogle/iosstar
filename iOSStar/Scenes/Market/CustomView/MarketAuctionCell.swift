@@ -22,7 +22,7 @@ class MarketAuctionCell: UITableViewCell {
     func setFans(model:FansListModel) {
         dateLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.trades!.positionTime), format: "MM-dd HH:mm:SS")
         
-        iconImageView.kf.setImage(with: URL(string: model.user!.headUrl),placeholder:UIImage.init(named: "\(arc4random()%8+1)"))
+        iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.user!.headUrl),placeholder:UIImage.init(named: "\(arc4random()%8+1)"))
         nameLabel.text = model.user!.nickname
         price_label.text = "\(model.trades!.openPrice)元/秒"
         

@@ -50,14 +50,7 @@ class StarIntroduceViewController: UIViewController {
     }
     func sharetothird(){
         if let model = expericences?[0]{
-            //            let view : ShareView = Bundle.main.loadNibNamed("ShareView", owner: self, options: nil)?.last as! ShareView
-            //            view.title = (starDetailModel?.star_name)! + "(正在星享时光 出售TA的时间)"
-            //            view.Image = headerImg.image
-            //            view.descr = model.experience
-            //            view.webpageUrl = "https://fir.im/starShareUser?uid=\(StarUserModel.getCurrentUser()?.userinfo?.id ?? 0)"
-            //            view.shareViewController(viewController: self)
-            //
-            //
+          
             
             let share  = Share()
             let vc = UIStoryboard.init(name: "Market", bundle: nil).instantiateViewController(withIdentifier: "ShareVC") as? ShareVC
@@ -228,7 +221,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         return 1
     }
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
-        let photo = MWPhoto(url:URL(string: images[Int(self.index)]))
+        let photo = MWPhoto(url:URL(string:ShareDataModel.share().qiniuHeader + images[Int(self.index)]))
         return photo
     }
     

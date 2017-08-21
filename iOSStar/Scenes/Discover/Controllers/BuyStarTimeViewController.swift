@@ -97,7 +97,6 @@ class BuyStarTimeViewController: UIViewController {
                 starModel.pushlish_type = -1
                 self.dataSouce?.append(starModel)
                 self.collectionView.reloadData()
-                //self.requestConfigData()
                 self.perform(#selector(self.replaceBackImage(index:)), with: nil, afterDelay: 0.5)
                 
             }
