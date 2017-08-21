@@ -89,8 +89,11 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate{
     //确定按钮
     func didsure(){
         let asset : AVAsset = self.shortVideoRecorder!.assetRepresentingAllFiles()
+ 
+        let outputSettings = ["PLSStartTimeKey" : NSNumber.init(value: 0),"PLSDurationKey" : self.shortVideoRecorder?.getTotalDuration()] as [String : Any]
         let vc = PlayVC()
         vc.asset = asset
+        vc.settings = outputSettings as [String : AnyObject]
         self.navigationController?.pushViewController(vc, animated: true)
     
     }
@@ -144,7 +147,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate{
 }
 extension TakeMovieVC  {
     func shortVideoRecorder(_ recorder: PLShortVideoRecorder, didRecordingToOutputFileAt fileURL: URL, fileDuration: CGFloat, totalDuration: CGFloat) {
-        print(fileDuration)
+       
         ProgressView.setProgress(ProgressView.progress + 0.4, animated: true)
     }
     func shortVideoRecorder(_ recorder: PLShortVideoRecorder, didFinishRecordingMaxDuration maxDuration: CGFloat) {

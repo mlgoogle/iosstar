@@ -14,13 +14,28 @@ protocol StarCirCleCellDelegate {
     func staractive()
     
 }
-class StarCirCleCell: UITableViewCell {
+class StarCirCleCell: UITableViewCell ,UICollectionViewDelegate ,UICollectionViewDataSource{
+   
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectViewCell", for: indexPath)
+        return cell
+    }
 
+   
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+
+
+    @IBOutlet var collectView: UICollectionView!
     var delegate : StarCirCleCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
+
+   
+    
  
     @IBAction func ask(sender: AnyObject) {
         delegate?.starask()
@@ -39,3 +54,7 @@ class StarCirCleCell: UITableViewCell {
     }
 
 }
+extension StarCirCleCell  {
+
+}
+

@@ -51,7 +51,10 @@ class VideoQuestionsVC: BasePageListTableViewController {
             let rightItem = UIBarButtonItem.init(title: "历史提问", style: .plain, target: self, action: #selector(rightItemTapped(_:)))
             navigationItem.rightBarButtonItem = rightItem
         }
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
         func rightItemTapped(_ sender: Any) {
             if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VideoHistoryVC.className()) as? VideoHistoryVC{
                 vc.starModel = starModel
