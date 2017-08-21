@@ -58,4 +58,11 @@ class LoginSocketApi: BaseSocketAPI, LoginApi {
         let packet : SocketDataPacket = SocketDataPacket.init(opcode: .registWY, model: model)
         startModelRequest(packet, modelClass: WYIMModel.self, complete: complete, error: error)
     }
+    
+    // 获取七牛api
+    func qiniuHttpHeader(complete:CompleteBlock?,error:ErrorBlock?){
+        
+        let packet : SocketDataPacket = SocketDataPacket.init(opcode: .qiniuHttp, model:LoginModel(), type: .time)
+        startModelRequest(packet, modelClass: QinniuModel.self, complete: complete, error: error)
+    }
 }

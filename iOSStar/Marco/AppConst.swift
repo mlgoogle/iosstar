@@ -43,6 +43,9 @@ class AppConst {
     static let getStarService = "getStarService"
     static let imageTokenUrl = "http://122.144.169.219:3378/imageToken"
     static let meetCityDefault = "杭州"
+    
+    static let ipUrl = "http://ip.chinaz.com/getip.aspx"
+    static let ipInfoUrl = "http://ip.taobao.com/service/getIpInfo.php?ip="
  
     enum KVOKey: String {
         case selectProduct = "selectProduct"
@@ -117,7 +120,7 @@ class AppConst {
     }
     
     class Network {
-        #if false
+        #if true
         //是否测试环境
         //139.224.34.22
         //122.144.169.214
