@@ -70,6 +70,7 @@ class StarDetaiInfoModel: Object {
     dynamic var portray4 = ""
     dynamic var acc_id = ""
     dynamic var work = ""
+    dynamic var publish_type = 10
 }
 
 class MiuResponeModel: BaseModel{

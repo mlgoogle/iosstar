@@ -18,7 +18,7 @@ class StarIntroduceViewController: UIViewController {
     var index = 0
     var headerImg = UIImageView()
     var starModel:StarSortListModel?
-    var sectionHeights = [170,18 , 120, 220 , 140]
+    var sectionHeights = [170,18 , 120, 220 , 150]
     var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(), StarCirCleCell.className(), StarDynamicCell.className() ,StarPhotoCell.className()]
     var images:[String] = []
     var starDetailModel:StarDetaiInfoModel?
@@ -122,6 +122,7 @@ class StarIntroduceViewController: UIViewController {
         if checkUrl(url: starDetailModel?.portray4) {
             images.append(starDetailModel!.portray4)
         }
+        self.tableView.reloadData()
         
     }
     
@@ -145,6 +146,9 @@ class StarIntroduceViewController: UIViewController {
     }
     @IBAction func askToBuy(_ sender: Any) {
         
+        if self.starDetailModel?.publish_type !=  2 {
+            return
+        }
         let storyBoard = UIStoryboard(name: "Heat", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "HeatDetailViewController") as! HeatDetailViewController
         vc.starListModel = starModel
@@ -155,6 +159,11 @@ class StarIntroduceViewController: UIViewController {
         if starDetailModel == nil{
             return
         }
+        
+        if self.starDetailModel?.publish_type !=  2 {
+            return
+        }
+        
         let storyBoard = UIStoryboard(name: "Market", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "OrderStarViewController") as! OrderStarViewController
         starModel?.home_pic_tail = (starDetailModel?.back_pic_tail)!
@@ -167,7 +176,9 @@ class StarIntroduceViewController: UIViewController {
         guard starModel != nil else {
             return
         }
-        
+        if self.starDetailModel?.publish_type == 0 {
+         return
+        }
         let r = PositionCountRequestModel()
         r.starcode = starModel!.symbol
         AppAPIHelper.marketAPI().requestPositionCount(requestModel: r, complete: { (response) in
@@ -221,7 +232,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         return 1
     }
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
-        let photo = MWPhoto(url:URL(string:ShareDataModel.share().qiniuHeader + images[Int(self.index)]))
+        let photo = MWPhoto(url:URL(string: images[Int(self.index)]))
         return photo
     }
     
