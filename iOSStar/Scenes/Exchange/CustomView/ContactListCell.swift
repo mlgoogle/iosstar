@@ -37,7 +37,7 @@ class GetOrderStarsVCCell : OEZTableViewCell{
         let model = data as! StarInfoModel
         StartModel.getStartName(startCode: model.starcode) { (response) in
             if let star = response as? StartModel {
-                self.iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + star.pic_url))
+                self.iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + star.pic_url_tail))
             }
             
         }
@@ -97,7 +97,7 @@ class ContactListCell: OEZTableViewCell {
             unreadLabel.isHidden = model.unreadCount == 0
             StartModel.getStartName(startCode: model.starcode) { (response) in
                 if let star = response as? StartModel {
-                    self.iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + star.pic_url))
+                    self.iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + star.pic_url_tail))
                 }
                 
             }
