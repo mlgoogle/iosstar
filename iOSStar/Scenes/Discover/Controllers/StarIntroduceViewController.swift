@@ -145,6 +145,9 @@ class StarIntroduceViewController: UIViewController {
     }
     @IBAction func askToBuy(_ sender: Any) {
         
+        if self.starDetailModel?.publish_type !=  2 {
+            return
+        }
         let storyBoard = UIStoryboard(name: "Heat", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "HeatDetailViewController") as! HeatDetailViewController
         vc.starListModel = starModel
@@ -155,6 +158,11 @@ class StarIntroduceViewController: UIViewController {
         if starDetailModel == nil{
             return
         }
+        
+        if self.starDetailModel?.publish_type !=  2 {
+            return
+        }
+        
         let storyBoard = UIStoryboard(name: "Market", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "OrderStarViewController") as! OrderStarViewController
         starModel?.home_pic_tail = (starDetailModel?.back_pic_tail)!
@@ -167,7 +175,9 @@ class StarIntroduceViewController: UIViewController {
         guard starModel != nil else {
             return
         }
-        
+        if self.starDetailModel?.publish_type == 0 {
+         return
+        }
         let r = PositionCountRequestModel()
         r.starcode = starModel!.symbol
         AppAPIHelper.marketAPI().requestPositionCount(requestModel: r, complete: { (response) in
