@@ -104,7 +104,7 @@ extension StarInteractiveViewController:UITableViewDelegate, UITableViewDataSour
             return
         }
         if checkLogin(){
-            if let model: StarSortListModel = dataSource![indexPath.row] as? StarSortListModel{
+            if let model = dataSource![indexPath.row] as? StarSortListModel{
                 ShareDataModel.share().selectStarCode = model.symbol
                 performSegue(withIdentifier: StarNewsVC.className(), sender: indexPath)
             }

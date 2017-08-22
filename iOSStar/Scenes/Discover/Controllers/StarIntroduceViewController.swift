@@ -54,7 +54,7 @@ class StarIntroduceViewController: UIViewController {
     func sharetothird(){
         if let model = expericences?[0]{
             let view : ShareView = Bundle.main.loadNibNamed("ShareView", owner: self, options: nil)?.last as! ShareView
-            view.title = (starDetailModel?.star_name)! + "(正在星享时光 出售TA的时间)"
+            view.title = (starDetailModel?.star_name)! + "(正在星云 出售TA的时间)"
             view.Image = headerImg.image
             view.descr = model.experience
             view.webpageUrl = "https://fir.im/starShareUser?uid=\(StarUserModel.getCurrentUser()?.userinfo?.id ?? 0)"

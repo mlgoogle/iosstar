@@ -121,16 +121,18 @@ class AppConfigHelper: NSObject {
                 
                 UserDefaults.standard.set(objects.token_value, forKey: AppConst.UserDefaultKey.token_value.rawValue)
                 UserDefaults.standard.synchronize()
-                let phoneNum = UserDefaults.standard.object(forKey: "phone") as! String
-                let token_value = objects.token_value
                 
-                NIMSDK.shared().loginManager.login(phoneNum, token: token_value, completion: { (error) in
-                    if error == nil {
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
-                    }else{
-                        print(error)
-                    }
-                })
+                if let phoneNum = UserDefaults.standard.object(forKey: "phone") as? String {
+                    let token_value = objects.token_value
+                    
+                    NIMSDK.shared().loginManager.login(phoneNum, token: token_value, completion: { (error) in
+                        if error == nil {
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
+                        }else{
+                            print(error)
+                        }
+                    })
+                }
             }
         }, error:nil)
     }
@@ -330,7 +332,7 @@ class AppConfigHelper: NSObject {
         localNotify.timeZone = NSTimeZone.default
         localNotify.soundName = UILocalNotificationDefaultSoundName
         if #available(iOS 8.2, *) {
-            localNotify.alertTitle = "星享时光"
+            localNotify.alertTitle = "星云"
         } else {
             // Fallback on earlier versions
         }
