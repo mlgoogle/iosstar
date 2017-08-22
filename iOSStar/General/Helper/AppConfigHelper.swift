@@ -33,7 +33,6 @@ class AppConfigHelper: NSObject {
     
     
     func registerServers() {
-        updateUpdateInfo()
         UIApplication.shared.applicationIconBadgeNumber = 0
         setupNIMSDK()
         setupUMSDK()
@@ -42,7 +41,6 @@ class AppConfigHelper: NSObject {
         setupRealmConfig()
         setupReceiveOrderResult()
         setupReceiveMatching()
-        updateUpdateInfo()
         setupReceiveOrderResult()
         registerUMAnalytics()
         getstart()
@@ -342,31 +340,6 @@ class AppConfigHelper: NSObject {
         
     }
 
-    //MARK: - 查询是否有新版本更新
-    func updateUpdateInfo() {
-        AppAPIHelper.user().update(type: 0, complete: { (response) in
-            if let model = response as? UpdateParam {
-                self.updateModel = model
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NoticeKey.checkUpdte.rawValue), object: nil)
-            } 
-            
-        }) { (error) in
-            
-        }
-    }
-    
-//    func checkUpdate() -> Bool {
-//        let versionCode = Bundle.main.infoDictionary![AppConst.BundleInfo.CFBundleVersion.rawValue] as! String
-//        if updateModel == nil {
-//            return false
-//        }
-//        if  Double(versionCode) != nil {
-//            if updateModel!.newAppVersionCode >  Double(versionCode)! {
-//                return true
-//            }
-//        }
-//        return false
-//    }
 
 
     

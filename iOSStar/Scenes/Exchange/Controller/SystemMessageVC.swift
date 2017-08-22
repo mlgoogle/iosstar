@@ -17,7 +17,7 @@ class MessageCell:  OEZTableViewCell{
         
         let model = data as! OrderListModel
         //001 100 101 011 110
-        print("===\(model)")
+        //print("===\(model)")
         
         var title = ""
         var colorString = ""
@@ -225,7 +225,7 @@ class SystemMessageVC: BasePageListTableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell") as! MessageCell
-        print(indexPath.section)
+        //print(indexPath.section)
         cell.update(dataSource?[indexPath.row])
         cell.selectionStyle = .none
         return cell

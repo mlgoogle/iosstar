@@ -49,13 +49,13 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
     func leftButtonItemClick(_ sender : Any) {
         
         if title == "设置交易密码"  {
-            print("设置交易密码")
+            //print("设置交易密码")
 //            ShareDataModel.share().isReturnBackClick = true;
             UserDefaults.standard.set(true, forKey: "isReturnBackClick")
             _ = self.navigationController?.popViewController(animated: true)
             
         } else {
-             print("点击了请确认交易密码")
+             //print("点击了请确认交易密码")
             for controller in (self.navigationController?.viewControllers)!{
                 if controller.isKind(of: WealthVC.self){
 //                self.navigationController?.popToRootViewController(animated: true)
@@ -165,7 +165,7 @@ class TradePassWordVC: UIViewController ,UITextFieldDelegate{
 //              
 //                if let model = result {
 //                    
-//                    // print("=========\(String(describing: result))")
+//                    // //print("=========\(String(describing: result))")
 //                    
 //                    let dic = model as! [String : AnyObject]
 //                    if dic["status"] as! Int  == 0 {

@@ -46,7 +46,7 @@ class AlertViewController: UIViewController {
     
     deinit {
         
-        print("AlertViewController --- deinit ");
+        //print("AlertViewController --- deinit ");
     }
     
     // MARK : - 初始化UI

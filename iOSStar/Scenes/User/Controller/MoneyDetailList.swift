@@ -25,7 +25,7 @@ class MoneyDetailListCell: OEZTableViewCell {
         
         let model = data as! Model
         
-        print("===\(model)")
+        //print("===\(model)")
         
         // recharge_type == 0 + 充值记录
         // recharge_type == 1 - 约见记录
@@ -110,7 +110,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
 
         requestModel.time = indexString == nil ? "" : indexString!
         
-        print("====\(requestModel)")
+        //print("====\(requestModel)")
         
         AppAPIHelper.user().requestCreditList(requestModel: requestModel, complete: { (result) in
         

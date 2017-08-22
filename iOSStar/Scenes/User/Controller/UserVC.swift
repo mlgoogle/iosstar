@@ -244,7 +244,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         }
         if indexPath.section == 2{
             
-            showAlertView()
+            //showAlertView()
         }
         
     }

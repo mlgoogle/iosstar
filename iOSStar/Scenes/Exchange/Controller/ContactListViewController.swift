@@ -91,7 +91,7 @@ class ContactListViewController: BaseCustomPageListTableViewController, OEZTable
     
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!) {
         if action == 3 {
-            // print((data as AnyObject).description)
+            // //print((data as AnyObject).description)
             let starInfoModel = data as! StarInfoModel
             let session = NIMSession(starInfoModel.faccid, type: .P2P)
             let vc = YDSSessionViewController.init(session: session)
