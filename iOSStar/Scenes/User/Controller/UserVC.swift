@@ -43,7 +43,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         //        titltArry = ["我的钱包","我约的明星","客服中心","常见问题","通用设置"]
         titltArry = ["交易明细","我的钱包","我预约的明星","客服中心","通用设置"]
         self.tableView.reloadData()
-//        LoginYunxin()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccess(_:)), name: Notification.Name(rawValue:AppConst.loginSuccess), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginNotice), name: Notification.Name(rawValue:AppConst.loginSuccessNotice), object: nil)
         
