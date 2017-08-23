@@ -208,7 +208,8 @@ extension UIViewController {
                 complete?(result as AnyObject)
             }, error: { (error) in
                  //刷新下token
-               self.userLogout()
+                 AppConfigHelper.shared().login()
+//               self.userLogout()
             })
 
         }
