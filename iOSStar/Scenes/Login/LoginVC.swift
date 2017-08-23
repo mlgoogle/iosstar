@@ -164,7 +164,6 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
                         self?.dismissController()
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
                         StarUserModel.upateUserInfo(userObject: datadic!)
-//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccessNotice), object: nil, userInfo: nil)
                         AppConfigHelper.shared().updateDeviceToken()
 
                     }

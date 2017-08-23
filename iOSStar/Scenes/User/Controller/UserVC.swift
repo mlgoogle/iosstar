@@ -90,25 +90,6 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         }) { (error) in
             
         }
-        
-//        let model = CommissionModelequestModel()
-//        
-//        AppAPIHelper.user().getcommission(requestModel: model, complete: { (result) in
-//            if let model = result {
-//                let objectModle = model as! CommissionModel
-//                if  objectModle.result == 1{
-//                    self.Accumulated?.text = "\(objectModle.total_amount)"
-//                    self.invitation?.text = "\(objectModle.total_num)"
-//                } else {
-//                    
-//                }
-//            }
-//            
-//        }) { (errro) in
-//            
-//        }
-//        
-        
         updateUserInfo()
     }
     
