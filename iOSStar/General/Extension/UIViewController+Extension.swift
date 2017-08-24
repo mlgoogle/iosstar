@@ -207,8 +207,9 @@ extension UIViewController {
             AppAPIHelper.user().requestUserInfo(requestModel: requestModel, complete: { (result) in
                 complete?(result as AnyObject)
             }, error: { (error) in
-                //刷新下token
-                AppConfigHelper.shared().login()
+                 //刷新下token
+                 AppConfigHelper.shared().login()
+//               self.userLogout()
             })
 
         }

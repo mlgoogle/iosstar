@@ -147,6 +147,7 @@ class StarIntroduceViewController: UIViewController {
     @IBAction func askToBuy(_ sender: Any) {
         
         if self.starDetailModel?.publish_type !=  2 {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "当前该明星非流通阶段，请等待为流通阶段", ForDuration: 2, completion: nil)
             return
         }
         let storyBoard = UIStoryboard(name: "Heat", bundle: nil)
@@ -161,6 +162,7 @@ class StarIntroduceViewController: UIViewController {
         }
         
         if self.starDetailModel?.publish_type !=  2 {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "当前该明星非流通阶段，请等待为流通阶段", ForDuration: 2, completion: nil)
             return
         }
         
@@ -177,6 +179,7 @@ class StarIntroduceViewController: UIViewController {
             return
         }
         if self.starDetailModel?.publish_type == 0 {
+         SVProgressHUD.showErrorMessage(ErrorMessage: "当前该明星非流通阶段，请等待为流通阶段", ForDuration: 2, completion: nil)
          return
         }
         let r = PositionCountRequestModel()

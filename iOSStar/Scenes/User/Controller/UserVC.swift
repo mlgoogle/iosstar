@@ -43,7 +43,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         //        titltArry = ["我的钱包","我约的明星","客服中心","常见问题","通用设置"]
         titltArry = ["交易明细","我的钱包","我预约的明星","客服中心","通用设置"]
         self.tableView.reloadData()
-        
+//        LoginYunxin()
         NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccess(_:)), name: Notification.Name(rawValue:AppConst.loginSuccess), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginNotice), name: Notification.Name(rawValue:AppConst.loginSuccessNotice), object: nil)
         
@@ -90,25 +90,6 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         }) { (error) in
             
         }
-        
-//        let model = CommissionModelequestModel()
-//        
-//        AppAPIHelper.user().getcommission(requestModel: model, complete: { (result) in
-//            if let model = result {
-//                let objectModle = model as! CommissionModel
-//                if  objectModle.result == 1{
-//                    self.Accumulated?.text = "\(objectModle.total_amount)"
-//                    self.invitation?.text = "\(objectModle.total_num)"
-//                } else {
-//                    
-//                }
-//            }
-//            
-//        }) { (errro) in
-//            
-//        }
-//        
-        
         updateUserInfo()
     }
     
