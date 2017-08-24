@@ -45,12 +45,17 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
             self?.rechargeMoney = Double.init((result as? String)!)!
         }
       
+        
         dobuy.backgroundColor = UIColor.init(hexString: AppConst.Color.orange)
         inputMoney.delegate = self
         inputMoney.keyboardType = .decimalPad
         
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange(_:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
         loadview()
+        payTypeName.text =  "支付宝"
+        
+        paytype = 1
+        payTypeImg.image = UIImage.init(named: "支付宝")
         
     }
      //MARK支付宝充值成功回调充值
@@ -165,6 +170,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,UITextFieldDelegate{
         return section == 0 ? 0.001 : 10
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        return
         if indexPath.section == 0 {
             inputMoney.resignFirstResponder()
             tableView.isScrollEnabled = false

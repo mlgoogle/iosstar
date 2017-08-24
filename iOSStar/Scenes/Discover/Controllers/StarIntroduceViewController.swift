@@ -46,7 +46,7 @@ class StarIntroduceViewController: UIViewController {
         share.addTarget(self, action: #selector(sharetothird), for: .touchUpInside)
         let item = UIBarButtonItem.init(customView: share)
         item.tintColor = UIColor(hexString: AppConst.Color.main)
-        self.navigationItem.rightBarButtonItem = item
+//        self.navigationItem.rightBarButtonItem = item
 
 
 

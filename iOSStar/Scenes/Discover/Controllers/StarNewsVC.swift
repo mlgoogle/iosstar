@@ -161,7 +161,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
             share.addTarget(self, action: #selector(sharetothird), for: .touchUpInside)
             let item = UIBarButtonItem.init(customView: share)
             item.tintColor = UIColor(hexString: AppConst.Color.main)
-            self.navigationItem.rightBarButtonItem = item
+//            self.navigationItem.rightBarButtonItem = item
             iconImage.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader + (starModel?.pic)!), placeholder: nil)
           
         }
