@@ -70,6 +70,10 @@ class QiniuTool: NSObject {
             }
         }, error: nil)
     }
+    func upload(_ path : URL, _ type : Bool){
+        //获取 token
+        
+    }
 
 }
 

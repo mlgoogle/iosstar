@@ -165,6 +165,7 @@ class SocketConst: NSObject {
         case deleteCircle = 15007
         //点赞朋友圈
         case approveCircle = 15009
+         case uptoken = 15029
         //评论朋友圈
         case commentCircle = 15011
         //明星回复评论

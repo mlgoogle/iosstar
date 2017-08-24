@@ -86,5 +86,5 @@ protocol UserApi {
     
     func getcommission( requestModel:CommissionModelequestModel,complete: CompleteBlock?, error: ErrorBlock?)
     
-    
+    func uploadimg(complete: CompleteBlock?, error: ErrorBlock?)
 }

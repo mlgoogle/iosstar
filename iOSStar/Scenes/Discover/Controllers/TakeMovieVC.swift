@@ -8,13 +8,17 @@
 
 import UIKit
 import PLShortVideoKit
-class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate{
+import Qiniu
+class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoUploaderDelegate{
 
     
     var didTap = false
     var index  = 1
     var shortVideoRecorder : PLShortVideoRecorder?
+    var shortVideoUploader : PLShortVideoUploader?
     
+    var file : URL?
+
     //设置按住松开的view
     lazy var ProgressView  :  OProgressView = {
       let  Progress = OProgressView.init(frame: CGRect.init(x: self.view.center.x - 50, y: kScreenHeight - 120, width: 100, height: 100))
@@ -88,17 +92,38 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate{
     
     //确定按钮
     func didsure(){
-        let asset : AVAsset = self.shortVideoRecorder!.assetRepresentingAllFiles()
- 
-        let outputSettings = ["PLSStartTimeKey" : NSNumber.init(value: 0),"PLSDurationKey" : self.shortVideoRecorder?.getTotalDuration() ?? 123] as [String : Any]
-       
-        // 
-        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: PlayVC.className()) as? PlayVC{
-            vc.asset = asset
-            vc.settings = outputSettings as [String : AnyObject]
-            self.navigationController?.pushViewController(vc, animated: true)
-
+    
+        AppAPIHelper.user().uploadimg(complete: { (result) in
+            if   let token = result as? UploadTokenModel{
+                let qiniuManager = QNUploadManager()
+                 let key = String.init(format: "short_video_.mp4")
+                qiniuManager?.putFile(self.file?.path, key: key, token: token.uptoken, complete: { (info, key, resp) in
+                    print(resp)
+                }, option: nil)
+               
+//                let uploadConfig = PLSUploaderConfiguration.init(token: token.uptoken, videoKey: key, https: true, recorder: nil)
+//                
+//                self.shortVideoUploader = PLShortVideoUploader.init(configuration: uploadConfig!)
+//                self.shortVideoUploader?.delegate = self
+//                self.shortVideoUploader?.uploadVideoFile((self.file?.path)!)
+            }
+        }) { (error ) in
+            
         }
+
+        
+     
+//        let asset : AVAsset = self.shortVideoRecorder!.assetRepresentingAllFiles()
+// 
+//        let outputSettings = ["PLSStartTimeKey" : NSNumber.init(value: 0),"PLSDurationKey" : self.shortVideoRecorder?.getTotalDuration() ?? 123] as [String : Any]
+//       
+//        // 
+//        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: PlayVC.className()) as? PlayVC{
+//            vc.asset = asset
+//            vc.settings = outputSettings as [String : AnyObject]
+//            self.navigationController?.pushViewController(vc, animated: true)
+//
+//        }
       
     }
     
@@ -150,8 +175,15 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate{
 
 }
 extension TakeMovieVC  {
+    func shortVideoUploader(_ uploader: PLShortVideoUploader, uploadKey: String?, uploadPercent: Float) {
+        
+    }
+    func shortVideoUploader(_ uploader: PLShortVideoUploader, complete info: PLSUploaderResponseInfo, uploadKey: String, resp: [AnyHashable : Any]?) {
+        
+        
+        
+    }
     func shortVideoRecorder(_ recorder: PLShortVideoRecorder, didRecordingToOutputFileAt fileURL: URL, fileDuration: CGFloat, totalDuration: CGFloat) {
-       
         ProgressView.setProgress(ProgressView.progress + 0.4, animated: true)
     }
     func shortVideoRecorder(_ recorder: PLShortVideoRecorder, didFinishRecordingMaxDuration maxDuration: CGFloat) {
@@ -165,6 +197,7 @@ extension TakeMovieVC  {
         ProgressView.isHidden = true
         self.shortVideoRecorder?.stopRecording()
         sureBtn.isHidden = false
+        self.file = fileURL
         resetBtn.isHidden = false
         ProgressView.setProgress(0, animated: true)
         
