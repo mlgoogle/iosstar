@@ -198,7 +198,7 @@ class HeatDetailViewController: UIViewController {
         iconImageVie.layer.borderColor = UIColor.white.cgColor
         iconImageVie.layer.borderWidth = 1
         priceLabel.text = String(format: "%.2f", starListModel?.currentPrice ?? 0)
-        iconImageVie.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  (starListModel?.pic)! ?? ""), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        iconImageVie.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  (starListModel?.pic)! ), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         nameLabel.text = starListModel?.name
         jobLabel.text = starListModel?.work
     }

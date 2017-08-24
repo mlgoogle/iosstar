@@ -63,7 +63,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         if userInfoData?.nick_name == "" {
             let nameUid = StarUserModel.getCurrentUser()?.userinfo?.id
             let stringUid = String.init(format: "%d", nameUid!)
-            nickName.text = "星享时光用户" + stringUid
+            nickName.text = "星云用户" + stringUid
         } else {
             nickName.text = userInfoData?.nick_name
         }
@@ -73,7 +73,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         if userInfoData != nil {
             headUrl = userInfoData!.head_url
         }
-       headerImg.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  headUrl), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
+       headerImg.kf.setImage(with: URL(string: headUrl), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
 //        self.nickName.text = (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
         // self.nickName.text = phonetext
     }
