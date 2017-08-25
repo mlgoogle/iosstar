@@ -42,7 +42,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     //切换摄像头
     lazy var switchBtn : UIButton = {
         let resetBtn = UIButton.init(type: .custom)
-        resetBtn.frame = CGRect.init(x: 50, y: 30, width: 60, height: 60)
+        resetBtn.frame = CGRect.init(x: 30, y: 30, width: 60, height: 60)
         resetBtn.setImage(UIImage.init(named: "frontBack"), for: .normal)
         resetBtn.addTarget(self , action: #selector(switchbtn), for: .touchUpInside)
         return resetBtn
@@ -62,8 +62,8 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     //退出按钮
     lazy var closeBtn: UIButton = {
         let resetBtn = UIButton.init(type: .custom)
-        resetBtn.frame = CGRect.init(x: kScreenWidth - 100, y: 30, width: 60, height: 60)
-        resetBtn.setImage(UIImage.init(named: "videoCloseØ"), for: .normal)
+        resetBtn.frame = CGRect.init(x: kScreenWidth - 100, y: 30, width: 25, height: 25)
+        resetBtn.setImage(UIImage.init(named: "close"), for: .normal)
         resetBtn.addTarget(self , action: #selector(exit), for: .touchUpInside)
         return resetBtn
     }()
@@ -106,6 +106,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         self.view.addSubview(showStartImg)
         self.view.addSubview(resetBtn)
         self.view.addSubview(stopBtn)
+        self.view.addSubview(closeBtn)
         self.view.addSubview(switchBtn)
         self.view.addSubview(sureBtn)
         self.view.addSubview(ProgressView)
@@ -173,6 +174,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         stopBtn.isHidden = true
         ProgressView.isHidden = false
         self.switchBtn.isHidden = false
+        self.closeBtn.isHidden = false
         self.showStartImg.isHidden = true
         self.shortVideoRecorder?.previewView?.isHidden = false
         self.view.bringSubview(toFront: (self.shortVideoRecorder?.previewView)!)
@@ -180,6 +182,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         self.view.bringSubview(toFront: resetBtn)
         self.view.bringSubview(toFront: ProgressView)
         self.view.bringSubview(toFront: switchBtn)
+        self.view.bringSubview(toFront: closeBtn)
         self.shortVideoRecorder?.cancelRecording()
         self.shortVideoRecorder?.stopRecording()
         ProgressView.setProgress(0, animated: true)
@@ -252,6 +255,7 @@ extension TakeMovieVC  {
             self.view.bringSubview(toFront: (player?.playerView)!)
             self.view.bringSubview(toFront: stopBtn)
             self.switchBtn.isHidden = true
+            self.closeBtn.isHidden = true
             self.view.bringSubview(toFront: sureBtn)
             player?.delegate = self
             player?.play()
@@ -263,6 +267,7 @@ extension TakeMovieVC  {
             self.showStartImg.isHidden = false
             stopBtn.isHidden = true
             self.switchBtn.isHidden = true
+            self.closeBtn.isHidden = true
 //             player?.launchView = self.showStartImg.image
             self.view.bringSubview(toFront: stopBtn)
             self.view.bringSubview(toFront: (player?.playerView)!)
