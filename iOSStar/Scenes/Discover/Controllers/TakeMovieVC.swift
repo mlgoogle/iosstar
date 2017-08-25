@@ -148,9 +148,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
                     self.resultBlock!(outputSettings as AnyObject)
                     self.navigationController?.popViewController(animated: true)
                 }
-                
             }
-            
         }) { (error) in
         }
     }
@@ -189,7 +187,6 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     }
     
     func start( _ sender: UIRotationGestureRecognizer){
-        
         if sender.state == .began {
             canle = false
             self.shortVideoRecorder?.startRecording()
@@ -197,7 +194,6 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         if sender.state == .ended {
             self.shortVideoRecorder?.stopRecording()
         }
-        
     }
 }
 extension TakeMovieVC  {
@@ -207,17 +203,13 @@ extension TakeMovieVC  {
             if !canle{
                 stopBtn.isHidden = false
                 self.view.bringSubview(toFront: self.stopBtn)
-                
             }else{
                 stopBtn.isHidden = true
                 self.view.bringSubview(toFront: self.stopBtn)
             }
-            
         }
         if state == .statusPaused{
-            
             stopBtn.isHidden = true
-            
         }
     }
     func shortVideoRecorder(_ recorder: PLShortVideoRecorder, didRecordingToOutputFileAt fileURL: URL, fileDuration: CGFloat, totalDuration: CGFloat) {
@@ -230,13 +222,11 @@ extension TakeMovieVC  {
         self.view.bringSubview(toFront: sureBtn)
         self.view.bringSubview(toFront: resetBtn)
         self.view.bringSubview(toFront: (player?.playerView)!)
-        
         resetBtn.isHidden = false
         ProgressView.setProgress(0, animated: true)
     }
     func shortVideoRecorder(_ recorder: PLShortVideoRecorder, didFinishRecordingToOutputFileAt fileURL: URL, fileDuration: CGFloat, totalDuration: CGFloat) {
         ProgressView.isHidden = true
-        
         self.shortVideoRecorder?.stopRecording()
         UIView.animate(withDuration: 0.23) {
             self.sureBtn.isHidden = false
@@ -251,7 +241,6 @@ extension TakeMovieVC  {
             self.view.addSubview((player?.playerView)!)
             self.showStartImg.isHidden = false
             stopBtn.isHidden = true
-            
             self.view.bringSubview(toFront: (player?.playerView)!)
             self.view.bringSubview(toFront: stopBtn)
             self.switchBtn.isHidden = true
@@ -262,7 +251,6 @@ extension TakeMovieVC  {
 //            player?.launchView?.image = self.showStartImg.image
             self.view.bringSubview(toFront: resetBtn)
         }else{
-            
             player?.play(with: fileURL)
             self.showStartImg.isHidden = false
             stopBtn.isHidden = true
