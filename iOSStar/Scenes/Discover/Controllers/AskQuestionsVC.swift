@@ -15,7 +15,7 @@ class AskQuestionsVC: UIViewController ,UITextViewDelegate{
     @IBOutlet var placeHolder: UILabel!
     @IBOutlet var textNumber: UILabel!
     @IBOutlet weak var videoBtn: UIButton!
-    
+    var preview : String  = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "像提TA问"
@@ -63,8 +63,30 @@ class AskQuestionsVC: UIViewController ,UITextViewDelegate{
     }
     
     @IBAction func videoBtnTapped(_ sender: UIButton) {
+        if self.preview != ""{
+            if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: PlayNetVC.className()) as? PlayNetVC{
+                vc.playUrl = self.preview
+                //TakeMovieVC
+                self.navigationController?.pushViewController(vc, animated: true)
+                return
+            }
+        }
         //TakeMovieVC
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: TakeMovieVC.className()) as? TakeMovieVC{
+            vc.resultBlock = {  [weak self] (result) in
+                if let response =  result as?  [String : AnyObject]{
+                    
+                    let asset : AVAsset = response["AVAsset"] as! AVAsset
+                    
+                    if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: PreViewVC.className()) as? PreViewVC{
+                        vc.asset = asset
+                        vc.settings = response
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+                
+                
+            }
             //TakeMovieVC
             self.navigationController?.pushViewController(vc, animated: true)
         }

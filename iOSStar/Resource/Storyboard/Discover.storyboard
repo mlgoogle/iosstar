@@ -1158,7 +1158,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="My8-fP-YK9" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iiF-iI-esP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iiF-iI-esP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2386,10 +2386,10 @@
             </objects>
             <point key="canvasLocation" x="3365.5999999999999" y="2300.5997001499254"/>
         </scene>
-        <!--PlayVC-->
+        <!--Pre ViewVC-->
         <scene sceneID="nWf-3V-hY4">
             <objects>
-                <viewController storyboardIdentifier="PlayVC" id="O8b-Qy-Y4K" customClass="PlayVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PreViewVC" id="O8b-Qy-Y4K" customClass="PreViewVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5IY-Sw-83b"/>
                         <viewControllerLayoutGuide type="bottom" id="VZw-eL-jBi"/>
@@ -2403,6 +2403,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cfR-6U-m6x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4070" y="-48"/>
+        </scene>
+        <!--Play NetVC-->
+        <scene sceneID="rn8-fv-o8d">
+            <objects>
+                <viewController storyboardIdentifier="PlayNetVC" id="VOo-tc-XpU" customClass="PlayNetVC" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wc5-iA-ftR"/>
+                        <viewControllerLayoutGuide type="bottom" id="0tb-88-cXp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1R9-td-KyV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P1b-sU-I4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4881" y="-48"/>
         </scene>
     </scenes>
     <resources>

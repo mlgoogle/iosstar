@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import Kingfisher
-
+import Qiniu
 class QiniuTool: NSObject {
     static let tool = QiniuTool()
     class func shared() -> QiniuTool{
@@ -74,7 +74,62 @@ class QiniuTool: NSObject {
         //获取 token
         
     }
-
+    
+    
+    //上传图片
+    
+    class func qiniuUploadImage(image: UIImage,imageName: String, complete: CompleteBlock?, error: ErrorBlock?) {
+        
+        let  filePath =  UIImage.cacheImage(image, imageName: imageName)
+        
+        let timestamp = NSDate().timeIntervalSince1970
+        let key = "\(imageName)\(Int(timestamp)).png"
+        uploadResource(filePath: filePath, key: key, complete: complete, error: error)
+    }
+     //上传视频
+    
+    class  func qiniuUploadVideo(filePath: String,videoName: String, complete: CompleteBlock?, error: ErrorBlock?) {
+        
+        let timestamp = NSDate().timeIntervalSince1970
+        let key = "\(videoName)\(Int(timestamp)).mp4"
+        uploadResource(filePath: filePath, key: key, complete: complete, error: error)
+    }
+     //上传声音
+    class  func qiniuUploadVoice(filePath: String,voiceName: String, complete: CompleteBlock?, error: ErrorBlock?) {
+        
+        let timestamp = NSDate().timeIntervalSince1970
+        let key = "\(voiceName)\(Int(timestamp)).mp3"
+        uploadResource(filePath: filePath, key: key, complete: complete, error: error)
+    }
+    
+    
+    class  func uploadResource(filePath : String, key : String, complete: CompleteBlock?, error: ErrorBlock?){
+        
+        AppAPIHelper.user().uploadimg(complete: { (result) in
+            if   let response = result as? UploadTokenModel{
+                let qiniuManager = QNUploadManager()
+                qiniuManager?.putFile(filePath, key: key, token: response.uptoken, complete: {  (info, key, resp) in
+                    if complete == nil{
+                        return
+                    }
+                    if resp == nil {
+                        complete!(nil)
+                        return
+                    }
+                    //3,返回URL
+                    let respDic: NSDictionary? = resp as NSDictionary?
+                    let value:String? = respDic!.value(forKey: "key") as? String
+                    let imageUrl = ShareDataModel.share().qiniuHeader + value!
+                    complete!(imageUrl as AnyObject?)
+                    
+                }, option: nil)
+            }
+        }) { (error ) in
+            
+        }
+    }
+    
+    
+    
 }
-
 

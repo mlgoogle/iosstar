@@ -1,3 +1,4 @@
+
 //
 //  TakeMovieVC.swift
 //  iOSStar
@@ -15,8 +16,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     var didTap = false
     var index  = 1
     var shortVideoRecorder : PLShortVideoRecorder?
-    var shortVideoUploader : PLShortVideoUploader?
-    
+    var resultBlock: CompleteBlock?
     var file : URL?
 
     //设置按住松开的view
@@ -91,7 +91,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         self.shortVideoRecorder?.delegate = self
         self.shortVideoRecorder?.setBeautify(1)
         self.shortVideoRecorder?.setBeautifyModeOn(true)
-         self.shortVideoRecorder?.startCaptureSession()
+        self.shortVideoRecorder?.startCaptureSession()
     }
     //MARK: -添加手势
     func tap(){
@@ -105,38 +105,22 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     
     //确定按钮
     func didsure(){
-    
-        AppAPIHelper.user().uploadimg(complete: { (result) in
-            if   let token = result as? UploadTokenModel{
-                let qiniuManager = QNUploadManager()
-                 let key = String.init(format: "short_video_.mp4")
-                qiniuManager?.putFile(self.file?.path, key: key, token: token.uptoken, complete: { (info, key, resp) in
-                    print(resp)
-                }, option: nil)
-               
-//                let uploadConfig = PLSUploaderConfiguration.init(token: token.uptoken, videoKey: key, https: true, recorder: nil)
-//                
-//                self.shortVideoUploader = PLShortVideoUploader.init(configuration: uploadConfig!)
-//                self.shortVideoUploader?.delegate = self
-//                self.shortVideoUploader?.uploadVideoFile((self.file?.path)!)
+
+        QiniuTool.qiniuUploadVideo(filePath: (self.file?.path)!, videoName: "short_video", complete: { (result) in
+            if self.resultBlock != nil{
+                if let response = result as? String{
+                    let outputSettings = ["PLSStartTimeKey" : NSNumber.init(value: 0),"PLSDurationKey" : self.shortVideoRecorder?.getTotalDuration() ?? 123, "movieUrl" : response ,"AVAsset" : self.shortVideoRecorder!.assetRepresentingAllFiles() ] as [String : Any]
+                    self.resultBlock!(outputSettings as AnyObject)
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
             }
-        }) { (error ) in
+            
+        }) { (error) in
             
         }
-
-        
      
-//        let asset : AVAsset = self.shortVideoRecorder!.assetRepresentingAllFiles()
-// 
-//        let outputSettings = ["PLSStartTimeKey" : NSNumber.init(value: 0),"PLSDurationKey" : self.shortVideoRecorder?.getTotalDuration() ?? 123] as [String : Any]
-//       
-//        // 
-//        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: PlayVC.className()) as? PlayVC{
-//            vc.asset = asset
-//            vc.settings = outputSettings as [String : AnyObject]
-//            self.navigationController?.pushViewController(vc, animated: true)
-//
-//        }
+
       
     }
     
