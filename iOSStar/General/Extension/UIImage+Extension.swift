@@ -12,9 +12,6 @@ import Qiniu
 import Alamofire
 
 extension UIImage{
-
-    
-    
     /**
      七牛上传图片
      
