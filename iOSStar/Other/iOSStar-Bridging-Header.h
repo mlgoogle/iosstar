@@ -39,6 +39,8 @@ struct SocketPacketHead {
 #import <BarrageRenderer/BarrageRenderer.h>
 #import <UMMobClick/MobClick.h>
 #import "GeTuiSdk.h"
+
+#import "PackDataHelper.h"
 //#import "BarrageWalkImageTextSprite.h"
 // #import "GeTuiExtSdk.h"
 
