@@ -74,12 +74,25 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         super.viewDidLoad()
         configViedeo()
         tap()
-        self.shortVideoRecorder?.startCaptureSession()
         self.view.addSubview(resetBtn)
         self.view.addSubview(switchBtn)
         self.view.addSubview(sureBtn)
     }
-    
+    //MARK: -配置段视频链接
+    func configViedeo(){
+        let videoConfiguration = PLSVideoConfiguration.default()
+        let audioConfiguration = PLSAudioConfiguration.default()
+        self.shortVideoRecorder = PLShortVideoRecorder.init(videoConfiguration: videoConfiguration!, audioConfiguration: audioConfiguration!)
+        self.view.addSubview((self.shortVideoRecorder?.previewView)!)
+        
+        self.shortVideoRecorder?.toggleCamera()
+        self.shortVideoRecorder?.maxDuration = 15.0
+        self.shortVideoRecorder?.minDuration = 1.0
+        self.shortVideoRecorder?.delegate = self
+        self.shortVideoRecorder?.setBeautify(1)
+        self.shortVideoRecorder?.setBeautifyModeOn(true)
+         self.shortVideoRecorder?.startCaptureSession()
+    }
     //MARK: -添加手势
     func tap(){
         self.view.addSubview(ProgressView)
@@ -142,7 +155,6 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         ProgressView.isHidden = false
         self.shortVideoRecorder?.cancelRecording()
         self.shortVideoRecorder?.stopRecording()
-
         ProgressView.setProgress(0, animated: true)
     }
 
@@ -156,21 +168,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         }
         
     }
-    //MARK: -配置段视频链接
-    func configViedeo(){
-        let videoConfiguration = PLSVideoConfiguration.default()
-        let audioConfiguration = PLSAudioConfiguration.default()
-        self.shortVideoRecorder = PLShortVideoRecorder.init(videoConfiguration: videoConfiguration!, audioConfiguration: audioConfiguration!)
-        self.view.addSubview((self.shortVideoRecorder?.previewView)!)
-       
-        self.shortVideoRecorder?.toggleCamera()
-        self.shortVideoRecorder?.maxDuration = 15.0
-        self.shortVideoRecorder?.minDuration = 1.0
-        self.shortVideoRecorder?.delegate = self
-        self.shortVideoRecorder?.setBeautify(1)
-        self.shortVideoRecorder?.setBeautifyModeOn(true)
-    }
-  
+    
 
 
 }

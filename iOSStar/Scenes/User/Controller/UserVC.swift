@@ -33,15 +33,14 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
     var buyStarCountLabel : UILabel?
     var PromotionUrl = ""
     // 名字数组
-    var titltArry = [""]
+    var titltArry = ["交易明细","我的钱包","我预约的明星","客服中心","通用设置"]
     //messagebtn
     @IBOutlet var message: UIButton!
     var responseData: UserInfoModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        titltArry = ["我的钱包","我约的明星","客服中心","常见问题","通用设置"]
-        titltArry = ["交易明细","我的钱包","我预约的明星","客服中心","通用设置"]
+
         self.tableView.reloadData()
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccess(_:)), name: Notification.Name(rawValue:AppConst.loginSuccess), object: nil)
