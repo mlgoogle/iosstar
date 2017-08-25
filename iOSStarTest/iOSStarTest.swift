@@ -621,21 +621,7 @@ class iOSStarTest: XCTestCase {
     }
 
 //    
-//    // 版本更新提醒
-    func testupdate() {
-        ytimeTest("testupdate", handle: { _ in
-            let exceptOption = expectation(description: "版本更新提醒")
-            let param = AliPayRequestModel()
-            AppAPIHelper.user().update(type: 1, complete: { (result ) in
-                if let model = result as? UpdateParam{
-                    if model.appName != "" {
-                        exceptOption.fulfill()
-                    }
-                }
-            }, error: nil )
-            waitForExpectations(timeout: 15, handler: nil)
-        })
-    }
+
 //    // 更新devicetoken
     
     func testupdateDeviceToken() {

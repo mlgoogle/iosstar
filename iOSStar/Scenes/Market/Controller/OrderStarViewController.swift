@@ -243,7 +243,7 @@ class OrderStarViewController: UIViewController {
         if notification.object != nil {
             let serviceType = notification.object as! ServiceTypeModel
             serviceTypeModel = serviceType
-            // print("===\(serviceTypeModel)")
+            // //print("===\(serviceTypeModel)")
             
             let strString = String.init(format:"即将消耗: %@秒",serviceType.price)
             let attrs = [NSForegroundColorAttributeName:UIColor.colorFromRGB(0xFB9938)]
@@ -483,7 +483,7 @@ extension OrderStarViewController {
 //        // 现在时间的字符串
 //        let nowTime = Date.yt_convertDateToStr(NSDate() as Date, format: "yyyy-MM-dd")
 //    
-//        // print("选择的时间=\(time) , 现在的时间=\(nowTime)")
+//        // //print("选择的时间=\(time) , 现在的时间=\(nowTime)")
 //        
 //        // 选择的时间
 //        let chooseDate = datePickerView.date
@@ -493,7 +493,7 @@ extension OrderStarViewController {
 //
 //        let compsMonth = Calendar.current.dateComponents([.month], from: nowDate, to: chooseDate)
 //        
-//        // print("===\(String(describing: compsMonth.month))")
+//        // //print("===\(String(describing: compsMonth.month))")
 //        
 //        // 只能选择一个月之后的时间
 //        if compsMonth.month! >= 1 {
@@ -512,7 +512,7 @@ extension OrderStarViewController {
 //        if chooseDate.timeIntervalSince(NSDate() as Date) <= 0 {
 //            
 //            /** 最好提示用户,且选择当前的时间*/
-//            print("不能选择之前的时间")
+//            //print("不能选择之前的时间")
 //            let nowTime = Date.yt_convertDateToStr(NSDate() as Date, format: "yyyy-MM-dd")
 //            orderTime.text = nowTime
 //            inputDateTextField.resignFirstResponder()
@@ -543,7 +543,7 @@ extension OrderStarViewController {
         
         dataCity = dic["city"]! as! Array<Dictionary<String, AnyObject>> as Array<Dictionary<String, AnyObject>>
         
-        // print(dataCity)
+        // //print(dataCity)
     }
     
     
@@ -696,7 +696,7 @@ extension OrderStarViewController {
     // 右边导航栏点击事件
     @objc fileprivate func rightButtonItemClick(_ sender : Any) {
         
-        print("点击了右边按钮");
+        //print("点击了右边按钮");
         
         let view : ShareView = Bundle.main.loadNibNamed("ShareView", owner: self, options: nil)?.last as! ShareView
         view.title = "星享时光"
@@ -790,7 +790,7 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate,Fee
     
     func didSelectRules() {
         
-        print("点击了约见规则")
+        //print("点击了约见规则")
         let baseWebVc = BaseWebVC()
         baseWebVc.loadRequest = "http://122.144.169.219:3389/meet"
         baseWebVc.navtitle = "约见规则"

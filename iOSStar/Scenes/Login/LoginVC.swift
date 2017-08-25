@@ -66,7 +66,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
         width.constant = UIScreen.main.bounds.size.width
         let h  = UIScreen.main.bounds.size.height <= 568 ? 60.0 : 80
         self.top.constant = UIScreen.main.bounds.size.height/568.0 * CGFloat.init(h)
-        print(self.top.constant)
+        //print(self.top.constant)
         self.left.constant = UIScreen.main.bounds.size.width/320.0 * 30
         self.right.constant = UIScreen.main.bounds.size.width/320.0 * 30
         

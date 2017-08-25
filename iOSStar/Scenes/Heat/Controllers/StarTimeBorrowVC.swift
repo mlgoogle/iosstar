@@ -36,7 +36,7 @@ class StarTimeBorrowVC: UIViewController , UITableViewDelegate,UITableViewDataSo
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
-        print(offsetY)
+        //print(offsetY)
 //         self.height.constant = 200
 //        height.constant  = 0
         if offsetY > 0 && offsetY <=  104{

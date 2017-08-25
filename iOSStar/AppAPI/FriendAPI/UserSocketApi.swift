@@ -149,11 +149,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         startModelRequest(packet, modelClass: AliPayResultModel.self, complete: complete, error: error)
     }
 
-    // 版本更新提醒
-    func update(type: Int, complete: CompleteBlock?, error: ErrorBlock?){
-        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .update, dict: ["ttype": type as AnyObject], type: .user)
-        startModelRequest(packet, modelClass: UpdateParam.self, complete: complete, error: error)
-    }
+
     // 更新devicetoken
     func updateDeviceToken(requestModel:UpdateDeviceTokenModel, complete: CompleteBlock?, error: ErrorBlock?){
         let packet = SocketDataPacket(opcode: .updateDeviceToken, model: requestModel)

@@ -110,7 +110,7 @@ class NewsViewController: UIViewController, SDCycleScrollViewDelegate{
 
         AppAPIHelper.newsApi().requestBannerList(complete: { (response)  in
             if let models = response as? [BannerModel] {
-                print(models)
+                //print(models)
                 self.bannerModels = models
                 
                 var bannersUrl:[String] = []
