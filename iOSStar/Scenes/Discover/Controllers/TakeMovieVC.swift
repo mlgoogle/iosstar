@@ -19,6 +19,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     var resultBlock: CompleteBlock?
     var filePath : URL?
     var player : PLPlayer?
+    
     var canle : Bool = false
     //设置按住松开的view
     lazy var ProgressView  :  OProgressView = {
