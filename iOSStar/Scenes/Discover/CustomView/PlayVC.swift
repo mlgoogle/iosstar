@@ -25,7 +25,6 @@ class PlayVC: UIViewController {
         super.viewDidLoad()
 
         self.shortVideoRecorder = PLShortVideoEditor.init(asset: asset)
-//        self.shortVideoEditor.player.delegate = self
         self.shortVideoRecorder?.player.preview?.frame = CGRect.init(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
         self.view.addSubview((self.shortVideoRecorder?.player.preview!)!)
         self.shortVideoRecorder?.player.play()
