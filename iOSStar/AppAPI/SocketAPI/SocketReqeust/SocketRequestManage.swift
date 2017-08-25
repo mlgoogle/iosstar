@@ -176,7 +176,6 @@ class SocketRequestManage: NSObject {
     
     func didActionTimer() {
         if _socketHelper != nil && _socketHelper!.isConnected {
-            
             _lastConnectedTime = timeNow()
         }
         else if( isDispatchInterval(&_lastConnectedTime!,interval: 10) ) {
