@@ -11,6 +11,7 @@ import UIKit
 class AskQuestionsVC: UIViewController ,UITextViewDelegate{
     
     @IBOutlet var publicSwitch: UISwitch!
+    var shortVideoplay : PLShortVideoEditor?
     @IBOutlet var inputText: UITextView!
     @IBOutlet var placeHolder: UILabel!
     @IBOutlet var textNumber: UILabel!
@@ -21,8 +22,7 @@ class AskQuestionsVC: UIViewController ,UITextViewDelegate{
         title = "像提TA问"
         navright()
     }
-    
-    
+
     func navright(){
         let share = UIButton.init(type: .custom)
         share.frame = CGRect.init(x: 0, y: 0, width: 70, height: 30)
@@ -76,16 +76,16 @@ class AskQuestionsVC: UIViewController ,UITextViewDelegate{
             vc.resultBlock = {  [weak self] (result) in
                 if let response =  result as?  [String : AnyObject]{
                     
-                    let asset : AVAsset = response["AVAsset"] as! AVAsset
-                    
-                    if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: PreViewVC.className()) as? PreViewVC{
-                        vc.asset = asset
-                        vc.settings = response
-                        self?.navigationController?.pushViewController(vc, animated: true)
-                    }
+//                    let asset : AVAsset = response["AVAsset"] as! AVAsset
+//                    
+//                    if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: PreViewVC.className()) as? PreViewVC{
+//                        vc.asset = asset
+//                        vc.settings = response
+//                        self?.navigationController?.pushViewController(vc, animated: true)
+//                    }
+//                }
+                
                 }
-                
-                
             }
             //TakeMovieVC
             self.navigationController?.pushViewController(vc, animated: true)
