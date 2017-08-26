@@ -64,7 +64,7 @@ class StarIntroduceViewController: UIViewController {
             share.star_code = (starDetailModel?.star_code)!
             share.name = (starDetailModel?.star_name)!
             vc?.share = share
-            share.webpageUrl = String.init(format: "%@?uid=%@&start_code%@", AppConst.shareUrl,StarUserModel.getCurrentUser()?.userinfo?.id ?? 0,(self.starDetailModel?.star_code)!)
+            share.webpageUrl = String.init(format: "%@?uid=%d&start_code=%@", AppConst.shareUrl,StarUserModel.getCurrentUser()?.userinfo?.id ?? 0,(self.starDetailModel?.star_code)!)
           
             vc?.modalTransitionStyle = .crossDissolve
             present(vc!, animated: true, completion: nil)
