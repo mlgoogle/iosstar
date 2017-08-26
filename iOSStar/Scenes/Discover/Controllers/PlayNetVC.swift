@@ -15,8 +15,8 @@ class PlayNetVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let option = PLPlayerOption.default()
-        player = PLPlayer.init(url: NSURL.fileURL(withPath: playUrl), option: option)
-        self.view.addSubview((player?.playerView)!)
+//        player = PLPlayer.
+//        self.view.addSubview((player?.playerView)!)
         // Do any additional setup after loading the view.
     }
 

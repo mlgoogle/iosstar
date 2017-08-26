@@ -109,6 +109,7 @@ class ResetPayPwdRequestModel: UserBaseModel {
 class WeChatTokenRequestModel: BaseModel {
     
     var id : Int64 = 0
+    var uid : Int64 = 0
     var token : String = ""
 }
 class CancelRechargeModel: UserBaseModel {

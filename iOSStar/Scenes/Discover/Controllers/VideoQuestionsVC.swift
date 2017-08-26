@@ -81,18 +81,19 @@ class VideoQuestionsVC: BasePageListTableViewController {
         }
         
         override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-            return 64
+            return 84
         }
         
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            let urlStr = "rtmp://live.hkstv.hk.lxdns.com/live/hks"
-            let url = URL(string:ShareDataModel.share().qiniuHeader +   urlStr)
-            PLPlayerHelper.shared().player.play(with: url)
-            PLPlayerHelper.shared().player.play()
+            if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: PlayVideoVC.className()) as? PlayVideoVC{
+                present(vc, animated: true, completion: { 
+                    vc.play("rtmp://live.hkstv.hk.lxdns.com/live/hks")
+                })
+            }
         }
-        
+    
         override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-            let footer = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: 64))
+            let footer = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: 84))
             footer.backgroundColor = UIColor.init(rgbHex: 0xfafafa)
             let footerBtn = UIButton.init(type: .custom)
             footerBtn.frame = CGRect.init(x: 24, y: 20, width: kScreenWidth-48, height: 44)

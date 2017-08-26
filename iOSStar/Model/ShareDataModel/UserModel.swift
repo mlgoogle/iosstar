@@ -98,5 +98,8 @@ class PromotionModel: Object {
     dynamic var param_value = ""
     
 }
+class UploadTokenModel: BaseModel{
+    var uptoken = ""
+}
 
 

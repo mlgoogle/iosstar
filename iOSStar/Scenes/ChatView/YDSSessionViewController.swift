@@ -14,7 +14,7 @@ class YDSSessionViewController: NIMSessionViewController ,UIScrollViewDelegate{
     var starname = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavbar()
+          setupNavbar()
          self.navBarBgAlpha = 1
     }
     

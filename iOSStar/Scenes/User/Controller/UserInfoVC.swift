@@ -157,7 +157,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         {
             if let img = info[UIImagePickerControllerOriginalImage] as? UIImage{
                 self.headerImg.image = img
-                UIImage.qiniuUploadImage(image: img, imageName: "Cycle", complete: { [weak self] (result) in
+                QiniuTool.qiniuUploadImage(image: img,  imageName: "Cycle", complete: { [weak self] (result) in
                     if let qiniuUrl = result as? String{
                         self?.imageUrl = qiniuUrl
                     }

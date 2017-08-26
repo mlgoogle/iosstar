@@ -284,6 +284,7 @@
 		8E3B55911F1F6A7F00282A85 /* UShareUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491C41F14C2B80058042E /* UShareUI.framework */; };
 		8E3B55921F1F6AD100282A85 /* OEZCommSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EF3B161EB974D80023093A /* OEZCommSDK.framework */; };
 		8E3B55941F1F6B2800282A85 /* UMMobClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B491B11F14C2B80058042E /* UMMobClick.framework */; };
+		8E4092161F4FFFA500B49438 /* PlayVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4092151F4FFFA500B49438 /* PlayVideoVC.swift */; };
 		8E4C4D341F174F720002EABF /* KeyboardInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C4D321F174F720002EABF /* KeyboardInputViewController.swift */; };
 		8E4C4D351F174F720002EABF /* StarNewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C4D331F174F720002EABF /* StarNewsVC.swift */; };
 		8E4C4D391F1750AB0002EABF /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C4D381F1750AB0002EABF /* UIImage+Extension.swift */; };
@@ -405,6 +406,7 @@
 		A0A996C91EBC4D67000048DC /* LoginSocketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A996C71EBC4D67000048DC /* LoginSocketApi.swift */; };
 		A0B58B4F1F15B7D6002C32CD /* StarTimeBorrowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B58B4E1F15B7D6002C32CD /* StarTimeBorrowVC.swift */; };
 		A0B6FB861ED952F10060CCDC /* ResetTradePassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6FB851ED952F10060CCDC /* ResetTradePassVC.swift */; };
+		A0BB530C1F4FD31100E3FE6B /* PreViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BB530B1F4FD31100E3FE6B /* PreViewVC.swift */; };
 		A0BC76401EC47C4E0050F1D6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0BC763F1EC47C4E0050F1D6 /* Settings.bundle */; };
 		A0C14C001F1F77F1005A419D /* HeatBarrageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C14BFF1F1F77F1005A419D /* HeatBarrageModel.swift */; };
 		A0C14C021F1F81F0005A419D /* ytest.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0C14C011F1F81F0005A419D /* ytest.plist */; };
@@ -882,6 +884,7 @@
 		8E3B558B1F1F690400282A85 /* libevent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libevent.a; sourceTree = "<group>"; };
 		8E3B558C1F1F690400282A85 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		8E3B558D1F1F690400282A85 /* NIMSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NIMSDK.framework; sourceTree = "<group>"; };
+		8E4092151F4FFFA500B49438 /* PlayVideoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayVideoVC.swift; sourceTree = "<group>"; };
 		8E4B50BE9BF40DC24E76C3F8 /* Pods_iOSStar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSStar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4C4D321F174F720002EABF /* KeyboardInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardInputViewController.swift; sourceTree = "<group>"; };
 		8E4C4D331F174F720002EABF /* StarNewsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarNewsVC.swift; sourceTree = "<group>"; };
@@ -1151,6 +1154,7 @@
 		A0B491D21F14C5A90058042E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Pods/Crashlytics/iOS/Crashlytics.framework; sourceTree = "<group>"; };
 		A0B58B4E1F15B7D6002C32CD /* StarTimeBorrowVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarTimeBorrowVC.swift; sourceTree = "<group>"; };
 		A0B6FB851ED952F10060CCDC /* ResetTradePassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetTradePassVC.swift; sourceTree = "<group>"; };
+		A0BB530B1F4FD31100E3FE6B /* PreViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreViewVC.swift; sourceTree = "<group>"; };
 		A0BC763F1EC47C4E0050F1D6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A0C14BFF1F1F77F1005A419D /* HeatBarrageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeatBarrageModel.swift; path = iOSSTar/Model/DiscoverModel/HeatBarrageModel.swift; sourceTree = SOURCE_ROOT; };
 		A0C14C011F1F81F0005A419D /* ytest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ytest.plist; path = iOSSTar/Resource/plist/ytest.plist; sourceTree = SOURCE_ROOT; };
@@ -1523,6 +1527,8 @@
 				8EFC7DEF1F453D15004FFE3C /* VoiceAskVC.swift */,
 				8EFC7DF31F46D073004FFE3C /* VideoQuestionsVC.swift */,
 				8EFC7DF51F47D9CD004FFE3C /* VideoHistoryVC.swift */,
+				A0BB530B1F4FD31100E3FE6B /* PreViewVC.swift */,
+				8E4092151F4FFFA500B49438 /* PlayVideoVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -3325,6 +3331,7 @@
 				8E3979FF1F28587800847CCB /* NIMSessionListViewController.m in Sources */,
 				A0856A111EB0B5C3004F349B /* UIBarExtension.swift in Sources */,
 				8E397A051F28587800847CCB /* NIMUsrInfoData.m in Sources */,
+				A0BB530C1F4FD31100E3FE6B /* PreViewVC.swift in Sources */,
 				A0EEBBCF1F47E6D800921130 /* StarDynamicCell.swift in Sources */,
 				8E397A171F28587800847CCB /* NIMKitRobotDefaultTemplateParser.m in Sources */,
 				6E2CC4611F0DEA7100281559 /* BuyStarTimeViewController.swift in Sources */,
@@ -3346,6 +3353,7 @@
 				8EFC7DF01F453D15004FFE3C /* VoiceAskVC.swift in Sources */,
 				8E4C4D471F17528F0002EABF /* HHEmojiKeyboard.swift in Sources */,
 				A0EF3B121EB973F10023093A /* SocketRequestManage.swift in Sources */,
+				8E4092161F4FFFA500B49438 /* PlayVideoVC.swift in Sources */,
 				8E397A181F28587800847CCB /* NIMKitRobotTemplate.m in Sources */,
 				6E16166E1EB0973700D95CB6 /* MarketMenuView.swift in Sources */,
 				6E7A1F781EE96C8B007BF6D8 /* DealRequestModel.swift in Sources */,

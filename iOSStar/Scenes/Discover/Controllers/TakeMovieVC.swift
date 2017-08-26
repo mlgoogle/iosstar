@@ -1,3 +1,4 @@
+
 //
 //  TakeMovieVC.swift
 //  iOSStar
@@ -8,13 +9,16 @@
 
 import UIKit
 import PLShortVideoKit
-class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate{
+import Qiniu
+class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoUploaderDelegate{
 
     
     var didTap = false
     var index  = 1
     var shortVideoRecorder : PLShortVideoRecorder?
-    
+    var resultBlock: CompleteBlock?
+    var file : URL?
+
     //设置按住松开的view
     lazy var ProgressView  :  OProgressView = {
       let  Progress = OProgressView.init(frame: CGRect.init(x: self.view.center.x - 50, y: kScreenHeight - 120, width: 100, height: 100))
@@ -70,12 +74,25 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate{
         super.viewDidLoad()
         configViedeo()
         tap()
-        self.shortVideoRecorder?.startCaptureSession()
         self.view.addSubview(resetBtn)
         self.view.addSubview(switchBtn)
         self.view.addSubview(sureBtn)
     }
-    
+    //MARK: -配置段视频链接
+    func configViedeo(){
+        let videoConfiguration = PLSVideoConfiguration.default()
+        let audioConfiguration = PLSAudioConfiguration.default()
+        self.shortVideoRecorder = PLShortVideoRecorder.init(videoConfiguration: videoConfiguration!, audioConfiguration: audioConfiguration!)
+        self.view.addSubview((self.shortVideoRecorder?.previewView)!)
+        
+        self.shortVideoRecorder?.toggleCamera()
+        self.shortVideoRecorder?.maxDuration = 15.0
+        self.shortVideoRecorder?.minDuration = 1.0
+        self.shortVideoRecorder?.delegate = self
+        self.shortVideoRecorder?.setBeautify(1)
+        self.shortVideoRecorder?.setBeautifyModeOn(true)
+        self.shortVideoRecorder?.startCaptureSession()
+    }
     //MARK: -添加手势
     func tap(){
         self.view.addSubview(ProgressView)
@@ -88,17 +105,22 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate{
     
     //确定按钮
     func didsure(){
-        let asset : AVAsset = self.shortVideoRecorder!.assetRepresentingAllFiles()
- 
-        let outputSettings = ["PLSStartTimeKey" : NSNumber.init(value: 0),"PLSDurationKey" : self.shortVideoRecorder?.getTotalDuration() ?? 123] as [String : Any]
-       
-        // 
-        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: PlayVC.className()) as? PlayVC{
-            vc.asset = asset
-            vc.settings = outputSettings as [String : AnyObject]
-            self.navigationController?.pushViewController(vc, animated: true)
 
+        QiniuTool.qiniuUploadVideo(filePath: (self.file?.path)!, videoName: "short_video", complete: { (result) in
+            if self.resultBlock != nil{
+                if let response = result as? String{
+                    let outputSettings = ["PLSStartTimeKey" : NSNumber.init(value: 0),"PLSDurationKey" : self.shortVideoRecorder?.getTotalDuration() ?? 123, "movieUrl" : response ,"AVAsset" : self.shortVideoRecorder!.assetRepresentingAllFiles() ] as [String : Any]
+                    self.resultBlock!(outputSettings as AnyObject)
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+            }
+            
+        }) { (error) in
+            
         }
+     
+
       
     }
     
@@ -117,7 +139,6 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate{
         ProgressView.isHidden = false
         self.shortVideoRecorder?.cancelRecording()
         self.shortVideoRecorder?.stopRecording()
-
         ProgressView.setProgress(0, animated: true)
     }
 
@@ -131,27 +152,20 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate{
         }
         
     }
-    //MARK: -配置段视频链接
-    func configViedeo(){
-        let videoConfiguration = PLSVideoConfiguration.default()
-        let audioConfiguration = PLSAudioConfiguration.default()
-        self.shortVideoRecorder = PLShortVideoRecorder.init(videoConfiguration: videoConfiguration!, audioConfiguration: audioConfiguration!)
-        self.view.addSubview((self.shortVideoRecorder?.previewView)!)
-       
-        self.shortVideoRecorder?.toggleCamera()
-        self.shortVideoRecorder?.maxDuration = 15.0
-        self.shortVideoRecorder?.minDuration = 1.0
-        self.shortVideoRecorder?.delegate = self
-        self.shortVideoRecorder?.setBeautify(1)
-        self.shortVideoRecorder?.setBeautifyModeOn(true)
-    }
-  
+    
 
 
 }
 extension TakeMovieVC  {
+    func shortVideoUploader(_ uploader: PLShortVideoUploader, uploadKey: String?, uploadPercent: Float) {
+        
+    }
+    func shortVideoUploader(_ uploader: PLShortVideoUploader, complete info: PLSUploaderResponseInfo, uploadKey: String, resp: [AnyHashable : Any]?) {
+        
+        
+        
+    }
     func shortVideoRecorder(_ recorder: PLShortVideoRecorder, didRecordingToOutputFileAt fileURL: URL, fileDuration: CGFloat, totalDuration: CGFloat) {
-       
         ProgressView.setProgress(ProgressView.progress + 0.4, animated: true)
     }
     func shortVideoRecorder(_ recorder: PLShortVideoRecorder, didFinishRecordingMaxDuration maxDuration: CGFloat) {
@@ -165,6 +179,7 @@ extension TakeMovieVC  {
         ProgressView.isHidden = true
         self.shortVideoRecorder?.stopRecording()
         sureBtn.isHidden = false
+        self.file = fileURL
         resetBtn.isHidden = false
         ProgressView.setProgress(0, animated: true)
         

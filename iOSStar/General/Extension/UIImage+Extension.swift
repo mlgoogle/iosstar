@@ -12,42 +12,6 @@ import Qiniu
 import Alamofire
 
 extension UIImage{
-    /**
-     七牛上传图片
-     
-     - parameter image:     图片
-     - parameter imageName: 图片名
-     - parameter complete:  图片完成Block
-     */
-    class func qiniuUploadImage(image: UIImage, imageName: String, complete: CompleteBlock?, error: ErrorBlock?) {
-        
-        //0,将图片存到沙盒中
-        let filePath = cacheImage(image, imageName: imageName)
-        //1,获取图片
-        Alamofire.request(AppConst.imageTokenUrl, method: .get).responseJSON { (resultObject) in
-            if let result: NSDictionary = resultObject.result.value as? NSDictionary{
-                let token = result.value(forKey: "imageToken") as! String
-                //2,上传图片
-                let timestamp = NSDate().timeIntervalSince1970
-                let key = "\(imageName)\(Int(timestamp)).png"
-                let qiniuManager = QNUploadManager()
-                qiniuManager?.putFile(filePath, key: key, token: token, complete: { (info, key, resp) in
-                    if complete == nil{
-                        return
-                    }
-                    if resp == nil {
-                        complete!(nil)
-                        return
-                    }
-                    //3,返回URL
-                    let respDic: NSDictionary? = resp as NSDictionary?
-                    let value:String? = respDic!.value(forKey: "key") as? String
-                    let imageUrl = AppConst.Network.qiniuHost+value!
-                    complete!(imageUrl as AnyObject?)
-                }, option: nil)
-            }
-        }
-    }
     
     /**
      缓存图片
