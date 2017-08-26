@@ -1601,17 +1601,17 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="b74-Mq-vKB" secondAttribute="height" multiplier="1:1" id="5wB-X8-bG0"/>
                                         </constraints>
-                                        <state key="normal" image="10"/>
+                                        <state key="normal" image="qurcode"/>
                                         <connections>
                                             <action selector="shareClick:" destination="WkC-YE-s5B" eventType="touchUpInside" id="WCH-Nv-F6m"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8SN-8s-R0z">
-                                        <rect key="frame" x="162" y="265" width="52" height="52.5"/>
+                                    <button opaque="NO" tag="101" contentMode="left" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8SN-8s-R0z">
+                                        <rect key="frame" x="161.5" y="265" width="52" height="52.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="8SN-8s-R0z" secondAttribute="height" multiplier="1:1" id="Fu7-B1-tFw"/>
                                         </constraints>
-                                        <state key="normal" title="微信" image="QQ"/>
+                                        <state key="normal" image="weichat-black"/>
                                         <connections>
                                             <action selector="shareClick:" destination="WkC-YE-s5B" eventType="touchUpInside" id="cEo-bL-HrX"/>
                                         </connections>
@@ -1621,7 +1621,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="VXm-3J-LwB" secondAttribute="height" multiplier="1:1" id="bd5-q9-GLw"/>
                                         </constraints>
-                                        <state key="normal" title="朋友圈" image="weichat"/>
+                                        <state key="normal" image="circle-black"/>
                                         <connections>
                                             <action selector="shareClick:" destination="WkC-YE-s5B" eventType="touchUpInside" id="XMF-Gx-s5K"/>
                                         </connections>
@@ -1631,7 +1631,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Ohf-Hz-mGx" secondAttribute="height" multiplier="1:1" id="HYi-jw-ufk"/>
                                         </constraints>
-                                        <state key="normal" title="微博" image="sina"/>
+                                        <state key="normal" image="sina-black"/>
                                         <connections>
                                             <action selector="shareClick:" destination="WkC-YE-s5B" eventType="touchUpInside" id="h4G-uw-t3j"/>
                                         </connections>
@@ -1641,7 +1641,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="j7N-9X-uYG" secondAttribute="height" multiplier="1:1" id="LIv-HD-IPQ"/>
                                         </constraints>
-                                        <state key="normal" title="qq" image="QQ"/>
+                                        <state key="normal" image="qq-black"/>
                                         <connections>
                                             <action selector="shareClick:" destination="WkC-YE-s5B" eventType="touchUpInside" id="62s-Y4-CU5"/>
                                         </connections>
@@ -1651,20 +1651,26 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="vry-zi-ck9" secondAttribute="height" multiplier="1:1" id="g6V-GJ-WuJ"/>
                                         </constraints>
-                                        <state key="normal" title="空间" image="umsocial_qzone"/>
+                                        <state key="normal" image="qqzone-black"/>
                                         <connections>
                                             <action selector="shareClick:" destination="WkC-YE-s5B" eventType="touchUpInside" id="goM-gk-hEt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xP-Xf-Uio">
-                                        <rect key="frame" x="333" y="60" width="22" height="22"/>
+                                        <rect key="frame" x="335" y="60" width="20" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="IRy-sS-FyN"/>
-                                            <constraint firstAttribute="width" constant="22" id="ldu-eN-2FI"/>
+                                            <constraint firstAttribute="height" constant="20" id="IRy-sS-FyN"/>
+                                            <constraint firstAttribute="width" constant="20" id="ldu-eN-2FI"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="close"/>
+                                        <state key="normal" image="close"/>
                                         <connections>
                                             <action selector="didMIss:" destination="WkC-YE-s5B" eventType="touchUpInside" id="cp0-J3-Iqb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6E-Zb-npa">
+                                        <rect key="frame" x="323" y="50" width="44" height="41"/>
+                                        <connections>
+                                            <action selector="didMIss:" destination="WkC-YE-s5B" eventType="touchUpInside" id="sdh-pc-Xes"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1678,6 +1684,7 @@
                                     <constraint firstItem="6Ra-zS-KaI" firstAttribute="top" secondItem="CYx-8W-PlL" secondAttribute="bottom" constant="10" id="4oK-dr-7xN"/>
                                     <constraint firstItem="j7N-9X-uYG" firstAttribute="width" secondItem="b74-Mq-vKB" secondAttribute="width" id="6Gd-wP-BRF"/>
                                     <constraint firstItem="vry-zi-ck9" firstAttribute="height" secondItem="b74-Mq-vKB" secondAttribute="height" id="6bC-ri-eUe"/>
+                                    <constraint firstItem="9xP-Xf-Uio" firstAttribute="leading" secondItem="n6E-Zb-npa" secondAttribute="leading" constant="12" id="9yS-eC-4xc"/>
                                     <constraint firstItem="CYx-8W-PlL" firstAttribute="leading" secondItem="OyP-Sz-aZ1" secondAttribute="trailing" constant="14" id="Ak9-2q-LSF"/>
                                     <constraint firstItem="vry-zi-ck9" firstAttribute="top" secondItem="j7N-9X-uYG" secondAttribute="bottom" constant="26" id="GYg-uR-gs0"/>
                                     <constraint firstItem="j7N-9X-uYG" firstAttribute="centerX" secondItem="tOO-z9-Tiu" secondAttribute="centerX" id="GsM-uq-jjx"/>
@@ -1686,13 +1693,16 @@
                                     <constraint firstItem="CYx-8W-PlL" firstAttribute="top" secondItem="tOO-z9-Tiu" secondAttribute="top" constant="100" id="Ns9-uK-TAW"/>
                                     <constraint firstItem="vry-zi-ck9" firstAttribute="centerX" secondItem="tOO-z9-Tiu" secondAttribute="centerX" id="U7M-yd-h1b"/>
                                     <constraint firstItem="vry-zi-ck9" firstAttribute="width" secondItem="b74-Mq-vKB" secondAttribute="width" id="VTU-do-n9b"/>
+                                    <constraint firstItem="9xP-Xf-Uio" firstAttribute="top" secondItem="n6E-Zb-npa" secondAttribute="top" constant="10" id="Yan-BP-hEn"/>
                                     <constraint firstItem="9xP-Xf-Uio" firstAttribute="top" secondItem="tOO-z9-Tiu" secondAttribute="top" constant="60" id="YdF-Ib-yuR"/>
                                     <constraint firstItem="8SN-8s-R0z" firstAttribute="width" secondItem="b74-Mq-vKB" secondAttribute="width" id="a7F-Eg-lJo"/>
+                                    <constraint firstItem="9xP-Xf-Uio" firstAttribute="trailing" secondItem="n6E-Zb-npa" secondAttribute="trailing" constant="-12" id="elL-GG-QAj"/>
                                     <constraint firstItem="b74-Mq-vKB" firstAttribute="top" secondItem="OyP-Sz-aZ1" secondAttribute="bottom" constant="37" id="fXd-fv-3Ul"/>
                                     <constraint firstItem="Ohf-Hz-mGx" firstAttribute="top" secondItem="VXm-3J-LwB" secondAttribute="bottom" constant="26" id="gZz-hT-906"/>
                                     <constraint firstItem="OyP-Sz-aZ1" firstAttribute="top" secondItem="tOO-z9-Tiu" secondAttribute="top" constant="100" id="gb5-ec-kcM"/>
                                     <constraint firstItem="Ohf-Hz-mGx" firstAttribute="height" secondItem="b74-Mq-vKB" secondAttribute="height" id="kPt-x8-shv"/>
                                     <constraint firstItem="8SN-8s-R0z" firstAttribute="height" secondItem="b74-Mq-vKB" secondAttribute="height" id="ko6-rX-PAC"/>
+                                    <constraint firstItem="9xP-Xf-Uio" firstAttribute="bottom" secondItem="n6E-Zb-npa" secondAttribute="bottom" constant="-11" id="l8o-gT-B3k"/>
                                     <constraint firstItem="OyP-Sz-aZ1" firstAttribute="centerX" secondItem="tOO-z9-Tiu" secondAttribute="centerX" constant="-28.5" id="oCA-DS-sKP"/>
                                     <constraint firstItem="8SN-8s-R0z" firstAttribute="centerX" secondItem="tOO-z9-Tiu" secondAttribute="centerX" id="psy-gQ-uCE"/>
                                     <constraint firstItem="b74-Mq-vKB" firstAttribute="centerX" secondItem="tOO-z9-Tiu" secondAttribute="centerX" id="s8J-WS-hWp"/>
@@ -1700,7 +1710,6 @@
                                     <constraint firstItem="j7N-9X-uYG" firstAttribute="height" secondItem="b74-Mq-vKB" secondAttribute="height" id="tJT-LT-3qU"/>
                                     <constraint firstItem="8SN-8s-R0z" firstAttribute="top" secondItem="b74-Mq-vKB" secondAttribute="bottom" constant="26" id="tOs-wu-Qp1"/>
                                     <constraint firstItem="6Ra-zS-KaI" firstAttribute="leading" secondItem="OyP-Sz-aZ1" secondAttribute="trailing" constant="14" id="uws-e5-eCC"/>
-                                    <constraint firstItem="VXm-3J-LwB" firstAttribute="height" secondItem="b74-Mq-vKB" secondAttribute="height" id="xbA-WL-cPi"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1720,14 +1729,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2y9-t6-l2K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3249" y="36"/>
+            <point key="canvasLocation" x="3248.8000000000002" y="35.532233883058474"/>
         </scene>
         <!--Base Navigation Controller-->
         <scene sceneID="HwB-io-C7g">
             <objects>
                 <navigationController storyboardIdentifier="Market" automaticallyAdjustsScrollViewInsets="NO" id="D4Y-gF-oKV" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Jpd-CQ-nrk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Jpd-CQ-nrk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -1745,17 +1754,18 @@
         </scene>
     </scenes>
     <resources>
-        <image name="10" width="55" height="55"/>
         <image name="8" width="55" height="55"/>
-        <image name="QQ" width="116" height="116"/>
         <image name="avatar_user" width="108" height="108"/>
+        <image name="circle-black" width="30" height="30"/>
         <image name="close" width="82" height="81"/>
         <image name="fansList_first" width="28" height="28"/>
         <image name="market_search" width="17" height="17"/>
         <image name="nodata_banner" width="283" height="128"/>
+        <image name="qq-black" width="29" height="33"/>
+        <image name="qqzone-black" width="30" height="30"/>
+        <image name="qurcode" width="32" height="32"/>
         <image name="share" width="14" height="14"/>
-        <image name="sina" width="116" height="116"/>
-        <image name="umsocial_qzone" width="116" height="116"/>
-        <image name="weichat" width="116" height="116"/>
+        <image name="sina-black" width="35" height="28"/>
+        <image name="weichat-black" width="30" height="30"/>
     </resources>
 </document>

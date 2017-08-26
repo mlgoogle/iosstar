@@ -18,8 +18,10 @@ class StarIntroduceViewController: UIViewController {
     var index = 0
     var headerImg = UIImageView()
     var starModel:StarSortListModel?
-    var sectionHeights = [170,18 , 120, 220 , 150]
-    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(), StarCirCleCell.className(), StarDynamicCell.className() ,StarPhotoCell.className()]
+//    var sectionHeights = [170,18 , 120, 220 , 150]
+    var sectionHeights = [170,18 , 120 , 150]
+//    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(), StarCirCleCell.className(), StarDynamicCell.className() ,StarPhotoCell.className()]
+    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(),StarPhotoCell.className()]
     var images:[String] = []
     var starDetailModel:StarDetaiInfoModel?
     var expericences:[ExperienceModel]?
@@ -62,7 +64,8 @@ class StarIntroduceViewController: UIViewController {
             share.star_code = (starDetailModel?.star_code)!
             share.name = (starDetailModel?.star_name)!
             vc?.share = share
-            share.webpageUrl = "https://fir.im/starShareUser?uid=\(StarUserModel.getCurrentUser()?.userinfo?.id ?? 0)"
+            share.webpageUrl = String.init(format: "%@?uid=%@&start_code%@", AppConst.shareUrl,StarUserModel.getCurrentUser()?.userinfo?.id ?? 0,(self.starDetailModel?.star_code)!)
+          
             vc?.modalTransitionStyle = .crossDissolve
             present(vc!, animated: true, completion: nil)
         }
@@ -255,11 +258,11 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             return 0.001
         case 1:
             return 70
-        case 2:
+        case 4:
             return 0.001
         case 3:
             return 70
-        case 4:
+        case 2:
             return 70
         default:
             return 0.01
@@ -283,12 +286,12 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             
             
         }
-        else  if  section == 2 {
+        else  if  section == 4{
             let view = UIView()
             view.backgroundColor = UIColor.init(hexString: "fafafa")
             return view
         }
-      else  if  section == 4 {
+      else  if  section == 2 {
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as? PubInfoHeaderView
             header?.setTitle(title:"个人写真")
             header?.contentView.backgroundColor = UIColor(hexString: "fafafa")
@@ -314,14 +317,15 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
-            if showMoreIntroduce{
-                if expericences != nil{
-                    return 1
-                }
-                
-            }else{
-                return expericences?.count ?? 0
-            }
+              return expericences?.count ?? 0
+//            if showMoreIntroduce{
+//                if expericences != nil{
+//                    return 1
+//                }
+//                
+//            }else{
+//                return expericences?.count ?? 0
+//            }
             
         }
         return 1
@@ -349,23 +353,25 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             if let expericencesCell = cell as? MarketExperienceCell {
                 
                 expericencesCell.delegate = self
-                if showMoreIntroduce{
-                    expericencesCell.show.isHidden = false
-                    expericencesCell.showHeight.constant = 15
-                    
-                }else{
-                    //最后一区
-                    if indexPath.row == (expericences?.count)! - 1{
-                        expericencesCell.show.isHidden = false
-                        expericencesCell.show.setTitle("点击收起", for: .normal)
-                        expericencesCell.showHeight.constant = 15
-                    }else{
-                        expericencesCell.show.isHidden = true
-                        expericencesCell.showHeight.constant = 0
-                    }
-                    
-                    
-                }
+                 expericencesCell.show.isHidden = true
+//                if showMoreIntroduce{
+//                    expericencesCell.show.isHidden = false
+//                    expericencesCell.showHeight.constant = 15
+//                    
+//                }else{
+//                    //最后一区
+//                    expericencesCell.show.isHidden = true
+//                    if indexPath.row == (expericences?.count)! - 1{
+//                        expericencesCell.show.isHidden = false
+//                        expericencesCell.show.setTitle("点击收起", for: .normal)
+//                        expericencesCell.showHeight.constant = 15
+//                    }else{
+//                        expericencesCell.show.isHidden = true
+//                        expericencesCell.showHeight.constant = 0
+//                    }
+//                    
+//                    
+//                }
                 if expericences != nil {
                     let model = expericences![indexPath.row]
                     
@@ -373,19 +379,19 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
                 }
                 
             }
-        case 2:
+        case 3:
             if let StarCirCle = cell as? StarCirCleCell {
                 StarCirCle.delegate = self
                 StarCirCle.backgroundColor = UIColor.clear
 //                photoCell.setImageUrls(images: images, delegate:self)
             }
             
-        case 3:
+        case 4:
             if let photoCell = cell as? StarDynamicCell {
 //                photoCell.setImageUrls(images: images, delegate:self)
                 photoCell.delegate = self
             }
-        case 4:
+        case 2:
             if let photoCell = cell as? StarPhotoCell {
                 photoCell.setImageUrls(images: images, delegate:self)
             }
