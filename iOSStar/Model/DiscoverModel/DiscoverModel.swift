@@ -13,7 +13,7 @@ import RealmSwift
 class DiscoverListModel:BaseModel{
     
     var symbol_info:[StarSortListModel]?
-    var home_last_pic = ""
+    var home_last_pic_tail = ""
     class func symbol_infoModelClass() ->AnyClass {
         return  StarSortListModel.classForCoder()
     }

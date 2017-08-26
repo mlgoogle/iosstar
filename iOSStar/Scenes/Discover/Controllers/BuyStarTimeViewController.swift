@@ -93,7 +93,7 @@ class BuyStarTimeViewController: UIViewController {
             if let model = response as? DiscoverListModel{
                 self.dataSouce = model.symbol_info
                 let starModel = StarSortListModel()
-                starModel.home_pic_tail = model.home_last_pic
+                starModel.home_pic_tail = model.home_last_pic_tail
                 starModel.pushlish_type = -1
                 self.dataSouce?.append(starModel)
                 self.collectionView.reloadData()
