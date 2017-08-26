@@ -45,6 +45,7 @@ class AppConst {
     static let meetCityDefault = "杭州"
     static let didmiss = "杭州"
     static let ipUrl = "http://ip.chinaz.com/getip.aspx"
+    static let shareUrl = "http://star.grwme.com"
     static let ipInfoUrl = "http://ip.taobao.com/service/getIpInfo.php?ip=125.121.228.115"
  
     enum KVOKey: String {

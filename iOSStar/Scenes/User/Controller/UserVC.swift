@@ -65,7 +65,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
     }
     
     func LoginNotice(){
-        LoginYunxin()
+//        LoginYunxin()
         LoginSuccessNotice()
         
     }
