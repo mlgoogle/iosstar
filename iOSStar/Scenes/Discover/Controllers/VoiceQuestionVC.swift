@@ -23,8 +23,10 @@ class VoiceQuestionCell: OEZTableViewCell{
     }
     
     override func update(_ data: Any!) {
-        if let tempTitle = data as? String{
-            contentLabel.text = tempTitle
+        if let response  = data as? UserAskDetailList{
+            contentLabel.text = response.uask
+            timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
+            voiceCountLabel.text = "\(response.s_total)人听过"
         }
     }
 }
@@ -55,11 +57,22 @@ class VoiceQuestionVC: BasePageListTableViewController {
     }
     
     override func didRequest(_ pageIndex: Int) {
-        didRequestComplete(nil)
-        dataSource = [["花费20秒偷听,花费20秒偷听花费20秒偷听花费20秒偷听花费20秒偷听花费20秒偷听","点击播放","花费10秒偷听"] as AnyObject]
-        tableView.reloadData()
+        
+            let model = UserAskRequestModel()
+            model.pos = (pageIndex - 1) * 10
+            AppAPIHelper.discoverAPI().askQuestion(requestModel: model, complete: { [weak self](result) in
+            if let response = result as? UserAskList {
+            self?.didRequestComplete([response.circle_list] as AnyObject )
+
+            self?.tableView.reloadData()
+            }
+        
+            }) { (error) in
+            
+            }
+
     }
-    
+
     override func isSections() -> Bool {
         return true
     }
@@ -99,6 +112,7 @@ class VoiceQuestionVC: BasePageListTableViewController {
     
     func footerBtnTapped(_ sender: UIButton) {
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VoiceAskVC.className()) as? VoiceAskVC{
+            vc.starModel = starModel
             _ = navigationController?.pushViewController(vc, animated: true)
         }
     }

@@ -59,7 +59,8 @@ class HeatListViewController: UITableViewController {
 
     override func didRequest(_ pageIndex: Int) {
         let requestModel = StarSortListRequestModel()
-         requestModel.pos = Int64((Index - 1) * 10)
+        Index = 1
+        requestModel.pos = Int64((Index - 1) * 10)
         requestModel.count = 10
         AppAPIHelper.discoverAPI().requestStarList(requestModel: requestModel, complete: { (response) in
             if let models = response as? [StarSortListModel] {

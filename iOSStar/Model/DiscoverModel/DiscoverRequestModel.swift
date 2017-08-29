@@ -43,3 +43,19 @@ class MiuCountRequestModel: BaseModel{
     var uid = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
     var star_code = ""
 }
+
+class AskRequestModel: BaseModel{
+    var uid = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
+    var token =  StarUserModel.getCurrentUser()?.token ?? ""
+    var starcode = ""
+    var aType = 0
+    var pType = 0
+    var cType = 0
+    var uask = ""
+    var videoUrl = ""
+}
+class UserAskRequestModel: BaseModel{
+    var uid = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
+    var pos = 0
+    var count = 10
+}

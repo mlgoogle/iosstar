@@ -23,11 +23,22 @@ class VideoQuestionCell: OEZTableViewCell{
         contentLabel.addGestureRecognizer(contentTapGesture)
     }
     
+//    override func update(_ data: Any!) {
+//        if let tempTitle = data as? String{
+//            let attr = NSMutableAttributedString.init(string: "\(tempTitle)点击观看")
+//            attr.addAttributes([NSForegroundColorAttributeName: UIColor.init(rgbHex: 0xfb9938)], range: NSRange.init(location: tempTitle.length(), length: 4))
+//            contentLabel.attributedText = attr
+//        }
+//    }
+    
     override func update(_ data: Any!) {
-        if let tempTitle = data as? String{
-            let attr = NSMutableAttributedString.init(string: "\(tempTitle)点击观看")
-            attr.addAttributes([NSForegroundColorAttributeName: UIColor.init(rgbHex: 0xfb9938)], range: NSRange.init(location: tempTitle.length(), length: 4))
+        if let response  = data as? UserAskDetailList{
+//            contentLabel.text = response.uask
+            let attr = NSMutableAttributedString.init(string: "\(response.c_type)点击观看")
+            attr.addAttributes([NSForegroundColorAttributeName: UIColor.init(rgbHex: 0xfb9938)], range: NSRange.init(location: "\(response.c_type)".length(), length: 4))
             contentLabel.attributedText = attr
+            timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
+            countLabel.text = "\(response.s_total)人听过"
         }
     }
     
@@ -63,9 +74,18 @@ class VideoQuestionsVC: BasePageListTableViewController {
         }
         
         override func didRequest(_ pageIndex: Int) {
-            didRequestComplete(nil)
-            dataSource = [["花费20秒偷听,花费20秒偷听花费20秒偷听花费20秒偷听花费20秒偷听花费20秒偷听","点击播放","花费10秒偷听"] as AnyObject]
-            tableView.reloadData()
+            let model = UserAskRequestModel()
+            model.pos = (pageIndex - 1) * 10
+            AppAPIHelper.discoverAPI().askQuestion(requestModel: model, complete: { [weak self](result) in
+                if let response = result as? UserAskList {
+                    self?.didRequestComplete([response.circle_list] as AnyObject )
+                    
+                    self?.tableView.reloadData()
+                }
+                
+            }) { (error) in
+                
+            }
         }
         
         override func isSections() -> Bool {
@@ -105,7 +125,8 @@ class VideoQuestionsVC: BasePageListTableViewController {
         }
         
         func footerBtnTapped(_ sender: UIButton) {
-            if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "AskQuestionsVC") as? AskQuestionsVC{
+            if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                vc.starModel = starModel
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }

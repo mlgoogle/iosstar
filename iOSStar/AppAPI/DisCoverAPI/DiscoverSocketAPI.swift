@@ -40,5 +40,20 @@ class DiscoverSocketAPI:BaseSocketAPI, DiscoverAPI{
         let packet = SocketDataPacket(opcode: .panicBuy, model: requestModel)
         startResultIntRequest(packet, complete: complete, error: error)
     }
+    //视频问答
+    func videoAskQuestion(requestModel:AskRequestModel, complete: CompleteBlock?, error: ErrorBlock?){
+        
+        let packet = SocketDataPacket(opcode: .askVideo, model: requestModel)
+        
+        startModelRequest(packet, modelClass: ResultModel.self, complete: complete, error: error)
+        
+    }
+    //语音问答
+    func askQuestion(requestModel:UserAskRequestModel, complete: CompleteBlock?, error: ErrorBlock?){
+    
+        let packet = SocketDataPacket(opcode: .userask, model: requestModel)
+        
+        startModelRequest(packet, modelClass: UserAskList.self, complete: complete, error: error)
 
+    }
 }

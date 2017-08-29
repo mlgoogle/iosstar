@@ -72,9 +72,38 @@ class StarDetaiInfoModel: Object {
     dynamic var work = ""
     dynamic var publish_type = 10
 }
+class UserAskList: BaseModel {
+    dynamic var circle_list: [UserAskDetailList]?
+    class func circle_listModelClass() ->AnyClass {
+        return  UserAskDetailList.classForCoder()
+    }
+}
+
+class UserAskDetailList: BaseModel {
+    dynamic var a_type = 10000
+    dynamic var answer_t = 0
+    dynamic var star_tpye:Int64 = 0
+    dynamic var ask_t :Int64 = 0
+    dynamic var c_type = 0
+    dynamic var id  :Int64 = 0
+    dynamic var p_type = 0
+    dynamic var s_total = 1
+    dynamic var sanswer = ""
+    dynamic var starcode = ""
+    dynamic var uask = ""
+    dynamic var publish_type = 10
+    dynamic var uid = 10
+    dynamic var video_url = ""
+}
+
+
 
 class MiuResponeModel: BaseModel{
     var star_own_time = 0
     var user_star_time = 0
+}
+class AskResponeModel: BaseModel{
+    var result = 0
+   
 }
 
