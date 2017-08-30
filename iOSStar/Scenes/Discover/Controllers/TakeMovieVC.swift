@@ -10,15 +10,18 @@
 import UIKit
 import PLShortVideoKit
 import Qiniu
+import SVProgressHUD
 class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoUploaderDelegate ,PLPlayerDelegate{
     
     
+    @IBOutlet var tipView: UIView!
     var didTap = false
     var index  = 1
     var shortVideoRecorder : PLShortVideoRecorder?
     var resultBlock: CompleteBlock?
     var filePath : URL?
     var player : PLPlayer?
+    var totalTime  = 0
     var canle : Bool = false
     //设置按住松开的view
     lazy var ProgressView  :  OProgressView = {
@@ -99,6 +102,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         configViedeo()
         initView()
         tap()
+        self.view.bringSubview(toFront: self.tipView)
         
         
     }
@@ -140,13 +144,16 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     }
     //确定按钮
     func didsure(){
-        
+        SVProgressHUD.show(withStatus: "上传中")
         QiniuTool.qiniuUploadVideo(filePath: (self.filePath?.path)!, videoName: "short_video", complete: { (result) in
             if self.resultBlock != nil{
                 if let response = result as? String{
-                    let outputSettings = ["PLSStartTimeKey" : NSNumber.init(value: 0),"PLSDurationKey" : self.shortVideoRecorder?.getTotalDuration() ?? 123, "movieUrl" : response ,"AVAsset" : self.shortVideoRecorder!.assetRepresentingAllFiles() ] as [String : Any]
-                    self.resultBlock!(outputSettings as AnyObject)
-                    self.navigationController?.popViewController(animated: true)
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "录制成功", ForDuration: 1.5, completion: {
+                        let outputSettings = ["movieUrl" : response,"totalTime":self.totalTime] as [String : AnyObject]
+                        self.resultBlock!(outputSettings as AnyObject)
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                   
                 }
             }
         }) { (error) in
@@ -181,6 +188,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         self.view.bringSubview(toFront: ProgressView)
         self.view.bringSubview(toFront: switchBtn)
         self.view.bringSubview(toFront: closeBtn)
+        self.view.bringSubview(toFront: self.tipView)
         self.shortVideoRecorder?.cancelRecording()
         self.shortVideoRecorder?.stopRecording()
         ProgressView.setProgress(0, animated: true)
@@ -203,9 +211,11 @@ extension TakeMovieVC  {
             if !canle{
                 stopBtn.isHidden = false
                 self.view.bringSubview(toFront: self.stopBtn)
+                self.view.bringSubview(toFront: self.tipView)
             }else{
                 stopBtn.isHidden = true
                 self.view.bringSubview(toFront: self.stopBtn)
+                self.view.bringSubview(toFront: self.tipView)
             }
         }
         if state == .statusPaused{
@@ -217,11 +227,13 @@ extension TakeMovieVC  {
     }
     func shortVideoRecorder(_ recorder: PLShortVideoRecorder, didFinishRecordingMaxDuration maxDuration: CGFloat) {
         ProgressView.isHidden = true
+        totalTime =  Int(maxDuration)
         self.shortVideoRecorder?.stopRecording()
         sureBtn.isHidden = false
         self.view.bringSubview(toFront: sureBtn)
         self.view.bringSubview(toFront: resetBtn)
         self.view.bringSubview(toFront: (player?.playerView)!)
+        self.view.bringSubview(toFront: self.tipView)
         resetBtn.isHidden = false
         ProgressView.setProgress(0, animated: true)
     }
@@ -233,6 +245,7 @@ extension TakeMovieVC  {
             self.resetBtn.isHidden = false
         }
         self.filePath = fileURL
+        totalTime =  Int(totalDuration)
         self.shortVideoRecorder?.previewView?.isHidden = true
         getScreenImg()
         ProgressView.setProgress(0, animated: true)
@@ -243,12 +256,13 @@ extension TakeMovieVC  {
             stopBtn.isHidden = true
             self.view.bringSubview(toFront: (player?.playerView)!)
             self.view.bringSubview(toFront: stopBtn)
+            self.view.bringSubview(toFront: self.tipView)
             self.switchBtn.isHidden = true
             self.closeBtn.isHidden = true
             self.view.bringSubview(toFront: sureBtn)
             player?.delegate = self
             player?.play()
-//            player?.launchView?.image = self.showStartImg.image
+            //            player?.launchView?.image = self.showStartImg.image
             self.view.bringSubview(toFront: resetBtn)
         }else{
             player?.play(with: fileURL)
@@ -256,9 +270,10 @@ extension TakeMovieVC  {
             stopBtn.isHidden = true
             self.switchBtn.isHidden = true
             self.closeBtn.isHidden = true
-//             player?.launchView = self.showStartImg.image
+            //             player?.launchView = self.showStartImg.image
             self.view.bringSubview(toFront: stopBtn)
             self.view.bringSubview(toFront: (player?.playerView)!)
+            self.view.bringSubview(toFront: self.tipView)
             self.view.bringSubview(toFront: sureBtn)
             self.view.bringSubview(toFront: resetBtn)
         }

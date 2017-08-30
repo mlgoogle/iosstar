@@ -17,19 +17,40 @@ class VoiceQuestionCell: OEZTableViewCell{
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    
     override func awakeFromNib() {
+        self.selectionStyle = .none
+        
         iconImage.image = UIImage.imageWith("\u{e655}", fontSize: CGSize.init(width: 26, height: 26), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue))
     }
     
     override func update(_ data: Any!) {
-        if let tempTitle = data as? String{
-            contentLabel.text = tempTitle
+        if let response  = data as? UserAskDetailList{
+            contentLabel.text = response.uask
+            iconImage.kf.setImage(with: URL(string : response.headUrl), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+            nameLabel.text = response.nickName
+            timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
+            
+            if response.purchased == 1{
+            let attr = NSMutableAttributedString.init(string: "点击播放")
+            voiceBtn.setAttributedTitle(attr, for: .normal)
+            }
+            else  if response.purchased == 0{
+            let attr = NSMutableAttributedString.init(string: "花费\(response.s_total)秒偷听")
+            attr.addAttributes([NSForegroundColorAttributeName: UIColor.init(rgbHex: 0xfb9938)], range: NSRange.init(location: 2, length: "\(response.s_total)".length()))
+//                contentLabel.attributedText = attr
+             
+            }
+            voiceBtn.addTarget(self, action: #selector(dopeep), for: .touchUpInside)
+            voiceCountLabel.text = "\(response.s_total)人听过"
         }
+    }
+    
+    @IBAction func dopeep(_ sender: Any) {
+//       didSelectRowAction(3, data: cellModel)
     }
 }
 
-class VoiceQuestionVC: BasePageListTableViewController {
+class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
 
     var starModel: StarSortListModel = StarSortListModel()
     
@@ -46,6 +67,38 @@ class VoiceQuestionVC: BasePageListTableViewController {
 //        title  =   "语音定制"
         navigationItem.rightBarButtonItem = rightItem
     }
+    func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didSelectColumnAt column: Int){
+    }
+    
+    func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!){
+        if let arr = self.dataSource?[0] as? Array<AnyObject>{
+            if let model = arr[indexPath.row] as? UserAskDetailList{
+                if model.purchased == 1{
+                    let url = URL(string: ShareDataModel.share().qiniuHeader +  model.sanswer)
+                    PLPlayerHelper.shared().player.play(with: url)
+                    PLPlayerHelper.shared().player.play()
+                }else{
+                    let request = PeepVideoOrvoice()
+                    request.qid = Int(model.id)
+                    request.starcode = starModel.symbol
+                    request.cType = model.c_type
+                    AppAPIHelper.discoverAPI().peepAnswer(requestModel: request, complete: { (result) in
+                        if let response = result as? ResultModel{
+                            if response.result == 0{
+                                model.purchased = 1
+                                let url = URL(string: ShareDataModel.share().qiniuHeader +  model.sanswer)
+                                PLPlayerHelper.shared().player.play(with: url)
+                                tableView.reloadRows(at: [indexPath], with: .none)
+                            }
+                        }
+                    }, error: { (error) in
+                        self.didRequestError(error)
+                    })
+                    
+                }
+            }
+        }
+    }
     
     func rightItemTapped(_ sender: Any) {
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VoiceHistoryVC.className()) as? VoiceHistoryVC{
@@ -53,13 +106,25 @@ class VoiceQuestionVC: BasePageListTableViewController {
             _ = self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
+  
     override func didRequest(_ pageIndex: Int) {
-        didRequestComplete(nil)
-        dataSource = [["花费20秒偷听,花费20秒偷听花费20秒偷听花费20秒偷听花费20秒偷听花费20秒偷听","点击播放","花费10秒偷听"] as AnyObject]
-        tableView.reloadData()
+        
+            let model = StarAskRequestModel()
+            model.pos = (pageIndex - 1) * 10
+            model.starcode = starModel.symbol
+            model.aType = 2
+            model.pType = 1
+            AppAPIHelper.discoverAPI().staraskQuestion(requestModel: model, complete: { [weak self](result) in
+            if let response = result as? UserAskList {
+            self?.didRequestComplete([response.circle_list] as AnyObject )
+            self?.tableView.reloadData()
+            }
+        
+            }) { (error) in
+             self.didRequestComplete(nil)
+            }
+
     }
-    
     override func isSections() -> Bool {
         return true
     }
@@ -72,18 +137,22 @@ class VoiceQuestionVC: BasePageListTableViewController {
         return VoiceQuestionCell.className()
     }
     
+}
+extension VoiceQuestionVC{
+   
+  
+    
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 64
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let urlStr = "rtmp://live.hkstv.hk.lxdns.com/live/hks"
-        let url = URL(string:ShareDataModel.share().qiniuHeader +   urlStr)
-        PLPlayerHelper.shared().player.play(with: url)
-        PLPlayerHelper.shared().player.play()
-//        PLPlayerHelper.shared().avplayNewUrl(urlStr)
+        
+       
+        
+        //        PLPlayerHelper.shared().avplayNewUrl(urlStr)
     }
-
+    
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footer = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: 64))
         footer.backgroundColor = UIColor.init(rgbHex: 0xfafafa)
@@ -99,7 +168,9 @@ class VoiceQuestionVC: BasePageListTableViewController {
     
     func footerBtnTapped(_ sender: UIButton) {
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VoiceAskVC.className()) as? VoiceAskVC{
+            vc.starModel = starModel
             _ = navigationController?.pushViewController(vc, animated: true)
         }
     }
+
 }

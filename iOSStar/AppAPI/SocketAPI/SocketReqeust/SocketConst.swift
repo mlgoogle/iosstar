@@ -128,6 +128,12 @@ class SocketConst: NSObject {
         //持有明星时间
         case positionCount = 10025
         case barrage = 6023
+        //问答
+        case askVideo = 15019
+        //获取用户问答信息
+        case userask = 15015
+        case starask = 15017
+        case qeepask = 15025
         //拍卖买卖占比
         case buySellPercent = 6017
         //获取明星总时间

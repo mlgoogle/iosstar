@@ -1,5 +1,5 @@
 //
-//  AskQuestionsVC.swift
+//  VideoAskQuestionsVC.swift
 //  iOSStar
 //
 //  Created by sum on 2017/8/15.
@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-class AskQuestionsVC: UIViewController ,UITextViewDelegate{
+import SVProgressHUD
+class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
     
     @IBOutlet var publicSwitch: UISwitch!
     var shortVideoplay : PLShortVideoEditor?
@@ -16,7 +16,9 @@ class AskQuestionsVC: UIViewController ,UITextViewDelegate{
     @IBOutlet var placeHolder: UILabel!
     @IBOutlet var textNumber: UILabel!
     @IBOutlet weak var videoBtn: UIButton!
+    var starModel: StarSortListModel = StarSortListModel()
     var preview : String  = ""
+    var totaltime = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "像提TA问"
@@ -63,27 +65,22 @@ class AskQuestionsVC: UIViewController ,UITextViewDelegate{
     }
     
     @IBAction func videoBtnTapped(_ sender: UIButton) {
-        if self.preview != ""{
-            if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: PlayNetVC.className()) as? PlayNetVC{
-                vc.playUrl = self.preview
-                //TakeMovieVC
-                self.navigationController?.pushViewController(vc, animated: true)
-                return
-            }
-        }
         //TakeMovieVC
+        if inputText.text == ""{
+//         SVProgressHUD.showErrorMessage(ErrorMessage: "请", ForDuration: <#T##Double#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+        }
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: TakeMovieVC.className()) as? TakeMovieVC{
             vc.resultBlock = {  [weak self] (result) in
                 if let response =  result as?  [String : AnyObject]{
                     
-//                    let asset : AVAsset = response["AVAsset"] as! AVAsset
-//                    
-//                    if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: PreViewVC.className()) as? PreViewVC{
-//                        vc.asset = asset
-//                        vc.settings = response
-//                        self?.navigationController?.pushViewController(vc, animated: true)
-//                    }
-//                }
+                    if let url = response["movieUrl"] as? String{
+                        self?.preview  = url
+                    }
+                    if let time = response["totalTime"] as?  Int{
+                        self?.totaltime  = time
+                        
+                    }
+
                 
                 }
             }
@@ -93,6 +90,31 @@ class AskQuestionsVC: UIViewController ,UITextViewDelegate{
     }
     
     func publish(){
+        if self.preview ==  ""{
+         SVProgressHUD.showErrorMessage(ErrorMessage: "请输入视频内容", ForDuration: 2, completion: nil)
+        }
+        let request = AskRequestModel()
+        request.pType = publicSwitch.isOn ? 0 : 1
+        request.aType = 0
+        request.starcode = starModel.symbol
+        request.uask = inputText.text
+        request.videoUrl = self.preview
+        request.cType = totaltime
+        AppAPIHelper.discoverAPI().videoAskQuestion(requestModel:request, complete: { (result) in
+            if let model = result as? ResultModel{
+                if model.result == 0{
+                     SVProgressHUD.showSuccessMessage(SuccessMessage: "视频问答成功", ForDuration: 1, completion: { 
+                        self.navigationController?.popViewController(animated: true)
+                     })
+                }
+                if model.result == 1{
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "问答失败", ForDuration: 2, completion: nil)
+                }
+            }
+        }) { (error) in
+            self.didRequestError(error)
+        }
+    
         
     }
 }
