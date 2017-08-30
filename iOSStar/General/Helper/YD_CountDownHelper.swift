@@ -33,6 +33,8 @@ class YD_CountDownHelper: NSObject {
     
     var marketInfoRefresh:CompleteBlock?
     
+    var voiceDidPlaying:CompleteBlock?
+    
     var barrageRefresh:CompleteBlock?
 
     //行情刷新轮询标记
@@ -43,6 +45,10 @@ class YD_CountDownHelper: NSObject {
     private var maxIndex = 2
     
     func countDown() {
+        
+        if voiceDidPlaying != nil{
+         countDownRefresh!(nil)
+        }
         //倒计时
         if countDownRefresh != nil {
             countDownRefresh!(nil)

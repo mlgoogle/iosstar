@@ -149,6 +149,6 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         startModelRequest(packet, modelClass: BarrageInfo.self, complete: complete, error: error)
     
     }
-
+    
 
 }

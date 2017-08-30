@@ -47,6 +47,7 @@ class VideoHistoryVC: BasePageListTableViewController {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var openButton: UIButton!
     var starModel: StarSortListModel = StarSortListModel()
+    var type = true
     private var selectedButton: UIButton?
     
     override func viewDidLoad() {
@@ -63,10 +64,25 @@ class VideoHistoryVC: BasePageListTableViewController {
         self.selectedButton?.backgroundColor = UIColor.clear
         sender.backgroundColor = UIColor.init(rgbHex: 0xECECEC)
         self.selectedButton = sender
+        self.didRequest(1)
     }
     
     override func didRequest(_ pageIndex: Int) {
-        didRequestComplete(["花费20秒偷听,花费20秒偷听花费20秒偷听花费20秒偷听花费20秒偷听花费20秒偷听","点击播放","花费10秒偷听"] as AnyObject)
+        
+          let model = UserAskRequestModel()
+            model.aType = 2
+            model.pType = 1
+            model.pos = (pageIndex - 1) * 10
+            AppAPIHelper.discoverAPI().useraskQuestion(requestModel: model, complete: { [weak self](result) in
+            if let response = result as? UserAskList {
+            self?.didRequestComplete([response.circle_list] as AnyObject )
+        
+            self?.tableView.reloadData()
+            }
+            
+            }) { (error) in
+            
+            }
     }
     
     override func tableView(_ tableView: UITableView, cellIdentifierForRowAtIndexPath indexPath: IndexPath) -> String? {

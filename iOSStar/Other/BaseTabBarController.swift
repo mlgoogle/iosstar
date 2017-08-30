@@ -46,13 +46,13 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccess(_:)), name: Notification.Name(rawValue:AppConst.loginSuccess), object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccessNotice), name: Notification.Name(rawValue:AppConst.loginSuccessNotice), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccessNotice), name: Notification.Name(rawValue:AppConst.loginSuccessNotice), object: nil)
     }
-//    func LoginSuccessNotice() {
-//        if checkLogin(){
-//            AppConfigHelper.shared().LoginYunxin()
-//        }
-//    }
+    func LoginSuccessNotice() {
+        if checkLogin(){
+            AppConfigHelper.shared().LoginYunxin()
+        }
+    }
     func didAdd(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
          self.sessionUnreadCount = totalUnreadCount
          self.refreshSessionBadge()

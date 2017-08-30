@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2vG-Fh-E77">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2vG-Fh-E77">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -381,16 +381,26 @@
                                     <action selector="didmiss:" destination="tqg-ZF-ztk" eventType="touchUpInside" id="B2w-KC-1Oz"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdU-fK-1AK">
+                                <rect key="frame" x="319" y="50" width="41" height="41"/>
+                                <connections>
+                                    <action selector="didmiss:" destination="tqg-ZF-ztk" eventType="touchUpInside" id="cMh-wy-ifu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.78823529410000004" green="0.78823529410000004" blue="0.78823529410000004" alpha="0.94797258435582821" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="80J-CQ-Ync" secondAttribute="trailing" constant="25" id="0zF-Px-pRn"/>
                             <constraint firstItem="80J-CQ-Ync" firstAttribute="top" secondItem="Frz-jH-L5e" secondAttribute="bottom" constant="40" id="5by-Fi-SLL"/>
                             <constraint firstAttribute="trailing" secondItem="57X-5c-AS7" secondAttribute="trailing" constant="60" id="9YM-ea-dmL"/>
+                            <constraint firstItem="80J-CQ-Ync" firstAttribute="bottom" secondItem="wdU-fK-1AK" secondAttribute="bottom" constant="-11" id="BzY-3r-FOX"/>
+                            <constraint firstItem="80J-CQ-Ync" firstAttribute="leading" secondItem="wdU-fK-1AK" secondAttribute="leading" constant="11" id="HFm-IG-SPU"/>
                             <constraint firstAttribute="trailing" secondItem="1bE-zO-Jia" secondAttribute="trailing" id="LOd-cX-PAh"/>
                             <constraint firstItem="57X-5c-AS7" firstAttribute="leading" secondItem="eRC-ei-acS" secondAttribute="leading" constant="60" id="MoI-0L-Wp6"/>
                             <constraint firstItem="1bE-zO-Jia" firstAttribute="top" secondItem="Frz-jH-L5e" secondAttribute="bottom" constant="-20" id="Pql-pb-Tnz"/>
+                            <constraint firstItem="80J-CQ-Ync" firstAttribute="top" secondItem="wdU-fK-1AK" secondAttribute="top" constant="10" id="aum-1I-IPC"/>
                             <constraint firstItem="ArC-o3-l1E" firstAttribute="centerX" secondItem="eRC-ei-acS" secondAttribute="centerX" id="dBS-LO-M7V"/>
+                            <constraint firstItem="80J-CQ-Ync" firstAttribute="trailing" secondItem="wdU-fK-1AK" secondAttribute="trailing" constant="-10" id="ehg-5y-Ql9"/>
                             <constraint firstItem="1bE-zO-Jia" firstAttribute="leading" secondItem="eRC-ei-acS" secondAttribute="leading" id="fxQ-8o-wON"/>
                             <constraint firstItem="57X-5c-AS7" firstAttribute="centerX" secondItem="eRC-ei-acS" secondAttribute="centerX" id="lhB-I4-hM0"/>
                             <constraint firstItem="hBP-f0-6g0" firstAttribute="top" secondItem="1bE-zO-Jia" secondAttribute="bottom" id="r2t-V8-Oq7"/>
@@ -406,7 +416,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4OC-NS-63d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1940" y="-100.29985007496252"/>
+            <point key="canvasLocation" x="2450" y="-123"/>
         </scene>
         <!--充值-->
         <scene sceneID="HbM-Dc-OtL">
