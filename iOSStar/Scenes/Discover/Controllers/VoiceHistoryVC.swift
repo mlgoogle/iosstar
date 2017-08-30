@@ -128,10 +128,6 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
                         PLPlayerHelper.shared().doChanggeStatus(4)
                         self?.voiceimg.image = UIImage.init(named: String.init(format: "listion"))
                     }
-//                    else{
-////                        PLPlayerHelper.shared().dochanggeStatus(4)
-//                        self?.voiceimg.image = UIImage.init(named: String.init(format: "listion"))
-//                    }
                 }
             }
             

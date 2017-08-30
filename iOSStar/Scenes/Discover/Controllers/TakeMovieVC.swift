@@ -149,7 +149,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
             if self.resultBlock != nil{
                 if let response = result as? String{
                     SVProgressHUD.showSuccessMessage(SuccessMessage: "录制成功", ForDuration: 1.5, completion: {
-                        let outputSettings = ["movieUrl" : response,"totalTime":self.totalTime] as [String : AnyObject]
+                        let outputSettings = ["movieUrl" : response as AnyObject,"totalTime":self.totalTime as AnyObject] as [String : AnyObject]
                         self.resultBlock!(outputSettings as AnyObject)
                         self.navigationController?.popViewController(animated: true)
                     })
