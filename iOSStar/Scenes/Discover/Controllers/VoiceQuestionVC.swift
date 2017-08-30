@@ -35,15 +35,15 @@ class VoiceQuestionCell: OEZTableViewCell{
             
             if response.purchased == 1{
                 let attr = NSMutableAttributedString.init(string: "点击播放")
-               
                 title.attributedText = attr
             }
             else  if response.purchased == 0{
-                let attr = NSMutableAttributedString.init(string: "花费\(response.s_total)秒偷听")
-                attr.addAttributes([NSForegroundColorAttributeName: UIColor.init(rgbHex: 0xfb9938)], range: NSRange.init(location: 2, length: "\(response.s_total)".length()))
-                    title.attributedText = attr
+                let attr = NSMutableAttributedString.init(string: "花费\((response.c_type + 1) * 15)秒偷听")
+                attr.addAttributes([NSForegroundColorAttributeName: UIColor.init(rgbHex: 0xfb9938)], range: NSRange.init(location: 2, length: "\((response.c_type + 1) * 15)".length()))
+                title.attributedText = attr
                 
             }
+            
             voiceBtn.addTarget(self, action: #selector(dopeep), for: .touchUpInside)
             voiceCountLabel.text = "\(response.s_total)人听过"
         }
@@ -102,7 +102,7 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
                         if let response = result as? ResultModel{
                             if response.result == 0{
                                 model.purchased = 1
-                                 self.doplay(model)
+                                self.doplay(model)
                                 tableView.reloadRows(at: [indexPath], with: .none)
                             }
                         }
