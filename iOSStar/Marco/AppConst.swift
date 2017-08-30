@@ -47,6 +47,7 @@ class AppConst {
     static let meetCityDefault = "杭州"
     static let didmiss = "杭州"
     static let ipUrl = "http://ip.chinaz.com/getip.aspx"
+    static let shareUrl = "http://star.grwme.com"
     static let ipInfoUrl = "http://ip.taobao.com/service/getIpInfo.php?ip=125.121.228.115"
  
     enum KVOKey: String {
@@ -124,8 +125,8 @@ class AppConst {
         //是否测试环境
         //139.224.34.22
         //122.144.169.214
-        static let TcpServerIP:String = "122.144.169.214";
-        static let TcpServerPort:UInt16 = 16006
+        static let TcpServerIP:String = "139.224.34.22";
+        static let TcpServerPort:UInt16 = 16060
         static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
         static let TcpServerIP:String = "tapi.smartdata-x.com";
