@@ -16,7 +16,7 @@ class PLPlayerHelper: NSObject, PLPlayerDelegate {
     class func shared() -> PLPlayerHelper{
         return helper
     }
-    func dochanggeStatus(_ timecount : Int) {
+    func doChanggeStatus(_ timecount : Int) {
          count =  timecount
         if count == 4{
             return
@@ -34,7 +34,7 @@ class PLPlayerHelper: NSObject, PLPlayerDelegate {
             return
         }
         if self.resultCountDown != nil{
-        self.dochanggeStatus(count)
+        self.doChanggeStatus(count)
         self.resultCountDown!(count as AnyObject)
         }
         

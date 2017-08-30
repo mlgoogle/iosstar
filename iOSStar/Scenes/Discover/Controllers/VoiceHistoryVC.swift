@@ -109,15 +109,15 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
             PLPlayerHelper.shared().resultBlock =  {  [weak self] (result) in
                 if let status = result as? PLPlayerStatus{
                     if status == .statusStopped{
-                        PLPlayerHelper.shared().dochanggeStatus(4)
+                        PLPlayerHelper.shared().doChanggeStatus(4)
                         self?.voiceimg.image = UIImage.init(named: String.init(format: "listion"))
                     }
                       if status == .statusPaused{
-                        PLPlayerHelper.shared().dochanggeStatus(4)
+                        PLPlayerHelper.shared().doChanggeStatus(4)
                         self?.voiceimg.image = UIImage.init(named: String.init(format: "listion"))
                     }
                       if status == .statusPreparing{
-                        PLPlayerHelper.shared().dochanggeStatus(0)
+                        PLPlayerHelper.shared().doChanggeStatus(0)
                         PLPlayerHelper.shared().resultCountDown = {[weak self] (result) in
                             if let response = result as? Int{
                                 self?.voiceimg.image = UIImage.init(named: String.init(format: "voice_%d",response))
@@ -125,7 +125,7 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
                         }
                     }
                      if status == .statusError{
-                        PLPlayerHelper.shared().dochanggeStatus(4)
+                        PLPlayerHelper.shared().doChanggeStatus(4)
                         self?.voiceimg.image = UIImage.init(named: String.init(format: "listion"))
                     }
 //                    else{
