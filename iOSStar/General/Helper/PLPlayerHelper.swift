@@ -14,6 +14,7 @@ class PLPlayerHelper: NSObject, PLPlayerDelegate {
     var count = 0
     var resultCountDown: CompleteBlock?
     class func shared() -> PLPlayerHelper{
+        
         return helper
     }
     func doChanggeStatus(_ timecount : Int) {
@@ -35,13 +36,16 @@ class PLPlayerHelper: NSObject, PLPlayerDelegate {
         }
         if self.resultCountDown != nil{
         self.doChanggeStatus(count)
+            
         self.resultCountDown!(count as AnyObject)
         }
         
     }
     lazy var player: PLPlayer = {
         let option = PLPlayerOption.default()
+     
         let player = PLPlayer.init(url: nil, option: option)
+//       PLPlayerHelper.shared().play(isRecord: false)
         player?.delegate = helper
         return player!
     }()
@@ -70,5 +74,14 @@ class PLPlayerHelper: NSObject, PLPlayerDelegate {
         avPlayer.replaceCurrentItem(with: item)
         avPlayer.play()
         
+    }
+    func play(isRecord:Bool){
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            let cat = isRecord ? AVAudioSessionCategoryPlayAndRecord : AVAudioSessionCategoryPlayback
+            try audioSession.setCategory(cat)
+        } catch {
+            
+        }
     }
 }
