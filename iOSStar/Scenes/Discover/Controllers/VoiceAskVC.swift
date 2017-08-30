@@ -8,10 +8,12 @@
 
 import UIKit
 import SVProgressHUD
-class VoiceAskVC: BaseTableViewController {
+class VoiceAskVC: BaseTableViewController ,UITextViewDelegate{
     
+   
     @IBOutlet var contentText: UITextView!
-    @IBOutlet weak var placeholdLabel: UILabel!
+ 
+    @IBOutlet var placeholdLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var voice15Btn: UIButton!
     @IBOutlet weak var voice30Btn: UIButton!
@@ -26,7 +28,7 @@ class VoiceAskVC: BaseTableViewController {
         voiceBtnTapped(voice15Btn)
         navright()
     }
-
+    
     @IBAction func voiceBtnTapped(_ sender: UIButton) {
         lastVoiceBtn?.isSelected = false
         sender.isSelected = !sender.isSelected
@@ -45,19 +47,16 @@ class VoiceAskVC: BaseTableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(textViewNotifitionAction), name: NSNotification.Name.UITextViewTextDidChange, object: nil);
     }
     func publish(){
-//        if self.preview ==  ""{
-//            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入视频内容", ForDuration: 2, completion: nil)
-//        }
         if contentText.text == ""{
-        SVProgressHUD.showErrorMessage(ErrorMessage: "请输入问答内容", ForDuration: 2, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入问答内容", ForDuration: 2, completion: nil)
         }
         let request = AskRequestModel()
         request.pType = switchopen.isOn ? 1 : 0
         request.aType = 2
         request.starcode = starModel.symbol
-        request.uask = contentText.text
+        request.uask = contentText.text!
         request.videoUrl = ""
-        request.cType = voice15Btn.isSelected ? 0 : (voice30Btn.isSelected ? 1 : (voice60Btn.isSelected ? 2 : 1))
+        request.cType = voice15Btn.isSelected ? 0 : (voice30Btn.isSelected ? 1 : (voice60Btn.isSelected ? 3 : 1))
         AppAPIHelper.discoverAPI().videoAskQuestion(requestModel:request, complete: { (result) in
             if let model = result as? ResultModel{
                 if model.result == 0{
@@ -76,10 +75,12 @@ class VoiceAskVC: BaseTableViewController {
         
     }
     // 限制不超过200字
+    
     func textViewNotifitionAction(userInfo:NSNotification){
-        let textVStr = contentText.text as NSString;
+        let textVStr = contentText.text as! NSString
         
-        if (textVStr.length > 100) {
+        if ((textVStr.length) > 100) {
+            contentText.text = contentText.text.substring(to: contentText.text.index(contentText.text.startIndex, offsetBy: 100))
             contentText.resignFirstResponder()
             return
         }else{
@@ -87,8 +88,14 @@ class VoiceAskVC: BaseTableViewController {
         }
         
     }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (contentText.text.length() > 100){
+          return false
+        }
+         return true
+    }
     func textViewDidChange(_ textView: UITextView) {
-        contentText.text = textView.text
+//        contentText.text = textView.text
         if textView.text == "" {
             placeholdLabel.text = "输入你的问题，可选择公开或者私密，公开提问能呗其他用户所见 "
             placeholdLabel.isHidden = false

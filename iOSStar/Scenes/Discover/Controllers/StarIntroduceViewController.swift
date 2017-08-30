@@ -18,9 +18,9 @@ class StarIntroduceViewController: UIViewController {
     var index = 0
     var headerImg = UIImageView()
     var starModel:StarSortListModel?
-    var sectionHeights = [170,18 , 120, 220 , 150]
-//    var sectionHeights = [170,18 , 120 , 150]
-    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(), StarCirCleCell.className(), StarDynamicCell.className() ,StarPhotoCell.className()]
+    var sectionHeights = [170,18 , 120 , 150]
+//    var sectionHeights = [170,18 , 120, 220 , 150]
+    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(), StarCirCleCell.className() ,StarPhotoCell.className()]
 //    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(),StarPhotoCell.className()]
     var images:[String] = []
     var starDetailModel:StarDetaiInfoModel?
@@ -286,13 +286,13 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             
             
         }
-              else  if  section == 4 {
+              else  if  section == 3 {
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as? PubInfoHeaderView
             header?.setTitle(title:"个人写真")
             header?.contentView.backgroundColor = UIColor(hexString: "fafafa")
             return header
         }
-        else  if  section == 3 {
+        else  if  section == 4 {
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as? PubInfoHeaderView
             header?.setTitle(title:"最新动态")
             header?.contentView.backgroundColor = UIColor(hexString: "fafafa")
@@ -387,12 +387,12 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
 //                photoCell.setImageUrls(images: images, delegate:self)
             }
             
-        case 3:
+        case 4:
             if let photoCell = cell as? StarDynamicCell {
 //                photoCell.setImageUrls(images: images, delegate:self)
                 photoCell.delegate = self
             }
-        case 4:
+        case 3:
             if let photoCell = cell as? StarPhotoCell {
                 photoCell.setImageUrls(images: images, delegate:self)
             }
