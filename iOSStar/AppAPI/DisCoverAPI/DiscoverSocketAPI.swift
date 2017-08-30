@@ -8,6 +8,8 @@
 
 import Foundation
 class DiscoverSocketAPI:BaseSocketAPI, DiscoverAPI{
+   
+
     
     //明星互动和热度
     func requestStarList(requestModel:StarSortListRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
@@ -49,11 +51,23 @@ class DiscoverSocketAPI:BaseSocketAPI, DiscoverAPI{
         
     }
     //语音问答
-    func askQuestion(requestModel:UserAskRequestModel, complete: CompleteBlock?, error: ErrorBlock?){
+    func useraskQuestion(requestModel:UserAskRequestModel, complete: CompleteBlock?, error: ErrorBlock?){
     
         let packet = SocketDataPacket(opcode: .userask, model: requestModel)
         
         startModelRequest(packet, modelClass: UserAskList.self, complete: complete, error: error)
 
+    }
+    func staraskQuestion(requestModel:StarAskRequestModel, complete: CompleteBlock?, error: ErrorBlock?){
+        
+        let packet = SocketDataPacket(opcode: .starask, model: requestModel)
+        
+        startModelRequest(packet, modelClass: UserAskList.self, complete: complete, error: error)
+        
+    }
+    func peepAnswer(requestModel:PeepVideoOrvoice, complete: CompleteBlock?, error: ErrorBlock?){
+        let packet = SocketDataPacket(opcode: .qeepask, model: requestModel)
+        
+        startModelRequest(packet, modelClass: ResultModel.self, complete: complete, error: error)
     }
 }

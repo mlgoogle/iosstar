@@ -22,21 +22,13 @@ class VideoQuestionCell: OEZTableViewCell{
         let contentTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(contentTapGestureTapped(_:)))
         contentLabel.addGestureRecognizer(contentTapGesture)
     }
-    
-//    override func update(_ data: Any!) {
-//        if let tempTitle = data as? String{
-//            let attr = NSMutableAttributedString.init(string: "\(tempTitle)点击观看")
-//            attr.addAttributes([NSForegroundColorAttributeName: UIColor.init(rgbHex: 0xfb9938)], range: NSRange.init(location: tempTitle.length(), length: 4))
-//            contentLabel.attributedText = attr
-//        }
-//    }
-    
     override func update(_ data: Any!) {
         if let response  = data as? UserAskDetailList{
 //            contentLabel.text = response.uask
             let attr = NSMutableAttributedString.init(string: "\(response.c_type)点击观看")
             attr.addAttributes([NSForegroundColorAttributeName: UIColor.init(rgbHex: 0xfb9938)], range: NSRange.init(location: "\(response.c_type)".length(), length: 4))
             contentLabel.attributedText = attr
+            
             timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
             countLabel.text = "\(response.s_total)人听过"
         }
@@ -74,9 +66,10 @@ class VideoQuestionsVC: BasePageListTableViewController {
         }
         
         override func didRequest(_ pageIndex: Int) {
-            let model = UserAskRequestModel()
+            let model = StarAskRequestModel()
             model.pos = (pageIndex - 1) * 10
-            AppAPIHelper.discoverAPI().askQuestion(requestModel: model, complete: { [weak self](result) in
+            model.starcode = starModel.symbol
+            AppAPIHelper.discoverAPI().staraskQuestion(requestModel: model, complete: { [weak self](result) in
                 if let response = result as? UserAskList {
                     self?.didRequestComplete([response.circle_list] as AnyObject )
                     
@@ -87,11 +80,12 @@ class VideoQuestionsVC: BasePageListTableViewController {
                 
             }
         }
-        
+  
+    
         override func isSections() -> Bool {
             return true
         }
-        
+    
         override func numberOfSections(in tableView: UITableView) -> Int {
             return 1
         }

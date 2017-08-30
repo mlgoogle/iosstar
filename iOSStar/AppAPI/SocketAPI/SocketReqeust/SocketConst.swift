@@ -132,6 +132,8 @@ class SocketConst: NSObject {
         case askVideo = 15019
         //获取用户问答信息
         case userask = 15015
+        case starask = 15017
+        case qeepask = 15025
         //拍卖买卖占比
         case buySellPercent = 6017
         //获取明星总时间

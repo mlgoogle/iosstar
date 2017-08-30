@@ -158,7 +158,7 @@ class ContactListCell: OEZTableViewCell {
                      color = "CCCCCC"
                     title = "已同意"
                 }
-                 chatButton.setTitle(title, for: .normal)
+                chatButton.setTitle(title, for: .normal)
                 chatButton.backgroundColor = UIColor.init(hexString: color)
                 jobLabel.text =  model.star_name
                 orderTime.text  = model.meet_time

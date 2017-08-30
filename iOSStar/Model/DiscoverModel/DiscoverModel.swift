@@ -94,6 +94,9 @@ class UserAskDetailList: BaseModel {
     dynamic var publish_type = 10
     dynamic var uid = 10
     dynamic var video_url = ""
+    dynamic var nickName = ""
+    dynamic var headUrl = ""
+    dynamic var purchased = 2
 }
 
 

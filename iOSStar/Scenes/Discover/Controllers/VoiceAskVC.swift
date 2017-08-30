@@ -48,13 +48,16 @@ class VoiceAskVC: BaseTableViewController {
 //        if self.preview ==  ""{
 //            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入视频内容", ForDuration: 2, completion: nil)
 //        }
+        if contentText.text == ""{
+        SVProgressHUD.showErrorMessage(ErrorMessage: "请输入问答内容", ForDuration: 2, completion: nil)
+        }
         let request = AskRequestModel()
-        request.pType = switchopen.isOn ? 0 : 1
+        request.pType = switchopen.isOn ? 1 : 0
         request.aType = 2
         request.starcode = starModel.symbol
         request.uask = contentText.text
         request.videoUrl = ""
-        request.cType = voice15Btn.isSelected ? 15 : (voice30Btn.isSelected ? 30 : (voice60Btn.isSelected ? 60 : 15))
+        request.cType = voice15Btn.isSelected ? 0 : (voice30Btn.isSelected ? 1 : (voice60Btn.isSelected ? 2 : 1))
         AppAPIHelper.discoverAPI().videoAskQuestion(requestModel:request, complete: { (result) in
             if let model = result as? ResultModel{
                 if model.result == 0{

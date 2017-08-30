@@ -19,5 +19,7 @@ protocol DiscoverAPI {
   
     func buyStarTime(requestModel:BuyStarTimeRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
     func videoAskQuestion(requestModel:AskRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
-    func askQuestion(requestModel:UserAskRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
+    func useraskQuestion(requestModel:UserAskRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
+    func staraskQuestion(requestModel:StarAskRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
+    func peepAnswer(requestModel:PeepVideoOrvoice, complete: CompleteBlock?, error: ErrorBlock?)
 }

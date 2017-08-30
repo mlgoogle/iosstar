@@ -10,10 +10,35 @@ import UIKit
 
 class PLPlayerHelper: NSObject, PLPlayerDelegate {
     static let helper = PLPlayerHelper()
+    var resultBlock: CompleteBlock?
+    var count = 0
+    var resultCountDown: CompleteBlock?
     class func shared() -> PLPlayerHelper{
         return helper
     }
-    
+    func dochanggeStatus(_ timecount : Int) {
+         count =  timecount
+        if count == 4{
+            return
+        }
+        if (count == 3  ){
+            count = 0
+            
+        }
+         count = count + 1
+        self.perform(#selector(changeImg), with: self, afterDelay: 0.5)
+        
+    }
+    func changeImg(){
+        if count == 4{
+            return
+        }
+        if self.resultCountDown != nil{
+        self.dochanggeStatus(count)
+        self.resultCountDown!(count as AnyObject)
+        }
+        
+    }
     lazy var player: PLPlayer = {
         let option = PLPlayerOption.default()
         let player = PLPlayer.init(url: nil, option: option)
@@ -27,10 +52,14 @@ class PLPlayerHelper: NSObject, PLPlayerDelegate {
     }()
     
     func player(_ player: PLPlayer, statusDidChange state: PLPlayerStatus) {
-        print(state)
+        if self.resultBlock != nil{
+         self.resultBlock!(state as AnyObject)
+        }
+        print(state.hashValue)
     }
     
     func player(_ player: PLPlayer, stoppedWithError error: Error?) {
+       
         if error != nil{
             print(error!)
         }
@@ -40,5 +69,6 @@ class PLPlayerHelper: NSObject, PLPlayerDelegate {
         let item = AVPlayerItem.init(url: URL(string:ShareDataModel.share().qiniuHeader +   urlStr)!)
         avPlayer.replaceCurrentItem(with: item)
         avPlayer.play()
+        
     }
 }
