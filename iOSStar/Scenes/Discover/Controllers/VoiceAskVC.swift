@@ -65,7 +65,7 @@ class VoiceAskVC: BaseTableViewController ,UITextViewDelegate{
                     })
                 }
                 if model.result == 1{
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "问答失败", ForDuration: 2, completion: nil)
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "时间不足", ForDuration: 2, completion: nil)
                 }
             }
         }) { (error) in

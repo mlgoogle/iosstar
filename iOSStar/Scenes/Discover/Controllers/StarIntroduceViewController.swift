@@ -402,6 +402,10 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         return cell
     }
     func starask(){
+        
+        //
+        SVProgressHUD.showErrorMessage(ErrorMessage:  "敬请期待", ForDuration: 2, completion: nil)
+        return
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VideoQuestionsVC.className()) as? VideoQuestionsVC{
             vc.starModel = starModel!
             self.navigationController?.pushViewController(vc, animated: true)
