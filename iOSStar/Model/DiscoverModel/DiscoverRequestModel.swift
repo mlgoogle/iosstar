@@ -61,6 +61,7 @@ class UserAskRequestModel: BaseModel{
     var aType = 0
     var pType = 0
     var count =     10
+    var starcode =  ""
 }
 class StarAskRequestModel: BaseModel{
     var starcode =  ""

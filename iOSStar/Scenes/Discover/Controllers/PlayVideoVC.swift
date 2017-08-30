@@ -36,7 +36,7 @@ class PlayVideoVC: UIViewController {
     }
 
     @IBAction func askQustion(_ sender: Any) {
-        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "AskQuestionsVC") as? AskQuestionsVC{
+        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

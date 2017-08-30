@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class VoiceHistoryCell: OEZTableViewCell {
     
     @IBOutlet weak var voiceBtn: UIButton!
@@ -30,8 +30,9 @@ class VoiceHistoryCell: OEZTableViewCell {
         if let response = data as? UserAskDetailList{
             contentLabel.text = response.uask
             voiceBtn.addTarget(self, action: #selector(voiceDidClick(_:)), for: .touchUpInside)
-            timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
-            let attr = NSMutableAttributedString.init(string: "点击播放")
+            timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.answer_t), format: "YYYY-MM-dd")
+            let titleTip = response.answer_t == 0 ? "点击播放（未回复）" : "点击播放"
+            let attr = NSMutableAttributedString.init(string: titleTip)
             title.attributedText = attr
             //            voiceBtn.setAttributedTitle(attr, for: .normal)
             //            voiceBtn.setImage(UIImage.init(named: String.init(format: "listion")), for: .normal)
@@ -46,8 +47,8 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
     var voiceimg: UIImageView!
     var time = 1
     var isplayIng = false
+    var type  = true
     var starModel: StarSortListModel = StarSortListModel()
-    var type = true
     private var selectedButton: UIButton?
     
     override func viewDidLoad() {
@@ -61,7 +62,13 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
     @IBAction func titleViewButtonAction(_ sender: UIButton) {
         
         self.selectedButton?.isSelected = false
-        
+        if voiceimg != nil{
+            PLPlayerHelper.shared().doChanggeStatus(4)
+            self.voiceimg.image = UIImage.init(named: String.init(format: "listion"))
+        }
+        if PLPlayerHelper.shared().player.isPlaying{
+            PLPlayerHelper.shared().player.stop()
+        }
         self.selectedButton?.backgroundColor = UIColor.clear
         sender.backgroundColor = UIColor.init(rgbHex: 0xECECEC)
         self.selectedButton = sender
@@ -82,6 +89,7 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
         
         let model = UserAskRequestModel()
         model.aType = 2
+        model.starcode = starModel.symbol
         model.pos = (pageIndex - 1) * 10
         model.pType = type ? 1 : 0
         AppAPIHelper.discoverAPI().useraskQuestion(requestModel: model, complete: { [weak self](result) in
@@ -99,13 +107,25 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!)
     {
         
+        if voiceimg != nil{
+         self.voiceimg.image = UIImage.init(named: String.init(format: "listion"))
+        }
+        if PLPlayerHelper.shared().player.isPlaying{
+            PLPlayerHelper.shared().player.stop()
+        }
         if let cell = tableView.cellForRow(at: indexPath) as? VoiceHistoryCell{
             voiceimg = cell.voiceImg
         }
         if let model = self.dataSource?[indexPath.row] as? UserAskDetailList{
             
+            if model.answer_t == 0{
+             SVProgressHUD.showErrorMessage(ErrorMessage: "明星未回复", ForDuration: 2, completion: nil)
+                return
+            }
             let url = URL(string: ShareDataModel.share().qiniuHeader +  model.sanswer)
+           
             PLPlayerHelper.shared().player.play(with: url)
+         
             PLPlayerHelper.shared().resultBlock =  {  [weak self] (result) in
                 if let status = result as? PLPlayerStatus{
                     if status == .statusStopped{
