@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class VoiceQuestionCell: OEZTableViewCell{
     
     @IBOutlet weak var iconImage: UIImageView!
@@ -104,6 +104,8 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
                                 model.purchased = 1
                                 self.doplay(model)
                                 tableView.reloadRows(at: [indexPath], with: .none)
+                            }else{
+                                SVProgressHUD.showWainningMessage(WainningMessage: "您持有的时间不足", ForDuration: 1, completion: nil)
                             }
                         }
                     }, error: { (error) in
