@@ -2410,35 +2410,54 @@
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="观看回答" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qd-0d-67J">
-                                                    <rect key="frame" x="8" y="116" width="96" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="观看提问" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dR-Mz-Nad">
-                                                    <rect key="frame" x="123" y="116" width="96" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.98431372549019602" green="0.59999999999999998" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCw-mv-V6m">
+                                                    <rect key="frame" x="14" y="115" width="83" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="83" id="2gi-Qd-HJX"/>
+                                                        <constraint firstAttribute="height" constant="30" id="i7W-Tm-HIy"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="观看回答">
+                                                        <color key="titleColor" red="0.98431372549999996" green="0.59607843140000005" blue="0.022014853399999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="seeAnswer:" destination="DeM-TU-vBn" eventType="touchUpInside" id="x8b-pD-AdK"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVR-Sl-ORE">
+                                                    <rect key="frame" x="105" y="115" width="83" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="83" id="0JZ-ak-sgs"/>
+                                                        <constraint firstAttribute="height" constant="30" id="uqy-DT-kEL"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="观看提问">
+                                                        <color key="titleColor" red="0.98431372549999996" green="0.59607843140000005" blue="0.1194058642" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="seeAsk:" destination="DeM-TU-vBn" eventType="touchUpInside" id="gQT-oz-GSd"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="6b6-g6-dDo" firstAttribute="top" secondItem="1oG-hT-cdN" secondAttribute="top" constant="8" id="0Wu-Jm-ieY"/>
                                                 <constraint firstItem="XJu-8J-1vh" firstAttribute="top" secondItem="6b6-g6-dDo" secondAttribute="bottom" constant="8" id="3mA-6I-xSe"/>
                                                 <constraint firstItem="hvH-lu-WnA" firstAttribute="top" secondItem="XJu-8J-1vh" secondAttribute="bottom" constant="8" id="5zD-gr-Mlt"/>
-                                                <constraint firstItem="hvH-lu-WnA" firstAttribute="centerY" secondItem="4Qd-0d-67J" secondAttribute="centerY" id="7R5-AT-38N"/>
                                                 <constraint firstItem="jIu-rl-wbi" firstAttribute="centerY" secondItem="hvH-lu-WnA" secondAttribute="centerY" id="9e8-EQ-xlf"/>
-                                                <constraint firstItem="4Qd-0d-67J" firstAttribute="leading" secondItem="XJu-8J-1vh" secondAttribute="leading" id="Bx6-hM-yxN"/>
+                                                <constraint firstItem="fCw-mv-V6m" firstAttribute="leading" secondItem="1oG-hT-cdN" secondAttribute="leading" constant="14" id="9ie-nJ-Dqk"/>
+                                                <constraint firstAttribute="bottom" secondItem="fCw-mv-V6m" secondAttribute="bottom" constant="8" id="E4I-o1-RYt"/>
                                                 <constraint firstItem="XJu-8J-1vh" firstAttribute="leading" secondItem="1oG-hT-cdN" secondAttribute="leading" constant="14" id="EEq-vt-sfH"/>
                                                 <constraint firstItem="jIu-rl-wbi" firstAttribute="trailing" secondItem="6b6-g6-dDo" secondAttribute="trailing" id="IVH-X9-hpG"/>
                                                 <constraint firstAttribute="trailing" secondItem="XJu-8J-1vh" secondAttribute="trailing" constant="14" id="JFY-60-z27"/>
+                                                <constraint firstItem="sVR-Sl-ORE" firstAttribute="leading" secondItem="fCw-mv-V6m" secondAttribute="trailing" constant="8" id="N1K-i7-DG4"/>
                                                 <constraint firstAttribute="bottom" secondItem="jIu-rl-wbi" secondAttribute="bottom" constant="20" id="QUK-NB-JAj"/>
-                                                <constraint firstItem="9dR-Mz-Nad" firstAttribute="leading" secondItem="4Qd-0d-67J" secondAttribute="trailing" constant="40" id="Z4V-vc-pfN"/>
-                                                <constraint firstItem="9dR-Mz-Nad" firstAttribute="centerY" secondItem="4Qd-0d-67J" secondAttribute="centerY" id="ZcK-tE-rTj"/>
+                                                <constraint firstItem="fCw-mv-V6m" firstAttribute="top" secondItem="XJu-8J-1vh" secondAttribute="bottom" constant="5" id="ScQ-c7-pnb"/>
+                                                <constraint firstItem="sVR-Sl-ORE" firstAttribute="top" secondItem="XJu-8J-1vh" secondAttribute="bottom" constant="5" id="brX-K0-ExA"/>
+                                                <constraint firstAttribute="bottom" secondItem="sVR-Sl-ORE" secondAttribute="bottom" constant="8" id="gP8-de-e53"/>
                                                 <constraint firstItem="jIu-rl-wbi" firstAttribute="leading" secondItem="hvH-lu-WnA" secondAttribute="trailing" constant="8" id="j8v-p2-Dix"/>
                                                 <constraint firstAttribute="trailing" secondItem="6b6-g6-dDo" secondAttribute="trailing" constant="12" id="lxB-SE-fLu"/>
+                                                <constraint firstItem="sVR-Sl-ORE" firstAttribute="leading" secondItem="fCw-mv-V6m" secondAttribute="trailing" constant="8" id="ofs-70-xcq"/>
                                                 <constraint firstItem="6b6-g6-dDo" firstAttribute="leading" secondItem="1oG-hT-cdN" secondAttribute="leading" constant="12" id="q50-Oz-G4l"/>
                                             </constraints>
                                         </view>
@@ -2453,8 +2472,6 @@
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="contentLabel" destination="XJu-8J-1vh" id="JGj-yg-fgj"/>
-                                    <outlet property="seeAnsLabel" destination="4Qd-0d-67J" id="AYK-lB-CBx"/>
-                                    <outlet property="seeAskLabel" destination="9dR-Mz-Nad" id="v1P-yY-Vbq"/>
                                     <outlet property="timeLabel" destination="6b6-g6-dDo" id="MpB-9b-e6i"/>
                                     <outlet property="voiceCountLabel" destination="jIu-rl-wbi" id="9bD-7D-nAv"/>
                                 </connections>

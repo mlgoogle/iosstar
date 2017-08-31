@@ -69,6 +69,8 @@ class VideoQuestionsVC: BasePageListTableViewController {
             let model = StarAskRequestModel()
             model.pos = (pageIndex - 1) * 10
             model.starcode = starModel.symbol
+            model.aType = 1
+            model.pType = 1
             AppAPIHelper.discoverAPI().staraskQuestion(requestModel: model, complete: { [weak self](result) in
                 if let response = result as? UserAskList {
                     self?.didRequestComplete([response.circle_list] as AnyObject )
@@ -77,7 +79,7 @@ class VideoQuestionsVC: BasePageListTableViewController {
                 }
                 
             }) { (error) in
-                
+                self.didRequestComplete(nil)
             }
         }
   

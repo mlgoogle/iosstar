@@ -18,30 +18,27 @@ class VideoHistoryCell: OEZTableViewCell {
     
     
     override func awakeFromNib() {
-        let seeAskTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(seeAskTapGestureTapped(_:)))
-        contentLabel.addGestureRecognizer(seeAskTapGesture)
-        
-        let seeAnwTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(seeAnsTapGestureTapped(_:)))
-        contentLabel.addGestureRecognizer(seeAnwTapGesture)
+      
     }
     
     override func update(_ data: Any!) {
-        if let tempTitle = data as? String{
-            contentLabel.text = tempTitle
+         if let response = data as? UserAskDetailList{
+            contentLabel.text = response.uask
+            timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
         }
     }
     
-    func seeAskTapGestureTapped(_ gesture: UITapGestureRecognizer) {
+    @IBAction func seeAnswer(_ sender: Any) {
         didSelectRowAction(1, data: nil)
     }
-    
-    func seeAnsTapGestureTapped(_ gesture: UITapGestureRecognizer) {
-        didSelectRowAction(2, data: nil)
+    @IBAction func seeAsk(_ sender: Any) {
+         didSelectRowAction(2, data: nil)
     }
+    
 }
 
 
-class VideoHistoryVC: BasePageListTableViewController {
+class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
 
     @IBOutlet weak var titlesView: UIView!
     @IBOutlet weak var closeButton: UIButton!
@@ -58,24 +55,39 @@ class VideoHistoryVC: BasePageListTableViewController {
         titleViewButtonAction(openButton)
     }
     
+   func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!){
+    
+    }
+    
     @IBAction func titleViewButtonAction(_ sender: UIButton) {
         
+        if self.dataSource?.count != 0{
+            self.dataSource?.removeAll()
+        }
         self.selectedButton?.isSelected = false
         self.selectedButton?.backgroundColor = UIColor.clear
         sender.backgroundColor = UIColor.init(rgbHex: 0xECECEC)
         self.selectedButton = sender
+        if selectedButton == closeButton{
+            type = false
+            
+        }else{
+            type = true
+        }
         self.didRequest(1)
     }
     
     override func didRequest(_ pageIndex: Int) {
         
           let model = UserAskRequestModel()
-            model.aType = 2
-            model.pType = 1
+          model.aType = 2
+          model.starcode = starModel.symbol
+          model.pos = (pageIndex - 1) * 10
+          model.pType = type ? 1 : 0
             model.pos = (pageIndex - 1) * 10
             AppAPIHelper.discoverAPI().useraskQuestion(requestModel: model, complete: { [weak self](result) in
             if let response = result as? UserAskList {
-            self?.didRequestComplete([response.circle_list] as AnyObject )
+            self?.didRequestComplete(response.circle_list as AnyObject )
         
             self?.tableView.reloadData()
             }
