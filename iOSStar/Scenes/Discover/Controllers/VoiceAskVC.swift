@@ -38,7 +38,7 @@ class VoiceAskVC: BaseTableViewController ,UITextViewDelegate{
         let share = UIButton.init(type: .custom)
         share.frame = CGRect.init(x: 0, y: 0, width: 70, height: 30)
         share.setTitle("发布", for: .normal)
-        share.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        share.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         share.setTitleColor(UIColor.init(hexString: AppConst.Color.main), for: .normal)
         share.addTarget(self, action: #selector(publish), for: .touchUpInside)
         let item = UIBarButtonItem.init(customView: share)

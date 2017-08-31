@@ -53,6 +53,7 @@ class AskRequestModel: BaseModel{
     var cType =    0
     var uask =     ""
     var videoUrl = ""
+    var thumbnail = ""
 }
 class UserAskRequestModel: BaseModel{
     var uid = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
@@ -62,6 +63,7 @@ class UserAskRequestModel: BaseModel{
     var pType = 0
     var count =     10
     var starcode =  ""
+    var thumbnail = ""
 }
 class StarAskRequestModel: BaseModel{
     var starcode =  ""

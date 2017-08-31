@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class VideoHistoryCell: OEZTableViewCell {
     
     @IBOutlet weak var voiceCountLabel: UILabel!
@@ -18,11 +18,11 @@ class VideoHistoryCell: OEZTableViewCell {
     
     
     override func awakeFromNib() {
-      
+        
     }
     
     override func update(_ data: Any!) {
-         if let response = data as? UserAskDetailList{
+        if let response = data as? UserAskDetailList{
             contentLabel.text = response.uask
             timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
         }
@@ -32,14 +32,14 @@ class VideoHistoryCell: OEZTableViewCell {
         didSelectRowAction(1, data: nil)
     }
     @IBAction func seeAsk(_ sender: Any) {
-         didSelectRowAction(2, data: nil)
+        didSelectRowAction(2, data: nil)
     }
     
 }
 
 
 class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
-
+    
     @IBOutlet weak var titlesView: UIView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var openButton: UIButton!
@@ -55,14 +55,40 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
         titleViewButtonAction(openButton)
     }
     
-   func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!){
-    
+    func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!){
+        if action ==  1{
+            if let model = dataSource?[indexPath.row] as? UserAskDetailList{
+                
+                if model.answer_t == 0{
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "明星还没回复", ForDuration: 2, completion: nil)
+                }
+                 if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: PlayVideoVC.className()) as? PlayVideoVC{
+                    vc.startModel = model
+                    present(vc, animated: true, completion: {
+                        vc.play(ShareDataModel.share().qiniuHeader + model.sanswer)
+                    })
+                }
+            }
+        }
+        if action ==  2{
+            
+            if let model = dataSource?[indexPath.row] as? UserAskDetailList{
+              
+                if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "PlayVideoVC") as? PlayVideoVC{
+                  vc.startModel = model
+                    present(vc, animated: true, completion: {
+                        vc.play(ShareDataModel.share().qiniuHeader + model.video_url)
+                    })
+                }
+            }
+        }
     }
     
     @IBAction func titleViewButtonAction(_ sender: UIButton) {
         
-        if self.dataSource?.count != 0{
+        if self.dataSource != nil{
             self.dataSource?.removeAll()
+            self.tableView.reloadData()
         }
         self.selectedButton?.isSelected = false
         self.selectedButton?.backgroundColor = UIColor.clear
@@ -79,22 +105,22 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
     
     override func didRequest(_ pageIndex: Int) {
         
-          let model = UserAskRequestModel()
-          model.aType = 2
-          model.starcode = starModel.symbol
-          model.pos = (pageIndex - 1) * 10
-          model.pType = type ? 1 : 0
-            model.pos = (pageIndex - 1) * 10
-            AppAPIHelper.discoverAPI().useraskQuestion(requestModel: model, complete: { [weak self](result) in
+        let model = UserAskRequestModel()
+        model.aType = 1
+        model.starcode = starModel.symbol
+        model.pos = (pageIndex - 1) * 10
+        model.pType = type ? 1 : 0
+        model.pos = (pageIndex - 1) * 10
+        AppAPIHelper.discoverAPI().useraskQuestion(requestModel: model, complete: { [weak self](result) in
             if let response = result as? UserAskList {
-            self?.didRequestComplete(response.circle_list as AnyObject )
-        
-            self?.tableView.reloadData()
+                self?.didRequestComplete(response.circle_list as AnyObject )
+                
+                self?.tableView.reloadData()
             }
             
-            }) { (error) in
-            
-            }
+        }) { (error) in
+             self.didRequestComplete(nil)
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellIdentifierForRowAtIndexPath indexPath: IndexPath) -> String? {

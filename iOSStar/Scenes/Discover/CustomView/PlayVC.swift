@@ -37,6 +37,7 @@ class PlayVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func initUI(){
         let share = UIButton.init(type: .custom)
         share.frame = CGRect.init(x: kScreenWidth - 100, y: 80, width: 70, height: 30)
@@ -58,6 +59,7 @@ class PlayVC: UIViewController {
         start?.isHidden = true
     
     }
+    
     func dobegain(){
         self.shortVideoRecorder?.player.setItemBy(asset)
         self.shortVideoRecorder?.player.play()
@@ -66,13 +68,9 @@ class PlayVC: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateGrogress), userInfo: nil, repeats: true)
         
          start?.isHidden  = true
-
-        
-    
     }
-    func updateGrogress(){
     
-        
+    func updateGrogress(){
         if let total = self.settings?["PLSDurationKey"] as? CGFloat{
          let progress = (kScreenWidth - 40) / total
             if (totaltime < total){
@@ -89,10 +87,9 @@ class PlayVC: UIViewController {
 //            self.shortVideoRecorder?.player.pause()
             start?.isHidden = false
             }
-            
         }
-    
    }
+    
     func gettotal(){
       let bgLabel = UILabel.init(frame: CGRect.init(x: 20, y: 30, width: self.view.frame.size.width - 40, height: 5))
       bgLabel.backgroundColor = UIColor.init(red: 255, green: 255, blue: 255, alpha: 0.5)
@@ -100,8 +97,6 @@ class PlayVC: UIViewController {
       groupLb = UILabel.init(frame: CGRect.init(x: 20, y: 30, width: 00, height: 5))
       groupLb?.backgroundColor = UIColor.init(hexString: "FB9938")
       self.view.addSubview(groupLb!)
-        
-    
     }
 }
 

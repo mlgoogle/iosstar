@@ -18,13 +18,14 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
     @IBOutlet weak var videoBtn: UIButton!
     var starModel: StarSortListModel = StarSortListModel()
     var preview : String  = ""
+    var thumbnail =  ""
     var totaltime = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "像提TA问"
         navright()
     }
-
+    
     func navright(){
         let share = UIButton.init(type: .custom)
         share.frame = CGRect.init(x: 0, y: 0, width: 70, height: 30)
@@ -38,7 +39,7 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        inputText.text = textView.text
+       
         if textView.text == "" {
             placeHolder.text = "输入你的问题，可选择公开或者私密，公开提问能呗其他用户所见 "
             placeHolder.isHidden = false
@@ -55,7 +56,8 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
     func textViewNotifitionAction(userInfo:NSNotification){
         let textVStr = inputText.text as NSString;
         
-        if (textVStr.length > 100) {
+        if ((textVStr.length) > 100) {
+            inputText.text = inputText.text.substring(to: inputText.text.index(inputText.text.startIndex, offsetBy: 100))
             inputText.resignFirstResponder()
             return
         }else{
@@ -67,9 +69,12 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
     @IBAction func videoBtnTapped(_ sender: UIButton) {
         //TakeMovieVC
         if inputText.text == ""{
-//         SVProgressHUD.showErrorMessage(ErrorMessage: "请", ForDuration: <#T##Double#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入问题", ForDuration: 2, completion: nil)
+            return
         }
+        
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: TakeMovieVC.className()) as? TakeMovieVC{
+            vc.q_content = inputText.text
             vc.resultBlock = {  [weak self] (result) in
                 if let response =  result as?  [String : AnyObject]{
                     
@@ -78,10 +83,10 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
                     }
                     if let time = response["totalTime"] as?  Int{
                         self?.totaltime  = time
-                        
                     }
-
-                
+                    if let time = response["thumbnail"] as?  String{
+                        self?.thumbnail  = time
+                    }
                 }
             }
             //TakeMovieVC
@@ -91,11 +96,13 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
     
     func publish(){
         if self.preview ==  ""{
-         SVProgressHUD.showErrorMessage(ErrorMessage: "请输入视频内容", ForDuration: 2, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入视频内容", ForDuration: 2, completion: nil)
         }
+        
         let request = AskRequestModel()
-        request.pType = publicSwitch.isOn ? 0 : 1
-        request.aType = 0
+        request.pType = publicSwitch.isOn ? 1 : 0
+        request.aType = 1
+        request.thumbnail = self.thumbnail
         request.starcode = starModel.symbol
         request.uask = inputText.text
         request.videoUrl = self.preview
@@ -103,18 +110,18 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
         AppAPIHelper.discoverAPI().videoAskQuestion(requestModel:request, complete: { (result) in
             if let model = result as? ResultModel{
                 if model.result == 0{
-                     SVProgressHUD.showSuccessMessage(SuccessMessage: "视频问答成功", ForDuration: 1, completion: { 
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "视频问答成功", ForDuration: 1, completion: {
                         self.navigationController?.popViewController(animated: true)
-                     })
+                    })
                 }
                 if model.result == 1{
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "问答失败", ForDuration: 2, completion: nil)
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "用户时间不足", ForDuration: 2, completion: nil)
                 }
             }
         }) { (error) in
             self.didRequestError(error)
         }
-    
+        
         
     }
 }
