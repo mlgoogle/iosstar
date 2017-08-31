@@ -161,8 +161,9 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
             share.addTarget(self, action: #selector(sharetothird), for: .touchUpInside)
             let item = UIBarButtonItem.init(customView: share)
             self.navigationItem.rightBarButtonItem = item
+            if starModel?.pic_tail != nil{
             iconImage.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   (starModel?.pic_tail)!), placeholder: nil)
-          
+            }
         }
         requestCycleData(0)
     }

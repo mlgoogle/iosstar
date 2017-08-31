@@ -421,6 +421,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
      func staractive(){
         
         //TakeMovieVC
+        ShareDataModel.share().selectStarCode = (starModel?.symbol)!
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: StarNewsVC.className()) as? StarNewsVC{
             //TakeMovieVC
             self.navigationController?.pushViewController(vc, animated: true)

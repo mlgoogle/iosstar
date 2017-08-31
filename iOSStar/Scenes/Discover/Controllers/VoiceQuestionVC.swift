@@ -102,8 +102,8 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
                         if let response = result as? ResultModel{
                             if response.result == 0{
                                 model.purchased = 1
-                                self.doplay(model)
                                 tableView.reloadRows(at: [indexPath], with: .none)
+                                 self.doplay(model)
                             }
                         }
                     }, error: { (error) in
