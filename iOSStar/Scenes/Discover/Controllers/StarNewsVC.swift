@@ -64,7 +64,6 @@ class NewsCell: OEZTableViewCell {
     }
     
     func showPicGestureTapped(_ gesture: UITapGestureRecognizer) {
-        didSelectRowAction(UInt(103))
         didSelectRowAction(UInt(103), data: newsPicUrl)
     }
 }
@@ -429,6 +428,10 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
     }
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
         let photo = MWPhoto(url:URL(string:ShareDataModel.share().qiniuHeader + newsPicUrl))
+    
         return photo
+    }
+    func photoBrowser(_ photoBrowser: MWPhotoBrowser!, actionButtonPressedForPhotoAt index: UInt) {
+        photoBrowser.dismissController()
     }
 }

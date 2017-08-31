@@ -67,9 +67,7 @@ class PreViewVC: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateGrogress), userInfo: nil, repeats: true)
         
         start?.isHidden  = true
-        
-        
-        
+    
     }
     func updateGrogress(){
         

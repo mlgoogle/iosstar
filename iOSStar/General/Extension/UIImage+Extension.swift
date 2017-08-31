@@ -12,11 +12,6 @@ import Qiniu
 import Alamofire
 
 extension UIImage{
-
-    
-    
-  
-    
     
     /**
      缓存图片
