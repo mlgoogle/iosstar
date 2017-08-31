@@ -102,8 +102,8 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
                         if let response = result as? ResultModel{
                             if response.result == 0{
                                 model.purchased = 1
-                                self.doplay(model)
                                 tableView.reloadRows(at: [indexPath], with: .none)
+                                 self.doplay(model)
                             }else{
                                 SVProgressHUD.showWainningMessage(WainningMessage: "您持有的时间不足", ForDuration: 1, completion: nil)
                             }

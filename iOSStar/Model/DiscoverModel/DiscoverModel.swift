@@ -96,7 +96,11 @@ class UserAskDetailList: BaseModel {
     dynamic var video_url = ""
     dynamic var nickName = ""
     dynamic var headUrl = ""
+    dynamic var videoTime = 2
     dynamic var purchased = 2
+    dynamic var thumbnail = ""
+    dynamic var videoTimeS = 2
+    dynamic var thumbnailS = ""
 }
 
 

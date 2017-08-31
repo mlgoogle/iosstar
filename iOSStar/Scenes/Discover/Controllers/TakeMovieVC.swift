@@ -14,8 +14,12 @@ import SVProgressHUD
 class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoUploaderDelegate ,PLPlayerDelegate{
     
     
+    @IBOutlet var content: UILabel!
+    @IBOutlet var header: UIImageView!
+    @IBOutlet var name: UILabel!
     @IBOutlet var tipView: UIView!
     var didTap = false
+    var q_content = ""
     var index  = 1
     var shortVideoRecorder : PLShortVideoRecorder?
     var resultBlock: CompleteBlock?
@@ -28,7 +32,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         let  Progress = OProgressView.init(frame: CGRect.init(x: self.view.center.x - 50, y: kScreenHeight - 120, width: 100, height: 100))
         return Progress
     }()
-    //确定按钮
+    //显示背景的图片
     lazy var showStartImg : UIImageView = {
         let sureBtn = UIImageView.init()
         sureBtn.frame = CGRect.init(x: 0 , y: 0 , width: kScreenWidth, height: kScreenHeight)
@@ -65,7 +69,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     //退出按钮
     lazy var closeBtn: UIButton = {
         let resetBtn = UIButton.init(type: .custom)
-        resetBtn.frame = CGRect.init(x: kScreenWidth - 100, y: 30, width: 25, height: 25)
+        resetBtn.frame = CGRect.init(x: kScreenWidth - 80, y: 30, width: 25, height: 25)
         resetBtn.setImage(UIImage.init(named: "close"), for: .normal)
         resetBtn.addTarget(self , action: #selector(exit), for: .touchUpInside)
         return resetBtn
@@ -99,6 +103,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUserInfo()
         configViedeo()
         initView()
         tap()
@@ -145,19 +150,31 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     //确定按钮
     func didsure(){
         SVProgressHUD.show(withStatus: "上传中")
-        QiniuTool.qiniuUploadVideo(filePath: (self.filePath?.path)!, videoName: "short_video", complete: { (result) in
+        
+        uploadthumbnail()
+        
+        QiniuTool.qiniuUploadImage(image: showStartImg.image!, imageName: "thumbnail", complete: { (result) in
             if self.resultBlock != nil{
-                if let response = result as? String{
-                    SVProgressHUD.showSuccessMessage(SuccessMessage: "录制成功", ForDuration: 1.5, completion: {
-                        let outputSettings = ["movieUrl" : response as AnyObject,"totalTime":self.totalTime as AnyObject] as [String : AnyObject]
-                        self.resultBlock!(outputSettings as AnyObject)
-                        self.navigationController?.popViewController(animated: true)
-                    })
-                   
+                if let thumbnail = result as? String{
+                    QiniuTool.qiniuUploadVideo(filePath: (self.filePath?.path)!, videoName: "short_video", complete: { (result) in
+                        if self.resultBlock != nil{
+                            if let response = result as? String{
+                                SVProgressHUD.showSuccessMessage(SuccessMessage: "录制成功", ForDuration: 1.5, completion: {
+                                    let outputSettings = ["movieUrl" : response as AnyObject,"totalTime":self.totalTime as AnyObject,"thumbnail" : thumbnail as AnyObject,] as [String : AnyObject]
+                                    self.resultBlock!(outputSettings as AnyObject)
+                                    self.navigationController?.popViewController(animated: true)
+                                })
+                                
+                            }
+                        }
+                    }) { (error) in
+                    }
                 }
             }
-        }) { (error) in
+        }) { (erro) in
+            
         }
+        
     }
     func switchbtn(){
         self.shortVideoRecorder?.toggleCamera()
@@ -288,6 +305,24 @@ extension TakeMovieVC  {
         let imageRef:CGImage = try! generator.copyCGImage(at: time, actualTime: &actualTime)
         let frameImg = UIImage(cgImage:imageRef )
         showStartImg.image = frameImg
+    }
+    func updateUserInfo() {
+        getUserInfo { (result) in
+            if let response = result{
+                let model =   response as! UserInfoModel
+                if model.nick_name == "" {
+                    let nameUid = StarUserModel.getCurrentUser()?.userinfo?.id
+                    let stringUid = String.init(format: "%d", nameUid!)
+                    self.name.text = "星享时光用户" + stringUid
+                } else  {
+                   self.name.text = model.nick_name
+                }
+                self.content.text = self.q_content
+                self.header.kf.setImage(with: URL(string: model.head_url), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
+            }
+        }
+    }
+    func uploadthumbnail(){
     }
     
 }
