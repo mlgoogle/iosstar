@@ -10,4 +10,6 @@ import UIKit
 
 class StarDynamicVideoCell: UICollectionViewCell {
     
+    @IBOutlet var Qimg: UIImageView!
+    @IBOutlet var qtitle: UILabel!
 }

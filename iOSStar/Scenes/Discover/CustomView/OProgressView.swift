@@ -46,7 +46,7 @@ import UIKit
         
         //绘制进度槽
         trackLayer.frame = bounds
-        trackLayer.fillColor = UIColor.red.cgColor
+        trackLayer.fillColor = UIColor.init(red: 255/255.0, green: 1.0, blue: 1.0, alpha: 0.8).cgColor
         trackLayer.strokeColor = Constant.trackColor.cgColor
         trackLayer.lineWidth = Constant.lineWidth
         trackLayer.path = path.cgPath

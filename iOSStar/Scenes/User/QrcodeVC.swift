@@ -32,7 +32,8 @@ class QrcodeVC: UIViewController {
         header.image = img
         header.clipsToBounds = true
         header.layer.cornerRadius = 3
-        
+        header.layer.borderWidth = 1
+        header.layer.borderColor = UIColor.white.cgColor
        
         
     }

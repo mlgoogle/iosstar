@@ -29,9 +29,12 @@ class VideoQuestionCell: OEZTableViewCell{
             if response.purchased == 1{
                 let attr = NSMutableAttributedString.init(string: "点击观看")
                 priceLabel.attributedText = attr
+                priceLabel.textColor = UIColor.init(hexString: AppConst.Color.orange)
             }else{
-                let attr = NSMutableAttributedString.init(string: "花费\(response.c_type)秒观看回答")
-                attr.addAttributes([NSForegroundColorAttributeName: UIColor.init(rgbHex: 0xfb9938)], range: NSRange.init(location: 2, length: "\(response.c_type)".length()))
+                let count = ( response.c_type + 1 ) * 15
+                let attr = NSMutableAttributedString.init(string: "花费\(count)秒观看回答")
+                priceLabel.textColor = UIColor.init(hexString: "666666")
+                attr.addAttributes([NSForegroundColorAttributeName: UIColor.init(rgbHex: 0xfb9938)], range: NSRange.init(location: 2, length: "\(count)".length()))
                 priceLabel.attributedText = attr
             }
            
@@ -48,6 +51,7 @@ class VideoQuestionCell: OEZTableViewCell{
 class VideoQuestionsVC: BasePageListTableViewController {
     
     var starModel: StarSortListModel = StarSortListModel()
+     var height = UIScreen.main.bounds.size.height - 64
     override func viewDidLoad() {
         super.viewDidLoad()
         title = starModel.name
@@ -59,6 +63,7 @@ class VideoQuestionsVC: BasePageListTableViewController {
     func initNav() {
         let rightItem = UIBarButtonItem.init(title: "历史提问", style: .plain, target: self, action: #selector(rightItemTapped(_:)))
         navigationItem.rightBarButtonItem = rightItem
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.init(hexString: AppConst.Color.main)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -80,11 +85,16 @@ class VideoQuestionsVC: BasePageListTableViewController {
         AppAPIHelper.discoverAPI().staraskQuestion(requestModel: model, complete: { [weak self](result) in
             if let response = result as? UserAskList {
                 self?.didRequestComplete([response.circle_list] as AnyObject )
-                
+                if (self?.dataSource != nil){
+                    self?.height = 64
+                }
                 self?.tableView.reloadData()
             }
             
         }) { (error) in
+            if (self.dataSource != nil){
+                self.height = 64
+            }
             self.didRequestComplete(nil)
         }
     }
@@ -103,7 +113,7 @@ class VideoQuestionsVC: BasePageListTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 84
+        return height 
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -116,6 +126,12 @@ class VideoQuestionsVC: BasePageListTableViewController {
                         present(vc, animated: true, completion: {
                             vc.play(ShareDataModel.share().qiniuHeader + model.sanswer)
                         })
+                        vc.resultBlock = { (result ) in
+                            if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                                
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            }
+                        }
                     }
                 }
                 else{
@@ -133,6 +149,12 @@ class VideoQuestionsVC: BasePageListTableViewController {
                                     self.present(vc, animated: true, completion: {
                                         vc.play(ShareDataModel.share().qiniuHeader + model.sanswer)
                                     })
+                                    vc.resultBlock = { (result ) in
+                                        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                                            vc.starModel = self.starModel
+                                            self.navigationController?.pushViewController(vc, animated: true)
+                                        }
+                                    }
                                 }
                             }else{
                                 SVProgressHUD.showWainningMessage(WainningMessage: "您持有的时间不足", ForDuration: 1, completion: nil)
@@ -148,10 +170,11 @@ class VideoQuestionsVC: BasePageListTableViewController {
         
     }
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: 84))
-        footer.backgroundColor = UIColor.init(rgbHex: 0xfafafa)
+        let footer = UIView.init(frame: CGRect.init(x: 0, y: Int(height - 64), width: Int(kScreenWidth), height: 64))
+        //        footer.backgroundColor = UIColor.init(rgbHex: 0xfafafa)
+        footer.backgroundColor = UIColor.clear
         let footerBtn = UIButton.init(type: .custom)
-        footerBtn.frame = CGRect.init(x: 24, y: 20, width: kScreenWidth-48, height: 44)
+        footerBtn.frame = CGRect.init(x: 24, y: Int(height - 50), width: Int(kScreenWidth-48), height: 44)
         footerBtn.layer.cornerRadius = 3
         footerBtn.backgroundColor = UIColor.init(rgbHex: 0xfb9938)
         footerBtn.setTitle("找TA定制", for: .normal)
@@ -159,7 +182,6 @@ class VideoQuestionsVC: BasePageListTableViewController {
         footer.addSubview(footerBtn)
         return footer
     }
-    
     func footerBtnTapped(_ sender: UIButton) {
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
             vc.starModel = starModel
