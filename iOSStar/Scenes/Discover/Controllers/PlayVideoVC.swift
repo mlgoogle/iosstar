@@ -7,22 +7,33 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class PlayVideoVC: UIViewController {
-
+    
     @IBOutlet weak var qBgView: UIView!
     @IBOutlet weak var qIconImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var qContentLabel: UILabel!
     @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var hiddleBtn: UIButton!
+    @IBOutlet weak var stopBtn: UIButton!
+    @IBOutlet var progressview: UIView!
+    var resultBlock: CompleteBlock?
+    var timer : Timer?
+    var userPlayer = true
+    var playerOnce = false
+    var playerTwice = false
+    var totaltime = CGFloat.init(0)
     @IBOutlet weak var progressCons: NSLayoutConstraint!
-    
+    @IBOutlet var secondProgress: NSLayoutConstraint!
+    var startModel  : UserAskDetailList!
     lazy var player: PLPlayer = {
         let option = PLPlayerOption.default()
         let player = PLPlayer.init(url: nil, option: option)
         return player!
     }()
+    //显示背景的图片
+    @IBOutlet var showStartImg: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,18 +42,63 @@ class PlayVideoVC: UIViewController {
             view.addSubview(playView)
             view.sendSubview(toBack: playView)
         }
-        qIconImage.image = UIImage.imageWith("\u{e655}", fontSize: CGSize.init(width: 26, height: 26), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue))
+        self.secondProgress.constant = 0
+        stopBtn.isHidden = true
+        SVProgressHUD.show(withStatus: "加载中")
+        showStartImg.isHidden = false
+        nameLabel.text = startModel?.nickName
+        qContentLabel.text = startModel?.uask
+        progressCons.constant = 0
+        qIconImage.kf.setImage(with: URL(string :  (startModel?.headUrl)!), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateGrogress), userInfo: nil, repeats: true)
+    }
+    func updateGrogress(){
+        
+        
+        if player.totalDuration.value  == 0{
+            return
+        }
+        if self.playerOnce && self.playerTwice {
+            let current = CGFloat(player.currentTime.value)/CGFloat(player.currentTime.timescale)
+            let total = CGFloat(player.totalDuration.value)/CGFloat(player.totalDuration.timescale)
+            
+            progressCons.constant = progressview.frame.width * current/total
+        }else{
+            let current = CGFloat(player.currentTime.value)/CGFloat(player.currentTime.timescale)
+            let total = CGFloat(player.totalDuration.value)/CGFloat(player.totalDuration.timescale)
+            
+            secondProgress.constant = progressview.frame.width * current/total
+        }
+        
         
     }
-
     @IBAction func askQustion(_ sender: Any) {
-        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
-            self.navigationController?.pushViewController(vc, animated: true)
+        
+        if self.resultBlock != nil{
+       
+            self.resultBlock!(true as AnyObject)
+        
+        
+        }
+        self.dismiss(animated: false, completion: nil)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer?.invalidate()
+        SVProgressHUD.dismiss()
+        if player.isPlaying{
+            player.stop()
         }
     }
     
     @IBAction func closeBtnTapped(_ sender: Any) {
-        dismissController()
+        self.dismissController()
+    }
+    @IBAction func atuoPlay(_ sender: Any) {
+        stopBtn.isHidden = true
+        player.play()
     }
     
     @IBAction func hiddleBtnTapped(_ sender: UIButton) {
@@ -58,14 +114,78 @@ class PlayVideoVC: UIViewController {
     }
     
     func play(_ urlStr: String) {
+        
+        if urlStr ==  (ShareDataModel.share().qiniuHeader + startModel.sanswer) {
+            showStartImg.kf.setImage(with: URL(string : ShareDataModel.share().qiniuHeader + (startModel?.thumbnailS)!), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+            totaltime = CGFloat(startModel.videoTimeS)
+            userPlayer = true
+        }else{
+            showStartImg.kf.setImage(with: URL(string : ShareDataModel.share().qiniuHeader + (startModel?.thumbnail)!), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+            userPlayer = false
+        }
         player.play(with: URL.init(string: urlStr))
     }
 }
 
+
 extension PlayVideoVC: PLPlayerDelegate{
     
     func player(_ player: PLPlayer, statusDidChange state: PLPlayerStatus) {
-        print(state.rawValue)
+        
+        if state == .statusPreparing{
+            showStartImg.isHidden = false
+            stopBtn.isHidden = true
+            self.view.sendSubview(toBack: showStartImg)
+            
+        }
+        if state == .statusPlaying{
+            SVProgressHUD.dismiss()
+            if !self.playerOnce && !self.playerTwice{
+                stopBtn.isHidden = true
+                self.playerOnce = true
+                self.playerTwice = true
+            }
+        }
+        if state == .statusStopped{
+            if self.playerOnce && self.playerTwice {
+                self.playerOnce = true
+                self.playerTwice = false
+                stopBtn.isHidden = true
+                if userPlayer{
+                    if startModel.answer_t != 0{
+                        
+                    }
+                }else{
+                    showStartImg.kf.setImage(with: URL(string : ShareDataModel.share().qiniuHeader + (startModel?.thumbnail)!), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                }
+                self.perform(#selector(diplay), with: self, afterDelay: 2)
+                
+            }else if self.playerOnce && !self.playerTwice{
+                stopBtn.isHidden = true
+                self.perform(#selector(doDidmiss), with: self , afterDelay: 2)
+            }
+            
+        }
+    }
+    func doDidmiss(){
+      self.dismissController()
+    }
+    func diplay(){
+        if userPlayer{
+            if startModel.video_url != ""{
+                stopBtn.isHidden = false
+                showStartImg.kf.setImage(with: URL(string : ShareDataModel.share().qiniuHeader + (startModel?.thumbnail)!), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                player.play(with: URL.init(string:  ShareDataModel.share().qiniuHeader  + startModel.video_url))
+            }
+            
+        }else{
+            if startModel.answer_t != 0{
+                showStartImg.kf.setImage(with: URL(string : ShareDataModel.share().qiniuHeader + (startModel?.thumbnailS)!), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                player.play(with: URL.init(string: ShareDataModel.share().qiniuHeader  + startModel.sanswer))
+            }
+            
+            
+        }
     }
     
     func player(_ player: PLPlayer, stoppedWithError error: Error?) {

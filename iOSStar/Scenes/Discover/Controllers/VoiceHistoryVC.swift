@@ -34,6 +34,7 @@ class VoiceHistoryCell: OEZTableViewCell {
             let titleTip = response.answer_t == 0 ? "点击播放（未回复）" : "点击播放"
             let attr = NSMutableAttributedString.init(string: titleTip)
             title.attributedText = attr
+            voiceCountLabel.text = "听过\(response.s_total)"
             //            voiceBtn.setAttributedTitle(attr, for: .normal)
             //            voiceBtn.setImage(UIImage.init(named: String.init(format: "listion")), for: .normal)
         }
@@ -72,7 +73,7 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
         self.selectedButton?.backgroundColor = UIColor.clear
         sender.backgroundColor = UIColor.init(rgbHex: 0xECECEC)
         self.selectedButton = sender
-        if self.dataSource?.count != nil{
+        if self.dataSource?.count != 0{
             self.dataSource?.removeAll()
         }
         if selectedButton == closeButton{

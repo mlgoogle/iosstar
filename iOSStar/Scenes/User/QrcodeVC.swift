@@ -16,7 +16,9 @@ protocol QrcodeVCdelegate {
     
 }
 class QrcodeVC: UIViewController {
-
+    
+    @IBOutlet var test_img: UIImageView!
+    @IBOutlet var qrcode_view: UIView!
     @IBOutlet var Qrcode: UIImageView!
     @IBOutlet var header: UIImageView!
     var urlStr : String = "123"
@@ -28,24 +30,28 @@ class QrcodeVC: UIViewController {
         
         Qrcode.image = UIImage.qrcodeImage(urlStr)
         header.image = img
-        
+        header.clipsToBounds = true
+        header.layer.cornerRadius = 3
+        header.layer.borderWidth = 1
+        header.layer.borderColor = UIColor.white.cgColor
+       
         
     }
     
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-       
+        
     }
     @IBAction func didmiss(_ sender: Any) {
-      NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.didmiss), object: nil , userInfo: nil)
-//       self.dismissController()
-         self.dismissController()
-//       self.presentedViewController?.dismissController()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.didmiss), object: nil , userInfo: nil)
+        //       self.dismissController()
+        self.dismissController()
+        //       self.presentedViewController?.dismissController()
     }
     
     @IBAction func saveImageToPhoneLib(_ sender: UIButton) {
@@ -54,13 +60,22 @@ class QrcodeVC: UIViewController {
         actionController.addAction(cancelAlter)
         let sureAction = UIAlertAction.init(title: "确认", style: .default, handler: { [weak self](result) in
             SVProgressHUD.showProgressMessage(ProgressMessage: "保存中")
-            UIImageWriteToSavedPhotosAlbum((self?.Qrcode.image)!, self, #selector(self?.savedOK(image:didFinishSavingWithError:contextInfo:)), nil)
+            UIImageWriteToSavedPhotosAlbum((self?.captureView((self?.qrcode_view)!))!, self, #selector(self?.savedOK(image:didFinishSavingWithError:contextInfo:)), nil)
         })
         actionController.addAction(sureAction)
         present(actionController, animated: true, completion: nil)
     }
-
-
+    
+    func captureView(_ theView : UIView)->UIImage{
+        let rect = theView.frame
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        theView.layer.render(in: context!)
+        let img =  UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img!
+//        test_img.image = img
+    }
     func savedOK(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
         SVProgressHUD.dismiss()
         if error != nil {

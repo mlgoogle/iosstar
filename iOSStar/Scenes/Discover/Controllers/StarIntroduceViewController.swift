@@ -18,13 +18,14 @@ class StarIntroduceViewController: UIViewController {
     var index = 0
     var headerImg = UIImageView()
     var starModel:StarSortListModel?
-    var sectionHeights = [170,18 , 120 , 150]
-//    var sectionHeights = [170,18 , 120, 220 , 150]
-    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(), StarCirCleCell.className() ,StarPhotoCell.className()]
+//    var sectionHeights = [170,18 , 120 , 150]
+    var sectionHeights = [170,18 , 120, 120,124 , 150]
+    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(), StarCirCleCell.className(), StarDynamicCell.className(),StarDetailCirCell.className() ,StarPhotoCell.className()]
 //    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(),StarPhotoCell.className()]
     var images:[String] = []
     var starDetailModel:StarDetaiInfoModel?
     var expericences:[ExperienceModel]?
+    var StarDetail:StarDetailCircle?
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -40,15 +41,24 @@ class StarIntroduceViewController: UIViewController {
         appointmentButton.layer.shadowOpacity = 0.5
         requestStarDetailInfo()
         requestExperience()
-        //        let share = UIButton.init(type: .custom)
-        //        share.setImage(UIImage.init(named: "star_share"), for: .normal)
-        //        share.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
-        //        share.addTarget(self, action: #selector(sharetothird), for: .touchUpInside)
-        //        let item = UIBarButtonItem.init(customView: share)
-        //        self.navigationItem.rightBarButtonItem = item
+        requeseDetail()
+    }
+    func requeseDetail(){
+     let model = CirCleStarDetail()
+      model.starcode = (self.starModel?.symbol)!
+      model.aType = 1
+      model.pType = 1
+      AppAPIHelper.discoverAPI().requestStarDetail(requestModel: model, complete: { (result) in
         
+        if let response = result as? StarDetailCircle{
+         self.StarDetail = response
+        self.tableView.reloadRows(at: [IndexPath.init(item: 0, section: 3)], with: .none)
+         self.tableView.reloadRows(at: [IndexPath.init(item: 0, section: 4)], with: .none)
+        }
+       
+      }) { (error ) in
         
-        
+        }
     }
     func sharetothird(){
         if let model = expericences?[0]{
@@ -263,6 +273,8 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         case 3:
             return 70
         case 4:
+            return 0.01
+        case 5:
             return 70
         default:
             return 0.01
@@ -286,13 +298,13 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             
             
         }
-              else  if  section == 3 {
+         else  if  section == 5 {
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as? PubInfoHeaderView
             header?.setTitle(title:"个人写真")
             header?.contentView.backgroundColor = UIColor(hexString: "fafafa")
             return header
         }
-        else  if  section == 4 {
+        else  if  section == 3 {
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as? PubInfoHeaderView
             header?.setTitle(title:"最新动态")
             header?.contentView.backgroundColor = UIColor(hexString: "fafafa")
@@ -387,12 +399,19 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
 //                photoCell.setImageUrls(images: images, delegate:self)
             }
             
-        case 4:
+        case 3:
             if let photoCell = cell as? StarDynamicCell {
+            
+                 photoCell.datasource = self.StarDetail
 //                photoCell.setImageUrls(images: images, delegate:self)
                 photoCell.delegate = self
+            }//StarDetailCirCell
+        case 4:
+            if let photoCell = cell as? StarDetailCirCell {
+//                photoCell.setImageUrls(images: images, delegate:self)
+                photoCell.datasource = self.StarDetail
             }
-        case 3:
+        case 5:
             if let photoCell = cell as? StarPhotoCell {
                 photoCell.setImageUrls(images: images, delegate:self)
             }
@@ -404,8 +423,8 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     func starask(){
         
         //
-        SVProgressHUD.showErrorMessage(ErrorMessage:  "敬请期待", ForDuration: 2, completion: nil)
-        return
+//        SVProgressHUD.showErrorMessage(ErrorMessage:  "敬请期待", ForDuration: 2, completion: nil)
+//        return
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VideoQuestionsVC.className()) as? VideoQuestionsVC{
             vc.starModel = starModel!
             self.navigationController?.pushViewController(vc, animated: true)
@@ -421,14 +440,61 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
      func staractive(){
         
         //TakeMovieVC
+        ShareDataModel.share().selectStarCode = (starModel?.symbol)!
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: StarNewsVC.className()) as? StarNewsVC{
             //TakeMovieVC
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-    func starask(_select: Int) {
-        print(_select)
+    func starask(_select: UserAskDetailList) {
+        if let model  = _select as? UserAskDetailList{
+            if model.purchased == 1{
+                if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "PlayVideoVC") as? PlayVideoVC{
+                    vc.startModel = model
+                    present(vc, animated: true, completion: {
+                        vc.play(ShareDataModel.share().qiniuHeader + model.sanswer)
+                    })
+                    vc.resultBlock = { (result ) in
+                        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                            
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                    }
+                }
+            }
+            else{
+                let request = PeepVideoOrvoice()
+                request.qid = Int(model.id)
+                request.starcode = (starModel?.symbol)!
+                request.cType = model.c_type
+                AppAPIHelper.discoverAPI().peepAnswer(requestModel: request, complete: { (result) in
+                    if let response = result as? ResultModel{
+                        if response.result == 0{
+                            model.purchased = 1
+                          
+                            if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "PlayVideoVC") as? PlayVideoVC{
+                                vc.startModel = model
+                                self.present(vc, animated: true, completion: {
+                                    vc.play(ShareDataModel.share().qiniuHeader + model.sanswer)
+                                })
+                                vc.resultBlock = { (result ) in
+                                    if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                                        vc.starModel = self.starModel!
+                                        self.navigationController?.pushViewController(vc, animated: true)
+                                    }
+                                }
+                            }
+                        }else{
+                            SVProgressHUD.showWainningMessage(WainningMessage: "您持有的时间不足", ForDuration: 1, completion: nil)
+                        }
+                    }
+                }, error: { (error) in
+                    self.didRequestError(error)
+                })
+                
+            }
+        }
     }
 }
 
