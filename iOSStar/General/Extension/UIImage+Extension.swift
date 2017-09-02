@@ -139,8 +139,8 @@ extension UIImage{
                 
                 codeImage.draw(in: rect)
                 
-                let avatarSize = CGSize(width:rect.size.width * 0.25,
-                                        height:rect.size.height * 0.25)
+                let avatarSize = CGSize(width:rect.size.width * 0.3,
+                                        height:rect.size.height * 0.3)
                 let x = (rect.width - avatarSize.width) * 0.5
                 let y = (rect.height - avatarSize.height) * 0.5
                 iconImage.draw(in: CGRect(x:x, y:y, width:avatarSize.width,
