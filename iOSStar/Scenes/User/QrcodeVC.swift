@@ -27,14 +27,8 @@ class QrcodeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "我的二维码"
-        
-        Qrcode.image = UIImage.qrcodeImage(urlStr)
-        header.image = img
-        header.clipsToBounds = true
-        header.layer.cornerRadius = 3
-        header.layer.borderWidth = 1
-        header.layer.borderColor = UIColor.white.cgColor
-       
+        Qrcode.image = UIImage.createQRForString(qrString: urlStr , qrImageName: img)
+
         
     }
     
@@ -60,7 +54,7 @@ class QrcodeVC: UIViewController {
         actionController.addAction(cancelAlter)
         let sureAction = UIAlertAction.init(title: "确认", style: .default, handler: { [weak self](result) in
             SVProgressHUD.showProgressMessage(ProgressMessage: "保存中")
-            UIImageWriteToSavedPhotosAlbum((self?.captureView((self?.qrcode_view)!))!, self, #selector(self?.savedOK(image:didFinishSavingWithError:contextInfo:)), nil)
+            UIImageWriteToSavedPhotosAlbum((self?.Qrcode.image)!, self, #selector(self?.savedOK(image:didFinishSavingWithError:contextInfo:)), nil)
         })
         actionController.addAction(sureAction)
         present(actionController, animated: true, completion: nil)
