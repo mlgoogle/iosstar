@@ -71,8 +71,6 @@
 		6E2D43B51EDFB5E100DC9643 /* BannerDetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B41EDFB5E100DC9643 /* BannerDetailImageCell.swift */; };
 		6E2D43B71EDFB61100DC9643 /* BannerDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D43B61EDFB61100DC9643 /* BannerDetailInfoCell.swift */; };
 		6E3170751EF7A12700BA637F /* NewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3170741EF7A12700BA637F /* NewVC.swift */; };
-		6E49A3801F4FBD8B00AF3A21 /* checksum.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6E49A37C1F4FBD8B00AF3A21 /* checksum.cc */; };
-		6E49A3811F4FBD8B00AF3A21 /* PackDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E49A37F1F4FBD8B00AF3A21 /* PackDataHelper.m */; };
 		6E4F03E11F10C9870003D51F /* SellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03E01F10C9870003D51F /* SellingViewController.swift */; };
 		6E4F03E31F10CED40003D51F /* SellingIntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03E21F10CED40003D51F /* SellingIntroCell.swift */; };
 		6E4F03E51F10CEF80003D51F /* SellingTimeAndCountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F03E41F10CEF80003D51F /* SellingTimeAndCountCell.swift */; };
@@ -514,10 +512,6 @@
 		6E2D43B41EDFB5E100DC9643 /* BannerDetailImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerDetailImageCell.swift; sourceTree = "<group>"; };
 		6E2D43B61EDFB61100DC9643 /* BannerDetailInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerDetailInfoCell.swift; sourceTree = "<group>"; };
 		6E3170741EF7A12700BA637F /* NewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewVC.swift; sourceTree = "<group>"; };
-		6E49A37C1F4FBD8B00AF3A21 /* checksum.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = checksum.cc; sourceTree = "<group>"; };
-		6E49A37D1F4FBD8B00AF3A21 /* CheckSum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckSum.h; sourceTree = "<group>"; };
-		6E49A37E1F4FBD8B00AF3A21 /* PackDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PackDataHelper.h; sourceTree = "<group>"; };
-		6E49A37F1F4FBD8B00AF3A21 /* PackDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PackDataHelper.m; sourceTree = "<group>"; };
 		6E4F03E01F10C9870003D51F /* SellingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellingViewController.swift; sourceTree = "<group>"; };
 		6E4F03E21F10CED40003D51F /* SellingIntroCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellingIntroCell.swift; sourceTree = "<group>"; };
 		6E4F03E41F10CEF80003D51F /* SellingTimeAndCountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellingTimeAndCountCell.swift; sourceTree = "<group>"; };
@@ -1516,22 +1510,10 @@
 		6E49A37A1F4FBD8B00AF3A21 /* PackDataHelper */ = {
 			isa = PBXGroup;
 			children = (
-				6E49A37B1F4FBD8B00AF3A21 /* C++ */,
-				6E49A37E1F4FBD8B00AF3A21 /* PackDataHelper.h */,
-				6E49A37F1F4FBD8B00AF3A21 /* PackDataHelper.m */,
 			);
 			name = PackDataHelper;
 			path = iOSStar/AppAPI/SocketAPI/PackDataHelper;
 			sourceTree = SOURCE_ROOT;
-		};
-		6E49A37B1F4FBD8B00AF3A21 /* C++ */ = {
-			isa = PBXGroup;
-			children = (
-				6E49A37C1F4FBD8B00AF3A21 /* checksum.cc */,
-				6E49A37D1F4FBD8B00AF3A21 /* CheckSum.h */,
-			);
-			path = "C++";
-			sourceTree = "<group>";
 		};
 		6E4F03F11F10D73B0003D51F /* DisCoverAPI */ = {
 			isa = PBXGroup;
@@ -3310,7 +3292,6 @@
 				A03A46CD1EEF997B00EAB8B1 /* InputPassVC.swift in Sources */,
 				8E3979EA1F28587800847CCB /* NIMSessionDataSourceImpl.m in Sources */,
 				6E0C6B061EC43A6400D9C2BC /* NewsApi.swift in Sources */,
-				6E49A3811F4FBD8B00AF3A21 /* PackDataHelper.m in Sources */,
 				8E3979EB1F28587800847CCB /* NIMSessionInteractorImpl.m in Sources */,
 				6E193C4E1EBAD3240049AEDE /* MenuWidthLayout.swift in Sources */,
 				6E2D43B11EDEE9DD00DC9643 /* MarketRequestModel.swift in Sources */,
@@ -3349,7 +3330,6 @@
 				6EBE0A011F10894B0042D8B1 /* PhotoBrowserVC.swift in Sources */,
 				6E1616591EAF1F4C00D95CB6 /* NewsViewController.swift in Sources */,
 				A04CF0A51ED6CB6800B93D28 /* SelectPayTypeCell.swift in Sources */,
-				6E49A3801F4FBD8B00AF3A21 /* checksum.cc in Sources */,
 				6E4F03E91F10CF220003D51F /* SellingBuyCountCell.swift in Sources */,
 				A0C14C001F1F77F1005A419D /* HeatBarrageModel.swift in Sources */,
 				6E1616641EB04D0700D95CB6 /* ExchangeViewController.swift in Sources */,
