@@ -131,13 +131,14 @@ extension UIImage{
             let codeImage = UIImage(ciImage: colorFilter.outputImage!
                 .applying(CGAffineTransform(scaleX: 5, y: 5)))
             
-            // 通常,二维码都是定制的,中间都会放想要表达意思的图片
+          
             if let iconImage = qrImageName {
                 let rect = CGRect(x:0, y:0, width:codeImage.size.width,
                                   height:codeImage.size.height)
                 UIGraphicsBeginImageContext(rect.size)
                 
                 codeImage.draw(in: rect)
+                
                 let avatarSize = CGSize(width:rect.size.width * 0.25,
                                         height:rect.size.height * 0.25)
                 let x = (rect.width - avatarSize.width) * 0.5
@@ -145,7 +146,6 @@ extension UIImage{
                 iconImage.draw(in: CGRect(x:x, y:y, width:avatarSize.width,
                                           height:avatarSize.height))
                 let resultImage = UIGraphicsGetImageFromCurrentImageContext()
-                
                 UIGraphicsEndImageContext()
                 return resultImage
             }

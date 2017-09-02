@@ -60,16 +60,7 @@ class QrcodeVC: UIViewController {
         present(actionController, animated: true, completion: nil)
     }
     
-    func captureView(_ theView : UIView)->UIImage{
-        let rect = theView.frame
-        UIGraphicsBeginImageContext(rect.size)
-        let context = UIGraphicsGetCurrentContext()
-        theView.layer.render(in: context!)
-        let img =  UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return img!
-//        test_img.image = img
-    }
+  
     func savedOK(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
         SVProgressHUD.dismiss()
         if error != nil {
