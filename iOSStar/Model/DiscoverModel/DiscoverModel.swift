@@ -100,9 +100,19 @@ class UserAskDetailList: BaseModel {
     dynamic var purchased = 2
     dynamic var thumbnail = ""
     dynamic var videoTimeS = 2
+
     dynamic var thumbnailS = ""
 }
-
+class StarDetailCircle: BaseModel {
+    dynamic var circles: [CircleListModel]?
+    class func circlesModelClass() ->AnyClass {
+        return  CircleListModel.classForCoder()
+    }
+    dynamic var questions: [UserAskDetailList]?
+    class func questionsModelClass() ->AnyClass {
+        return  UserAskDetailList.classForCoder()
+    }
+}
 
 
 class MiuResponeModel: BaseModel{

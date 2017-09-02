@@ -22,4 +22,6 @@ protocol DiscoverAPI {
     func useraskQuestion(requestModel:UserAskRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
     func staraskQuestion(requestModel:StarAskRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
     func peepAnswer(requestModel:PeepVideoOrvoice, complete: CompleteBlock?, error: ErrorBlock?)
+    
+    func requestStarDetail(requestModel:CirCleStarDetail,complete: CompleteBlock?, error: ErrorBlock?)
 }

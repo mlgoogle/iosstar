@@ -16,16 +16,26 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
     @IBOutlet var placeHolder: UILabel!
     @IBOutlet var textNumber: UILabel!
     @IBOutlet weak var videoBtn: UIButton!
+    @IBOutlet weak var voice15Btn: UIButton!
+    @IBOutlet weak var voice30Btn: UIButton!
+    @IBOutlet weak var voice60Btn: UIButton!
     var starModel: StarSortListModel = StarSortListModel()
     var preview : String  = ""
     var thumbnail =  ""
     var totaltime = 0
+    private var lastVoiceBtn: UIButton?
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "像提TA问"
+        title = "向TA提问"
+        voiceSelectBtnTapped(voice15Btn)
         navright()
     }
     
+    @IBAction func voiceSelectBtnTapped(_ sender: UIButton) {
+        lastVoiceBtn?.isSelected = false
+        sender.isSelected = !sender.isSelected
+        lastVoiceBtn = sender
+    }
     func navright(){
         let share = UIButton.init(type: .custom)
         share.frame = CGRect.init(x: 0, y: 0, width: 70, height: 30)
@@ -41,7 +51,7 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
        
         if textView.text == "" {
-            placeHolder.text = "输入你的问题，可选择公开或者私密，公开提问能呗其他用户所见 "
+            placeHolder.text = "输入你的问题，可选择公开或者私密，公开提问能被其他用户所见 "
             placeHolder.isHidden = false
         } else {
             placeHolder.text = ""
@@ -106,7 +116,7 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
         request.starcode = starModel.symbol
         request.uask = inputText.text
         request.videoUrl = self.preview
-        request.cType = totaltime
+        request.cType =  voice15Btn.isSelected ? 0 : (voice30Btn.isSelected ? 1 : (voice60Btn.isSelected ? 2 : 1))
         AppAPIHelper.discoverAPI().videoAskQuestion(requestModel:request, complete: { (result) in
             if let model = result as? ResultModel{
                 if model.result == 0{

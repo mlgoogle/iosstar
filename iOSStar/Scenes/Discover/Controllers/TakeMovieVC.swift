@@ -13,7 +13,7 @@ import Qiniu
 import SVProgressHUD
 class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoUploaderDelegate ,PLPlayerDelegate{
     
-    
+  
     @IBOutlet var content: UILabel!
     @IBOutlet var header: UIImageView!
     @IBOutlet var name: UILabel!
@@ -57,10 +57,12 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     
     //暂停按钮
     lazy var stopBtn: UIButton = {
+        
         let stop = UIButton.init(type: .custom)
         stop.frame = CGRect.init(x: self.view.center.x - 30, y: self.view.center.y - 30, width: 60, height: 60)
         //        stop.setImage(UIImage.init(named: "frontBack"), for: .normal)
-        stop.backgroundColor = UIColor.red
+//        stop.backgroundColor = UIColor.red
+        stop.setImage(UIImage.init(named: "MessageVideoPlay"), for: .normal)
         stop.isHidden = true
         stop.addTarget(self , action: #selector(doplay), for: .touchUpInside)
         return stop
@@ -69,8 +71,8 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     //退出按钮
     lazy var closeBtn: UIButton = {
         let resetBtn = UIButton.init(type: .custom)
-        resetBtn.frame = CGRect.init(x: kScreenWidth - 80, y: 30, width: 25, height: 25)
-        resetBtn.setImage(UIImage.init(named: "close"), for: .normal)
+        resetBtn.frame = CGRect.init(x: kScreenWidth - 80, y: 36, width: 35, height: 35)
+        resetBtn.setImage(UIImage.init(named: "canle"), for: .normal)
         resetBtn.addTarget(self , action: #selector(exit), for: .touchUpInside)
         return resetBtn
     }()

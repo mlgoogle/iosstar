@@ -70,4 +70,11 @@ class DiscoverSocketAPI:BaseSocketAPI, DiscoverAPI{
         
         startModelRequest(packet, modelClass: ResultModel.self, complete: complete, error: error)
     }
+    func requestStarDetail(requestModel:CirCleStarDetail,complete: CompleteBlock?, error: ErrorBlock?){
+    
+        let packet = SocketDataPacket(opcode: .circleListdetail, model: requestModel)
+        
+        startModelRequest(packet, modelClass: StarDetailCircle.self, complete: complete, error: error)
+    
+    }
 }
