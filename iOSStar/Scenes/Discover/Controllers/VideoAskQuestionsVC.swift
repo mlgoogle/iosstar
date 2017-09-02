@@ -51,7 +51,7 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
        
         if textView.text == "" {
-            placeHolder.text = "输入你的问题，可选择公开或者私密，公开提问能呗其他用户所见 "
+            placeHolder.text = "输入你的问题，可选择公开或者私密，公开提问能被其他用户所见 "
             placeHolder.isHidden = false
         } else {
             placeHolder.text = ""

@@ -1626,7 +1626,7 @@
                                             <action selector="videoBtnTapped:" destination="yBz-Hb-ADT" eventType="touchUpInside" id="7ai-wv-GhG"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入你的问题，可选择公开或者私密，公开提问能呗其他用户所见" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esu-V4-Bvg">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入你的问题，可选择公开或者私密，公开提问能被其他用户所见" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esu-V4-Bvg">
                                         <rect key="frame" x="18" y="12" width="338" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31.5" id="p7O-M5-Gzt"/>
@@ -1996,13 +1996,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oov-ft-CbZ">
-                                                    <rect key="frame" x="323.5" y="149" width="37.5" height="17"/>
+                                                    <rect key="frame" x="323.5" y="125" width="37.5" height="41"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Etk-7O-xFx">
-                                                    <rect key="frame" x="14" y="24" width="347" height="112"/>
+                                                    <rect key="frame" x="14" y="0.0" width="347" height="112"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="112" id="h5L-M0-Zdf"/>
@@ -2014,8 +2014,8 @@
                                                         <outlet property="delegate" destination="cUe-8T-2zf" id="8Kc-tn-ksv"/>
                                                     </connections>
                                                 </textView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入你的问题，可选择公开或者私密，公开提问能呗其他用户所见" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3e7-df-2K7">
-                                                    <rect key="frame" x="18" y="30" width="343" height="33.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入你的问题，可选择公开或者私密，公开提问能被其他用户所见" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3e7-df-2K7">
+                                                    <rect key="frame" x="18" y="6" width="343" height="33.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2027,7 +2027,7 @@
                                                 <constraint firstItem="3e7-df-2K7" firstAttribute="leading" secondItem="Etk-7O-xFx" secondAttribute="leading" constant="4" id="c8e-t0-CXo"/>
                                                 <constraint firstItem="Etk-7O-xFx" firstAttribute="leading" secondItem="gZd-c7-G0D" secondAttribute="leading" constant="14" id="cU1-IJ-yuH"/>
                                                 <constraint firstItem="3e7-df-2K7" firstAttribute="trailing" secondItem="Etk-7O-xFx" secondAttribute="trailing" id="etW-3M-lbl"/>
-                                                <constraint firstItem="Etk-7O-xFx" firstAttribute="top" secondItem="gZd-c7-G0D" secondAttribute="top" constant="24" id="hjp-1c-x7r"/>
+                                                <constraint firstItem="Etk-7O-xFx" firstAttribute="top" secondItem="gZd-c7-G0D" secondAttribute="top" id="hjp-1c-x7r"/>
                                                 <constraint firstItem="oov-ft-CbZ" firstAttribute="top" secondItem="Etk-7O-xFx" secondAttribute="bottom" constant="13" id="m6R-oJ-MyS"/>
                                                 <constraint firstItem="3e7-df-2K7" firstAttribute="top" secondItem="Etk-7O-xFx" secondAttribute="top" constant="6" id="vNJ-FV-bKb"/>
                                                 <constraint firstAttribute="trailing" secondItem="oov-ft-CbZ" secondAttribute="trailing" constant="14" id="wFm-tC-PB3"/>
@@ -2149,7 +2149,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ou6-bM-hhy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="613.60000000000002" y="2300.5997001499254"/>
+            <point key="canvasLocation" x="613.5" y="2300.5"/>
         </scene>
         <!--语音历史-->
         <scene sceneID="LBe-Jz-xkf">

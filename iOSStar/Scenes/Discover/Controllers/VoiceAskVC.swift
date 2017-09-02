@@ -97,7 +97,7 @@ class VoiceAskVC: BaseTableViewController ,UITextViewDelegate{
     func textViewDidChange(_ textView: UITextView) {
 //        contentText.text = textView.text
         if textView.text == "" {
-            placeholdLabel.text = "输入你的问题，可选择公开或者私密，公开提问能呗其他用户所见 "
+            placeholdLabel.text = "输入你的问题，可选择公开或者私密，公开提问能被其他用户所见 "
             placeholdLabel.isHidden = false
         } else {
             placeholdLabel.text = ""
