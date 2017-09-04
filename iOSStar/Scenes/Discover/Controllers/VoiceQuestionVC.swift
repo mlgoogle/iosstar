@@ -103,6 +103,9 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
                             if response.result == 0{
                                 model.purchased = 1
                                 tableView.reloadRows(at: [indexPath], with: .none)
+                                if let cell = tableView.cellForRow(at: indexPath) as? VoiceQuestionCell{
+                                    self.voiceimg = cell.voiceImg
+                                }
                                  self.doplay(model)
                             }else{
                                 SVProgressHUD.showWainningMessage(WainningMessage: "您持有的时间不足", ForDuration: 1, completion: nil)
