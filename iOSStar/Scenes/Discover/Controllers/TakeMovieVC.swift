@@ -57,11 +57,8 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     
     //暂停按钮
     lazy var stopBtn: UIButton = {
-        
         let stop = UIButton.init(type: .custom)
         stop.frame = CGRect.init(x: self.view.center.x - 30, y: self.view.center.y - 30, width: 60, height: 60)
-        //        stop.setImage(UIImage.init(named: "frontBack"), for: .normal)
-//        stop.backgroundColor = UIColor.red
         stop.setImage(UIImage.init(named: "MessageVideoPlay"), for: .normal)
         stop.isHidden = true
         stop.addTarget(self , action: #selector(doplay), for: .touchUpInside)
@@ -121,8 +118,8 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         self.view.addSubview(switchBtn)
         self.view.addSubview(sureBtn)
         self.view.addSubview(ProgressView)
-        //
     }
+    
     //MARK: -配置段视频链接
     func configViedeo(){
         let videoConfiguration = PLSVideoConfiguration.default()
@@ -137,6 +134,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         self.shortVideoRecorder?.setBeautifyModeOn(true)
         self.shortVideoRecorder?.startCaptureSession()
     }
+    
     //MARK: -添加手势
     func tap(){
         ProgressView.backgroundColor = UIColor.clear
@@ -149,6 +147,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         stopBtn.isHidden = true
         player?.play()
     }
+    
     //确定按钮
     func didsure(){
         SVProgressHUD.show(withStatus: "上传中")
