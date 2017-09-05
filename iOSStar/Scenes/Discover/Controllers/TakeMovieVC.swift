@@ -129,7 +129,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         let audioConfiguration = PLSAudioConfiguration.default()
         self.shortVideoRecorder = PLShortVideoRecorder.init(videoConfiguration: videoConfiguration!, audioConfiguration: audioConfiguration!)
         self.view.addSubview((self.shortVideoRecorder?.previewView)!)
-        //        self.shortVideoRecorder?.toggleCamera()
+        self.shortVideoRecorder?.toggleCamera()
         self.shortVideoRecorder?.maxDuration = 15.0
         self.shortVideoRecorder?.minDuration = 1.0
         self.shortVideoRecorder?.delegate = self

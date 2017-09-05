@@ -279,6 +279,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         default:
             return 0.01
         }
+        
     }
     func showMore() {
         showMoreIntroduce = false

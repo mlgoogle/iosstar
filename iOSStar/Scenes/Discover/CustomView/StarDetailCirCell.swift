@@ -21,12 +21,13 @@ class StarDetailCirCell: UITableViewCell ,UICollectionViewDelegate,UICollectionV
         
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarDynamicVideoCell", for: indexPath) as! StarDynamicVideoCell
+        cell.Qimg.image = UIImage(named: "novideo")
         if let data = datasource?.circles?[indexPath.row]{
             cell.qtitle.text = data.content
             cell.qtitle.textAlignment = .center
-            cell.Qimg.kf.setImage(with: URL(string : ShareDataModel.share().qiniuHeader + (data.pic_url_tail)), placeholder: UIImage.init(named: "kefu_center"), options: nil, progressBlock: nil, completionHandler: nil)
+            cell.Qimg.kf.setImage(with: URL(string : ShareDataModel.share().qiniuHeader + (data.pic_url_tail)), placeholder: UIImage(named: "novideo"), options: nil, progressBlock: nil, completionHandler: nil)
         }else{
-            cell.qtitle.text = "----"
+            cell.qtitle.text = ""
           
             
         }

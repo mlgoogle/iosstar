@@ -29,12 +29,13 @@ class StarDynamicCell: UITableViewCell ,UICollectionViewDelegate,UICollectionVie
         
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarDynamicVideoCell", for: indexPath) as! StarDynamicVideoCell
+         cell.Qimg.image = UIImage(named: "novideo")
         if let data = datasource?.questions?[indexPath.row]{
         cell.qtitle.text = data.uask
          cell.qtitle.textAlignment = .center
-        cell.Qimg.kf.setImage(with: URL(string : ShareDataModel.share().qiniuHeader + (data.thumbnailS)), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        cell.Qimg.kf.setImage(with: URL(string : ShareDataModel.share().qiniuHeader + (data.thumbnailS)), placeholder: UIImage(named: "novideo"), options: nil, progressBlock: nil, completionHandler: nil)
         }else{
-         cell.qtitle.text = "----"
+         cell.qtitle.text = ""
          
         }
           return cell
