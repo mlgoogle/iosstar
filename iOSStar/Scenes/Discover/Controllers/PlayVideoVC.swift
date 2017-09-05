@@ -87,9 +87,13 @@ class PlayVideoVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timer?.invalidate()
+        
+        
         SVProgressHUD.dismiss()
+        player.playerView?.removeFromSuperview()
         if player.isPlaying{
-            player.stop()
+        
+            player.pause()
         }
     }
     
@@ -135,6 +139,7 @@ extension PlayVideoVC: PLPlayerDelegate{
         if state == .statusPreparing{
             showStartImg.isHidden = false
             stopBtn.isHidden = true
+            
             SVProgressHUD.show(withStatus: "加载中")
             self.view.sendSubview(toBack: showStartImg)
             
@@ -159,7 +164,8 @@ extension PlayVideoVC: PLPlayerDelegate{
                 }else{
                     showStartImg.kf.setImage(with: URL(string : ShareDataModel.share().qiniuHeader + (startModel?.thumbnail)!), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
                 }
-                self.perform(#selector(diplay), with: self, afterDelay: 0)
+                doplay()
+//                self.perform(#selector(doplay), with: self, afterDelay: 0)
                 
             }else if self.playerOnce && !self.playerTwice{
                 stopBtn.isHidden = true
@@ -171,7 +177,7 @@ extension PlayVideoVC: PLPlayerDelegate{
     func doDidmiss(){
       self.dismissController()
     }
-    func diplay(){
+    func doplay(){
         if userPlayer{
             if startModel.video_url != ""{
                 stopBtn.isHidden = false

@@ -92,7 +92,7 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
                     return
                 }
                 
-                self.pushViewController(pushSreing: PlayVideoVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.video_url), pushModel: model, withImg: model.thumbnail != "" ? model.thumbnail  :  "1123.png", complete: { (result) in
+                self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.video_url), pushModel: model, withImg: model.thumbnail != "" ? model.thumbnail  :  "1123.png", complete: { (result) in
                     if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
                         vc.starModel = self.starModel
                         self.navigationController?.pushViewController(vc, animated: true)

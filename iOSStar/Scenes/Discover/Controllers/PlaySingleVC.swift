@@ -83,7 +83,7 @@ class PlaySingleVC : UIViewController {
         timer?.invalidate()
         SVProgressHUD.dismiss()
         if player.isPlaying{
-            player.stop()
+              player.pause()
         }
     }
     

@@ -131,9 +131,6 @@ class VideoQuestionsVC: BasePageListTableViewController {
                             }
                             
                         })
-
-                    
-                        
                     }else{
                         
                         self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS  != "" ? model.thumbnailS  :  "1123.png"  , complete: { (result) in
@@ -143,7 +140,7 @@ class VideoQuestionsVC: BasePageListTableViewController {
                             }
                             
                         })
-                     
+                        
                     }
                 }
                 else{
@@ -176,7 +173,7 @@ class VideoQuestionsVC: BasePageListTableViewController {
                                         }
                                         
                                     })
-    
+                                    
                                 }
                             }
                             else{
