@@ -56,7 +56,7 @@ class StarDetailCirCell: UITableViewCell ,UICollectionViewDelegate,UICollectionV
         
         layout.minimumLineSpacing = CGFloat.init(leftConstant)
         layout.minimumInteritemSpacing = CGFloat.init(leftConstant)
-        layout.itemSize = CGSize.init(width: (kScreenWidth - 15 * 3)/2.0, height: (kScreenWidth - 20 * 3)/3.0 )
+        layout.itemSize = CGSize.init(width: (kScreenWidth - 15 * 3)/2.0, height:  120 )
         self.collectView.collectionViewLayout = layout
         
     }

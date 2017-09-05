@@ -57,7 +57,7 @@ class StarDynamicCell: UITableViewCell ,UICollectionViewDelegate,UICollectionVie
         
         layout.minimumLineSpacing = CGFloat.init(leftConstant)
         layout.minimumInteritemSpacing = CGFloat.init(leftConstant)
-        layout.itemSize = CGSize.init(width: (kScreenWidth - 15 * 4)/3.0, height: (kScreenWidth - 15 * 4)/3.0 )
+        layout.itemSize = CGSize.init(width: (kScreenWidth - 15 * 4)/3.0, height: 100 )
         self.collectView.collectionViewLayout = layout
         
     }

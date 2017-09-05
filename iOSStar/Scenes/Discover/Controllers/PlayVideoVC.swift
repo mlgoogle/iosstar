@@ -90,7 +90,7 @@ class PlayVideoVC: UIViewController {
         
         
         SVProgressHUD.dismiss()
-        player.playerView?.removeFromSuperview()
+//        player.playerView?.removeFromSuperview()
         if player.isPlaying{
         
             player.pause()

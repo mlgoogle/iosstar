@@ -148,6 +148,7 @@ class VideoQuestionsVC: BasePageListTableViewController {
                     request.qid = Int(model.id)
                     request.starcode = starModel.symbol
                     request.cType = model.c_type
+                    request.askUid = model.uid
                     AppAPIHelper.discoverAPI().peepAnswer(requestModel: request, complete: { (result) in
                         if let response = result as? ResultModel{
                             if response.result == 0

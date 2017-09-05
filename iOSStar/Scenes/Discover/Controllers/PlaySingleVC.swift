@@ -82,6 +82,7 @@ class PlaySingleVC : UIViewController {
         super.viewWillDisappear(animated)
         timer?.invalidate()
         SVProgressHUD.dismiss()
+         player.playerView?.removeFromSuperview()
         if player.isPlaying{
               player.pause()
         }
@@ -131,11 +132,6 @@ extension PlaySingleVC: PLPlayerDelegate{
         }
         if state == .statusPlaying{
             SVProgressHUD.dismiss()
-            if !self.playerOnce {
-                
-                self.playerOnce = true
-                
-            }
         }
         if state == .statusStopped{
             if self.playerOnce  {

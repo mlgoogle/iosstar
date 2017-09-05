@@ -25,6 +25,7 @@ class VideoHistoryCell: OEZTableViewCell {
         if let response = data as? UserAskDetailList{
             contentLabel.text = response.uask
             timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
+            voiceCountLabel.text = "\(response.s_total)看过"
         }
     }
     

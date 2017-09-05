@@ -527,13 +527,17 @@
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <constraints>
                                                                         <constraint firstItem="Adm-Wr-4d4" firstAttribute="top" secondItem="4rI-X4-sxe" secondAttribute="bottom" constant="1" id="4PJ-0c-uYE"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="4rI-X4-sxe" secondAttribute="trailing" id="4zc-hh-WaZ"/>
+                                                                        <constraint firstItem="4rI-X4-sxe" firstAttribute="top" secondItem="wah-kJ-6N9" secondAttribute="top" constant="1" id="626-R9-1bE"/>
                                                                         <constraint firstAttribute="trailing" secondItem="Adm-Wr-4d4" secondAttribute="trailing" id="6LX-6p-erh"/>
                                                                         <constraint firstItem="Adm-Wr-4d4" firstAttribute="leading" secondItem="wah-kJ-6N9" secondAttribute="leading" id="Emg-Wt-nf5"/>
                                                                         <constraint firstItem="4rI-X4-sxe" firstAttribute="top" secondItem="wah-kJ-6N9" secondAttribute="top" constant="1" id="LIP-AP-vrJ"/>
                                                                         <constraint firstAttribute="trailing" secondItem="4rI-X4-sxe" secondAttribute="trailing" id="Xcq-YF-Ry9"/>
                                                                         <constraint firstItem="4rI-X4-sxe" firstAttribute="leading" secondItem="wah-kJ-6N9" secondAttribute="leading" id="fcX-ee-c9o"/>
                                                                         <constraint firstAttribute="trailing" secondItem="4rI-X4-sxe" secondAttribute="trailing" id="n1F-Px-caT"/>
+                                                                        <constraint firstItem="Adm-Wr-4d4" firstAttribute="top" secondItem="4rI-X4-sxe" secondAttribute="bottom" constant="1" id="tfR-dz-KNF"/>
                                                                         <constraint firstItem="4rI-X4-sxe" firstAttribute="top" secondItem="wah-kJ-6N9" secondAttribute="top" constant="1" id="vPJ-6n-d4w"/>
+                                                                        <constraint firstItem="4rI-X4-sxe" firstAttribute="leading" secondItem="wah-kJ-6N9" secondAttribute="leading" id="vtr-Qd-KCZ"/>
                                                                         <constraint firstItem="Adm-Wr-4d4" firstAttribute="top" secondItem="4rI-X4-sxe" secondAttribute="bottom" constant="1" id="wuV-PR-NLY"/>
                                                                         <constraint firstItem="4rI-X4-sxe" firstAttribute="leading" secondItem="wah-kJ-6N9" secondAttribute="leading" id="xIa-xw-ikS"/>
                                                                         <constraint firstAttribute="bottom" secondItem="Adm-Wr-4d4" secondAttribute="bottom" id="xhZ-Q6-P2m"/>
@@ -1416,11 +1420,18 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYN-XS-2wh">
+                                            <rect key="frame" x="12" y="30" width="44" height="42"/>
+                                            <connections>
+                                                <action selector="pushDetail:" destination="btw-Ng-wUf" eventType="touchUpInside" id="g0g-KX-C2H"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="B9r-dw-V6W" firstAttribute="top" secondItem="hgw-38-myT" secondAttribute="bottom" id="5ln-sj-C8U"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ZRO-6V-pD1" secondAttribute="trailing" constant="16" id="7U7-n0-wZl"/>
                                         <constraint firstItem="ech-6b-Y1F" firstAttribute="leading" secondItem="QYw-kP-Bgv" secondAttribute="leading" id="7ks-rX-dVS"/>
+                                        <constraint firstItem="iYN-XS-2wh" firstAttribute="bottom" secondItem="RMP-sT-lS9" secondAttribute="bottom" constant="2" id="Css-d0-H2Y"/>
                                         <constraint firstItem="hgw-38-myT" firstAttribute="leading" secondItem="QYw-kP-Bgv" secondAttribute="leading" id="EQc-cn-Jv7"/>
                                         <constraint firstItem="ZRO-6V-pD1" firstAttribute="top" secondItem="QYw-kP-Bgv" secondAttribute="bottom" constant="8" id="Eq3-Ai-OSL"/>
                                         <constraint firstItem="ech-6b-Y1F" firstAttribute="bottom" secondItem="a9C-4Q-E3y" secondAttribute="bottomMargin" constant="-8" id="Ftr-Mt-sbQ"/>
@@ -1434,7 +1445,10 @@
                                         <constraint firstItem="RMP-sT-lS9" firstAttribute="leading" secondItem="a9C-4Q-E3y" secondAttribute="leading" constant="12" id="kBs-Xf-4U7"/>
                                         <constraint firstItem="RMP-sT-lS9" firstAttribute="top" secondItem="a9C-4Q-E3y" secondAttribute="top" constant="30" id="lW2-X6-rwz"/>
                                         <constraint firstItem="ech-6b-Y1F" firstAttribute="top" secondItem="hgw-38-myT" secondAttribute="bottom" constant="8" id="nAU-1j-DYg"/>
+                                        <constraint firstItem="iYN-XS-2wh" firstAttribute="leading" secondItem="RMP-sT-lS9" secondAttribute="leading" id="q0y-pc-dNg"/>
                                         <constraint firstItem="B9r-dw-V6W" firstAttribute="bottom" secondItem="a9C-4Q-E3y" secondAttribute="bottomMargin" id="qGY-UB-dfd"/>
+                                        <constraint firstItem="iYN-XS-2wh" firstAttribute="top" secondItem="RMP-sT-lS9" secondAttribute="top" id="shM-Hy-hSt"/>
+                                        <constraint firstItem="iYN-XS-2wh" firstAttribute="trailing" secondItem="RMP-sT-lS9" secondAttribute="trailing" constant="4" id="wa8-sE-jkn"/>
                                         <constraint firstItem="QYw-kP-Bgv" firstAttribute="centerY" secondItem="RMP-sT-lS9" secondAttribute="centerY" id="zaF-Aj-avT"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -1575,7 +1589,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TeJ-5y-TeH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2965.5999999999999" y="712.89355322338838"/>
+            <point key="canvasLocation" x="2965.5" y="712.5"/>
         </scene>
         <!--Video Ask QuestionsVC-->
         <scene sceneID="Szk-7b-bcR">
