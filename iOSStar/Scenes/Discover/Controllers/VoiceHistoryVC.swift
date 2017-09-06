@@ -35,6 +35,9 @@ class VoiceHistoryCell: OEZTableViewCell {
             let attr = NSMutableAttributedString.init(string: titleTip)
             title.attributedText = attr
             voiceCountLabel.text = "听过\(response.s_total)"
+            if !response.isplay{
+                voiceImg.image = UIImage.init(named: String.init(format: "listion"))
+            }
             //            voiceBtn.setAttributedTitle(attr, for: .normal)
             //            voiceBtn.setImage(UIImage.init(named: String.init(format: "listion")), for: .normal)
         }
@@ -45,6 +48,7 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
     @IBOutlet weak var titlesView: UIView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var openButton: UIButton!
+    var selectRow = 99999999
     var voiceimg: UIImageView!
     var time = 1
     var isplayIng = false
@@ -117,6 +121,7 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
         if let cell = tableView.cellForRow(at: indexPath) as? VoiceHistoryCell{
             voiceimg = cell.voiceImg
         }
+        
         if let model = self.dataSource?[indexPath.row] as? UserAskDetailList{
             
             if model.answer_t == 0{
@@ -124,16 +129,26 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
                 return
             }
             let url = URL(string: ShareDataModel.share().qiniuHeader +  model.sanswer)
-           
+             model.isplay = true
             PLPlayerHelper.shared().player.play(with: url)
          
             PLPlayerHelper.shared().resultBlock =  {  [weak self] (result) in
                 if let status = result as? PLPlayerStatus{
                     if status == .statusStopped{
+                        if let arr = self?.dataSource?[0] as? Array<AnyObject>{
+                            if let model = arr[(self?.selectRow)!] as? UserAskDetailList{
+                                model.isplay = false
+                            }
+                        }
                         PLPlayerHelper.shared().doChanggeStatus(4)
                         self?.voiceimg.image = UIImage.init(named: String.init(format: "listion"))
                     }
                       if status == .statusPaused{
+                        if let arr = self?.dataSource?[0] as? Array<AnyObject>{
+                            if let model = arr[(self?.selectRow)!] as? UserAskDetailList{
+                                model.isplay = false
+                            }
+                        }
                         PLPlayerHelper.shared().doChanggeStatus(4)
                         self?.voiceimg.image = UIImage.init(named: String.init(format: "listion"))
                     }

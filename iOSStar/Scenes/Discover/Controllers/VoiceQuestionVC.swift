@@ -43,7 +43,7 @@ class VoiceQuestionCell: OEZTableViewCell{
                 title.attributedText = attr
                 
             }
-            if !isplay{
+            if !response.isplay{
               voiceImg.image = UIImage.init(named: String.init(format: "listion"))
             }
            
