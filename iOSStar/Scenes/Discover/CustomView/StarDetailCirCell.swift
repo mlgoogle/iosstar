@@ -21,12 +21,13 @@ class StarDetailCirCell: UITableViewCell ,UICollectionViewDelegate,UICollectionV
         
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarDynamicVideoCell", for: indexPath) as! StarDynamicVideoCell
+        cell.Qimg.image = UIImage(named: "novideo")
         if let data = datasource?.circles?[indexPath.row]{
             cell.qtitle.text = data.content
             cell.qtitle.textAlignment = .center
-            cell.Qimg.kf.setImage(with: URL(string : ShareDataModel.share().qiniuHeader + (data.pic_url_tail)), placeholder: UIImage.init(named: "kefu_center"), options: nil, progressBlock: nil, completionHandler: nil)
+            cell.Qimg.kf.setImage(with: URL(string : ShareDataModel.share().qiniuHeader + (data.pic_url_tail)), placeholder: UIImage(named: "novideo"), options: nil, progressBlock: nil, completionHandler: nil)
         }else{
-            cell.qtitle.text = "----"
+            cell.qtitle.text = ""
           
             
         }
@@ -37,12 +38,7 @@ class StarDetailCirCell: UITableViewCell ,UICollectionViewDelegate,UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if datasource?.circles != nil{
-            if (datasource?.circles?.count)! > 2 {
-              return 2
-            }
-            return (datasource?.circles?.count)!
-        }
+       
         return 2
     }
     
@@ -55,7 +51,7 @@ class StarDetailCirCell: UITableViewCell ,UICollectionViewDelegate,UICollectionV
         
         layout.minimumLineSpacing = CGFloat.init(leftConstant)
         layout.minimumInteritemSpacing = CGFloat.init(leftConstant)
-        layout.itemSize = CGSize.init(width: (kScreenWidth - 15 * 3)/2.0, height: (kScreenWidth - 20 * 3)/3.0 )
+        layout.itemSize = CGSize.init(width: (kScreenWidth - 15 * 3)/2.0, height:  120 )
         self.collectView.collectionViewLayout = layout
         
     }

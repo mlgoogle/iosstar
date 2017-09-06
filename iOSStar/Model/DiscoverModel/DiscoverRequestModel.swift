@@ -73,10 +73,13 @@ class StarAskRequestModel: BaseModel{
     var count =     10
     var aType = 0
     var pType = 0
+    
 }
 class PeepVideoOrvoice: BaseModel {
     var  uid      =     StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
     var  qid      =     0
     var  starcode =     ""
     var  cType    =     0
+    
+    var askUid = 0
 }

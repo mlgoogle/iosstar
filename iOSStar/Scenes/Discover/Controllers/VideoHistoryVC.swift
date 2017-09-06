@@ -25,6 +25,7 @@ class VideoHistoryCell: OEZTableViewCell {
         if let response = data as? UserAskDetailList{
             contentLabel.text = response.uask
             timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
+            voiceCountLabel.text = "\(response.s_total)看过"
         }
     }
     
@@ -63,40 +64,42 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
                     SVProgressHUD.showErrorMessage(ErrorMessage: "明星还没回复", ForDuration: 2, completion: nil)
                     return
                 }
-                 if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: PlayVideoVC.className()) as? PlayVideoVC{
-                    vc.startModel = model
-                    present(vc, animated: true, completion: {
-                        vc.play(ShareDataModel.share().qiniuHeader + model.sanswer)
-                    })
-                    vc.resultBlock = { (result ) in
+                if model.video_url != ""{
+                    self.pushViewController(pushSreing: PlayVideoVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png", complete: { (result) in
                         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
-                            vc.starModel = self.starModel
+                            
                             self.navigationController?.pushViewController(vc, animated: true)
                         }
-                    }
+                    })
+        
+                }else{
+                    self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png", complete: { (result) in
+                        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                            
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                        
+                    })
+                    
                 }
             }
         }
         if action ==  2{
             
             if let model = dataSource?[indexPath.row] as? UserAskDetailList{
-              
+                
                 if model.video_url == ""{
                     SVProgressHUD.showErrorMessage(ErrorMessage: "没有提问视频问题", ForDuration: 2, completion: nil)
                     return
                 }
-                if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "PlayVideoVC") as? PlayVideoVC{
-                    vc.startModel = model
-                    present(vc, animated: true, completion: {
-                        vc.play(ShareDataModel.share().qiniuHeader + model.video_url)
-                    })
-                    vc.resultBlock = { (result ) in
-                        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
-                            vc.starModel = self.starModel
-                            self.navigationController?.pushViewController(vc, animated: true)
-                        }
+                
+                self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.video_url), pushModel: model, withImg: model.thumbnail != "" ? model.thumbnail  :  "1123.png", complete: { (result) in
+                    if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                        vc.starModel = self.starModel
+                        self.navigationController?.pushViewController(vc, animated: true)
                     }
-                }
+                })
+                
             }
         }
     }
@@ -136,7 +139,7 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
             }
             
         }) { (error) in
-             self.didRequestComplete(nil)
+            self.didRequestComplete(nil)
         }
     }
     
