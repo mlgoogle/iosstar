@@ -18,7 +18,7 @@ class VoiceQuestionCell: OEZTableViewCell{
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var title: UILabel!
-    
+    var isplay = false
     @IBOutlet weak var nameLabel: UILabel!
     override func awakeFromNib() {
         self.selectionStyle = .none
@@ -43,7 +43,10 @@ class VoiceQuestionCell: OEZTableViewCell{
                 title.attributedText = attr
                 
             }
-            
+            if !isplay{
+              voiceImg.image = UIImage.init(named: String.init(format: "listion"))
+            }
+           
             voiceBtn.addTarget(self, action: #selector(dopeep), for: .touchUpInside)
             voiceCountLabel.text = "\(response.s_total)人听过"
         }
@@ -58,6 +61,7 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
     
     var starModel: StarSortListModel = StarSortListModel()
     var voiceimg: UIImageView!
+    var selectRow = 99999999
     var height = UIScreen.main.bounds.size.height - 64
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +84,7 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
     
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!){
         if let arr = self.dataSource?[0] as? Array<AnyObject>{
+            
             if PLPlayerHelper.shared().player.isPlaying{
                 PLPlayerHelper.shared().player.stop()
             }
@@ -89,9 +94,11 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
             if let cell = tableView.cellForRow(at: indexPath) as? VoiceQuestionCell{
                 voiceimg = cell.voiceImg
             }
-            
+            selectRow = indexPath.row
             if let model = arr[indexPath.row] as? UserAskDetailList{
                 if model.purchased == 1{
+                    
+                    model.isplay = true
                     doplay(model)
                 }else{
                     let request = PeepVideoOrvoice()
@@ -103,6 +110,7 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
                         if let response = result as? ResultModel{
                             if response.result == 0{
                                 model.purchased = 1
+                                model.isplay = true
                                 tableView.reloadRows(at: [indexPath], with: .none)
                                 if let cell = tableView.cellForRow(at: indexPath) as? VoiceQuestionCell{
                                     self.voiceimg = cell.voiceImg
@@ -175,10 +183,20 @@ extension VoiceQuestionVC{
         PLPlayerHelper.shared().resultBlock =  {  [weak self] (result) in
             if let status = result as? PLPlayerStatus{
                 if status == .statusStopped{
+                    if let arr = self?.dataSource?[0] as? Array<AnyObject>{
+                    if let model = arr[(self?.selectRow)!] as? UserAskDetailList{
+                      model.isplay = false
+                    }
+                    }
                     PLPlayerHelper.shared().doChanggeStatus(4)
                     self?.voiceimg.image = UIImage.init(named: String.init(format: "listion"))
                 }
                 if status == .statusPaused{
+                    if let arr = self?.dataSource?[0] as? Array<AnyObject>{
+                    if let model = arr[(self?.selectRow)!] as? UserAskDetailList{
+                        model.isplay = false
+                        }
+                    }
                     PLPlayerHelper.shared().doChanggeStatus(4)
                     self?.voiceimg.image = UIImage.init(named: String.init(format: "listion"))
                 }
@@ -192,6 +210,7 @@ extension VoiceQuestionVC{
                 }
                 if status == .statusError{
                     PLPlayerHelper.shared().doChanggeStatus(4)
+                    
                     self?.voiceimg.image = UIImage.init(named: String.init(format: "listion"))
                 }
             }

@@ -27,7 +27,7 @@ class PLPlayerHelper: NSObject, PLPlayerDelegate {
             
         }
          count = count + 1
-        self.perform(#selector(changeImg), with: self, afterDelay: 0.5)
+        self.perform(#selector(changeImg), with: self, afterDelay: 0.3)
         
     }
     func changeImg(){

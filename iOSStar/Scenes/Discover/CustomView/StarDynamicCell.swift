@@ -15,12 +15,12 @@ protocol StarDynamicCellDelegate {
 
 class StarDynamicCell: UITableViewCell ,UICollectionViewDelegate,UICollectionViewDataSource{
     
-   
+    
     @IBOutlet var collectView: UICollectionView!
     var datasource : StarDetailCircle?{
         didSet{
             collectView?.reloadData()
-        
+            
         }
         
     }
@@ -29,27 +29,26 @@ class StarDynamicCell: UITableViewCell ,UICollectionViewDelegate,UICollectionVie
         
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarDynamicVideoCell", for: indexPath) as! StarDynamicVideoCell
-         cell.Qimg.image = UIImage(named: "novideo")
+        cell.Qimg.image = UIImage(named: "novideo")
         if let data = datasource?.questions?[indexPath.row]{
-        cell.qtitle.text = data.uask
-         cell.qtitle.textAlignment = .center
-        cell.Qimg.kf.setImage(with: URL(string : ShareDataModel.share().qiniuHeader + (data.thumbnailS)), placeholder: UIImage(named: "novideo"), options: nil, progressBlock: nil, completionHandler: nil)
+            cell.qtitle.text = data.uask
+            cell.qtitle.textAlignment = .center
+            cell.Qimg.kf.setImage(with: URL(string : ShareDataModel.share().qiniuHeader + (data.thumbnailS)), placeholder: UIImage(named: "novideo"), options: nil, progressBlock: nil, completionHandler: nil)
         }else{
-         cell.qtitle.text = ""
-         
+            cell.qtitle.text = ""
+            cell.Qimg.image = UIImage(named: "novideo")
+            
         }
-          return cell
-      
+        return cell
+        
     }
-
-   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
-        return (datasource?.questions?.count) ?? 3
+        
+        return  3
     }
-
-
-   
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -61,21 +60,21 @@ class StarDynamicCell: UITableViewCell ,UICollectionViewDelegate,UICollectionVie
         self.collectView.collectionViewLayout = layout
         
     }
-
-   
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if let data = datasource?.questions?[indexPath.row]{
-        delegate?.starask(_select: data)
+            delegate?.starask(_select: data)
         }
         
-    
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

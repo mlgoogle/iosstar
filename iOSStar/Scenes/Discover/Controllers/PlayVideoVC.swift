@@ -53,9 +53,7 @@ class PlayVideoVC: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateGrogress), userInfo: nil, repeats: true)
     }
     func updateGrogress(){
-        
-        
-        if player.totalDuration.value  == 0{
+      if player.totalDuration.value  == 0{
             return
         }
         if self.playerOnce && self.playerTwice {

@@ -66,8 +66,7 @@ class PlayVC: UIViewController {
         groupLb?.frame = CGRect.init(x: 20, y: 30, width: 0 , height: 5)
         totaltime = 0
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateGrogress), userInfo: nil, repeats: true)
-        
-         start?.isHidden  = true
+        start?.isHidden  = true
     }
     
     func updateGrogress(){

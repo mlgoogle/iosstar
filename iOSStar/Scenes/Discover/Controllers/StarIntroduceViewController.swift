@@ -52,8 +52,7 @@ class StarIntroduceViewController: UIViewController {
         
         if let response = result as? StarDetailCircle{
          self.StarDetail = response
-        self.tableView.reloadRows(at: [IndexPath.init(item: 0, section: 3)], with: .none)
-         self.tableView.reloadRows(at: [IndexPath.init(item: 0, section: 4)], with: .none)
+        self.tableView.reloadData()
         }
        
       }) { (error ) in
@@ -135,7 +134,7 @@ class StarIntroduceViewController: UIViewController {
         if checkUrl(url: starDetailModel?.portray4) {
             images.append(starDetailModel!.portray4)
         }
-        self.tableView.reloadData()
+       self.tableView.reloadData()
         
     }
     
@@ -150,7 +149,7 @@ class StarIntroduceViewController: UIViewController {
         AppAPIHelper.marketAPI().requestStarExperience(code: starModel!.symbol, complete: { (response) in
             if let models =  response as? [ExperienceModel] {
                 self.expericences = models
-                self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+                self.tableView.reloadData()
             }
         }) { (error) in
             

@@ -38,12 +38,7 @@ class StarDetailCirCell: UITableViewCell ,UICollectionViewDelegate,UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if datasource?.circles != nil{
-            if (datasource?.circles?.count)! > 2 {
-              return 2
-            }
-            return (datasource?.circles?.count)!
-        }
+       
         return 2
     }
     

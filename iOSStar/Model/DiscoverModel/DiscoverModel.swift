@@ -100,7 +100,7 @@ class UserAskDetailList: BaseModel {
     dynamic var purchased = 2
     dynamic var thumbnail = ""
     dynamic var videoTimeS = 2
-
+    dynamic var isplay = false
     dynamic var thumbnailS = ""
 }
 class StarDetailCircle: BaseModel {
