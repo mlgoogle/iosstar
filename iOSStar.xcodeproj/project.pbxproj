@@ -299,6 +299,8 @@
 		8E73BEB61F2ED6DC008E21EC /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E73BEB51F2ED6DC008E21EC /* iconfont.ttf */; };
 		8E73BF671F307010008E21EC /* GuideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E73BF661F307010008E21EC /* GuideVC.swift */; };
 		8E9D05E21F010A4F00A9F852 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D05E11F010A4F00A9F852 /* UIButton+Extension.swift */; };
+		8EB2D7911F62A90A00C63EED /* VoiceManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB2D7901F62A90A00C63EED /* VoiceManagerVC.swift */; };
+		8EB2D7931F62A96C00C63EED /* VideoManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB2D7921F62A96C00C63EED /* VideoManagerVC.swift */; };
 		8ED327881F2976DE0034544E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31511EA8469900F85308 /* CoreMedia.framework */; };
 		8ED327891F2976F00034544E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31531EA846A100F85308 /* AudioToolbox.framework */; };
 		8ED3278A1F2977040034544E /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31551EA846AC00F85308 /* VideoToolbox.framework */; };
@@ -903,6 +905,8 @@
 		8E73BEB51F2ED6DC008E21EC /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
 		8E73BF661F307010008E21EC /* GuideVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideVC.swift; sourceTree = "<group>"; };
 		8E9D05E11F010A4F00A9F852 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		8EB2D7901F62A90A00C63EED /* VoiceManagerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceManagerVC.swift; sourceTree = "<group>"; };
+		8EB2D7921F62A96C00C63EED /* VideoManagerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoManagerVC.swift; sourceTree = "<group>"; };
 		8EE915401F4152C000C53884 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		8EF14BC71F26F0C800551DA1 /* Deal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Deal.storyboard; sourceTree = "<group>"; };
 		8EFC7DEF1F453D15004FFE3C /* VoiceAskVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceAskVC.swift; sourceTree = "<group>"; };
@@ -1536,6 +1540,8 @@
 				A0BB530B1F4FD31100E3FE6B /* PreViewVC.swift */,
 				8E4092151F4FFFA500B49438 /* PlayVideoVC.swift */,
 				A06F32EB1F53BAA400521BB3 /* VoiceVC.swift */,
+				8EB2D7901F62A90A00C63EED /* VoiceManagerVC.swift */,
+				8EB2D7921F62A96C00C63EED /* VideoManagerVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -3265,6 +3271,7 @@
 				A08569FA1EB08FCA004F349B /* BaseNavigationController.swift in Sources */,
 				6E22721D1EF941B300AF9579 /* CommenModel.swift in Sources */,
 				8E3979FA1F28587800847CCB /* NIMSessionUnknowContentView.m in Sources */,
+				8EB2D7931F62A96C00C63EED /* VideoManagerVC.swift in Sources */,
 				A07238A11EA76AA300E755DB /* SVProgressHUDExt.swift in Sources */,
 				6E88DA581ED4520A00EAA905 /* DetailCommenViewController.swift in Sources */,
 				8E3979AB1F28587800847CCB /* NSString+NIMKit.m in Sources */,
@@ -3585,6 +3592,7 @@
 				6EFFC21C1EF381640041A3BD /* PositionStarCell.swift in Sources */,
 				8E3979C81F28587800847CCB /* NIMInputAtCache.m in Sources */,
 				A05A3D4A1EEA464800476481 /* UIViewController+Extension.swift in Sources */,
+				8EB2D7911F62A90A00C63EED /* VoiceManagerVC.swift in Sources */,
 				6E88DA981ED554B100EAA905 /* GradualColorView.swift in Sources */,
 				A07DF7CC1EC072B700C2254E /* UserApi.swift in Sources */,
 				6E73B8B11F1DBDDF002901FC /* DiscoverModel.swift in Sources */,

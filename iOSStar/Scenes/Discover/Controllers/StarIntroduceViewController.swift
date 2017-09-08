@@ -425,14 +425,14 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         //
 //        SVProgressHUD.showErrorMessage(ErrorMessage:  "敬请期待", ForDuration: 2, completion: nil)
 //        return
-        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VideoQuestionsVC.className()) as? VideoQuestionsVC{
+        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VideoManagerVC.className()) as? VideoManagerVC{
             vc.starModel = starModel!
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     func voice(){
         
-        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VoiceQuestionVC") as? VoiceQuestionVC{
+        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VoiceManagerVC") as? VoiceManagerVC{
             vc.starModel = starModel!
             self.navigationController?.pushViewController(vc, animated: true)
         }
