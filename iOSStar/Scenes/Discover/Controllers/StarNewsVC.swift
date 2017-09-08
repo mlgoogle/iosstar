@@ -66,6 +66,10 @@ class NewsCell: OEZTableViewCell {
     func showPicGestureTapped(_ gesture: UITapGestureRecognizer) {
         didSelectRowAction(UInt(103), data: newsPicUrl)
     }
+    @IBAction func pushDetail(_ sender: Any) {
+        
+        didSelectRowAction(UInt(200), data: newsPicUrl)
+    }
 }
 
 class ThumbupCell: OEZTableViewCell {
@@ -191,6 +195,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
         case comment = 101
         case reply = 102
         case showPic = 103
+        case pushDetail = 200
     }
     
     func endRefresh() {
@@ -418,6 +423,21 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
                 let vc = PhotoBrowserVC(delegate: self)
                 present(vc!, animated: true, completion: nil)
             }
+        case cellAction.pushDetail.rawValue:
+            StartModel.getStartName(startCode: model.symbol) { (response) in
+                let star = response as? StartModel
+                let starListModel = StarSortListModel()
+                
+                starListModel.symbol = model.symbol
+                starListModel.name = model.symbol_name
+                starListModel.pic_tail  = (star?.pic_url_tail)!
+                let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
+                introVC.starModel = starListModel
+                
+                self.navigationController?.pushViewController(introVC, animated: true)
+            }
+            break
+            
         default:
             print("")
         }
