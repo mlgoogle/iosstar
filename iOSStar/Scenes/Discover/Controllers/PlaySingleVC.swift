@@ -131,6 +131,8 @@ extension PlaySingleVC: PLPlayerDelegate{
             
         }
         if state == .statusPlaying{
+            
+            self.playerOnce = true
             SVProgressHUD.dismiss()
         }
         if state == .statusStopped{

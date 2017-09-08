@@ -84,7 +84,6 @@ class VideoQuestionsVC: BasePageListTableViewController {
     override func tableView(_ tableView: UITableView, cellIdentifierForRowAtIndexPath indexPath: IndexPath) -> String? {
         return VideoQuestionCell.className()
     }
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let arr = self.dataSource?[0] as? Array<AnyObject>{
             if let model = arr[indexPath.row] as? UserAskDetailList{

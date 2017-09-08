@@ -39,7 +39,7 @@ class VoiceManagerVC: UIViewController {
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VoiceQuestionVC") as? VoiceQuestionVC{
             videoVC =  vc
             vc.starModel = starModel
-            vc.view.frame = CGRect.init(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight-128)
+            vc.view.frame = CGRect.init(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight-64)
             contentView.addSubview(vc.view)
             addChildViewController(vc)
         }

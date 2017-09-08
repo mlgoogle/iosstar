@@ -31,14 +31,14 @@ class VideoManagerVC: UIViewController {
             vc.starModel = starModel
             _ = self.navigationController?.pushViewController(vc, animated: true)
         }
-    }
+    }   
     
     func initUI() {
         title = "视频定制"
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoQuestionsVC") as? VideoQuestionsVC{
             videoVC =  vc
             vc.starModel = starModel
-            vc.view.frame = CGRect.init(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight-128)
+            vc.view.frame = CGRect.init(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight-64)
             contentView.addSubview(vc.view)
             addChildViewController(vc)
             

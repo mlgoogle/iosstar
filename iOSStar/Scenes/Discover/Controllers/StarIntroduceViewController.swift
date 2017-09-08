@@ -330,10 +330,11 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
-//              return expericences?.count ?? 0
             if showMoreIntroduce{
                 if expericences != nil{
                     return 1
+                }else{
+                  return 0
                 }
                 
             }else{
