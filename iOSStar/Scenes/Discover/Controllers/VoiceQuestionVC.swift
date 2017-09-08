@@ -146,7 +146,7 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
     override func didRequest(_ pageIndex: Int) {
         
         let model = StarAskRequestModel()
-        model.pos = (pageIndex - 1) * 10
+        model.pos = pageIndex == 1 ? 1 : dataSource?.count ?? 0
         model.starcode = starModel.symbol
         model.aType = 2
         model.pType = 1

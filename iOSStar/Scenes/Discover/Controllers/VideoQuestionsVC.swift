@@ -78,14 +78,27 @@ class VideoQuestionsVC: BasePageListTableViewController {
     
     override func didRequest(_ pageIndex: Int) {
         let model = StarAskRequestModel()
-        model.pos = (pageIndex - 1) * 10
+        model.pos = pageIndex == 1 ? 1 : dataSource?[0].count ?? 0
         model.starcode = starModel.symbol
         model.aType = 1
         model.pType = 1
+//         model.pType = 1
         AppAPIHelper.discoverAPI().staraskQuestion(requestModel: model, complete: { [weak self](result) in
             if let response = result as? UserAskList {
-                self?.didRequestComplete([response.circle_list] as AnyObject )
+                if pageIndex == 1{
+                    self?.didRequestComplete([response.circle_list] as AnyObject)
+                    if (self?.dataSource != nil){
+                        self?.height = 64
+                    }
+                    self?.tableView.reloadData()
+                return
+                }
+                
                 if (self?.dataSource != nil){
+                    if var arr = self?.dataSource?[0] as? Array<AnyObject>{
+                       arr = arr + response.circle_list!
+                        self?.dataSource?[0] = arr as AnyObject
+                    }
                     self?.height = 64
                 }
                 self?.tableView.reloadData()
