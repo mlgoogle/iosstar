@@ -49,6 +49,7 @@ class VoiceAskVC: BaseTableViewController ,UITextViewDelegate{
     func publish(){
         if contentText.text == ""{
             SVProgressHUD.showErrorMessage(ErrorMessage: "请输入问答内容", ForDuration: 2, completion: nil)
+            return
         }
         let request = AskRequestModel()
         request.pType = switchopen.isOn ? 1 : 0

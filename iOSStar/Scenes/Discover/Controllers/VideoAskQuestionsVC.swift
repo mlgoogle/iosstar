@@ -78,9 +78,40 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
     
     @IBAction func videoBtnTapped(_ sender: UIButton) {
         //TakeMovieVC
-        if inputText.text == ""{
+         inputText.resignFirstResponder()
+        if  inputText.text == ""{
             SVProgressHUD.showErrorMessage(ErrorMessage: "请输入问题", ForDuration: 2, completion: nil)
             return
+        }
+        
+        
+        if !AppConfigHelper.shared().getAVAuthorizationStatusRestricted(){
+            let alertVC = UIAlertController(title: "提示", message: "请在设备的\"设置-隐私-麦克风\"中允许使用麦克风", preferredStyle: UIAlertControllerStyle.alert)
+            let alertActionOK = UIAlertAction(title: "确定", style: .default, handler: nil)
+//                action in
+//                  UIApplication.shared.openURL(URL(string: "prefs:root=Privacy&path=CAMERA")!)
+//            )
+            let alertActionCancel = UIAlertAction(title: "取消", style: .default, handler: nil)
+            alertVC.addAction(alertActionCancel)
+            alertVC.addAction(alertActionOK)
+        
+            self.present(alertVC, animated: true, completion: nil)
+           
+             return
+
+        }
+        if !AppConfigHelper.shared().getcameraAuthorizationStatusRestricted(){
+            let alertVC = UIAlertController(title: "提示", message: "请在设备的\"设置-隐私-相机\"中允许访问相机", preferredStyle: .alert)
+            let alertActionOK = UIAlertAction(title: "确定", style: .default, handler: nil)
+//            let alertActionCancel = UIAlertAction(title: "取消", style: .default, handler:  {
+//                action in
+//                 UIApplication.shared.openURL(URL(string: "prefs:root=Privacy&path=CAMERA")!)
+//                })
+//            alertVC.addAction(alertActionCancel)
+            alertVC.addAction(alertActionOK)
+            self.present(alertVC, animated: true, completion: nil)
+          return
+           
         }
         
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: TakeMovieVC.className()) as? TakeMovieVC{
@@ -105,9 +136,11 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
     }
     
     func publish(){
-        if self.preview ==  ""{
-            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入视频内容", ForDuration: 2, completion: nil)
+        if self.inputText.text ==  ""{
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请输入问答内容", ForDuration: 2, completion: nil)
+            return
         }
+        
         
         let request = AskRequestModel()
         request.pType = publicSwitch.isOn ? 1 : 0
@@ -116,7 +149,7 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
         request.starcode = starModel.symbol
         request.uask = inputText.text
         request.videoUrl = self.preview
-        request.cType =  voice15Btn.isSelected ? 0 : (voice30Btn.isSelected ? 1 : (voice60Btn.isSelected ? 2 : 1))
+        request.cType =  voice15Btn.isSelected ? 0 : (voice30Btn.isSelected ? 1 : (voice60Btn.isSelected ? 3 : 1))
         AppAPIHelper.discoverAPI().videoAskQuestion(requestModel:request, complete: { (result) in
             if let model = result as? ResultModel{
                 if model.result == 0{

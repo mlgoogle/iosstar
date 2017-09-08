@@ -115,7 +115,10 @@ class VideoQuestionsVC: BasePageListTableViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return height
     }
-    
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let arr = self.dataSource?[0] as? Array<AnyObject>{
             if let model = arr[indexPath.row] as? UserAskDetailList{
@@ -204,6 +207,7 @@ class VideoQuestionsVC: BasePageListTableViewController {
         return footer
     }
     func footerBtnTapped(_ sender: UIButton) {
+        
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
             vc.starModel = starModel
             self.navigationController?.pushViewController(vc, animated: true)

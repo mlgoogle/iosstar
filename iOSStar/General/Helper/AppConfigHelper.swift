@@ -370,7 +370,28 @@ class AppConfigHelper: NSObject {
         }
         return false
     }
-
+    
+     func getAVAuthorizationStatusRestricted() -> Bool{
+        
+       
+        let avdioType = AVMediaTypeAudio
+        let authStatustype = AVCaptureDevice.authorizationStatus(forMediaType: avdioType)
+        if  authStatustype == .notDetermined{
+            return false
+        }
+        return true
+        
+    }
+    func getcameraAuthorizationStatusRestricted() -> Bool{
+    
+        let mediaType = AVMediaTypeVideo
+        let authStatus = AVCaptureDevice.authorizationStatus(forMediaType: mediaType)
+        
+        if authStatus == .denied || authStatus == .restricted{
+            return false
+        }
+        return true
+    }
     
     
     
