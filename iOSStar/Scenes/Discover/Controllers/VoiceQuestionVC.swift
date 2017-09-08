@@ -68,25 +68,6 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
         title = starModel.name
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
-        initNav()
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        SVProgressHUD.dismiss()
-        
-        if  PLPlayerHelper.shared().player.isPlaying{
-             PLPlayerHelper.shared().player.stop()
-        }
-    }
-    func initNav() {
-        let rightItem = UIBarButtonItem.init(title: "历史定制", style: .plain, target: self, action: #selector(rightItemTapped(_:)))
-        
-        
-        //        title  =   "语音定制"
-        navigationItem.rightBarButtonItem = rightItem
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.init(hexString: AppConst.Color.titleColor)
-    }
-    func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didSelectColumnAt column: Int){
     }
     
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!){
@@ -152,29 +133,13 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
         model.pType = 1
         AppAPIHelper.discoverAPI().staraskQuestion(requestModel: model, complete: { [weak self](result) in
             if let response = result as? UserAskList {
-                self?.didRequestComplete([response.circle_list] as AnyObject )
-                if (self?.dataSource != nil){
-                    self?.height = 64
-                }
-                self?.tableView.reloadData()
+                self?.didRequestComplete(response.circle_list as AnyObject )
             }
-            
         }) { (error) in
             self.didRequestComplete(nil)
-            if (self.dataSource != nil){
-                self.height = 64
-            }
         }
         
     }
-    override func isSections() -> Bool {
-        return true
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     override func tableView(_ tableView: UITableView, cellIdentifierForRowAtIndexPath indexPath: IndexPath) -> String? {
         return VoiceQuestionCell.className()
     }
@@ -223,40 +188,4 @@ extension VoiceQuestionVC{
             }
         }
     }
-   
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
-    }
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat(height)
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
-        
-        //        PLPlayerHelper.shared().avplayNewUrl(urlStr)
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = UIView.init(frame: CGRect.init(x: 0, y: Int(height - 64), width: Int(kScreenWidth), height: 64))
-        //        footer.backgroundColor = UIColor.init(rgbHex: 0xfafafa)
-        footer.backgroundColor = UIColor.clear
-        let footerBtn = UIButton.init(type: .custom)
-        footerBtn.frame = CGRect.init(x: 24, y: Int(height - 50), width: Int(kScreenWidth-48), height: 44)
-        footerBtn.layer.cornerRadius = 3
-        footerBtn.backgroundColor = UIColor.init(rgbHex: 0xfb9938)
-        footerBtn.setTitle("找TA定制", for: .normal)
-        footerBtn.addTarget(self, action: #selector(footerBtnTapped(_:)), for: .touchUpInside)
-        footer.addSubview(footerBtn)
-        return footer
-    }
-    
-    func footerBtnTapped(_ sender: UIButton) {
-        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VoiceAskVC.className()) as? VoiceAskVC{
-            vc.starModel = starModel
-            _ = navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
 }

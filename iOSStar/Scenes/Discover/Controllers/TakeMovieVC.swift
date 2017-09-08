@@ -36,12 +36,14 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     }()
     @IBOutlet var showStartImg: UIImageView!
     
+
     @IBOutlet var timeProgress: UIView!
     var timer : Timer!
     @IBOutlet var bgView: UIView!
     @IBOutlet var tipView: UIView!
     //切换摄像头
     @IBOutlet var switchBtn: UIButton!
+
     
     //退出按钮
     @IBOutlet var closeBtn: UIButton!
@@ -65,6 +67,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         self.view.bringSubview(toFront: self.tipView)
         self.view.bringSubview(toFront: self.switchBtn)
         self.view.addSubview(ProgressView)
+
         tap()
         timeProgress.isHidden = true
         self.view.bringSubview(toFront: timeProgress)
@@ -83,6 +86,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         }
         width.constant = (kScreenWidth -  20 ) * current/total
     }
+    
     //MARK: -配置段视频链接
     func configViedeo(){
         AVAuthorizationStatus()
@@ -98,6 +102,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         self.shortVideoRecorder?.setBeautifyModeOn(true)
         self.shortVideoRecorder?.startCaptureSession()
     }
+
     // 判断使用权限
     func AVAuthorizationStatus(){
         let mediaType = AVMediaTypeVideo
@@ -108,6 +113,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
 //      let authStatus = AVCaptureDevice.authorizationStatus(forMediaType: mediaType)
     
     }
+
     //MARK: -添加手势
     func tap(){
         ProgressView.backgroundColor = UIColor.clear
@@ -116,6 +122,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         longpressGesutre.numberOfTouchesRequired = 1
         ProgressView.addGestureRecognizer(longpressGesutre)
     }
+
     //确定按钮
     @IBAction func didsure(_ sender: Any) {
         
