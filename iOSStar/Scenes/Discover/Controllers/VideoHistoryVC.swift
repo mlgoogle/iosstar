@@ -103,7 +103,9 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
             }
         }
     }
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       return 175
+    }
     @IBAction func titleViewButtonAction(_ sender: UIButton) {
         
         if self.dataSource != nil{

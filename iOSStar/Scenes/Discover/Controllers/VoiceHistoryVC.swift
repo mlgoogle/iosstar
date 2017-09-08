@@ -42,6 +42,8 @@ class VoiceHistoryCell: OEZTableViewCell {
             //            voiceBtn.setImage(UIImage.init(named: String.init(format: "listion")), for: .normal)
         }
     }
+    
+   
 }
 class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPlayerDelegate{
     
@@ -108,6 +110,9 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
             self.didRequestComplete(nil )
         }
         
+    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
     }
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!)
     {

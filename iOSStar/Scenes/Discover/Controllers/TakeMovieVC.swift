@@ -27,6 +27,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     var player : PLPlayer?
     var totalTime  = 0
     var canle : Bool = false
+    var stopTake = false
     //设置按住松开的view
     @IBOutlet var width: NSLayoutConstraint!
     lazy var ProgressView  :  OProgressView = {
@@ -76,10 +77,15 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         
         let current = CGFloat((player?.currentTime.value)!)/CGFloat((player?.currentTime.timescale)!)
         let total = CGFloat((player?.totalDuration.value)!)/CGFloat((player?.totalDuration.timescale)!)
+        
+        if current == total{
+        
+        }
         width.constant = (kScreenWidth -  20 ) * current/total
     }
     //MARK: -配置段视频链接
     func configViedeo(){
+        AVAuthorizationStatus()
         let videoConfiguration = PLSVideoConfiguration.default()
         let audioConfiguration = PLSAudioConfiguration.default()
         self.shortVideoRecorder = PLShortVideoRecorder.init(videoConfiguration: videoConfiguration!, audioConfiguration: audioConfiguration!)
@@ -91,6 +97,16 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         self.shortVideoRecorder?.setBeautify(1)
         self.shortVideoRecorder?.setBeautifyModeOn(true)
         self.shortVideoRecorder?.startCaptureSession()
+    }
+    // 判断使用权限
+    func AVAuthorizationStatus(){
+        let mediaType = AVMediaTypeVideo
+        AVCaptureDevice.requestAccess(forMediaType: mediaType) { (result) in
+            
+    
+        }
+//      let authStatus = AVCaptureDevice.authorizationStatus(forMediaType: mediaType)
+    
     }
     //MARK: -添加手势
     func tap(){
@@ -154,6 +170,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
             canle = true
             player?.stop()
         }
+        stopTake = false
         timer.invalidate()
         canle = true
         width.constant = 0
@@ -189,7 +206,7 @@ extension TakeMovieVC  {
     
     func player(_ player: PLPlayer, statusDidChange state: PLPlayerStatus) {
         if state == .statusStopped{
-            if !canle{
+            if !canle && stopTake == true {
                 self.perform(#selector(didplay), with: self , afterDelay: 1)
                 self.view.bringSubview(toFront: self.tipView)
                 self.view.bringSubview(toFront: self.timeProgress)
@@ -197,7 +214,10 @@ extension TakeMovieVC  {
                 self.view.bringSubview(toFront: self.tipView)
             }
         }
-        if state == .statusPaused{
+       else if state == .statusPlaying {
+         stopTake = true
+        }
+       else if state == .statusPaused{
             
         }
     }
@@ -223,6 +243,7 @@ extension TakeMovieVC  {
     }
     func shortVideoRecorder(_ recorder: PLShortVideoRecorder, didFinishRecordingToOutputFileAt fileURL: URL, fileDuration: CGFloat, totalDuration: CGFloat) {
         ProgressView.isHidden = true
+        stopTake = false
         self.shortVideoRecorder?.stopRecording()
         UIView.animate(withDuration: 0.23) {
             self.sureBtn.isHidden = false
@@ -234,6 +255,7 @@ extension TakeMovieVC  {
         totalTime =  Int(totalDuration)
         self.shortVideoRecorder?.previewView?.isHidden = true
         getScreenImg()
+        
         ProgressView.setProgress(0, animated: true)
         if (player == nil){
             
@@ -259,7 +281,7 @@ extension TakeMovieVC  {
             self.switchBtn.isHidden = true
             self.closeBtn.isHidden = true
             self.bgView.isHidden = false
-            
+           
             self.view.bringSubview(toFront: (player?.playerView)!)
             self.view.bringSubview(toFront: self.tipView)
             self.view.bringSubview(toFront: self.bgView)

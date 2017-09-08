@@ -24,6 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         
         AppConfigHelper.shared().registerServers()
         // 个推
+        let mediaType = AVMediaTypeVideo
+        AVCaptureDevice.requestAccess(forMediaType: mediaType) { (result) in
+        }
+        let videoType = AVMediaTypeAudio
+        AVCaptureDevice.requestAccess(forMediaType: videoType) { (result) in
+        }
         AppConfigHelper.shared().setupGeTuiSDK(sdkDelegate: self)
         UIApplication.shared.statusBarStyle = .default
 

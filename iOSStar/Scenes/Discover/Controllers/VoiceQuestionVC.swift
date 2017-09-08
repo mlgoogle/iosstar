@@ -70,7 +70,14 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
         tableView.estimatedRowHeight = 200
         initNav()
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
+        
+        if  PLPlayerHelper.shared().player.isPlaying{
+             PLPlayerHelper.shared().player.stop()
+        }
+    }
     func initNav() {
         let rightItem = UIBarButtonItem.init(title: "历史定制", style: .plain, target: self, action: #selector(rightItemTapped(_:)))
         
@@ -216,7 +223,10 @@ extension VoiceQuestionVC{
             }
         }
     }
-    
+   
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat(height)
     }
