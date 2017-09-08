@@ -55,86 +55,49 @@ class VideoQuestionsVC: BasePageListTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = starModel.name
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 200
-        initNav()
-    }
-    
-    func initNav() {
-        let rightItem = UIBarButtonItem.init(title: "历史提问", style: .plain, target: self, action: #selector(rightItemTapped(_:)))
-        navigationItem.rightBarButtonItem = rightItem
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.init(hexString: AppConst.Color.main)
+//        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = 200
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    func rightItemTapped(_ sender: Any) {
-        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VideoHistoryVC.className()) as? VideoHistoryVC{
-            vc.starModel = starModel
-            _ = self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
+   
     
     override func didRequest(_ pageIndex: Int) {
         let model = StarAskRequestModel()
-        model.pos = pageIndex == 1 ? 1 : dataSource?[0].count ?? 0
+        model.pos = pageIndex == 1 ? 1 : dataSource?.count ?? 0
         model.starcode = starModel.symbol
         model.aType = 1
         model.pType = 1
 //         model.pType = 1
         AppAPIHelper.discoverAPI().staraskQuestion(requestModel: model, complete: { [weak self](result) in
             if let response = result as? UserAskList {
-                if pageIndex == 1{
-                    self?.didRequestComplete([response.circle_list] as AnyObject)
-                    if (self?.dataSource != nil){
-                        self?.height = 64
-                    }
-                    self?.tableView.reloadData()
-                return
-                }
-                
+
+                self?.didRequestComplete(response.circle_list as AnyObject)
                 if (self?.dataSource != nil){
-                    if var arr = self?.dataSource?[0] as? Array<AnyObject>{
-                       arr = arr + response.circle_list!
-                        self?.dataSource?[0] = arr as AnyObject
-                    }
                     self?.height = 64
                 }
                 self?.tableView.reloadData()
+
+                
             }
-            
         }) { (error) in
-            if (self.dataSource != nil){
-                self.height = 64
-            }
             self.didRequestComplete(nil)
         }
     }
     
     
-    override func isSections() -> Bool {
-        return true
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 171
     }
     
     override func tableView(_ tableView: UITableView, cellIdentifierForRowAtIndexPath indexPath: IndexPath) -> String? {
         return VideoQuestionCell.className()
     }
-    
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return height
-    }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
-    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let arr = self.dataSource?[0] as? Array<AnyObject>{
-            if let model = arr[indexPath.row] as? UserAskDetailList{
+        
+            if let model = self.dataSource?[indexPath.row] as? UserAskDetailList{
                 
                 
                 if model.purchased == 1{
@@ -200,30 +163,9 @@ class VideoQuestionsVC: BasePageListTableViewController {
                     }, error: { (error) in
                         self.didRequestError(error)
                     })
-                    
-                }
+                
             }
         }
         
-    }
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = UIView.init(frame: CGRect.init(x: 0, y: Int(height - 64), width: Int(kScreenWidth), height: 64))
-        //        footer.backgroundColor = UIColor.init(rgbHex: 0xfafafa)
-        footer.backgroundColor = UIColor.clear
-        let footerBtn = UIButton.init(type: .custom)
-        footerBtn.frame = CGRect.init(x: 24, y: Int(height - 50), width: Int(kScreenWidth-48), height: 44)
-        footerBtn.layer.cornerRadius = 3
-        footerBtn.backgroundColor = UIColor.init(rgbHex: 0xfb9938)
-        footerBtn.setTitle("找TA定制", for: .normal)
-        footerBtn.addTarget(self, action: #selector(footerBtnTapped(_:)), for: .touchUpInside)
-        footer.addSubview(footerBtn)
-        return footer
-    }
-    func footerBtnTapped(_ sender: UIButton) {
-        
-        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
-            vc.starModel = starModel
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
     }
 }

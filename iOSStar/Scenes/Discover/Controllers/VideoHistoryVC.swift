@@ -136,7 +136,6 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
         AppAPIHelper.discoverAPI().useraskQuestion(requestModel: model, complete: { [weak self](result) in
             if let response = result as? UserAskList {
                 self?.didRequestComplete(response.circle_list as AnyObject )
-                
                 self?.tableView.reloadData()
             }
             

@@ -45,8 +45,6 @@ class QiniuTool: NSObject {
                     if let isp_id = dataDic.value(forKey: "isp_id") as? NSString{
                         ShareDataModel.share().netInfo.isp_id = Int((isp_id).intValue)
                     }
-                    
-                    
                 }
             }
         }
