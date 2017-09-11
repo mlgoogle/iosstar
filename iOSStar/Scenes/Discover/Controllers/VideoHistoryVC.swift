@@ -51,8 +51,6 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "历史提问"
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 200
         titleViewButtonAction(openButton)
     }
     
@@ -104,6 +102,9 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
         }
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let model = dataSource?[indexPath.row] as? UserAskDetailList{
+            return model.cellHeight
+        }
        return 175
     }
     @IBAction func titleViewButtonAction(_ sender: UIButton) {
@@ -135,8 +136,10 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
         model.pos = (pageIndex - 1) * 10
         AppAPIHelper.discoverAPI().useraskQuestion(requestModel: model, complete: { [weak self](result) in
             if let response = result as? UserAskList {
+                for model in response.circle_list!{
+                    model.calculateCellHeight()
+                }
                 self?.didRequestComplete(response.circle_list as AnyObject )
-                self?.tableView.reloadData()
             }
             
         }) { (error) in

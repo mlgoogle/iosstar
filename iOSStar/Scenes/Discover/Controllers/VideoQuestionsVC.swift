@@ -56,9 +56,8 @@ class VideoQuestionsVC: BasePageListTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = starModel.name
-        tableView.rowHeight = UITableViewAutomaticDimension
-//        tableView.estimatedRowHeight = 200
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -74,14 +73,10 @@ class VideoQuestionsVC: BasePageListTableViewController {
 //         model.pType = 1
         AppAPIHelper.discoverAPI().staraskQuestion(requestModel: model, complete: { [weak self](result) in
             if let response = result as? UserAskList {
-
-                self?.didRequestComplete(response.circle_list as AnyObject)
-                if (self?.dataSource != nil){
-                    self?.height = 64
+                for model in response.circle_list!{
+                    model.calculateCellHeight()
                 }
-                self?.tableView.reloadData()
-
-                
+                self?.didRequestComplete(response.circle_list as AnyObject)
             }
         }) { (error) in
             self.didRequestComplete(nil)
@@ -90,6 +85,9 @@ class VideoQuestionsVC: BasePageListTableViewController {
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let model = dataSource?[indexPath.row] as? UserAskDetailList{
+            return model.cellHeight
+        }
         return 180
     }
     
