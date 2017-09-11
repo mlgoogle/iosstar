@@ -70,7 +70,7 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
         tableView.estimatedRowHeight = 200
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 171
+        return 210
     }
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!){
         if let model = self.dataSource?[indexPath.row] as? UserAskDetailList{

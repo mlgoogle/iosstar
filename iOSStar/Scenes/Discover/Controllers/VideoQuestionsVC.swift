@@ -37,6 +37,7 @@ class VideoQuestionCell: OEZTableViewCell{
                 attr.addAttributes([NSForegroundColorAttributeName: UIColor.init(rgbHex: 0xfb9938)], range: NSRange.init(location: 2, length: "\(count)".length()))
                 priceLabel.attributedText = attr
             }
+            contentLabel.adjustsFontSizeToFitWidth = true
             
             timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
             countLabel.text = "观看\(response.s_total)"
@@ -89,7 +90,7 @@ class VideoQuestionsVC: BasePageListTableViewController {
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 171
+        return 180
     }
     
     override func tableView(_ tableView: UITableView, cellIdentifierForRowAtIndexPath indexPath: IndexPath) -> String? {

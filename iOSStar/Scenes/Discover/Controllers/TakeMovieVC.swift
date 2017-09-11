@@ -99,6 +99,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         self.shortVideoRecorder?.delegate = self
         self.shortVideoRecorder?.setBeautify(1)
         self.shortVideoRecorder?.setBeautifyModeOn(true)
+        self.shortVideoRecorder?.isTouchToFocusEnable = false
         self.shortVideoRecorder?.startCaptureSession()
     }
     //MARK: -添加手势
@@ -149,7 +150,11 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        timer.invalidate()
+        
+        if timer != nil{
+             timer.invalidate()
+        }
+       
         if (player?.isPlaying == true){
             canle = true
             player?.stop()
