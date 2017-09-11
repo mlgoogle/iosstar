@@ -8,7 +8,7 @@
 
 import Foundation
 import RealmSwift
-
+import YYText
 
 class DiscoverListModel:BaseModel{
     
@@ -102,6 +102,15 @@ class UserAskDetailList: BaseModel {
     dynamic var videoTimeS = 2
     dynamic var isplay = false
     dynamic var thumbnailS = ""
+    var cellHeight: CGFloat = 0 //行高
+    
+    func calculateCellHeight() {
+        let contentAttribute = NSMutableAttributedString.init(string: uask)
+        contentAttribute.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 14), range: NSRange.init(location: 0, length: uask.length()))
+        let size  = CGSize.init(width: kScreenWidth - 100, height: CGFloat.greatestFiniteMagnitude)
+        let layout = YYTextLayout.init(containerSize: size, text: contentAttribute)
+        cellHeight = layout!.textBoundingSize.height + 160
+    }
 }
 class StarDetailCircle: BaseModel {
     dynamic var circles: [CircleListModel]?
