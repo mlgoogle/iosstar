@@ -56,7 +56,7 @@ class VideoQuestionsVC: BasePageListTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = starModel.name
-//        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableViewAutomaticDimension
 //        tableView.estimatedRowHeight = 200
     }
     override func viewWillAppear(_ animated: Bool) {
