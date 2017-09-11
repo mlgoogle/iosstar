@@ -29,7 +29,7 @@ class ShareView: UIView {
         tabbar?.view.addSubview(shareView)
         let tapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(exit))
         shareView.addSubview(self)
-        self.frame = CGRect.init(x: 0, y: self.shareView.bounds.size.height, width: UIScreen.main.bounds.size.width, height: self.frame.size.height)
+        self.frame = CGRect.init(x: 0, y: self.shareView.bounds.size.height - 150, width: UIScreen.main.bounds.size.width, height: self.frame.size.height)
         shareView.addGestureRecognizer(tapGestureRecognizer)
     }
     @IBAction func shareToPlatForm(_ sender: Any) {

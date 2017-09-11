@@ -177,7 +177,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
             view.title = (starModel?.name)! + "(正在星享时光 出售TA的时间)"
             view.Image = iconImage.image
             view.descr = model.experience
-            view.webpageUrl = String.init(format: "%@?uid=%@&star_code=%@", AppConst.shareUrl,StarUserModel.getCurrentUser()?.userinfo?.id ?? 0,ShareDataModel.share().selectStarCode)
+            view.webpageUrl = String.init(format: "%@?uid=%d&star_code=%@", AppConst.shareUrl,StarUserModel.getCurrentUser()?.userinfo?.id ?? 0,ShareDataModel.share().selectStarCode)
             
             view.shareViewController(viewController: self)
             

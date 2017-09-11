@@ -37,8 +37,9 @@ class VideoQuestionCell: OEZTableViewCell{
                 attr.addAttributes([NSForegroundColorAttributeName: UIColor.init(rgbHex: 0xfb9938)], range: NSRange.init(location: 2, length: "\(count)".length()))
                 priceLabel.attributedText = attr
             }
+            contentLabel.adjustsFontSizeToFitWidth = true
             
-            timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
+            timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.answer_t), format: "YYYY-MM-dd")
             countLabel.text = "观看\(response.s_total)"
         }
     }
@@ -56,7 +57,7 @@ class VideoQuestionsVC: BasePageListTableViewController {
         super.viewDidLoad()
         title = starModel.name
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 200
+//        tableView.estimatedRowHeight = 200
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -66,13 +67,21 @@ class VideoQuestionsVC: BasePageListTableViewController {
     
     override func didRequest(_ pageIndex: Int) {
         let model = StarAskRequestModel()
-        model.pos = (pageIndex - 1) * 10
+        model.pos = pageIndex == 1 ? 1 : dataSource?.count ?? 0
         model.starcode = starModel.symbol
         model.aType = 1
         model.pType = 1
+//         model.pType = 1
         AppAPIHelper.discoverAPI().staraskQuestion(requestModel: model, complete: { [weak self](result) in
             if let response = result as? UserAskList {
-                self?.didRequestComplete(response.circle_list as AnyObject )
+
+                self?.didRequestComplete(response.circle_list as AnyObject)
+                if (self?.dataSource != nil){
+                    self?.height = 64
+                }
+                self?.tableView.reloadData()
+
+                
             }
         }) { (error) in
             self.didRequestComplete(nil)
@@ -80,13 +89,16 @@ class VideoQuestionsVC: BasePageListTableViewController {
     }
     
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 180
+    }
     
     override func tableView(_ tableView: UITableView, cellIdentifierForRowAtIndexPath indexPath: IndexPath) -> String? {
         return VideoQuestionCell.className()
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let arr = self.dataSource?[0] as? Array<AnyObject>{
-            if let model = arr[indexPath.row] as? UserAskDetailList{
+        
+            if let model = self.dataSource?[indexPath.row] as? UserAskDetailList{
                 
                 
                 if model.purchased == 1{
@@ -152,8 +164,7 @@ class VideoQuestionsVC: BasePageListTableViewController {
                     }, error: { (error) in
                         self.didRequestError(error)
                     })
-                    
-                }
+                
             }
         }
         

@@ -130,7 +130,7 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
         let model = UserAskRequestModel()
         model.aType = 1
         model.starcode = starModel.symbol
-        model.pos = (pageIndex - 1) * 10
+        model.pos =  pageIndex == 1 ? 1 : dataSource?.count ?? 0
         model.pType = type ? 1 : 0
         model.pos = (pageIndex - 1) * 10
         AppAPIHelper.discoverAPI().useraskQuestion(requestModel: model, complete: { [weak self](result) in

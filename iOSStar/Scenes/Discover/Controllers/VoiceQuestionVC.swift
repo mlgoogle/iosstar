@@ -69,9 +69,11 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
     }
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 210
+    }
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!){
-        if let arr = self.dataSource?[0] as? Array<AnyObject>{
+        if let model = self.dataSource?[indexPath.row] as? UserAskDetailList{
             
             if PLPlayerHelper.shared().player.isPlaying{
                 PLPlayerHelper.shared().player.stop()
@@ -83,7 +85,6 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
                 voiceimg = cell.voiceImg
             }
             selectRow = indexPath.row
-            if let model = arr[indexPath.row] as? UserAskDetailList{
                 if model.purchased == 1{
                     
                     model.isplay = true
@@ -112,7 +113,6 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
                         self.didRequestError(error)
                     })
                     
-                }
             }
         }
     }
@@ -127,7 +127,7 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
     override func didRequest(_ pageIndex: Int) {
         
         let model = StarAskRequestModel()
-        model.pos = (pageIndex - 1) * 10
+        model.pos = pageIndex == 1 ? 1 : dataSource?.count ?? 0
         model.starcode = starModel.symbol
         model.aType = 2
         model.pType = 1
