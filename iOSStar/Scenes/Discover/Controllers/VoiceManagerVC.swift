@@ -41,6 +41,7 @@ class VoiceManagerVC: UIViewController {
             vc.starModel = starModel
             vc.view.frame = CGRect.init(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight-64)
             contentView.addSubview(vc.view)
+            vc.view.backgroundColor = UIColor.red
             addChildViewController(vc)
         }
     }
