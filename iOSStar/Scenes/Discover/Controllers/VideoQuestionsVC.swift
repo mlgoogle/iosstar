@@ -39,7 +39,7 @@ class VideoQuestionCell: OEZTableViewCell{
             }
             contentLabel.adjustsFontSizeToFitWidth = true
             
-            timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
+            timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.answer_t), format: "YYYY-MM-dd")
             countLabel.text = "观看\(response.s_total)"
         }
     }
