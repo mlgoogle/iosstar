@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="My8-fP-YK9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="My8-fP-YK9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -86,7 +86,7 @@
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StarIntroduceCell" rowHeight="170" id="aRs-SG-bQm" customClass="StarIntroduceCell" customModule="iOSStar" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="56" width="375" height="170"/>
+                                                <rect key="frame" x="0.0" y="55.5" width="375" height="170"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aRs-SG-bQm" id="Q22-87-IyD">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
@@ -191,7 +191,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MarketExperienceCell" rowHeight="35" id="USb-Pt-76y" customClass="MarketExperienceCell" customModule="iOSStar" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="226" width="375" height="35"/>
+                                                <rect key="frame" x="0.0" y="225.5" width="375" height="35"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="USb-Pt-76y" id="Cxy-Jx-Zpi">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
@@ -233,7 +233,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StarCirCleCell" rowHeight="120" id="37A-kF-dIP" customClass="StarCirCleCell" customModule="iOSStar">
-                                                <rect key="frame" x="0.0" y="261" width="375" height="120"/>
+                                                <rect key="frame" x="0.0" y="260.5" width="375" height="120"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="37A-kF-dIP" id="43l-KT-GJE">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
@@ -396,7 +396,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarDynamicCell" rowHeight="125" id="Gxi-Bv-Lwb" customClass="StarDynamicCell" customModule="iOSStar" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="381" width="375" height="125"/>
+                                                <rect key="frame" x="0.0" y="380.5" width="375" height="125"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gxi-Bv-Lwb" id="L8z-qw-HH5">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
@@ -484,7 +484,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarDetailCirCell" rowHeight="128" id="ZEz-qz-8vH" customClass="StarDetailCirCell" customModule="iOSStar" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="506" width="375" height="128"/>
+                                                <rect key="frame" x="0.0" y="505.5" width="375" height="128"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZEz-qz-8vH" id="mmP-zS-7sY">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
@@ -567,7 +567,7 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarPhotoCell" rowHeight="140" id="eL3-c8-t7d" customClass="StarPhotoCell" customModule="iOSStar" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="634" width="375" height="140"/>
+                                                <rect key="frame" x="0.0" y="633.5" width="375" height="140"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eL3-c8-t7d" id="wXv-Sl-Umx">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
@@ -1286,7 +1286,7 @@
                                     <constraint firstAttribute="width" constant="40" id="QYH-9J-nsu"/>
                                     <constraint firstAttribute="height" constant="40" id="gvA-PX-jEL"/>
                                 </constraints>
-                                <state key="normal" image="canle"/>
+                                <state key="normal" image="canleblack"/>
                                 <connections>
                                     <action selector="exit:" destination="Ayv-cn-xBk" eventType="touchUpInside" id="2ec-Pz-jeO"/>
                                 </connections>
@@ -1363,7 +1363,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="My8-fP-YK9" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iiF-iI-esP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iiF-iI-esP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2011,7 +2011,7 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朋友今天生日" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTf-g0-kPm">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朋友今天生日" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTf-g0-kPm">
                                                     <rect key="frame" x="14" y="30" width="315" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2403,7 +2403,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朋友今天生日" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1K-48-oyC">
-                                                    <rect key="frame" x="48" y="48" width="281" height="13"/>
+                                                    <rect key="frame" x="48" y="35" width="281" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2423,7 +2423,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="K1K-48-oyC" firstAttribute="top" secondItem="EEh-Au-55d" secondAttribute="bottom" constant="18" id="7XS-u1-tG5"/>
+                                                <constraint firstItem="K1K-48-oyC" firstAttribute="top" secondItem="EEh-Au-55d" secondAttribute="bottom" constant="5" id="7XS-u1-tG5"/>
                                                 <constraint firstAttribute="trailing" secondItem="K1K-48-oyC" secondAttribute="trailing" constant="14" id="8yR-zb-hDn"/>
                                                 <constraint firstItem="Tv3-bL-lst" firstAttribute="leading" secondItem="450-bR-av7" secondAttribute="trailing" constant="44" id="A8u-mZ-pAg"/>
                                                 <constraint firstItem="Vvw-VP-5Px" firstAttribute="centerY" secondItem="Pmv-3m-Cys" secondAttribute="centerY" id="AZf-pK-z1w"/>
@@ -2431,7 +2431,7 @@
                                                 <constraint firstItem="Pmv-3m-Cys" firstAttribute="leading" secondItem="vbZ-qy-yaY" secondAttribute="leading" constant="14" id="Fsl-sP-thc"/>
                                                 <constraint firstItem="K1K-48-oyC" firstAttribute="leading" secondItem="EEh-Au-55d" secondAttribute="leading" id="Gh1-sn-DZH"/>
                                                 <constraint firstItem="msE-4Q-VeV" firstAttribute="centerY" secondItem="L0E-HG-Auz" secondAttribute="centerY" id="ISS-j3-LwK"/>
-                                                <constraint firstItem="450-bR-av7" firstAttribute="top" secondItem="K1K-48-oyC" secondAttribute="bottom" constant="15" id="NYj-we-TV8"/>
+                                                <constraint firstItem="450-bR-av7" firstAttribute="top" secondItem="K1K-48-oyC" secondAttribute="bottom" constant="5" id="NYj-we-TV8"/>
                                                 <constraint firstAttribute="trailing" secondItem="Vvw-VP-5Px" secondAttribute="trailing" constant="12" id="Qjd-fO-44W"/>
                                                 <constraint firstItem="9uA-gC-Mdp" firstAttribute="leading" secondItem="Tv3-bL-lst" secondAttribute="trailing" constant="8" id="Sfi-Wh-56s"/>
                                                 <constraint firstItem="EEh-Au-55d" firstAttribute="centerY" secondItem="Pmv-3m-Cys" secondAttribute="centerY" id="a31-KU-Mmr"/>
@@ -2538,8 +2538,8 @@
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朋友今天生日" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Km-9i-n7J">
-                                                    <rect key="frame" x="48" y="48" width="281" height="46"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朋友今天生日" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Km-9i-n7J">
+                                                    <rect key="frame" x="48" y="35" width="281" height="62"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2555,7 +2555,7 @@
                                             <constraints>
                                                 <constraint firstItem="1me-l8-PqX" firstAttribute="leading" secondItem="ysv-O8-u4b" secondAttribute="leading" constant="14" id="56p-Oz-U8n"/>
                                                 <constraint firstAttribute="trailing" secondItem="1Km-9i-n7J" secondAttribute="trailing" constant="14" id="5oc-AR-7eT"/>
-                                                <constraint firstItem="1Km-9i-n7J" firstAttribute="top" secondItem="uRc-ho-Bpd" secondAttribute="bottom" constant="18" id="6FN-4B-Pku"/>
+                                                <constraint firstItem="1Km-9i-n7J" firstAttribute="top" secondItem="uRc-ho-Bpd" secondAttribute="bottom" constant="5" id="6FN-4B-Pku"/>
                                                 <constraint firstAttribute="bottom" secondItem="fIk-kf-qV5" secondAttribute="bottom" constant="20" id="DQu-9A-YDL"/>
                                                 <constraint firstItem="uRc-ho-Bpd" firstAttribute="leading" secondItem="1me-l8-PqX" secondAttribute="trailing" constant="8" id="I9f-p0-4Yx"/>
                                                 <constraint firstItem="fIk-kf-qV5" firstAttribute="leading" secondItem="XGd-FX-yH4" secondAttribute="trailing" constant="8" id="Mow-MF-DHb"/>
@@ -2568,7 +2568,7 @@
                                                 <constraint firstItem="22k-We-e3C" firstAttribute="centerY" secondItem="1me-l8-PqX" secondAttribute="centerY" id="iSn-no-ham"/>
                                                 <constraint firstItem="XGd-FX-yH4" firstAttribute="centerY" secondItem="LhN-lR-VPT" secondAttribute="centerY" id="jQ2-OU-I9D"/>
                                                 <constraint firstAttribute="trailing" secondItem="22k-We-e3C" secondAttribute="trailing" constant="12" id="lFZ-VW-DqN"/>
-                                                <constraint firstItem="fIk-kf-qV5" firstAttribute="top" secondItem="1Km-9i-n7J" secondAttribute="bottom" constant="8" id="yiJ-AH-E4T"/>
+                                                <constraint firstItem="fIk-kf-qV5" firstAttribute="top" secondItem="1Km-9i-n7J" secondAttribute="bottom" constant="5" id="yiJ-AH-E4T"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -2905,7 +2905,7 @@
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朋友今天生日" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJu-8J-1vh">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朋友今天生日" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJu-8J-1vh">
                                                     <rect key="frame" x="14" y="30" width="315" height="80"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -3284,6 +3284,7 @@
         <image name="bg.png" width="706" height="326"/>
         <image name="btn_mute_normal" width="50" height="50"/>
         <image name="canle" width="64" height="64"/>
+        <image name="canleblack" width="64" height="64"/>
         <image name="frontBack" width="30" height="26"/>
         <image name="hiddleAsk" width="31" height="35"/>
         <image name="intro_chat" width="22" height="19"/>

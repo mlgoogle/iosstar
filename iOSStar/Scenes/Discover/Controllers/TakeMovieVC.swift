@@ -89,7 +89,6 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     
     //MARK: -配置段视频链接
     func configViedeo(){
-        AVAuthorizationStatus()
         let videoConfiguration = PLSVideoConfiguration.default()
         let audioConfiguration = PLSAudioConfiguration.default()
         self.shortVideoRecorder = PLShortVideoRecorder.init(videoConfiguration: videoConfiguration!, audioConfiguration: audioConfiguration!)
@@ -100,20 +99,9 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         self.shortVideoRecorder?.delegate = self
         self.shortVideoRecorder?.setBeautify(1)
         self.shortVideoRecorder?.setBeautifyModeOn(true)
+        self.shortVideoRecorder?.isTouchToFocusEnable = false
         self.shortVideoRecorder?.startCaptureSession()
     }
-
-    // 判断使用权限
-    func AVAuthorizationStatus(){
-        let mediaType = AVMediaTypeVideo
-        AVCaptureDevice.requestAccess(forMediaType: mediaType) { (result) in
-            
-    
-        }
-//      let authStatus = AVCaptureDevice.authorizationStatus(forMediaType: mediaType)
-    
-    }
-
     //MARK: -添加手势
     func tap(){
         ProgressView.backgroundColor = UIColor.clear
@@ -162,7 +150,11 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        timer.invalidate()
+        
+        if timer != nil{
+             timer.invalidate()
+        }
+       
         if (player?.isPlaying == true){
             canle = true
             player?.stop()
