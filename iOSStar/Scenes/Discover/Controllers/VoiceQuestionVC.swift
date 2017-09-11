@@ -66,12 +66,15 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = starModel.name
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 200
     }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let model = dataSource?[indexPath.row] as? UserAskDetailList{
+            return model.cellHeight
+        }
         return 210
     }
+    
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!){
         if let model = self.dataSource?[indexPath.row] as? UserAskDetailList{
             
@@ -133,6 +136,9 @@ class VoiceQuestionVC: BasePageListTableViewController ,OEZTableViewDelegate {
         model.pType = 1
         AppAPIHelper.discoverAPI().staraskQuestion(requestModel: model, complete: { [weak self](result) in
             if let response = result as? UserAskList {
+                for model in response.circle_list!{
+                    model.calculateCellHeight()
+                }
                 self?.didRequestComplete(response.circle_list as AnyObject )
             }
         }) { (error) in

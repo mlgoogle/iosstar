@@ -101,6 +101,9 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
         model.pType = type ? 1 : 0
         AppAPIHelper.discoverAPI().useraskQuestion(requestModel: model, complete: { [weak self](result) in
             if let response = result as? UserAskList {
+                for model in response.circle_list!{
+                    model.calculateCellHeight()
+                }
                 self?.didRequestComplete(response.circle_list as AnyObject )
                 self?.tableView.reloadData()
             }
@@ -112,6 +115,9 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
         
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let model = dataSource?[indexPath.row] as? UserAskDetailList{
+            return model.cellHeight
+        }
         return 200
     }
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!)
