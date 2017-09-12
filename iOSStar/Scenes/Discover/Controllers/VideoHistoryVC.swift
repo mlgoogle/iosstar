@@ -40,7 +40,6 @@ class VideoHistoryCell: OEZTableViewCell {
     
 }
 
-
 class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
     
     @IBOutlet weak var titlesView: UIView!
