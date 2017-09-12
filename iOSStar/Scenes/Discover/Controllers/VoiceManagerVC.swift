@@ -40,6 +40,7 @@ class VoiceManagerVC: UIViewController {
             videoVC =  vc
             vc.starModel = starModel
             contentView.addSubview(vc.view)
+//            vc.view.backgroundColor = UIColor.red
             addChildViewController(vc)
             vc.view.snp.makeConstraints({ (make) in
                 make.edges.equalToSuperview()
