@@ -16,6 +16,7 @@ class VideoHistoryCell: OEZTableViewCell {
     @IBOutlet weak var seeAskLabel: UILabel!
     @IBOutlet weak var seeAnsLabel: UILabel!
     
+    @IBOutlet var askBtn: UIButton!
     
     override func awakeFromNib() {
         
@@ -26,6 +27,7 @@ class VideoHistoryCell: OEZTableViewCell {
             contentLabel.text = response.uask
             timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
             voiceCountLabel.text = "\(response.s_total)看过"
+            askBtn.isHidden = response.video_url == "" ? true : false
         }
     }
     
@@ -37,7 +39,6 @@ class VideoHistoryCell: OEZTableViewCell {
     }
     
 }
-
 
 class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
     

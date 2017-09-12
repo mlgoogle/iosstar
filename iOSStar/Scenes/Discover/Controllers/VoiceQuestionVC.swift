@@ -44,11 +44,11 @@ class VoiceQuestionCell: OEZTableViewCell{
                 
             }
             if !response.isplay{
-              voiceImg.image = UIImage.init(named: String.init(format: "listion"))
+              voiceImg.image = UIImage(named: String.init(format: "listion"))
             }
            
             voiceBtn.addTarget(self, action: #selector(dopeep), for: .touchUpInside)
-            voiceCountLabel.text = "\(response.s_total)人听过"
+            voiceCountLabel.text = "听过\(response.s_total)"
         }
     }
     

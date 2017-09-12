@@ -30,7 +30,7 @@ class VoiceHistoryCell: OEZTableViewCell {
         if let response = data as? UserAskDetailList{
             contentLabel.text = response.uask
             voiceBtn.addTarget(self, action: #selector(voiceDidClick(_:)), for: .touchUpInside)
-            timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.answer_t), format: "YYYY-MM-dd")
+            timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
             let titleTip = response.answer_t == 0 ? "点击播放（未回复）" : "点击播放"
             let attr = NSMutableAttributedString.init(string: titleTip)
             title.attributedText = attr
@@ -112,7 +112,6 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
             
             self.didRequestComplete(nil )
         }
-        
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let model = dataSource?[indexPath.row] as? UserAskDetailList{
