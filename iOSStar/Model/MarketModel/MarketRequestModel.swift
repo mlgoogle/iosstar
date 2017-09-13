@@ -97,5 +97,7 @@ class BindCardListRequestModel: MarketBaseModel {
     var symbol = ""
     var account = ""
     var bankUsername = ""
+    var prov = ""
+    var city = ""
 }
 

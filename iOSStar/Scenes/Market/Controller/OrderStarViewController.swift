@@ -314,13 +314,31 @@ class OrderStarViewController: UIViewController {
             SVProgressHUD.showErrorMessage(ErrorMessage: "备注信息200字内", ForDuration: 2.0, completion: nil)
             return
         }
+        SVProgressHUD.show(withStatus: "加载中")
+        self.getUserRealmInfo { [weak self](result) in
+            if let model = result{
+                if let object =  model as? [String : AnyObject]{
+                    if object["realname"] as! String == ""{
+                         SVProgressHUD.dismiss()
+                        self?.showRealname()
+                         return
+                    }else{
+                    self?.docheckPayPaas()
+                    }
+                }
+            }
+        }
         
+    }
+    func docheckPayPaas(){
         //判断是否实名认证
         self.getUserInfo { (result) in
             if let response = result{
+               
                 if let object = response as? UserInfoModel{
-                    
+                     SVProgressHUD.dismiss()
                     if object.is_setpwd == 1{
+                       
                         let alertVc = AlertViewController()
                         alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
                                             
@@ -357,13 +375,13 @@ class OrderStarViewController: UIViewController {
                         rootvc.resultBlock = { (result) in
                             
                             if result is String{
-                                 SVProgressHUD.showSuccessMessage(SuccessMessage: "密码校验成功", ForDuration: 0.5, completion: { 
-                                      self.domeet()
+                                SVProgressHUD.showSuccessMessage(SuccessMessage: "密码校验成功", ForDuration: 0.5, completion: {
+                                    self.domeet()
                                     controller.dismissController()
-
-                                 })
-                              
-                                                            }
+                                    
+                                })
+                                
+                            }
                             else{
                                 SVProgressHUD.showErrorMessage(ErrorMessage:  "约见已取消,请重新约见！", ForDuration: 2, completion: nil)
                             }
@@ -376,8 +394,8 @@ class OrderStarViewController: UIViewController {
                 }
             }
         }
+
     }
-    
     // 约见
     func domeet(){
         
