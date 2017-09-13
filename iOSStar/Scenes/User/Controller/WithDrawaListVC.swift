@@ -35,10 +35,10 @@ class WithDrawaListVCCell: OEZTableViewCell {
         moneyLb.text =   "\(model.amount)" + " 元"
 //        var status = String()
         let timesp : Int = Date.stringToTimeStamp(stringTime: model.withdrawTime)
-        timeLb.text = Date.yt_convertDateStrWithTimestempWithSecond(timesp, format: "yyyy-MM-dd")
+        timeLb.text = Date.yt_convertDateStrWithTimestempWithSecond(timesp, format: "yyyy-MM-dd HH:mm:ss")
 //        minuteLb.text = Date.yt_convertDateStrWithTimestempWithSecond(timesp, format: "HH:mm:ss")
 //        
-//        status = model.status == 1 || model.status == 0 ? "处理中" :  (model.status == 2 ? "提现成功" : model.status == 3 ? "提现失败": "已退款")
+         statusLb.text = model.status == 1 || model.status == 0 ? "处理中" :  (model.status == 2 ? "提现成功" : model.status == 3 ? "提现失败": "已退款")
 //        bankLogo.image = BankLogoColor.share().checkLocalBank(string: model.bank) ? UIImage.init(named: BankLogoColor.share().checkLocalBankImg(string: model.bank)) : UIImage.init(named: "unionPay")
 //
 //        statusBtn.setTitle(status, for: UIControlState.normal)

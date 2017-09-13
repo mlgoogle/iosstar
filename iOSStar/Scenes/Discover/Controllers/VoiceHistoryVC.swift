@@ -16,8 +16,11 @@ class VoiceHistoryCell: OEZTableViewCell {
     
     @IBOutlet var title: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var nameLab: UILabel!
     
+    @IBOutlet var status: UILabel!
+    @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var headImg: UIImageView!
     @IBOutlet var voiceImg: UIImageView!
     
     override func awakeFromNib() {
@@ -28,6 +31,7 @@ class VoiceHistoryCell: OEZTableViewCell {
     
     override func update(_ data: Any!) {
         if let response = data as? UserAskDetailList{
+           
             contentLabel.text = response.uask
             voiceBtn.addTarget(self, action: #selector(voiceDidClick(_:)), for: .touchUpInside)
             timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
@@ -38,9 +42,24 @@ class VoiceHistoryCell: OEZTableViewCell {
             if !response.isplay{
                 voiceImg.image = UIImage.init(named: String.init(format: "listion"))
             }
-            //            voiceBtn.setAttributedTitle(attr, for: .normal)
-            //            voiceBtn.setImage(UIImage.init(named: String.init(format: "listion")), for: .normal)
+            
+            if response.isall == 1{
+                if response.answer_t == 0{
+                status.text = "明星未回复"
+                }else{
+                status.text = "已定制"
+                }
+                StartModel.getStartName(startCode: response.starcode) { [weak self](response) in
+                    if let star = response as? StartModel {
+                        self?.headImg.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + star.pic_url_tail))
+                        self?.nameLab.text = star.name
+                    }
+                    
+                }
+                
+            }
         }
+
     }
     
    
@@ -77,7 +96,7 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
             PLPlayerHelper.shared().player.stop()
         }
         self.selectedButton?.backgroundColor = UIColor.clear
-        sender.backgroundColor = UIColor.init(rgbHex: 0xECECEC)
+        sender.backgroundColor = UIColor(hexString: "ffffff")
         self.selectedButton = sender
         if self.dataSource?.count != 0{
             self.dataSource?.removeAll()
@@ -113,6 +132,7 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
             self.didRequestComplete(nil )
         }
     }
+   
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let model = dataSource?[indexPath.row] as? UserAskDetailList{
             return model.cellHeight
@@ -181,6 +201,10 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
     }
     
     override func tableView(_ tableView: UITableView, cellIdentifierForRowAtIndexPath indexPath: IndexPath) -> String? {
+         let model = dataSource?[indexPath.row] as! UserAskDetailList
+        if model.isall == 1{
+        return "VoiceALLCell"
+        }
         return VoiceQuestionCell.className()
     }
     

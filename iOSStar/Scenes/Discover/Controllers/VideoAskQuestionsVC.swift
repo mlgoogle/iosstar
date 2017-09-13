@@ -128,6 +128,10 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
                     if let time = response["thumbnail"] as?  String{
                         self?.thumbnail  = time
                     }
+                    if let thumbnailImg = response["thumbnailImg"] as?  UIImage{
+//                        self?.thumbnail  = time
+                        self?.videoBtn.setImage(thumbnailImg, for: .normal)
+                    }
                 }
             }
             //TakeMovieVC

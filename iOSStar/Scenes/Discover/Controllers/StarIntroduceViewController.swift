@@ -26,7 +26,7 @@ class StarIntroduceViewController: UIViewController {
     var starDetailModel:StarDetaiInfoModel?
     var expericences:[ExperienceModel]?
     var StarDetail:StarDetailCircle?
-    
+    var realName = false
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +84,17 @@ class StarIntroduceViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.getUserRealmInfo { [weak self](result) in
+            if let model = result{
+                if let object =  model as? [String : AnyObject]{
+                    if object["realname"] as! String == ""{
+                        self?.realName = true
+                    }else{
+                        self?.realName = false
+                    }
+                }
+            }
+        }
         if let _ = UserDefaults.standard.value(forKey: AppConst.guideKey.StarIntroduce.rawValue) as? String {
             
         }else{
@@ -236,6 +247,10 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     }
     
     func chat() {
+        if realName{
+         showRealname()
+            return
+        }
         
         requestPositionCount()
     }

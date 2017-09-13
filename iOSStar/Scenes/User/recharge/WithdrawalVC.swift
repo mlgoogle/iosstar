@@ -72,8 +72,9 @@ class WithdrawalVC: BaseTableViewController,UITextFieldDelegate {
     }
     func selectDate(){
     
-    let vc = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawaListVC")
-        self.navigationController?.pushViewController(vc!, animated: true)
+        if  let vc = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawaListVC"){
+        self.navigationController?.pushViewController(vc, animated: true)
+        }
     
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -138,12 +139,17 @@ class WithdrawalVC: BaseTableViewController,UITextFieldDelegate {
                     AppAPIHelper.user().withDraw(requestModel: requestmodel, complete: { (result) in
                         if let datamodel =  result as? WithDrawResultModel{
                             if datamodel.result == 1 {
-                            SVProgressHUD.showSuccessMessage(SuccessMessage: "提现成功", ForDuration: 1, completion: {
-                                _ = self.navigationController?.popViewController(animated: true)
+                            SVProgressHUD.showSuccessMessage(SuccessMessage: "提现授理成功", ForDuration: 1, completion: {
+                                if let vc = self.storyboard?.instantiateViewController(withIdentifier: "WithDrawaListVC"){
+                                self.navigationController?.pushViewController(vc, animated: true)
+                                }
                             })
+                            }else{
+                                SVProgressHUD.showErrorMessage(ErrorMessage: "提现失败", ForDuration: 2, completion: nil)
                             }
                         }
                     }, error: { (error ) in
+                    self.didRequestError(error)
                         SVProgressHUD.dismiss()
                     })
                 })
