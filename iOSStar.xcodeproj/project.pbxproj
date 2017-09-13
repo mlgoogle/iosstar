@@ -450,6 +450,7 @@
 		A0EF98771EBCC498009B1D8A /* ContainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF98761EBCC498009B1D8A /* ContainVC.swift */; };
 		A0F4FA211ECD70A200D13302 /* NSDateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F4FA201ECD70A200D13302 /* NSDateExt.swift */; };
 		A0F4FA231ECD871500D13302 /* City.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0F4FA221ECD871500D13302 /* City.plist */; };
+		A0F5EA881F678F2E0073ABCB /* StarMangerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5EA871F678F2E0073ABCB /* StarMangerVC.swift */; };
 		A0F99CE11F18FA640035CF65 /* BarrageStarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F99CE01F18FA640035CF65 /* BarrageStarVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -1207,6 +1208,7 @@
 		A0EF98761EBCC498009B1D8A /* ContainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainVC.swift; sourceTree = "<group>"; };
 		A0F4FA201ECD70A200D13302 /* NSDateExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExt.swift; sourceTree = "<group>"; };
 		A0F4FA221ECD871500D13302 /* City.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = City.plist; sourceTree = "<group>"; };
+		A0F5EA871F678F2E0073ABCB /* StarMangerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarMangerVC.swift; sourceTree = "<group>"; };
 		A0F99CE01F18FA640035CF65 /* BarrageStarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarrageStarVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2426,6 +2428,7 @@
 				A04CF0A71ED6CBB900B93D28 /* VaildNameVC.swift */,
 				A0B6FB851ED952F10060CCDC /* ResetTradePassVC.swift */,
 				A0675F911EDA78FC00147B3B /* StatementVC.swift */,
+				A0F5EA871F678F2E0073ABCB /* StarMangerVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3564,6 +3567,7 @@
 				6E4F03E31F10CED40003D51F /* SellingIntroCell.swift in Sources */,
 				6E193C501EBADFC90049AEDE /* UIColor+Extension.swift in Sources */,
 				A0675F921EDA78FC00147B3B /* StatementVC.swift in Sources */,
+				A0F5EA881F678F2E0073ABCB /* StarMangerVC.swift in Sources */,
 				8E3979DD1F28587800847CCB /* NIMNotificationContentConfig.m in Sources */,
 				6EFF56D41F137B82003895EB /* SellingBaseCell.swift in Sources */,
 				6EBF590A1EC6EAAF003F67B4 /* MarketAPI.swift in Sources */,
@@ -3863,7 +3867,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cloudTop.starshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ca23b46f-5048-4e91-806e-149fe162b31b";
+				PROVISIONING_PROFILE = "ccdb2ccb-8d8e-40c4-9a6c-890d8283e320";
 				PROVISIONING_PROFILE_SPECIFIER = starShareDevelop;
 				SWIFT_OBJC_BRIDGING_HEADER = "iOSStar/Other/iOSStar-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "iOSStar-Swift.h";
