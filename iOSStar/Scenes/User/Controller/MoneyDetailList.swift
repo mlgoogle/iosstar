@@ -120,18 +120,25 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
                 self.tableView.reloadData()
                 if self.dataSource?.count == 0 {
                     self.nodataView.isHidden = false
+                    self.nodataView.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 385)
+                    self.tableView.reloadData()
                 }else{
                     self.nodataView.isHidden = true
+                    self.nodataView.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 0)
+                    self.tableView.reloadData()
                 }
             }
         }, error: { (error) in
-//            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
             self.didRequestComplete(nil)
             
             if self.dataSource == nil {
                 self.nodataView.isHidden = false
+                self.nodataView.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 385)
+                self.tableView.reloadData()
             }else{
                 self.nodataView.isHidden = true
+                self.nodataView.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 0)
+                self.tableView.reloadData()
             }
             self.tableView.reloadData()
         })
@@ -168,10 +175,11 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
     func didSelectMonth(index: Int) {
         
         let indexStr = String.init(format:"%d",index)
-        
+          self.didRequestComplete(nil)
+         self.tableView.reloadData()
         indexString = indexStr
         didRequest(1)
-        self.tableView.reloadData()
+//        self.tableView.reloadData()
     }
     //MARK -
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
