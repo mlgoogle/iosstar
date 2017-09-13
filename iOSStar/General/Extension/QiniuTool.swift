@@ -102,7 +102,6 @@ class QiniuTool: NSObject {
     
     
     class  func uploadResource(filePath : String, key : String, complete: CompleteBlock?, error: ErrorBlock?){
-        
         AppAPIHelper.user().uploadimg(complete: { (result) in
             if   let response = result as? UploadTokenModel{
                 let qiniuManager = QNUploadManager()
