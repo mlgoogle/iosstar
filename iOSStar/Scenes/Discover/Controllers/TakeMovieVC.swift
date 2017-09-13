@@ -63,7 +63,9 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         super.viewDidLoad()
         updateUserInfo()
         configViedeo()
+        
         width.constant = 0
+        SVProgressHUD.showWainningMessage(WainningMessage: "长按录制视频", ForDuration: 3, completion: nil)
         self.view.bringSubview(toFront: self.tipView)
         self.view.bringSubview(toFront: self.switchBtn)
         self.view.addSubview(ProgressView)
@@ -93,7 +95,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
         let audioConfiguration = PLSAudioConfiguration.default()
         self.shortVideoRecorder = PLShortVideoRecorder.init(videoConfiguration: videoConfiguration!, audioConfiguration: audioConfiguration!)
         self.view.addSubview((self.shortVideoRecorder?.previewView)!)
-        self.shortVideoRecorder?.toggleCamera()
+//        self.shortVideoRecorder?.toggleCamera()
         self.shortVideoRecorder?.maxDuration = 15.0
         self.shortVideoRecorder?.minDuration = 1.0
         self.shortVideoRecorder?.delegate = self
@@ -125,7 +127,7 @@ class TakeMovieVC: UIViewController ,PLShortVideoRecorderDelegate ,PLShortVideoU
                         if self.resultBlock != nil{
                             if let response = result as? String{
                                 SVProgressHUD.showSuccessMessage(SuccessMessage: "录制成功", ForDuration: 1.5, completion: {
-                                    let outputSettings = ["movieUrl" : response as AnyObject,"totalTime":self.totalTime as AnyObject,"thumbnail" : thumbnail as AnyObject,] as [String : AnyObject]
+                                    let outputSettings = ["movieUrl" : response as AnyObject,"totalTime":self.totalTime as AnyObject,"thumbnail" : thumbnail as AnyObject,"thumbnailImg" : self.showStartImg.image as AnyObject,] as [String : AnyObject]
                                     self.resultBlock!(outputSettings as AnyObject)
                                     self.navigationController?.popViewController(animated: true)
                                 })

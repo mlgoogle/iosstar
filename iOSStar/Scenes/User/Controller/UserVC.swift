@@ -233,7 +233,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
     // MARK:- 我预约的明星
     func toReservationStar() {
         
-        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "GetOrderStarsVC")
+        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "StarMangerVC")
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

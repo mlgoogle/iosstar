@@ -13,9 +13,11 @@ class VideoHistoryCell: OEZTableViewCell {
     @IBOutlet weak var voiceCountLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var seeAskLabel: UILabel!
-    @IBOutlet weak var seeAnsLabel: UILabel!
+   
     
+    @IBOutlet var status: UILabel!
+    @IBOutlet var name: UILabel!
+    @IBOutlet var header: UIImageView!
     @IBOutlet var askBtn: UIButton!
     
     override func awakeFromNib() {
@@ -28,7 +30,23 @@ class VideoHistoryCell: OEZTableViewCell {
             timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(response.ask_t), format: "YYYY-MM-dd")
             voiceCountLabel.text = "\(response.s_total)看过"
             askBtn.isHidden = response.video_url == "" ? true : false
+            if response.isall == 1{
+                if response.answer_t == 0{
+                    status.text = "明星未回复"
+                }else{
+                    status.text = "已定制"
+                }
+                StartModel.getStartName(startCode: response.starcode) { [weak self](response) in
+                    if let star = response as? StartModel {
+                        self?.header.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + star.pic_url_tail))
+                        self?.name.text = star.name
+                    }
+                    
+                }
+
+            }
         }
+    
     }
     
     @IBAction func seeAnswer(_ sender: Any) {
@@ -108,6 +126,7 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
         }
        return 175
     }
+    
     @IBAction func titleViewButtonAction(_ sender: UIButton) {
         
         if self.dataSource != nil{
@@ -116,7 +135,7 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
         }
         self.selectedButton?.isSelected = false
         self.selectedButton?.backgroundColor = UIColor.clear
-        sender.backgroundColor = UIColor.init(rgbHex: 0xECECEC)
+        sender.backgroundColor = UIColor(hexString: "ffffff")
         self.selectedButton = sender
         if selectedButton == closeButton{
             type = false
@@ -131,7 +150,11 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
         
         let model = UserAskRequestModel()
         model.aType = 1
+        if starModel.symbol == ""{
+         
+        }else{
         model.starcode = starModel.symbol
+        }
         model.pos =  pageIndex == 1 ? 1 : dataSource?.count ?? 0
         model.pType = type ? 1 : 0
         model.pos = (pageIndex - 1) * 10
@@ -147,8 +170,13 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
             self.didRequestComplete(nil)
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, cellIdentifierForRowAtIndexPath indexPath: IndexPath) -> String? {
+        let model = dataSource?[indexPath.row] as! UserAskDetailList
+        if model.isall == 1{
+            return "VideoShowImgCell"
+        }
+        //
         return VideoHistoryCell.className()
     }
     
