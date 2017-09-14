@@ -65,11 +65,11 @@ class WithDrawaListVC: BasePageListTableViewController {
                 self?.didRequestComplete(Model.withdrawList as AnyObject?)
                 if (self?.dataSource?.count == 0 || self?.dataSource?.count == nil){
                     self?.nodata.isHidden = false
-                    self?.nodata.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 385)
+                    self?.nodata.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 385)
                     self?.tableView.reloadData()
                 }else{
                     self?.nodata.isHidden = true
-                    self?.nodata.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 0)
+                    self?.nodata.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 0)
                     self?.tableView.reloadData()
                 }
             }
@@ -88,12 +88,12 @@ class WithDrawaListVC: BasePageListTableViewController {
 //            }
         }) { (error ) in
             if (self.dataSource?.count == 0 || self.dataSource?.count == nil){
-                self.nodata.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 385)
+                self.nodata.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 385)
                 self.tableView.reloadData()
                 self.nodata.isHidden = false
             }else{
                 self.nodata.isHidden = true
-                self.nodata.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 0)
+                self.nodata.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 0)
                 self.tableView.reloadData()
             }
             self.didRequestComplete(nil)
