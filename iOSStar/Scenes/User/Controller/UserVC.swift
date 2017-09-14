@@ -1,3 +1,4 @@
+
 //
 //  UserVC.swift
 //  iOSStar
@@ -32,15 +33,14 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
     var buyStarCountLabel : UILabel?
     var PromotionUrl = ""
     // 名字数组
-    var titltArry = [""]
+    var titltArry = ["交易明细","我的钱包","我预约的明星","客服中心","通用设置"]
     //messagebtn
     @IBOutlet var message: UIButton!
     var responseData: UserInfoModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        titltArry = ["我的钱包","我约的明星","客服中心","常见问题","通用设置"]
-        titltArry = ["交易明细","我的钱包","我预约的明星","客服中心","通用设置"]
+
         self.tableView.reloadData()
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccess(_:)), name: Notification.Name(rawValue:AppConst.loginSuccess), object: nil)
@@ -65,13 +65,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
     }
     
     func LoginNotice(){
-        
-        AppAPIHelper.user().configRequest(param_code: "PROMOTION_URL", complete: { (response) in
-            if let model = response as? ConfigReusltValue {
-                self.PromotionUrl = String.init(format: "%@?uid=%d", model.param_value,(StarUserModel.getCurrentUser()?.id ?? 0)!)
-            }
-        },error:nil)
-        LoginYunxin()
+//        LoginYunxin()
         LoginSuccessNotice()
         
     }
@@ -95,25 +89,6 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         }) { (error) in
             
         }
-        
-        let model = CommissionModelequestModel()
-        
-        AppAPIHelper.user().getcommission(requestModel: model, complete: { (result) in
-            if let model = result {
-                let objectModle = model as! CommissionModel
-                if  objectModle.result == 1{
-                    self.Accumulated?.text = "\(objectModle.total_amount)"
-                    self.invitation?.text = "\(objectModle.total_num)"
-                } else {
-                    
-                }
-            }
-            
-        }) { (errro) in
-            
-        }
-        
-        
         updateUserInfo()
     }
     
@@ -152,14 +127,14 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         return section == 0 ? 1 : (section == 1 ? 5 : (section == 2 ? 1 : (section == 3 ? 1 : 3 ) ))
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 2 ? 10 : (section == 3 ? 10 : (section == 1 ? 10 : 0.0001))
+        return section == 2 ? 30 : (section == 3 ? 20 : (section == 1 ? 10 : 0.0001))
         
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return  0.01
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 340: 40
+        return indexPath.section == 0 ? 270: 40
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -172,10 +147,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
             iconImageView = cell.iconImageView
             buyStarCountLabel = cell.buyStarLabel
             message = cell.message
-            cell.doinvite.addTarget(self, action: #selector(showQrcode), for: .touchUpInside)
             refreshSessionBadge()
-            invitation =    cell.total_num
-            Accumulated =    cell.total_amount
             return cell
         }else if indexPath.section == 2{
             
@@ -261,7 +233,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
     // MARK:- 我预约的明星
     func toReservationStar() {
         
-        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "GetOrderStarsVC")
+        let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "StarMangerVC")
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

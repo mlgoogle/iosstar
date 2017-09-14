@@ -45,11 +45,12 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
     func setIcon() {
         var string = ""
         if starModel != nil {
-            string = starModel!.pic
+            string = starModel!.pic_tail
         } else {
             return
         }
-        let url = URL(string:qiniuHelper.shared().qiniuHeader +  string)
+
+        let url = URL(string:ShareDataModel.share().qiniuHeader + string)
         iconImageView.kf.setImage(with: url)
     }
     

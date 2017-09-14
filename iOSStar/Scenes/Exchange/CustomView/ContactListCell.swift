@@ -37,7 +37,7 @@ class GetOrderStarsVCCell : OEZTableViewCell{
         let model = data as! StarInfoModel
         StartModel.getStartName(startCode: model.starcode) { (response) in
             if let star = response as? StartModel {
-                self.iconImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  star.pic_url))
+                self.iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + star.pic_url_tail))
             }
             
         }
@@ -97,7 +97,8 @@ class ContactListCell: OEZTableViewCell {
             unreadLabel.isHidden = model.unreadCount == 0
             StartModel.getStartName(startCode: model.starcode) { (response) in
                 if let star = response as? StartModel {
-                    self.iconImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  star.pic_url))
+
+                    self.iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + star.pic_url_tail))
                 }
                 
             }
@@ -158,11 +159,12 @@ class ContactListCell: OEZTableViewCell {
                      color = "CCCCCC"
                     title = "已同意"
                 }
-                 chatButton.setTitle(title, for: .normal)
+                chatButton.setTitle(title, for: .normal)
                 chatButton.backgroundColor = UIColor.init(hexString: color)
                 jobLabel.text =  model.star_name
                 orderTime.text  = model.meet_time
-                self.iconImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  model.star_pic))
+
+                self.iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.star_pic))
                 orderTime.text = model.meet_time
             }
         }

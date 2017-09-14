@@ -79,7 +79,7 @@ class PublisherPageViewController: UIViewController {
             let starListModel = MarketListModel()
             starListModel.name = bannerModel!.name
             starListModel.symbol = bannerModel!.code
-            starListModel.pic = bannerDetailModel!.head_url
+            starListModel.pic_tail = bannerDetailModel!.head_url
             starListModel.wid = bannerDetailModel!.weibo_index_id
             vc?.starModel = starListModel
             navigationController?.pushViewController(vc!, animated: true)
@@ -141,7 +141,7 @@ extension PublisherPageViewController:UITableViewDelegate, UITableViewDataSource
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "iconImageCell", for: indexPath) as! BannerDetailImageCell
-            cell.setImage(imageUrl: bannerDetailModel?.pic_url)
+            cell.setImage(imageUrl: bannerDetailModel?.pic_url_tail)
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! BannerDetailInfoCell

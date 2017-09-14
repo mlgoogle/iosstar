@@ -128,6 +128,12 @@ class SocketConst: NSObject {
         //持有明星时间
         case positionCount = 10025
         case barrage = 6023
+        //问答
+        case askVideo = 15019
+        //获取用户问答信息
+        case userask = 15015
+        case starask = 15017
+        case qeepask = 15025
         //拍卖买卖占比
         case buySellPercent = 6017
         //获取明星总时间
@@ -165,6 +171,7 @@ class SocketConst: NSObject {
         case deleteCircle = 15007
         //点赞朋友圈
         case approveCircle = 15009
+         case uptoken = 15029
         //评论朋友圈
         case commentCircle = 15011
         //明星回复评论
@@ -174,6 +181,10 @@ class SocketConst: NSObject {
         case miuCount = 10037
         //七牛URL链接头
         case qiniuHttp = 4015
+
+         //明星详情页面
+        case circleListdetail = 15027
+       
     }
     
     enum type:UInt8 {

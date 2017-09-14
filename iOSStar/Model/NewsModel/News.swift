@@ -36,7 +36,7 @@ class BannerDetaiStarModel: Object {
     dynamic var introduction = ""
     dynamic var nation = ""
     dynamic var nationality = ""
-    dynamic var pic_url = ""
+    dynamic var pic_url_tail = ""
     dynamic var work = ""
     dynamic var owntimes = 0
     dynamic var head_url = ""

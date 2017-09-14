@@ -14,7 +14,8 @@ class YDSSessionViewController: NIMSessionViewController ,UIScrollViewDelegate{
     var starname = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavbar()
+          setupNavbar()
+         self.navBarBgAlpha = 1
     }
     
     func setupNavbar(){
@@ -44,6 +45,7 @@ class YDSSessionViewController: NIMSessionViewController ,UIScrollViewDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ShareDataModel.share().voiceSwitch = true
+        
 //        navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.isTranslucent = true
     }

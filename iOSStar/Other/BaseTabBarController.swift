@@ -45,8 +45,13 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccess(_:)), name: Notification.Name(rawValue:AppConst.loginSuccess), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginSuccessNotice), name: Notification.Name(rawValue:AppConst.loginSuccessNotice), object: nil)
     }
-    
+    func LoginSuccessNotice() {
+        if checkLogin(){
+            AppConfigHelper.shared().LoginYunxin()
+        }
+    }
     func didAdd(_ recentSession: NIMRecentSession, totalUnreadCount: Int) {
          self.sessionUnreadCount = totalUnreadCount
          self.refreshSessionBadge()
@@ -86,7 +91,8 @@ class BaseTabBarController: UITabBarController ,UITabBarControllerDelegate,NIMSy
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController){
-        qiniuHelper.shared().getIPAdrees()
+
+        QiniuTool.shared().getQiniuHeader("华南")
         if let nav : UINavigationController = tabBarController.selectedViewController as? UINavigationController{
             if nav.viewControllers.count > 0{
                 _ = nav.popToRootViewController(animated: true)

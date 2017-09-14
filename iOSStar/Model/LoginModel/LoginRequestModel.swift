@@ -13,6 +13,10 @@ class LoginRequestModel: BaseModel {
     var phone = ""
     var pwd = ""
     var deviceId = ""
+    var isp = ShareDataModel.share().netInfo.isp
+    var area = ShareDataModel.share().netInfo.area
+    var isp_id = ShareDataModel.share().netInfo.isp_id
+    var area_id = ShareDataModel.share().netInfo.area_id
 }
 
 class RegisterRequestModel: BaseModel {
@@ -24,7 +28,8 @@ class RegisterRequestModel: BaseModel {
     var timestamp = ""
     var sub_agentId = ""
     var channel = "  "
-    var star_code = "10001"
+
+    var star_code = " "
 }
 
 class WXRegisterRequestModel: BaseModel {
@@ -42,6 +47,7 @@ class WXRegisterRequestModel: BaseModel {
     var deviceId = ""
     var vCode = ""
     var channel = ""
+    var star_code = " "
 }
 
 class WeChatLoginRequestModel: BaseModel {

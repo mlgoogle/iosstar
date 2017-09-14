@@ -31,8 +31,10 @@ func isPassWord(pwd: String) ->Bool {
 class AppConst {
     static let DefaultPageSize = 15
     static let UMAppkey = "584a3eb345297d271600127e"
-    static let isMock = true
+    static let isMock = false
     static let sha256Key = "t1@s#df!"
+    
+    
     static let pid = 1002
     static let frozeCode = -101
     static let bundleId = "com.newxfin.goods"
@@ -43,9 +45,11 @@ class AppConst {
     static let getStarService = "getStarService"
     static let imageTokenUrl = "http://122.144.169.219:3378/imageToken"
     static let meetCityDefault = "杭州"
-    
+
+    static let didmiss = "杭州"
     static let ipUrl = "http://ip.chinaz.com/getip.aspx"
-    static let ipInfoUrl = "http://ip.taobao.com/service/getIpInfo.php?ip="
+    static let shareUrl = "http://star.grwme.com"
+    static let ipInfoUrl = "http://ip.taobao.com/service/getIpInfo.php?ip=125.121.228.115"
  
     enum KVOKey: String {
         case selectProduct = "selectProduct"
@@ -131,8 +135,12 @@ class AppConst {
         //是否测试环境
         //139.224.34.22
         //122.144.169.214
-        static let TcpServerIP:String = "122.144.169.214";
-        static let TcpServerPort:UInt16 = 17001
+
+        //nsb.smartdata-x.com  
+//        static let TcpServerIP:String = "nsb.smartdata-x.com";
+//         static let TcpServerPort:UInt16 = 16006
+        static let TcpServerIP:String = "139.224.34.22";
+        static let TcpServerPort:UInt16 = 16070
         static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
         static let TcpServerIP:String = "tapi.smartdata-x.com";

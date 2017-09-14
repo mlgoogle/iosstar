@@ -10,26 +10,29 @@ import UIKit
 import MWPhotoBrowser
 import SVProgressHUD
 class StarIntroduceViewController: UIViewController {
-
-
+    
+    
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var appointmentButton: UIButton!
-
+    var showMoreIntroduce  = true
     var index = 0
     var headerImg = UIImageView()
     var starModel:StarSortListModel?
-    var sectionHeights = [170, 18, 140]
-    var identifers = [StarIntroduceCell.className(), MarketExperienceCell.className(), StarPhotoCell.className()]
+//    var sectionHeights = [170,18 , 120 , 150]
+    var sectionHeights = [170,18 , 120, 120,124 , 150]
+    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(), StarCirCleCell.className(), StarDynamicCell.className(),StarDetailCirCell.className() ,StarPhotoCell.className()]
+//    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(),StarPhotoCell.className()]
     var images:[String] = []
     var starDetailModel:StarDetaiInfoModel?
     var expericences:[ExperienceModel]?
-    
+    var StarDetail:StarDetailCircle?
+    var realName = false
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.navBarBgAlpha = 0.0
-      
+        
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: PubInfoHeaderView.className())
         appointmentButton.backgroundColor = UIColor(hexString: AppConst.Color.lightAction)
         buyButton.backgroundColor = UIColor(hexString: AppConst.Color.darkAction)
@@ -40,31 +43,61 @@ class StarIntroduceViewController: UIViewController {
 //        appointmentButton.layer.shadowOpacity = 0.5
         requestStarDetailInfo()
         requestExperience()
-        let share = UIButton.init(type: .custom)
-        share.setImage(UIImage.init(named: "star_share"), for: .normal)
-        share.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
-        share.addTarget(self, action: #selector(sharetothird), for: .touchUpInside)
-        let item = UIBarButtonItem.init(customView: share)
-        item.tintColor = UIColor(hexString: AppConst.Color.main)
-//        self.navigationItem.rightBarButtonItem = item
 
-
-
+        requeseDetail()
+    }
+    func requeseDetail(){
+     let model = CirCleStarDetail()
+      model.starcode = (self.starModel?.symbol)!
+      model.aType = 1
+      model.pType = 1
+      AppAPIHelper.discoverAPI().requestStarDetail(requestModel: model, complete: { (result) in
+        
+        if let response = result as? StarDetailCircle{
+         self.StarDetail = response
+        self.tableView.reloadData()
+        }
+       
+      }) { (error ) in
+        
+        }
     }
     func sharetothird(){
         if let model = expericences?[0]{
-            let view : ShareView = Bundle.main.loadNibNamed("ShareView", owner: self, options: nil)?.last as! ShareView
-            view.title = (starDetailModel?.star_name)! + "(正在星云 出售TA的时间)"
-            view.Image = headerImg.image
-            view.descr = model.experience
-            view.webpageUrl = "https://fir.im/starShareUser?uid=\(StarUserModel.getCurrentUser()?.userinfo?.id ?? 0)"
-            view.shareViewController(viewController: self)
+          
+            
+            let share  = Share()
+            let vc = UIStoryboard.init(name: "Market", bundle: nil).instantiateViewController(withIdentifier: "ShareVC") as? ShareVC
+            vc?.modalPresentationStyle = .custom
+            share.titlestr = (starDetailModel?.star_name)! + "(正在星享时光 出售TA的时间)"
+            share.Image = headerImg.image
+            share.descr = model.experience
+            share.work = (starDetailModel?.work)!
+            share.star_code = (starDetailModel?.star_code)!
+            share.name = (starDetailModel?.star_name)!
+            vc?.share = share
+            share.webpageUrl = String.init(format: "%@?uid=%d&star_code=%@", AppConst.shareUrl,StarUserModel.getCurrentUser()?.userinfo?.id ?? 0,(self.starDetailModel?.star_code)!)
+          
+            vc?.modalTransitionStyle = .crossDissolve
+            present(vc!, animated: true, completion: nil)
         }
-       
-    
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.getUserRealmInfo { [weak self](result) in
+            if let model = result{
+                if let object =  model as? [String : AnyObject]{
+                    if object["realname"] as! String == ""{
+                        self?.realName = true
+                    }else{
+                        self?.realName = false
+                    }
+                }
+            }
+        }
         if let _ = UserDefaults.standard.value(forKey: AppConst.guideKey.StarIntroduce.rawValue) as? String {
             
         }else{
@@ -80,9 +113,9 @@ class StarIntroduceViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+        
     }
-
+    
     func requestStarDetailInfo() {
         guard starModel != nil else {
             return
@@ -102,7 +135,7 @@ class StarIntroduceViewController: UIViewController {
     }
     
     func checkImages() {
-
+        
         if checkUrl(url: starDetailModel?.portray1) {
             images.append(starDetailModel!.portray1)
         }
@@ -115,6 +148,7 @@ class StarIntroduceViewController: UIViewController {
         if checkUrl(url: starDetailModel?.portray4) {
             images.append(starDetailModel!.portray4)
         }
+       self.tableView.reloadData()
         
     }
     
@@ -129,7 +163,7 @@ class StarIntroduceViewController: UIViewController {
         AppAPIHelper.marketAPI().requestStarExperience(code: starModel!.symbol, complete: { (response) in
             if let models =  response as? [ExperienceModel] {
                 self.expericences = models
-                self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+                self.tableView.reloadData()
             }
         }) { (error) in
             
@@ -138,19 +172,29 @@ class StarIntroduceViewController: UIViewController {
     }
     @IBAction func askToBuy(_ sender: Any) {
         
+        if self.starDetailModel?.publish_type !=  2 {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "当前该明星非流通阶段，请等待为流通阶段", ForDuration: 2, completion: nil)
+            return
+        }
         let storyBoard = UIStoryboard(name: "Heat", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "HeatDetailViewController") as! HeatDetailViewController
         vc.starListModel = starModel
         navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     @IBAction func appointmentAction(_ sender: Any) {
         if starDetailModel == nil{
             return
         }
+        
+        if self.starDetailModel?.publish_type !=  2 {
+            SVProgressHUD.showErrorMessage(ErrorMessage: "当前该明星非流通阶段，请等待为流通阶段", ForDuration: 2, completion: nil)
+            return
+        }
+        
         let storyBoard = UIStoryboard(name: "Market", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "OrderStarViewController") as! OrderStarViewController
-        starModel?.home_pic = (starDetailModel?.back_pic)!
+        starModel?.home_pic_tail = (starDetailModel?.back_pic_tail)!
         vc.starInfo = starModel
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -160,7 +204,10 @@ class StarIntroduceViewController: UIViewController {
         guard starModel != nil else {
             return
         }
-        
+        if self.starDetailModel?.publish_type == 0 {
+         SVProgressHUD.showErrorMessage(ErrorMessage: "当前该明星非流通阶段，请等待为流通阶段", ForDuration: 2, completion: nil)
+         return
+        }
         let r = PositionCountRequestModel()
         r.starcode = starModel!.symbol
         AppAPIHelper.marketAPI().requestPositionCount(requestModel: r, complete: { (response) in
@@ -184,17 +231,17 @@ class StarIntroduceViewController: UIViewController {
             SVProgressHUD.showErrorMessage(ErrorMessage: "未持有该明星时间", ForDuration: 1.0, completion: nil)
         }
     }
-
+    
 }
-extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource,MenuViewDelegate, MWPhotoBrowserDelegate, UIScrollViewDelegate, PopVCDelegate{
+extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource,MenuViewDelegate, MWPhotoBrowserDelegate, UIScrollViewDelegate, PopVCDelegate,MarketExperienceCellDelegate,StarCirCleCellDelegate,StarDynamicCellDelegate{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > 170 {
             self.navBarBgAlpha = 1.0
-              title = self.starModel?.name
+            title = self.starModel?.name
         } else {
             self.navBarBgAlpha = 0.0
-              title =   ""
+            title =   ""
             
         }
     }
@@ -203,27 +250,33 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     }
     
     func chat() {
-
+        if realName{
+         showRealname()
+            return
+        }
+        
         requestPositionCount()
     }
-
-
+    func share() {
+        sharetothird()
+    }
+    
     func numberOfPhotos(in photoBrowser: MWPhotoBrowser!) -> UInt {
         return 1
     }
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
-        let photo = MWPhoto(url:URL(string:qiniuHelper.shared().qiniuHeader +  images[Int(self.index)]))
+        let photo = MWPhoto(url:URL(string:ShareDataModel.share().qiniuHeader +  images[Int(self.index)]))
         return photo
     }
-
+    
     func menuViewDidSelect(indexPath: IndexPath) {
         index = indexPath.item
         let vc = PhotoBrowserVC(delegate: self)
         present(vc!, animated: true, completion: nil)
     }
-
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-
+        
         return 0.0001
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -233,10 +286,25 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         case 1:
             return 70
         case 2:
-            return 25
+            return 0.001
+        case 3:
+            return 70
+        case 4:
+            return 0.01
+        case 5:
+            return 70
         default:
             return 0.01
         }
+        
+    }
+    func showMore() {
+        showMoreIntroduce = false
+        self.tableView.reloadSections(IndexSet.init(integer: 1), with: .fade)
+    }
+    func Packup() {
+        showMoreIntroduce = true
+        self.tableView.reloadSections(IndexSet.init(integer: 1), with: .fade)
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -245,7 +313,28 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             header?.setTitle(title:"个人介绍")
             header?.contentView.backgroundColor = UIColor(hexString: "fafafa")
             return header
-        } else {
+            
+            
+        }
+         else  if  section == 5 {
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as? PubInfoHeaderView
+            header?.setTitle(title:"个人写真")
+            header?.contentView.backgroundColor = UIColor(hexString: "fafafa")
+            return header
+        }
+        else  if  section == 3 {
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as? PubInfoHeaderView
+            header?.setTitle(title:"最新动态")
+            header?.contentView.backgroundColor = UIColor(hexString: "fafafa")
+            return header
+        }
+        else  if  section == 2{
+            let view = UIView()
+            view.backgroundColor = UIColor.init(hexString: "fafafa")
+            return view
+        }
+
+        else {
             let view = UIView()
             view.backgroundColor = UIColor.init(hexString: "fafafa")
             return view
@@ -253,12 +342,23 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         
         
     }
+  
     func numberOfSections(in tableView: UITableView) -> Int {
         return identifers.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
-            return expericences?.count ?? 0
+            if showMoreIntroduce{
+                if expericences != nil{
+                    return 1
+                }else{
+                  return 0
+                }
+                
+            }else{
+                return expericences?.count ?? 0
+            }
+            
         }
         return 1
     }
@@ -277,18 +377,60 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
                 guard starDetailModel != nil else {
                     return cell
                 }
-     
+                
                 introCell.setData(model: starDetailModel!)
                 headerImg = introCell.iconImageView
             }
         case 1:
             if let expericencesCell = cell as? MarketExperienceCell {
                 
-                let model = expericences![indexPath.row]
-
-                expericencesCell.setTitle(title: model.experience)
+                expericencesCell.delegate = self
+                 expericencesCell.show.isHidden = true
+                if showMoreIntroduce{
+                    expericencesCell.show.isHidden = false
+                    expericencesCell.showHeight.constant = 15
+                    
+                }else{
+                    //最后一区
+                    expericencesCell.show.isHidden = true
+                    if indexPath.row == (expericences?.count)! - 1{
+                        expericencesCell.show.isHidden = false
+                        expericencesCell.show.setTitle("点击收起", for: .normal)
+                        expericencesCell.showHeight.constant = 15
+                    }else{
+                        expericencesCell.show.isHidden = true
+                        expericencesCell.showHeight.constant = 0
+                    }
+                    
+                    
+                }
+                if expericences != nil {
+                    let model = expericences![indexPath.row]
+                    
+                    expericencesCell.setTitle(title: model.experience)
+                }
+                
             }
         case 2:
+            if let StarCirCle = cell as? StarCirCleCell {
+                StarCirCle.delegate = self
+                StarCirCle.backgroundColor = UIColor.clear
+//                photoCell.setImageUrls(images: images, delegate:self)
+            }
+            
+        case 3:
+            if let photoCell = cell as? StarDynamicCell {
+            
+                 photoCell.datasource = self.StarDetail
+//                photoCell.setImageUrls(images: images, delegate:self)
+                photoCell.delegate = self
+            }//StarDetailCirCell
+        case 4:
+            if let photoCell = cell as? StarDetailCirCell {
+//                photoCell.setImageUrls(images: images, delegate:self)
+                photoCell.datasource = self.StarDetail
+            }
+        case 5:
             if let photoCell = cell as? StarPhotoCell {
                 photoCell.setImageUrls(images: images, delegate:self)
             }
@@ -297,8 +439,104 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         }
         return cell
     }
+    func starask(){
+        
+        //
+//        SVProgressHUD.showErrorMessage(ErrorMessage:  "敬请期待", ForDuration: 2, completion: nil)
+//        return
+        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VideoManagerVC.className()) as? VideoManagerVC{
+            vc.starModel = starModel!
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    func voice(){
+        
+        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VoiceManagerVC") as? VoiceManagerVC{
+            vc.starModel = starModel!
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+     func staractive(){
+        
+        //TakeMovieVC
+        ShareDataModel.share().selectStarCode = (starModel?.symbol)!
+        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: StarNewsVC.className()) as? StarNewsVC{
+            //TakeMovieVC
+              vc.starModel = starModel
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     
-    
+    func starask(_select: UserAskDetailList) {
+        if let model  = _select as? UserAskDetailList{
+            if model.purchased == 1{
+                
+                if model.video_url != ""{
+                    
+                    self.pushViewController(pushSreing: PlayVideoVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
+                        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                            
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                        
+                    })
+                }
+                else{
+                    
+                    self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
+                        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                            
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                        
+                    })
+                    
+                }
+               
+            }
+            else{
+                let request = PeepVideoOrvoice()
+                request.qid = Int(model.id)
+                request.starcode = (starModel?.symbol)!
+                request.cType = model.c_type
+                  request.askUid = model.uid
+                AppAPIHelper.discoverAPI().peepAnswer(requestModel: request, complete: { (result) in
+                    if let response = result as? ResultModel{
+                        if response.result == 0{
+                            model.purchased = 1
+                          
+                            if model.video_url != ""{
+                                
+                                self.pushViewController(pushSreing: PlayVideoVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
+                                    if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                                        
+                                        self.navigationController?.pushViewController(vc, animated: true)
+                                    }
+                                    
+                                })
+                            }
+                            else{
+                                
+                                self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
+                                    if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                                        
+                                        self.navigationController?.pushViewController(vc, animated: true)
+                                    }
+                                    
+                                })
+                                
+                            }
+                        }else{
+                            SVProgressHUD.showWainningMessage(WainningMessage: "您持有的时间不足", ForDuration: 1, completion: nil)
+                        }
+                    }
+                }, error: { (error) in
+                    self.didRequestError(error)
+                })
+                
+            }
+        }
+    }
 }
 
 

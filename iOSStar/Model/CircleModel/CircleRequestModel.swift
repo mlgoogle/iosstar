@@ -31,3 +31,11 @@ class DeleteCircle: BaseModel {
     dynamic var star_code = ""
     dynamic var circle_id = 0
 }
+class CirCleStarDetail: BaseModel {
+    dynamic var pos = 0
+    dynamic var count = 3
+    dynamic var starcode = ""
+    dynamic var aType = 0
+    dynamic var pType = 0
+    var uid:Int64 = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
+}

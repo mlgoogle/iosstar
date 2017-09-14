@@ -12,45 +12,6 @@ import Qiniu
 import Alamofire
 
 extension UIImage{
-
-    
-    
-    /**
-     七牛上传图片
-     
-     - parameter image:     图片
-     - parameter imageName: 图片名
-     - parameter complete:  图片完成Block
-     */
-    class func qiniuUploadImage(image: UIImage, imageName: String, complete: CompleteBlock?, error: ErrorBlock?) {
-        
-        //0,将图片存到沙盒中
-        let filePath = cacheImage(image, imageName: imageName)
-        //1,获取图片
-        Alamofire.request(AppConst.imageTokenUrl, method: .get).responseJSON { (resultObject) in
-            if let result: NSDictionary = resultObject.result.value as? NSDictionary{
-                let token = result.value(forKey: "imageToken") as! String
-                //2,上传图片
-                let timestamp = NSDate().timeIntervalSince1970
-                let key = "\(imageName)\(Int(timestamp)).png"
-                let qiniuManager = QNUploadManager()
-                qiniuManager?.putFile(filePath, key: key, token: token, complete: { (info, key, resp) in
-                    if complete == nil{
-                        return
-                    }
-                    if resp == nil {
-                        complete!(nil)
-                        return
-                    }
-                    //3,返回URL
-                    let respDic: NSDictionary? = resp as NSDictionary?
-                    let value:String? = respDic!.value(forKey: "key") as? String
-                    let imageUrl = AppConst.Network.qiniuHost+value!
-                    complete!(imageUrl as AnyObject?)
-                }, option: nil)
-            }
-        }
-    }
     
     /**
      缓存图片
@@ -108,7 +69,7 @@ extension UIImage{
      - parameter image: 需要生成原始图片
      - parameter size:  生成的二维码的宽高
      */
-    private class func createNonInterpolatedUIImageFormCIImage(image: CIImage, size: CGFloat) -> UIImage {
+     class func createNonInterpolatedUIImageFormCIImage(image: CIImage, size: CGFloat) -> UIImage {
         
         let extent: CGRect = image.extent.integral
         let scale: CGFloat = min(size/extent.width, size/extent.height)
@@ -149,6 +110,50 @@ extension UIImage{
         // 返回新的改变大小后的图片
         return scaledImage!;
     }
+     class func createQRForString(qrString: String?, qrImageName: UIImage?) -> UIImage?{
+        if let sureQRString = qrString {
+            let stringData = sureQRString.data(using: .utf8,
+                                               allowLossyConversion: false)
+            // 创建一个二维码的滤镜
+            let qrFilter = CIFilter(name: "CIQRCodeGenerator")!
+            qrFilter.setValue(stringData, forKey: "inputMessage")
+            qrFilter.setValue("H", forKey: "inputCorrectionLevel")
+            let qrCIImage = qrFilter.outputImage
+            
+            // 创建一个颜色滤镜,黑白色
+            let colorFilter = CIFilter(name: "CIFalseColor")!
+            colorFilter.setDefaults()
+            colorFilter.setValue(qrCIImage, forKey: "inputImage")
+            colorFilter.setValue(CIColor(red: 0, green: 0, blue: 0), forKey: "inputColor0")
+            colorFilter.setValue(CIColor(red: 1, green: 1, blue: 1), forKey: "inputColor1")
+            
+            // 返回二维码image
+            let codeImage = UIImage(ciImage: colorFilter.outputImage!
+                .applying(CGAffineTransform(scaleX: 5, y: 5)))
+            
+          
+            if let iconImage = qrImageName {
+                let rect = CGRect(x:0, y:0, width:codeImage.size.width,
+                                  height:codeImage.size.height)
+                UIGraphicsBeginImageContext(rect.size)
+                
+                codeImage.draw(in: rect)
+                
+                let avatarSize = CGSize(width:rect.size.width * 0.3,
+                                        height:rect.size.height * 0.3)
+                let x = (rect.width - avatarSize.width) * 0.5
+                let y = (rect.height - avatarSize.height) * 0.5
+                iconImage.draw(in: CGRect(x:x, y:y, width:avatarSize.width,
+                                          height:avatarSize.height))
+                let resultImage = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                return resultImage
+            }
+            return codeImage
+        }
+        return nil
+    }
+    
    
 
 }

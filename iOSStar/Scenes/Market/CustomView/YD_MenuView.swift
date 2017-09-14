@@ -118,6 +118,7 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
         
         
         cell.setData(data: itemData?[indexPath.row], colorString: indexPath.row == selectIndexPath.item ? AppConst.Color.main : "C2CFD8", isZoom:indexPath.row == selectIndexPath.item ? isSelectZoom : false)
+    
         return cell
     }
     
@@ -146,6 +147,8 @@ class YD_VMenuView: UIView , UIScrollViewDelegate, UICollectionViewDelegate, UIC
 
 class BaseItemCell: UICollectionViewCell {
     func setData(data:AnyObject?, colorString:String?, isZoom:Bool) {
+        
  
+
     }
 }
