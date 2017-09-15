@@ -120,8 +120,14 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
                 self.tableView.reloadData()
                 if self.dataSource?.count == 0 {
                     self.nodataView.isHidden = false
+                    self.nodataView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 385)
+                    
+                    self.tableView.reloadData()
                 }else{
                     self.nodataView.isHidden = true
+                    self.nodataView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 0)
+                    
+                    self.tableView.reloadData()
                 }
             }
         }, error: { (error) in
@@ -130,8 +136,15 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
             
             if self.dataSource == nil {
                 self.nodataView.isHidden = false
+                 self.nodataView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 385)
+               
+                self.tableView.reloadData()
             }else{
                 self.nodataView.isHidden = true
+                self.nodataView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 0)
+                
+                self.tableView.reloadData()
+                
             }
             self.tableView.reloadData()
         })
@@ -170,6 +183,7 @@ class MoneyDetailList: BaseCustomPageListTableViewController,CustomeAlertViewDel
         let indexStr = String.init(format:"%d",index)
         
         indexString = indexStr
+        pageIndex = 1
         didRequest(1)
         self.tableView.reloadData()
     }

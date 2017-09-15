@@ -288,7 +288,7 @@ extension UIViewController {
         }
         
     }
-    
+    //进入播放页面
     func pushViewController(pushSreing:String,videdoUrl : String,pushModel:UserAskDetailList,withImg:String,complete: CompleteBlock?){
         if pushSreing == "PlaySingleVC" {
             if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: pushSreing) as? PlaySingleVC{
@@ -319,6 +319,16 @@ extension UIViewController {
             }
         }
         
+    }
+    //进入播放页面
+    func pushcontroller(pushSreing:String,model : UserAskDetailList){
+        self.pushViewController(pushSreing: pushSreing, videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
+            if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        })
+    
     }
 }
 

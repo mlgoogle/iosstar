@@ -82,21 +82,12 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
                     return
                 }
                 if model.video_url != ""{
-                    self.pushViewController(pushSreing: PlayVideoVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png", complete: { (result) in
-                        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
-                            
-                            self.navigationController?.pushViewController(vc, animated: true)
-                        }
-                    })
+                     self.pushcontroller(pushSreing: PlayVideoVC.className(), model: model)
+                    
         
                 }else{
-                    self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png", complete: { (result) in
-                        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
-                            
-                            self.navigationController?.pushViewController(vc, animated: true)
-                        }
-                        
-                    })
+                     self.pushcontroller(pushSreing: PlaySingleVC.className(), model: model)
+                   
                     
                 }
             }
@@ -109,13 +100,8 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
                     SVProgressHUD.showErrorMessage(ErrorMessage: "没有提问视频问题", ForDuration: 2, completion: nil)
                     return
                 }
-                
-                self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.video_url), pushModel: model, withImg: model.thumbnail != "" ? model.thumbnail  :  "1123.png", complete: { (result) in
-                    if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
-                        vc.starModel = self.starModel
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
-                })
+                self.pushcontroller(pushSreing: PlaySingleVC.className(), model: model)
+              
                 
             }
         }
