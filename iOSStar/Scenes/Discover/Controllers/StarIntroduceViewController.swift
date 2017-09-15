@@ -27,6 +27,8 @@ class StarIntroduceViewController: UIViewController {
     var expericences:[ExperienceModel]?
     var StarDetail:StarDetailCircle?
     var realName = false
+    var showCirCle = false
+    var showCirCleUrl = ""
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -230,7 +232,9 @@ class StarIntroduceViewController: UIViewController {
     }
     
 }
-extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource,MenuViewDelegate, MWPhotoBrowserDelegate, UIScrollViewDelegate, PopVCDelegate,MarketExperienceCellDelegate,StarCirCleCellDelegate,StarDynamicCellDelegate{
+//StarDetailCirCellDelegate
+
+extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource,MenuViewDelegate, MWPhotoBrowserDelegate, UIScrollViewDelegate, PopVCDelegate,MarketExperienceCellDelegate{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > 170 {
@@ -262,12 +266,18 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         return 1
     }
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
+        
+        if showCirCle{
+            let photo = MWPhoto(url:URL(string: showCirCleUrl))
+            return photo
+        }
         let photo = MWPhoto(url:URL(string: images[Int(self.index)]))
         return photo
     }
     
     func menuViewDidSelect(indexPath: IndexPath) {
         index = indexPath.item
+        showCirCle = false
         let vc = PhotoBrowserVC(delegate: self)
         present(vc!, animated: true, completion: nil)
     }
@@ -310,6 +320,8 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             header?.setTitle(title:"个人介绍")
             header?.contentView.backgroundColor = UIColor(hexString: "fafafa")
             return header
+            
+            
         }
         else  if  section == 5 {
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as? PubInfoHeaderView
@@ -334,8 +346,6 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             view.backgroundColor = UIColor.init(hexString: "fafafa")
             return view
         }
-        
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -396,6 +406,8 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
                         expericencesCell.show.isHidden = true
                         expericencesCell.showHeight.constant = 0
                     }
+                    
+                    
                 }
                 if expericences != nil {
                     let model = expericences![indexPath.row]
@@ -408,19 +420,21 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             if let StarCirCle = cell as? StarCirCleCell {
                 StarCirCle.delegate = self
                 StarCirCle.backgroundColor = UIColor.clear
-                
+                //                photoCell.setImageUrls(images: images, delegate:self)
             }
             
         case 3:
             if let photoCell = cell as? StarDynamicCell {
                 
                 photoCell.datasource = self.StarDetail
-                
+                //                photoCell.setImageUrls(images: images, delegate:self)
                 photoCell.delegate = self
-            }
+        }//StarDetailCirCell
         case 4:
             if let photoCell = cell as? StarDetailCirCell {
+                //                photoCell.setImageUrls(images: images, delegate:self)
                 photoCell.datasource = self.StarDetail
+                 photoCell.delegate = self
             }
         case 5:
             if let photoCell = cell as? StarPhotoCell {
@@ -456,16 +470,18 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         }
     }
     
+    
+}
+extension StarIntroduceViewController : StarCirCleCellDelegate,StarDynamicCellDelegate,StarDetailCirCellDelegate{
+    
     func starask(_select: UserAskDetailList) {
         if let model  = _select as? UserAskDetailList{
             if model.purchased == 1{
                 if model.video_url != ""{
-                    
-                    self.pushcontroller(pushSreing: PlayVideoVC.className(), model: model)
+                    self.pushcontroller(pushSreing: PlayVideoVC.className(), model: model, playString: model.video_url)
                 }
                 else{
-                    self.pushcontroller(pushSreing: PlaySingleVC.className(), model: model)
-                    
+                    self.pushcontroller(pushSreing: PlaySingleVC.className(), model: model, playString: model.sanswer)
                 }
             }
             else{
@@ -478,11 +494,12 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
                     if let response = result as? ResultModel{
                         if response.result == 0{
                             model.purchased = 1
+                            
                             if model.video_url != ""{
-                                self.pushcontroller(pushSreing: PlayVideoVC.className(), model: model)
+                                self.pushcontroller(pushSreing: PlayVideoVC.className(), model: model, playString: model.video_url)
                             }
                             else{
-                                self.pushcontroller(pushSreing: PlaySingleVC.className(), model: model)
+                                self.pushcontroller(pushSreing: PlaySingleVC.className(), model: model, playString: model.sanswer)
                             }
                         }else{
                             SVProgressHUD.showWainningMessage(WainningMessage: "您持有的时间不足", ForDuration: 1, completion: nil)
@@ -495,6 +512,13 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             }
         }
     }
+    func showBigImg(_select: CircleListModel) {
+        showCirCle = true
+        showCirCleUrl = String(ShareDataModel.share().qiniuHeader + _select.pic_url_tail)
+        let vc = PhotoBrowserVC(delegate: self)
+        present(vc!, animated: true, completion: nil)
+    }
+    
 }
 
 

@@ -61,12 +61,12 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
                 self.tableView.reloadData()
                 if (self.dataSource?.count == 0){
                     self.nodaView.isHidden = false
-                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 0)
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 0)
                     self.tableView.reloadData()
                     
                 }else{
                     self.nodaView.isHidden = true
-                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 385)
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 385)
                     self.tableView.reloadData()
                 }
             }) { (error ) in
@@ -75,11 +75,11 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
                 self.didRequestComplete(nil)
                 if (self.dataSource?.count == nil || self.dataSource?.count == 0){
                     self.nodaView.isHidden = false
-                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 385)
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 385)
                     self.tableView.reloadData()
                 }else{
                     self.nodaView.isHidden = true
-                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 0)
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 0)
                     self.tableView.reloadData()
                 }
             }
@@ -94,22 +94,22 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
                 self.tableView.reloadData()
                 if (self.dataSource?.count == 0){
                     self.nodaView.isHidden = false
-                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 385)
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 385)
                     self.tableView.reloadData()
                 }else{
                     self.nodaView.isHidden = true
-                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 0)
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 0)
                     self.tableView.reloadData()
                 }
             }) { (error ) in
                 self.didRequestComplete(nil)
                 if (self.dataSource?.count == nil  || self.dataSource?.count == 0){
                     self.nodaView.isHidden = false
-                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 385)
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 385)
                     self.tableView.reloadData()
                 }else{
                     self.nodaView.isHidden = true
-                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: 9, height: 0)
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 0)
                     self.tableView.reloadData()
                 }
             }
