@@ -18,6 +18,7 @@ class StarMangerVC: UIViewController {
         
         scrollView.contentSize = CGSize.init(width: kScreenWidth*4, height: 0)
         configView()
+        self.automaticallyAdjustsScrollViewInsets = false
         scrollView.isPagingEnabled = true
         scrollView.isScrollEnabled = false
         title = "我预约的明星"
@@ -31,7 +32,7 @@ class StarMangerVC: UIViewController {
                 if let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "GetOrderStarsVC") as? GetOrderStarsVC{
                     scrollView.addSubview(vc.view)
                     
-                    vc.view.frame = CGRect.init(x: (CGFloat(index) * CGFloat(scrollView.frame.size.width)), y: 0, width: kScreenWidth, height: scrollView.frame.size.height)
+                    vc.view.frame = CGRect.init(x: (CGFloat(index) * CGFloat(kScreenWidth)), y: 0, width: kScreenWidth, height: scrollView.frame.size.height)
                     self.addChildViewController(vc)
                 }
                 
@@ -40,7 +41,7 @@ class StarMangerVC: UIViewController {
                 if let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "GetOrderStarsVC") as? GetOrderStarsVC{
                     scrollView.addSubview(vc.view)
                     vc.domeet = false
-                    vc.view.frame = CGRect.init(x: (CGFloat(index) * CGFloat(scrollView.frame.size.width)), y: 0, width: kScreenWidth, height: scrollView.frame.size.height)
+                    vc.view.frame = CGRect.init(x: (CGFloat(index) * CGFloat(kScreenWidth)), y: 0, width: kScreenWidth, height: scrollView.frame.size.height)
                     self.addChildViewController(vc)
                 }
             }
@@ -51,7 +52,7 @@ class StarMangerVC: UIViewController {
                     let model = StarSortListModel()
                     model.symbol = ""
                     vc.starModel = model
-                    vc.view.frame = CGRect.init(x: (CGFloat(index) * CGFloat(scrollView.frame.size.width)), y: 0, width: kScreenWidth, height: scrollView.frame.size.height)
+                    vc.view.frame = CGRect.init(x: (CGFloat(index) * CGFloat(kScreenWidth)), y: 0, width: kScreenWidth, height: scrollView.frame.size.height)
                     self.addChildViewController(vc)
                 }
             }
@@ -61,7 +62,7 @@ class StarMangerVC: UIViewController {
                     scrollView.addSubview(vc.view)
                     let model = StarSortListModel()
                     vc.starModel = model
-                    vc.view.frame = CGRect.init(x: (CGFloat(index) * CGFloat(scrollView.frame.size.width)), y: 0, width: kScreenWidth, height: scrollView.frame.size.height)
+                    vc.view.frame = CGRect.init(x: (CGFloat(index) * CGFloat(kScreenWidth)), y: 0, width: kScreenWidth, height: scrollView.frame.size.height)
                     self.addChildViewController(vc)
                 }
             }
