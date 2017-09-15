@@ -18,10 +18,10 @@ class StarIntroduceViewController: UIViewController {
     var index = 0
     var headerImg = UIImageView()
     var starModel:StarSortListModel?
-//    var sectionHeights = [170,18 , 120 , 150]
-    var sectionHeights = [170,18 , 120, 120,124 , 150]
-    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(), StarCirCleCell.className(), StarDynamicCell.className(),StarDetailCirCell.className() ,StarPhotoCell.className()]
-//    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(),StarPhotoCell.className()]
+    var sectionHeights = [170,18 , 120 , 150]
+//    var sectionHeights = [170,18 , 120, 120,124 , 150]
+  //  var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(), StarCirCleCell.className(), StarDynamicCell.className(),StarDetailCirCell.className() ,StarPhotoCell.className()]
+    var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(),StarPhotoCell.className()]
     var images:[String] = []
     var starDetailModel:StarDetaiInfoModel?
     var expericences:[ExperienceModel]?
@@ -69,7 +69,7 @@ class StarIntroduceViewController: UIViewController {
             let share  = Share()
             let vc = UIStoryboard.init(name: "Market", bundle: nil).instantiateViewController(withIdentifier: "ShareVC") as? ShareVC
             vc?.modalPresentationStyle = .custom
-            share.titlestr = (starDetailModel?.star_name)! + "(正在星享时光 出售TA的时间)"
+            share.titlestr = (starDetailModel?.star_name)! + "(正在星云 出售TA的时间)"
             share.Image = headerImg.image
             share.descr = model.experience
             share.work = (starDetailModel?.work)!
@@ -284,6 +284,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         case 0:
             return 0.001
         case 1:
+            
             return 70
         case 2:
             return 0.001

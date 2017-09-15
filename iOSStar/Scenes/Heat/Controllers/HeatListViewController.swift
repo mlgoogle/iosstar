@@ -140,7 +140,10 @@ class HeatListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "ToDeal", sender: indexPath)
+        if dataSource?.count ?? 0 != 0 {
+            
+            performSegue(withIdentifier: "ToDeal", sender: indexPath)
+        }
     }
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
