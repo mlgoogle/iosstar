@@ -15,7 +15,7 @@ class StarMangerVC: UIViewController {
     @IBOutlet var segment: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        scrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: 60 , width: self.view.frame.size.width, height: self.view.frame.size.height - 60))
         self.scrollView?.isScrollEnabled = false
         scrollView?.isPagingEnabled = true
         self.automaticallyAdjustsScrollViewInsets = false
