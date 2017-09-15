@@ -10,12 +10,18 @@ import UIKit
 
 class StarMangerVC: UIViewController {
     
-    @IBOutlet var scrollView: UIScrollView!
+     var scrollView: UIScrollView!
     
     @IBOutlet var segment: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        scrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        self.scrollView?.isScrollEnabled = false
+        scrollView?.isPagingEnabled = true
+        self.automaticallyAdjustsScrollViewInsets = false
+        scrollView?.contentSize = CGSize.init(width: self.view.frame.size.width*2, height: 0)
+        view.addSubview(scrollView!)
+        scrollView?.isPagingEnabled = true
         scrollView.contentSize = CGSize.init(width: kScreenWidth*4, height: 0)
         configView()
         self.automaticallyAdjustsScrollViewInsets = false
@@ -32,8 +38,9 @@ class StarMangerVC: UIViewController {
                 if let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "GetOrderStarsVC") as? GetOrderStarsVC{
                     scrollView.addSubview(vc.view)
                     
-                    vc.view.frame = CGRect.init(x: (CGFloat(index) * CGFloat(kScreenWidth)), y: 0, width: kScreenWidth, height: scrollView.frame.size.height)
                     self.addChildViewController(vc)
+                    vc.view.frame = CGRect.init(x: (CGFloat(index) * CGFloat(kScreenWidth)), y: 0, width: kScreenWidth, height: scrollView.frame.size.height)
+
                 }
                 
             }
