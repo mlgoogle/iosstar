@@ -81,27 +81,27 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
                     SVProgressHUD.showErrorMessage(ErrorMessage: "明星还没回复", ForDuration: 2, completion: nil)
                     return
                 }
-                if model.video_url != ""{
-                     self.pushcontroller(pushSreing: PlayVideoVC.className(), model: model)
-                    
-        
-                }else{
-                     self.pushcontroller(pushSreing: PlaySingleVC.className(), model: model)
-                   
-                    
-                }
+                self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png", complete: { (result) in
+                    if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                        
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                })
             }
         }
         if action ==  2{
-            
             if let model = dataSource?[indexPath.row] as? UserAskDetailList{
                 
                 if model.video_url == ""{
                     SVProgressHUD.showErrorMessage(ErrorMessage: "没有提问视频问题", ForDuration: 2, completion: nil)
                     return
                 }
-                self.pushcontroller(pushSreing: PlaySingleVC.className(), model: model)
-              
+                self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.video_url), pushModel: model, withImg: model.thumbnail != "" ? model.thumbnail  :  "1123.png", complete: { (result) in
+                    if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                        vc.starModel = self.starModel
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                })
                 
             }
         }

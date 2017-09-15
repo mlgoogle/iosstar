@@ -120,7 +120,10 @@ class BindingBankCardVC: UITableViewController {
     }
     @IBAction func sendCode(_ sender: Any) {
         
-        
+        if !isTelNumber(num: phone.text!) {
+        SVProgressHUD.showErrorMessage(ErrorMessage: "请输入正确的手机号", ForDuration: 2, completion: nil)
+            return 
+        }
         if checkTextFieldEmpty([phone]) && isTelNumber(num: phone.text!) {
             let sendVerificationCodeRequestModel = SendVerificationCodeRequestModel()
             sendVerificationCodeRequestModel.phone = (self.phone.text!)
@@ -133,6 +136,8 @@ class BindingBankCardVC: UITableViewController {
                         self?.timer = Timer.scheduledTimer(timeInterval: 1,target:self!,selector: #selector(self?.updatecodeBtnTitle),userInfo: nil,repeats: true)
                         self?.timeStamp = String.init(format: "%ld", response["timeStamp"] as!  Int)
                         self?.vToken = String.init(format: "%@", response["vToken"] as! String)
+                    }else{
+                     SVProgressHUD.showErrorMessage(ErrorMessage: "验证码获取失败", ForDuration: 2, completion: nil)
                     }
                 }
                 }, error: { (error) in
