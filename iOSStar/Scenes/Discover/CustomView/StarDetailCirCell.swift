@@ -5,10 +5,17 @@
 //  Created by sum on 2017/9/1.
 //  Copyright © 2017年 YunDian. All rights reserved.
 //
+protocol StarDetailCirCellDelegate {
+    
+    func showBigImg(_select : CircleListModel)
+    
+}
 class StarDetailCirCell: UITableViewCell ,UICollectionViewDelegate,UICollectionViewDataSource{
     
     
     @IBOutlet var collectView: UICollectionView!
+    var delegate :StarDetailCirCellDelegate?
+
     var datasource : StarDetailCircle?{
         didSet{
             collectView?.reloadData()
@@ -16,7 +23,6 @@ class StarDetailCirCell: UITableViewCell ,UICollectionViewDelegate,UICollectionV
         }
         
     }
-    var delegate : StarDynamicCellDelegate?
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
@@ -41,9 +47,15 @@ class StarDetailCirCell: UITableViewCell ,UICollectionViewDelegate,UICollectionV
        
         return 2
     }
-    
-    
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let data = datasource?.circles?[indexPath.row]{
+            delegate?.showBigImg(_select: data)
+        }
+        
+        
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         

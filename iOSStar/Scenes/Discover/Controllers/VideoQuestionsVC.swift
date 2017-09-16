@@ -62,7 +62,7 @@ class VideoQuestionsVC: BasePageListTableViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
-   
+    
     
     override func didRequest(_ pageIndex: Int) {
         let model = StarAskRequestModel()
@@ -70,7 +70,7 @@ class VideoQuestionsVC: BasePageListTableViewController {
         model.starcode = starModel.symbol
         model.aType = 1
         model.pType = 1
-//         model.pType = 1
+        //         model.pType = 1
         AppAPIHelper.discoverAPI().staraskQuestion(requestModel: model, complete: { [weak self](result) in
             if let response = result as? UserAskList {
                 for model in response.circle_list!{
@@ -82,8 +82,6 @@ class VideoQuestionsVC: BasePageListTableViewController {
             self.didRequestComplete(nil)
         }
     }
-    
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if let model = dataSource?[indexPath.row] as? UserAskDetailList{
             return model.cellHeight
@@ -95,73 +93,58 @@ class VideoQuestionsVC: BasePageListTableViewController {
         return VideoQuestionCell.className()
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-            if let model = self.dataSource?[indexPath.row] as? UserAskDetailList{
-                
-                
-                if model.purchased == 1{
-                    if model.video_url != ""{
-                        
-                        self.pushViewController(pushSreing: PlayVideoVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS  != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
-                            if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
-                                
-                                self.navigationController?.pushViewController(vc, animated: true)
-                            }
-                            
-                        })
-                    }else{
-                        
-                        self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS  != "" ? model.thumbnailS  :  "1123.png"  , complete: { (result) in
-                            if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
-                                
-                                self.navigationController?.pushViewController(vc, animated: true)
-                            }
-                            
-                        })
-                        
-                    }
+        if let model = self.dataSource?[indexPath.row] as? UserAskDetailList{
+         if model.purchased == 1{
+                if model.video_url != ""{
+                    self.pushViewController(pushSreing: PlayVideoVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.video_url), pushModel: model, withImg: model.thumbnailS  != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
+                        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                    })
+                }else{
+                    self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS  != "" ? model.thumbnailS  :  "1123.png"  , complete: { (result) in
+                        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
+                    })
                 }
-                else{
-                    let request = PeepVideoOrvoice()
-                    request.qid = Int(model.id)
-                    request.starcode = starModel.symbol
-                    request.cType = model.c_type
-                    request.askUid = model.uid
-                    AppAPIHelper.discoverAPI().peepAnswer(requestModel: request, complete: { (result) in
-                        if let response = result as? ResultModel{
-                            if response.result == 0
-                            {
-                                model.purchased = 1
-                                tableView.reloadRows(at: [indexPath], with: .none)
-                                if model.video_url != ""{
+            }
+            else{
+                let request = PeepVideoOrvoice()
+                request.qid = Int(model.id)
+                request.starcode = starModel.symbol
+                request.cType = model.c_type
+                request.askUid = model.uid
+                AppAPIHelper.discoverAPI().peepAnswer(requestModel: request, complete: { (result) in
+                    if let response = result as? ResultModel{
+                        if response.result == 0
+                        {
+                            model.purchased = 1
+                            tableView.reloadRows(at: [indexPath], with: .none)
+                            if model.video_url != ""{
+                                self.pushViewController(pushSreing: PlayVideoVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.video_url), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
+                                    if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                                        self.navigationController?.pushViewController(vc, animated: true)
+                                    }
                                     
-                                    self.pushViewController(pushSreing: PlayVideoVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
-                                        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
-                                            
-                                            self.navigationController?.pushViewController(vc, animated: true)
-                                        }
-                                        
-                                    })
-                                }
-                                else{
-                                    
-                                    self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
-                                        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
-                                            
-                                            self.navigationController?.pushViewController(vc, animated: true)
-                                        }
-                                        
-                                    })
-                                    
-                                }
+                                })
                             }
                             else{
-                                SVProgressHUD.showWainningMessage(WainningMessage: "您持有的时间不足", ForDuration: 1, completion: nil)
+                                self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader  + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
+                                    if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                                        
+                                        self.navigationController?.pushViewController(vc, animated: true)
+                                    }
+                                })
                             }
                         }
-                    }, error: { (error) in
-                        self.didRequestError(error)
-                    })
+                        else{
+                            SVProgressHUD.showWainningMessage(WainningMessage: "您持有的时间不足", ForDuration: 1, completion: nil)
+                        }
+                    }
+                }, error: { (error) in
+                    self.didRequestError(error)
+                })
                 
             }
         }

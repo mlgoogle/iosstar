@@ -138,7 +138,11 @@ class HeatListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if dataSource != nil{
+        if let model = dataSource![indexPath.row] as? StarSortListModel{
         self.performSegue(withIdentifier: "ToDeal", sender: indexPath)
+        }
+        }
     }
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
