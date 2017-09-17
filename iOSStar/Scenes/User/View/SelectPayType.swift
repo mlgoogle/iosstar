@@ -17,7 +17,7 @@ class SelectPayTypeModel : NSObject{
 class SelectPayType: UIView,UITableViewDataSource,UITableViewDelegate {
     
     var resultBlock: CompleteBlock?
-    var selectNumber = Int()
+    var selectNumber = 1
     var modelArry = [SelectPayTypeModel]()
     @IBOutlet weak var tableView: UITableView!
     

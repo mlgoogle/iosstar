@@ -2053,7 +2053,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="agl-xV-z2C">
-                                <rect key="frame" x="52" y="30" width="270" height="36"/>
+                                <rect key="frame" x="10" y="30" width="355" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="SZa-d1-Vgz"/>
                                 </constraints>
@@ -2074,17 +2074,16 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="agl-xV-z2C" firstAttribute="leading" secondItem="wyn-Bl-Tsq" secondAttribute="leading" constant="52" id="0Gf-t8-QIl"/>
+                            <constraint firstItem="agl-xV-z2C" firstAttribute="leading" secondItem="wyn-Bl-Tsq" secondAttribute="leading" constant="10" id="0Gf-t8-QIl"/>
                             <constraint firstItem="s9n-Oe-Qkk" firstAttribute="leading" secondItem="wyn-Bl-Tsq" secondAttribute="leading" id="BN1-jZ-yp3"/>
                             <constraint firstItem="agl-xV-z2C" firstAttribute="top" secondItem="sTD-zs-khf" secondAttribute="bottom" constant="10" id="DTE-ZU-yIc"/>
                             <constraint firstAttribute="trailing" secondItem="s9n-Oe-Qkk" secondAttribute="trailing" id="W1E-PC-sQo"/>
-                            <constraint firstAttribute="trailing" secondItem="agl-xV-z2C" secondAttribute="trailing" constant="53" id="nrf-8n-o6t"/>
+                            <constraint firstAttribute="trailing" secondItem="agl-xV-z2C" secondAttribute="trailing" constant="10" id="nrf-8n-o6t"/>
                             <constraint firstAttribute="bottom" secondItem="s9n-Oe-Qkk" secondAttribute="bottom" id="wFF-iS-7zO"/>
                             <constraint firstItem="s9n-Oe-Qkk" firstAttribute="top" secondItem="agl-xV-z2C" secondAttribute="bottom" constant="10" id="wtm-Kv-2h2"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="scrollView" destination="s9n-Oe-Qkk" id="20z-Kw-VS9"/>
                         <outlet property="segment" destination="agl-xV-z2C" id="QHv-s4-Cf1"/>
                     </connections>
                 </viewController>

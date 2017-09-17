@@ -99,6 +99,7 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
             self.vaildCodeBtn.isEnabled = false
             let checkRegisterRequestModel = CheckRegisterRequestModel()
             checkRegisterRequestModel.phone = phoneTf.text!
+            checkRegisterRequestModel.type = 2
             AppAPIHelper.login().CheckRegister(model: checkRegisterRequestModel, complete: {[weak self] (checkRegistResult) in
                 if let checkRegistResponse = checkRegistResult {
                     if checkRegistResponse["result"] as! Int == 0 {

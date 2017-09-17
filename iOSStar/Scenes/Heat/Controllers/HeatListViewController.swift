@@ -143,6 +143,7 @@ class HeatListViewController: UITableViewController {
         if dataSource?.count ?? 0 != 0 {
             
             performSegue(withIdentifier: "ToDeal", sender: indexPath)
+
         }
     }
    

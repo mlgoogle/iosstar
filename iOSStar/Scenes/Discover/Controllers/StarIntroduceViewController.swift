@@ -22,11 +22,14 @@ class StarIntroduceViewController: UIViewController {
 //    var sectionHeights = [170,18 , 120, 120,124 , 150]
   //  var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(), StarCirCleCell.className(), StarDynamicCell.className(),StarDetailCirCell.className() ,StarPhotoCell.className()]
     var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(),StarPhotoCell.className()]
+
     var images:[String] = []
     var starDetailModel:StarDetaiInfoModel?
     var expericences:[ExperienceModel]?
     var StarDetail:StarDetailCircle?
     var realName = false
+    var showCirCle = false
+    var showCirCleUrl = ""
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,24 +50,24 @@ class StarIntroduceViewController: UIViewController {
         requeseDetail()
     }
     func requeseDetail(){
-     let model = CirCleStarDetail()
-      model.starcode = (self.starModel?.symbol)!
-      model.aType = 1
-      model.pType = 1
-      AppAPIHelper.discoverAPI().requestStarDetail(requestModel: model, complete: { (result) in
-        
-        if let response = result as? StarDetailCircle{
-         self.StarDetail = response
-        self.tableView.reloadData()
-        }
-       
-      }) { (error ) in
-        
+        let model = CirCleStarDetail()
+        model.starcode = (self.starModel?.symbol)!
+        model.aType = 1
+        model.pType = 1
+        AppAPIHelper.discoverAPI().requestStarDetail(requestModel: model, complete: { (result) in
+            
+            if let response = result as? StarDetailCircle{
+                self.StarDetail = response
+                self.tableView.reloadData()
+            }
+            
+        }) { (error ) in
+            
         }
     }
     func sharetothird(){
         if let model = expericences?[0]{
-          
+            
             
             let share  = Share()
             let vc = UIStoryboard.init(name: "Market", bundle: nil).instantiateViewController(withIdentifier: "ShareVC") as? ShareVC
@@ -77,7 +80,7 @@ class StarIntroduceViewController: UIViewController {
             share.name = (starDetailModel?.star_name)!
             vc?.share = share
             share.webpageUrl = String.init(format: "%@?uid=%d&star_code=%@", AppConst.shareUrl,StarUserModel.getCurrentUser()?.userinfo?.id ?? 0,(self.starDetailModel?.star_code)!)
-          
+            
             vc?.modalTransitionStyle = .crossDissolve
             present(vc!, animated: true, completion: nil)
         }
@@ -148,7 +151,7 @@ class StarIntroduceViewController: UIViewController {
         if checkUrl(url: starDetailModel?.portray4) {
             images.append(starDetailModel!.portray4)
         }
-       self.tableView.reloadData()
+        self.tableView.reloadData()
         
     }
     
@@ -205,8 +208,8 @@ class StarIntroduceViewController: UIViewController {
             return
         }
         if self.starDetailModel?.publish_type == 0 {
-         SVProgressHUD.showErrorMessage(ErrorMessage: "当前该明星非流通阶段，请等待为流通阶段", ForDuration: 2, completion: nil)
-         return
+            SVProgressHUD.showErrorMessage(ErrorMessage: "当前该明星非流通阶段，请等待为流通阶段", ForDuration: 2, completion: nil)
+            return
         }
         let r = PositionCountRequestModel()
         r.starcode = starModel!.symbol
@@ -233,7 +236,9 @@ class StarIntroduceViewController: UIViewController {
     }
     
 }
-extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource,MenuViewDelegate, MWPhotoBrowserDelegate, UIScrollViewDelegate, PopVCDelegate,MarketExperienceCellDelegate,StarCirCleCellDelegate,StarDynamicCellDelegate{
+//StarDetailCirCellDelegate
+
+extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource,MenuViewDelegate, MWPhotoBrowserDelegate, UIScrollViewDelegate, PopVCDelegate,MarketExperienceCellDelegate{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > 170 {
@@ -251,7 +256,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     
     func chat() {
         if realName{
-         showRealname()
+            showRealname()
             return
         }
         
@@ -265,12 +270,24 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         return 1
     }
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
-        let photo = MWPhoto(url:URL(string:ShareDataModel.share().qiniuHeader +  images[Int(self.index)]))
+
+        var urlString = images[Int(index)]
+        if  !urlString.hasPrefix("http") {
+           urlString = ShareDataModel.share().qiniuHeader + urlString
+        }
+        let photo = MWPhoto(url:URL(string:urlString))
+        
+//        if showCirCle{
+//            let photo = MWPhoto(url:URL(string: showCirCleUrl))
+ //           return photo
+ //       }
+ //       let photo = MWPhoto(url:URL(string: images[Int(self.index)]))
         return photo
     }
     
     func menuViewDidSelect(indexPath: IndexPath) {
         index = indexPath.item
+        showCirCle = false
         let vc = PhotoBrowserVC(delegate: self)
         present(vc!, animated: true, completion: nil)
     }
@@ -317,7 +334,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             
             
         }
-         else  if  section == 5 {
+        else  if  section == 5 {
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "PubInfoHeaderView") as? PubInfoHeaderView
             header?.setTitle(title:"个人写真")
             header?.contentView.backgroundColor = UIColor(hexString: "fafafa")
@@ -334,16 +351,14 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             view.backgroundColor = UIColor.init(hexString: "fafafa")
             return view
         }
-
+            
         else {
             let view = UIView()
             view.backgroundColor = UIColor.init(hexString: "fafafa")
             return view
         }
-        
-        
     }
-  
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return identifers.count
     }
@@ -353,7 +368,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
                 if expericences != nil{
                     return 1
                 }else{
-                  return 0
+                    return 0
                 }
                 
             }else{
@@ -386,7 +401,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             if let expericencesCell = cell as? MarketExperienceCell {
                 
                 expericencesCell.delegate = self
-                 expericencesCell.show.isHidden = true
+                expericencesCell.show.isHidden = true
                 if showMoreIntroduce{
                     expericencesCell.show.isHidden = false
                     expericencesCell.showHeight.constant = 15
@@ -416,20 +431,21 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             if let StarCirCle = cell as? StarCirCleCell {
                 StarCirCle.delegate = self
                 StarCirCle.backgroundColor = UIColor.clear
-//                photoCell.setImageUrls(images: images, delegate:self)
+                //                photoCell.setImageUrls(images: images, delegate:self)
             }
             
         case 3:
             if let photoCell = cell as? StarDynamicCell {
-            
-                 photoCell.datasource = self.StarDetail
-//                photoCell.setImageUrls(images: images, delegate:self)
+                
+                photoCell.datasource = self.StarDetail
+                //                photoCell.setImageUrls(images: images, delegate:self)
                 photoCell.delegate = self
-            }//StarDetailCirCell
+        }//StarDetailCirCell
         case 4:
             if let photoCell = cell as? StarDetailCirCell {
-//                photoCell.setImageUrls(images: images, delegate:self)
+                //                photoCell.setImageUrls(images: images, delegate:self)
                 photoCell.datasource = self.StarDetail
+                 photoCell.delegate = self
             }
         case 5:
             if let photoCell = cell as? StarPhotoCell {
@@ -442,9 +458,6 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     }
     func starask(){
         
-        //
-//        SVProgressHUD.showErrorMessage(ErrorMessage:  "敬请期待", ForDuration: 2, completion: nil)
-//        return
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: VideoManagerVC.className()) as? VideoManagerVC{
             vc.starModel = starModel!
             self.navigationController?.pushViewController(vc, animated: true)
@@ -457,75 +470,47 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-     func staractive(){
+    func staractive(){
         
         //TakeMovieVC
         ShareDataModel.share().selectStarCode = (starModel?.symbol)!
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: StarNewsVC.className()) as? StarNewsVC{
             //TakeMovieVC
-              vc.starModel = starModel
+            vc.starModel = starModel
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
+    
+}
+extension StarIntroduceViewController : StarCirCleCellDelegate,StarDynamicCellDelegate,StarDetailCirCellDelegate{
+    
     func starask(_select: UserAskDetailList) {
         if let model  = _select as? UserAskDetailList{
             if model.purchased == 1{
-                
                 if model.video_url != ""{
-                    
-                    self.pushViewController(pushSreing: PlayVideoVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
-                        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
-                            
-                            self.navigationController?.pushViewController(vc, animated: true)
-                        }
-                        
-                    })
+                    self.pushcontroller(pushSreing: PlayVideoVC.className(), model: model, playString: model.video_url)
                 }
                 else{
-                    
-                    self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
-                        if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
-                            
-                            self.navigationController?.pushViewController(vc, animated: true)
-                        }
-                        
-                    })
-                    
+                    self.pushcontroller(pushSreing: PlaySingleVC.className(), model: model, playString: model.sanswer)
                 }
-               
             }
             else{
                 let request = PeepVideoOrvoice()
                 request.qid = Int(model.id)
                 request.starcode = (starModel?.symbol)!
                 request.cType = model.c_type
-                  request.askUid = model.uid
+                request.askUid = model.uid
                 AppAPIHelper.discoverAPI().peepAnswer(requestModel: request, complete: { (result) in
                     if let response = result as? ResultModel{
                         if response.result == 0{
                             model.purchased = 1
-                          
+                            
                             if model.video_url != ""{
-                                
-                                self.pushViewController(pushSreing: PlayVideoVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
-                                    if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
-                                        
-                                        self.navigationController?.pushViewController(vc, animated: true)
-                                    }
-                                    
-                                })
+                                self.pushcontroller(pushSreing: PlayVideoVC.className(), model: model, playString: model.video_url)
                             }
                             else{
-                                
-                                self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
-                                    if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
-                                        
-                                        self.navigationController?.pushViewController(vc, animated: true)
-                                    }
-                                    
-                                })
-                                
+                                self.pushcontroller(pushSreing: PlaySingleVC.className(), model: model, playString: model.sanswer)
                             }
                         }else{
                             SVProgressHUD.showWainningMessage(WainningMessage: "您持有的时间不足", ForDuration: 1, completion: nil)
@@ -538,6 +523,13 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             }
         }
     }
+    func showBigImg(_select: CircleListModel) {
+        showCirCle = true
+        showCirCleUrl = String(ShareDataModel.share().qiniuHeader + _select.pic_url_tail)
+        let vc = PhotoBrowserVC(delegate: self)
+        present(vc!, animated: true, completion: nil)
+    }
+    
 }
 
 
