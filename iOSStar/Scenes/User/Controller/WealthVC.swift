@@ -13,7 +13,7 @@ class HeaderCell: UITableViewCell {
     
     @IBOutlet var message: UIButton!
     @IBOutlet var bgView: UIView!
-    // 星云币
+    // 星享币
     @IBOutlet weak var balance: UILabel!
     // 持有市值
     @IBOutlet var market_cap: UILabel!
@@ -28,10 +28,6 @@ class HeaderCell: UITableViewCell {
     @IBOutlet var total_num: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet var doinvite: UIButton!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 }
 
 class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource,CustomeAlertViewDelegate {

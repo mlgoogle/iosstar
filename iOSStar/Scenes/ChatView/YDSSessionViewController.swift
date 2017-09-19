@@ -21,8 +21,8 @@ class YDSSessionViewController: NIMSessionViewController ,UIScrollViewDelegate{
     func setupNavbar(){
         navigationItem.rightBarButtonItem = UIBarButtonItem.creatRightBarButtonItem(title: "星聊须知", target: self, action: #selector(rightButtonClick))
         navigationItem.leftBarButtonItem = nil
-        navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.imageWith("\u{e61a}", fontSize: CGSize.init(width: 22, height: 22), fontColor: UIColor(hexString: AppConst.Color.main)), style: .plain, target: self, action: #selector(leftItemTapped))
-        navigationItem.leftBarButtonItem?.tintColor = UIColor(hexString: AppConst.Color.main)
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.imageWith("\u{e61a}", fontSize: CGSize.init(width: 22, height: 22), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)), style: .plain, target: self, action: #selector(leftItemTapped))
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)
         if starname != "" {
          titleLabel.text = starname
         }else{
@@ -30,8 +30,7 @@ class YDSSessionViewController: NIMSessionViewController ,UIScrollViewDelegate{
         }
         navigationItem.leftItemsSupplementBackButton = false
        
-        titleLabel.textColor = UIColor(hexString: AppConst.Color.main)
-    
+        titleLabel.textColor = UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)
     }
     
     func leftItemTapped() {

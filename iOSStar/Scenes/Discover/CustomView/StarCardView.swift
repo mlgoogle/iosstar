@@ -98,7 +98,6 @@ class StarCardView: UICollectionViewCell {
     }
     
     func setStarModel(starModel:StarSortListModel) {
-
         guard URL(string:ShareDataModel.share().qiniuHeader + starModel.home_pic_tail) != nil else {
             return
         }

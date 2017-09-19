@@ -18,7 +18,6 @@ class AuctionImageViewCell: UITableViewCell {
 
     
     func setImageUrl(url:String) {
-
         showImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + url), placeholder: UIImage(named: "nodata_banner"), options: nil, progressBlock: nil, completionHandler: nil)
         
     }

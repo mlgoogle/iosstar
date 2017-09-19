@@ -22,7 +22,7 @@ class MarketCommentCell: UITableViewCell {
         commentLabel.text = model.comments
         
         nicknameLabel.text = model.nick_name
-
+       
         iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.head_url),placeholder:UIImage.init(named: "\(arc4random()%8+1)"))
         timeLabel.text = Date.yt_convertDateStrWithTimestempWithSecond(Int(model.cms_time), format: "YYYY-MM-dd")
         
