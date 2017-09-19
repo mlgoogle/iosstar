@@ -53,7 +53,8 @@ class SellingViewController: UIViewController {
         guard starModel != nil else {
             return
         }
-        if starModel!.pushlish_type == 4 {
+        if starModel!.pushlish_type == 0 {
+            sureBuyButton.setTitle("预售", for: .normal)
             sureBuyButton.backgroundColor = UIColor.gray
             sureBuyButton.isUserInteractionEnabled = false
         }
