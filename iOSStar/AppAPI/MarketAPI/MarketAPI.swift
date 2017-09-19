@@ -30,4 +30,5 @@ protocol MarketAPI {
     func requstBuySellPercent(requestModel:BuySellPercentRequest,complete: CompleteBlock?, error: ErrorBlock?)
     func requstBuyBarrageList(requestModel:HeatBarrageModel,complete: CompleteBlock?, error: ErrorBlock?)
     func requestTotalCount(starCode:String,complete: CompleteBlock?, error: ErrorBlock?)
+    
 }

@@ -22,7 +22,8 @@ class BannerDetailImageCell: UITableViewCell {
             return
         }
         
-        iconImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  imageUrl!), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+
+        iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + imageUrl!), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         
         
     }

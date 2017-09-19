@@ -41,13 +41,15 @@ class NewsCell: OEZTableViewCell {
     override func update(_ data: Any!) {
         if let model = data as? CircleListModel{
             let userIcon = UIImage.imageWith(AppConst.iconFontName.userPlaceHolder.rawValue, fontSize: iconImage.frame.size, fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue))
-            iconImage.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader + model.head_url), placeholder: userIcon)
+
+            iconImage.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   model.head_url_tail), placeholder: userIcon)
             nameLabel.text =  model.symbol_name
             newsLabel.text = model.content
-            newsPic.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader + model.pic_url), placeholder: nil)
-            newsPicUrl = model.pic_url
+            newsPic.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   model.pic_url_tail), placeholder: nil)
+            newsPicUrl = model.pic_url_tail
             thumbUpBtn.setTitle("点赞(\(model.approve_dec_time)秒)", for: .normal)
             CommentBtn.setTitle("评论(\(model.comment_dec_time)秒)", for: .normal)
+            timeLabel.text = Date.marginDateStr(Int(model.create_time))
         }
     }
     
@@ -64,8 +66,11 @@ class NewsCell: OEZTableViewCell {
     }
     
     func showPicGestureTapped(_ gesture: UITapGestureRecognizer) {
-        didSelectRowAction(UInt(103))
         didSelectRowAction(UInt(103), data: newsPicUrl)
+    }
+    @IBAction func pushDetail(_ sender: Any) {
+        
+        didSelectRowAction(UInt(200), data: newsPicUrl)
     }
 }
 
@@ -162,8 +167,11 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
             let item = UIBarButtonItem.init(customView: share)
             item.tintColor = UIColor(hexString: AppConst.Color.main)
 //            self.navigationItem.rightBarButtonItem = item
-            iconImage.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader + (starModel?.pic)!), placeholder: nil)
-          
+
+            self.navigationItem.rightBarButtonItem = item
+            if starModel?.pic_tail != nil{
+            iconImage.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   (starModel?.pic_tail)!), placeholder: nil)
+            }
         }
         requestCycleData(0)
     }
@@ -174,7 +182,8 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
             view.title = (starModel?.name)! + "(正在星云 出售TA的时间)"
             view.Image = iconImage.image
             view.descr = model.experience
-            view.webpageUrl = "https://fir.im/starShareUser?uid=\(StarUserModel.getCurrentUser()?.userinfo?.id ?? 0)"
+            view.webpageUrl = String.init(format: "%@?uid=%d&star_code=%@", AppConst.shareUrl,StarUserModel.getCurrentUser()?.userinfo?.id ?? 0,ShareDataModel.share().selectStarCode)
+            
             view.shareViewController(viewController: self)
             
         }
@@ -191,6 +200,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
         case comment = 101
         case reply = 102
         case showPic = 103
+        case pushDetail = 200
     }
     
     func endRefresh() {
@@ -222,9 +232,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
         }, error: errorBlockFunc())
     }
     
-    func caclulateCellHeight(_ models: [CircleListModel]){
-        
-    }
+   
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return tableData.count
@@ -240,11 +248,10 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
         }
     }
     
-    override func tableView(_ tableView: UITableView , numberOfRowsInSection section: Int) -> Int {
-        if let model = tableData[section] as? CircleListModel{
-            return model.comment_list.count + 2
-        }
-        return 0
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let model = tableData[section]
+        return model.comment_list.count + 2
     }
     
     func showWarning() {
@@ -423,6 +430,21 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
                 let vc = PhotoBrowserVC(delegate: self)
                 present(vc!, animated: true, completion: nil)
             }
+        case cellAction.pushDetail.rawValue:
+            StartModel.getStartName(startCode: model.symbol) { (response) in
+                let star = response as? StartModel
+                let starListModel = StarSortListModel()
+                
+                starListModel.symbol = model.symbol
+                starListModel.name = model.symbol_name
+                starListModel.pic_tail  = (star?.pic_url_tail)!
+                let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
+                introVC.starModel = starListModel
+                
+                self.navigationController?.pushViewController(introVC, animated: true)
+            }
+            break
+            
         default:
             print("")
         }
@@ -433,7 +455,12 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
         return 1
     }
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
-        let photo = MWPhoto(url:URL(string:qiniuHelper.shared().qiniuHeader +  newsPicUrl))
+
+        let photo = MWPhoto(url:URL(string:ShareDataModel.share().qiniuHeader + newsPicUrl))
+    
         return photo
+    }
+    func photoBrowser(_ photoBrowser: MWPhotoBrowser!, actionButtonPressedForPhotoAt index: UInt) {
+        photoBrowser.dismissController()
     }
 }

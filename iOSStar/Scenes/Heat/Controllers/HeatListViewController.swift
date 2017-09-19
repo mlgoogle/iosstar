@@ -60,12 +60,20 @@ class HeatListViewController: UITableViewController {
 
     override func didRequest(_ pageIndex: Int) {
         let requestModel = StarSortListRequestModel()
-         requestModel.pos = Int64((Index - 1) * 10)
+
+        Index = 1
+        requestModel.pos = Int64((Index - 1) * 10)
         requestModel.count = 10
         AppAPIHelper.discoverAPI().requestStarList(requestModel: requestModel, complete: { (response) in
             if let models = response as? [StarSortListModel] {
+                var publishModels: [StarSortListModel] = []
+                for model in models{
+                    if model.pushlish_type == 2{
+                        publishModels.append(model)
+                    }
+                }
                 self.tableView.mj_header.endRefreshing()
-                self.dataSource = models
+                self.dataSource = publishModels
                 self.tableView.reloadData()
             }
         }) { (error) in
@@ -82,8 +90,14 @@ class HeatListViewController: UITableViewController {
         requestModel.count = 10
         AppAPIHelper.discoverAPI().requestStarList(requestModel: requestModel, complete: { (response) in
             if let models = response as? [StarSortListModel] {
+                var publishModels: [StarSortListModel] = []
+                for model in models{
+                    if model.pushlish_type == 2{
+                        publishModels.append(model)
+                    }
+                }
                 self.tableView.mj_footer.endRefreshing()
-                self.dataSource?.append(contentsOf: models)
+                self.dataSource?.append(contentsOf: publishModels)
                 self.tableView.reloadData()
             }
         }) { (error) in
@@ -126,7 +140,11 @@ class HeatListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "ToDeal", sender: indexPath)
+        if dataSource?.count ?? 0 != 0 {
+            
+            performSegue(withIdentifier: "ToDeal", sender: indexPath)
+
+        }
     }
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

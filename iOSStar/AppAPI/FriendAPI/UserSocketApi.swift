@@ -207,5 +207,12 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
             .self, complete: complete, error: error)
     
     }
+    func uploadimg(complete: CompleteBlock?, error: ErrorBlock?){
+        let model = WeChatTokenRequestModel()
+        model.uid = StarUserModel.getCurrentUser()?.userinfo?.id ?? 0
+        model.token = StarUserModel.getCurrentUser()?.token ?? ""
+        let packet = SocketDataPacket(opcode: .uptoken, model: model)
+        startModelRequest(packet, modelClass: UploadTokenModel.self, complete: complete, error: error)
+    }
     
 }

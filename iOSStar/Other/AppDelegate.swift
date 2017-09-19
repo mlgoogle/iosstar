@@ -1,4 +1,4 @@
-//
+ //
 //  AppDelegate.swift
 //  iosblackcard
 //
@@ -12,11 +12,6 @@ import Crashlytics
 import UserNotifications
 import RealmSwift
 
-// 个推信息
-// let kGtAppId:String = "STxLopLZK0AFPvAcnu7o67"
-// let kGtAppKey:String = "SIbhyImzug9sjKteFtLrj8"
-// let kGtAppSecret:String = "TgaFdlcYMX5QVhH1CkP1k2"
-
 
 import Alamofire
 @UIApplicationMain
@@ -26,8 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        
         AppConfigHelper.shared().registerServers()
         // 个推
+        let mediaType = AVMediaTypeVideo
+        AVCaptureDevice.requestAccess(forMediaType: mediaType) { (result) in
+        }
+        let videoType = AVMediaTypeAudio
+        AVCaptureDevice.requestAccess(forMediaType: videoType) { (result) in
+        }
         AppConfigHelper.shared().setupGeTuiSDK(sdkDelegate: self)
         UIApplication.shared.statusBarStyle = .default
 

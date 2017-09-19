@@ -73,7 +73,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         if userInfoData != nil {
             headUrl = userInfoData!.head_url
         }
-       headerImg.kf.setImage(with: URL(string: headUrl), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
+        headerImg.kf.setImage(with: URL(string: headUrl), placeholder: UIImage(named:"avatar_team"), options: nil, progressBlock: nil, completionHandler: nil)
 //        self.nickName.text = (phonetext.substring(to: index)) + "****" + (phonetext.substring(from: index1))
         // self.nickName.text = phonetext
     }
@@ -157,7 +157,7 @@ class UserInfoVC: UITableViewController ,UIImagePickerControllerDelegate ,UINavi
         {
             if let img = info[UIImagePickerControllerOriginalImage] as? UIImage{
                 self.headerImg.image = img
-                UIImage.qiniuUploadImage(image: img, imageName: "Cycle", complete: { [weak self] (result) in
+                QiniuTool.qiniuUploadImage(image: img,  imageName: "Cycle", complete: { [weak self] (result) in
                     if let qiniuUrl = result as? String{
                         self?.imageUrl = qiniuUrl
                     }

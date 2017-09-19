@@ -13,7 +13,7 @@ class HeaderCell: UITableViewCell {
     
     @IBOutlet var message: UIButton!
     @IBOutlet var bgView: UIView!
-    // 星享币
+    // 星云币
     @IBOutlet weak var balance: UILabel!
     // 持有市值
     @IBOutlet var market_cap: UILabel!
@@ -125,8 +125,8 @@ class WealthVC: UIViewController,UITableViewDelegate,UITableViewDataSource,Custo
     
         if indexPath.section == 2 {
         //WithdrawalVC
-            SVProgressHUD.showWainningMessage(WainningMessage: "攻城狮努力中，敬请期待", ForDuration: 1, completion: nil)
-            return
+//            SVProgressHUD.showWainningMessage(WainningMessage: "攻城狮努力中，敬请期待", ForDuration: 1, completion: nil)
+//            return
             if self.needPwd == 1{
               showopenPay()
             }

@@ -19,7 +19,7 @@ class ExchangeViewController: UIViewController ,UITabBarControllerDelegate,NIMSy
         if checkLogin()
         {
             self.getUserInfo { [weak self ](result) in
-                if let response = result{
+                if let response =  result{
                     let object = response as! UserInfoModel
                     self?.needPwd = object.is_setpwd
                     

@@ -21,11 +21,12 @@ class MarketListModel: Object {
     dynamic var sysTime:Int64 = 0
     dynamic var symbol = ""
     dynamic var priceTime:Int64 = 0
-    dynamic var pic = ""
+//    dynamic var pic = ""
     dynamic var name = ""
     dynamic var currentPrice = 0.0
     dynamic var change = 0.0
     dynamic var pchg = 0.0
+    dynamic var pic_tail = ""
     
     
 }
@@ -109,7 +110,7 @@ class RealTimeModel: PirceBaseModel {
 class SearchResultModel: Object {
     dynamic var gender = 1
     dynamic var name = ""
-    dynamic var pic = ""
+    dynamic var pic_tail = ""
     dynamic var symbol = ""
     dynamic var wid = ""
 }

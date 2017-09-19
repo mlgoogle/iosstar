@@ -46,7 +46,7 @@ class StarInteractiveViewController: UIViewController {
         let requestModel = StarSortListRequestModel()
         AppAPIHelper.discoverAPI().requestStarList(requestModel: requestModel, complete: { (response) in
             if let models = response as? [StarSortListModel] {
-                 self.header.endRefreshing()
+                self.header.endRefreshing()
                 self.dataSource = models
                 self.tableView.reloadData()
             }

@@ -12,11 +12,13 @@ protocol PopVCDelegate {
     
     func back()
     func chat()
+    func share()
 }
 
 class StarIntroduceCell: UITableViewCell {
     @IBOutlet weak var jobLabel: UILabel!
 
+    @IBOutlet var share: UIButton!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var backImageView: UIImageView!
@@ -28,6 +30,9 @@ class StarIntroduceCell: UITableViewCell {
 
     }
 
+    @IBAction func shareClick(_ sender: Any) {
+        delegate?.share()
+    }
 
     @IBAction func backActiom(_ sender: Any) {
         delegate?.back()
@@ -44,8 +49,9 @@ class StarIntroduceCell: UITableViewCell {
     func setData(model:StarDetaiInfoModel) {
         nameLabel.text = model.star_name
         
-        backImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  model.back_pic), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
-        iconImageView.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  model.head_url), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+
+        backImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.back_pic_tail), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+        iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.head_url_tail), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         jobLabel.text = model.work
         
     }

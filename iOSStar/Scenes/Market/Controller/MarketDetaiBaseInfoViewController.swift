@@ -46,7 +46,7 @@ class MarketDetaiBaseInfoViewController: MarketBaseViewController {
         AppAPIHelper.newsApi().requestStarInfo(code: starCode!, complete: { (response) in
             if let model = response as? BannerDetaiStarModel {
                 self.bannerDetailModel = model
-                self.refreshImageDelegate?.refreshImage(imageUrl: model.pic_url)
+                self.refreshImageDelegate?.refreshImage(imageUrl: model.pic_url_tail)
                 self.tableView.reloadData()
             }
         }) { (error) in
@@ -90,7 +90,7 @@ extension MarketDetaiBaseInfoViewController:UITableViewDataSource, UITableViewDe
         case 0:
             let bannerCell = cell as! MaketBannerCell
             if bannerDetailModel != nil {
-                bannerCell.banner.imageURLStringsGroup = [bannerDetailModel!.pic_url]
+                bannerCell.banner.imageURLStringsGroup = [bannerDetailModel!.pic_url_tail]
             }
         case 1:
             let infoCell = cell as! MarketInfoCell

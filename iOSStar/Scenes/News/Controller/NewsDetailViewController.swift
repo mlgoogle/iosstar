@@ -22,7 +22,8 @@ class NewsDetailViewController: UIViewController {
 //        shareActionTitlt.tintColor = UIColor.init(hexString: AppConst.Color.main)
         let webView = WKWebView(frame: CGRect(x: 0, y: 44, width: kScreenWidth, height: kScreenHeight - 44))
         UIApplication.shared.statusBarStyle = .default;
-        let url = URL(string:qiniuHelper.shared().qiniuHeader +  newsModel!.link_url)
+
+        let url = URL(string:ShareDataModel.share().qiniuHeader + newsModel!.link_url)
         let request = URLRequest(url: url!)
         webView.load(request)
         view.addSubview(webView)

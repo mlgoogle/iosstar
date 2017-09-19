@@ -19,15 +19,15 @@ extension UIViewController {
     func errorBlockFunc()->ErrorBlock {
         return { [weak self] (error) in
             //            XCGLogger.error("\(error) \(self)")
-
+            
             self?.didRequestError(error)
         }
     }
     func LoginSuccess(){
         
-      
+        
     }
-
+    
     
     func didRequestError(_ error:NSError) {
         if error.code == -11011 {
@@ -72,7 +72,7 @@ extension UIViewController {
     
     
     
-
+    
     
     // 显示引导视图控制器
     func showGuideVC(_ guideType:AppConst.guideKey, handle:CompleteBlock?) {
@@ -125,7 +125,7 @@ extension UIViewController {
     func didActionTel(_ telPhone:String) {
         let alert = UIAlertController.init(title: "呼叫", message: telPhone, preferredStyle: .alert)
         let ensure = UIAlertAction.init(title: "确定", style: .default, handler: { (action: UIAlertAction) in
-            UIApplication.shared.openURL(URL(string:qiniuHelper.shared().qiniuHeader +  "tel://\(telPhone)")!)
+            UIApplication.shared.openURL(URL(string: "tel://\(telPhone)")!)
         })
         let cancel = UIAlertAction.init(title: "取消", style: .cancel, handler: { (action: UIAlertAction) in
             
@@ -136,7 +136,7 @@ extension UIViewController {
     }
     //导航栏透明
     func translucent(clear: Bool) {
-
+        
         navigationController?.navigationBar.isTranslucent = clear;
         
     }
@@ -186,7 +186,7 @@ extension UIViewController {
     //判断是否实名认证
     func checkVaildName(complete: CompleteBlock?){
         
-
+        
     }
     func getUserRealmInfo(complete: CompleteBlock?){
         let requestModel = GetAuthenticationRequestModel()
@@ -194,24 +194,25 @@ extension UIViewController {
         AppAPIHelper.user().requestAuthentication(requestModel: requestModel, complete: { (result) in
             complete?(result as AnyObject)
         }) { (error) in
-//            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
+            //            SVProgressHUD.showErrorMessage(ErrorMessage: error.userInfo["NSLocalizedDescription"] as! String, ForDuration: 2.0, completion: nil)
         }
     }
     
     
     func getUserInfo(complete: CompleteBlock?){
         
-         if UserDefaults.standard.object(forKey: "phone") as? String != nil{
-
+        if UserDefaults.standard.object(forKey: "phone") as? String != nil{
+            
             let requestModel = UserInfoRequestModel()
             AppAPIHelper.user().requestUserInfo(requestModel: requestModel, complete: { (result) in
                 complete?(result as AnyObject)
             }, error: { (error) in
-                //刷新下tokengit ii
-              //  self.userLogout()
-//                AppConfigHelper.shared().login()
-            })
 
+                //刷新下token
+                AppConfigHelper.shared().login()
+                //               self.userLogout()
+            })
+            
         }
     }
     //获取明星姓名
@@ -221,12 +222,12 @@ extension UIViewController {
         let filterStr = "code = \(startCode)"
         let user = realm.objects(StartModel.self).filter(filterStr).first
         if user != nil{
-             complete?(user as AnyObject)
+            complete?(user as AnyObject)
         }else{
             complete?(nil)
         }
     }
-
+    
     func showOnlyLogin(){
         userLogout()
         let onlyLoginAlter = UIAlertController.init(title: "被迫下线", message: "您的账号在另一地点登录，您已被迫下线", preferredStyle: .alert)
@@ -286,7 +287,49 @@ extension UIViewController {
                                 self.navigationController?.pushViewController(vc, animated: true )
                                 return
         }
-
+        
+    }
+    //进入播放页面
+    func pushViewController(pushSreing:String,videdoUrl : String,pushModel:UserAskDetailList,withImg:String,complete: CompleteBlock?){
+        if pushSreing == "PlaySingleVC" {
+            if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: pushSreing) as? PlaySingleVC{
+                vc.startModel = pushModel
+                
+                present(vc, animated: true, completion: {
+                    vc.play(videdoUrl)
+                })
+                
+                vc.setimg(withImg)
+                vc.resultBlock = { (result ) in
+                    complete?(result)
+                }
+            }
+            
+        }
+        if pushSreing == "PlayVideoVC" {
+            
+            if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: PlayVideoVC.className()) as? PlayVideoVC{
+                vc.startModel = pushModel
+//                vc.setimg(withImg)
+                present(vc, animated: true, completion: {
+                    vc.play(videdoUrl)
+                })
+                vc.resultBlock = { (result ) in
+                    complete?(result)
+                }
+            }
+        }
+        
+    }
+    //进入播放页面
+    func pushcontroller(pushSreing:String,model : UserAskDetailList,playString:String){
+        self.pushViewController(pushSreing: pushSreing, videdoUrl:  ShareDataModel.share().qiniuHeader + playString , pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png" , complete: { (result) in
+            if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoAskQuestionsVC") as? VideoAskQuestionsVC{
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        })
+    
     }
 }
 

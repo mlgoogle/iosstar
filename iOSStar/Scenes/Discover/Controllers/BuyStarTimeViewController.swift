@@ -62,21 +62,21 @@ class BuyStarTimeViewController: UIViewController {
     }
     
     func requestConfigData() {
-        AppAPIHelper.user().configRequest(param_code: "HOME_LAST_PIC", complete: { (response) in
-            if let model = response as? ConfigReusltValue {
-                let starModel = StarSortListModel()
-                starModel.home_pic = model.param_value
-                starModel.pushlish_type = 4
-                if self.dataSouce != nil {
-                    self.dataSouce?.append(starModel)
-                    self.collectionView.reloadData()
-                }
-                self.collectionView.reloadData()
-            }
-            
-        }) { (error) in
-            
-        }
+//        AppAPIHelper.user().configRequest(param_code: "HOME_LAST_PIC", complete: { (response) in
+//            if let model = response as? ConfigReusltValue {
+//                let starModel = StarSortListModel()
+//                starModel.home_pic_tail = model.param_value
+//                starModel.pushlish_type = 4
+//                if self.dataSouce != nil {
+//                    self.dataSouce?.append(starModel)
+//                    self.collectionView.reloadData()
+//                }
+//                self.collectionView.reloadData()
+//            }
+//            
+//        }) { (error) in
+//            
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,11 +93,10 @@ class BuyStarTimeViewController: UIViewController {
             if let model = response as? DiscoverListModel{
                 self.dataSouce = model.symbol_info
                 let starModel = StarSortListModel()
-                starModel.home_pic = model.home_last_pic
+                starModel.home_pic_tail = model.home_last_pic_tail
                 starModel.pushlish_type = -1
                 self.dataSouce?.append(starModel)
                 self.collectionView.reloadData()
-                //self.requestConfigData()
                 self.perform(#selector(self.replaceBackImage(index:)), with: nil, afterDelay: 0.5)
                 
             }
@@ -130,11 +129,7 @@ class BuyStarTimeViewController: UIViewController {
 
 extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionViewDelegate {
     
-
-
-    
     func replaceBackImage(index:Int = 0) {
-        
         let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? StarCardView
         backImageView.image = cell?.backImage
     }
@@ -151,7 +146,6 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StarCardView.className(), for: indexPath)
         if let card = cell as? StarCardView {
-            
             card.setStarModel(starModel: dataSouce![indexPath.row])
         }
          return cell
@@ -166,10 +160,15 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
             switch starModel.pushlish_type {
             case 0:
                 segueString = "ToSelling"
-            case 2:
-                segueString = "ToIntroduce"
             case 1:
-                segueString = "ToSelling"
+                 segueString = "ToSelling"
+//                segueString = "ToIntroduce"
+            case 2:
+                if let dealVC = UIStoryboard.init(name: "Heat", bundle: nil).instantiateViewController(withIdentifier: HeatDetailViewController.className()) as? HeatDetailViewController{
+                    let model = dataSouce?[indexPath.row]
+                    dealVC.starListModel = model
+                    _ = navigationController?.pushViewController(dealVC, animated: true)
+                }
             default:
                 ShareDataModel.share().selectStarCode = ""
                 segueString = StarNewsVC.className()

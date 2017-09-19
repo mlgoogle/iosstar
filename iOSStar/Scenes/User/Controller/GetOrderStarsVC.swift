@@ -17,14 +17,14 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
     var unseleNumber = 10000000
     var domeet = true
     var doRealm = false
-    @IBOutlet var ownSecond: UIButton!
-    @IBOutlet var orderStatus: UIButton!
+    var scrollView: UIScrollView!
+   
+     // MARK: - viewload
     override func viewDidLoad() {
         super.viewDidLoad()
-         ownSecond.backgroundColor = UIColor.init(hexString: "333333")
-         title = "我预约的明星"
+        title = "我预约的明星"
         self.nodaView.isHidden = true
-       
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,21 +35,39 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
     override func isSections() -> Bool {
         return true
     }
+    func getRealmStatus(){
+        self.getUserRealmInfo { (result) in
+            if let model = result{
+                let object =  model as! [String : AnyObject]
+                
+                if object["realname"] as! String == ""{
+                    self.doRealm = true
+                } else {
+                    self.doRealm = false
+                }
+            }
+        }
+    }
     override func didRequest(_ pageIndex: Int) {
         //约见的明细
         if domeet{
             let requestModel = StarMailListRequestModel()
             requestModel.status = 1
             requestModel.startPos = (pageIndex - 1) * 10
-           
+            
             AppAPIHelper.user().requestStarMailList(requestModel: requestModel, complete: { (result) in
                 let Model : StarListModel = result as! StarListModel
                 self.didRequestComplete( Model.depositsinfo as AnyObject)
                 self.tableView.reloadData()
                 if (self.dataSource?.count == 0){
                     self.nodaView.isHidden = false
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 0)
+                    self.tableView.reloadData()
+                    
                 }else{
                     self.nodaView.isHidden = true
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 385)
+                    self.tableView.reloadData()
                 }
             }) { (error ) in
                 
@@ -57,12 +75,16 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
                 self.didRequestComplete(nil)
                 if (self.dataSource?.count == nil || self.dataSource?.count == 0){
                     self.nodaView.isHidden = false
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 385)
+                    self.tableView.reloadData()
                 }else{
                     self.nodaView.isHidden = true
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 0)
+                    self.tableView.reloadData()
                 }
             }
         }
-       //约见的情况
+            //约见的情况
         else{
             let requestModel = StarMailOrderListRequestModel()
             requestModel.pos = (pageIndex - 1) * 10
@@ -72,18 +94,29 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
                 self.tableView.reloadData()
                 if (self.dataSource?.count == 0){
                     self.nodaView.isHidden = false
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 385)
+                    self.tableView.reloadData()
                 }else{
                     self.nodaView.isHidden = true
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 0)
+                    self.tableView.reloadData()
                 }
             }) { (error ) in
                 self.didRequestComplete(nil)
                 if (self.dataSource?.count == nil  || self.dataSource?.count == 0){
                     self.nodaView.isHidden = false
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 385)
+                    self.tableView.reloadData()
                 }else{
                     self.nodaView.isHidden = true
+                    self.nodaView.frame =  CGRect.init(x: 0, y: 13, width: kScreenWidth, height: 0)
+                    self.tableView.reloadData()
                 }
             }
         }
+    }
+    func configScrollView(){
+    
     }
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -94,39 +127,26 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
             if unseleNumber == indexPath.section{
                 return 65
             }
-          return 65
+            return 65
         }
         
         return 65
     }
-    func getRealmStatus(){
-          self.getUserRealmInfo { (result) in
-                if let model = result{
-                let object =  model as! [String : AnyObject]
-              
-                if object["realname"] as! String == ""{
-                  self.doRealm = true
-                } else {
-                  self.doRealm = false
-                }
-
-                }
-        }
-    }
+   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         return self.dataSource?.count  == nil ? 0 : (self.dataSource?.count)!
     }
-     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 10
     }
-     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 5
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "GetOrderStarsVCCell") as! GetOrderStarsVCCell
         if domeet{
             let model = self.dataSource?[indexPath.section] as! StarInfoModel
@@ -135,17 +155,17 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
             cell.dodetail.addTarget(self , action: #selector(dostarDetail(_:)), for: .touchUpInside)
             cell.chatButton.transform = CGAffineTransform(rotationAngle: CGFloat(0));
             if seleNumber == indexPath.section{
-            cell.chatButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi));
+                cell.chatButton.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi));
             }
-        
+            
             if unseleNumber == indexPath.section{
-            cell.chatButton.transform = CGAffineTransform(rotationAngle: CGFloat(0));
+                cell.chatButton.transform = CGAffineTransform(rotationAngle: CGFloat(0));
             }
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ContactListCell") as! ContactListCell
             let model = self.dataSource?[indexPath.section] as! OrderStarListInfoModel
-                    cell.update(model)
+            cell.update(model)
             cell.doStarDeatil.tag = indexPath.section
             cell.doStarDeatil.addTarget(self , action: #selector(dostar(_:)), for: .touchUpInside)
             cell.chatButton.isUserInteractionEnabled = false
@@ -153,20 +173,18 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
         }
     }
     
-   func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!) {
+    func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!) {
         //约见
         if action == 4 {
-            
-            
-            if doRealm{
-                        showRealname()
+             if doRealm{
+                showRealname()
             }else{
                 let model = self.dataSource?[indexPath.section] as! StarInfoModel
                 let modeldata = StarSortListModel()
                 
                 StartModel.getStartName(startCode: model.starcode) { (response) in
                     if let star = response as? StartModel{
-                        modeldata.pic = star.pic_url
+                        modeldata.pic_tail = star.pic_url_tail
                         modeldata.name = model.starname
                         modeldata.symbol = model.starcode
                         let story = UIStoryboard.init(name: "Market", bundle: nil)
@@ -177,14 +195,14 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
                         return
                     }
                 }
-              
+                
             }
-        
-       }
+            
+        }
         //聊天
         if action == 5 {
             if doRealm{
-               showRealname()
+                showRealname()
             }else{
                 let model = self.dataSource?[indexPath.section] as! StarInfoModel
                 let session = NIMSession( model.faccid, type: .P2P)
@@ -195,14 +213,14 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
                 self.tableView.reloadSections(IndexSet(integer: unseleNumber), with: .fade)
                 return
             }
-           
+            
         }
         if unseleNumber != 10000000{
-             self.tableView.reloadSections(IndexSet(integer: unseleNumber), with: .fade)
+            self.tableView.reloadSections(IndexSet(integer: unseleNumber), with: .fade)
         }
         if seleNumber == indexPath.section{
-             unseleNumber = seleNumber
-           
+            unseleNumber = seleNumber
+            
             seleNumber = 10000000
             self.tableView.reloadSections(IndexSet(integer: unseleNumber), with: .fade)
             unseleNumber = 10000000
@@ -218,18 +236,18 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
     func dostarDetail(_ sender : UIButton){
         let model = self.dataSource?[sender.tag] as! StarInfoModel
         StartModel.getStartName(startCode: model.starcode) { (response) in
-             let star = response as? StartModel
-             let starListModel = StarSortListModel()
+            let star = response as? StartModel
+            let starListModel = StarSortListModel()
             
             starListModel.symbol = model.starcode
             starListModel.name = model.starname
-            starListModel.pic  = (star?.pic_url)!
+            starListModel.pic_tail  = (star?.pic_url_tail)!
             let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
             introVC.starModel = starListModel
             
             self.navigationController?.pushViewController(introVC, animated: true)
         }
-       
+        
     }
     func dostar(_ sender : UIButton){
         
@@ -242,30 +260,30 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
         
         self.navigationController?.pushViewController(introVC, animated: true)
     }
-     // MARK: -button点击事件
-     //选中的状态
-    @IBAction func orderStatus(_ sender: Any) {
-        domeet = false
-         seleNumber = 10000000
-         unseleNumber = 10000000
-         self.nodaView.isHidden = false
-        self.dataSource?.removeAll()
-        self.tableView.reloadData()
-        self.didRequest(1)
-        ownSecond.backgroundColor = UIColor.clear
-        orderStatus.backgroundColor = UIColor.init(hexString: "333333")
-    }
-    @IBAction func ownSecondInside(_ sender: Any) {
-         domeet = true
-         seleNumber = 10000000
-         unseleNumber = 10000000
-         self.nodaView.isHidden = false
-        self.dataSource?.removeAll()
-        self.tableView.reloadData()
-         self.didRequest(1)
-        orderStatus.backgroundColor = UIColor.clear
-        ownSecond.backgroundColor = UIColor.init(hexString: "333333")
-    }
-
-
+    // MARK: -button点击事件
+//    //选中的状态
+//    @IBAction func orderStatus(_ sender: Any) {
+//        domeet = false
+//        seleNumber = 10000000
+//        unseleNumber = 10000000
+//        self.nodaView.isHidden = false
+//        self.dataSource?.removeAll()
+//        self.tableView.reloadData()
+//        self.didRequest(1)
+//        ownSecond.backgroundColor = UIColor.clear
+//        orderStatus.backgroundColor = UIColor.init(hexString: "333333")
+//    }
+//    @IBAction func ownSecondInside(_ sender: Any) {
+//        domeet = true
+//        seleNumber = 10000000
+//        unseleNumber = 10000000
+//        self.nodaView.isHidden = false
+//        self.dataSource?.removeAll()
+//        self.tableView.reloadData()
+//        self.didRequest(1)
+//        orderStatus.backgroundColor = UIColor.clear
+//        ownSecond.backgroundColor = UIColor.init(hexString: "333333")
+//    }
+    
+    
 }

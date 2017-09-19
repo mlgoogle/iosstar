@@ -14,11 +14,11 @@ import YYText
 class CircleListModel: Object {
     dynamic var symbol = ""
     dynamic var symbol_name = ""
-    dynamic var head_url = ""
+    dynamic var head_url_tail = ""
     dynamic var circle_id:Int64 = 0
     dynamic var create_time:Int64 = 0
     dynamic var content = ""
-    dynamic var pic_url = ""
+    dynamic var pic_url_tail = ""
     dynamic var approve_dec_time = 0
     dynamic var comment_dec_time = 0
     let approve_list = List<ApproveModel>()

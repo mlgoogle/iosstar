@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j9j-xh-Qc8">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j9j-xh-Qc8">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -134,28 +134,25 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKn-l3-phZ">
-                                                        <rect key="frame" x="15" y="34" width="128" height="21"/>
+                                                        <rect key="frame" x="15" y="34" width="158.5" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="ddW-L3-GHh"/>
                                                         </constraints>
                                                         <attributedString key="attributedText">
-                                                            <fragment content="星云，">
+                                                            <fragment content="星享时光，">
                                                                 <attributes>
                                                                     <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
-                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
                                                             <fragment content=" ">
                                                                 <attributes>
-                                                                    <font key="NSFont" metaFont="controlContent" size="11"/>
-                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    <font key="NSFont" metaFont="smallSystem"/>
                                                                 </attributes>
                                                             </fragment>
                                                             <fragment content="你与明星零距离">
                                                                 <attributes>
                                                                     <font key="NSFont" size="11" name=".PingFangSC-Regular"/>
                                                                     <font key="NSOriginalFont" size="12" name="PingFangSC-Regular"/>
-                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
                                                         </attributedString>
@@ -171,19 +168,16 @@
                                                             <attributedString key="attributedTitle">
                                                                 <fragment content=" ">
                                                                     <attributes>
-                                                                        <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <font key="NSFont" metaFont="system" size="15"/>
                                                                     </attributes>
                                                                 </fragment>
                                                                 <fragment content="还没有账户">
                                                                     <attributes>
-                                                                        <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <font key="NSFont" size="12" name=".PingFangSC-Regular"/>
                                                                     </attributes>
                                                                 </fragment>
                                                                 <fragment content=" ">
                                                                     <attributes>
-                                                                        <color key="NSColor" red="0.094117647058823528" green="0.36078431372549019" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <font key="NSFont" metaFont="system" size="15"/>
                                                                     </attributes>
                                                                 </fragment>
@@ -219,7 +213,7 @@
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="be4-FP-WI1">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="be4-FP-WI1">
                                                         <rect key="frame" x="60" y="304" width="143" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="2FL-K2-Xyl"/>
@@ -288,7 +282,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4l-eN-tLq">
-                                                        <rect key="frame" x="51" y="356" width="15" height="15"/>
+                                                        <rect key="frame" x="51" y="355.5" width="15" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="15" id="8xh-fU-xAO"/>
                                                             <constraint firstAttribute="height" constant="15" id="Vo3-mD-0xj"/>
@@ -426,7 +420,7 @@
                         <outlet property="loginBtn" destination="KHk-Cs-uVX" id="A7E-pb-EG0"/>
                         <outlet property="passPwd" destination="Mhr-S4-LSi" id="WO4-a5-wzf"/>
                         <outlet property="phone" destination="jxw-gG-HVh" id="U7Q-n0-qce"/>
-                        <outlet property="registerBtn" destination="CS8-z7-ec1" id="gvJ-DP-syU"/>
+                        <outlet property="registerBtn" destination="CS8-z7-ec1" id="JKs-Mb-k7p"/>
                         <outlet property="right" destination="dbN-Eh-f3e" id="pCR-x5-Eo7"/>
                         <outlet property="top" destination="4h6-2H-E7H" id="dcl-98-6aY"/>
                         <outlet property="width" destination="6Ur-Ex-4D5" id="dy3-Fm-7jL"/>
@@ -995,7 +989,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加入星云" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0BX-g8-GgR">
-                                                        <rect key="frame" x="97" y="35" width="74" height="22"/>
+                                                        <rect key="frame" x="98" y="35" width="73.5" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1380,7 +1374,7 @@
                                                             <action selector="sendVaildCode:" destination="Byu-Yt-e4a" eventType="touchUpInside" id="amD-lV-N1O"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctD-mK-ehf">
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctD-mK-ehf">
                                                         <rect key="frame" x="60" y="303" width="148" height="51"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="51" id="NLL-IX-wWB"/>

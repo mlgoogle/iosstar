@@ -24,7 +24,8 @@ class OrderItem: UICollectionViewCell {
     func updata(_ data : AnyObject){
         if let response = data as? StartModel{
             nameLb.text = response.name
-            self.starImg.kf.setImage(with: URL(string:qiniuHelper.shared().qiniuHeader +  response.pic_url))
+
+            self.starImg.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + response.pic_url_tail))
         }
     }
 }
@@ -187,8 +188,8 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         
         let model = StarSortListModel()
         let data = self.dataArry[indexPath.row]
-           model.symbol = data.code
-           model.name = data.name
+        model.symbol = data.code
+        model.name = data.name
          let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
          introVC.starModel = model
          self.navigationController?.pushViewController(introVC, animated: true)
