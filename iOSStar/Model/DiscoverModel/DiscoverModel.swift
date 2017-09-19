@@ -64,10 +64,10 @@ class StarDetaiInfoModel: Object {
     dynamic var star_tpye:Int64 = 0
     dynamic var head_url_tail = ""
     dynamic var back_pic_tail = ""
-    dynamic var portray1 = ""
-    dynamic var portray2 = ""
-    dynamic var portray3 = ""
-    dynamic var portray4 = ""
+    dynamic var portray1_tail = ""
+    dynamic var portray2_tail = ""
+    dynamic var portray3_tail = ""
+    dynamic var portray4_tail = ""
     dynamic var acc_id = ""
     dynamic var work = ""
     dynamic var publish_type = 10

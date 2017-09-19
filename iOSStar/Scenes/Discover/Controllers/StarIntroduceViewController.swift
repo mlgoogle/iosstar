@@ -139,17 +139,18 @@ class StarIntroduceViewController: UIViewController {
     
     func checkImages() {
         
-        if checkUrl(url: starDetailModel?.portray1) {
-            images.append(starDetailModel!.portray1)
+        if checkUrl(url: starDetailModel?.portray1_tail) {
+            
+            images.append(ShareDataModel.share().qiniuHeader + starDetailModel!.portray1_tail)
         }
-        if checkUrl(url: starDetailModel?.portray2) {
-            images.append(starDetailModel!.portray2)
+        if checkUrl(url: starDetailModel?.portray2_tail) {
+            images.append(ShareDataModel.share().qiniuHeader + starDetailModel!.portray2_tail)
         }
-        if checkUrl(url: starDetailModel?.portray3) {
-            images.append(starDetailModel!.portray3)
+        if checkUrl(url: starDetailModel?.portray3_tail) {
+            images.append(ShareDataModel.share().qiniuHeader + starDetailModel!.portray3_tail)
         }
-        if checkUrl(url: starDetailModel?.portray4) {
-            images.append(starDetailModel!.portray4)
+        if checkUrl(url: starDetailModel?.portray4_tail) {
+            images.append(ShareDataModel.share().qiniuHeader + starDetailModel!.portray4_tail)
         }
         self.tableView.reloadData()
         
@@ -157,7 +158,7 @@ class StarIntroduceViewController: UIViewController {
     
     func checkUrl(url:String?)-> Bool {
         if url == nil {return false}
-        return url!.hasPrefix("http")
+        return url!.length()>0 ? true : false
     }
     func requestExperience() {
         guard starModel != nil else {
@@ -271,17 +272,13 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     }
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
 
+
+
         var urlString = images[Int(index)]
         if  !urlString.hasPrefix("http") {
-           urlString = ShareDataModel.share().qiniuHeader + urlString
+            urlString = ShareDataModel.share().qiniuHeader + urlString
         }
-        let photo = MWPhoto(url:URL(string:urlString))
-        
-//        if showCirCle{
-//            let photo = MWPhoto(url:URL(string: showCirCleUrl))
- //           return photo
- //       }
- //       let photo = MWPhoto(url:URL(string: images[Int(self.index)]))
+        let photo = MWPhoto(url:URL(string: images[Int(self.index)]))
         return photo
     }
     
