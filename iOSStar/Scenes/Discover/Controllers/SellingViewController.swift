@@ -57,6 +57,7 @@ class SellingViewController: UIViewController {
             sureBuyButton.setTitle("预售", for: .normal)
             sureBuyButton.backgroundColor = UIColor.gray
             sureBuyButton.isUserInteractionEnabled = false
+            title = "预售"
         }
         let priceString = String(format: "%.2f", price)
         let text = "合计: ￥\(priceString)"
@@ -180,6 +181,7 @@ extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITe
         switch indexPath.row {
         case 2:
             if let countDownCell = cell as? SellingCountDownCell {
+               countDownCell.starModel = starModel
                 countDownCell.setRemainingTime(count:remainingTime)
             }
         case 0:
