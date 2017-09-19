@@ -45,6 +45,7 @@ class AppConst {
     static let getStarService = "getStarService"
     static let imageTokenUrl = "http://122.144.169.219:3378/imageToken"
     static let meetCityDefault = "杭州"
+
     static let didmiss = "杭州"
     static let ipUrl = "http://ip.chinaz.com/getip.aspx"
     static let shareUrl = "http://star.grwme.com"
@@ -66,11 +67,20 @@ class AppConst {
     }
     
     class Color {
-        static let main = "921224"
+        //921224
+        static let main = "185CA5"
         static let orange = "FB9938"
         static let up = "CB4232"
         static let down = "18B03F"
         static let titleColor = "8C0808"
+        static let getCode = "3598DB"
+        
+        static let lightAction = "3598DB"//FB9938
+        static let darkAction = "185CA5"//FB9938
+        
+        static let lightTitle = "ffffff"
+        static let money = "FB9938"//8C0808
+        
         static let background = "background"
         static let auxiliary = "auxiliary"
         static let lightBlue = "lightBlue"
@@ -125,16 +135,21 @@ class AppConst {
         //是否测试环境
         //139.224.34.22
         //122.144.169.214
+        //cloud.p.smartdata-x.com z正式运营域名
+        static let TcpServerIP:String = "cloud.a.smartdata-x.com"
+        static let TcpServerPort:UInt16 = 17001
+        
         //nsb.smartdata-x.com  
-        static let TcpServerIP:String = "nsb.smartdata-x.com";
-         static let TcpServerPort:UInt16 = 16006
+//        static let TcpServerIP:String = "nsb.smartdata-x.com";
+//         static let TcpServerPort:UInt16 = 16006
+
 //        static let TcpServerIP:String = "139.224.34.22";
 //        static let TcpServerPort:UInt16 = 16070
-        static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
+//        static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
         static let TcpServerIP:String = "tapi.smartdata-x.com";
         static let TcpServerPort:UInt16 = 16006
-        static let HttpHostUrl:String = "tapi.smartdata-x.com";
+        static let HttpHostUrl:String = "dapi.smartdata-x.com";
         #endif
         static let TimeoutSec:UInt16 = 10
         static let qiniuHost = "http://ofr5nvpm7.bkt.clouddn.com/"

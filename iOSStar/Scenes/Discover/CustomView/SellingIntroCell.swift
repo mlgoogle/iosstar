@@ -26,6 +26,7 @@ class SellingIntroCell: SellingBaseCell {
             return
         }
         nickNameLabel.text = model?.star_name
+
         backImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model!.back_pic_url_tail), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model!.head_url_tail), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
         jobLabel.text = model?.work

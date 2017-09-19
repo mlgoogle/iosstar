@@ -27,6 +27,7 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
     @IBOutlet var loginBtn: UIButton!
     var uid : Int = 0
     
+    @IBOutlet weak var registerBtn: UIButton!
     // 登录密码
     @IBOutlet weak var passPwd: UITextField!
     // 手机号
@@ -58,7 +59,8 @@ class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate
     
     func initUI(){
         
-       loginBtn.titleLabel?.setAttributeText(text: "还没有账户 现在注册", firstFont: 14, secondFont: 14, firstColor: UIColor.init(hexString: "999999"), secondColor: UIColor.init(hexString: AppConst.Color.main), range: NSRange(location: 6, length: 4))
+        loginBtn.backgroundColor = UIColor(hexString: AppConst.Color.main)
+       registerBtn.titleLabel?.setAttributeText(text: "还没有账户 现在注册", firstFont: 14, secondFont: 14, firstColor: UIColor.init(hexString: "999999"), secondColor: UIColor.init(hexString: AppConst.Color.main), range: NSRange(location: 6, length: 4))
         
         let backViewTap = UITapGestureRecognizer.init(target: self, action: #selector(backViewTapClick))
         backView.addGestureRecognizer(backViewTap)

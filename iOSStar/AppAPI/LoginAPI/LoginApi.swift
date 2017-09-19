@@ -36,6 +36,7 @@ protocol LoginApi {
     // 注册网易云(模型)
     func registWYIM(model:RegisterWYIMRequestModel,complete:CompleteBlock?,error:ErrorBlock?)
     
+
     // 获取七牛api
     func qiniuHttpHeader(complete:CompleteBlock?,error:ErrorBlock?)
 }

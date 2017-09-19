@@ -24,6 +24,7 @@ class OrderItem: UICollectionViewCell {
     func updata(_ data : AnyObject){
         if let response = data as? StartModel{
             nameLb.text = response.name
+
             self.starImg.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + response.pic_url_tail))
         }
     }
@@ -71,7 +72,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         descriptor.spriteName = NSStringFromClass(YD_Barrage.self)
         
         let attachment = NSTextAttachment()
-        imgView.sd_setImage(with: URL.init(string: (data.user?.headUrl)!))
+        imgView.sd_setImage(with: URL(string:(data.user?.headUrl)!))
         let imgage = imgView.image
         imgView.clipsToBounds = true
         imgView.layer.cornerRadius = 10
@@ -86,7 +87,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         let openPrice = String.init(format: "%.2f", (data.trades?.openPrice)!)
         let name = "  \(data.user!.nickname)\(type)\(data.trades!.amount)秒,\(openPrice)元/秒    "
         let length = 2 + (data.user?.nickname.length())!
-        let color =  UIColor.init(hexString: "CB4232")//data.trades?.buySell == 1 ? UIColor.init(hexString: "CB4232") : UIColor.init(hexString: "ffffff")
+        let color =  UIColor.init(hexString: "163ACC")//data.trades?.buySell == 1 ? UIColor.init(hexString: "CB4232") : UIColor.init(hexString: "ffffff")
         let attributed = NSMutableAttributedString.init(string: name)
         attributed.addAttribute(NSForegroundColorAttributeName, value: color!, range: NSRange.init(location: length, length: 2))
         attributed.insert(NSAttributedString.init(attachment: attachment), at: 1)

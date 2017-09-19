@@ -49,6 +49,7 @@ class MarketDetailViewController: UIViewController,ChartViewDelegate {
         } else {
             return
         }
+
         let url = URL(string:ShareDataModel.share().qiniuHeader + string)
         iconImageView.kf.setImage(with: url)
     }

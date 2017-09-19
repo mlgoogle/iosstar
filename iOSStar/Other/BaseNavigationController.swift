@@ -40,7 +40,7 @@ class BaseNavigationController: UINavigationController,UINavigationControllerDel
         btn.setTitle("", for: UIControlState.normal)
         
         btn.setBackgroundImage(UIImage.init(named: "back"), for: UIControlState.normal )
-    
+        btn.tintColor = UIColor(hexString: AppConst.Color.main)
         btn.addTarget(self, action: #selector(popself), for: UIControlEvents.touchUpInside)
           
         let barItem : UIBarButtonItem = UIBarButtonItem.init(customView: btn)

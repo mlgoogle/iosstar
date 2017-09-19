@@ -27,11 +27,12 @@ class NewsCell: OEZTableViewCell {
     var newsPicUrl = ""
     
     override func awakeFromNib() {
+        nameLabel.textColor = UIColor(hexString: AppConst.Color.main)
         newsPic.isUserInteractionEnabled = true
-        showBtn.setImage(UIImage.imageWith(AppConst.iconFontName.showIcon.rawValue, fontSize: CGSize.init(width: 22, height: 17), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.linkColor.rawValue)), for: .normal)
+        showBtn.setImage(UIImage.imageWith(AppConst.iconFontName.showIcon.rawValue, fontSize: CGSize.init(width: 22, height: 17), fontColor: UIColor(hexString: "75C1E7")), for: .normal)
         showBtnTapped(showBtn)
-        thumbUpBtn.setImage(UIImage.imageWith(AppConst.iconFontName.thumbIcon.rawValue, fontSize: CGSize.init(width: 16, height: 16), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.closeColor.rawValue)), for: .normal)
-        CommentBtn.setImage(UIImage.imageWith(AppConst.iconFontName.commentIcon.rawValue, fontSize: CGSize.init(width: 16, height: 16), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.closeColor.rawValue)), for: .normal)
+        thumbUpBtn.setImage(UIImage.imageWith(AppConst.iconFontName.thumbIcon.rawValue, fontSize: CGSize.init(width: 16, height: 16), fontColor: UIColor(hexString: AppConst.Color.lightTitle)), for: .normal)
+        CommentBtn.setImage(UIImage.imageWith(AppConst.iconFontName.commentIcon.rawValue, fontSize: CGSize.init(width: 16, height: 16), fontColor: UIColor(hexString: AppConst.Color.lightTitle)), for: .normal)
         newsLabel.textParser = YParser.share()
         let showPicGesture = UITapGestureRecognizer.init(target: self, action: #selector(showPicGestureTapped(_:)))
         newsPic.addGestureRecognizer(showPicGesture)
@@ -40,6 +41,7 @@ class NewsCell: OEZTableViewCell {
     override func update(_ data: Any!) {
         if let model = data as? CircleListModel{
             let userIcon = UIImage.imageWith(AppConst.iconFontName.userPlaceHolder.rawValue, fontSize: iconImage.frame.size, fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue))
+
             iconImage.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   model.head_url_tail), placeholder: userIcon)
             nameLabel.text =  model.symbol_name
             newsLabel.text = model.content
@@ -77,7 +79,7 @@ class ThumbupCell: OEZTableViewCell {
     @IBOutlet var thumbupNames: UILabel!
     
     override func awakeFromNib() {
-        iconImage.image = UIImage.imageWith(AppConst.iconFontName.thumpUpIcon.rawValue, fontSize: iconImage.frame.size, fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue))
+        iconImage.image = UIImage.imageWith(AppConst.iconFontName.thumpUpIcon.rawValue, fontSize: iconImage.frame.size, fontColor: UIColor(hexString: AppConst.Color.main))
     }
     
     override func update(_ data: Any!) {
@@ -115,12 +117,12 @@ class CommentCell: OEZTableViewCell {
                 contentAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(rgbHex: 0x0092ca), range: NSRange.init(location: 0, length: model.user_name.length()))
             }
             if model.direction == 1{
-                contentAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(rgbHex: 0x8c0808), range: NSRange.init(location: 0, length: listModel.symbol_name.length()))
+                contentAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor(hexString: AppConst.Color.main), range: NSRange.init(location: 0, length: listModel.symbol_name.length()))
                 contentAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(rgbHex: 0x0092ca), range: NSRange.init(location: listModel.symbol_name.length()+2, length: model.user_name.length()))
                 
             }
             if model.direction == 2{
-                contentAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(rgbHex: 0x8c0808), range: NSRange.init(location: model.user_name.length()+2, length: listModel.symbol_name.length()))
+                contentAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor(hexString: AppConst.Color.main), range: NSRange.init(location: model.user_name.length()+2, length: listModel.symbol_name.length()))
                 contentAttribute.addAttribute(NSForegroundColorAttributeName, value: UIColor.init(rgbHex: 0x0092ca), range: NSRange.init(location: 0, length: model.user_name.length()))
             }
             
@@ -147,7 +149,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "发现明星"
-        dismissBtn.setImage(UIImage.imageWith(AppConst.iconFontName.closeIcon.rawValue, fontSize: CGSize.init(width: 22, height: 22), fontColor: UIColor.init(rgbHex: AppConst.ColorKey.main.rawValue)), for: .normal)
+        dismissBtn.setImage(UIImage.imageWith(AppConst.iconFontName.closeIcon.rawValue, fontSize: CGSize.init(width: 22, height: 22), fontColor: UIColor(hexString: AppConst.Color.main)), for: .normal)
         getexperience()
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             self.requestCycleData(0)
@@ -163,6 +165,9 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
             share.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
             share.addTarget(self, action: #selector(sharetothird), for: .touchUpInside)
             let item = UIBarButtonItem.init(customView: share)
+            item.tintColor = UIColor(hexString: AppConst.Color.main)
+//            self.navigationItem.rightBarButtonItem = item
+
             self.navigationItem.rightBarButtonItem = item
             if starModel?.pic_tail != nil{
             iconImage.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader +   (starModel?.pic_tail)!), placeholder: nil)
@@ -174,7 +179,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
         
         if let model = expericences?[0]{
             let view : ShareView = Bundle.main.loadNibNamed("ShareView", owner: self, options: nil)?.last as! ShareView
-            view.title = (starModel?.name)! + "(正在星享时光 出售TA的时间)"
+            view.title = (starModel?.name)! + "(正在星云 出售TA的时间)"
             view.Image = iconImage.image
             view.descr = model.experience
             view.webpageUrl = String.init(format: "%@?uid=%d&star_code=%@", AppConst.shareUrl,StarUserModel.getCurrentUser()?.userinfo?.id ?? 0,ShareDataModel.share().selectStarCode)
@@ -243,6 +248,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
         }
     }
     
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let model = tableData[section]
         return model.comment_list.count + 2
@@ -256,9 +262,10 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
     }
     
     @IBAction func dismissBtnTapped(_ sender: UIButton) {
-        UIView.animate(withDuration: 1, animations: { [weak self] (animation) in
-            self?.headerView.height = 0
-            self?.tableView.reloadData()
+        UIView.animate(withDuration: 0.5, animations: { [weak self] (animation) in
+            self?.tableView.y -= 64
+            self?.tableView.height += 64
+            self?.headerView.isHidden = true
         })
     }
     
@@ -448,6 +455,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
         return 1
     }
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
+
         let photo = MWPhoto(url:URL(string:ShareDataModel.share().qiniuHeader + newsPicUrl))
     
         return photo

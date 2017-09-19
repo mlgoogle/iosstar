@@ -32,6 +32,7 @@ class StarCirCleCell: UITableViewCell ,UICollectionViewDelegate ,UICollectionVie
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        collectView.backgroundColor = UIColor.clear
     }
 
    

@@ -49,7 +49,7 @@ class PubInfoHeaderView: UITableViewHeaderFooterView {
             make.top.equalTo(titleLabel.snp.bottom).offset(12)
             make.height.equalTo(1)
             make.left.equalTo(lineView)
-            make.right.equalTo(-12)
+            make.right.equalTo(self).offset(-12)
         }
         bringSubview(toFront: bottomLineView)
         

@@ -26,7 +26,7 @@ class BaseWebVC: UIViewController {
         super.viewDidLoad()
         title = navtitle
         let webView = WKWebView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height-64))
-        let url = URL(string: loadRequest)
+        let url = URL(string:loadRequest)
         let request = URLRequest(url: url!)
         webView.load(request)
         view.addSubview(webView)

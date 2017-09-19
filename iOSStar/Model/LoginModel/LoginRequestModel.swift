@@ -28,6 +28,7 @@ class RegisterRequestModel: BaseModel {
     var timestamp = ""
     var sub_agentId = ""
     var channel = "  "
+
     var star_code = " "
 }
 

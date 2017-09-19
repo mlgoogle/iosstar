@@ -107,7 +107,7 @@ class AuctionHeaderCell: UITableViewCell {
         }
     }
     func setImageUrl(url:String)  {
-    
+
         showImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + url))
     }
     

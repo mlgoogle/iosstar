@@ -33,6 +33,7 @@ class HeatListCell: OEZTableViewCell {
     }
     override func update(_ data: Any!) {
         if  let model = data as? StarSortListModel {
+
             iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.pic_tail), placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
             nameLabel.text = model.name
             priceLabel.text = String(format: "%.2f", model.currentPrice)
