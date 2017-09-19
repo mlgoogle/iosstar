@@ -24,7 +24,6 @@ class JoinVC: UIViewController, UITextViewDelegate ,UIGestureRecognizerDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        joinBtn.backgroundColor = UIColor(hexString: AppConst.Color.main)
         bgHeight.constant = 150 + UIScreen.main.bounds.size.height
     }
 

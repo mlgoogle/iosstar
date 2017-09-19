@@ -15,10 +15,9 @@ class HeatListViewController: UITableViewController {
     let footer = MJRefreshAutoNormalFooter()
     var Index = 1
     
-    @IBOutlet weak var rightButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        rightButton.tintColor = UIColor(hexString: AppConst.Color.main)
+
         tableView.register(NoDataCell.self, forCellReuseIdentifier: "NoDataCell")
         tableView.reloadData()
         configImageNames()
@@ -60,7 +59,6 @@ class HeatListViewController: UITableViewController {
 
     override func didRequest(_ pageIndex: Int) {
         let requestModel = StarSortListRequestModel()
-
         Index = 1
         requestModel.pos = Int64((Index - 1) * 10)
         requestModel.count = 10
@@ -140,10 +138,10 @@ class HeatListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if dataSource?.count ?? 0 != 0 {
-            
-            performSegue(withIdentifier: "ToDeal", sender: indexPath)
-
+        if dataSource != nil{
+        if let model = dataSource![indexPath.row] as? StarSortListModel{
+        self.performSegue(withIdentifier: "ToDeal", sender: indexPath)
+        }
         }
     }
    

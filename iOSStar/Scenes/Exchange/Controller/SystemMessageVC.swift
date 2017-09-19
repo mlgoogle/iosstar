@@ -98,7 +98,7 @@ class SystemMessageVC: BasePageListTableViewController {
         title = "系统消息"
         tableView.separatorStyle = .none
         self.nodata.isHidden = false
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), style: .done, target: self, action: #selector(leftButtonItemClick(_ :)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backClick"), style: .done, target: self, action: #selector(leftButtonItemClick(_ :)))
         
     }
     

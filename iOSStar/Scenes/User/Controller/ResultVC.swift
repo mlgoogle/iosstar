@@ -79,7 +79,6 @@ class ResultVC: UITableViewController {
                     pic_url_tail = starModel.pic_url_tail
                 }
             })
-
             img.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + pic_url_tail))
             titleInfo.text = starName
             money.text = "-" + String.init(format: "%d秒", Int(model.amount))
@@ -96,7 +95,6 @@ class ResultVC: UITableViewController {
                     pic_url_tail = starModel.pic_url_tail
                 }
             })
-
             img.kf.setImage(with:URL(string:ShareDataModel.share().qiniuHeader + pic_url_tail))
             titleInfo.text = starName
             money.text = "-" + String.init(format: "%d秒", Int(model.amount))

@@ -28,7 +28,7 @@ class SellingViewController: UIViewController {
         requestRemainTime()
         requestPanicBuyStarInfo()
 
-        YD_CountDownHelper.shared.countDownRefresh = {  [weak self] (result) in
+        YD_CountDownHelper.shared.countDownRefresh = { [weak self] (result) in
             
 
             if self!.remainingTime > 0 {

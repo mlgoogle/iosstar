@@ -16,8 +16,8 @@ class DealMarketCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         priceLabel.textColor = UIColor.init(hexString: AppConst.Color.orange)
-        changePriceLabel.textColor = UIColor.init(hexString: AppConst.Color.up)
-        changePercentLabel.textColor = UIColor.init(hexString: AppConst.Color.up)
+        changePriceLabel.textColor = UIColor.init(hexString: AppConst.Color.main)
+        changePercentLabel.textColor = UIColor.init(hexString: AppConst.Color.main)
         
         // Initialization code
     }

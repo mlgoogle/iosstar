@@ -129,7 +129,6 @@ class OrderStarItem: UICollectionViewCell {
         if serviceTypeModel.url1_tail == "" {
             serviceTypeButton.setImage(UIImage(named: "kefu_QQ"), for: .normal)
         } else {
-
             serviceTypeButton.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + serviceTypeModel.url1_tail),for: .normal)
             serviceTypeButton.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + serviceTypeModel.url1_tail),for: .selected)
         }
@@ -137,7 +136,6 @@ class OrderStarItem: UICollectionViewCell {
             serviceTypeButton.setImage(UIImage(named: "kefu_weixin"), for: .selected)
         } else {
          
-
             serviceTypeButton.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + serviceTypeModel.url2_tail),for: .normal)
         }
         

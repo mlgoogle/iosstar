@@ -23,7 +23,7 @@ class NewsListCell: UITableViewCell {
         guard data.showpic_url.length() > 10 else {
             return
         }
-
+        
         newsImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + data.showpic_url), placeholder: UIImage(named:"8"), options: nil, progressBlock: nil, completionHandler: nil)
 
         

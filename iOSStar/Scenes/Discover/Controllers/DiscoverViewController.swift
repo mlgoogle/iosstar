@@ -10,7 +10,6 @@ import UIKit
 
 class DiscoverViewController: UIViewController, MenuViewDelegate{
 
-    @IBOutlet weak var searchButton: UIBarButtonItem!
     lazy var scrollView: UIScrollView = {
         
         let scrollView = UIScrollView(frame: CGRect(x: 0, y: 40, width: kScreenWidth, height: kScreenHeight - 40 - 44 - 64))
@@ -24,7 +23,6 @@ class DiscoverViewController: UIViewController, MenuViewDelegate{
     //MARK: - LiftCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchButton.tintColor = UIColor(hexString: AppConst.Color.main)
         UIApplication.shared.isStatusBarHidden = false
         initMenuView()
         NotificationCenter.default.addObserver(self, selector: #selector(showUpdateInfo), name: NSNotification.Name(rawValue: AppConst.NoticeKey.checkUpdte.rawValue), object: nil)

@@ -47,11 +47,11 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
         let attributes = [NSFontAttributeName:UIFont.systemFont(ofSize: 12.0),
                           NSForegroundColorAttributeName:UIColor.colorFromRGB(0x999999)]
         let tipsAttrs  = NSMutableAttributedString(string: contentStr as String, attributes: attributes)
-        let attrs = [NSForegroundColorAttributeName:UIColor(hexString: AppConst.Color.main)]
+        let attrs = [NSForegroundColorAttributeName:UIColor.colorFromRGB(0x8C0808)]
         tipsAttrs.addAttributes(attrs, range: NSMakeRange(NSString(string:contentStr).length - 6, 6))
         let range = contentStr.range(of: "《约见规则》", options: .regularExpression, range: NSMakeRange(0,contentStr.length))
         tipsAttrs.addAttribute(NSLinkAttributeName, value: "frist://", range: range)
-        tipsTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor(hexString: AppConst.Color.main)]
+        tipsTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.colorFromRGB(0x8C0808)]
         tipsTextView.attributedText = tipsAttrs
         tipsTextView.delegate = self
         tipsTextView.isEditable = false
@@ -127,7 +127,6 @@ class StarDataCell: UITableViewCell {
     
     // 设置明星信息
     func setStarInfo(model:StarSortListModel) {
-
         bkImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.home_pic_tail))
         nameLabel.text = String.init(format: "%@ (%@)", model.name,model.symbol)
         iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.pic_tail))
@@ -198,7 +197,7 @@ class OrderStarViewController: UIViewController {
      override func viewDidLoad() {
         
         super.viewDidLoad()
-        completeButton.backgroundColor = UIColor(hexString: AppConst.Color.main)
+
         tableView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0)
         tableView.showsVerticalScrollIndicator = false
         
@@ -718,9 +717,9 @@ extension OrderStarViewController {
         print("点击了右边按钮");
         
         let view : ShareView = Bundle.main.loadNibNamed("ShareView", owner: self, options: nil)?.last as! ShareView
-        view.title = "星云"
+        view.title = "星享时光"
         view.thumbImage = "QQ"
-        view.descr = "关于星云"
+        view.descr = "关于星享时光"
         view.webpageUrl = "http://www.baidu.com"
         view.shareViewController(viewController: self)
         

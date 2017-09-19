@@ -66,7 +66,6 @@ class ResetTradePassVC: UITableViewController ,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "重置交易密码"
-        vaildCodeBtn.backgroundColor = UIColor(hexString: AppConst.Color.getCode)
         if UserDefaults.standard.object(forKey: "phone") as? String != nil {
             phoneTf.text  = UserDefaults.standard.object(forKey: "phone") as? String
             phoneTf.isUserInteractionEnabled = false

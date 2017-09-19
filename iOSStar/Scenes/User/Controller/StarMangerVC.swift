@@ -32,8 +32,7 @@ class StarMangerVC: UIViewController {
         
     }
     func  configView(){
-//        for index in 0 ... 3 {
-        for index in 0 ... 1 {
+        for index in 0 ... 3 {
             
             if index == 0 {
                 if let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "GetOrderStarsVC") as? GetOrderStarsVC{

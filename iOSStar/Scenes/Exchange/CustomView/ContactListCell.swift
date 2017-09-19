@@ -97,7 +97,6 @@ class ContactListCell: OEZTableViewCell {
             unreadLabel.isHidden = model.unreadCount == 0
             StartModel.getStartName(startCode: model.starcode) { (response) in
                 if let star = response as? StartModel {
-
                     self.iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + star.pic_url_tail))
                 }
                 
@@ -163,7 +162,6 @@ class ContactListCell: OEZTableViewCell {
                 chatButton.backgroundColor = UIColor.init(hexString: color)
                 jobLabel.text =  model.star_name
                 orderTime.text  = model.meet_time
-
                 self.iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.star_pic))
                 orderTime.text = model.meet_time
             }

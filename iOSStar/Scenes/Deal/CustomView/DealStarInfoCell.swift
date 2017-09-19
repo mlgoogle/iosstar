@@ -27,7 +27,6 @@ class DealStarInfoCell: UITableViewCell {
         guard  model != nil else {
             return
         }
-
         iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model!.pic_tail))
         nameLabel.text = model?.name
 

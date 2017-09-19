@@ -22,7 +22,6 @@ class NewsDetailViewController: UIViewController {
 //        shareActionTitlt.tintColor = UIColor.init(hexString: AppConst.Color.main)
         let webView = WKWebView(frame: CGRect(x: 0, y: 44, width: kScreenWidth, height: kScreenHeight - 44))
         UIApplication.shared.statusBarStyle = .default;
-
         let url = URL(string:ShareDataModel.share().qiniuHeader + newsModel!.link_url)
         let request = URLRequest(url: url!)
         webView.load(request)
@@ -34,9 +33,9 @@ class NewsDetailViewController: UIViewController {
     @IBAction func shareAction(_ sender: Any) {
         
         let view : ShareView = Bundle.main.loadNibNamed("ShareView", owner: self, options: nil)?.last as! ShareView
-        view.title = "星云"
+        view.title = "星享时光"
         view.thumbImage = "QQ"
-        view.descr = "关于星云"
+        view.descr = "关于星享时光"
         view.webpageUrl = "http://www.baidu.com"
         view.shareViewController(viewController: self)
 
