@@ -62,21 +62,21 @@ class BuyStarTimeViewController: UIViewController {
     }
     
     func requestConfigData() {
-        AppAPIHelper.user().configRequest(param_code: "HOME_LAST_PIC", complete: { (response) in
-            if let model = response as? ConfigReusltValue {
-                let starModel = StarSortListModel()
-                starModel.home_pic_tail = model.param_value
-                starModel.pushlish_type = 4
-                if self.dataSouce != nil {
-                    self.dataSouce?.append(starModel)
-                    self.collectionView.reloadData()
-                }
-                self.collectionView.reloadData()
-            }
-            
-        }) { (error) in
-            
-        }
+//        AppAPIHelper.user().configRequest(param_code: "HOME_LAST_PIC", complete: { (response) in
+//            if let model = response as? ConfigReusltValue {
+//                let starModel = StarSortListModel()
+//                starModel.home_pic_tail = model.param_value
+//                starModel.pushlish_type = 4
+//                if self.dataSouce != nil {
+//                    self.dataSouce?.append(starModel)
+//                    self.collectionView.reloadData()
+//                }
+//                self.collectionView.reloadData()
+//            }
+//            
+//        }) { (error) in
+//            
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -160,9 +160,10 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
             switch starModel.pushlish_type {
             case 0:
                 segueString = "ToSelling"
-            case 2:
-                segueString = "ToIntroduce"
             case 1:
+                 segueString = "ToSelling"
+//                segueString = "ToIntroduce"
+            case 2:
                 if let dealVC = UIStoryboard.init(name: "Heat", bundle: nil).instantiateViewController(withIdentifier: HeatDetailViewController.className()) as? HeatDetailViewController{
                     let model = dataSouce?[indexPath.row]
                     dealVC.starListModel = model
