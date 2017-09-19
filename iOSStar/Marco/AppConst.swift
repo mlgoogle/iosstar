@@ -137,7 +137,7 @@ class AppConst {
         //122.144.169.214
         //cloud.p.smartdata-x.com z正式运营域名
         static let TcpServerIP:String = "cloud.a.smartdata-x.com"
-        static let TcpServerPort:UInt16 = 17004
+        static let TcpServerPort:UInt16 = 17001
         
         //nsb.smartdata-x.com  
 //        static let TcpServerIP:String = "nsb.smartdata-x.com";
