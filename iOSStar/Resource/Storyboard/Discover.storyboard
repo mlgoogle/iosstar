@@ -662,7 +662,7 @@
         <!--Selling View Controller-->
         <scene sceneID="ssn-jF-OdG">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Upl-u4-KUF" customClass="SellingViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SellingViewController" hidesBottomBarWhenPushed="YES" id="Upl-u4-KUF" customClass="SellingViewController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QpK-hf-AK7"/>
                         <viewControllerLayoutGuide type="bottom" id="3ls-zx-XbP"/>
@@ -1362,7 +1362,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="My8-fP-YK9" customClass="BaseNavigationController" customModule="iOSStar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iiF-iI-esP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iiF-iI-esP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
