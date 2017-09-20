@@ -12,9 +12,12 @@ import RealmSwift
 import Alamofire
 
 // 个推信息
-let kGtAppId:String = "HA9wao0Mxy7BPUu18po5zA"
-let kGtAppKey:String = "i2RtWjHUYs7sju2VQXcMV7"
-let kGtAppSecret:String = "mPM2noSYeMAGhOHbpFj4W8"
+let kGtAppId:String = "j6hP8vFv4Q8juUqTmnPPy6"
+let kGtAppKey:String = "5Tb2US9CEg8RsqqYlamnP1"
+let kGtAppSecret:String = "4DXXxrRirbAhqYJor3THd"
+//let kGtAppId:String = "HA9wao0Mxy7BPUu18po5zA"
+//let kGtAppKey:String = "i2RtWjHUYs7sju2VQXcMV7"
+//let kGtAppSecret:String = "mPM2noSYeMAGhOHbpFj4W8"
 
 class AppConfigHelper: NSObject {
     
