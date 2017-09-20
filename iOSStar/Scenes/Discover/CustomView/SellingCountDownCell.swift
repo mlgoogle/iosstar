@@ -14,6 +14,7 @@ class SellingCountDownCell: UITableViewCell {
 
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var countDownLabel: UILabel!
+    var starModel:StarSortListModel?
     @IBOutlet weak var backColorView: GradualColorView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +33,11 @@ class SellingCountDownCell: UITableViewCell {
             infoLabel.text = "-----"
             countDownLabel.text = "-----"
         } else {
-             infoLabel.text = "距离结束还有"
+            if starModel!.pushlish_type == 0 {
+                 infoLabel.text = "距离发售还有"
+            }else{
+              infoLabel.text = "距离结束还有"
+            }
              countDownLabel.text = YD_CountDownHelper.shared.getTextWithTimeCount(timeCount: count)
         }
         infoLabel.setNeedsDisplay()

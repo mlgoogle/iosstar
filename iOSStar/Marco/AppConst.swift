@@ -121,19 +121,22 @@ class AppConst {
     }
     
     class Network {
-        #if false
+        #if true
         //是否测试环境
         //139.224.34.22
         //122.144.169.214
         //nsb.smartdata-x.com  
+
 //        static let TcpServerIP:String = "nsb.smartdata-x.com";
 //        static let TcpServerPort:UInt16 = 16006
 //        static let TcpServerIP:String = "101.132.27.138";
 //        static let TcpServerPort:UInt16 = 17001
 //        static let TcpServerIP:String = "cloud.a.smartdata-x.com";
 //        static let TcpServerPort:UInt16 = 17001
-        static let TcpServerIP:String = "cloud.p.smartdata-x.com";
-        static let TcpServerPort:UInt16 = 17001
+//        static let TcpServerIP:String = "cloud.p.smartdata-x.com";
+//        static let TcpServerPort:UInt16 = 17001
+        static let TcpServerIP:String = "nsb.smartdata-x.com";
+        static let TcpServerPort:UInt16 = 16006
 //        static let TcpServerIP:String = "139.224.34.22";
 //        static let TcpServerPort:UInt16 = 16070
         static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
