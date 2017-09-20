@@ -113,6 +113,8 @@ class SearchResultModel: Object {
     dynamic var pic_tail = ""
     dynamic var symbol = ""
     dynamic var wid = ""
+    dynamic var publishType = 1000
+    dynamic var work = ""
 }
 
 
