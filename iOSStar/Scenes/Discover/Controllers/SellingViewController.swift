@@ -25,7 +25,7 @@ class SellingViewController: UIViewController {
         super.viewDidLoad()
         title = "发售"
         setPriceWithPrice(price: 0)
-        requestRemainTime()
+//        requestRemainTime()
         requestPanicBuyStarInfo()
 
         YD_CountDownHelper.shared.countDownRefresh = { [weak self] (result) in
@@ -57,6 +57,7 @@ class SellingViewController: UIViewController {
             sureBuyButton.setTitle("预售", for: .normal)
             sureBuyButton.backgroundColor = UIColor.gray
             sureBuyButton.isUserInteractionEnabled = false
+            title = "预售"
         }
         let priceString = String(format: "%.2f", price)
         let text = "合计: ￥\(priceString)"
@@ -102,7 +103,9 @@ class SellingViewController: UIViewController {
         AppAPIHelper.discoverAPI().requsetPanicBuyStarInfo(requestModel: requestModel, complete: { (response) in
     
             if let model = response as? PanicBuyInfoModel {
+                
                 self.starInfoModel = model
+                self.setEndtime()
                 if let workStr = self.starModel?.work {
                     self.starInfoModel?.work = workStr
                 }
@@ -113,6 +116,13 @@ class SellingViewController: UIViewController {
         }
         
         
+    }
+    func setEndtime(){
+        if starModel?.pushlish_type == 0{
+         self.remainingTime = (self.starInfoModel?.publish_begin_time)! - Int64(Date.nowTimestemp())
+        }else{
+         self.remainingTime = (self.starInfoModel?.publish_end_time)! - Int64(Date.nowTimestemp())
+        }
     }
 
     @IBAction func buyAction(_ sender: Any) {
@@ -180,6 +190,7 @@ extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITe
         switch indexPath.row {
         case 2:
             if let countDownCell = cell as? SellingCountDownCell {
+               countDownCell.starModel = starModel
                 countDownCell.setRemainingTime(count:remainingTime)
             }
         case 0:

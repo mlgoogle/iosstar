@@ -27,16 +27,15 @@ class StarDynamicCell: UITableViewCell ,UICollectionViewDelegate,UICollectionVie
     var delegate : StarDynamicCellDelegate?
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarDynamicVideoCell", for: indexPath) as! StarDynamicVideoCell
-        cell.Qimg.image = UIImage(named: "novideo")
+        cell.Qimg.image = UIImage(named: "videoNodata")
         if let data = datasource?.questions?[indexPath.row]{
             cell.qtitle.text = data.uask
             cell.qtitle.textAlignment = .center
             cell.Qimg.kf.setImage(with: URL(string : ShareDataModel.share().qiniuHeader + (data.thumbnailS)), placeholder: UIImage(named: "novideo"), options: nil, progressBlock: nil, completionHandler: nil)
         }else{
             cell.qtitle.text = ""
-            cell.Qimg.image = UIImage(named: "novideo")
+            cell.Qimg.image = UIImage(named: "videoNodata")
             
         }
         return cell
