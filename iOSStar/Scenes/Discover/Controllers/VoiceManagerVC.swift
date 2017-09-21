@@ -11,7 +11,7 @@ import UIKit
 
 class VoiceManagerVC: UIViewController {
 
-    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentViewtest: UIView!
     @IBOutlet weak var askBtn: UIButton!
     var videoVC: VoiceQuestionVC?
     var starModel: StarSortListModel = StarSortListModel()
@@ -39,9 +39,9 @@ class VoiceManagerVC: UIViewController {
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VoiceQuestionVC") as? VoiceQuestionVC{
             videoVC =  vc
             vc.starModel = starModel
-            contentView.addSubview(vc.view)
+            contentViewtest.addSubview(vc.view)
 //            vc.view.backgroundColor = UIColor.red
-            addChildViewController(vc)
+            self.addChildViewController(vc)
             vc.view.snp.makeConstraints({ (make) in
                 make.edges.equalToSuperview()
             })
