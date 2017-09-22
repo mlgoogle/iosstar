@@ -62,7 +62,6 @@ protocol UserApi {
     // 支付宝支付
     func alipay(requestModel:AliPayRequestModel,complete: CompleteBlock?, error: ErrorBlock?)
     
-    //获取版本更新信息
     func update(type: Int, complete: CompleteBlock?, error: ErrorBlock?)
 
     //更新devicetoken

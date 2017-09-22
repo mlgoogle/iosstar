@@ -20,7 +20,7 @@ class QiniuTool: NSObject {
         Alamofire.request(AppConst.ipUrl).responseString { (response) in
             if let value = response.result.value {
                 if let ipValue = value.components(separatedBy: ",").first{
-                    print(ipValue)
+                    // print(ipValue)
                     let ipString = (ipValue as NSString).substring(with: NSRange.init(location: 6, length: ipValue.length() - 7))
                     self.getIPInfoAdrees(ipString)
                 }

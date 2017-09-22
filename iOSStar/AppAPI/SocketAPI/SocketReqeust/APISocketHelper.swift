@@ -37,11 +37,8 @@ class APISocketHelper:NSObject, GCDAsyncSocketDelegate,SocketHelper {
                 try socket?.connect(toHost: host, onPort: port, withTimeout: 5)
             }
         } catch GCDAsyncSocketError.closedError {
-            print("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯")
         } catch GCDAsyncSocketError.connectTimeoutError {
-            print("<<<<<<<<<<<<<<<<<<<<<<<<")
         } catch {
-            print(">>>>>>>>>>>>>>>>>>>>>>>")
         }
     }
     

@@ -13,9 +13,9 @@
 #import "NIMKit.h"
 #import "WXApi.h"
 #import "WXApiObject.h"
-#import <UMSocialCore/UMSocialCore.h>
-#import <UShareUI/UShareUI.h>
-#import <Bugout/Bugout.h>
+//#import <UMSocialCore/UMSocialCore.h>
+//#import <UShareUI/UShareUI.h>
+//#import <Bugout/Bugout.h>
 //#import "NIMMessageObjectProtocol.h"
 #import <OEZCommSDK/OEZCommSDK.h>
 #pragma pack(1)

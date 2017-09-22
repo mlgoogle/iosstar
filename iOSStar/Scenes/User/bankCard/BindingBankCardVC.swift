@@ -72,7 +72,7 @@ class BindingBankCardVC: UITableViewController {
         
         dataCity = dic["city"]! as! Array<Dictionary<String, AnyObject>> as Array<Dictionary<String, AnyObject>>
         
-        // print(dataCity)
+        // // print(dataCity)
     }
     
     

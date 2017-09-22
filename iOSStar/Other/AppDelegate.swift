@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import Fabric
-import Crashlytics
+
 import UserNotifications
 import RealmSwift
 
@@ -121,7 +120,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
             Alamofire.request(AppConst.WechatKey.AccessTokenUrl, method: .get, parameters: param).responseJSON { [weak self](result) in
                 if let resultJson = result.result.value as? [String: AnyObject] {
                     if let errCode = resultJson["errcode"] as? Int{
-                        print(errCode)
                     }
                     if let access_token = resultJson[SocketConst.Key.accessToken] as? String {
                         if let openid = resultJson[SocketConst.Key.openid] as? String{
@@ -140,7 +138,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         Alamofire.request(AppConst.WechatKey.wechetUserInfo, method: .get, parameters: param).responseJSON {(result) in
             guard let resultJson = result.result.value as? [String: AnyObject] else{return}
             if let errCode = resultJson["errcode"] as? Int{
-                print(errCode)
             }
             if let nickname = resultJson[SocketConst.Key.nickname] as? String {
               ShareDataModel.share().wechatUserInfo[SocketConst.Key.nickname] = nickname
@@ -162,7 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         var token = deviceToken_ns.description.trimmingCharacters(in: CharacterSet(charactersIn: "<>"));
         token = token.replacingOccurrences(of: " ", with: "")
         UserDefaults.standard.setValue(token, forKey: AppConst.Text.deviceToken)
-        print(token)
+        // print(token)
         // [ GTSdk ]：向个推服务器注册deviceToken
         GeTuiSdk.registerDeviceToken(token);
         // 向云信服务注册deviceToken
@@ -208,7 +205,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        print("willPresentNotification: %@",notification.request.content.userInfo);
+        // print("willPresentNotification: %@",notification.request.content.userInfo);
         
         completionHandler([.badge,.sound,.alert]);
     }
@@ -217,7 +214,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         // 此处接收到通知的userInfo
-        print("didReceiveNotificationResponse: %@",response.notification.request.content.userInfo);
+        // print("didReceiveNotificationResponse: %@",response.notification.request.content.userInfo);
         UIApplication.shared.applicationIconBadgeNumber = 0;
         
         // [ GTSdk ]：将收到的APNs信息传给个推统计
