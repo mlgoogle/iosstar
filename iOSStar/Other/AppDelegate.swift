@@ -257,6 +257,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         if((payloadData) != nil) {
             if let msgDic = try? JSONSerialization.jsonObject(with: payloadData, options: .mutableContainers){
                 print(msgDic)
+                if offLine{
+                    
+                }else{
+                    
+                }
             }
         }
     }
