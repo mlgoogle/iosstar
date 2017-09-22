@@ -235,7 +235,7 @@ class AppConfigHelper: NSObject {
         UMSocialManager.default().umSocialAppkey = "5944e976c62dca4b80001e50"
 
         UMSocialManager.default().setPlaform(UMSocialPlatformType.wechatSession, appKey: "wxa75d31be7fcb762f", appSecret: "edd6e7ea7293049951b563dbc803ebea", redirectURL: "https://fir.im/starShareUser")
-        UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "2747515847", appSecret: "52b1aee2857ba7846e27618ee1a13015", redirectURL: "https://fir.im/starShareUser")
+        UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "2747515847", appSecret: "52b1aee2857ba7846e27618ee1a13015", redirectURL: "https://`fir.im/starShareUser")
         UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1106222927", appSecret: "KEYi4oyzQ7QTfUhNkcE", redirectURL: "https://fir.im/starShareUser")
     }
     
@@ -298,6 +298,7 @@ class AppConfigHelper: NSObject {
             }
         }
     }
+    
     func showAlert(){
         alertView.showAlertView()
         alertView.messageAction = {
@@ -323,14 +324,11 @@ class AppConfigHelper: NSObject {
         }   
     }
     
-    
     func AlertlocalNotify() {
         if UIApplication.shared.applicationState == .background {
             self.localNotify(body: "可以看见吗", userInfo: nil)
         }
     }
-    
-    
     
     func localNotify(body: String?, userInfo: [NSObject: AnyObject]?) {
         let localNotify = UILocalNotification()

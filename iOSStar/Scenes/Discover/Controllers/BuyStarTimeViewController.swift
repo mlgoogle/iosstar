@@ -35,8 +35,7 @@ class BuyStarTimeViewController: UIViewController {
     var dataSouce:[StarSortListModel]?
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        requestStarList()
+    
         backView.addSubview(backImageView)
         backView.sendSubview(toBack: backImageView)
         collectionView.backgroundView = backView
@@ -59,6 +58,7 @@ class BuyStarTimeViewController: UIViewController {
                 }
             })
         }
+        requestStarList()
     }
     
     func requestConfigData() {
@@ -98,7 +98,6 @@ class BuyStarTimeViewController: UIViewController {
                 self.dataSouce?.append(starModel)
                 self.collectionView.reloadData()
                 self.perform(#selector(self.replaceBackImage(index:)), with: nil, afterDelay: 0.5)
-                
             }
         }) { (error) in
             
