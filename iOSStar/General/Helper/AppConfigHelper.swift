@@ -156,6 +156,7 @@ class AppConfigHelper: NSObject {
         GeTuiSdk.start(withAppId: kGtAppId, appKey: kGtAppKey, appSecret: kGtAppSecret, delegate: sdkDelegate)
         // 注册APNs - custom method - 开发者自定义的方法
         self.registerRemoteNotification(sdkDelegate: sdkDelegate)
+        GeTuiSdk.bindAlias("testdemo", andSequenceNum: "testdemo")
         
     }
     
