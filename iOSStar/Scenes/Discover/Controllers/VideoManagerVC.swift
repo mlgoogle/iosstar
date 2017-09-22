@@ -10,7 +10,7 @@ import UIKit
 
 class VideoManagerVC: UIViewController {
 
-    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentViewtest: UIView!
     @IBOutlet weak var askBtn: UIButton!
     var videoVC: VideoQuestionsVC?
     var starModel: StarSortListModel = StarSortListModel()
@@ -38,7 +38,7 @@ class VideoManagerVC: UIViewController {
         if let vc = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "VideoQuestionsVC") as? VideoQuestionsVC{
             videoVC =  vc
             vc.starModel = starModel
-            contentView.addSubview(vc.view)
+            contentViewtest.addSubview(vc.view)
             addChildViewController(vc)
             vc.view.snp.makeConstraints({ (make) in
                 make.edges.equalToSuperview()

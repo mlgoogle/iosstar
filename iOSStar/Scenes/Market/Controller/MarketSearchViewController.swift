@@ -89,17 +89,26 @@ extension MarketSearchViewController:UITableViewDelegate, UITableViewDataSource 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
-        let storyBoard = UIStoryboard(name: "Heat", bundle: nil)
-        
-        let vc = storyBoard.instantiateViewController(withIdentifier: "HeatDetailViewController") as! HeatDetailViewController
         let starModel = StarSortListModel()
         let model = dataArry[indexPath.row]
         starModel.name = model.name
+        starModel.work = model.work
         starModel.symbol = model.symbol
         starModel.pic_tail = model.pic_tail
-        vc.starListModel = starModel
-        navigationController?.pushViewController(vc, animated: true)
+
+        starModel.pushlish_type = model.publishType
+        if model.publishType == 2{
+            let storyBoard = UIStoryboard(name: "Heat", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "HeatDetailViewController") as! HeatDetailViewController
+            vc.starListModel = starModel
+            navigationController?.pushViewController(vc, animated: true)
+        }else{
+            let storyBoard = UIStoryboard(name: "Discover", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "SellingViewController") as! SellingViewController
+            vc.starModel = starModel
+            navigationController?.pushViewController(vc, animated: true)
+        }
+
 
     }
 }

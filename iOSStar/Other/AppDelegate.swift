@@ -1,4 +1,4 @@
- //
+  //
 //  AppDelegate.swift
 //  iosblackcard
 //
@@ -228,14 +228,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     
     // MARK: - GeTuiSdkDelegate
     
-    /**
+   
      
     /** SDK启动成功返回cid */
     func geTuiSdkDidRegisterClient(_ clientId: String!) {
         // [4-EXT-1]: 个推SDK已注册，返回clientId
         NSLog("\n>>>[GeTuiSdk RegisterClient]:%@\n\n", clientId);
+        GeTuiSdk.bindAlias("test", andSequenceNum: "seq-1")
         
     }
+     
     /** SDK遇到错误回调 */
     func geTuiSdkDidOccurError(_ error: Error!) {
         // [EXT]:个推错误报告，集成步骤发生的任何错误都在这里通知，如果集成后，无法正常收到消息，查看这里的通知。
@@ -248,7 +250,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         let msg:String = "sendmessage=\(messageId),result=\(result)";
         NSLog("\n>>>[GeTuiSdk DidSendMessage]:%@\n\n",msg);
     }
-    */
+  
     
     
     /** SDK收到透传消息回调 */
@@ -266,16 +268,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         }
     }
     
-//    func geTuiSdkDidAliasAction(_ action: String!, result isSuccess: Bool, sequenceNum aSn: String!, error aError: Error!) {
-//        if action == kGtResponseBindType{
-//            if isSuccess {
-//                print("绑定成功")
-//            }else{
-//                print(aError)
-//            }
-//        }
-//    }
-//  
+    func geTuiSdkDidAliasAction(_ action: String!, result isSuccess: Bool, sequenceNum aSn: String!, error aError: Error!) {
+        if action == kGtResponseBindType{
+            if isSuccess {
+                print("绑定成功")
+            }else{
+                print(aError)
+            }
+        }
+    }
+//
     
 }
 

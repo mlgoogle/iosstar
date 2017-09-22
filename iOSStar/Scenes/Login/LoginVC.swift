@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+import SVProgressHUD	
 
 class LoginVC: UIViewController ,UIGestureRecognizerDelegate,UITextFieldDelegate{
 
