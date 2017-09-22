@@ -248,21 +248,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
         let msg:String = "sendmessage=\(messageId),result=\(result)";
         NSLog("\n>>>[GeTuiSdk DidSendMessage]:%@\n\n",msg);
     }
+    */
+    
     
     /** SDK收到透传消息回调 */
     func geTuiSdkDidReceivePayloadData(_ payloadData: Data!, andTaskId taskId: String!, andMsgId msgId: String!, andOffLine offLine: Bool, fromGtAppId appId: String!) {
-        
-        var payloadMsg = "";
+
         if((payloadData) != nil) {
-            payloadMsg = String.init(data: payloadData, encoding: String.Encoding.utf8)!;
+            if let msgDic = try? JSONSerialization.jsonObject(with: payloadData, options: .mutableContainers){
+                print(msgDic)
+            }
         }
-        
-        let msg:String = "Receive Payload: \(payloadMsg), taskId:\(taskId), messageId:\(msgId)";
-        
-        NSLog("\n>>>[GeTuiSdk DidReceivePayload]:%@\n\n",msg);
     }
-     
-    */
+    
+//    func geTuiSdkDidAliasAction(_ action: String!, result isSuccess: Bool, sequenceNum aSn: String!, error aError: Error!) {
+//        if action == kGtResponseBindType{
+//            if isSuccess {
+//                print("绑定成功")
+//            }else{
+//                print(aError)
+//            }
+//        }
+//    }
+//  
     
 }
 
