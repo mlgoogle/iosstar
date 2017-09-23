@@ -165,7 +165,11 @@ class HeatDetailViewController: UIViewController {
     }
 
     func back() {
-       _ = navigationController?.popViewController(animated: true)
+        if viewControllers.count > 1 {
+            popViewController(animated: true)
+        }else{
+            dismissController()
+        }
     }
 
     func setupNav() {
