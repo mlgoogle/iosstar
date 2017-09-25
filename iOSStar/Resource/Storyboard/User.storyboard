@@ -2060,8 +2060,6 @@
                                 <segments>
                                     <segment title="持有时间"/>
                                     <segment title="约见情况"/>
-                                    <segment title="视频问答"/>
-                                    <segment title="定制语音"/>
                                 </segments>
                                 <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -2638,6 +2636,7 @@
                     <navigationItem key="navigationItem" id="WG5-dZ-HGA"/>
                     <connections>
                         <outlet property="card" destination="B6M-0J-RKq" id="IUI-uE-egy"/>
+                        <outlet property="commitButton" destination="pnk-bf-uOX" id="XP2-0E-Tig"/>
                         <outlet property="name" destination="k5d-nP-O7a" id="PE6-y0-euv"/>
                         <outlet property="selectBtn" destination="8Yx-45-nqj" id="pdL-l3-kqk"/>
                     </connections>
