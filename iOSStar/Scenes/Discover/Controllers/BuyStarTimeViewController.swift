@@ -86,8 +86,6 @@ class BuyStarTimeViewController: UIViewController {
     func requestStarList() {
         
         let requestModel = StarSortListRequestModel()
-        
-
         AppAPIHelper.discoverAPI().requestScrollStarList(requestModel: requestModel, complete: { (response) in
             
             if let model = response as? DiscoverListModel{

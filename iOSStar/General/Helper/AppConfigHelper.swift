@@ -92,6 +92,7 @@ class AppConfigHelper: NSObject {
             if let model = result as? StarUserModel {
                 StarUserModel.upateUserInfo(userObject: model)
                 UserDefaults.standard.set(model.userinfo?.phone, forKey: "phone")
+                
                 self?.updateDeviceToken()
                 UserDefaults.standard.synchronize()
                 self?.LoginYunxin()
@@ -138,6 +139,7 @@ class AppConfigHelper: NSObject {
                 })
             }
         }, error:nil)
+        GeTuiSdk.bindAlias(registerWYIMRequestModel.phone, andSequenceNum: "seq-1")
     }
     
     // MARK: - 个推
@@ -151,13 +153,12 @@ class AppConfigHelper: NSObject {
         
         // [ GTSdk ]：自定义渠道
         GeTuiSdk.setChannelId("GT-Channel")
-        
         // [ GTSdk ]：使用APPID/APPKEY/APPSECRENT启动个推
         GeTuiSdk.start(withAppId: kGtAppId, appKey: kGtAppKey, appSecret: kGtAppSecret, delegate: sdkDelegate)
         // 注册APNs - custom method - 开发者自定义的方法
         self.registerRemoteNotification(sdkDelegate: sdkDelegate)
-        GeTuiSdk.bindAlias("testdemo", andSequenceNum: "testdemo")
-        
+
+        GeTuiSdk.bindAlias("test", andSequenceNum: "seq-1")
     }
     
     // MARK: - 注册用户通知(推送)

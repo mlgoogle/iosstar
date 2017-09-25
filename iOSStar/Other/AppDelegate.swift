@@ -234,8 +234,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     func geTuiSdkDidRegisterClient(_ clientId: String!) {
         // [4-EXT-1]: 个推SDK已注册，返回clientId
         NSLog("\n>>>[GeTuiSdk RegisterClient]:%@\n\n", clientId);
-        GeTuiSdk.bindAlias("test", andSequenceNum: "seq-1")
-        
     }
      
     /** SDK遇到错误回调 */
@@ -257,15 +255,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
     func geTuiSdkDidReceivePayloadData(_ payloadData: Data!, andTaskId taskId: String!, andMsgId msgId: String!, andOffLine offLine: Bool, fromGtAppId appId: String!) {
 
         if((payloadData) != nil) {
-            if let msgDic = try? JSONSerialization.jsonObject(with: payloadData, options: .mutableContainers){
-                print(msgDic)
-                if offLine{
-                    
-                }else{
-                    
+            if let msgDic = try? JSONSerialization.jsonObject(with: payloadData, options: .mutableContainers) as? NSDictionary{
+                if let starId = msgDic?["starId"] as? String{
+                    if offLine{
+                        self.geTuiPushStar(starId)
+                    }else{
+                        let alertView: TradingAlertView = Bundle.main.loadNibNamed("TradingAlertView", owner: nil, options: nil)?.first as! TradingAlertView
+                        alertView.str = "有最新明星消息，请点击查看。"
+                        alertView.showAlertView()
+                        alertView.messageAction = {
+                           self.geTuiPushStar(starId)
+                        }
+                    }
                 }
             }
         }
+    }
+    
+    func geTuiPushStar(_ starId: String){
+        let param =  StarRealtimeRequestModel()
+        param.starcode = starId
+        AppAPIHelper.marketAPI().requestStarRealTime(requestModel: param, complete: { (response) in
+            if let model =  response as? StarSortListModel{
+                if model.pushlish_type == 0 || model.pushlish_type == 1{
+                    if let controller = UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "SellingViewController") as? SellingViewController{
+                        controller.starModel = model
+                        let nav = BaseNavigationController.init(rootViewController: controller)
+                        UIApplication.shared.keyWindow?.rootViewController?.present(nav, animated: true, completion: nil)
+                    }
+                }else{
+                    if let controller = UIStoryboard.init(name: "Heat", bundle: nil).instantiateViewController(withIdentifier: "HeatDetailViewController") as? HeatDetailViewController{
+                        let nav = BaseNavigationController.init(rootViewController: controller)
+                        controller.starListModel = model
+                        UIApplication.shared.keyWindow?.rootViewController?.present(nav, animated: true, completion: nil)
+                    }
+                }
+            }
+        }, error: nil)
     }
     
     func geTuiSdkDidAliasAction(_ action: String!, result isSuccess: Bool, sequenceNum aSn: String!, error aError: Error!) {
