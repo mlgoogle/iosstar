@@ -424,7 +424,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
                 }
                 
             }
-        case 2:
+        case 5:
             if let StarCirCle = cell as? StarCirCleCell {
                 StarCirCle.delegate = self
                 StarCirCle.backgroundColor = UIColor.clear
@@ -444,7 +444,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
                 photoCell.datasource = self.StarDetail
                  photoCell.delegate = self
             }
-        case 5:
+        case 2:
             if let photoCell = cell as? StarPhotoCell {
                 photoCell.setImageUrls(images: images, delegate:self)
             }
