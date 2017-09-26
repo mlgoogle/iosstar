@@ -294,7 +294,7 @@ extension RechargeVC {
             }
         }) { (error) in
             SVProgressHUD.dismiss()
-            print(error)
+            // print(error)
         }
     }
 }

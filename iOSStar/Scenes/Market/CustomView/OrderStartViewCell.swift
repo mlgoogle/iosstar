@@ -242,7 +242,7 @@ class OrderStartViewCell: UITableViewCell,UICollectionViewDelegate,UICollectionV
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.chooseServiceTypeSuccess), object: serviceTypeModel, userInfo: nil)
         
-        // print("点击了\(indexPath.row) + 服务名称\(serviceTypeModel.name)");
+        // // print("点击了\(indexPath.row) + 服务名称\(serviceTypeModel.name)");
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

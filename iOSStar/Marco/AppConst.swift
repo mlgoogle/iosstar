@@ -131,12 +131,12 @@ class AppConst {
     }
     
     class Network {
-        #if false
+        #if true
         //是否测试环境
         //139.224.34.22
         //122.144.169.214
-        //cloud.p.smartdata-x.com z正式运营域名
-        static let TcpServerIP:String = "cloud.a.smartdata-x.com"
+        //cloud.a.smartdata-x.com z正式运营域名
+        static let TcpServerIP:String = "cloud.p.smartdata-x.com"
         static let TcpServerPort:UInt16 = 17001
         
         //nsb.smartdata-x.com  

@@ -45,6 +45,11 @@ class BuyStarTimeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if self.dataSouce?.count ?? 0 == 0 {
+            requestStarList()
+        }
+        
         if let _ = UserDefaults.standard.value(forKey: AppConst.guideKey.feedBack.rawValue) as? String {
             
         }else{
@@ -91,6 +96,7 @@ class BuyStarTimeViewController: UIViewController {
         AppAPIHelper.discoverAPI().requestScrollStarList(requestModel: requestModel, complete: { (response) in
             
             if let model = response as? DiscoverListModel{
+                self.dataSouce?.removeAll()
                 self.dataSouce = model.symbol_info
                 let starModel = StarSortListModel()
                 starModel.home_pic_tail = model.home_last_pic_tail
