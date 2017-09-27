@@ -35,16 +35,13 @@ class AppConfigHelper: NSObject {
     
     
     func registerServers() {
-        updateUpdateInfo()
         UIApplication.shared.applicationIconBadgeNumber = 0
         setupNIMSDK()
-        setupUMSDK()
+//        setupUMSDK()
         WXApi.registerApp(AppConst.WechatKey.Appid)
-        setupBugout()
         setupRealmConfig()
         setupReceiveOrderResult()
         setupReceiveMatching()
-        updateUpdateInfo()
         setupReceiveOrderResult()
         registerUMAnalytics()
         getstart()
@@ -53,19 +50,12 @@ class AppConfigHelper: NSObject {
 
     }
     
-    //MARK: - Bugout
-    func setupBugout() {
-        let config = BugoutConfig.default()
-        config?.enabledShakeFeedback = true
-        config?.enabledMonitorException = true
-        Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
-    }
+
     
     //MARK: - 初始化网红信息
     func getstart(){
         let requestModel = GetAllStarInfoModel()
         AppAPIHelper.user().requestAllStarInfo(requestModel: requestModel, complete: { (result) in
-            print(NSHomeDirectory())
             if let model = result as? [StartModel]{
                 for news in model{
                     let realm = try! Realm()
@@ -131,7 +121,6 @@ class AppConfigHelper: NSObject {
                         if error == nil {
                             NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.loginSuccess), object: nil, userInfo:nil)
                         }else{
-                            print(error)
                         }
                     })
                 }
@@ -176,9 +165,7 @@ class AppConfigHelper: NSObject {
                 center.delegate = sdkDelegate;
                 center.requestAuthorization(options: [.alert,.badge,.sound], completionHandler: { (granted:Bool, error:Error?) -> Void in
                     if (granted) {
-                        print("注册通知成功") //点击允许
                     } else {
-                        print("注册通知失败") //点击不允许
                     }
                 })
                 UIApplication.shared.registerForRemoteNotifications()
@@ -205,16 +192,16 @@ class AppConfigHelper: NSObject {
     }
     
     // MARK: - 友盟
-    func share(type:UMSocialPlatformType, shareObject:UMShareWebpageObject, viewControlller:UIViewController) {
-        
-        let messageObject = UMSocialMessageObject()
-
-        messageObject.shareObject = shareObject
-
-        UMSocialManager.default().share(to: type, messageObject: messageObject, currentViewController: viewControlller) { (data, error) in
-
-        }
-    }
+//    func share(type:UMSocialPlatformType, shareObject:UMShareWebpageObject, viewControlller:UIViewController) {
+//        
+//        let messageObject = UMSocialMessageObject()
+//
+//        messageObject.shareObject = shareObject
+//
+//        UMSocialManager.default().share(to: type, messageObject: messageObject, currentViewController: viewControlller) { (data, error) in
+//
+//        }
+//    }
     
     func registerUMAnalytics() {
         MobClick.setCrashReportEnabled(false)
@@ -228,16 +215,16 @@ class AppConfigHelper: NSObject {
         MobClick.setEncryptEnabled(true)
     }
     
-    
-    func setupUMSDK() {
-        UMSocialManager.default().openLog(true)
-        UMSocialManager.default().umSocialAppkey = "5944e976c62dca4b80001e50"
-
-        UMSocialManager.default().setPlaform(UMSocialPlatformType.wechatSession, appKey: "wxa75d31be7fcb762f", appSecret: "edd6e7ea7293049951b563dbc803ebea", redirectURL: "https://fir.im/starShareUser")
-        UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "2747515847", appSecret: "52b1aee2857ba7846e27618ee1a13015", redirectURL: "https://fir.im/starShareUser")
-        UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1106222927", appSecret: "KEYi4oyzQ7QTfUhNkcE", redirectURL: "https://fir.im/starShareUser")
-    }
-    
+//    
+//    func setupUMSDK() {
+//        UMSocialManager.default().openLog(true)
+//        UMSocialManager.default().umSocialAppkey = "5944e976c62dca4b80001e50"
+//
+//        UMSocialManager.default().setPlaform(UMSocialPlatformType.wechatSession, appKey: "wxa75d31be7fcb762f", appSecret: "edd6e7ea7293049951b563dbc803ebea", redirectURL: "https://fir.im/starShareUser")
+//        UMSocialManager.default().setPlaform(UMSocialPlatformType.sina, appKey: "2747515847", appSecret: "52b1aee2857ba7846e27618ee1a13015", redirectURL: "https://fir.im/starShareUser")
+//        UMSocialManager.default().setPlaform(UMSocialPlatformType.QQ, appKey: "1106222927", appSecret: "KEYi4oyzQ7QTfUhNkcE", redirectURL: "https://fir.im/starShareUser")
+//    }
+//    
     func updateDeviceToken() {
         let requestModel = UpdateDeviceTokenModel()
         AppAPIHelper.user().updateDeviceToken(requestModel: requestModel, complete: nil, error: nil)
@@ -347,31 +334,7 @@ class AppConfigHelper: NSObject {
         
     }
 
-    //MARK: - 查询是否有新版本更新
-    func updateUpdateInfo() {
-        AppAPIHelper.user().update(type: 0, complete: { (response) in
-            if let model = response as? UpdateParam {
-                self.updateModel = model
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NoticeKey.checkUpdte.rawValue), object: nil)
-            } 
-            
-        }) { (error) in
-            
-        }
-    }
-    
-    func checkUpdate() -> Bool {
-        let versionCode = Bundle.main.infoDictionary![AppConst.BundleInfo.CFBundleVersion.rawValue] as! String
-        if updateModel == nil {
-            return false
-        }
-        if  Double(versionCode) != nil {
-            if updateModel!.newAppVersionCode >  Double(versionCode)! {
-                return true
-            }
-        }
-        return false
-    }
+
     
      func getAVAuthorizationStatusRestricted() -> Bool{
         

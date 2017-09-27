@@ -10,8 +10,8 @@ import Foundation
 
 class StarSortListRequestModel: StarScrollListRequestModel {
     
-    var sort:Int64 = 1
-    var pos:Int64 = 1
+    var sort:Int64 = 0
+    var pos:Int64 = 0
     var count:Int32 = 20
     
 }

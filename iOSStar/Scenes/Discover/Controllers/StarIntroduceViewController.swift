@@ -60,20 +60,20 @@ class StarIntroduceViewController: UIViewController {
     
     func sharetothird(){
         if let model = expericences?[0]{
-            let share  = Share()
-            let vc = UIStoryboard.init(name: "Market", bundle: nil).instantiateViewController(withIdentifier: "ShareVC") as? ShareVC
-            vc?.modalPresentationStyle = .custom
-            share.titlestr = (starDetailModel?.star_name)! + "(正在星云 出售TA的时间)"
-            share.Image = headerImg.image
-            share.descr = model.experience
-            share.work = (starDetailModel?.work)!
-            share.star_code = (starDetailModel?.star_code)!
-            share.name = (starDetailModel?.star_name)!
-            vc?.share = share
-            share.webpageUrl = String.init(format: "%@?uid=%d&star_code=%@", AppConst.shareUrl,StarUserModel.getCurrentUser()?.userinfo?.id ?? 0,(self.starDetailModel?.star_code)!)
-            
-            vc?.modalTransitionStyle = .crossDissolve
-            present(vc!, animated: true, completion: nil)
+//            let share  = Share()
+//            let vc = UIStoryboard.init(name: "Market", bundle: nil).instantiateViewController(withIdentifier: "ShareVC") as? ShareVC
+//            vc?.modalPresentationStyle = .custom
+//            share.titlestr = (starDetailModel?.star_name)! + "(正在星云 出售TA的时间)"
+//            share.Image = headerImg.image
+//            share.descr = model.experience
+//            share.work = (starDetailModel?.work)!
+//            share.star_code = (starDetailModel?.star_code)!
+//            share.name = (starDetailModel?.star_name)!
+//            vc?.share = share
+//            share.webpageUrl = String.init(format: "%@?uid=%d&star_code=%@", AppConst.shareUrl,StarUserModel.getCurrentUser()?.userinfo?.id ?? 0,(self.starDetailModel?.star_code)!)
+//            
+//            vc?.modalTransitionStyle = .crossDissolve
+//            present(vc!, animated: true, completion: nil)
         }
     }
     

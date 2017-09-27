@@ -138,8 +138,8 @@ class SellingViewController: UIViewController {
        
     }
     func dodetail(){
-        //let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
-        let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "IntroduceTableVC") as! IntroduceTableVC
+        let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
+//        let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "IntroduceTableVC") as! IntroduceTableVC
         introVC.starModel = starModel
         self.navigationController?.pushViewController(introVC, animated: true)
 

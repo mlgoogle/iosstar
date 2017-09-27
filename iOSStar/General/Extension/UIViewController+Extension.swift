@@ -45,14 +45,7 @@ extension UIViewController {
     }
     
     func showUpdateInfo() {
-        if AppConfigHelper.shared().checkUpdate() {
-            let homeStoryboard = UIStoryboard.init(name: "User", bundle: nil)
-            let controller = homeStoryboard.instantiateViewController(withIdentifier: NewVC.className()) as! NewVC
-            controller.modalPresentationStyle = .custom
-            controller.modalTransitionStyle = .crossDissolve
-            present(controller, animated: true, completion: {
-            })
-        }
+
     }
     //检查是否已登录
     func checkLogin() -> Bool {
@@ -244,7 +237,6 @@ extension UIViewController {
                 nav.pushViewController(helpVC, animated: true)
             }
         }
-        print("No CustomerServiceVC")
     }
     func showopenPay(){
         let alertVc = AlertViewController()

@@ -106,7 +106,6 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         
         let param: [String: Any] = [SocketConst.Key.uid: id,
                                     SocketConst.Key.token : token,]
-        print(param)
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .tokenLogin, dict: param as [String : AnyObject])
         //startRequest(packet, complete: complete, error: error)
         startModelRequest(packet, modelClass: StarUserModel.self, complete: complete, error: error)
@@ -149,10 +148,9 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         startModelRequest(packet, modelClass: AliPayResultModel.self, complete: complete, error: error)
     }
 
-    // 版本更新提醒
     func update(type: Int, complete: CompleteBlock?, error: ErrorBlock?){
-        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .update, dict: ["ttype": type as AnyObject], type: .user)
-        startModelRequest(packet, modelClass: UpdateParam.self, complete: complete, error: error)
+//        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .update, dict: ["ttype": type as AnyObject], type: .user)
+//        startModelRequest(packet, modelClass: UpdateParam.self, complete: complete, error: error)
     }
     // 更新devicetoken
     func updateDeviceToken(requestModel:UpdateDeviceTokenModel, complete: CompleteBlock?, error: ErrorBlock?){

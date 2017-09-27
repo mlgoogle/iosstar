@@ -59,7 +59,7 @@ class RegistVC: UIViewController ,UIGestureRecognizerDelegate{
         hava_account.titleLabel?.setAttributeText(text: "已有账户 现在登录", firstFont: 14, secondFont: 14, firstColor: UIColor.init(hexString: "999999"), secondColor: UIColor.init(hexString: AppConst.Color.main), range: NSRange(location: 5, length: 4))
         let h  = UIScreen.main.bounds.size.height <= 568 ? 70.0 : 90
         self.top.constant = UIScreen.main.bounds.size.height/568.0 * CGFloat.init(h)
-        print(self.top.constant)
+        // print(self.top.constant)
         self.left.constant = UIScreen.main.bounds.size.width/320.0 * 30
         self.right.constant = UIScreen.main.bounds.size.width/320.0 * 30
         height.constant = 100 + UIScreen.main.bounds.size.height
