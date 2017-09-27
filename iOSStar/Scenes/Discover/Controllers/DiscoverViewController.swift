@@ -96,9 +96,11 @@ class DiscoverViewController: UIViewController, MenuViewDelegate{
         }
     }
     @IBAction func searchAction(_ sender: Any) {
+        if checkLogin(){
         let stroyBoard = UIStoryboard(name: AppConst.StoryBoardName.Markt.rawValue, bundle: nil)
         let vc =  stroyBoard.instantiateViewController(withIdentifier: MarketSearchViewController.className())
         navigationController?.pushViewController(vc, animated: true)
+    }
     }
 
   

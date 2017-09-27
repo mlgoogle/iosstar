@@ -164,7 +164,7 @@ class ContactListCell: OEZTableViewCell {
                 jobLabel.text =  model.star_name
                 orderTime.text  = model.meet_time
 
-                self.iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.star_pic))
+                self.iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.star_pic_tail))
                 orderTime.text = model.meet_time
             }
         }

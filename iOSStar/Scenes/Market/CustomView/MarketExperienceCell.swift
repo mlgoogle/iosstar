@@ -40,7 +40,7 @@ class MarketExperienceCell: UITableViewCell {
     func setTitle(title:String) {
         let att = NSMutableAttributedString.init(string: title)
         titleLabel.attributedText = att
-        showMore(show)
+       // showMore(show)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
