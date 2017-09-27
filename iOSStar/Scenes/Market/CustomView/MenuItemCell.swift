@@ -15,7 +15,7 @@ class MenuItemCell: BaseItemCell {
        
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.text = "明星"
+        label.text = "网红"
         label.textAlignment = .center
         label.textColor =  UIColor(hexString: "C2CFD8")
         return label

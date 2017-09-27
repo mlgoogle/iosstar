@@ -45,7 +45,7 @@ class VoiceHistoryCell: OEZTableViewCell {
             
             if response.isall == 1{
                 if response.answer_t == 0{
-                status.text = "明星未回复"
+                status.text = "网红未回复"
                 }else{
                 status.text = "已定制"
                 }
@@ -155,7 +155,7 @@ class VoiceHistoryVC: BasePageListTableViewController ,OEZTableViewDelegate,PLPl
         if let model = self.dataSource?[indexPath.row] as? UserAskDetailList{
             
             if model.answer_t == 0{
-             SVProgressHUD.showErrorMessage(ErrorMessage: "明星未回复", ForDuration: 2, completion: nil)
+             SVProgressHUD.showErrorMessage(ErrorMessage: "网红未回复", ForDuration: 2, completion: nil)
                 return
             }
             let url = URL(string: ShareDataModel.share().qiniuHeader +  model.sanswer)

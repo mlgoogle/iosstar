@@ -10,7 +10,7 @@ import UIKit
 
 class ResultVC: UITableViewController {
 
-    //明星的图片
+    //网红的图片
     @IBOutlet weak var img: UIImageView!
     // 标题信息
     @IBOutlet weak var titleInfo: UILabel!

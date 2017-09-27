@@ -14,13 +14,13 @@ class MarketViewController: UIViewController, SubViewItemSelectDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         YD_CountDownHelper.shared.start()
-        setCustomTitle(title: "明星热度")
+        setCustomTitle(title: "网红热度")
         translucent(clear: true)
         let color = UIColor.white
         navigationController?.navigationBar.setBackgroundImage(color.imageWithColor(), for: .default)
         automaticallyAdjustsScrollViewInsets = false
         menuView = MarketMenuView(frame: CGRect(x: 0, y: 64, width: kScreenWidth, height: kScreenHeight))
-        menuView?.items = ["明星"]
+        menuView?.items = ["网红"]
         menuView?.menuView?.isScreenWidth = true
         menuView?.delegate = self
         view.addSubview(menuView!)
