@@ -52,12 +52,12 @@ class BuyStarTimeViewController: UIViewController {
         if let _ = UserDefaults.standard.value(forKey: AppConst.guideKey.feedBack.rawValue) as? String {
             
         }else{
-            showGuideVC(.feedBack, handle: { (vc)in
+            showGuideVC(.leftRight, handle: { (vc)in
                 if let guideVC = vc as? GuideVC{
-                    if guideVC.guideType == AppConst.guideKey.feedBack{
-                        guideVC.setGuideContent(.leftRight)
-                        return
-                    }
+//                    if guideVC.guideType == AppConst.guideKey.feedBack{
+//                        guideVC.setGuideContent(.leftRight)
+//                        return
+//                    }
                     guideVC.dismiss(animated: true, completion: nil)
                     UserDefaults.standard.set("ok", forKey: AppConst.guideKey.feedBack.rawValue)
                 }
@@ -140,6 +140,7 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
                     let model = dataSouce?[indexPath.row]
                     dealVC.starListModel = model
                     _ = navigationController?.pushViewController(dealVC, animated: true)
+                    return
                 }
             default:
                 ShareDataModel.share().selectStarCode = ""

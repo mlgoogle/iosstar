@@ -257,6 +257,7 @@ class OrderStarViewController: UIViewController {
             orderPalace.text = serviceType.meet_city.length() == 0 ? AppConst.meetCityDefault : serviceType.meet_city
             datePickerView.minimumDate = Date.yt_convertDateStrToDate(serviceTypeModel.startdate, format: "yyyy-MM-dd")
             datePickerView.maximumDate = Date.yt_convertDateStrToDate(serviceTypeModel.enddate, format: "yyyy-MM-dd")
+            orderTime.text = Date.yt_convertDateToStr(datePickerView.minimumDate!, format: "yyyy-MM-dd")
             // self.priceLabel.text = String.init(format:"即将消耗: %@秒",serviceType.price)
         }
     }
@@ -746,11 +747,11 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate,Fee
         }
         
         if indexPath.row == 2 {
-            return 45
+            return ShareDataModel.share().meetSwitch == 0 ? 0 : 45
         }
         
         if indexPath.row == 3 {
-            return 45
+            return ShareDataModel.share().meetSwitch == 0 ? 0 : 45
         }
         
         if indexPath.row == 4 {
@@ -823,7 +824,6 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate,Fee
               SVProgressHUD.showErrorMessage(ErrorMessage: "请选择约见类型", ForDuration: 1, completion: nil)
                 return
             }
-            
             inputDateTextField.becomeFirstResponder()
         }
         

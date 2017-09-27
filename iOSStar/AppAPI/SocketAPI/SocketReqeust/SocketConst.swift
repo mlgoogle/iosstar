@@ -180,9 +180,10 @@ class SocketConst: NSObject {
         case miuCount = 10037
         //七牛URL链接头
         case qiniuHttp = 4015
-
          //网红详情页面
         case circleListdetail = 15027
+        // 约见开关
+        case meetCitySwitch = 3043
        
     }
     
