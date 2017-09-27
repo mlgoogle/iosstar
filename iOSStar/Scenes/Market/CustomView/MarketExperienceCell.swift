@@ -30,10 +30,10 @@ class MarketExperienceCell: UITableViewCell {
     @IBAction func showMore(_ sender: UIButton) {
         if sender.titleLabel?.text  == "点击收起"{
           delegate?.Packup()
-          sender.setTitle("点击展开", for: .normal)
+//          sender.setTitle("点击展开", for: .normal)
         }else{
           delegate?.showMore()
-          sender.setTitle("点击收起", for: .normal)
+//          sender.setTitle("点击收起", for: .normal)
         }
     }
 

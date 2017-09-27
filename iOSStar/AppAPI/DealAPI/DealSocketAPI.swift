@@ -79,4 +79,9 @@ class DealSocketAPI: BaseSocketAPI, DealAPI{
         let packet = SocketDataPacket(opcode: .miuCount, model: requestModel)
         startModelRequest(packet, modelClass: MiuResponeModel.self, complete: complete, error: error)
     }
+    
+    func meetSwitch(complete: CompleteBlock?, error: ErrorBlock?){
+        let packet = SocketDataPacket.init(opcode: .meetCitySwitch, model:BaseModel())
+        startModelRequest(packet, modelClass: MeetSwitchModel.self, complete: complete, error: error)
+    }
 }

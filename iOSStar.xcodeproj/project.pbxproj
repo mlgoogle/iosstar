@@ -3745,16 +3745,7 @@
 					"$(PROJECT_DIR)/iOSStar/Marco",
 					"$(PROJECT_DIR)/iOSSTar/Library",
 				);
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/iOSStar/Marco",
-					"$(PROJECT_DIR)/iOSSTar/Resource/alipay",
-					"\"$(SRCROOT)/iOSSTar/Resource/alipay/AlipaySDK.framework\"",
-					"\"$(SRCROOT)/iOSSTar/Resource/alipay\"",
-					"\"$(SRCROOT)/iOSSTar/Resource/alipay/openssl\"",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/iOSSTar/Library",
-				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(inherited) $(PROJECT_DIR)/iOSStar/Marco $(PROJECT_DIR)/iOSSTar/Resource/alipay \"$(SRCROOT)/iOSSTar/Resource/alipay/AlipaySDK.framework\" \"$(SRCROOT)/iOSSTar/Resource/alipay\" \"$(SRCROOT)/iOSSTar/Resource/alipay/openssl\" $(PROJECT_DIR) $(PROJECT_DIR)/iOSSTar/Library";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",

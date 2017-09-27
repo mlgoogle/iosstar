@@ -47,7 +47,7 @@ class AppConfigHelper: NSObject {
         getstart()
         login()
         QiniuTool.shared().getIPAdrees()
-
+        initMeetSwitch()
     }
     
 
@@ -358,6 +358,15 @@ class AppConfigHelper: NSObject {
         return true
     }
     
+    func initMeetSwitch() {
+        AppAPIHelper.dealAPI().meetSwitch(complete: { (response) in
+            if let model = response as? MeetSwitchModel{
+                ShareDataModel.share().meetSwitch = model.stat
+            }
+        }, error: { (error) in
+            print(error)
+        })
+    }
     
     
 }
