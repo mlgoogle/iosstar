@@ -44,10 +44,7 @@ class AlertViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        
-        print("AlertViewController --- deinit ");
-    }
+
     
     // MARK : - 初始化UI
     fileprivate func setupContentView() {

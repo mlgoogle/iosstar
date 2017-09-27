@@ -10,8 +10,6 @@ target 'iOSStar' do
     pod 'SVProgressHUD', '~> 2.0.3'
     pod 'Kingfisher', '~> 3.2.2'
     pod 'CocoaAsyncSocket', '~> 7.5.0'
-    pod 'Fabric'
-    pod 'Crashlytics'
     pod 'SnapKit'
     pod 'NIMSDK_LITE', '~> 4.0.0'
     pod 'CocoaLumberjack', '~> 2.0.0-rc2'
@@ -26,18 +24,18 @@ target 'iOSStar' do
     pod 'CocoaAsyncSocket', '~> 7.5.0'
     pod 'MJRefresh', '~> 3.1.12'
     pod 'AliPay', '~> 2.1.2'
-    pod 'UMengUShare/Social/ReducedQQ’
-    pod 'UMengUShare/Social/ReducedWeChat'
-    pod 'UMengUShare/UI'
-    pod 'UMengUShare/Social/ReducedSina'
+    # pod 'UMengUShare/Social/ReducedQQ’
+    # pod 'UMengUShare/Social/ReducedWeChat'
+    # pod 'UMengUShare/UI'
+    # pod 'UMengUShare/Social/ReducedSina'
     pod 'GTSDK'
     pod 'YYText'
     pod 'BarrageRenderer’, ‘2.0.1’
     pod 'UMengAnalytics-NO-IDFA'
     pod 'Qiniu'
     pod 'PLPlayerKit'
-    pod 'pili-librtmp'
-    pod 'QNNetDiag'
+    # pod 'pili-librtmp'
+    # pod 'QNNetDiag'
     pod 'PLShortVideoKit'
     #pod 'PLPlayerKit'
     target 'iOSStarTest' do
