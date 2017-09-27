@@ -51,7 +51,8 @@ class AppConfigHelper: NSObject {
     }
     
 
-    //MARK: - 初始化明星信息
+    
+    //MARK: - 初始化网红信息
     func getstart(){
         let requestModel = GetAllStarInfoModel()
         AppAPIHelper.user().requestAllStarInfo(requestModel: requestModel, complete: { (result) in

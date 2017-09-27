@@ -45,7 +45,7 @@ class SocketConst: NSObject {
         case paypwd = 7011
         case getorderstars = 10012
         case  tokenLogin  = 3009
-        //明星个人信息
+        //网红个人信息
         case starInfo = 11005
         //资讯列表
         case newsInfo = 10013
@@ -64,33 +64,33 @@ class SocketConst: NSObject {
         case creditlist = 6003
         case restPwd = 3005
         case authentication = 3021
-        //分类明星
+        //分类网红
         case marketStar = 11003
         //添加自选
         case addOptinal = 11015
         case realName = 7045
         //评论列表
         case commetList = 10017
-        //明星经历
+        //网红经历
         case starExperience = 11009
-        //明星成就
+        //网红成就
         case starAchive = 11011
-        //明星信息
+        //网红信息
         case newsStarInfo = 10001
-        // 明星服务类型
+        // 网红服务类型
         case starServiceType = 10019
-        // 订购明星服务
+        // 订购网红服务
         case buyStarService = 10021
-        // 获取已购明星数量
+        // 获取已购网红数量
         case buyStarCount = 10023
         //实时报价
         case realTime = 4001
         //分时图
         case timeLine = 4003
-        //明星列表
+        //网红列表
         case starList = 4007
         case starScrollList = 4009
-        //明星实时价格
+        //网红实时价格
         case starRealtime = 4011
         //发送评论
         case sendComment = 12001
@@ -125,7 +125,7 @@ class SocketConst: NSObject {
         case getalllist = 10029
         //订单粉丝榜
         case orderFansList = 6015
-        //持有明星时间
+        //持有网红时间
         case positionCount = 10025
         case barrage = 6023
         //问答
@@ -136,7 +136,7 @@ class SocketConst: NSObject {
         case qeepask = 15025
         //拍卖买卖占比
         case buySellPercent = 6017
-        //获取明星总时间
+        //获取网红总时间
         case starTotalTime = 10027
 
         //更新devicetoken
@@ -154,15 +154,15 @@ class SocketConst: NSObject {
         case cancelRecharge = 7055
         //抢购剩余时间
         case remainingTime = 14001
-        //抢购明星信息
+        //抢购网红信息
         case panicBuyStarInfo = 14003
-        //明星介绍页详情
+        //网红介绍页详情
         case starDetailInfo = 10031
-        //抢购明星时间
+        //抢购网红时间
         case panicBuy = 14005
         //朋友圈
         case circleList = 15001
-        //某个明星的朋友圈
+        //某个网红的朋友圈
         case starCircle = 15003
         //发布朋友圈
         case sendCircle = 15005
@@ -173,7 +173,7 @@ class SocketConst: NSObject {
          case uptoken = 15029
         //评论朋友圈
         case commentCircle = 15011
-        //明星回复评论
+        //网红回复评论
         case starComment = 15013
         case configRequst = 10033
         //交易时间
@@ -181,7 +181,7 @@ class SocketConst: NSObject {
         //七牛URL链接头
         case qiniuHttp = 4015
 
-         //明星详情页面
+         //网红详情页面
         case circleListdetail = 15027
        
     }

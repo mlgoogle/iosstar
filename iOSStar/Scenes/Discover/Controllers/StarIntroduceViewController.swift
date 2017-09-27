@@ -22,7 +22,6 @@ class StarIntroduceViewController: UIViewController {
 //    var sectionHeights = [170,18 , 120, 120,124 , 150]
   //  var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(), StarCirCleCell.className(), StarDynamicCell.className(),StarDetailCirCell.className() ,StarPhotoCell.className()]
     var identifers = [StarIntroduceCell.className(),MarketExperienceCell.className(),StarPhotoCell.className()]
-
     var images:[String] = []
     var starDetailModel:StarDetaiInfoModel?
     var expericences:[ExperienceModel]?
@@ -35,40 +34,34 @@ class StarIntroduceViewController: UIViewController {
         super.viewDidLoad()
         
         self.navBarBgAlpha = 0.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
         
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: PubInfoHeaderView.className())
         appointmentButton.backgroundColor = UIColor(hexString: AppConst.Color.lightAction)
         buyButton.backgroundColor = UIColor(hexString: AppConst.Color.darkAction)
-//        appointmentButton.layer.shadowColor = UIColor(hexString: "cccccc").cgColor
-//        appointmentButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-//        appointmentButton.layer.shadowRadius = 1
-//        tableView.estimatedRowHeight = 20
-//        appointmentButton.layer.shadowOpacity = 0.5
         requestStarDetailInfo()
         requestExperience()
-
         requeseDetail()
     }
+    
     func requeseDetail(){
         let model = CirCleStarDetail()
         model.starcode = (self.starModel?.symbol)!
         model.aType = 1
         model.pType = 1
         AppAPIHelper.discoverAPI().requestStarDetail(requestModel: model, complete: { (result) in
-            
             if let response = result as? StarDetailCircle{
                 self.StarDetail = response
                 self.tableView.reloadData()
             }
-            
         }) { (error ) in
             
         }
     }
+    
     func sharetothird(){
         if let model = expericences?[0]{
-            
-            
 //            let share  = Share()
 //            let vc = UIStoryboard.init(name: "Market", bundle: nil).instantiateViewController(withIdentifier: "ShareVC") as? ShareVC
 //            vc?.modalPresentationStyle = .custom
@@ -84,9 +77,8 @@ class StarIntroduceViewController: UIViewController {
 //            vc?.modalTransitionStyle = .crossDissolve
 //            present(vc!, animated: true, completion: nil)
         }
-        
-        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -131,16 +123,23 @@ class StarIntroduceViewController: UIViewController {
                 self.checkImages()
                 self.tableView.reloadData()
             }
-        }) { (error) in
-            
-            
+        },error: nil)
+    }
+    
+    func requestExperience() {
+        guard starModel != nil else {
+            return
         }
+        AppAPIHelper.marketAPI().requestStarExperience(code: starModel!.symbol, complete: { (response) in
+            if let models =  response as? [ExperienceModel] {
+                self.expericences = models
+                self.tableView.reloadData()
+            }
+        },error:nil)
     }
     
     func checkImages() {
-        
         if checkUrl(url: starDetailModel?.portray1_tail) {
-            
             images.append(ShareDataModel.share().qiniuHeader + starDetailModel!.portray1_tail)
         }
         if checkUrl(url: starDetailModel?.portray2_tail) {
@@ -153,31 +152,17 @@ class StarIntroduceViewController: UIViewController {
             images.append(ShareDataModel.share().qiniuHeader + starDetailModel!.portray4_tail)
         }
         self.tableView.reloadData()
-        
     }
     
     func checkUrl(url:String?)-> Bool {
         if url == nil {return false}
         return url!.length()>0 ? true : false
     }
-    func requestExperience() {
-        guard starModel != nil else {
-            return
-        }
-        AppAPIHelper.marketAPI().requestStarExperience(code: starModel!.symbol, complete: { (response) in
-            if let models =  response as? [ExperienceModel] {
-                self.expericences = models
-                self.tableView.reloadData()
-            }
-        }) { (error) in
-            
-        }
-        
-    }
+    
     @IBAction func askToBuy(_ sender: Any) {
         
         if self.starDetailModel?.publish_type !=  2 {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "当前该明星非流通阶段，请等待为流通阶段", ForDuration: 2, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "当前该网红非流通阶段，请等待为流通阶段", ForDuration: 2, completion: nil)
             return
         }
         let storyBoard = UIStoryboard(name: "Heat", bundle: nil)
@@ -192,7 +177,7 @@ class StarIntroduceViewController: UIViewController {
         }
         
         if self.starDetailModel?.publish_type !=  2 {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "当前该明星非流通阶段，请等待为流通阶段", ForDuration: 2, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "当前该网红非流通阶段，请等待为流通阶段", ForDuration: 2, completion: nil)
             return
         }
         
@@ -209,7 +194,7 @@ class StarIntroduceViewController: UIViewController {
             return
         }
         if self.starDetailModel?.publish_type == 0 {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "当前该明星非流通阶段，请等待为流通阶段", ForDuration: 2, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "当前该网红非流通阶段，请等待为流通阶段", ForDuration: 2, completion: nil)
             return
         }
         let r = PositionCountRequestModel()
@@ -227,12 +212,12 @@ class StarIntroduceViewController: UIViewController {
                     self.navigationController?.pushViewController(vc!, animated: true)
                 } else {
                     
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "未持有该明星时间", ForDuration: 1.0, completion: nil)
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "未持有该网红时间", ForDuration: 1.0, completion: nil)
                     
                 }
             }
         }) { (error) in
-            SVProgressHUD.showErrorMessage(ErrorMessage: "未持有该明星时间", ForDuration: 1.0, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "未持有该网红时间", ForDuration: 1.0, completion: nil)
         }
     }
     
@@ -260,9 +245,9 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
             showRealname()
             return
         }
-        
         requestPositionCount()
     }
+    
     func share() {
         sharetothird()
     }
@@ -270,10 +255,8 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     func numberOfPhotos(in photoBrowser: MWPhotoBrowser!) -> UInt {
         return 1
     }
+    
     func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
-
-
-
         var urlString = images[Int(index)]
         if  !urlString.hasPrefix("http") {
             urlString = ShareDataModel.share().qiniuHeader + urlString
@@ -298,7 +281,6 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
         case 0:
             return 0.001
         case 1:
-            
             return 70
         case 2:
             return 0.001
@@ -361,17 +343,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
-            if showMoreIntroduce{
-                if expericences != nil{
-                    return 1
-                }else{
-                    return 0
-                }
-                
-            }else{
-                return expericences?.count ?? 0
-            }
-            
+             return expericences?.count ?? 0
         }
         return 1
     }
@@ -400,15 +372,15 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
                 expericencesCell.delegate = self
                 expericencesCell.show.isHidden = true
                 if showMoreIntroduce{
-                    expericencesCell.show.isHidden = false
+                    expericencesCell.show.isHidden = true
                     expericencesCell.showHeight.constant = 15
                     
                 }else{
                     //最后一区
                     expericencesCell.show.isHidden = true
                     if indexPath.row == (expericences?.count)! - 1{
-                        expericencesCell.show.isHidden = false
-                        expericencesCell.show.setTitle("点击收起", for: .normal)
+                        expericencesCell.show.isHidden = true
+                // expericencesCell.show.setTitle("点击收起", for: .normal)
                         expericencesCell.showHeight.constant = 15
                     }else{
                         expericencesCell.show.isHidden = true
@@ -424,7 +396,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
                 }
                 
             }
-        case 2:
+        case 5:
             if let StarCirCle = cell as? StarCirCleCell {
                 StarCirCle.delegate = self
                 StarCirCle.backgroundColor = UIColor.clear
@@ -444,7 +416,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
                 photoCell.datasource = self.StarDetail
                  photoCell.delegate = self
             }
-        case 5:
+        case 2:
             if let photoCell = cell as? StarPhotoCell {
                 photoCell.setImageUrls(images: images, delegate:self)
             }
@@ -520,6 +492,7 @@ extension StarIntroduceViewController : StarCirCleCellDelegate,StarDynamicCellDe
             }
         }
     }
+    
     func showBigImg(_select: CircleListModel) {
         showCirCle = true
         showCirCleUrl = String(ShareDataModel.share().qiniuHeader + _select.pic_url_tail)

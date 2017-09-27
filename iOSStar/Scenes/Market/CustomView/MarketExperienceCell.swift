@@ -20,28 +20,31 @@ class MarketExperienceCell: UITableViewCell {
     @IBOutlet var show: UIButton!
     var delegate:MarketExperienceCellDelegate?
     @IBOutlet weak var titleLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        // Initialization code
+        titleLabel.lineBreakMode = .byWordWrapping
+        titleLabel.numberOfLines = 0
     }
-    @IBAction func showMore(_ sender: Any) {
-       let btn = sender as! UIButton
-        if btn.titleLabel?.text  == "点击收起"{
+    
+    @IBAction func showMore(_ sender: UIButton) {
+        if sender.titleLabel?.text  == "点击收起"{
           delegate?.Packup()
+          sender.setTitle("点击展开", for: .normal)
         }else{
           delegate?.showMore()
+          sender.setTitle("点击收起", for: .normal)
         }
-      
     }
 
     func setTitle(title:String) {
-        titleLabel.text = title
+        let att = NSMutableAttributedString.init(string: title)
+        titleLabel.attributedText = att
+       // showMore(show)
     }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

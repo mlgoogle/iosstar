@@ -11,12 +11,12 @@ class DiscoverSocketAPI:BaseSocketAPI, DiscoverAPI{
    
 
     
-    //明星互动和热度
+    //网红互动和热度
     func requestStarList(requestModel:StarSortListRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .starList, model: requestModel)
         startModelsRequest(packet, listName: "symbol_info", modelClass: StarSortListModel.self, complete: complete, error: error)
     }
-    //抢购明星列表
+    //抢购网红列表
     func requestScrollStarList(requestModel:StarSortListRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .starScrollList, model: requestModel)
         startModelRequest(packet, modelClass: DiscoverListModel.self, complete: complete, error: error)
@@ -27,17 +27,17 @@ class DiscoverSocketAPI:BaseSocketAPI, DiscoverAPI{
         startModelRequest(packt, modelClass: BuyRemainingTimeModel.self, complete: complete, error: error)
         
     }
-    //抢购明星信息
+    //抢购网红信息
     func requsetPanicBuyStarInfo(requestModel:PanicBuyRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .panicBuyStarInfo, model: requestModel)
         startModelRequest(packet, modelClass: PanicBuyInfoModel.self, complete: complete, error: error)
     }
-    //明星介绍页信息
+    //网红介绍页信息
     func requestStarDetailInfo(requestModel:StarDetaiInfoRequestModel,complete: CompleteBlock?, error: ErrorBlock? ) {
         let packet = SocketDataPacket(opcode: .starDetailInfo, model: requestModel)
         startModelRequest(packet, modelClass: StarIntroduceResult.self, complete: complete, error: error)
     }
-    //抢购明星
+    //抢购网红
     func buyStarTime(requestModel:BuyStarTimeRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .panicBuy, model: requestModel)
         startResultIntRequest(packet, complete: complete, error: error)

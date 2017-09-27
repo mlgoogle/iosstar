@@ -22,7 +22,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
      // MARK: - viewload
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "我预约的明星"
+        title = "我预约的网红"
         self.nodaView.isHidden = true
         
     }
@@ -232,7 +232,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
         }
         
     }
-    //MARK:- 进入明星详细资料
+    //MARK:- 进入网红详细资料
     func dostarDetail(_ sender : UIButton){
         let model = self.dataSource?[sender.tag] as! StarInfoModel
         StartModel.getStartName(startCode: model.starcode) { (response) in

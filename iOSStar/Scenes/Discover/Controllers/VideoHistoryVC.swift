@@ -32,7 +32,7 @@ class VideoHistoryCell: OEZTableViewCell {
             askBtn.isHidden = response.video_url == "" ? true : false
             if response.isall == 1{
                 if response.answer_t == 0{
-                    status.text = "明星未回复"
+                    status.text = "网红未回复"
                 }else{
                     status.text = "已定制"
                 }
@@ -78,7 +78,7 @@ class VideoHistoryVC: BasePageListTableViewController,OEZTableViewDelegate {
             if let model = dataSource?[indexPath.row] as? UserAskDetailList{
                 
                 if model.answer_t == 0{
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "明星还没回复", ForDuration: 2, completion: nil)
+                    SVProgressHUD.showErrorMessage(ErrorMessage: "网红还没回复", ForDuration: 2, completion: nil)
                     return
                 }
                 self.pushViewController(pushSreing: PlaySingleVC.className(), videdoUrl: (ShareDataModel.share().qiniuHeader + model.sanswer), pushModel: model, withImg: model.thumbnailS != "" ? model.thumbnailS  :  "1123.png", complete: { (result) in

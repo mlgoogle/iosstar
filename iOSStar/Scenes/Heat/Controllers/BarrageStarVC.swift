@@ -20,11 +20,9 @@ class OrderItem: UICollectionViewCell {
     
     @IBOutlet var nameLb: UILabel!
     @IBOutlet var starImg: UIImageView!
-    
     func updata(_ data : AnyObject){
         if let response = data as? StartModel{
             nameLb.text = response.name
-
             self.starImg.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + response.pic_url_tail))
         }
     }
@@ -48,8 +46,6 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         setupInit()
         buildDanMu()
         initdata()
-
-        // Do any additional setup after loading the view.
     }
   //Mark :创建renderer
     func buildDanMu() {
@@ -177,15 +173,19 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderView", for: indexPath)
         headerview = view
         if let image = UIImage.init(named: "starsBg"){
-            headerview.backgroundColor = UIColor.init(patternImage:image)
-            renderer.view.backgroundColor = UIColor.init(patternImage:image)
+            let bgImage = UIImageView.init(image: image)
+            view.addSubview(bgImage)
+            view.sendSubview(toBack: bgImage)
+            bgImage.snp.makeConstraints({ (make) in
+                make.edges.equalToSuperview()
+            })
+            renderer.view.backgroundColor = UIColor.clear
         }
         headerview.addSubview(renderer.view)
         return view
     }
   
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let model = StarSortListModel()
         let data = self.dataArry[indexPath.row]
         model.symbol = data.code
@@ -194,6 +194,7 @@ class BarrageStarVC: UIViewController ,UICollectionViewDelegate,UICollectionView
          introVC.starModel = model
          self.navigationController?.pushViewController(introVC, animated: true)
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
         return self.dataArry.count

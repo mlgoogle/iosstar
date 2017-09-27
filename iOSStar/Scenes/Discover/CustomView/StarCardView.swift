@@ -44,6 +44,15 @@ class StarCardView: UICollectionViewCell {
         label.textAlignment = .center
         return label
     }()
+    lazy var buttonImageView:UIImageView = {
+        let imageView = UIImageView()
+        imageView.isUserInteractionEnabled = true
+        
+        imageView.image = UIImage(named: "blank")
+//        imageView.contentMode = .scaleAspectFill
+//        imageView.clipsToBounds = true
+        return imageView
+    }()
 
     var backImage:UIImage?
     
@@ -62,15 +71,23 @@ class StarCardView: UICollectionViewCell {
         showImageView.layer.shadowOffset = CGSize(width: 10, height: 10)
         
         contentView.addSubview(showImageView)
+        contentView.addSubview(buttonImageView)
 //        showImageView.addSubview(infoView)
 //        infoView.addSubview(statusLabel)
 //        infoView.addSubview(priceLabel)
+        buttonImageView.snp.makeConstraints { (make) in
+            make.height.equalTo(((kScreenWidth - 88 - 30) / 52) * 15)
+            make.bottom.equalTo(0)
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+        }
         showImageView.snp.makeConstraints { (make) in
             make.top.equalTo(53)
             make.left.equalTo(15)
             make.right.equalTo(-15)
             make.bottom.equalTo(-60)
         }
+        
 //        infoView.snp.makeConstraints { (make) in
 //            make.bottom.equalTo(0)
 //            make.left.equalTo(0)
@@ -109,7 +126,10 @@ class StarCardView: UICollectionViewCell {
             }
             
         }
-
+        guard URL(string:ShareDataModel.share().qiniuHeader + starModel.home_button_pic_tail) != nil else {
+            return
+        }
+        buttonImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + starModel.home_button_pic_tail) )
         
     }
     
