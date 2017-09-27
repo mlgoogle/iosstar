@@ -61,7 +61,7 @@ class AppConfigHelper: NSObject {
         Bugout.init("aebdfa2eada182ab8dc7d44fd02a8c50", channel: "channel", config: config)
     }
     
-    //MARK: - 初始化明星信息
+    //MARK: - 初始化网红信息
     func getstart(){
         let requestModel = GetAllStarInfoModel()
         AppAPIHelper.user().requestAllStarInfo(requestModel: requestModel, complete: { (result) in

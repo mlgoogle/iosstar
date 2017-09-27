@@ -306,6 +306,7 @@
 		8ED327881F2976DE0034544E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31511EA8469900F85308 /* CoreMedia.framework */; };
 		8ED327891F2976F00034544E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31531EA846A100F85308 /* AudioToolbox.framework */; };
 		8ED3278A1F2977040034544E /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03D31551EA846AC00F85308 /* VideoToolbox.framework */; };
+		8EE5BF091F7A318A006B687E /* IntroduceTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE5BF081F7A318A006B687E /* IntroduceTableVC.swift */; };
 		8EFC7DF01F453D15004FFE3C /* VoiceAskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC7DEF1F453D15004FFE3C /* VoiceAskVC.swift */; };
 		8EFC7DF21F4576A1004FFE3C /* PLPlayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC7DF11F4576A1004FFE3C /* PLPlayerHelper.swift */; };
 		8EFC7DF41F46D073004FFE3C /* VideoQuestionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFC7DF31F46D073004FFE3C /* VideoQuestionsVC.swift */; };
@@ -909,6 +910,7 @@
 		8E9D05E11F010A4F00A9F852 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		8EB2D7901F62A90A00C63EED /* VoiceManagerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceManagerVC.swift; sourceTree = "<group>"; };
 		8EB2D7921F62A96C00C63EED /* VideoManagerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoManagerVC.swift; sourceTree = "<group>"; };
+		8EE5BF081F7A318A006B687E /* IntroduceTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroduceTableVC.swift; sourceTree = "<group>"; };
 		8EFC7DEF1F453D15004FFE3C /* VoiceAskVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceAskVC.swift; sourceTree = "<group>"; };
 		8EFC7DF11F4576A1004FFE3C /* PLPlayerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PLPlayerHelper.swift; sourceTree = "<group>"; };
 		8EFC7DF31F46D073004FFE3C /* VideoQuestionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoQuestionsVC.swift; sourceTree = "<group>"; };
@@ -1544,6 +1546,7 @@
 				8EB2D7901F62A90A00C63EED /* VoiceManagerVC.swift */,
 				8EB2D7921F62A96C00C63EED /* VideoManagerVC.swift */,
 				A0382F571F5E43650073C2D2 /* PlaySingleVC.swift */,
+				8EE5BF081F7A318A006B687E /* IntroduceTableVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -3467,6 +3470,7 @@
 				8E3979AF1F28587800847CCB /* NIMCommonTableData.m in Sources */,
 				A07D34701EEE416A00136733 /* ShareView.swift in Sources */,
 				8E3979AE1F28587800847CCB /* UIView+NIM.m in Sources */,
+				8EE5BF091F7A318A006B687E /* IntroduceTableVC.swift in Sources */,
 				8E3979BE1F28587800847CCB /* NIMContactDataCell.m in Sources */,
 				A086FE161EDFF3F500AD04AD /* BaseWebVC.swift in Sources */,
 				A0E703161F1DDF2700284BCA /* BarrageViewCustomer.m in Sources */,

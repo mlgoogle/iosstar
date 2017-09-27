@@ -148,7 +148,7 @@ class StarNewsVC: BaseTableViewController, OEZTableViewDelegate, MWPhotoBrowserD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "发现明星"
+        title = "发现网红"
         dismissBtn.setImage(UIImage.imageWith(AppConst.iconFontName.closeIcon.rawValue, fontSize: CGSize.init(width: 22, height: 22), fontColor: UIColor(hexString: AppConst.Color.main)), for: .normal)
         getexperience()
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {

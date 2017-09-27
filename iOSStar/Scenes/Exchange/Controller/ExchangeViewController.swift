@@ -45,7 +45,7 @@ class ExchangeViewController: UIViewController ,UITabBarControllerDelegate,NIMSy
         let vc = UIStoryboard.init(name: "Exchange", bundle: nil).instantiateViewController(withIdentifier: "SystemMessageVC")
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    // 明星通讯录Action
+    // 网红通讯录Action
     @IBAction func toStarContacts(_ sender: UIButton) {
         
         if self.needPwd == 1 {

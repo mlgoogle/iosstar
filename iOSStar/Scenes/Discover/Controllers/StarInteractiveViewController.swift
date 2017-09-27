@@ -13,25 +13,15 @@ class StarInteractiveViewController: UIViewController {
 
     var dataSource:[StarSortListModel]?
     var imageNames:[String]?
-      let header = MJRefreshNormalHeader()
+    let header = MJRefreshNormalHeader()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-      
         header.setRefreshingTarget(self, refreshingAction: #selector(requestStar))
         self.tableView!.mj_header = header
         self.tableView.mj_header.beginRefreshing()
-
         tableView.register(NoDataCell.self, forCellReuseIdentifier: "NoDataCell")
         configImageNames()
-//        requestStar()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
     }
     
     func configImageNames()  {
@@ -42,7 +32,6 @@ class StarInteractiveViewController: UIViewController {
     }
     
     func requestStar() {
-
         let requestModel = StarSortListRequestModel()
         AppAPIHelper.discoverAPI().requestStarList(requestModel: requestModel, complete: { (response) in
             if let models = response as? [StarSortListModel] {
@@ -75,19 +64,20 @@ class StarInteractiveViewController: UIViewController {
                     introVC.starModel = model
                 }
             }
-            
         }
     }
-
 }
+
 extension StarInteractiveViewController:UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         return self.dataSource == nil ? UIScreen.main.bounds.size.height - 150 : 130
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource?.count ?? 1
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if self.dataSource == nil{
          let cell = tableView.dequeueReusableCell(withIdentifier: NoDataCell.className(), for: indexPath) as! NoDataCell
@@ -99,17 +89,15 @@ extension StarInteractiveViewController:UITableViewDelegate, UITableViewDataSour
         cell.setBackImage(imageName: (imageNames?[indexPath.row % 10])!)
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if dataSource == nil || dataSource?.count == 0{
             return
         }
         if checkLogin(){
-            if let model = dataSource![indexPath.row] as? StarSortListModel{
-                ShareDataModel.share().selectStarCode = model.symbol
-                performSegue(withIdentifier: StarNewsVC.className(), sender: indexPath)
-            }
+            let model = dataSource![indexPath.row]
+            ShareDataModel.share().selectStarCode = model.symbol
+            performSegue(withIdentifier: StarNewsVC.className(), sender: indexPath)
         }
-       
-        
     }
 }

@@ -138,7 +138,8 @@ class SellingViewController: UIViewController {
        
     }
     func dodetail(){
-        let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
+        //let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "StarIntroduceViewController") as! StarIntroduceViewController
+        let introVC =  UIStoryboard.init(name: "Discover", bundle: nil).instantiateViewController(withIdentifier: "IntroduceTableVC") as! IntroduceTableVC
         introVC.starModel = starModel
         self.navigationController?.pushViewController(introVC, animated: true)
 
@@ -213,7 +214,7 @@ extension SellingViewController:UITableViewDataSource, UITableViewDelegate, UITe
             alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
                                 
                                 titleLabelText: "开通支付",
-                                subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购明星时间，转让明星时间，\n和明星在‘星聊’中聊天，并且还能约见明星。",
+                                subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购网红时间，转让网红时间，\n和网红在‘星聊’中聊天，并且还能约见网红。",
                                 completeButtonTitle: "我 知 道 了") {[weak alertVc] (completeButton) in
                                     alertVc?.dismissAlertVc()
                                     

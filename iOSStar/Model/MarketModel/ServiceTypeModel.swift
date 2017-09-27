@@ -15,10 +15,10 @@ class ServiceTypeModel: Object {
     // 服务id
     dynamic var mid : Int64 = 0
     
-    // 明星服务选中图片
+    // 网红服务选中图片
     dynamic var url1_tail : String = ""
     
-    // 明星服务未选中图片
+    // 网红服务未选中图片
     dynamic var url2_tail : String = ""
     
     // 服务名称

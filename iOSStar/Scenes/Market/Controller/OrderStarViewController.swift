@@ -37,7 +37,7 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
     // tips
     @IBOutlet weak var tipsTextView: UITextView!
     
-    let contentStr = "    TIPS：请提前一个月约见。履约过程中产生的相关费用由用户承担明星出行的安保费通讯费、交通费、住宿费、餐饮费、服化费等必要开支。确定约见即表示您已阅读并同意《约见规则》"  as NSString
+    let contentStr = "    TIPS：请提前一个月约见。履约过程中产生的相关费用由用户承担网红出行的安保费通讯费、交通费、住宿费、餐饮费、服化费等必要开支。确定约见即表示您已阅读并同意《约见规则》"  as NSString
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -103,7 +103,7 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
 
 }
 
-// MARK: -  明星资料Cell
+// MARK: -  网红资料Cell
 class StarDataCell: UITableViewCell {
     
     // 背景图片
@@ -125,14 +125,14 @@ class StarDataCell: UITableViewCell {
         super.layoutSubviews()
     }
     
-    // 设置明星信息
+    // 设置网红信息
     func setStarInfo(model:StarSortListModel) {
 
         bkImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.home_pic_tail))
         nameLabel.text = String.init(format: "%@ (%@)", model.name,model.symbol)
         iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.pic_tail))
     }
-    // 设置明星信息
+    // 设置网红信息
     func setStarModelInfo(model:BannerDetaiStarModel) {
         bkImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.pic_url_tail))
         describeLabel.text = model.introduction
@@ -150,7 +150,7 @@ class OrderStarViewController: UIViewController {
     // OrderStartViewCell 传过来的模型
     var serviceTypeModel : ServiceTypeModel!
     
-    // 获取明星服务类型的数组
+    // 获取网红服务类型的数组
     var serviceModel : [ServiceTypeModel]?
     
     // 确定约见按钮
@@ -208,9 +208,9 @@ class OrderStarViewController: UIViewController {
         initCityPickerView()
         // 时间
         initDatePickerView()
-        // 明星数据
+        // 网红数据
         requestStarInfos()
-        // 获取明星服务
+        // 获取网红服务
         requestStarServiceTypeInfo()
         // 确定约见事件
         completeButton.addTarget(self, action: #selector(completeClick(_:)), for: .touchUpInside)
@@ -261,7 +261,7 @@ class OrderStarViewController: UIViewController {
         }
     }
     
-    // MARK: - 获取明星信息
+    // MARK: - 获取网红信息
     func requestStarInfos() {
         
         var starCode = ""
@@ -276,7 +276,7 @@ class OrderStarViewController: UIViewController {
         }, error: errorBlockFunc())
     }
     
-    // MARK: - 获取明星服务类型
+    // MARK: - 获取网红服务类型
     func requestStarServiceTypeInfo() {
         var starCode = ""
         if starInfo != nil {
@@ -304,7 +304,7 @@ class OrderStarViewController: UIViewController {
             return
         }
         if orderPalace.text?.length() == 0 {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "明星尚未选择约见城市，请耐心等待", ForDuration: 2.0, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "网红尚未选择约见城市，请耐心等待", ForDuration: 2.0, completion: nil)
             return
         }
         if feedBack.text.length() == 0 {
@@ -344,7 +344,7 @@ class OrderStarViewController: UIViewController {
                         alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
                                             
                                             titleLabelText: "开通支付",
-                                            subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购明星时间，转让明星时间，\n和明星在‘星聊’中聊天，并且还能约见明星。",
+                                            subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购网红时间，转让网红时间，\n和网红在‘星聊’中聊天，并且还能约见网红。",
                                             completeButtonTitle: "我 知 道 了") {[weak alertVc] (completeButton) in
                                                 alertVc?.dismissAlertVc()
                                                 

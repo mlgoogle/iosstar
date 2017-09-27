@@ -29,11 +29,11 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
     var invitation : UILabel?
     // icon
     var iconImageView : UIImageView?
-    // 已购明星数量
+    // 已购网红数量
     var buyStarCountLabel : UILabel?
     var PromotionUrl = ""
     // 名字数组
-    var titltArry = ["交易明细","我的钱包","我预约的明星","客服中心","通用设置"]
+    var titltArry = ["交易明细","我的钱包","我预约的网红","客服中心","通用设置"]
     //messagebtn
     @IBOutlet var message: UIButton!
     var responseData: UserInfoModel?
@@ -69,7 +69,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         LoginSuccessNotice()
         
     }
-    // MARK:- 已购明星数量
+    // MARK:- 已购网红数量
     func LoginSuccessNotice() {
         
         NIMSDK.shared().systemNotificationManager.add(self)
@@ -206,7 +206,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
                 let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "WealthVC")
                 self.navigationController?.pushViewController(vc, animated: true)
             }
-            //GetOrderStarsVC 预约明星列表
+            //GetOrderStarsVC 预约网红列表
             if indexPath.row == 2{
                 
                 toReservationStar()
@@ -230,7 +230,7 @@ class UserVC: BaseCustomTableViewController ,NIMSystemNotificationManagerDelegat
         
     }
     
-    // MARK:- 我预约的明星
+    // MARK:- 我预约的网红
     func toReservationStar() {
         
         let vc = UIStoryboard.init(name: "User", bundle: nil).instantiateViewController(withIdentifier: "StarMangerVC")

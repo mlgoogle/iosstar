@@ -12,7 +12,6 @@ import RealmSwift
 class BuyStarTimeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
-
     lazy var backView: UIView = {
         let view = UIView(frame: self.collectionView.frame)
         let effect = UIBlurEffect(style: .light)
@@ -33,9 +32,9 @@ class BuyStarTimeViewController: UIViewController {
     }()
     
     var dataSouce:[StarSortListModel]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-     
         requestStarList()
         backView.addSubview(backImageView)
         backView.sendSubview(toBack: backImageView)
@@ -60,36 +59,14 @@ class BuyStarTimeViewController: UIViewController {
             })
         }
     }
-    
-    func requestConfigData() {
-//        AppAPIHelper.user().configRequest(param_code: "HOME_LAST_PIC", complete: { (response) in
-//            if let model = response as? ConfigReusltValue {
-//                let starModel = StarSortListModel()
-//                starModel.home_pic_tail = model.param_value
-//                starModel.pushlish_type = 4
-//                if self.dataSouce != nil {
-//                    self.dataSouce?.append(starModel)
-//                    self.collectionView.reloadData()
-//                }
-//                self.collectionView.reloadData()
-//            }
-//            
-//        }) { (error) in
-//            
-//        }
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
     func requestStarList() {
-        
         let requestModel = StarSortListRequestModel()
-        
-
         AppAPIHelper.discoverAPI().requestScrollStarList(requestModel: requestModel, complete: { (response) in
-            
             if let model = response as? DiscoverListModel{
                 self.dataSouce = model.symbol_info
                 let starModel = StarSortListModel()
@@ -98,18 +75,11 @@ class BuyStarTimeViewController: UIViewController {
                 self.dataSouce?.append(starModel)
                 self.collectionView.reloadData()
                 self.perform(#selector(self.replaceBackImage(index:)), with: nil, afterDelay: 0.5)
-                
             }
-        }) { (error) in
-            
-            
-        }
-        
+        }, error: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-
         if let indexPath = sender as? IndexPath {
             let model = dataSouce![indexPath.item]
             let vc = segue.destination
@@ -123,7 +93,6 @@ class BuyStarTimeViewController: UIViewController {
                 }
             }
         }
-        
     }
 }
 
@@ -133,8 +102,8 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
         let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? StarCardView
         backImageView.image = cell?.backImage
     }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
         let index = Int(scrollView.contentOffset.x - 6) / Int(kScreenWidth - 88)
         replaceBackImage(index: index)
     }
@@ -152,17 +121,14 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
         if checkLogin(){
             let starModel = dataSouce![indexPath.row]
-            //        var segueString = "ToSelling"
             var segueString = "StarNewsVC"
             switch starModel.pushlish_type {
             case 0:
                 segueString = "ToSelling"
             case 1:
                  segueString = "ToSelling"
-//                segueString = "ToIntroduce"
             case 2:
                 if let dealVC = UIStoryboard.init(name: "Heat", bundle: nil).instantiateViewController(withIdentifier: HeatDetailViewController.className()) as? HeatDetailViewController{
                     let model = dataSouce?[indexPath.row]

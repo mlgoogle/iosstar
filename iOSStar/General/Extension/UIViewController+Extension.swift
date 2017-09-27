@@ -215,7 +215,7 @@ extension UIViewController {
             
         }
     }
-    //获取明星姓名
+    //获取网红姓名
     func getStartName(startCode:String,complete: CompleteBlock?){
         
         let realm = try! Realm()
@@ -251,7 +251,7 @@ extension UIViewController {
         alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
                             
                             titleLabelText: "开通支付",
-                            subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购明星时间，转让明星时间，\n和明星在‘星聊’中聊天，并且还能约见明星。",
+                            subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购网红时间，转让网红时间，\n和网红在‘星聊’中聊天，并且还能约见网红。",
                             completeButtonTitle: "我 知 道 了") {[weak alertVc] (completeButton) in
                                 alertVc?.dismissAlertVc()
                                 
@@ -265,7 +265,7 @@ extension UIViewController {
         let alertVc = AlertViewController()
         alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
                             titleLabelText: "您还没有身份验证",
-                            subTitleText: "您需要进行身份验证,\n之后才可以进行明星时间交易",
+                            subTitleText: "您需要进行身份验证,\n之后才可以进行网红时间交易",
                             completeButtonTitle: "开 始 验 证") {[weak alertVc] (completeButton) in
                                 alertVc?.dismissAlertVc()
                                 
@@ -279,7 +279,7 @@ extension UIViewController {
         alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
                             titleLabelText: "您还没有绑定银行卡",
                             
-                            subTitleText: "您需要银行卡进行明星时间交易",
+                            subTitleText: "您需要银行卡进行网红时间交易",
                             completeButtonTitle: "开 始 绑 定") {[weak alertVc] (completeButton) in
                                 alertVc?.dismissAlertVc()
                                 
