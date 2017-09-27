@@ -12,9 +12,9 @@ class AuctionHeaderCell: UITableViewCell {
     @IBOutlet weak var backView: UIView!
     //顶部展示star图片
     @IBOutlet var showImageView: UIImageView!
-    //当前持有此明星时间数量
+    //当前持有此网红时间数量
     @IBOutlet weak var positionCount: UILabel!
-    //明星名称以及代码
+    //网红名称以及代码
     @IBOutlet weak var starCodeLabel: UILabel!
     @IBOutlet weak var buyCountLabel: UILabel!
     

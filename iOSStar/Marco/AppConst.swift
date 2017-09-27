@@ -139,13 +139,12 @@ class AppConst {
         static let TcpServerIP:String = "cloud.p.smartdata-x.com"
         static let TcpServerPort:UInt16 = 17001
         
-        //nsb.smartdata-x.com  
-//        static let TcpServerIP:String = "nsb.smartdata-x.com";
-//         static let TcpServerPort:UInt16 = 16006
-
-//        static let TcpServerIP:String = "139.224.34.22";
-//        static let TcpServerPort:UInt16 = 16070
-//        static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
+//      nsb.smartdata-x.com
+//      static let TcpServerIP:String = "nsb.smartdata-x.com";
+//      static let TcpServerPort:UInt16 = 16006
+//      static let TcpServerIP:String = "139.224.34.22";
+//      static let TcpServerPort:UInt16 = 16070
+//      static let TttpHostUrl:String = "dapi.star.smartdata-x.com";
         #else
         static let TcpServerIP:String = "tapi.smartdata-x.com";
         static let TcpServerPort:UInt16 = 16006

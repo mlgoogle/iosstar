@@ -126,7 +126,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
     }
 
     
-    // MARK: 已购明星接口
+    // MARK: 已购网红接口
     func requestBuyStarCount(complete: CompleteBlock?, error: ErrorBlock?) {
         
         let param: [String: Any] = [SocketConst.Key.id: StarUserModel.getCurrentUser()?.userinfo?.id ?? 0,]
@@ -136,7 +136,7 @@ class UserSocketApi: BaseSocketAPI, UserApi  {
         startRequest(packet, complete: complete, error: error)
 
     }
-    // MARK: 获取明星名称
+    // MARK: 获取网红名称
     func requestAllStarInfo(requestModel: GetAllStarInfoModel, complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .newsStarInfo, model: requestModel)
         startModelsRequest(packet, listName: "list", modelClass: StartModel.self, complete: complete, error: error)

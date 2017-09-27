@@ -54,7 +54,7 @@ class Model: BaseModel {
     var amount: Double = 0        // jine
     // 交易类型 0-充值记录 1-约见记录 2-聊天记录
     var recharge_type  : Int8 = 0
-    // 明星的代码
+    // 网红的代码
     var transaction_id : String = ""
     
 }

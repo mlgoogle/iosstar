@@ -22,12 +22,12 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         let packet = SocketDataPacket(opcode: .searchStar, model: requestModel, type:.search)
         startModelsRequest(packet, listName: "starsinfo", modelClass: SearchResultModel.self, complete: complete, error: error)
     }
-    //单个分类明星列表
+    //单个分类网红列表
     func requestStarList(requestModel:StarListRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .starList, model: requestModel)
         startModelsRequest(packet, listName: "symbol_info", modelClass: MarketListModel.self, complete: complete, error: error)
     }
-    //自选明星
+    //自选网红
     func requestOptionalStarList(startnum:Int, endnum:Int,complete: CompleteBlock?, error: ErrorBlock?) {
         
         guard UserDefaults.standard.string(forKey: SocketConst.Key.phone) != nil else {
@@ -41,7 +41,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
     }
 
 
-    //添加自选明星
+    //添加自选网红
     func addOptinal(starcode:String,complete: CompleteBlock?, error: ErrorBlock?) {
         guard UserDefaults.standard.string(forKey: SocketConst.Key.phone) != nil else {
             return
@@ -53,7 +53,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
     }
 
 
-    //获取明星经历
+    //获取网红经历
     func requestStarExperience(code:String,complete: CompleteBlock?, error: ErrorBlock?) {
         let parameters:[String:Any] = [SocketConst.Key.starCode : code]
         let packet = SocketDataPacket(opcode: .starExperience, parameters: parameters)
@@ -70,7 +70,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         let packet = SocketDataPacket(opcode: .realTime, model: requestModel)
         startModelsRequest(packet, listName: "priceinfo", modelClass: RealTimeModel.self, complete: complete, error: error)
     }
-    //获取明星实时价格
+    //获取网红实时价格
     func requestStarRealTime(requestModel:StarRealtimeRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .starRealtime, model: requestModel)
         startModelRequest(packet, modelClass: StarSortListModel.self, complete: complete, error: error)
@@ -98,7 +98,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         startModelRequest(packet, modelClass: AuctionStatusModel.self, complete: complete, error: error)
     }
     
-    // 获取明星服务类型
+    // 获取网红服务类型
     func requestStarServiceType(starcode: String, complete: CompleteBlock?, error: ErrorBlock?) {
         
         let parameters:[String:Any] = [SocketConst.Key.starcode : starcode]
@@ -106,7 +106,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         startModelsRequest(packet, listName: "list", modelClass: ServiceTypeModel.self, complete: complete, error: error)
     }
     
-    // 订购明星服务
+    // 订购网红服务
     func requestBuyStarService(requestModel: ServiceTypeRequestModel, complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .buyStarService, model: requestModel)
         startRequest(packet, complete: complete, error: error)
@@ -126,7 +126,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         let packet = SocketDataPacket(opcode: .orderFansList, model: requestModel)
         startModelsRequest(packet, listName: "ordersList", modelClass: OrderFansListModel.self, complete: complete, error: error)
     }
-    //持有某个明星时间数量
+    //持有某个网红时间数量
     func requestPositionCount(requestModel:PositionCountRequestModel,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode: .positionCount, model: requestModel)
         
@@ -138,7 +138,7 @@ class MarketSocketAPI: BaseSocketAPI,MarketAPI {
         startModelRequest(packet, modelClass: BuySellCountModel.self, complete: complete, error: error)
     }
 
-    //请求明星发行时间
+    //请求网红发行时间
     func requestTotalCount(starCode:String,complete: CompleteBlock?, error: ErrorBlock?) {
         let packet = SocketDataPacket(opcode:.starTotalTime, parameters: ["starcode":starCode])
         startModelRequest(packet, modelClass: StarTotalCountModel.self, complete: complete, error: error)
