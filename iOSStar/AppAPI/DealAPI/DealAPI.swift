@@ -18,5 +18,6 @@ protocol DealAPI {
     func requestEntrustList(requestModel:DealRecordRequestModel,OPCode:SocketConst.OPCode,complete: CompleteBlock?, error: ErrorBlock?)
     func requestOrderList(requestModel:OrderRecordRequestModel,OPCode:SocketConst.OPCode,complete: CompleteBlock?, error: ErrorBlock?)
     func allOrder(requestModel:DealRecordRequestModel,OPCode:SocketConst.OPCode,complete: CompleteBlock?, error: ErrorBlock?)
-    func requestMiuCount(requestModel:MiuCountRequestModel, complete: CompleteBlock?, error: ErrorBlock?) 
+    func requestMiuCount(requestModel:MiuCountRequestModel, complete: CompleteBlock?, error: ErrorBlock?)
+    func meetSwitch(complete: CompleteBlock?, error: ErrorBlock?)
 }

@@ -31,6 +31,7 @@ class ShareDataModel: NSObject {
     var baseTabbarC: BaseTabBarController?
     var netInfo: NetModel = NetModel()
     var qiniuHeader = "http://out9d2vy4.bkt.clouddn.com/"
+    var meetSwitch = 0
 }
 
 class OrderInformation: NSObject {

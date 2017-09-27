@@ -55,6 +55,10 @@ class OrderResultModel: Object {
     dynamic var result:Int32 = 0
 }
 
+class MeetSwitchModel: BaseModel{
+    var stat = 0
+}
+
 class EntrustListModel: Object {
     
     dynamic var rtAmount = 0
