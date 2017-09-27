@@ -3136,7 +3136,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		EB11F933022DE098F790F4AB /* [CP] Check Pods Manifest.lock */ = {
@@ -3151,7 +3151,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3745,16 +3745,7 @@
 					"$(PROJECT_DIR)/iOSStar/Marco",
 					"$(PROJECT_DIR)/iOSSTar/Library",
 				);
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/iOSStar/Marco",
-					"$(PROJECT_DIR)/iOSSTar/Resource/alipay",
-					"\"$(SRCROOT)/iOSSTar/Resource/alipay/AlipaySDK.framework\"",
-					"\"$(SRCROOT)/iOSSTar/Resource/alipay\"",
-					"\"$(SRCROOT)/iOSSTar/Resource/alipay/openssl\"",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/iOSSTar/Library",
-				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(inherited) $(PROJECT_DIR)/iOSStar/Marco $(PROJECT_DIR)/iOSSTar/Resource/alipay \"$(SRCROOT)/iOSSTar/Resource/alipay/AlipaySDK.framework\" \"$(SRCROOT)/iOSSTar/Resource/alipay\" \"$(SRCROOT)/iOSSTar/Resource/alipay/openssl\" $(PROJECT_DIR) $(PROJECT_DIR)/iOSSTar/Library";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
