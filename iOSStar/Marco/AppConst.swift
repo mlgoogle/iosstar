@@ -131,6 +131,7 @@ class AppConst {
     }
     
     class Network {
+
         #if true
         //是否测试环境
         //139.224.34.22

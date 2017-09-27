@@ -140,6 +140,7 @@ extension BuyStarTimeViewController:UICollectionViewDataSource, UICollectionView
                     let model = dataSouce?[indexPath.row]
                     dealVC.starListModel = model
                     _ = navigationController?.pushViewController(dealVC, animated: true)
+                    return
                 }
             default:
                 ShareDataModel.share().selectStarCode = ""

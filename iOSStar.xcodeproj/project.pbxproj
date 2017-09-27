@@ -54,7 +54,6 @@
 		6E1B57211ED41BDA00A014AE /* DealScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B57201ED41BDA00A014AE /* DealScrollView.swift */; };
 		6E22721D1EF941B300AF9579 /* CommenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E22721C1EF941B300AF9579 /* CommenModel.swift */; };
 		6E2346451F6A7B4C004DE4A8 /* Deal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E23463F1F6A7B4C004DE4A8 /* Deal.storyboard */; };
-		6E2346461F6A7B4C004DE4A8 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E2346401F6A7B4C004DE4A8 /* Discover.storyboard */; };
 		6E2346471F6A7B4C004DE4A8 /* Heat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E2346411F6A7B4C004DE4A8 /* Heat.storyboard */; };
 		6E2346481F6A7B4C004DE4A8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E2346421F6A7B4C004DE4A8 /* Login.storyboard */; };
 		6E2346491F6A7B4C004DE4A8 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E2346431F6A7B4C004DE4A8 /* Order.storyboard */; };
@@ -424,6 +423,7 @@
 		A0D00A0C1F593ED7008E816B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D00A0B1F593ED7008E816B /* Images.xcassets */; };
 		A0D00A0E1F596280008E816B /* StarDetailCirCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D00A0D1F596280008E816B /* StarDetailCirCell.swift */; };
 		A0D00A101F5964E0008E816B /* StarDetailCircleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D00A0F1F5964E0008E816B /* StarDetailCircleCell.swift */; };
+		A0D76F7E1F7B8AC300963900 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D76F7D1F7B8AC300963900 /* Discover.storyboard */; };
 		A0E6548E1F42F6FB002B85BE /* StarCirCleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E6548D1F42F6FB002B85BE /* StarCirCleCell.swift */; };
 		A0E654911F42F71B002B85BE /* VideoAskQuestionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E6548F1F42F71B002B85BE /* VideoAskQuestionsVC.swift */; };
 		A0E654921F42F71B002B85BE /* ShareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E654901F42F71B002B85BE /* ShareVC.swift */; };
@@ -514,7 +514,6 @@
 		6E1B57201ED41BDA00A014AE /* DealScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealScrollView.swift; sourceTree = "<group>"; };
 		6E22721C1EF941B300AF9579 /* CommenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommenModel.swift; path = iOSStar/Model/ShareDataModel/CommenModel.swift; sourceTree = SOURCE_ROOT; };
 		6E23463F1F6A7B4C004DE4A8 /* Deal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Deal.storyboard; sourceTree = "<group>"; };
-		6E2346401F6A7B4C004DE4A8 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		6E2346411F6A7B4C004DE4A8 /* Heat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Heat.storyboard; sourceTree = "<group>"; };
 		6E2346421F6A7B4C004DE4A8 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		6E2346431F6A7B4C004DE4A8 /* Order.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
@@ -1155,6 +1154,7 @@
 		A0D00A0B1F593ED7008E816B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = iOSSTar/Resource/image/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		A0D00A0D1F596280008E816B /* StarDetailCirCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarDetailCirCell.swift; sourceTree = "<group>"; };
 		A0D00A0F1F5964E0008E816B /* StarDetailCircleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarDetailCircleCell.swift; sourceTree = "<group>"; };
+		A0D76F7D1F7B8AC300963900 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Discover.storyboard; path = iOSSTar/Resource/Storyboard/Discover.storyboard; sourceTree = SOURCE_ROOT; };
 		A0E6548D1F42F6FB002B85BE /* StarCirCleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StarCirCleCell.swift; path = iOSSTar/Scenes/Discover/CustomView/StarCirCleCell.swift; sourceTree = SOURCE_ROOT; };
 		A0E6548F1F42F71B002B85BE /* VideoAskQuestionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoAskQuestionsVC.swift; path = iOSSTar/Scenes/Discover/Controllers/VideoAskQuestionsVC.swift; sourceTree = SOURCE_ROOT; };
 		A0E654901F42F71B002B85BE /* ShareVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShareVC.swift; path = iOSSTar/Scenes/Discover/Controllers/ShareVC.swift; sourceTree = SOURCE_ROOT; };
@@ -2585,12 +2585,12 @@
 		A07238B31EA76F3500E755DB /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				A0D76F7D1F7B8AC300963900 /* Discover.storyboard */,
 				8EB7EA391F7B4E47008AA8DE /* User.storyboard */,
 				6E23464B1F6A7B5A004DE4A8 /* Exchange.storyboard */,
 				6E23464C1F6A7B5A004DE4A8 /* Market.storyboard */,
 				6E23464D1F6A7B5A004DE4A8 /* News.storyboard */,
 				6E23463F1F6A7B4C004DE4A8 /* Deal.storyboard */,
-				6E2346401F6A7B4C004DE4A8 /* Discover.storyboard */,
 				6E2346411F6A7B4C004DE4A8 /* Heat.storyboard */,
 				6E2346421F6A7B4C004DE4A8 /* Login.storyboard */,
 				6E2346431F6A7B4C004DE4A8 /* Order.storyboard */,
@@ -3038,7 +3038,6 @@
 				A0D00A0C1F593ED7008E816B /* Images.xcassets in Resources */,
 				A0C9D6741EAE102300FC438D /* video_chat_tip_onTimer.aac in Resources */,
 				A0C14C021F1F81F0005A419D /* ytest.plist in Resources */,
-				6E2346461F6A7B4C004DE4A8 /* Discover.storyboard in Resources */,
 				A0C9D6721EAE102300FC438D /* video_chat_tip_HangUp.aac in Resources */,
 				6E2346481F6A7B4C004DE4A8 /* Login.storyboard in Resources */,
 				A0C9D6761EAE102300FC438D /* video_chat_tip_sender.aac in Resources */,
@@ -3050,6 +3049,7 @@
 				A0C9D6751EAE102300FC438D /* video_chat_tip_receiver.aac in Resources */,
 				A0C9D6771EAE102300FC438D /* video_connect_chat_tip_sender.aac in Resources */,
 				A072389E1EA76AA300E755DB /* README.txt in Resources */,
+				A0D76F7E1F7B8AC300963900 /* Discover.storyboard in Resources */,
 				A0C9D6731EAE102300FC438D /* video_chat_tip_OnCall.aac in Resources */,
 				6E2346471F6A7B4C004DE4A8 /* Heat.storyboard in Resources */,
 				8E4C4D431F17528F0002EABF /* aio_face_delete@2x.png in Resources */,

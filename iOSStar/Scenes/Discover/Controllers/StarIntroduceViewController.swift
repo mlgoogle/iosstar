@@ -34,6 +34,8 @@ class StarIntroduceViewController: UIViewController {
         super.viewDidLoad()
         
         self.navBarBgAlpha = 0.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
         
         tableView.register(PubInfoHeaderView.self, forHeaderFooterViewReuseIdentifier: PubInfoHeaderView.className())
         appointmentButton.backgroundColor = UIColor(hexString: AppConst.Color.lightAction)
@@ -341,15 +343,7 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
-            if showMoreIntroduce{
-                if expericences != nil{
-                    return 1
-                }else{
-                    return 0
-                }
-            }else{
-                return expericences?.count ?? 0
-            }
+             return expericences?.count ?? 0
         }
         return 1
     }
@@ -378,15 +372,15 @@ extension StarIntroduceViewController:UITableViewDelegate, UITableViewDataSource
                 expericencesCell.delegate = self
                 expericencesCell.show.isHidden = true
                 if showMoreIntroduce{
-                    expericencesCell.show.isHidden = false
+                    expericencesCell.show.isHidden = true
                     expericencesCell.showHeight.constant = 15
                     
                 }else{
                     //最后一区
                     expericencesCell.show.isHidden = true
                     if indexPath.row == (expericences?.count)! - 1{
-                        expericencesCell.show.isHidden = false
-                        expericencesCell.show.setTitle("点击收起", for: .normal)
+                        expericencesCell.show.isHidden = true
+                // expericencesCell.show.setTitle("点击收起", for: .normal)
                         expericencesCell.showHeight.constant = 15
                     }else{
                         expericencesCell.show.isHidden = true
