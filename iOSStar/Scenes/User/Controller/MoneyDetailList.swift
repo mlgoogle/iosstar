@@ -28,7 +28,7 @@ class MoneyDetailListCell: OEZTableViewCell {
         // print("===\(model)")
         
         // recharge_type == 0 + 充值记录
-        // recharge_type == 1 - 约见记录
+        // recharge_type == 1 - 连接记录
         // recharge_type == 2 - 聊天记录
         
         if model.recharge_type == 0 {
@@ -44,7 +44,7 @@ class MoneyDetailListCell: OEZTableViewCell {
             })
             self.moneyCountLb.text = "-" + " " + String.init(format: "%d秒", Int(model.amount))
             self.withDrawto.text = String.init(format: "%@ (%@)", starName,model.transaction_id)
-            self.statusLb.text = "约见"
+            self.statusLb.text = "连接"
         } else {
             var starName = ""
             StartModel.getStartName(startCode: model.transaction_id, complete: { (star) in
