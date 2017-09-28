@@ -21,6 +21,8 @@ class IntroduceTableVC: BaseTableViewController {
     var starModel:StarSortListModel?
     var images:[String] = []
     var selectImage = ""
+    var totalExperience = ""
+    var onlyExperience = ""
     var rowHeights: [CGFloat] = [170,0,150,150,150,150,150,150]
     
     override func viewDidLoad() {
@@ -117,20 +119,23 @@ extension IntroduceTableVC: MarketExperienceCellDelegate{
         }
         AppAPIHelper.marketAPI().requestStarExperience(code: starModel!.symbol, complete: { (response) in
             if let models =  response as? [ExperienceModel] {
-                var totalExperience = ""
+                self.totalExperience = ""
                 for model in models{
-                    totalExperience += model.experience + "\\n"
+                    self.totalExperience += model.experience + "\\n"
                 }
-                self.experienceCell.setTitle(title: totalExperience)
+                self.onlyExperience = models[0].experience
+                self.experienceCell.setTitle(title: self.totalExperience)
             }
         },error:nil)
     }
     
     func showMore() {
+        self.experienceCell.setTitle(title: self.totalExperience)
         tableView.reloadData()
     }
     
     func Packup() {
+        self.experienceCell.setTitle(title: self.totalExperience)
         tableView.reloadData()
     }
 }
