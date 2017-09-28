@@ -49,7 +49,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
         }
     }
     override func didRequest(_ pageIndex: Int) {
-        //约见的明细
+        //连接的明细
         if domeet{
             let requestModel = StarMailListRequestModel()
             requestModel.status = 1
@@ -84,7 +84,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
                 }
             }
         }
-            //约见的情况
+            //连接的情况
         else{
             let requestModel = StarMailOrderListRequestModel()
             requestModel.pos = (pageIndex - 1) * 10
@@ -174,7 +174,7 @@ class GetOrderStarsVC: BaseCustomPageListTableViewController,OEZTableViewDelegat
     }
     
     func tableView(_ tableView: UITableView!, rowAt indexPath: IndexPath!, didAction action: Int, data: Any!) {
-        //约见
+        //连接
         if action == 4 {
              if doRealm{
                 showRealname()

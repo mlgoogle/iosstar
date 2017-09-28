@@ -27,7 +27,7 @@ class ServiceTypeModel: Object {
     // 服务价格
     dynamic var price : String = ""
     
-    // 约见城市
+    // 连接城市
     dynamic var meet_city = ""
     
     // 开始时间

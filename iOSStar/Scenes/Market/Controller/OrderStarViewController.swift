@@ -13,7 +13,7 @@ class OrderType : UITableViewCell,UITextViewDelegate{
     
     // 具体时间
     @IBOutlet weak var orderAccount: UILabel!
-    // 约见时间
+    // 连接时间
     @IBOutlet weak var orderType: UILabel!
 }
 
@@ -37,7 +37,8 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
     // tips
     @IBOutlet weak var tipsTextView: UITextView!
     
-    let contentStr = "    TIPS：请提前一个月约见。确定约见即表示您已阅读并同意《约见规则》"  as NSString
+
+    let contentStr = "    TIPS：请提前一个月申请连接。确定连接即表示您已阅读并同意《连接规则》"  as NSString
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,7 +50,7 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
         let tipsAttrs  = NSMutableAttributedString(string: contentStr as String, attributes: attributes)
         let attrs = [NSForegroundColorAttributeName:UIColor(hexString: AppConst.Color.main)]
         tipsAttrs.addAttributes(attrs, range: NSMakeRange(NSString(string:contentStr).length - 6, 6))
-        let range = contentStr.range(of: "《约见规则》", options: .regularExpression, range: NSMakeRange(0,contentStr.length))
+        let range = contentStr.range(of: "《连接规则》", options: .regularExpression, range: NSMakeRange(0,contentStr.length))
         tipsAttrs.addAttribute(NSLinkAttributeName, value: "frist://", range: range)
         tipsTextView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor(hexString: AppConst.Color.main)]
         tipsTextView.attributedText = tipsAttrs
@@ -93,7 +94,7 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         feedBack.text = textView.text
         if textView.text == nil {
-            placeHolderLabel.text = "请输入您对此次约见的其他要求200字以内... "
+            placeHolderLabel.text = "请输入您对此次连接的其他要求200字以内... "
             placeHolderLabel.isHidden = false
         } else {
             placeHolderLabel.text = ""
@@ -153,7 +154,7 @@ class OrderStarViewController: UIViewController {
     // 获取网红服务类型的数组
     var serviceModel : [ServiceTypeModel]?
     
-    // 确定约见按钮
+    // 确定连接按钮
     @IBOutlet weak var completeButton: UIButton!
     
     // 秒数价格
@@ -164,9 +165,9 @@ class OrderStarViewController: UIViewController {
     // @IBOutlet weak var pageControl: UIPageControl!
     // 意见反馈
     var feedBack : UITextView!
-    // 约见时间
+    // 连接时间
     var orderTime: UILabel!
-    // 约见地址
+    // 连接地址
     var orderPalace: UILabel!
     
     // 假的框为了弹出(Date)键盘
@@ -212,13 +213,13 @@ class OrderStarViewController: UIViewController {
         requestStarInfos()
         // 获取网红服务
         requestStarServiceTypeInfo()
-        // 确定约见事件
+        // 确定连接事件
         completeButton.addTarget(self, action: #selector(completeClick(_:)), for: .touchUpInside)
         
         // 通知
         NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
-        // 接收约见类型发出的通知
+        // 接收连接类型发出的通知
         NotificationCenter.default.addObserver(self, selector: #selector(chooseServiceType(_:)), name:
             Notification.Name(rawValue:AppConst.chooseServiceTypeSuccess), object: nil)
     }
@@ -294,10 +295,10 @@ class OrderStarViewController: UIViewController {
     }
     
     
-    // MARK: - 确定约见
+    // MARK: - 确定连接
     func completeClick(_ sender : UIButton) {
         if serviceTypeModel == nil {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "请选择约见类型", ForDuration: 2.0, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "请选择连接类型", ForDuration: 2.0, completion: nil)
             return;
         }
         if orderTime.text?.length() == 0 {
@@ -305,7 +306,7 @@ class OrderStarViewController: UIViewController {
             return
         }
         if orderPalace.text?.length() == 0 {
-            SVProgressHUD.showErrorMessage(ErrorMessage: "网红尚未选择约见城市，请耐心等待", ForDuration: 2.0, completion: nil)
+            SVProgressHUD.showErrorMessage(ErrorMessage: "网红尚未选择连接城市，请耐心等待", ForDuration: 2.0, completion: nil)
             return
         }
         if feedBack.text.length() == 0 {
@@ -345,7 +346,7 @@ class OrderStarViewController: UIViewController {
                         alertVc.showAlertVc(imageName: "tangchuang_tongzhi",
                                             
                                             titleLabelText: "开通支付",
-                                            subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购网红时间，转让网红时间，\n和网红在‘星聊’中聊天，并且还能约见网红。",
+                                            subTitleText: "需要开通支付才能进行充值等后续操作。\n开通支付后，您可以求购网红时间，转让网红时间，\n和网红在‘星聊’中聊天，并且还能连接网红。",
                                             completeButtonTitle: "我 知 道 了") {[weak alertVc] (completeButton) in
                                                 alertVc?.dismissAlertVc()
                                                 
@@ -363,7 +364,7 @@ class OrderStarViewController: UIViewController {
                             model.orderInfomation = String.init(format: "%@ (%@)", (self.starInfo?.name)! ,(self.starInfo?.symbol)!)
                         }
                         model.orderPrice = "\(self.serviceTypeModel.price)秒"
-                        model.ordertitlename = "约见"
+                        model.ordertitlename = "连接"
                         //将值传给 sharedatemodel
                         ShareDataModel.share().orderInfo = model
                         let storyboard = UIStoryboard.init(name: "Order", bundle: nil)
@@ -385,7 +386,7 @@ class OrderStarViewController: UIViewController {
                                 
                             }
                             else{
-                                SVProgressHUD.showErrorMessage(ErrorMessage:  "约见已取消,请重新约见！", ForDuration: 2, completion: nil)
+                                SVProgressHUD.showErrorMessage(ErrorMessage:  "连接已取消,请重新连接！", ForDuration: 2, completion: nil)
                             }
                         }
                         controller.modalPresentationStyle = .custom
@@ -398,7 +399,7 @@ class OrderStarViewController: UIViewController {
         }
 
     }
-    // 约见
+    // 连接
     func domeet(){
         
         var starCode = ""
@@ -420,7 +421,7 @@ class OrderStarViewController: UIViewController {
             if let response = result {
                 if response["result"] as! Int == 1 {
                     //
-                    SVProgressHUD.showSuccessMessage(SuccessMessage: "约见成功，请耐心等待，并保持手机通话畅通", ForDuration: 2.0, completion: nil)
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "连接成功，请耐心等待，并保持手机通话畅通", ForDuration: 2.0, completion: nil)
                     _ = self.navigationController?.popViewController(animated: true)
                 }
             }
@@ -520,7 +521,7 @@ extension OrderStarViewController {
 //            orderTime.text = time
 //            inputDateTextField.resignFirstResponder()
 //        } else {
-//            SVProgressHUD.showErrorMessage(ErrorMessage: "请至少提前一个月约见", ForDuration: 2.0, completion: nil)
+//            SVProgressHUD.showErrorMessage(ErrorMessage: "请至少提前一个月连接", ForDuration: 2.0, completion: nil)
 //            inputDateTextField.resignFirstResponder()
 //            orderTime.text = ""
 //            return
@@ -706,7 +707,7 @@ extension OrderStarViewController : UIPickerViewDelegate,UIPickerViewDataSource 
 extension OrderStarViewController {
     
     fileprivate func setupNav() {
-        setCustomTitle(title: "约见网红")
+        setCustomTitle(title: "连接网红")
     }
 }
 
@@ -809,10 +810,10 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate,Fee
     
     func didSelectRules() {
         
-        // print("点击了约见规则")
+        // print("点击了连接规则")
         let baseWebVc = BaseWebVC()
         baseWebVc.loadRequest = "http://122.144.169.219:3389/meet"
-        baseWebVc.navtitle = "约见规则"
+        baseWebVc.navtitle = "连接规则"
         self.navigationController?.pushViewController(baseWebVc, animated: true)
     }
     
@@ -821,7 +822,7 @@ extension OrderStarViewController :UITableViewDataSource,UITableViewDelegate,Fee
         if indexPath.row == 2 {
             
             if serviceTypeModel == nil{
-              SVProgressHUD.showErrorMessage(ErrorMessage: "请选择约见类型", ForDuration: 1, completion: nil)
+              SVProgressHUD.showErrorMessage(ErrorMessage: "请选择连接类型", ForDuration: 1, completion: nil)
                 return
             }
             inputDateTextField.becomeFirstResponder()
