@@ -88,9 +88,7 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
         if !AppConfigHelper.shared().getAVAuthorizationStatusRestricted(){
             let alertVC = UIAlertController(title: "提示", message: "请在设备的\"设置-隐私-麦克风\"中允许使用麦克风", preferredStyle: UIAlertControllerStyle.alert)
             let alertActionOK = UIAlertAction(title: "确定", style: .default, handler: nil)
-//                action in
-//                  UIApplication.shared.openURL(URL(string: "prefs:root=Privacy&path=CAMERA")!)
-//            )
+
             let alertActionCancel = UIAlertAction(title: "取消", style: .default, handler: nil)
             alertVC.addAction(alertActionCancel)
             alertVC.addAction(alertActionOK)
@@ -103,11 +101,6 @@ class VideoAskQuestionsVC: UIViewController ,UITextViewDelegate{
         if !AppConfigHelper.shared().getcameraAuthorizationStatusRestricted(){
             let alertVC = UIAlertController(title: "提示", message: "请在设备的\"设置-隐私-相机\"中允许访问相机", preferredStyle: .alert)
             let alertActionOK = UIAlertAction(title: "确定", style: .default, handler: nil)
-//            let alertActionCancel = UIAlertAction(title: "取消", style: .default, handler:  {
-//                action in
-//                 UIApplication.shared.openURL(URL(string: "prefs:root=Privacy&path=CAMERA")!)
-//                })
-//            alertVC.addAction(alertActionCancel)
             alertVC.addAction(alertActionOK)
             self.present(alertVC, animated: true, completion: nil)
           return

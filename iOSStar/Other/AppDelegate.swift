@@ -137,7 +137,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate,GeTuiSdkDel
                      SocketConst.Key.openid : openid]
         Alamofire.request(AppConst.WechatKey.wechetUserInfo, method: .get, parameters: param).responseJSON {(result) in
             guard let resultJson = result.result.value as? [String: AnyObject] else{return}
-            if let errCode = resultJson["errcode"] as? Int{
+            if (resultJson["errcode"] as? Int) != nil{
+                
             }
             if let nickname = resultJson[SocketConst.Key.nickname] as? String {
               ShareDataModel.share().wechatUserInfo[SocketConst.Key.nickname] = nickname

@@ -77,9 +77,9 @@ class StarCardView: UICollectionViewCell {
 //        infoView.addSubview(priceLabel)
         buttonImageView.snp.makeConstraints { (make) in
             make.height.equalTo(((kScreenWidth - 88 - 30) / 52) * 15)
-            make.bottom.equalTo(0)
-            make.left.equalTo(0)
-            make.right.equalTo(0)
+            make.bottom.equalTo(-60)
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
         }
         showImageView.snp.makeConstraints { (make) in
             make.top.equalTo(53)

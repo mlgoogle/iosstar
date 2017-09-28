@@ -43,7 +43,7 @@ class MarketMenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSour
     }()
     lazy var priceTypeButton: UILabel = {
         let label = UILabel()
-        label.setAttributeText(text: "最近价 元/秒", firstFont: 14.0, secondFont: 12.0, firstColor: UIColor(hexString: "333333"), secondColor: UIColor(hexString: "333333"), range: NSRange(location: 4, length: 3))
+        label.setAttributeText(text: "最近价 /秒", firstFont: 14.0, secondFont: 12.0, firstColor: UIColor(hexString: "333333"), secondColor: UIColor(hexString: "333333"), range: NSRange(location: 4, length: 3))
            return label
     }()
     lazy var priceChangeButton: UIButton = {
