@@ -161,7 +161,7 @@ class AppConst {
         static let SMSVerifyCodeErr  = "获取验证码失败"
         static let PasswordTwoErr = "两次密码不一致"
         static let ReSMSVerifyCode = "重新获取"
-        static let ErrorDomain = "com.redsky.starshare"
+        static let ErrorDomain = "com.cloudTop.starcloud"
         static let PhoneFormat = "^1[3|4|5|7|8][0-9]\\d{8}$"
         static let RegisterPhoneError = "输入的手机号已注册"
         static let numberReg = "^(?!0(\\d|\\.0+$|$))\\d+(\\.\\d{1,2})?$"
@@ -172,12 +172,7 @@ class AppConst {
         case handleOrder = 11001
     }
     
-    enum BundleInfo:String {
-        case CFBundleDisplayName = "CFBundleDisplayName"
-        case CFBundleShortVersionString = "CFBundleShortVersionString"
-        case CFBundleVersion = "CFBundleVersion"
-    }
-    
+
     enum StoryBoardName:String {
         case Markt = "Market"
         case News = "News"

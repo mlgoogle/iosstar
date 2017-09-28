@@ -25,7 +25,7 @@ class MarketAuctionCell: UITableViewCell {
 
         iconImageView.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + model.user!.headUrl),placeholder:UIImage.init(named: "\(arc4random()%8+1)"))
         nameLabel.text = model.user!.nickname
-        price_label.text = "\(model.trades!.openPrice)元/秒"
+        price_label.text = "\(model.trades!.openPrice)/秒"
         
         
     }

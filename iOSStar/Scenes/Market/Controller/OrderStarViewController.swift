@@ -37,7 +37,7 @@ class FeedbackCell: UITableViewCell , UITextViewDelegate {
     // tips
     @IBOutlet weak var tipsTextView: UITextView!
     
-    let contentStr = "    TIPS：请提前一个月约见。履约过程中产生的相关费用由用户承担网红出行的安保费通讯费、交通费、住宿费、餐饮费、服化费等必要开支。确定约见即表示您已阅读并同意《约见规则》"  as NSString
+    let contentStr = "    TIPS：请提前一个月约见。确定约见即表示您已阅读并同意《约见规则》"  as NSString
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -706,7 +706,7 @@ extension OrderStarViewController : UIPickerViewDelegate,UIPickerViewDataSource 
 extension OrderStarViewController {
     
     fileprivate func setupNav() {
-        setCustomTitle(title: "约见名人")
+        setCustomTitle(title: "约见网红")
     }
 }
 

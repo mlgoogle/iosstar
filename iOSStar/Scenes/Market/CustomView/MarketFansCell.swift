@@ -29,7 +29,7 @@ class MarketFansCell: UITableViewCell {
         
         nameLabel.text = name
         topLabel.text = String.init(format: "%.2d", index + 1)
-        price_lb.text = String(format: "%.2f元/秒", model.trades!.openPrice)
+        price_lb.text = String(format: "%.2f/秒", model.trades!.openPrice)
         
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
