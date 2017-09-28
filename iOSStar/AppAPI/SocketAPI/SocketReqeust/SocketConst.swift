@@ -182,7 +182,7 @@ class SocketConst: NSObject {
         case qiniuHttp = 4015
          //网红详情页面
         case circleListdetail = 15027
-        // 约见开关
+        // 连接开关
         case meetCitySwitch = 3043
        
     }

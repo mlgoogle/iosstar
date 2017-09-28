@@ -106,7 +106,7 @@ class ContactListCell: OEZTableViewCell {
             var color = ""
             if model.appoint == 0 {
                 color = AppConst.Color.main
-                title = "没有约见"
+                title = "没有连接"
             } else if model.appoint == 1{
                 color = AppConst.Color.main
                 

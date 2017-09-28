@@ -351,7 +351,7 @@
                                         <rect key="frame" x="107" y="107" width="40" height="40"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="长按图片将二维码保存到相册" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVU-Vf-pvo">
-                                        <rect key="frame" x="34.5" y="282" width="186" height="17"/>
+                                        <rect key="frame" x="35" y="282" width="186" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -2308,7 +2308,7 @@
                                                         <constraint firstAttribute="width" id="ZFg-rb-5jO"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <state key="normal" title="已约见"/>
+                                                    <state key="normal" title="已连接"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="3"/>
@@ -2348,7 +2348,7 @@
                                                                 <constraint firstAttribute="height" constant="40" id="iV7-lc-Fn0"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <state key="normal" title="与他约见">
+                                                            <state key="normal" title="与他连接">
                                                                 <color key="titleColor" red="0.72156862749999995" green="0.72156862749999995" blue="0.72156862749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <connections>
@@ -2672,7 +2672,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnC-VG-Jk9">
-                                                            <rect key="frame" x="0.0" y="203.5" width="375" height="21"/>
+                                                            <rect key="frame" x="0.0" y="203" width="375" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="XGu-vW-5wV"/>
                                                             </constraints>
@@ -2681,7 +2681,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="资产总额" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltf-m5-ZAe">
-                                                            <rect key="frame" x="90" y="229.5" width="67" height="21"/>
+                                                            <rect key="frame" x="90" y="229" width="67" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="9so-Cr-X3a"/>
                                                                 <constraint firstAttribute="width" constant="67" id="hlh-2r-rAk"/>
@@ -2691,7 +2691,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="---" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaA-Q0-wjK">
-                                                            <rect key="frame" x="162" y="229.5" width="17" height="21"/>
+                                                            <rect key="frame" x="162" y="229" width="17" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="rAB-f2-xtJ"/>
                                                             </constraints>
@@ -2700,7 +2700,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已购网红" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDs-Qy-6Sq">
-                                                            <rect key="frame" x="189" y="229.5" width="67" height="21"/>
+                                                            <rect key="frame" x="189" y="229" width="67" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="67" id="8Sz-ph-Tuc"/>
                                                                 <constraint firstAttribute="height" constant="21" id="DXH-PS-4sQ"/>
@@ -2710,7 +2710,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5NP-2v-LoD">
-                                                            <rect key="frame" x="256" y="229.5" width="67" height="21"/>
+                                                            <rect key="frame" x="256" y="229" width="67" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="67" id="8pV-ut-fel"/>
                                                                 <constraint firstAttribute="height" constant="21" id="SvP-jZ-p5p"/>
@@ -2727,7 +2727,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_team" translatesAutoresizingMaskIntoConstraints="NO" id="rLj-B3-Ohu">
-                                                            <rect key="frame" x="152" y="123.5" width="70" height="70"/>
+                                                            <rect key="frame" x="152" y="123" width="70" height="70"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="70" id="TxV-jh-yZU"/>
@@ -2911,13 +2911,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我约的网红" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKc-Lb-dq9">
-                                                    <rect key="frame" x="17" y="0.0" width="66.5" height="50"/>
+                                                    <rect key="frame" x="17" y="0.0" width="67" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXa-f7-coS">
-                                                    <rect key="frame" x="15" y="49" width="360" height="1"/>
+                                                    <rect key="frame" x="15" y="48" width="360" height="1"/>
                                                     <color key="backgroundColor" red="0.74113768339157104" green="0.73691505193710327" blue="0.75751966238021851" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="oSG-5L-lAV"/>
@@ -3874,10 +3874,10 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nodata_record" translatesAutoresizingMaskIntoConstraints="NO" id="7tZ-0U-cZV">
-                                    <rect key="frame" x="87" y="41.5" width="200" height="186"/>
+                                    <rect key="frame" x="87" y="42" width="200" height="186"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无记录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Iw-nG-saC">
-                                    <rect key="frame" x="61" y="261.5" width="251" height="21"/>
+                                    <rect key="frame" x="61" y="262" width="251" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="251" id="XxY-jN-2K3"/>
                                         <constraint firstAttribute="height" constant="21" id="Zfd-Px-zrh"/>
@@ -3981,7 +3981,7 @@
         <image name="Novisible.png" width="28" height="20"/>
         <image name="anth" width="456" height="466"/>
         <image name="avatar_team" width="50" height="50"/>
-        <image name="back.png" width="25" height="25"/>
+        <image name="back.png" width="82" height="81"/>
         <image name="bg.png" width="706" height="326"/>
         <image name="ccbc.png" width="16" height="16"/>
         <image name="close" width="82" height="81"/>

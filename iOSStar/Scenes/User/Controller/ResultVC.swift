@@ -47,7 +47,7 @@ class ResultVC: UITableViewController {
     }
 
     // recharge_type == 0 + 充值记录
-    // recharge_type == 1 - 约见记录
+    // recharge_type == 1 - 连接记录
     // recharge_type == 2 - 聊天记录
     func setupData() {
         
@@ -83,7 +83,7 @@ class ResultVC: UITableViewController {
             img.kf.setImage(with: URL(string:ShareDataModel.share().qiniuHeader + pic_url_tail))
             titleInfo.text = starName
             money.text = "-" + String.init(format: "%d秒", Int(model.amount))
-            status.text = "约见"
+            status.text = "连接"
             bank.text = "发行人信息"
             bankInfo.text = String.init(format: "%@ (%@)", starName,model.transaction_id)
         } else {
